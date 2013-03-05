@@ -1,0 +1,17 @@
+<div>
+                            <p style="visibility: hidden;" id="progress">
+                                <img id="progress_image" style="padding-left: 5px;" src="../../Images/FancyBox/fancybox_loading.gif"
+                                    alt="Uploading.." />
+                                Uploading in progress…</p>
+                        </div>
+
+
+
+ <script type="text/javascript">
+        function ShowProgress() {             
+            ProgressImage = document.getElementById('progress_image');
+            document.getElementById("progress").style.visibility = "visible";
+            setTimeout("ProgressImage.src = ProgressImage.src", 100);
+            return true;
+        }
+    </script>

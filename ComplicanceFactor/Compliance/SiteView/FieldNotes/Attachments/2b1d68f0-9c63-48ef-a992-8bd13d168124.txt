@@ -1,0 +1,12 @@
+1)c_harm_sp_get_category
+2)c_harm_sp_get_all_category
+3)c_harm_sp_get_status
+4)c_harm_sp_get_all_status
+5)c_miris_sp_get_case_category
+6)c_miris_sp_get_all_case_category
+7)c_miris_sp_get_case_type
+8)c_miris_sp_get_all_case_type
+9)c_miris_sp_get_case_status
+10)c_miris_sp_get_case_all_status
+11)c_course_sp_get_control_measures
+12)c_sp_get_catalog_type

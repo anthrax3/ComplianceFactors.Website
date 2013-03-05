@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body style="width: 1040px; margin: 5px auto 0 auto; font-family: Arial, Sans-Serif;
+    font-size: 14px;">
+    <form id="form1" runat="server">
+    <div>
+        <div id="content">
+            <!-- Header -->
+            <div id="header">
+                <div class="content_align">
+                    <!-- Logo-->
+                    <div id="logo">
+                        <img alt="Logo" src="http://compliancefactors.com.lavender.arvixe.com/Images/ComplianceFactorsLogo.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+             <div style="margin: 10px 10px 0px 35px; padding: 0px 0 10px 0;">
+                <div style="font-size: 18px; font-weight: bold;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                        width: 940px;">
+                        <!-- <%=LocalResources.GetLocaleResourceString("app_harm_information_text")%>-->
+                        @app_harm_information_text:
+                    </div>
+                    <br />
+                    <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                        <table>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_number_text")%>-->
+                                    @app_harm_number_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblHarmNumber
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_case_title_text")%>-->
+                                    @app_harm_case_title_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblHarmCaseTitle
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_case_date_text")%>-->
+                                    @app_harm_case_date_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblHarmCaseDate (GMT)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_case_category_text")%>-->
+                                    @app_harm_case_category_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblHarmCaseCategory
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_status_text")%>-->
+                                    @app_harm_status_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblHarmStatus
+                                </td>
+                               <!-- <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">-->
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_employee_report_location_text")%>
+                                    @app_harm_employee_report_location_text-->
+                                <!--</td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblHarmEmployeeReportLocation
+                                </td>-->
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                        width: 940px;">
+                        <!-- <%=LocalResources.GetLocaleResourceString("app_harm_hazard_and_control_measure_summary_text")%>-->
+                        @app_harm_hazard_and_control_measure_summary_text
+                    </div>
+                    <br />
+                    <div style="margin: 0 0 0 0; padding: 0 0 0 20px; font-size: 9pt;">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="text-align: left; padding: 0 0 0 8px;">
+                                    @lblHazardControlSummary
+                                </td>
+                               
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                        width: 940px;">
+                        <!-- <%=LocalResources.GetLocaleResourceString("app_harm_additional_information_text")%>-->
+                        @app_harm_additional_information_text
+                    </div>
+                    <br />
+                    <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_customer_form(s)_text")%>-->
+                                    @app_harm_custom_customer_form(s)_text
+                                </td>
+                                <td >
+                                    @gvCustomCustomer
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_photo(s)_text")%>-->
+                                    @app_harm_photo(s)_text
+                                </td>
+                                <td >
+                                    @gvPhoto
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_scene_sketch(es)_text")%>-->
+                                    @app_harm_scene_sketch(es)_text
+                                </td>
+                                <td>
+                                    @gvSceneSketch
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_extenuating_condition(s)_text")%>-->
+                                    @app_harm_extenuating_condition(s)_text
+                                </td>
+                                <td >
+                                    @gvExtenuatingCondition
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_employee_interview(s)_text")%>-->
+                                    @app_harm_employee_interview(s)_text
+                                </td>
+                                <td >
+                                    @gvEmployeeInterview
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                        width: 940px;">
+                        <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_fields_text")%>-->
+                        @app_harm_custom_fields_text
+                    </div>
+                    <br />
+                    <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_01_text")%>-->
+                                    @app_harm_custom_01_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom01
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_02_text")%>-->
+                                    @app_harm_custom_02_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom02
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_03_text")%>-->
+                                    @app_harm_custom_03_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom03
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_04_text")%>-->
+                                    @app_harm_custom_04_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom04
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_05_text")%>-->
+                                    @app_harm_custom_05_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom05
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_06_text")%>-->
+                                    @app_harm_custom_06_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom06
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_07_text")%>-->
+                                    @app_harm_custom_07_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom07
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_08_text")%>-->
+                                    @app_harm_custom_08_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom08
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_09_text")%>-->
+                                    @app_harm_custom_09_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom09
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_harm_custom_10_text")%>-->
+                                    @app_harm_custom_10_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom10
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_11_text")%>-->
+                                    @app_harm_custom_11_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom11
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_12_text")%>-->
+                                    @app_harm_custom_12_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom12
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    <!--<%=LocalResources.GetLocaleResourceString("app_harm_custom_13_text")%>-->
+                                    @app_harm_custom_13_text
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCustom13
+                                </td>
+                                <td colspan="4">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                        width: 940px;">
+                        <br />
+                    </div>
+                    <br />
+                    <div style="font-size: 9pt; padding: 0 0 0 14px;">
+                        * @app_harm_required_fields_text
+                        <!--<%=LocalResources.GetLocaleResourceString("app_required_fields_text")%>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

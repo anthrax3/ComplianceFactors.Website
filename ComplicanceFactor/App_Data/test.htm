@@ -1,0 +1,862 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ComplicanceFactor </title>
+</head>
+<body>
+    <form method="post"   id="form1">
+    <div class="aspNetHidden">
+        <input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+    </div>
+    <div id="content">
+        <!---header   --->
+        <div id="header">
+            <div class="content_align ">
+                <!---logo   --->
+                <div id="logo">
+                   <!-- <a href="/Employee/lhp-01.aspx" class="image_link">
+                        <!--<img id="imgLogo" class="logo_image" src="../Images/ComplianceFactorsLogo.jpg" alt="Logo" align="left" />
+                    </a>-->
+                </div>
+                <!---End logo   --->
+                <!---login   --->
+                <div id="login">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" style="width: 260px">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td style="font-size: 22px; padding: 3px 7px 0 10px; font-weight: bold;" align="center">
+                                            Welcome <span id="lblUsername">Peter!</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 11px;" align="center">
+                                            <span id="lblDateTime">(logged in: 06/12/2012 - 4:04PM)</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td align="right">
+                                <input type="submit" name="ctl00$btnLogout" value="Logout" id="btnLogout" class="content_button "
+                                    style="width: 80px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="left " style="padding: 4px 7px 0 10px; font-weight: bold;">
+                                    <a id="hplHelp" href="../#">Help?</a>
+                                </div>
+                                <div class="right" style="padding: 4px 0px 0 10px; font-weight: bold;">
+                                    <a href="mailto:admin@compliancefactors.com">admin@ComplicanceFactors.com </a>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!---End login   --->
+                </div>
+            </div>
+            <!--- End header   --->
+            <div class="clear">
+            </div>
+            <div id="menu">
+                <div class="main_menu">
+                    <ul>
+                        <li><a href="/Employee/lhp-01.aspx" id="app_nav_employee" style="cursor: pointer;
+                            display: block;">Employee </a>
+                            <ul>
+                                <li><a href="/Employee/lmtd-01.aspx">My Training</a></li>
+                                <li><a href="/Employee/lmlp-01.aspx">My Compliance</a></li>
+                                <li><a href="/Employee/lmhp-01.aspx">My Learning History</a></li>
+                                <li><a href="/Employee/eascp-01.aspx">My Catalog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Manager/mhp-01.aspx" id="app_nav_manager" class="cursor_hand" style="display: block;">
+                            Manager </a>
+                            <ul>
+                                <li><a href="/Manager/mmtd-01.aspx">My Team</a></li>
+                                <li><a href="/Manager/mtdl-01.aspx">My To Do</a></li>
+                                <li><a href="/Manager/mmdd-01.aspx">My Dashboard</a></li>
+                                <li><a href="/Manager/mascp-01.aspx">Team Catalog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Compliance/cchp-01.aspx" id="app_nav_compliance" class="cursor_hand"
+                            style="display: block;">Compliance </a>
+                            <ul>
+                                <li><a href="/Compliance/cccmiris-01.aspx">My Incident Report and Investigation System
+                                    (MIRIS)</a></li>
+                                <li><a href="/Compliance/ccasip-01.aspx">My Incident Report (IRIS)</a></li>
+                                <li><a href="/Compliance/ccjhap-01.aspx">My Job Hazard Analysis</a></li>
+                                <li><a href="/Compliance/ccassp-01.aspx">My Surveys</a></li>
+                                <li><a href="/Compliance/ccaslp-01.aspx">My Licenses</a></li>
+                                <li><a href="/Compliance/cctdl-01.aspx">My To Do</a></li>
+                                <li><a href="/Compliance/ccmdd-01.aspx">My Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Instructor/ihp-01.aspx" id="app_nav_instructor" class="cursor_hand"
+                            style="display: block;">Instructor </a>
+                            <ul>
+                                <li><a href="/Instructor/imcr-01.aspx">My Classes Rosters</a></li>
+                                <li><a href="/Instructor/itdl-01.aspx">My To Do</a></li>
+                                <li><a href="/Instructor/imdd-01.aspx">My Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Training/tchp-01.aspx" id="app_nav_training" class="cursor_hand" style="display: block;">
+                            Training </a>
+                            <ul>
+                                <li><a href="/Training/tcmtd-01.aspx">My Training</a></li>
+                                <li><a href="/Training/tctdl-01.aspx">My To Do</a></li>
+                                <li><a href="/Training/tcmdd-01.aspx">My Dashboard</a></li>
+                                <li><a href="/Training/tcmtc-01.aspx">My Training Catalog</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Administrator/tahp-01.aspx" id="app_nav_admin" class="cursor_hand"
+                            style="display: block;">Administrator </a>
+                            <ul>
+                                <li><a href="/Administrator/ascrp-01.aspx">My Instructors Classes Roasters</a></li>
+                                <li><a href="/Administrator/tatdl-01.aspx">My To Do</a></li>
+                                <li><a href="/Administrator/tamdd-01.aspx">My Dashboard</a></li>
+                                <li><a href="/Administrator/tamcc-01.aspx">Manage Catalog</a></li>
+                            </ul>
+                        </li>
+                        <li style="width: 150px; text-align: center"><a href="/SystemHome/sahp-01.aspx" id="app_nav_system"
+                            class="cursor_hand" style="display: block;">System </a>
+                            <ul class="last" style="text-align: left;">
+                                <li><a href="/SystemHome/satdl-01.aspx">My To Do</a></li>
+                                <li><a href="/SystemHome/samdd-01.aspx">My Dashboard</a></li>
+                                <li><a href="/SystemHome/sasup-01.aspx">Manage Users</a></li>
+                                <li><a href="/SystemHome/samcc-01.aspx">Manage Catalog</a></li>
+                                <li><a href="/SystemHome/samnt-01.aspx">Manage Navigation</a></li>
+                                <li><a href="/SystemHome/samsp-01.aspx">Manage Splash Pages</a></li>
+                                <li><a href="/SystemHome/saesicd-01.aspx">Manage System Information</a></li>
+                                <li><a href="/SystemHome/sasuilp-01.aspx">Manage UI</a></li>
+                                <li><a href="/SystemHome/saeesic-01.aspx">Manage Base Configuration</a></li>
+                                <li><a href="/SystemHome/sapsr-01.aspx">Manage Security Roles</a></li>
+                                <li><a href="/SystemHome/sasnp-01.aspx">Manage Domains</a></li>
+                                <li><a href="/SystemHome/sasnop-01.aspx">Manage Notifications</a></li>
+                                <li><a href="/SystemHome/sasrop-01.aspx">Manage Reports</a></li>
+                                <li><a href="/SystemHome/salvls-01.aspx">Manage VLS</a></li>
+                                <li><a href="/SystemHome/saecomd-01.aspx">Manage eCommerce</a></li>
+                                <li><a href="/SystemHome/saeauditd-01.aspx">Manage Audit Log</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            <div class="breadcrumb">
+                <span id="lblBreadCrumb"><a href="/Compliance/cchp-01.aspx">Compliance</a>&nbsp; >&nbsp;MIRIS
+                    >&nbsp; View Case</span>
+                <div class="right ">
+                    <b>Language:</b>
+                    <select name="ctl00$ddlLanguages" id="ddlLanguages">
+                        <option value="en-GB">English (United Kingdom)</option>
+                        <option selected="selected" value="en-US">English (United States)</option>
+                        <option value="es-ES">Espa&#241;ol (Espa&#241;a, Alfabetizaci&#243;n Internacional)</option>
+                        <option value="es-MX">Espa&#241;ol (M&#233;xico)</option>
+                        <option value="fr-CA">Fran&#231;ais (Canada)</option>
+                        <option value="fr-FR">Fran&#231;ais (France)</option>
+                        <option value="pt-PT">Portugu&#234;s (Portugal)</option>
+                        <option value="zh-CN">中文(中华人民共和国)</option>
+                    </select>
+                    <input type="submit" name="ctl00$btnLanguages" value="Go!" id="btnLanguages" class="btngo_language" />
+                </div>
+            </div>
+            <div class="clear ">
+            </div>
+            <div id="success_login" class="msgarea_success msg_display">
+                You have successfully logged-in to Complicance Factors.
+            </div>
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('#app_nav_compliance').addClass('selected');
+                    // toggles the slickbox on clicking the noted link  
+                    $('.main_menu li a').hover(function () {
+
+                        $('.main_menu li a').removeClass('selected');
+                        $(this).addClass('active');
+
+                        return false;
+                    });
+                    $('.main_menu li a').mouseleave(function () {
+
+                        $('#app_nav_compliance').addClass('selected');
+                        return false;
+                    });
+                });
+
+            </script>
+            <div class="content_area">
+                <div class="home_content">
+                    <div class="div_header">
+                        Case Details Page - OI-0512-0001:
+                    </div>
+                    <br />
+                    <div class="div_controls">
+                        <table>
+                            <tr>
+                                <td>
+                                    Case Number
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseNumber">OI-20120611-005</span>
+                                </td>
+                                <td>
+                                    Case Title
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseTitle">test_copy</span>
+                                </td>
+                                <td>
+                                    Case Date:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseDate">06/11/2012 11:40 AM</span> (GMT)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Case Category:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseCategory">Occupation Injury (OI)</span>
+                                </td>
+                                <td>
+                                    Case Types:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseTypes">Recordable</span>
+                                </td>
+                                <td>
+                                    Case Status:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseStatus">open</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="div_header">
+                        Case Description
+                    </div>
+                    <br />
+                    <div class="div_controls">
+                        <table>
+                            <tr>
+                                <td>
+                                    * Employee Name:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblEmployeeName">tes</span>
+                                </td>
+                                <td>
+                                    * Date of Birth:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblDateOfBirth">6/13/2012</span>
+                                </td>
+                                <td>
+                                    * Employee Hire Date:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblEmployeeHireDate">6/11/2012</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    * Employee ID:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblEmployeeId">tet</span>
+                                </td>
+                                <td>
+                                    * Last 4 digit of SSN#:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblLastFourDigitOfSSN">te</span>
+                                </td>
+                                <td>
+                                    * Supervisor:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblSupervisor">pixel</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    * Incident Location:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblIncidentLocation">ste</span>
+                                </td>
+                                <td>
+                                    * Incident Date:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblIncidentDate">6/13/2012</span>
+                                </td>
+                                <td>
+                                    * Incident Time:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblIncidentTime">7:38AM</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    * Employee Report Location:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblEmployeeReportLocation">et</span>
+                                </td>
+                                <td>
+                                    * Timezone:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblTimeZone"></span>
+                                </td>
+                                <td>
+                                    Note:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblNote">N/A</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="div_header">
+                        Additional Information Information:
+                    </div>
+                    <br />
+                    <div class="div_controls_from_left">
+                        <table>
+                            <tr>
+                                <td>
+                                    Witness(es):
+                                </td>
+                                <td>
+                                    <div>
+                                        <table cellspacing="0" cellpadding="0" id="ContentPlaceHolder1_gvAddWitness" style="width: 530px;
+                                            border-collapse: collapse;">
+                                            <tr>
+                                                <td align="left" style="width: 300px;">
+                                                    <a id="ContentPlaceHolder1_gvAddWitness_lnkWitness_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvAddWitness$ctl02$lnkWitness&#39;,&#39;&#39;)">
+                                                        Photo_2.jpg</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Police Report(s):
+                                </td>
+                                <td>
+                                    <div>
+                                        <table cellspacing="0" cellpadding="0" id="ContentPlaceHolder1_gvPoliceReport" style="width: 530px;
+                                            border-collapse: collapse;">
+                                            <tr>
+                                                <td align="left" style="width: 300px;">
+                                                    <a id="ContentPlaceHolder1_gvPoliceReport_lnkPoliceReport_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvPoliceReport$ctl02$lnkPoliceReport&#39;,&#39;&#39;)">
+                                                        Witenss_2.jpg</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Photo(s):
+                                </td>
+                                <td>
+                                    <div>
+                                        <table cellspacing="0" cellpadding="0" id="ContentPlaceHolder1_gvPhoto" style="width: 530px;
+                                            border-collapse: collapse;">
+                                            <tr>
+                                                <td align="left" style="width: 300px;">
+                                                    <a id="ContentPlaceHolder1_gvPhoto_lnkPhoto_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvPhoto$ctl02$lnkPhoto&#39;,&#39;&#39;)">
+                                                        Wintess_4.jpg</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Scene Sketch(es):
+                                </td>
+                                <td>
+                                    <div>
+                                        <table cellspacing="0" cellpadding="0" id="ContentPlaceHolder1_gvSceneSketch" style="width: 530px;
+                                            border-collapse: collapse;">
+                                            <tr>
+                                                <td align="left" style="width: 300px;">
+                                                    <a id="ContentPlaceHolder1_gvSceneSketch_lnkSceneSketch_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvSceneSketch$ctl02$lnkSceneSketch&#39;,&#39;&#39;)">
+                                                        Police_1.jpg</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Extenuating Condition(s):
+                                </td>
+                                <td>
+                                    <div>
+                                        <table cellspacing="0" cellpadding="0" id="ContentPlaceHolder1_gvExtenuatingcondition"
+                                            style="width: 530px; border-collapse: collapse;">
+                                            <tr>
+                                                <td align="left" style="width: 300px;">
+                                                    <a id="ContentPlaceHolder1_gvExtenuatingcondition_lnkExtenuatingCondition_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvExtenuatingcondition$ctl02$lnkExtenuatingCondition&#39;,&#39;&#39;)">
+                                                        SceneSketch_1.jpg</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Employee Interview(s):
+                                </td>
+                                <td>
+                                    <div>
+                                        <table cellspacing="0" cellpadding="0" id="ContentPlaceHolder1_gvEmployeeInterview"
+                                            style="width: 530px; border-collapse: collapse;">
+                                            <tr>
+                                                <td align="left" style="width: 300px;">
+                                                    <a id="ContentPlaceHolder1_gvEmployeeInterview_lnkEmployeeInterview_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvEmployeeInterview$ctl02$lnkEmployeeInterview&#39;,&#39;&#39;)">
+                                                        EmployeeInterview_3.jpg</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="table_send_print_buttons">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoMyMobile_header" value="Send To My Mobile"
+                                        id="ContentPlaceHolder1_btnSendtoMyMobile_header" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoMyEmail_header" value="Send to My Email"
+                                        id="ContentPlaceHolder1_btnSendtoMyEmail_header" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnPrintPdf_header" value="Print(PDF)"
+                                        id="ContentPlaceHolder1_btnPrintPdf_header" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnDownloadZip_header" value="Download(ZIP)"
+                                        id="ContentPlaceHolder1_btnDownloadZip_header" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoOtherMobile_header"
+                                        value="Send Other Mobile(s)" id="ContentPlaceHolder1_btnSendtoOtherMobile_header" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoOtherEmail_header"
+                                        value="Send to Other Email(s)" id="ContentPlaceHolder1_btnSendtoOtherEmail_header" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="div_header">
+                        Root Cause Analysis Information:
+                    </div>
+                    <br />
+                    <div class="div_long_textbox">
+                        Root Cause Analysis Details:
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblRootCauseAnalysisDetails">te</span>
+                    </div>
+                    <br />
+                    <div class="div_header">
+                        Corrective Action Information:
+                    </div>
+                    <br />
+                    <div class="div_long_textbox">
+                        Corrective Action Details:
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblCorrectiveActionDetails">teet</span>
+                    </div>
+                    <br />
+                    <div class="div_header">
+                        OSHA 300 Information:
+                    </div>
+                    <br />
+                    <br />
+                    <div class="div_controls">
+                        <table>
+                            <tr>
+                                <td>
+                                    * Case Outcome:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCaseOutCome">Away From Work</span>
+                                </td>
+                                <td>
+                                    Days away from work:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblDaysAwayFromWork">N/A</span>
+                                </td>
+                                <td>
+                                    Days of restrictions:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblDaysOfRestrictions">N/A</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Date of Death:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblDateOfDeath">N/A</span>
+                                </td>
+                                <td>
+                                    Type of Illness:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblTypeofIllness">Injury</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                    </div>
+                    <div class="div_long_textbox">
+                        Describe injury or illness, parts of body affected, and object/substance that directly
+                        injured or made person ill (e.g. Second degree burns on right forearm from acetylene
+                        torch):
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblOSHA300info"></span>
+                    </div>
+                    <br />
+                    <div class="div_header">
+                        OSHA 301 Information:
+                    </div>
+                    <br />
+                    <div class="div_controls">
+                        <table>
+                            <tr>
+                                <td>
+                                    * Worker Gender:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblWorkerGender">male</span>
+                                </td>
+                                <td>
+                                    Work Start Time:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblWorkStartTime">7:38AM</span>
+                                </td>
+                                <td>
+                                    Physician:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblPhysician"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Treatment Facility:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblTreatmentFacility"></span>
+                                </td>
+                                <td>
+                                    Emergency Room:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblEmergencyRoom"></span>
+                                </td>
+                                <td>
+                                    Hospitalized:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblHospitalized"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Address 1:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblAddress1"></span>
+                                </td>
+                                <td>
+                                    Address 2:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblAddress2"></span>
+                                </td>
+                                <td>
+                                    Address 3:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblAddress3"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    City:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCity"></span>
+                                </td>
+                                <td>
+                                    State:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblState"></span>
+                                </td>
+                                <td>
+                                    ZIP:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblZipCode"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="div_long_textbox">
+                        What was the employee doing just before the incident occurred? Describe the activity,
+                        as well as the tools, equipment or material the employee was using. Be specific.
+                        Examples: "climbing a ladder while carrying roofing materials"; "spraying chlorine
+                        from hand sprayer"; "daily computer key-entry."
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblOSHA301Info1"></span>
+                    </div>
+                    <br />
+                    <div class="div_long_textbox">
+                        What happened? Tell us how the injury occurred. Examples: "When ladder slipped on
+                        wet floor, worker fell 20 feet"; "Worker was sprayed with chlorine when gasket broke
+                        during replacement"; "Worker developed soreness in wrist over time."
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblOSHA301Info2"></span>
+                    </div>
+                    <br />
+                    <div class="div_long_textbox">
+                        What was the injury or illness? Tell us the part of the body that was affected and
+                        how it was affected; be more specific than "hurt", "pain", or "sore." Examples:
+                        "strained back"; "chemical burn, hand"; "carpal tunnel syndrome."
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblOSHA301Info3"></span>
+                    </div>
+                    <br />
+                    <div class="div_long_textbox">
+                        What object or substance directly harmed the employee? Examples: "concrete floor";
+                        "chlorine"; "radial arm saw." If this question does not apply to the incident, leave
+                        it blank.
+                        <br />
+                        <br />
+                        <span id="ContentPlaceHolder1_lblOSHA301Info4"></span>
+                    </div>
+                    <br />
+                    <div class="div_header">
+                        Custom Fields:
+                    </div>
+                    <br />
+                    <div class="div_controls">
+                        <table>
+                            <tr>
+                                <td>
+                                    Custom 01:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom01"></span>
+                                </td>
+                                <td>
+                                    Custom 02:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom02"></span>
+                                </td>
+                                <td>
+                                    Custom 03:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom03"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Custom 04:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom04"></span>
+                                </td>
+                                <td>
+                                    Custom 05:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom05"></span>
+                                </td>
+                                <td>
+                                    Custom 06:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom06"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Custom 07:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom07"></span>
+                                </td>
+                                <td>
+                                    Custom 08:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom08"></span>
+                                </td>
+                                <td>
+                                    Custom 09:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom09"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Custom 10:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom10"></span>
+                                </td>
+                                <td>
+                                    Custom 11:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom11"></span>
+                                </td>
+                                <td>
+                                    Custom 12:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom12"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Custom 13:
+                                </td>
+                                <td class="lable_td_width">
+                                    <span id="ContentPlaceHolder1_lblCustom13"></span>
+                                </td>
+                                <td colspan="4">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="div_header">
+                        <br />
+                    </div>
+                    <br />
+                    <div class="label_required_field">
+                        * Required Fields
+                    </div>
+                    <br />
+                    <div class="table_send_print_buttons">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoMyMobile_footer" value="Send To My Mobile"
+                                        id="ContentPlaceHolder1_btnSendtoMyMobile_footer" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoMyEmail_footer" value="Send to My Email"
+                                        id="ContentPlaceHolder1_btnSendtoMyEmail_footer" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnPrintPdf_footer" value="Print(PDF)"
+                                        id="ContentPlaceHolder1_btnPrintPdf_footer" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnDownload_footer" value="Download(ZIP)"
+                                        id="ContentPlaceHolder1_btnDownload_footer" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoOtherMobile_footer"
+                                        value="Send Other Mobile(s)" id="ContentPlaceHolder1_btnSendtoOtherMobile_footer" />
+                                </td>
+                                <td>
+                                    <input type="submit" name="ctl00$ContentPlaceHolder1$btnSendtoOtherEmail_foooter"
+                                        value="Send to Other Email(s)" id="ContentPlaceHolder1_btnSendtoOtherEmail_foooter" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="footer">
+            <div class="left ">
+                Release a0712.1
+            </div>
+            <div class="right ">
+                Powered by ComplianceFactors&#0153
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

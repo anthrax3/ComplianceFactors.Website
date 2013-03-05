@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{844817C2-FF5B-4F99-A5E9-D88619987583}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComplicanceFactor.BusinessComponent</RootNamespace>
+    <AssemblyName>ComplicanceFactor.BusinessComponent</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuditlogBLL.cs" />
+    <Compile Include="ComplianceBLL.cs" />
+    <Compile Include="DataAccessObject\ComplainceVehicle.cs" />
+    <Compile Include="DataAccessObject\Employee.cs" />
+    <Compile Include="DataAccessObject\Enrollment.cs" />
+    <Compile Include="DataAccessObject\Navigation.cs" />
+    <Compile Include="DataAccessObject\SiteViewFieldNotes.cs" />
+    <Compile Include="DataAccessObject\SiteViewInspection.cs" />
+    <Compile Include="DataAccessObject\SiteViewInspectionTemplate.cs" />
+    <Compile Include="DataAccessObject\SystemApprovalWorkflow.cs" />
+    <Compile Include="DataAccessObject\SystemCurriculum.cs" />
+    <Compile Include="DataAccessObject\SystemCurriculumType.cs" />
+    <Compile Include="DataAccessObject\SystemHolidaySchedules.cs" />
+    <Compile Include="DataAccessObject\SystemHRISIntegration.cs" />
+    <Compile Include="DataAccessObject\SystemNotification.cs" />
+    <Compile Include="DataAccessObject\SystemSplashPage.cs" />
+    <Compile Include="DataAccessObject\SystemUI_Texts_Labels_Dropdown.cs" />
+    <Compile Include="DataAccessObject\SystemWeekdaySchedules.cs" />
+    <Compile Include="EmployeeBLL.cs" />
+    <Compile Include="EnrollmentBLL.cs" />
+    <Compile Include="ManageCourseBLL.cs" />
+    <Compile Include="DataAccessObject\Auditlog.cs" />
+    <Compile Include="DataAccessObject\ComplianceDAO.cs" />
+    <Compile Include="DataAccessObject\ManageCourse.cs" />
+    <Compile Include="DataAccessObject\EmployeeCatalog.cs" />
+    <Compile Include="DataAccessObject\SystemCategories.cs" />
+    <Compile Include="DataAccessObject\SystemDeliveryType.cs" />
+    <Compile Include="DataAccessObject\SystemEmployeeType.cs" />
+    <Compile Include="DataAccessObject\SystemFacility.cs" />
+    <Compile Include="DataAccessObject\SystemFacilityType.cs" />
+    <Compile Include="DataAccessObject\Sessioninfo.cs" />
+    <Compile Include="DataAccessObject\SystemCatalog.cs" />
+    <Compile Include="DataAccessObject\SystemDomain.cs" />
+    <Compile Include="DataAccessObject\SystemInstructor.cs" />
+    <Compile Include="DataAccessObject\SystemInstructorType.cs" />
+    <Compile Include="DataAccessObject\SystemLocale.cs" />
+    <Compile Include="DataAccessObject\SystemLocation.cs" />
+    <Compile Include="DataAccessObject\SystemMaterial.cs" />
+    <Compile Include="DataAccessObject\SystemMaterialType.cs" />
+    <Compile Include="DataAccessObject\SystemResource.cs" />
+    <Compile Include="DataAccessObject\SystemResourceType.cs" />
+    <Compile Include="DataAccessObject\SystemRoom.cs" />
+    <Compile Include="DataAccessObject\SystemRoomType.cs" />
+    <Compile Include="DataAccessObject\TimeZoneDAO.cs" />
+    <Compile Include="EmployeeCatalogBLL.cs" />
+    <Compile Include="NavigationBLL.cs" />
+    <Compile Include="SiteViewFieldNotesBLL.cs" />
+    <Compile Include="SiteViewInspectionBLL.cs" />
+    <Compile Include="SysemDeliveryTypesBLL.cs" />
+    <Compile Include="SystemApprovalWorkflowBLL.cs" />
+    <Compile Include="SystemCategoriesBLL.cs" />
+    <Compile Include="SystemCurriculumBLL.cs" />
+    <Compile Include="SystemCurriculumTypeBLL.cs" />
+    <Compile Include="SystemEmployeeTypesBLL.cs" />
+    <Compile Include="SystemFacilityBLL.cs" />
+    <Compile Include="SystemFacilityTypesBLL.cs" />
+    <Compile Include="SystemCatalogBLL.cs" />
+    <Compile Include="SystemDomainBLL.cs" />
+    <Compile Include="SystemHolidaySchedulesBLL.cs" />
+    <Compile Include="SystemHRISIntegrationBLL.cs" />
+    <Compile Include="SystemInstructorBLL.cs" />
+    <Compile Include="SystemInstructorTypeBLL.cs" />
+    <Compile Include="SystemLocaleBLL.cs" />
+    <Compile Include="SystemLocationBLL.cs" />
+    <Compile Include="SystemMaterialBLL.cs" />
+    <Compile Include="SystemMaterialTypeBLL.cs" />
+    <Compile Include="SystemNotificationBLL.cs" />
+    <Compile Include="SystemResourceBLL.cs" />
+    <Compile Include="SystemResourceTypeBLL.cs" />
+    <Compile Include="SystemRoomBLL.cs" />
+    <Compile Include="SystemRoomTypeBLL.cs" />
+    <Compile Include="SystemSplashPageBLL.cs" />
+    <Compile Include="SystemUI_Texts_Labels_DropdownBLL.cs" />
+    <Compile Include="SystemWeekdaySchedulesBLL.cs" />
+    <Compile Include="TimeZoneBLL.cs" />
+    <Compile Include="UserBLL.cs" />
+    <Compile Include="DataAccessObject\User.cs" />
+    <Compile Include="LanguageBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessioninfoBLL.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ComplicanceFactor.DataAccessLayer\ComplianceFactors.DataAccessLayer.csproj">
+      <Project>{D6FE8164-2A14-4158-BC7B-F520D71E30EA}</Project>
+      <Name>ComplianceFactors.DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

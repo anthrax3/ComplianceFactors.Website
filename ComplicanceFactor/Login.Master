@@ -1,0 +1,178 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.Master.cs" Inherits="ComplicanceFactor.Main" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="Styles/Main.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <title>ComplianceFactors&#0153 - Home</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function u_pwd_validate() {
+            var u_name = document.getElementById('<%=txtUserName.ClientID %>');
+            var u_pwd = document.getElementById('<%=txtPassWord.ClientID %>');
+
+            if (u_name.value.length == 0 || u_pwd.value.length == 0) {
+
+                document.getElementById('message').style.display = "none";
+                document.getElementById('divvalidate').style.display = "block";
+                document.getElementById('success_logout').style.display = "none";
+                document.getElementById('expire_message').style.display = "none";
+                document.getElementById('alreadyLogged').style.display = "none";
+
+                return false;
+
+            }
+            else {
+                document.getElementById('divvalidate').style.display = "none";
+                document.getElementById('success_logout').style.display = "none";
+                document.getElementById('expire_message').style.display = "none";
+                document.getElementById('alreadyLogged').style.display = "none";
+                return true;
+            }
+
+        }
+    </script>
+    <script type="text/javascript">
+
+        function noBack() { window.history.forward(); }
+    </script>
+</head>
+<body onload="noBack();" onunload="">
+    <form id="form1" runat="server" defaultbutton="btnGo">
+    <div id="content">
+        <!---header   --->
+        <div id="header">
+            <div class="content_align ">
+                <!---logo   --->
+                <div id="logo">
+                    <a href="/glp-01.aspx" class="image_link">
+                        <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
+                            AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />
+                    </a>
+                </div>
+                <!---End logo   --->
+                <!---login   --->
+                <div id="login">
+                    <div>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td colspan="3">
+                                    <table cellpadding="2" cellspacing="2">
+                                        <tr>
+                                            <td style="padding: 0 0 0 12px; width: 120px" class="lblusername">
+                                                <%=LocalResources.GetGlobalLabel("wp_login_username")%>
+                                            </td>
+                                            <td align="center" class="lblpassword">
+                                                <%=LocalResources.GetGlobalLabel("wp_login_password")%>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lbllogin" align="center">
+                                    <%=LocalResources.GetGlobalLabel("wp_login_text")%>
+                                </td>
+                                <td class="txtlogindiv">
+                                    <asp:TextBox CssClass="txtlogin" ID="txtUserName" runat="server"></asp:TextBox>
+                                    <%--<asp:RequiredFieldValidator ID="rfvusername" runat="server" ControlToValidate="txtUserName">*</asp:RequiredFieldValidator>--%>
+                                    <%-- <asp:CustomValidator ID="cvusername" ClientValidationFunction="u_pwd_validate" ValidateEmptyText="true"
+                                        EnableClientScript="true" ControlToValidate="txtUserName" runat="server"></asp:CustomValidator>--%>
+                                </td>
+                                <td class="txtlogindiv">
+                                    <asp:TextBox CssClass="txtlogin" TextMode="Password" ID="txtPassWord" runat="server"></asp:TextBox>
+                                    <%-- <asp:RequiredFieldValidator ID="rfvpassword" runat="server" ControlToValidate="txtPassWord">*</asp:RequiredFieldValidator>--%>
+                                    <%--  <asp:CustomValidator ID="cvpwd" ClientValidationFunction="u_pwd_validate" ValidateEmptyText="true"
+                                        EnableClientScript="true" ControlToValidate="txtPassWord" runat="server"></asp:CustomValidator>--%>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnGo" CssClass="btngo" runat="server" Text="<%$ GlobalResourceExpression: wp_login_button_text %>"
+                                        OnClick="btnGo_Click" OnClientClick="return u_pwd_validate();" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td colspan="3">
+                                    <table cellpadding="2" cellspacing="2">
+                                        <tr>
+                                            <td style="padding: 0 0 0 11px; width: 95px;" class="emailtoday">
+                                                <asp:HyperLink ID="hplEnroll" NavigateUrl="#" runat="server">
+                                                 <%=LocalResources.GetGlobalLabel("wp_login_enroll_now")%> </asp:HyperLink>
+                                            </td>
+                                            <td class="emailtoday">
+                                                <asp:HyperLink ID="hplForgetPassword" NavigateUrl="#" runat="server">
+                                                 <%=LocalResources.GetGlobalLabel("wp_login_forgot_password")%> </asp:HyperLink>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!---End login   --->
+                </div>
+            </div>
+            <!--- End header   --->
+            <div class="clear">
+            </div>
+            <div class="main_memu_login_page">
+                <div class="navwrap">
+                    <asp:Menu ID="menuWeb" runat="server" IncludeStyleBlock="false" Orientation="Horizontal">
+                    </asp:Menu>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            <div class="breadcrumb">
+                <asp:Label ID="lblBreadCrumb" CssClass="decoration" runat="server" Text="Home > ..."></asp:Label>
+                <%--  <asp:SiteMapPath ID="SiteMapPath1"  runat="server"></asp:SiteMapPath>--%>
+                <div class="right ">
+                    <b>
+                        <%= LocalResources.GetGlobalLabel("wp_app_language")%>:</b>
+                    <asp:DropDownList ID="ddlLanguages" DataValueField="s_locale_short_Name" DataTextField="s_locale_description"
+                        runat="server" EnableViewState="true">
+                    </asp:DropDownList>
+                    <asp:Button ID="btnLanguages" CssClass="btngo_language" CausesValidation="false"
+                        runat="server" OnClick="btnLanguages_Click" Text="<%$ GlobalResourceExpression: wp_login_button_text %>">
+                    </asp:Button>
+                </div>
+            </div>
+            <div id="message" runat="server" class="msgarea_error" style="display: none;">
+                <%= LocalResources.GetGlobalText("wp_login_error_wrong")%>
+            </div>
+            <div id="divvalidate" runat="server" class="msgarea_error" style="display: none;">
+                <%= LocalResources.GetGlobalText("wp_login_error_empty")%>
+            </div>
+            <div id="success_logout" runat="server" class="msgarea_success" style="display: none;">
+                <%= LocalResources.GetGlobalText("app_logout_success")%>
+            </div>
+            <div id="expire_message" runat="server" class="msgarea_error" style="display: none;">
+                <%= LocalResources.GetGlobalText("wp_session_timeout_error")%>
+            </div>
+            <div id="alreadyLogged" runat="server" class="msgarea_error" style="display: none;">
+                <%= LocalResources.GetGlobalText("wp_already_logged_in_error")%>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="clear">
+        </div>
+        <div class="footer">
+            <div class="left">
+                <%=LocalResources.GetGlobalLabel("wp_app_release_number")%>
+            </div>
+            <div class="right">
+                <%= LocalResources.GetGlobalText("wp_powered_by_content")%>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

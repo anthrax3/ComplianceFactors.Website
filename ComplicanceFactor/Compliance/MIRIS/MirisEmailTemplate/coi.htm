@@ -1,0 +1,784 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <body style="width: 1040px; margin: 5px auto 0 auto; font-family: Arial, Sans-Serif;
+        font-size: 14px;">
+        <form id="form1" runat="server">
+        <div>
+            <div style="float: left; width: 1040px; background-color: #FFFFFF; color: #000000;">
+                <!---header   --->
+                <div style="margin: 0px; padding: 0px; background: #FFFFFF;">
+                    <div style="margin: 0;">
+                        <!---logo   --->
+                        <div style="width: 600px; float: left; margin: 0 0 0 30px; padding: 0;">
+                            <img alt="Logo" src="http://compliancefactors.com.lavender.arvixe.com/Images/ComplianceFactorsLogo.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                </div>
+                <div style="margin: 10px 10px 0px 35px; padding: 0px 0 10px 0;">
+                    <div style="font-size: 18px; font-weight: bold;">
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            <!--<%=LocalResources.GetLocaleResourceString("app_case_page_01-0512-0001_text")%>-->
+                            @app_case_page_title:
+                        </div>
+                        <br />
+                        <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                            <table>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_case_number_text")%>-->
+                                        @app_case_number_text:
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCaseNumber" runat="server"></asp:label>-->
+                                        @lblCaseNumber
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_case_title_text")%>-->
+                                        @app_case_title_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCaseTitle" runat="server"></asp:label>-->
+                                        @lblCaseTitle
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_case_date_text")%>-->
+                                        @app_case_date_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCaseDate" runat="server"></asp:label>-->
+                                        @lblCaseDate (GMT)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_case_category_text")%>-->
+                                        @app_case_category_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCaseCategory" runat="server"></asp:label>-->
+                                        @lblCaseCategory
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--  <%=LocalResources.GetLocaleResourceString("app_case_types_text")%>-->
+                                        @app_case_types_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCaseTypes" runat="server"></asp:label>-->
+                                        @lblCaseTypes
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_case_status_text")%>-->
+                                        @app_case_status_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCaseStatus" runat="server"></asp:label>-->
+                                        @lblCaseStatus
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            <!--       <%=LocalResources.GetLocaleResourceString("app_case_description_text")%>-->
+                            @app_case_description_text
+                        </div>
+                        <br />
+                        <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                            <table>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_employee_name_text
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_employee_name_text")%>-->
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblEmployeeName" runat="server"></asp:label>-->
+                                        @lblEmployeeName
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_date_of_birth_text
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_date_of_birth_text")%>-->
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblDateOfBirth" runat="server"></asp:label>-->
+                                        @lblDateOfBirth
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_employee_hire_date_text
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_employee_hire_date_text")%>-->
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblEmployeeHireDate" runat="server"></asp:label>-->
+                                        @lblEmployeeHireDate
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_employee_id_text
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_employee_id_text")%>-->
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblEmployeeId" runat="server"></asp:label>-->
+                                        @lblEmployeeId
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_last_digit_of_ssn
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_last_digit_of_ssn#_text")%>-->
+                                    </td>
+                                  <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblLastFourDigitOfSSN" runat="server"></asp:label>-->
+                                        @lblLastFourDigitOfSSN
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_supervisor_text
+                                        <!--  <%=LocalResources.GetLocaleResourceString("app_supervisor_text")%>-->
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblSupervisor" runat="server"></asp:label>-->
+                                        @lblSupervisor
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_incident_location_text
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_incident_location_text")%>-->
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblIncidentLocation" runat="server"></asp:label>-->
+                                        @lblIncidentLocation
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_incident_date_text
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_incident_date_text")%>-->
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblIncidentDate" runat="server"></asp:label>-->
+                                        @lblIncidentDate
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_incident_time_text
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_incident_time_text")%>-->
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblIncidentTime" runat="server"></asp:label>-->
+                                        @lblIncidentTime
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_employee_report_location_text
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_employee_report_location_text")%>-->
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblEmployeeReportLocation" runat="server"></asp:label>-->
+                                        @lblEmployeeReportLocation
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                         @app_timezone_text
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_timezone_text")%>-->
+                                    </td>
+                                  <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblTimeZone" runat="server"></asp:label>-->
+                                        @lblTimeZone
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_note_text")%>-->
+                                        @app_note_text
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblNote" runat="server"></asp:label>-->
+                                        @lblNote
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_time_and_date_notified
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblTimeandDateNotified
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_job_title
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblJobTitle
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_department_code
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblDepartmentCode
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_privacy_case
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblPrivacyCase
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_company_owned
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblCompanyOwned
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_location_description
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblLocationDescription
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_incident_description
+                                    </td>
+                                   <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblIncidentDescription
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_injury_complaint
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblInjuryComplaint
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_injury_type
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblInjuryType
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_injury_cause
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblInjuryCause
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_contributing_factors
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblContributingFactors
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_contributing_objects
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblContributingObjects
+                                    </td>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_severity
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblSeverity
+                                    </td>
+                                </tr>
+                                <tr>
+                                     <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_hospital
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblHospital
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            @app_additional_details_text
+                        </div>
+                        <br />
+                        <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                            <table>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_treatment_description
+                                    </td>
+                                    <td style="width: 800px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblTreatmentDescription
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br />
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            @app_work_status_text
+                        </div>
+                        <br />
+                        <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                            <table>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_dart
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblDART
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_est_lwds
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblEstLWDs
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_actual_lwd_and_osha_lwd_text 
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblActualLWDandOSHA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_light_duty
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblLightDuty
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_est_ld
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblEstLd
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_actual_ld_and_osha_restricted_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblActualLDandOSHA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_restricted_or_transferred
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblRestrictedorTransferred
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_first_day_of_days_away
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblFirstDayofDaysAway
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_first_day_restricted_or_transferred_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblFirstDayRestrictedorTransferred
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_last_day_days_away
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblLastDatDaysAway
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                    </td>
+                                    <td colspan="2" style="font-weight: normal; width: 220px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_last_day_restricted_or_transferred
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblLastDayRestrictedorTransferred
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            <!--<%=LocalResources.GetLocaleResourceString("app_additional_Information_text")%>-->
+                            @app_additional_Information_text
+                        </div>
+                        <br />
+                        <div style="margin: 0 0 0 0; padding: 0 0 0 20px; font-size: 9pt;">
+                            <table>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_witness(es)_text")%>-->
+                                       @app_witness(es)_text
+                                    </td>
+                                    <td>
+                                        @gvAddWitness
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_police_reports(s)_text")%>-->
+                                        @app_police_reports(s)_text
+                                    </td>
+                                    <td>
+                                        @gvPoliceReport
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_photo(s)_text")%>-->
+                                        @app_photo(s)_text
+                                    </td>
+                                    <td>
+                                        @gvPhoto
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_scene_sketch(es)_text")%>-->
+                                        @app_scene_sketch(es)_text
+                                    </td>
+                                    <td>
+                                        @gvSceneSketch
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_extenuating_condition(s)_text")%>-->
+                                        @app_extenuating_condition(s)_text
+                                    </td>
+                                    <td>
+                                        @gvExtenuatingcondition
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_employee_interview(s)_text")%>-->
+                                        @app_employee_interview(s)_text
+                                    </td>
+                                    <td>
+                                        @gvEmployeeInterview
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                       @app_employee_statement_text
+                                    </td>
+                                    <td>
+                                        @gvEmployeeStatement
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_policies_procedures_text
+                                    </td>
+                                    <td>
+                                        @gvPolices
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_training_history_text
+                                    </td>
+                                    <td>
+                                        @gvTrainingHistory
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_observation_text
+                                    </td>
+                                    <td>
+                                        @gvObservation
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_incident_history_text
+                                    </td>
+                                    <td>
+                                        @gvIncidentHistory
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br />
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            <!-- <%=LocalResources.GetLocaleResourceString("app_root_cause_analysis_infornation_text")%>-->
+                            @app_root_cause_analysis_infornation_text
+                        </div>
+                        <br />
+                        <div style="margin: 0; padding: 0 0 0 23px; font-size: 9pt; width: 900px;">
+                            <div style="font-weight: normal; border-collapse: collapse; padding: 5px 5px 5px 0;">
+                                <!-- <%=LocalResources.GetLocaleResourceString("app_root_cause_analysis_details_text")%>-->
+                                @app_root_cause_analysis_details_text
+                            </div>
+                            <br />
+                            <br />
+                            <!--<asp:label id="lblRootCauseAnalysisDetails" runat="server"></asp:label>-->
+                            @lblRootCauseAnalysisDetails
+                        </div>
+                        <br />
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            <!-- <%=LocalResources.GetLocaleResourceString("app_corrective_action_information_text")%>-->
+                            @app_corrective_action_information_text
+                        </div>
+                        <br />
+                        <div style="margin: 0; padding: 0 0 0 23px; font-size: 9pt; width: 900px;">
+                            <div style="font-weight: normal; border-collapse: collapse; padding: 5px 5px 5px 0;">
+                                <!--<%=LocalResources.GetLocaleResourceString("app_corrective_action_details_text")%>-->
+                                @app_corrective_action_details_text
+                            </div>
+                            <br />
+                            <br />
+                            <!-- <asp:label id="lblCorrectiveActionDetails" runat="server"></asp:label>-->
+                            @lblCorrectiveActionDetails
+                        </div>
+                        <br />
+                        <br />
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            @app_custom_fields_text
+                        </div>
+                        <br />
+                        <div style="margin: 0 0 0 0; padding: 0 0 0 10px; font-size: 9pt;">
+                            <table>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        @app_custom_01_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        @lblCustom01
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_custom_02_text")%>-->
+                                        @app_custom_02_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom02" runat="server"></asp:label>-->
+                                        @lblCustom02
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_03_text")%>-->
+                                        @app_custom_03_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom03" runat="server"></asp:label>-->
+                                        @lblCustom03
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_04_text")%>-->
+                                        @app_custom_04_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCustom04" runat="server"></asp:label>-->
+                                        @lblCustom04
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_05_text")%>-->
+                                        @app_custom_05_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCustom05" runat="server"></asp:label>-->
+                                        @lblCustom05
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_06_text")%>-->
+                                        @app_custom_06_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCustom06" runat="server"></asp:label>-->
+                                        @lblCustom06
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_custom_07_text")%>-->
+                                        @app_custom_07_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom07" runat="server"></asp:label>-->
+                                        @lblCustom07
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_custom_08_text")%>-->
+                                        @app_custom_08_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom08" runat="server"></asp:label>-->
+                                        @lblCustom08
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_09_text")%>-->
+                                        @app_custom_09_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom09" runat="server"></asp:label>-->
+                                        @lblCustom09
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_10_text")%>-->
+                                        @app_custom_10_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom10" runat="server"></asp:label>-->
+                                        @lblCustom10
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_11_text")%>-->
+                                        @app_custom_11_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom11" runat="server"></asp:label>-->
+                                        @lblCustom11
+                                    </td>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!-- <%=LocalResources.GetLocaleResourceString("app_custom_12_text")%>-->
+                                        @app_custom_12_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!-- <asp:label id="lblCustom12" runat="server"></asp:label>-->
+                                        @lblCustom12
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                        padding: 5px 5px 5px 0;">
+                                        <!--<%=LocalResources.GetLocaleResourceString("app_custom_13_text")%>-->
+                                        @app_custom_13_text
+                                    </td>
+                                    <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                        <!--<asp:label id="lblCustom13" runat="server"></asp:label>-->
+                                        @lblCustom13
+                                    </td>
+                                    <td colspan="4">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <br />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
+                            width: 940px;">
+                            <br />
+                        </div>
+                        <br />
+                        <div style="font-size: 9pt; padding: 0 0 0 14px;">
+                            @app_required_fields_text
+                            <!--<%=LocalResources.GetLocaleResourceString("app_required_fields_text")%>-->
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <div style="clear: both;">
+                </div>
+                <div style="color: #000000; border-top: 2px solid #96CD19; border-bottom: 2px solid #000000;
+                    height: 15px; font-size: 12px; font-weight: bold;">
+                    <div style="float: left;">
+                        @wp_app_release_number
+                    </div>
+                    <div style="float: right;">
+                        Powered by ComplianceFactors&#0153
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+        </form>
+    </body>
+</html>

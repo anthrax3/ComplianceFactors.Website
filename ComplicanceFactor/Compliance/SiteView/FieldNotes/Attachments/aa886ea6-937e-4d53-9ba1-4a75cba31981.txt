@@ -1,0 +1,51 @@
+--FieldNotes
+
+Create table u_tb_users_master
+(
+u_user_id_pk		uniqueidentifier Primary key NOT NULL, 
+	u_username_enc		nvarchar(250) NULL,
+	u_password_enc_ash	nvarchar(250) NULL,
+	u_password_enc_salt nvarchar(250) NULL,
+	u_first_name		varchar(50) NOT NULL,
+	u_middle_name		varchar(50) NOT NULL,
+	u_last_name			varchar(50) NOT NULL,
+	u_email_address		varchar(100) NULL,
+	u_sr_is_employee		bit NULL,
+	u_sr_is_manager			bit NULL,
+	u_sr_is_compliance		bit NULL,
+	u_sr_is_instructor		bit NULL,
+	u_sr_is_training		bit NULL,
+	u_sr_is_administrator	bit NULL,
+	u_sr_is_system_admin	bit NULL
+)
+
+Create table sv_tb_fieldnotes
+(
+	sv_fieldnote_id_pk			Uniqueidentifier primary key,
+	sv_fieldnote_created_by_fk	Uniqueidentifier references u_tb_users_master(u_user_id_pk),
+	sv_fieldnote_title			nvarchar(250) Not Null,
+	sv_fieldnote_description	nvarchar(500) Not Null,
+	sv_fieldnote_location		nvarchar(150) Not Null,
+	sv_fieldnote_creation_date	  datetime Not Null,
+	sv_fieldnote_last_modify_date  datetime Not Null,
+	sv_fieldnote_status			  bit Not Null --1 - Active 0-InAvtive
+)
+
+Create table sv_tb_fieldnotes_attachments
+(
+	sv_fieldnotes_attachments_id_pk Uniqueidentifier primary key,
+	sv_fieldnotes_id_fk	Uniqueidentifier references sv_tb_fieldnotes(sv_fieldnote_id_pk),
+	sv_file_path		nvarchar(255) Not Null,
+	sv_file_name		nvarchar(255) Not Null
+)
+
+Create table sv_tb_fieldnotes_sent_users
+(
+	sv_fieldnote_sent_to_id_pk		 Uniqueidentifier primary key,
+	sv_fieldnote_id_fk				 Uniqueidentifier references sv_tb_fieldnotes(sv_fieldnote_id_pk) not null,
+	sv_fieldnote_sent_to_user_fk	 Uniqueidentifier references u_tb_users_master(u_user_id_pk) not null,    --need to be change the fk
+	sv_fieldnote_is_acknowledged	 bit Not Null,  --1 - Yes 0- No
+	sv_fieldnote_acknowledged_status bit Not Null,  --1 - Yes 0- No
+	sv_fieldnote_is_sync_mobile		 bit Not Null,   --1 - Yes 0- No
+	sv_fieldnote_is_archive		     bit  Not Null --1 - Yes 0- No
+)

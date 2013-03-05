@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sagf-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Materials.Locale.GenerateFile.sagf_01" %>
