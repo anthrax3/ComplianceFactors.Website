@@ -21,6 +21,7 @@ namespace ComplicanceFactor.SystemHome
                 {
                     ddlSearchUserStatus.DataSource = UserBLL.GetUserAllStatusList(SessionWrapper.CultureName,"sasumsm-01");
                     ddlSearchUserStatus.DataBind();
+                    ddlSearchUserStatus.SelectedValue = "app_ddl_all_text";
                     //ListItem lstStatus = new ListItem();
                     //lstStatus.Text = "All";
                     //lstStatus.Value = "0";

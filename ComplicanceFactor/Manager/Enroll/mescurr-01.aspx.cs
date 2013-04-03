@@ -31,8 +31,7 @@ namespace ComplicanceFactor.Manager.Enroll
             {
                 try
                 {
-                    gvsearchDetails.DataSource = SessionWrapper.Employee;
-                    gvsearchDetails.DataBind();
+                    GetEmployee();
                     PopulateCurriculum();
                 }
                 catch (Exception ex)
@@ -54,6 +53,7 @@ namespace ComplicanceFactor.Manager.Enroll
             }
 
         }
+        
         private void PopulateCurriculum()
         {
             SystemCurriculum curriculum = new SystemCurriculum();
@@ -147,11 +147,11 @@ namespace ComplicanceFactor.Manager.Enroll
 
             foreach (GridViewRow grdCategoryRow in gvsearchDetails.Rows)
             {
-                CheckBox chkSelect = (CheckBox)(grdCategoryRow.Cells[1].FindControl("chkSelect"));
-                if (chkSelect.Checked == true)
-                {
+                //CheckBox chkSelect = (CheckBox)(grdCategoryRow.Cells[1].FindControl("chkSelect"));
+                //if (chkSelect.Checked == true)
+                //{
                     AddEmployeeRow(gvsearchDetails.DataKeys[grdCategoryRow.RowIndex].Values[0].ToString(), id, string.Empty, dtEmployee);
-                }
+                //}
             }
             //Remove duplicate employee
             ConvertDataTables removeDuplicateRows = new ConvertDataTables();
@@ -193,6 +193,31 @@ namespace ComplicanceFactor.Manager.Enroll
                 CurriculumAssign(dtEmployeeSelecteList.Rows[i]["u_user_id_fk"].ToString(), dtEmployeeSelecteList.Rows[i]["id"].ToString());
             }
             ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "add", "window.top.location.href ='" + "../Home/mhp-01.aspx" + "'; parent.jQuery.fancybox.close();", true);
+        }
+        protected void btnRemoveSelected_Click(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < gvsearchDetails.Rows.Count; i++)
+            {
+                CheckBox chkSelect = (CheckBox)gvsearchDetails.Rows[i].FindControl("chkSelect");
+                if (chkSelect.Checked == true)
+                {
+                    string u_user_id_fk = gvsearchDetails.DataKeys[i]["u_user_id_fk"].ToString();
+                    var rows = SessionWrapper.Employee.Select("u_user_id_fk= '" + u_user_id_fk.Trim() + "'");
+                    foreach (var row in rows)
+                        row.Delete();
+                    SessionWrapper.Employee.AcceptChanges();
+                    GetEmployee();
+                }
+            }
+
+
+        }
+
+        private void GetEmployee()
+        {
+            gvsearchDetails.DataSource = SessionWrapper.Employee;
+            gvsearchDetails.DataBind();
         }
     }
 }

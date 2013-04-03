@@ -15,6 +15,17 @@ namespace ComplicanceFactor
 {
     public partial class EmployeeHome : System.Web.UI.MasterPage
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            bool isAccess = SessioninfoBLL.ManageSession(SessionWrapper.u_userid, SessionWrapper.sessionid);
+
+            if (isAccess == true)
+            {
+                Session.Abandon();
+                SessionWrapper.clearsession();                 
+            }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,8 +35,7 @@ namespace ComplicanceFactor
             ///Store the last visited tab in database
             ///</Summary>
             if (!string.IsNullOrEmpty(SessionWrapper.u_username))
-            {
-
+            {              
 
                 try
                 {

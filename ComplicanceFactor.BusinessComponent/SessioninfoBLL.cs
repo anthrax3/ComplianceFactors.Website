@@ -62,5 +62,22 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static bool ManageSession(string userId, string sessionId)
+        {
+            Hashtable htManageSession = new Hashtable();
+            htManageSession.Add("@userid", userId);
+            htManageSession.Add("@sessionid", sessionId);
+            try
+            {
+                int res = DataProxy.FetchSPOutput("u_update_user_in_session", htManageSession);
+                return res == 1 ? true : false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
     }
 }

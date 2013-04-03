@@ -16,6 +16,7 @@ namespace ComplicanceFactor.Employee.Catalog
     public partial class ctdp_01 : BasePage
     {
         private string c_course_approve;
+        private string courseId;
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
@@ -35,13 +36,18 @@ namespace ComplicanceFactor.Employee.Catalog
             {
                 c_course_approve = SecurityCenter.DecryptText(Request.QueryString["ca"]);
             }
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+            {
+                courseId = SecurityCenter.DecryptText(Request.QueryString["id"]);
+            }
             if (!IsPostBack)
             {
                 try
                 {
+                    
                     HtmlGenericControl divsearch = (HtmlGenericControl)Master.FindControl("divsearch");
                     divsearch.Style.Add("display", "block");
-                    if (!string.IsNullOrEmpty(Request.QueryString["id"]) && SecurityCenter.DecryptText(Request.QueryString["id"]) != "")
+                    if (!string.IsNullOrEmpty(courseId))
                     {
                         DataTable dtGetCourse = new DataTable();
                         dtGetCourse = EmployeeCatalogBLL.GetCourse(SecurityCenter.DecryptText(Request.QueryString["id"]));
@@ -64,7 +70,9 @@ namespace ComplicanceFactor.Employee.Catalog
                         //using jquery hide the '-or-' in last row
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
                         //Get delivery(ies)
-                        gvDeliveries.DataSource = SystemCatalogBLL.GetCourseDelivery(SecurityCenter.DecryptText(Request.QueryString["id"]));
+                        DataSet dsGetCourseDelivery = new DataSet();
+                        dsGetCourseDelivery = SystemCatalogBLL.GetCourseDelivery(SecurityCenter.DecryptText(Request.QueryString["id"]));
+                        gvDeliveries.DataSource = dsGetCourseDelivery.Tables[1];
                         gvDeliveries.DataBind();
                     }
                 }
@@ -120,56 +128,86 @@ namespace ComplicanceFactor.Employee.Catalog
                 string approvalDelivery = gvDeliveries.DataKeys[e.Row.RowIndex].Values[1].ToString();
                 //check delivery is already enrolled or not
                 BusinessComponent.DataAccessObject.Enrollment getEnrollDelivery = new BusinessComponent.DataAccessObject.Enrollment();
-                getEnrollDelivery = EnrollmentBLL.GetEnrollDeliveries(e_enroll_delivery_id_fk,SessionWrapper.u_userid);
+                bool isEnroll = false;
+                getEnrollDelivery = EnrollmentBLL.GetEnrollDeliveries(e_enroll_delivery_id_fk, SessionWrapper.u_userid);
+                
                 string strEnrollType = getEnrollDelivery.e_enroll_type_name;
                 //it check whether the user is already in waitlist and wailist is full or not. if the user is not in waitlist and waitlist is not full, then user can view the "Enroll" button
                 //Note: only when waiitlist flat is true.
                 int waitlistCountIdentification = EnrollmentBLL.GetWaitListcount(e_enroll_delivery_id_fk, SessionWrapper.u_userid);
-                if (!string.IsNullOrEmpty(strDeliveryType) && strDeliveryType == "OLT" && approvalDelivery == "False" && string.IsNullOrEmpty(strEnrollType))
-                {
-                   
-                    if (c_delivery_waitlist_flag == "True" && waitlistCountIdentification==1)
-                    {
-                        lblAlreadyEnrollMessage.Text = "***Already in Waitlist**";
-                    }
-                    else
-                    {
-                        if (delivery_count == 0)
-                        {
-                            btnQuickLunch.Style.Add("display", "inline");
-                        }
-                        ltlEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + "  class='enroll' value='Enroll !' />";
-                    }
-                }
-                else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
-                {
-                    btnDrop.Style.Add("display", "inline");
-                    lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                    ltlEnroll.Text = "";
-                    //btnQuickLunch.Style.Add("display", "none");
-                }
-                else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
-                {
-                    lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                    btnDrop.Style.Add("display", "none");
-                    ltlEnroll.Text = "";
-                   // btnQuickLunch.Style.Add("display", "none");
-                }
-                else if (string.IsNullOrEmpty(strEnrollType))
-                {
-                    btnDrop.Style.Add("display", "none");
-                    lblAlreadyEnrollMessage.Text = string.Empty;
-                    if (c_delivery_waitlist_flag == "True" && waitlistCountIdentification == 1)
-                    {
-                        // 0 out of 1
-                        lblAlreadyEnrollMessage.Text = "***Already in Waitlist**";
-                    }
-                    else
-                    {
-                        ltlEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + "  class='enroll' value='Enroll !' />";
-                    }
-                }
 
+                isEnroll = EnrollmentBLL.CheckDeliveryEnrollorNot(c_course_id_fk, SessionWrapper.u_userid);
+                //
+                //Call the BL for is Enroll
+
+                //if (!string.IsNullOrEmpty(strEnrollType))
+                if (isEnroll && string.IsNullOrEmpty(strEnrollType))
+                {
+                    //btnDrop.Style.Add("display", "inline");
+                    lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                    ltlEnroll.Text = "";
+                }
+                else
+                {
+
+                    if (!string.IsNullOrEmpty(strDeliveryType) && strDeliveryType == "OLT" && approvalDelivery == "False" && string.IsNullOrEmpty(strEnrollType))
+                    {
+
+                        if (c_delivery_waitlist_flag == "True" && waitlistCountIdentification == 1)
+                        {
+
+                            lblAlreadyEnrollMessage.Text = "***Already in Waitlist**";
+                            
+                        }
+                        else
+                        {
+                            if (delivery_count == 0)
+                            {
+                                btnQuickLunch.Style.Add("display", "inline");
+                            }
+
+
+                            ltlEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + "  class='enroll' value= " + LocalResources.GetLabel("app_enroll_button_text") + " />";
+                            
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
+                    {
+
+                        btnDrop.Style.Add("display", "inline");
+                        lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                        ltlEnroll.Text = "";
+                        
+                        //btnQuickLunch.Style.Add("display", "none");
+                    }
+                    else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
+                    {
+
+                        lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                        btnDrop.Style.Add("display", "none");
+                        ltlEnroll.Text = "";
+                        
+                        // btnQuickLunch.Style.Add("display", "none");
+                    }
+                    else if (string.IsNullOrEmpty(strEnrollType))
+                    {
+
+                        btnDrop.Style.Add("display", "none");
+                        lblAlreadyEnrollMessage.Text = string.Empty;
+                        if (c_delivery_waitlist_flag == "True" && waitlistCountIdentification == 1)
+                        {
+                            // 0 out of 1
+                            lblAlreadyEnrollMessage.Text = "***Already in Waitlist**";
+                            
+                        }
+                        else
+                        {
+
+                            ltlEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + " class='enroll' value= " + LocalResources.GetLabel("app_enroll_button_text") + " />";
+                            
+                        }
+                    }
+                }
                 //session date and time
                 Label lblSession = (Label)e.Row.FindControl("lblSession");
                 SystemCatalog sessionDate = new SystemCatalog();
@@ -183,6 +221,20 @@ namespace ComplicanceFactor.Employee.Catalog
                     //this for if session time is empty
                     lblSession.Text = "(Self-paced - Anytime/Anywhere)";
                 }
+            }
+        }
+
+        protected void gvDeliveries_RowCommand1(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Drop"))
+            {
+                BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
+                DropEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
+                //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(Request.QueryString["id"]), false);
+                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(courseId) + "&ca=" + SecurityCenter.EncryptText(c_course_approve), false);
+                
             }
         }
 

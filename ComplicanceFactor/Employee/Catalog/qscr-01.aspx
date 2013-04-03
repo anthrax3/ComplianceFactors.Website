@@ -36,6 +36,15 @@
             return false;
         }
     </script>
+    <script type="text/javascript" language="javascript">
+        function confirmStatus() {
+            if (confirm('Are you sure?') == true)
+                return true;
+            else
+                return false;
+
+        }
+    </script>
     <br />
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div class="content_area_long">
@@ -116,7 +125,7 @@
             <div>
                 <div class="page_text">
                     <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false"
-                        CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="No result found."
+                        CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                         AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
                         DataKeyNames="system_id,type,c_approval_req,c_delivery_type" PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
                         OnRowCommand="gvsearchDetails_RowCommand" OnRowDataBound="gvsearchDetails_RowDataBound"
@@ -145,7 +154,7 @@
                                                 <asp:Label ID="lblVersion" runat="server" Text='<%#Bind("version")%>'></asp:Label>
                                             </td>
                                             <td class="tdright">
-                                                <asp:Label ID="lblDeliveryType" runat="server"></asp:Label>
+                                                <%#Eval("c_delivery_type")%>
                                             </td>
                                         </tr>
                                         </td> </tr>
@@ -173,14 +182,14 @@
                                             </td>
                                             <td class="tdright">
                                                 <asp:Label ID="lblAlreadyEnrollMessage" runat="server"></asp:Label>
-                                                <asp:Button ID="btnDrop" CssClass="cursor_hand"  Style="display: none;" runat="server"
-                                                 CommandArgument='<%#Eval("system_id")%>' CommandName="Drop" Text="Drop" />
+                                                <asp:Button ID="btnDrop" CssClass="cursor_hand"  OnClientClick="return confirmStatus();" Style="display: none;" runat="server"
+                                                 CommandArgument='<%#Eval("system_id")%>' CommandName="Drop" Text="<%$ LabelResourceExpression: app_drop_button_text %>" />
                                                 <asp:Button ID="btnQuickLaunch" CommandName="QuickLaunch" CommandArgument='<%#Eval("system_id")%>'
-                                                    CssClass="cursor_hand" style="display:none;" runat="server" Text="Quick Launch!" />
+                                                    CssClass="cursor_hand" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
                                                 <asp:Button ID="btnEnroll" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                                                     CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                                                 <asp:Button ID="btnAssign" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
-                                                    CommandName="Assign" runat="server" Text="Assign" Style="display: none;" />
+                                                    CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>" Style="display: none;" />
                                             </td>
                                         </tr>
                                         <tr>

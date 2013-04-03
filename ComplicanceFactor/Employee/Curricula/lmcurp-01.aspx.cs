@@ -20,7 +20,7 @@ namespace ComplicanceFactor.Employee.Curricula
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_employee") + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + "Home</a>" + " >&nbsp;" + "My Curricula";
+                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee")+"</a>" + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_my_curricula_text");
                 GetAllEmployee();
             }
         }
@@ -72,7 +72,10 @@ namespace ComplicanceFactor.Employee.Curricula
                 }
 
             }
-            exportDataTableToCsv(dsEmployee.Tables[1]);
+            if (dsEmployee.Tables[1].Rows.Count > 0)
+            {
+                exportDataTableToCsv(dsEmployee.Tables[1]);
+            }
         }
         private void exportDataTableToCsv(DataTable dt)
         {
@@ -133,26 +136,29 @@ namespace ComplicanceFactor.Employee.Curricula
                 }
 
             }
-            Warning[] warnings;
-            string[] streamIds;
-            string mimeType = string.Empty;
-            string encoding = string.Empty;
-            string extension = string.Empty;
-            rvCurricula.ProcessingMode = ProcessingMode.Local;
-            rvCurricula.LocalReport.EnableExternalImages = true;
-            rvCurricula.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Curricula.PdfTemplate.MyCurricula.rdlc";
-            rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("MyCurricula", dsCurricula.Tables[0]));
-            rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsCurricula.Tables[2]));
-            byte[] bytes = rvCurricula.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
-            Response.Buffer = true;
-            Response.Clear();
-            Response.ClearHeaders();
-            Response.ContentType = mimeType;
-            Response.AddHeader("content-disposition", "attachment; filename=\"" + "MyCurricula" + ".pdf" + "\"");
-            Response.BinaryWrite(bytes); // create the file     
-            Response.Flush(); // send it to the client to download  
-            Response.End();
-            Response.Close();
+            if (dsCurricula.Tables[0].Rows.Count > 0)
+            {
+                Warning[] warnings;
+                string[] streamIds;
+                string mimeType = string.Empty;
+                string encoding = string.Empty;
+                string extension = string.Empty;
+                rvCurricula.ProcessingMode = ProcessingMode.Local;
+                rvCurricula.LocalReport.EnableExternalImages = true;
+                rvCurricula.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Curricula.PdfTemplate.MyCurricula.rdlc";
+                rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("MyCurricula", dsCurricula.Tables[0]));
+                rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsCurricula.Tables[2]));
+                byte[] bytes = rvCurricula.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                Response.Buffer = true;
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ContentType = mimeType;
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + "MyCurricula" + ".pdf" + "\"");
+                Response.BinaryWrite(bytes); // create the file     
+                Response.Flush(); // send it to the client to download  
+                Response.End();
+                Response.Close();
+            }
         }
         protected void gvCurriculum_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -211,10 +217,10 @@ namespace ComplicanceFactor.Employee.Curricula
             //    EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
             //    Response.Redirect("~/Employee/Course/lmcp-01.aspx", false);
             //}
-            //else if (e.CommandName.Equals("Details"))
-            //{
-            //    //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
-            //}
+            else if (e.CommandName.Equals("View"))
+            {
+                Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
+            }
             //if (e.CommandName.Equals("Drop"))
             //{
             //    BusinessComponent.DataAccessObject.Enrollment UpdateEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();

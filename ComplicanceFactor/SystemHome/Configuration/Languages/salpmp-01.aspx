@@ -69,10 +69,16 @@
 
         }
     </script>
-   
+   <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
+    </div>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    </div>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
+    <div class="left div_padding_10">
+      <asp:Button ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click" />
+    </div>
       <div class="right div_padding_10">
             <asp:Button ID="btnHeaderClose" runat="server" 
                 Text="<%$ LabelResourceExpression: app_close_button_text %>" 

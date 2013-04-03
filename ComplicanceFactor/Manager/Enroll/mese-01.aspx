@@ -57,7 +57,6 @@
                     }
                 }
             }
-            alert("Please select atleast one employee");
             return false;
         }
         function resetall() {
@@ -71,7 +70,7 @@
         <%-- Location search result--%>
         <div>
             <div class="div_header_800">
-                Employees Search Results:
+                <%=LocalResources.GetLabel("app_employees_search_results_text")%>:
             </div>
             <br />
             <div>
@@ -113,18 +112,19 @@
         </div>
         <div>
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
-                runat="server" EmptyDataText="None" DataKeyNames="u_user_id_pk" AutoGenerateColumns="False"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_none_text %>" DataKeyNames="u_user_id_pk" AutoGenerateColumns="False"
                 AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
-                PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
+                PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" 
+                onrowdatabound="gvsearchDetails_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Employee Last Name" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
+                        HeaderText="<%$ LabelResourceExpression: app_employee_last_name_text %>" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Employee First Name" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
+                        HeaderText="<%$ LabelResourceExpression: app_employee_first_name_text %>" DataField='u_last_name' HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                        HeaderText="Employee Number" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_employee_number_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
                         <HeaderTemplate>
@@ -132,6 +132,7 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <asp:CheckBox ID="chkSelect" onclick="clearSelection();" runat="server" />
+                            <asp:Label ID="lblStatus" runat="server" Visible="false" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -187,20 +188,20 @@
         <div>
             <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
                 <div class="div_header_800">
-                    Employee Search:
+                    <%=LocalResources.GetLabel("app_employee_search_text")%>:
                 </div>
                 <br />
                 <div class="div_controls font_1">
                     <table>
                         <tr>
                             <td>
-                                employee Name
+                                <%=LocalResources.GetLabel("app_employee_name_text")%>
                             </td>
                             <td>
                                 <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                             </td>
                             <td>
-                                employee Number:
+                                <%=LocalResources.GetLabel("app_employee_number_text")%>:
                             </td>
                             <td>
                                 <asp:TextBox ID="txtEmployeeNumber" CssClass="textbox_long" runat="server"></asp:TextBox>

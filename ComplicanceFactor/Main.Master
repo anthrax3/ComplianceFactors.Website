@@ -107,34 +107,32 @@
                             <%=LocalResources.GetGlobalLabel("app_nav_employee")%>
                         </a>
                             <ul>
-                                <li><a href="/Employee/Home/lhp-01.aspx">Home </a></li>
-                                <li><a href="/Employee/Course/lmcp-01.aspx">My Courses </a></li>
-                                <li><a href="/Employee/Curricula/lmcurp-01.aspx">My Curricula</a></li>
-                                <li><a href="/Employee/lmhp-01.aspx">
+                                <li><a href="/Employee/Home/lhp-01.aspx"><%=LocalResources.GetGlobalLabel("app_home_text")%> </a></li>
+                                <li><a href="/Employee/Course/lmcp-01.aspx"><%=LocalResources.GetGlobalLabel("app_my_courses_text")%></a></li>
+                                <li><a href="/Employee/Curricula/lmcurp-01.aspx"><%=LocalResources.GetGlobalLabel("app_my_curricula_text")%></a></li>
+                                <li><a href="/Employee/LearningHistory/lmhp-01.aspx">
                                     <%=LocalResources.GetGlobalLabel("app_emp_pod_mlhistory_title")%></a></li>
-                                <li><a href="/Employee/Profile/lppp-01.aspx">My Profile</a></li>
-                                <li><a href="/Employee/Catalog/bchp-01.aspx">Browse Catalog</a></li>
-                                <li><a href="/Employee/Catalog/ascp-01.aspx">Search Catalog</a></li>
-                                <li><a href="#" onclick="ShowSplash();">Splash Page</a></li>
+                                <li><a href="/Employee/Profile/lppp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_mprofile_title")%></a></li>
+                                <li><a href="/Employee/Catalog/bchp-01.aspx"><%=LocalResources.GetGlobalLabel("app_browse_link_text")%></a></li>
+                                <li><a href="/Employee/Catalog/ascp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_search_catalog_title")%></a></li>
+                                <li><a href="#" onclick="ShowSplash();"><%=LocalResources.GetGlobalLabel("app_manager_pod_splash_page_title")%></a></li>
                             </ul>
                         </li>
                         <li><a runat="server" id="app_nav_manager" href="/Manager/Home/mhp-01.aspx" class="cursor_hand">
                             <%=LocalResources.GetGlobalLabel("app_nav_manager")%>
                         </a>
                             <ul>
-                                <li><a href="/Manager/Home/mhp-01.aspx">Home</a></li>
-                                <li><a href="/Manager/mtdl-01.aspx">
-                                    <%=LocalResources.GetGlobalLabel("app_manager_pod_mtodo_title")%></a></li>
-                                <li><a href="/Manager/mmtd-01.aspx">
-                                    <%=LocalResources.GetGlobalLabel("app_manager_pod_mteam_title")%></a></li>
-                                <li><a href="#">My Reports</a> </li>
-                                <li><a href="/Manager/Profile/mppp-01.aspx">My Profile</a></li>
-                                <li><a href="/Manager/Catalog/bchp-01.aspx">Browse Catalog</a></li>
-                                <li><a href="/Manager/Catalog/ascp-01.aspx">Search Catalog</a></li>
-                                <li><a href="#" onclick="ShowSplash();">Splash Page</a></li>
+                                <li><a href="/Manager/Home/mhp-01.aspx"><%=LocalResources.GetGlobalLabel("app_home_text")%></a></li>
+                                <li><a href="/Manager/mmtdp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_mtodo_title")%></a></li> 
+                                <li><a href="/Manager/mmtp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_mteam_title")%></a> </li> 
+                                <li><a href="/Manager/mmrp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_mreports_title")%></a> </li>
+                                <li><a href="/Manager/Profile/mppp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_mprofile_title")%></a></li>
+                                <li><a href="/Manager/Catalog/bchp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_browse_catalog_title")%></a></li>
+                                <li><a href="/Manager/Catalog/ascp-01.aspx"><%=LocalResources.GetGlobalLabel("app_manager_pod_search_catalog_title")%></a></li>
+                                <li><a href="#" onclick="ShowSplash();"><%=LocalResources.GetGlobalLabel("app_manager_pod_splash_page_title")%></a></li>
                                 <%--     <li><a href="/Manager/mmdd-01.aspx">
                                     <%=LocalResources.GetGlobalLabel("app_manager_pod_mdashboard_title")%></a></li>
-                                <li><a href="/Manager/mascp-01.aspx">
+                                <li><a href="/Manager/mascp-01.aspx">   <%=LocalResources.GetGlobalLabel("app_manager_pod_mteam_title")%>
                                     <%=LocalResources.GetGlobalLabel("app_manager_pod_mteamcatalog_title")%></a></li>--%>
                             </ul>
                         </li>
@@ -207,7 +205,7 @@
                                 <li><a href="/SystemHome/Users/sasup-01.aspx">
                                     <%=LocalResources.GetGlobalLabel("app_system_pod_muser_title")%></a></li>
                                 <li><a href="/SystemHome/Catalog/samcmp-01.aspx">
-                                    <%=LocalResources.GetGlobalLabel("app_system_pod_mcatalog_title")%></a></li>
+                                    <%=LocalResources.GetGlobalLabel("app_manage_training_text")%></a></li>
                                 <li><a href="/SystemHome/Configuration/sascmp-01.aspx">
                                     <%=LocalResources.GetGlobalLabel("app_system_pod_mconfiguration_title")%></a></li>
                             </ul>

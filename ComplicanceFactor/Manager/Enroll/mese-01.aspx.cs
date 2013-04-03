@@ -22,16 +22,31 @@ namespace ComplicanceFactor.Manager.Enroll
         private string waitList;
         private bool c_course_approval;
         private bool c_delivery_approval;
+        private bool isTrue;
         private string curriculumId;
+        private string course_id_or_curriculum_id;
+        private bool c_check;
         #endregion
         
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                curriculumId = Request.QueryString["id"];
+                courseId = Request.QueryString["courseid"];
+                if (Request.QueryString["check"] == "1")
+                {
+                    isTrue = true;
+                    course_id_or_curriculum_id = courseId;
+                }
+                else
+                {
+                    isTrue = false;
+                    course_id_or_curriculum_id = curriculumId;
+                }
                 if (!string.IsNullOrEmpty(Request.QueryString["ctype"]))
                 {
-                    curriculumId = Request.QueryString["id"];
+                    //curriculumId = Request.QueryString["id"];
                     if (!string.IsNullOrEmpty(Request.QueryString["ca"]))
                     {
                         c_course_approval = Convert.ToBoolean(Request.QueryString["ca"]);
@@ -51,7 +66,7 @@ namespace ComplicanceFactor.Manager.Enroll
                 }
                 else
                 {
-                    courseId = Request.QueryString["courseid"];
+                    //courseId = Request.QueryString["courseid"];
                     deliveryId = Request.QueryString["id"];
                     deliveryType = Request.QueryString["type"];
                     if (!string.IsNullOrEmpty(Request.QueryString["ca"]))
@@ -277,7 +292,7 @@ namespace ComplicanceFactor.Manager.Enroll
                
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
                 {
-                    gvsearchDetails.DataSource = EmployeeBLL.GetEmployeeByManager(SessionWrapper.u_userid, txtEmployeeName.Text);
+                    gvsearchDetails.DataSource = EmployeeBLL.GetEmployeeByManager(SessionWrapper.u_userid, txtEmployeeName.Text, course_id_or_curriculum_id, isTrue);
                     gvsearchDetails.DataBind();
                 }
                 else
@@ -287,7 +302,7 @@ namespace ComplicanceFactor.Manager.Enroll
                     {
                     strName = Request.QueryString["search"];
                     }
-                    gvsearchDetails.DataSource = EmployeeBLL.GetEmployeeByManager(SessionWrapper.u_userid, strName);
+                    gvsearchDetails.DataSource = EmployeeBLL.GetEmployeeByManager(SessionWrapper.u_userid, strName, course_id_or_curriculum_id, isTrue);
                     gvsearchDetails.DataBind();
                 }
 
@@ -438,6 +453,61 @@ namespace ComplicanceFactor.Manager.Enroll
             dtEmployee = removeDuplicateRows.RemoveDuplicateRows(dtEmployee, "u_user_id_fk");
             return dtEmployee;
 
+        }
+
+        protected void gvsearchDetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string type = DataBinder.Eval(e.Row.DataItem, "type").ToString();
+                if (type == "course")
+                {
+                    string enrollStatus = DataBinder.Eval(e.Row.DataItem, "enrollStatus").ToString();
+                    string wailtListStatus = DataBinder.Eval(e.Row.DataItem, "wailtListStatus").ToString();
+                    string assignStatus = DataBinder.Eval(e.Row.DataItem, "assignStatus").ToString();
+                    if (enrollStatus == "Y")
+                    {
+                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
+                        lblStatus.Visible = true;
+                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
+                        lblStatus.Text = "Already Enrolled";
+                        chkSelect.Visible = false;
+
+                    }
+                    if (wailtListStatus == "Y")
+                    {
+                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
+                        lblStatus.Visible = true;
+                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
+                        lblStatus.Text = "Already Waitlisted";
+                        chkSelect.Visible = false;
+
+                    }
+                    if (assignStatus == "Y")
+                    {
+                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
+                        lblStatus.Visible = true;
+                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
+                        lblStatus.Text = "Already Assigned";
+                        chkSelect.Visible = false;
+
+                    }
+                }
+                else if (type == "curriculum")
+                {
+                    string curriculaStatus = DataBinder.Eval(e.Row.DataItem, "curriculaStatus").ToString();
+                    if (curriculaStatus == "Y")
+                    {
+                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
+                        lblStatus.Visible = true;
+                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
+                        lblStatus.Text = "Already Assigned";
+                        chkSelect.Visible = false;
+
+                    }
+                }
+                
+            }
         }
         
     }

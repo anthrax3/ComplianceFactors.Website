@@ -30,7 +30,7 @@ namespace ComplicanceFactor.Employee.Curricula
                 divsearch.Style.Add("display", "block");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_employee") + " > ...";
-                lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_employee") + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + "Home</a>" + " >&nbsp;" + "<a href=/Employee/Curricula/lmcurp-01.aspx>" + "My Curricula</a>" + " >&nbsp;" + " View Curriculum Details";
+                lblBreadCrumb.Text ="<a href=/Employee/Home/lhp-01.aspx>"+ LocalResources.GetGlobalLabel("app_nav_employee")+"</a>" + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + "<a href=/Employee/Curricula/lmcurp-01.aspx>" + LocalResources.GetGlobalLabel("app_my_curricula_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_view_curriculum_details_text");
 
                 ///<summary>
                 //Get Curriculum id
@@ -296,9 +296,17 @@ namespace ComplicanceFactor.Employee.Curricula
                 {
                     btnDrop.Style.Add("display", "inline");
                 }
-                else if (status == "Canceled")
+                else if (status == "Pending")
                 {
                     btnDrop.Style.Add("display", "inline");
+                }
+                else if (status == "Denied")
+                {
+                    btnDrop.Style.Add("display", "inline");
+                }
+                else if (status == "Approved")
+                {
+                    btnEnroll.Style.Add("display", "inline");
                 }
             }
         }
@@ -337,7 +345,8 @@ namespace ComplicanceFactor.Employee.Curricula
                 dtPathCourse = dvPathCourse.ToTable();
                 GridView.DataSource = dtPathCourse;
                 GridView.DataBind();
-                lblComplete.Text = "(Complete " + path_section_complete + " of " + dtPathCourse.Rows.Count.ToString() + " Courses)";
+                //lblComplete.Text = "(Complete " + path_section_complete + " of " + dtPathCourse.Rows.Count.ToString() + " Courses)";
+                lblComplete.Text = "(Complete " + GridView.Rows.Count + " of " + GridView.Rows.Count + " Courses)";
             }
             catch (Exception ex)
             {
@@ -363,25 +372,43 @@ namespace ComplicanceFactor.Employee.Curricula
             }
             else if (e.CommandName.Equals("Launch"))
             {
+                string url = e.CommandArgument.ToString();
+                if (!string.IsNullOrEmpty(url))
+                {
+                    if (!url.Contains("http"))
+                        url = "http://" + url;
+                    ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
+                }
+                else
+                {
+                    //ClientScript.RegisterStartupScript(GetType(), "Navigate", "alert(Could not find the ScromURl....);", true);
+                    string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
+                }
+
+                    //ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( 'www.google.com', '_blank' );", true);
+
+                //string url = e.CommandArgument.ToString();
+                //System.Diagnostics.Process.Start(url);
                 //insert enrollment
-                BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
-                enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                enrollOLT.e_enroll_required_flag = true;
-                enrollOLT.e_enroll_approval_required_flag = true;
-                enrollOLT.e_enroll_type_name = "Self-enroll";
-                enrollOLT.e_enroll_approval_status_name = "Pending";
-                enrollOLT.e_enroll_status_name = "Enrolled";
-                EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
-                Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(CurriculumId), false);
+                //BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
+                //enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                //enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                //enrollOLT.e_enroll_required_flag = true;
+                //enrollOLT.e_enroll_approval_required_flag = true;
+                //enrollOLT.e_enroll_type_name = "Self-enroll";
+                //enrollOLT.e_enroll_approval_status_name = "Pending";
+                //enrollOLT.e_enroll_status_name = "Enrolled";
+                //EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
+                //Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(CurriculumId), false);
                 
             }
             else if (e.CommandName.Equals("Drop"))
             {
-                BusinessComponent.DataAccessObject.Enrollment UpdateEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
-                UpdateEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                UpdateEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                EnrollmentBLL.UpdateEnrollmentStatus(UpdateEnrollmentStatus);
+                BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
+                DropEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
                 Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(CurriculumId), false);
             }
         }

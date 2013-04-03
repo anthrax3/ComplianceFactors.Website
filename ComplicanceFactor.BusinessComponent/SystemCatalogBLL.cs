@@ -489,7 +489,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="c_course_system_id_pk"></param>
         /// <returns>Single course record</returns>
-        public static SystemCatalog GetCourse(string c_course_system_id_pk,string s_ui_locale_name)
+        public static SystemCatalog GetCourse(string c_course_system_id_pk, string s_ui_locale_name)
         {
             SystemCatalog course;
             try
@@ -1807,13 +1807,13 @@ namespace ComplicanceFactor.BusinessComponent
         /// GetCourseDelivery
         /// </summary>
         /// <returns></returns>
-        public static DataTable GetCourseDelivery(string c_course_id_fk)
+        public static DataSet GetCourseDelivery(string c_course_id_fk)
         {
             Hashtable htGetCourseDelivery = new Hashtable();
             htGetCourseDelivery.Add("@c_course_id_fk", c_course_id_fk);
             try
             {
-                return DataProxy.FetchDataTable("c_course_sp_get_course_delivery", htGetCourseDelivery);
+                return DataProxy.FetchDataSet("c_course_sp_get_course_delivery", htGetCourseDelivery);
             }
 
             catch (Exception)
@@ -2141,7 +2141,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
             htGetAllHolidays.Add("@recurrenceEvery", getAllHolidays.recurrenceEvery);
             htGetAllHolidays.Add("@breakOccuranceCount", getAllHolidays.breakOccuranceCount);
-            
+
             htGetAllHolidays.Add("@u_holiday_schedule_system_id_pk", getAllHolidays.u_holiday_schedule_system_id_pk);
             try
             {
@@ -2224,7 +2224,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htGetAllWeekdaysAndHolidays.Add("@s_weekday_schedule_system_id_pk", DBNull.Value);
             }
-     
+
             try
             {
                 return DataProxy.FetchDataTable("c_course_sp_get_all_weekdays_holidays", htGetAllWeekdaysAndHolidays);
@@ -2262,7 +2262,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 throw;
             }
-           
+
         }
         public static DataTable GetApprovalForCourse(string s_ui_locale_name)
         {
@@ -2293,7 +2293,7 @@ namespace ComplicanceFactor.BusinessComponent
                     sessionDate.c_session_room_names = dtDeliveryList.Rows[0]["c_room_name"].ToString();
                     sessionDate.c_session_date_format = dtDeliveryList.Rows[0]["c_session_date"].ToString();
                 }
-                 return sessionDate;
+                return sessionDate;
             }
 
             catch (Exception)
@@ -2305,8 +2305,25 @@ namespace ComplicanceFactor.BusinessComponent
         }
 
 
-    }
 
+        public static DataTable GetSessionByCourseID(string c_course_id_fk)
+        {
+            Hashtable htGetSessionByCourseID = new Hashtable();
+            htGetSessionByCourseID.Add("@c_course_id_fk", c_course_id_fk);
+            try
+            {
+                return DataProxy.FetchDataTable("c_sp_get_session_by_course_id", htGetSessionByCourseID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+    }
 }
+
+
+
+
 
 

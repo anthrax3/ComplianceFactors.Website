@@ -80,7 +80,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '../UI Texts and Labels/p-satl-01.aspx?mode=add' + '&localeid=' + localeid + "&localeText=" + localeText + "&type=" + type + "&editTextId=" + id +"&appname=" + appname,
+                    'href': '../UI Texts and Labels/p-satl-01.aspx?mode=add' + '&localeid=' + localeid + "&localeText=" + localeText + "&type=" + type + "&editTextId=" + id + "&appname=" + appname,
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -101,7 +101,7 @@
 
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
-
+                alert(record_id);
                 //Get the GridView Row reference
                 var tr_id = $(this).parents("#.record");
                 var element = $(this).attr("id").split(",");
@@ -144,7 +144,6 @@
 
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
-
                 //Get the GridView Row reference
                 var tr_id = $(this).parents("#.record");
                 $.fancybox({
@@ -235,13 +234,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="width_35">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("s_locale_id_fk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
+                                <input type="button" id='<%# Eval("s_ui_text_name") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
                                     class="editlocale cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%#Eval("s_locale_id_fk").ToString() + "," +  Eval("s_locale_text").ToString()%>'
+                                <input type="button" id='<%#Eval("s_ui_text_name").ToString() + "," +  Eval("s_locale_id_fk").ToString()%>'
                                     value='<asp:Literal ID="Literal6" runat="server" Text="Remove" />' class="deletelocale cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>

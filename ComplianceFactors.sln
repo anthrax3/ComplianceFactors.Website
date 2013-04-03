@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplianceFactors.BusinessC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplianceFactors.DataAccessLayer", "ComplicanceFactor.DataAccessLayer\ComplianceFactors.DataAccessLayer.csproj", "{D6FE8164-2A14-4158-BC7B-F520D71E30EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplianceFactors.MyTeam", "ComplianceFactors.MyTeam\ComplianceFactors.MyTeam.csproj", "{F6D86296-4128-4636-A674-09E70EBB99BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{D6FE8164-2A14-4158-BC7B-F520D71E30EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6FE8164-2A14-4158-BC7B-F520D71E30EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6FE8164-2A14-4158-BC7B-F520D71E30EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6D86296-4128-4636-A674-09E70EBB99BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6D86296-4128-4636-A674-09E70EBB99BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6D86296-4128-4636-A674-09E70EBB99BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6D86296-4128-4636-A674-09E70EBB99BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

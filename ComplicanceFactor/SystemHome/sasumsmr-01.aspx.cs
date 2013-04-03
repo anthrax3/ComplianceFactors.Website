@@ -109,7 +109,7 @@ namespace ComplicanceFactor.SystemHome
             {
                 ddlUserstatus.DataSource = UserBLL.GetUserAllStatusList(SessionWrapper.CultureName, "sasumsmr-01");
                 ddlUserstatus.DataBind();
-
+                ddlUserstatus.SelectedValue = "app_ddl_all_text";
                 //ListItem lstStatus = new ListItem();
                 //lstStatus.Text = "All";
                 //lstStatus.Value = "0";
@@ -666,9 +666,27 @@ namespace ComplicanceFactor.SystemHome
             }
 
 
-            userResult.Usertype = ViewState["usertypes"].ToString();
+            //userResult.Usertype = ViewState["usertypes"].ToString();
             userResult.DomainId = ViewState["domainid"].ToString();
-            userResult.Active_Type = ViewState["activestatus"].ToString();
+            //userResult.Active_Type = ViewState["activestatus"].ToString();
+
+            if (ViewState["usertypes"].ToString() == "app_ddl_all_text")
+            {
+                userResult.Usertype = "0";
+            }
+            else
+            {
+                userResult.Usertype = ddlUserTypes.SelectedValue;
+            }
+
+            if (ViewState["activestatus"].ToString() == "app_ddl_all_text")
+            {
+                userResult.Active_Type = "0";
+            }
+            else
+            {
+                userResult.Active_Type = ddlUserstatus.SelectedValue;
+            }
 
             DataTable dtgetvalue = new DataTable();
 

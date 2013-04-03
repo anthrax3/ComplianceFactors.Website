@@ -27,7 +27,7 @@
     </script>
     <div class="content_area_long">
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_manage_catalog_text")%>:
+            <%=LocalResources.GetLabel("app_manage_training_text")%>:
         </div>
         <br />
         <br />
@@ -165,6 +165,16 @@
                     <td colspan="3">
                         &nbsp;
                     </td>
+                </tr>
+                <tr>
+                <td>
+                    <a href="Completion/samcsp-01.aspx">
+                    <%=LocalResources.GetLabel("app_manage_completions_text")%></a>
+                </td>
+                <td>
+                    <a href="../Configuration/Update Curriculum/saucsp-01.aspx">
+                    Update Curriculum Statuses</a>
+                </td>
                 </tr>
             </table>
         </div>

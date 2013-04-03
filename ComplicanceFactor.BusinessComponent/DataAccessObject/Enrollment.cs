@@ -89,5 +89,14 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string e_assign_course { get; set; }
         public string e_enroll_manger_id_fk { get; set; }
         public int e_approval_count { get; set; }
+        
+        //Learning History
+
+        public DateTime? e_learning_from_date { get; set; }
+        public DateTime? e_learning_to_date { get; set; }
+        public string e_learning_keyword { get; set; }
+        public string e_learning_status { get; set; }
+        public string e_learning_deliveryType { get; set; }
+
     }
 }

@@ -290,7 +290,25 @@ namespace ComplicanceFactor.SystemHome.Configuration.Navigation
             nav.app_system_pod_mconfiguration_title = txtSystemManageConfiguration.Text;
             try
             {
-                NavigationBLL.UpdateAppNavigation(nav);
+                int error;
+                error = NavigationBLL.UpdateAppNavigation(nav);
+                if (error != -1)
+                {
+                    //Show success message
+                    divSuccess.Style.Add("display", "block");
+                    divError.Style.Add("display", "none");
+                    divSuccess.InnerHtml = "Updated Successfully";
+
+
+                }
+                else
+                {
+                    //Show error message 
+                    divSuccess.Style.Add("display", "none");
+                    divError.Style.Add("display", "block");
+                    divError.InnerText = "Data Not Updated";
+
+                } 
             }
             catch (Exception ex)
             {

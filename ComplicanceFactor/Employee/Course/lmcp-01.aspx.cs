@@ -23,7 +23,7 @@ namespace ComplicanceFactor.Employee.Course
                 HtmlGenericControl divsearch = (HtmlGenericControl)Master.FindControl("divsearch");
                 divsearch.Style.Add("display", "block");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_employee") + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + "Home</a>" + " >&nbsp;" + "My Courses";
+                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>"+LocalResources.GetGlobalLabel("app_nav_employee") +"</a>"+ " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_my_courses_text");
                 GetAllCourse();
             }
 
@@ -97,26 +97,29 @@ namespace ComplicanceFactor.Employee.Course
                 }
 
             }
-            Warning[] warnings;
-            string[] streamIds;
-            string mimeType = string.Empty;
-            string encoding = string.Empty;
-            string extension = string.Empty;
-            rvCourses.ProcessingMode = ProcessingMode.Local;
-            rvCourses.LocalReport.EnableExternalImages = true;
-            rvCourses.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Course.PdfTemplate.MyCourses.rdlc";
-            rvCourses.LocalReport.DataSources.Add(new ReportDataSource("MyCourses", dsEmployee.Tables[0]));
-            rvCourses.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsEmployee.Tables[2]));
-            byte[] bytes = rvCourses.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
-            Response.Buffer = true;
-            Response.Clear();
-            Response.ClearHeaders();
-            Response.ContentType = mimeType;
-            Response.AddHeader("content-disposition", "attachment; filename=\"" + "MyCourses" + ".pdf" + "\"");
-            Response.BinaryWrite(bytes); // create the file     
-            Response.Flush(); // send it to the client to download  
-            Response.End();
-            Response.Close();
+            if (dsEmployee.Tables[0].Rows.Count > 0)
+            {
+                Warning[] warnings;
+                string[] streamIds;
+                string mimeType = string.Empty;
+                string encoding = string.Empty;
+                string extension = string.Empty;
+                rvCourses.ProcessingMode = ProcessingMode.Local;
+                rvCourses.LocalReport.EnableExternalImages = true;
+                rvCourses.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Course.PdfTemplate.MyCourses.rdlc";
+                rvCourses.LocalReport.DataSources.Add(new ReportDataSource("MyCourses", dsEmployee.Tables[0]));
+                rvCourses.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsEmployee.Tables[2]));
+                byte[] bytes = rvCourses.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                Response.Buffer = true;
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ContentType = mimeType;
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + "MyCourses" + ".pdf" + "\"");
+                Response.BinaryWrite(bytes); // create the file     
+                Response.Flush(); // send it to the client to download  
+                Response.End();
+                Response.Close();
+            }
         }
         protected void btnPrintPdf_Click(object sender, EventArgs e)
         {
@@ -146,7 +149,10 @@ namespace ComplicanceFactor.Employee.Course
                 }
 
             }
-            exportDataTableToCsv(dsEmployee.Tables[3]);
+            if (dsEmployee.Tables[3].Rows.Count > 0)
+            {
+                exportDataTableToCsv(dsEmployee.Tables[3]);
+            }
         }
         private void exportDataTableToCsv(DataTable dt)
         {
@@ -188,8 +194,8 @@ namespace ComplicanceFactor.Employee.Course
                 Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                 Button btnLaunch = (Button)e.Row.FindControl("btnLaunch");
                 Button btnDrop = (Button)e.Row.FindControl("btnDrop");
-                string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
-                string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "status").ToString().Trim();
+                string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString().Trim();
                 if (status == "Assigned")
                 {
                     btnEnroll.Style.Add("display", "inline");
@@ -202,9 +208,17 @@ namespace ComplicanceFactor.Employee.Course
                 {
                     btnDrop.Style.Add("display", "inline");
                 }
-                else if (status == "Canceled")
+                else if (status == "Pending")
                 {
                     btnDrop.Style.Add("display", "inline");
+                }
+                else if (status == "Denied")
+                {
+                    btnDrop.Style.Add("display", "inline");
+                }
+                else if (status == "Approved")
+                {
+                    btnEnroll.Style.Add("display", "inline");
                 }
 
             }
@@ -220,16 +234,18 @@ namespace ComplicanceFactor.Employee.Course
             else if (e.CommandName.Equals("Launch"))
             {
                 //insert enrollment
-                BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
-                enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                enrollOLT.e_enroll_required_flag = true;
-                enrollOLT.e_enroll_approval_required_flag = true;
-                enrollOLT.e_enroll_type_name = "Self-enroll";
-                enrollOLT.e_enroll_approval_status_name = "Pending";
-                enrollOLT.e_enroll_status_name = "Enrolled";
-                EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
-                Response.Redirect("~/Employee/Course/lmcp-01.aspx", false);
+                string url = e.CommandArgument.ToString();
+                if (!string.IsNullOrEmpty(url))
+                {
+                    if (!url.Contains("http"))
+                        url = "http://" + url;
+                    ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
+                }
+                else
+                {
+                    string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
+                }
             }
             else if (e.CommandName.Equals("Details"))
             {

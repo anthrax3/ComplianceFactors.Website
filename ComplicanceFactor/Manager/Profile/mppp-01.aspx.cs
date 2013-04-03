@@ -22,7 +22,7 @@ namespace ComplicanceFactor.Manager.Profile
                 HtmlGenericControl divsearch = (HtmlGenericControl)Master.FindControl("divsearch");
                 divsearch.Style.Add("display", "block");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_manager") + " > Home > Profile";
+                lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>"+ LocalResources.GetGlobalLabel("app_nav_manager") + "</a> >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>"+ "Home " +"</a>&nbsp;"+"> Profile";
                 //timezone
                 ddlTimezone.DataSource = UserBLL.GetUserTimeZone();
                 ddlTimezone.DataBind();

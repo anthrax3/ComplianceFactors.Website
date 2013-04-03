@@ -99,30 +99,33 @@ namespace ComplicanceFactor.Common
         {
             try
             {
-                MailMessage message = new MailMessage();
-                message.Priority = MailPriority.High;
-                message.From = new MailAddress(fromAddress);
-
-                foreach (MailAddress toAddress in toAddresses)
+                if (toAddresses.Count > 0 && !string.IsNullOrEmpty(fromAddress))
                 {
-                    message.To.Add(toAddress);
+                    MailMessage message = new MailMessage();
+                    message.Priority = MailPriority.High;
+                    message.From = new MailAddress(fromAddress);
+
+                    foreach (MailAddress toAddress in toAddresses)
+                    {
+                        message.To.Add(toAddress);
+                    }
+
+                    message.Subject = subject;
+                    message.Body = body;
+                    message.IsBodyHtml = true;
+
+                    //SmtpClient emailClient = new SmtpClient(ConfigurationManager.AppSettings["Email.HostAddress"]);
+                    SmtpClient emailClient = new SmtpClient();
+                    //emailClient.UseDefaultCredentials = Convert.ToBoolean(ConfigurationManager.AppSettings["Email.UseDefaultCredentials"]);
+
+                    emailClient.Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["FROMMAIL"],
+                        ConfigurationManager.AppSettings["FROMPWD"]);
+                    emailClient.Port = Convert.ToInt32(ConfigurationManager.AppSettings["PORT"]);
+                    emailClient.Host = ConfigurationManager.AppSettings["SMTP"].ToString();
+                    emailClient.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["ENABLESSL"]);
+
+                    emailClient.Send(message);
                 }
-
-                message.Subject = subject;
-                message.Body = body;
-                message.IsBodyHtml = true;
-
-                //SmtpClient emailClient = new SmtpClient(ConfigurationManager.AppSettings["Email.HostAddress"]);
-                SmtpClient emailClient = new SmtpClient();
-                //emailClient.UseDefaultCredentials = Convert.ToBoolean(ConfigurationManager.AppSettings["Email.UseDefaultCredentials"]);
-
-                emailClient.Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["FROMMAIL"],
-                    ConfigurationManager.AppSettings["FROMPWD"]);
-                emailClient.Port = Convert.ToInt32(ConfigurationManager.AppSettings["PORT"]);
-                emailClient.Host = ConfigurationManager.AppSettings["SMTP"].ToString();
-                emailClient.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["ENABLESSL"]);
-
-                emailClient.Send(message);
             }
             catch (Exception)
             {

@@ -129,7 +129,7 @@
             <div>
                 <div class="page_text">
                     <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false" 
-                        CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="No result found."
+                        CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                         AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"  DataKeyNames="system_id,type,c_approval_req"
                         PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
                         OnRowCommand="gvsearchDetails_RowCommand" OnRowDataBound="gvsearchDetails_RowDataBound"
@@ -185,13 +185,13 @@
                                             </td>
                                             <td class="tdright">
                                                 <asp:Label ID="lblAlreadyEnrollMessage" runat="server"></asp:Label>
-                                                <asp:Button ID="btnDrop" Style="display: none;" runat="server" Text="Drop" />
+                                                <asp:Button ID="btnDrop" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_drop_button_text %>" />
                                                 <asp:Button ID="btnQuickLaunch" CommandName="QuickLaunch" CommandArgument='<%#Eval("system_id")%>'
-                                                    CssClass="cursor_hand" style="display:none;" runat="server" Text="Quick Launch!" />
+                                                    CssClass="cursor_hand" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
                                                 <asp:Button ID="btnEnroll" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                                    CommandName="Detail" runat="server" Text="Enroll" />
+                                                    CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                                                 <asp:Button ID="btnAssign" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
-                                                    CommandName="Assign" runat="server" Text="Assign" Style="display: none;" />
+                                                    CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>" Style="display: none;" />
                                             </td>
                                         </tr>
                                         <tr>

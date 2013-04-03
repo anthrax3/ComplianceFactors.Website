@@ -33,30 +33,29 @@
 
 
         }
-        function validateCheckBoxes() {
-            var isValid = false;
-            var gridView = document.getElementById('<%= gvsearchDetails.ClientID %>');
-            for (var i = 1; i < gridView.rows.length; i++) {
-                var inputs = gridView.rows[i].getElementsByTagName('input');
-                if (inputs != null) {
-                    if (inputs[0].type == "checkbox") {
-                        if (inputs[0].checked) {
-                            isValid = true;
-                            return true;
-                        }
-                    }
+        
+    </script>
+    <script type="text/javascript">
+        function CheckRequired() {
+            var isChecked = $('#<%= chkRequired.ClientID %>').attr('checked') ? true : false;
+            if (isChecked) {
+                var TargetDueDate = $('#<%= txtTargetDueDate.ClientID %>').val();
+                if (TargetDueDate == "" || TargetDueDate == null) {
+                    alert('Please select TargetDueDate')
+                    return false;
+                }
+                else {
+                    return true;
                 }
             }
-            alert("Please select atleast one employee");
-            return false;
         }
-    </script>
+     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vsMesc" runat="server"
         ValidationGroup="mesc"></asp:ValidationSummary>
     <div class="div_header_800">
-        Curriculum Details:
+        <%=LocalResources.GetLabel("app_view_curriculum_details_text")%>:
     </div>
     <div class="table_150">
         <br />
@@ -66,7 +65,7 @@
                     <asp:Label ID="lblTitle" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Revision:
+                    <%=LocalResources.GetLabel("app_revision_text")%>:
                     <asp:Label ID="lblRevision" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -75,17 +74,17 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    Description:<br />
+                    <%=LocalResources.GetLabel("app_description_text")%>:<br />
                     <asp:Label ID="lblDescription" CssClass="font_normal" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Approval:
+                    <%=LocalResources.GetLabel("app_approval_text")%>:
                     <asp:Label ID="lblApproval" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Manager:
+                    <%=LocalResources.GetLabel("app_manager_text")%>:
                     <asp:Label ID="lblManager" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -94,7 +93,7 @@
             </tr>
             <tr>
                 <td>
-                    Cost:
+                    <%=LocalResources.GetLabel("app_cost_text")%>:
                     <asp:Label ID="lblCost" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -107,11 +106,11 @@
             </tr>
             <tr>
                 <td>
-                    Owner:
+                    <%=LocalResources.GetLabel("app_owner_text")%>:
                     <asp:Label ID="lblOwner" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Coordinator:
+                    <%=LocalResources.GetLabel("app_coordinator_text")%>:
                     <asp:Label ID="lblCoordinator" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -122,18 +121,18 @@
     </div>
     <div>
         <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
-            runat="server" EmptyDataText="None" DataKeyNames="u_user_id_fk" AutoGenerateColumns="False"
+            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_none_text %>" DataKeyNames="u_user_id_fk" AutoGenerateColumns="False"
             AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
             PageSize="5">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="Employee Last Name" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$ LabelResourceExpression: app_employee_last_name_text %>" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="Employee First Name" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$ LabelResourceExpression: app_employee_first_name_text %>" DataField='u_first_name' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderText="Employee Number" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    HeaderText="<%$ LabelResourceExpression: app_employee_number_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
                     <ItemTemplate>
@@ -144,7 +143,8 @@
         </asp:GridView>
     </div>
     <div class="right">
-         <input type="button" value="Remove Selected" onclick="toggleSelection();" class="cursor_hand" />
+          <asp:Button ID="btnRemoveSelected"  CssClass="cursor_hand"
+            runat="server" Text="<%$ LabelResourceExpression: app_remove_selected_button_text %>" onclick="btnRemoveSelected_Click" />
     </div>
     <br />
     <br />
@@ -156,8 +156,8 @@
             <table>
                 <tr>
                     <td>
-                        Required: &nbsp;&nbsp;&nbsp;
-                        <asp:CheckBox ID="chkRequired" runat="server" />&nbsp;&nbsp;&nbsp; Target Due Date:&nbsp;&nbsp;&nbsp;
+                        <%=LocalResources.GetLabel("app_required_text")%>:&nbsp;&nbsp;&nbsp;
+                        <asp:CheckBox ID="chkRequired" runat="server" />&nbsp;&nbsp;&nbsp; <%=LocalResources.GetLabel("app_target_due_text")%>:&nbsp;&nbsp;&nbsp;
                     </td>
                     <td>
                         <asp:TextBox ID="txtTargetDueDate" Style="font-size: small;" runat="server"></asp:TextBox>
@@ -175,8 +175,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnConfirmAssignment" OnClientClick="return validateCheckBoxes();" runat="server" Text="Confirm Assignment" OnClick="btnConfirmAssignment_Click" />
-                        <%-- <asp:Button ID="btnConfirm" runat="server" Text="Confirm Assignment" OnClick="btnConfirmAssignMent_Click" />--%>
+                        <asp:Button ID="btnConfirmAssignment"  runat="server" Text="<%$ LabelResourceExpression: app_confirm_assignment_button_text %>" OnClick="btnConfirmAssignment_Click" OnClientClick="return CheckRequired();" />
+                        <%-- <asp:Button ID="btnConfirm" runat="server" Text="Confirm Assignment" OnClick="btnConfirmAssignMent_Click"  OnClientClick="return validateCheckBoxes();" />--%>
                     </td>
                     <td>
                         &nbsp;
@@ -191,14 +191,14 @@
     <div>
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_800">
-                Employee Search:
+                <%=LocalResources.GetLabel("app_employee_search_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                            employee Name
+                            <%=LocalResources.GetLabel("app_employee_name_text")%>
                         </td>
                         <td>
                             <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -207,7 +207,7 @@
                             &nbsp;
                         </td>
                         <td>
-                            employee Number:
+                            <%=LocalResources.GetLabel("app_employee_number_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtEmployeeNumber" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -219,16 +219,16 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="align_left">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="Go Search" runat="server"
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" runat="server"
                                 OnClick="btnGosearch_Click" />
                         </td>
                         <td colspan="2" class="align_left">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="Reset" OnClientClick="return resetall();"
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" OnClientClick="return resetall();"
                                 runat="server" />
                         </td>
                         <td class="align_right">
                             <asp:Button ID="btnCancel" CssClass="cursor_hand" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                                runat="server" Text="Cancel" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>

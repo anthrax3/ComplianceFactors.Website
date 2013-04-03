@@ -267,7 +267,7 @@ namespace ComplicanceFactor.BusinessComponent
 
        }
        /// <summary>
-       /// Update Employee Types
+       /// Update Employee Types  
        /// </summary>
        /// <param name="updateEmployeeTypes"></param>
        /// <returns></returns>

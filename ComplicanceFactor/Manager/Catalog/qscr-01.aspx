@@ -10,7 +10,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_employee').addClass('selected');
+            $('#app_nav_manager').addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -21,7 +21,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_employee').addClass('selected');
+                $('#app_nav_manager').addClass('selected');
                 return false;
             });
             $(".assign").click(function () {
@@ -47,7 +47,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Manager/Enroll/mese-01.aspx?id=' + element[0] + "&ctype=" + element[1] + "&da=" + element[2] + "&ca=" + element[3],
+                    'href': '/Manager/Enroll/mese-01.aspx?id=' + element[0] + "&ctype=" + element[1] + "&da=" + element[2] + "&ca=" + element[3] + "&check=" + element[4],
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -85,7 +85,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Manager/Enroll/mese-01.aspx?id=' + element[0] + "&type=" + element[1] + "&courseid=" + element[2] + "&waitlist=" + element[3] + "&approval=" + element[4] + "&ca=" + element[5],
+                    'href': '/Manager/Enroll/mese-01.aspx?id=' + element[0] + "&type=" + element[1] + "&courseid=" + element[2] + "&waitlist=" + element[3] + "&approval=" + element[4] + "&ca=" + element[5]+"&check=" + element[6],
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -195,7 +195,7 @@
             <div>
                 <div class="page_text">
                     <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false"
-                        CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="No result found."
+                        CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
                         AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
                         DataKeyNames="system_id,type,c_approval_req" PagerSettings-Visible="false" PageSize="5"
                         OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowCommand="gvsearchDetails_RowCommand"
@@ -224,7 +224,7 @@
                                                 <asp:Label ID="lblVersion" runat="server" Text='<%#Bind("version")%>'></asp:Label>
                                             </td>
                                             <td class="tdright">
-                                                OLT - VLT - ILT
+                                                <%#Eval("c_delivery_type")%>
                                             </td>
                                         </tr>
                                         </td> </tr>
@@ -252,12 +252,13 @@
                                             </td>
                                             <td class="tdright">
                                                 <asp:Label ID="lblAlreadyEnrollMessage" runat="server"></asp:Label>
-                                                <asp:Button ID="btnEnroll" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                                    CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
+                                                <asp:Button ID="btnEnroll"  CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                                    CommandName="Detail" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                                                 <%--  <input type="button" id='<%# Eval("system_id") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="Enroll" />'
                                                     class="employeesearch cursor_hand" />--%>
                                                 <%-- <asp:Button ID="btnAssign" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
                                                     CommandName="Assign" runat="server" Text="Assign" Style="display: none;" />--%>
+                                                
                                                 <asp:Literal ID="ltlAssign" runat="server"></asp:Literal>
                                                 <asp:Literal ID="ltlEnrollOLT" runat="server"></asp:Literal>
                                             </td>

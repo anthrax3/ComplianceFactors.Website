@@ -53,8 +53,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.Navigation
             if (line != null)
             {
                 string wpnav = '"' + "wp_nav_" + native +"_content"+ '"';
-                string cmgsoon = '"' + "app_coming_soon" + '"';
-                line.Replace("[PageContent]", "<%=LocalResources.GetText(" + wpnav + ")%> -  <%=LocalResources.GetGlobalLabel(" + cmgsoon + ")%>");
+                //string cmgsoon = '"' + "app_coming_soon" + '"';
+                line.Replace("[PageContent]", "<%=LocalResources.GetText(" + wpnav + ")%>");// -  <%=LocalResources.GetGlobalLabel(" + cmgsoon + ")%>");
                 StreamWriter sw = null;
                 try
                 {

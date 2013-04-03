@@ -26,7 +26,7 @@
        
     </script>
     <div class="div_header_700">
-        Courses Details:
+        <%=LocalResources.GetLabel("app_course_details_text")%>:
     </div>
     <div class="table_150">
         <br />
@@ -36,7 +36,7 @@
                     <asp:Label ID="lblCourseTitle" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Revision:
+                    <%=LocalResources.GetLabel("app_revision_text")%>:
                     <asp:Label ID="lblRevision" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -45,17 +45,17 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    Description:<br />
+                    <%=LocalResources.GetLabel("app_description_text")%>:<br />
                     <asp:Label ID="lblDescription" CssClass="font_normal" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Approval:
+                    <%=LocalResources.GetLabel("app_approval_text")%>:
                     <asp:Label ID="lblApproval" runat="server"></asp:Label>
                 </td>
                 <td>
-                 Manager:
+                 <%=LocalResources.GetLabel("app_manager_text")%>:
                     <asp:Label ID="lblManager" runat="server"></asp:Label>
                    
                 </td>
@@ -65,7 +65,7 @@
             </tr>
             <tr>
                 <td>
-                    Cost:
+                    <%=LocalResources.GetLabel("app_cost_text")%>:
                     <asp:Label ID="lblCost" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -78,11 +78,11 @@
             </tr>
             <tr>
                 <td>
-                    Owner:
+                    <%=LocalResources.GetLabel("app_owner_text")%>:
                     <asp:Label ID="lblOwner" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Coordinator:
+                    <%=LocalResources.GetLabel("app_coordinator_text")%>:
                     <asp:Label ID="lblCoordinator" runat="server"></asp:Label>
                 </td>
                 <td>
@@ -91,8 +91,42 @@
             </tr>
         </table>
     </div>
+       <div class="div_header_700">
+        <%=LocalResources.GetLabel("app_session_text")%>:
+    </div>
+    <div class="table_150">
+        <asp:GridView ID="gvSession" RowStyle-CssClass="record" GridLines="None" 
+            CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_session_system_id_pk"
+            runat="server" AutoGenerateColumns="False" OnRowDataBound="gvSession_RowDataBound" EmptyDataRowStyle-CssClass="empty_row" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>">
+            
+            <Columns>
+               <asp:TemplateField ItemStyle-CssClass="width_600"  ItemStyle-HorizontalAlign="Left">
+                    <ItemTemplate>
+                        <table cellpadding="0" cellspacing="0">
+                          
+                            <tr>
+                                <td class="horizontal_line" colspan="3">
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr>
+                               
+                                <td class="gridview_row_width_350">
+                                    <asp:Label ID="lblSession1" runat="server"></asp:Label>
+                                </td>
+                                
+                                <td class="gridview_row_width_350">
+                                    <asp:Label ID="lblSession2" runat="server"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
     <div class="div_header_700">
-        Recurrence:
+        <%=LocalResources.GetLabel("app_recurrence_text")%>:
     </div>
     <div class="div_controls font_1">
         <br />
@@ -100,7 +134,7 @@
     </div>
     <br />
     <div class="div_header_700">
-        Prerequisite(s):
+        <%=LocalResources.GetLabel("app_prerequisite_text")%>:
     </div>
     <div class="table_150">
         <br />
@@ -119,7 +153,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                    <asp:Label ID="lblOr" runat="server" Text="<%$ LabelResourceExpression: app_or_text %>"></asp:Label>
                                 </td>
                             </tr>
                         </table>
@@ -129,7 +163,7 @@
         </asp:GridView>
     </div>
     <div class="div_header_700">
-        Equivalancy(ies):
+        <%=LocalResources.GetLabel("app_equivalancy_text")%>:
     </div>
     <div class="table_150">
         <br />
@@ -148,7 +182,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                    <asp:Label ID="lblOr" runat="server" Text="<%$ LabelResourceExpression: app_or_text %>"></asp:Label>
                                 </td>
                             </tr>
                         </table>
@@ -158,7 +192,7 @@
         </asp:GridView>
     </div>
     <div class="div_header_700">
-        Fullfilment(s):
+        <%=LocalResources.GetLabel("app_fullfilment_text")%>:
     </div>
     <div class="table_150">
         <br />
@@ -177,7 +211,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                    <asp:Label ID="lblOr" runat="server" Text="<%$ LabelResourceExpression: app_or_text %>"></asp:Label>
                                 </td>
                             </tr>
                         </table>

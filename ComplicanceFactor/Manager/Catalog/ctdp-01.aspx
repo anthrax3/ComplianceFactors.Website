@@ -48,7 +48,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Manager/Enroll/mese-01.aspx?id=' + element[0] + "&type=" + element[1] + "&courseid=" + element[2] + "&waitlist=" + element[3] + "&approval=" + element[4] + "&ca=" + element[5],
+                    'href': '/Manager/Enroll/mese-01.aspx?id=' + element[0] + "&type=" + element[1] + "&courseid=" + element[2] + "&waitlist=" + element[3] + "&approval=" + element[4] + "&ca=" + element[5]+"&check=" + element[6],
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -86,7 +86,7 @@
         <div>
             <div class="page_text">
                 <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false"
-                    CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="No result found."
+                    CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                     AutoGenerateColumns="False" AllowPaging="false" EmptyDataRowStyle-CssClass="empty_row">
                     <Columns>
                         <asp:TemplateField>
@@ -101,7 +101,7 @@
                                             <%#Eval("c_course_version")%>
                                         </td>
                                         <td class="tdright">
-                                            OLT - VLT - ILT
+                                            <%#Eval("c_delivery_type")%>
                                         </td>
                                     </tr>
                                     </td> </tr>
@@ -183,7 +183,7 @@
         <br />
         <div class="div_control_normal">
             <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CellPadding="0"
-                CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server" AutoGenerateColumns="False"
+                CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server" AutoGenerateColumns="False"  EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                 OnRowDataBound="gvDeliveries_RowDataBound" DataKeyNames="c_delivery_system_id_pk,c_delivery_approval_req">
                 <Columns>
                     <asp:TemplateField>
@@ -245,7 +245,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                                    <asp:Label ID="lblOr" runat="server" Text="<%$ LabelResourceExpression: app_or_text %>"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -280,7 +280,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                                    <asp:Label ID="lblOr" runat="server" Text="<%$ LabelResourceExpression: app_or_text %>"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -316,7 +316,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                                    <asp:Label ID="lblOr" runat="server" Text="<%$ LabelResourceExpression: app_or_text %>"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>

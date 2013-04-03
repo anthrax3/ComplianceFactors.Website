@@ -40,6 +40,24 @@ namespace ComplicanceFactor.Manager {
         protected global::System.Web.UI.WebControls.GridView gvToDo;
         
         /// <summary>
+        /// btnDenyAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDenyAll;
+        
+        /// <summary>
+        /// btnApproveAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnApproveAll;
+        
+        /// <summary>
         /// lnkViewAllToDo control.
         /// </summary>
         /// <remarks>
@@ -67,21 +85,57 @@ namespace ComplicanceFactor.Manager {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_team;
         
         /// <summary>
-        /// gvTeam control.
+        /// lvMyteam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTeam;
+        protected global::System.Web.UI.WebControls.ListView lvMyteam;
         
         /// <summary>
-        /// lnkViewAllCurriculum control.
+        /// lnkViewAllTeam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkViewAllCurriculum;
+        protected global::System.Web.UI.WebControls.LinkButton lnkViewAllTeam;
+        
+        /// <summary>
+        /// imgReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgReport;
+        
+        /// <summary>
+        /// div_report control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_report;
+        
+        /// <summary>
+        /// gvReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvReport;
+        
+        /// <summary>
+        /// lnkViewAllReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkViewAllReport;
     }
 }

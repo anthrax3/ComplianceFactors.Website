@@ -92,10 +92,10 @@ namespace ComplicanceFactor
             if (Session["u_userid"] != null)
             {
                 if (Convert.ToBoolean(SessionWrapper.u_sr_is_employee) == true)
-                    Response.Redirect("~/Employee/lhp-01.aspx");
+                    Response.Redirect("~/Employee/Home/lhp-01.aspx");
 
                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_manager) == true)
-                    Response.Redirect("~/Manager/mhp-01.aspx", false);
+                    Response.Redirect("~/Manager/Home/mhp-01.aspx", false);
 
                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_compliance) == true || Convert.ToBoolean(SessionWrapper.u_sr_is_compliance_approver) == true)
                     Response.Redirect("~/Compliance/cchp-01.aspx", false);

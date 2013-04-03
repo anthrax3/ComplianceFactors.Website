@@ -95,87 +95,8 @@
     <Content Include="App_Data\test.htm" />
     <Content Include="Blog\blgp-01.aspx" />
     <Content Include="Compliance\HARM\ccasharm-01.aspx" />
-    <Content Include="Compliance\HARM\cccharm-01.aspx" />
-    <Content Include="Compliance\HARM\cceharm-01.aspx" />
-    <Content Include="Compliance\HARM\ccjhap-01.aspx" />
-    <Content Include="Compliance\HARM\ccvharm-01.aspx" />
-    <Content Include="Compliance\HARM\EmailTemplate\ccvharm.htm" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\0824a3bb-93e2-4895-a05e-6002972b7205.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\09cff986-01c0-4aa8-a030-b6849c7efce3.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\0abb8ac6-c7cd-4c2f-84b2-c0c8f8193754.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\0f75c4db-6b7e-4d10-b949-3713b4495a16.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\0f916783-42a7-48d6-a93f-620647614daf.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\17861257-4a7e-40e5-b277-63f569c888b8.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\19d310f5-dfc5-4858-9f2c-a90d782c79bc.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\1dfa0d1f-28d5-4fe4-8b1a-0199fc1421f4.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\20f8abf6-d66b-41b4-8ddd-323d2c1455e7.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\395e3378-6c77-442f-a049-b27facfcaf8f.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\4bcf3e22-dfc4-4ceb-9c2d-3c3babcefa30.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\63b72cba-af93-40c1-9b2d-c502fc1524f0.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\6a50b227-5ad4-4625-9f3c-e16788a3e03b.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\6bedfa5d-3402-4d1d-9595-587019645eaa.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\788ee073-2fe8-4f32-8f42-154645d4e9df.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\a876fff3-e883-478f-9b31-c161edf854ce.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\ac9d7fe6-dff4-40ae-95c1-fa1a1e59a9b7.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\b8d3f9d5-79af-4fa0-93f0-2ee18aefdf1b.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\b96a0ef0-6857-45f2-8745-3fd138ee3031.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\bd0fba55-b798-401d-bd16-90190a7bd5c2.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\ce70e34b-286a-4230-b1ec-80fdbef29cf9.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\db3ca952-41e5-42e8-830b-55a1ff0e0379.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\dbb069e1-885c-4cc6-93c7-ea8b94322b46.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\ddbe37d4-eab2-4eb4-be94-c83ffb7fa599.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\e0124bf4-4469-495a-932b-e6f0139a224a.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\e48c6e54-8bd1-4bdb-87f6-4a82bf7b485d.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\e7d3a847-81ff-425d-9dab-a40f8dcace99.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\e7f65d71-635b-4872-8e4c-75202f9530d2.jpg" />
-    <Content Include="Compliance\HARM\Upload\CustomCustomer\f35a8df3-2569-41eb-bc38-7ae48f77973c.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\037c8abf-c7ad-4e57-939a-c05aa52e7999.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\0e53a48f-60be-45ea-8b73-42d3d53332a6.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\14910045-a3bb-453c-8bb3-645b2240dca9.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\2a4b2bf0-6734-49f2-aace-951ecd10f1fe.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\322dd3d4-7ba5-4cfc-9f3f-95e422435549.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\3502c6a5-76e5-4cee-9674-6d69223813cc.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\367d876b-9458-474e-b03b-45928738f297.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\5b62f1cb-a65c-4860-bb16-11d2e77caefa.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\687b354a-5bbf-463f-83a1-2a0d90cf1cb3.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\74d8287a-9f76-4e71-869d-f91bc6f704c6.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\898a5c1d-81cd-4bdb-a3c5-5cd56cffa885.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\998b9c1e-eb22-4485-b512-9350d4b62ce1.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\a4806057-ad2f-4289-87a0-272efb654e4d.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\ab73dac3-89b4-490d-83c2-8bb7a2bc3fca.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\c44f6ced-02bc-415c-9f5d-66aa9b0d9078.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\c657a7be-44b4-4879-8b0d-be2cd2dc1423.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\c703c22f-4825-4b6f-9a94-9277423e1b4e.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\cc28fbc5-561b-4614-9bbc-3092542c955e.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\d7832e03-cb5a-43d7-9b8d-e2d2faa35d4a.jpg" />
-    <Content Include="Compliance\HARM\Upload\EmployeeInterview\ef9617d2-8a57-41cd-bfb5-2d3a3196ca60.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\4a8fd85b-ec3e-4f24-b3e6-16499191a890.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\669922aa-017f-499e-929b-37c6022b0b67.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\6c2b3508-4da0-4570-b0f4-516fe057df18.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\7bf7da39-4551-46f3-b876-40ae43f7bbc1.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\a1c4d7fd-8f84-44d8-84c8-c3f191fcad74.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\bad3d725-cd53-472d-98f0-883ece7899c2.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\dd4077eb-2955-4577-9754-92360cff099f.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\e810aee0-7c84-4033-96a2-f18da076a1fd.jpg" />
-    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\f76029ee-dcf1-44cf-b5ea-fe0f68b843b7.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\091feccf-a268-43a6-b43a-ad6be6549560.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\10d50a5c-8809-4b69-a97e-7b89129cfa18.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\794511ff-1efe-4c9c-8b26-bd268c7eabbb.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\7f345b53-1cfd-435a-a32f-6864691ac297.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\9c744b25-9fc0-499c-9dac-fbaa7fb4e805.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\b3996b78-20fd-481e-84a8-189d86cd3b52.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\bc2053e1-ca3a-4130-b2bf-913c5c743030.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\c0347f8d-bdfd-4bcb-ab58-dfd9c5d339a3.jpg" />
-    <Content Include="Compliance\HARM\Upload\Photo\de16886a-e4ac-4155-a7e3-d2dfc4f4f04f.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\125035c8-fb74-4dad-91aa-d913f400b072.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\6c5277a8-81b2-4dad-9a93-ccf9c6a57d00.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\8ad88d26-0cb0-4f44-999d-5aa5a1e6086f.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\aac4e9d6-c1f1-4bb6-9f39-297bdefd66b6.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\c28123d3-240d-44db-9966-29e0ff08d44e.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\e955e6d0-25b7-4dc0-bdaf-e6f17cdb00a0.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\ebff22bb-85f4-4dbd-a0ba-8feb126bd582.jpg" />
-    <Content Include="Compliance\HARM\Upload\sceneSketch\ffc95f31-74a3-473c-8d13-ca7a5ff4bd29.jpg" />
     <Content Include="Compliance\IRIS\ccasip-01.aspx" />
+    <Content Include="Compliance\HARM\cccharm-01.aspx" />
     <Content Include="Compliance\MIRIS\cccmiris-01.aspx" />
     <Content Include="Compliance\MIRIS\cemv-01.aspx" />
     <Content Include="Compliance\MIRIS\ceoi-01.aspx" />
@@ -192,9 +113,13 @@
     <Content Include="Compliance\MIRIS\ccamiris-01.aspx" />
     <Content Include="Compliance\MIRIS\ccemiris-01.aspx" />
     <Content Include="Compliance\cchp-01.aspx" />
+    <Content Include="Compliance\HARM\ccjhap-01.aspx" />
     <Content Include="Compliance\MyDashboard\ccmdd-01.aspx" />
     <Content Include="Compliance\MyToDo\cctdl-01.aspx" />
     <Content Include="Compliance\MIRIS\ccvmiris-01.aspx" />
+    <Content Include="Compliance\HARM\cceharm-01.aspx" />
+    <Content Include="Compliance\HARM\ccvharm-01.aspx" />
+    <Content Include="Compliance\HARM\EmailTemplate\ccvharm.htm" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\ccvmiris.htm" />
     <Content Include="Compliance\MIRIS\MirisPdfTemplate\ccvmiris.htm" />
     <Content Include="Compliance\SiteView\ccsv-01.aspx" />
@@ -257,14 +182,12 @@
     <Content Include="Employee\Catalog\qscr-01.aspx" />
     <Content Include="Employee\Course\lmcp-01.aspx" />
     <Content Include="Employee\Course\lvcd-01.aspx" />
-    <Content Include="Employee\Course\p-lvcd-01.aspx" />
     <Content Include="Employee\Curricula\lmcurp-01.aspx" />
     <Content Include="Employee\Curricula\lvcurd-01.aspx" />
     <Content Include="Employee\Curricula\lvcure-01.aspx" />
-    <Content Include="Employee\Curricula\p-lvcurd-01.aspx" />
     <Content Include="Employee\eascp-01.aspx" />
     <Content Include="Employee\Enroll\ecolt-01.aspx" />
-    <Content Include="Employee\lmhp-01.aspx" />
+    <Content Include="Employee\LearningHistory\lmhp-01.aspx" />
     <Content Include="Employee\lmlp-01.aspx" />
     <Content Include="Employee\lmtd-01.aspx" />
     <Content Include="Employee\Profile\lppp-01.aspx" />
@@ -316,8 +239,9 @@
     <Content Include="Manager\mascp-01.aspx" />
     <Content Include="Manager\Home\mhp-01.aspx" />
     <Content Include="Manager\mmdd-01.aspx" />
-    <Content Include="Manager\mmtd-01.aspx" />
-    <Content Include="Manager\mtdl-01.aspx" />
+    <Content Include="Manager\mmrp-01.aspx" />
+    <Content Include="Manager\mmtdp-01.aspx" />
+    <Content Include="Manager\mmtp-01.aspx" />
     <Content Include="Manager\Profile\mppp-01.aspx" />
     <Content Include="RequestDemo\rad-01.aspx" />
     <Content Include="Resources\rlp-01.aspx" />
@@ -337,6 +261,12 @@
     <Content Include="Scripts\querystring-0.9.0-min.js" />
     <Content Include="Scripts\querystring-0.9.0.js" />
     <Content Include="Scripts\spin.min.js" />
+    <Content Include="SystemHome\Catalog\Completion\p-EditCompletionInfo.aspx" />
+    <Content Include="SystemHome\Catalog\Completion\p-sces-01.aspx" />
+    <Content Include="SystemHome\Catalog\Completion\p-scesr-01.aspx" />
+    <Content Include="SystemHome\Catalog\Completion\samcmcp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Completion\samcsp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Completion\samcsrp-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\CategorySearch\sascn-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\CategorySearch\sasrcn-01.aspx" />
     <Content Include="SystemHome\Catalog\Category\saanccn-01.aspx" />
@@ -629,9 +559,18 @@
     <Content Include="SystemHome\Catalog\Course\saatc-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\saetc-01.aspx" />
     <Content Include="SystemHome\Catalog\samcmp-01.aspx" />
+    <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\p-sase.aspx" />
+    <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\p-sausr.aspx" />
+    <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucmcp-01.aspx" />
+    <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsp-01.aspx" />
+    <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\saanawn-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\saeaw-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\samawmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx" />
+    <Content Include="SystemHome\Configuration\CurriculumStatuses\saecs-01.aspx" />
+    <Content Include="SystemHome\Configuration\CurriculumStatuses\samcsmp-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\saanctn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\saectn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx" />
@@ -650,6 +589,11 @@
     <Content Include="SystemHome\Configuration\FacilityTypes\saanftn-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\saeftn-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\samftmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\add-grading-value.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\edit-grading-value.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\saangsn-01.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\saegs-01.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\samgsmp-01.aspx" />
     <Content Include="SystemHome\Configuration\Holiday Schedules\p-sahs-01.aspx" />
     <Content Include="SystemHome\Configuration\Holiday Schedules\p-sehs-01.aspx" />
     <Content Include="SystemHome\Configuration\Holiday Schedules\saanhdn-01.aspx" />
@@ -690,6 +634,13 @@
     <Content Include="SystemHome\Configuration\UI Texts and Labels\p-sput-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\samuiltdp-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\samuiltdr-01.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\create-pin-01.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\enter-notes-pin-01.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\saucmcp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmp.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmpResults.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\saucsp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Update Curriculum\saucsrp-01.aspx" />
     <Content Include="SystemHome\Configuration\Weekday Schedules\saanwdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Weekday Schedules\saewdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Weekday Schedules\samwdmp-01.aspx" />
@@ -869,36 +820,11 @@
     <Compile Include="Compliance\HARM\ccasharm-01.aspx.designer.cs">
       <DependentUpon>ccasharm-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Compliance\HARM\cccharm-01.aspx.cs">
-      <DependentUpon>cccharm-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HARMControlMeasureDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Compliance\HARM\cccharm-01.aspx.designer.cs">
-      <DependentUpon>cccharm-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compliance\HARM\cceharm-01.aspx.cs">
-      <DependentUpon>cceharm-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compliance\HARM\cceharm-01.aspx.designer.cs">
-      <DependentUpon>cceharm-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compliance\HARM\ccjhap-01.aspx.cs">
-      <DependentUpon>ccjhap-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compliance\HARM\ccjhap-01.aspx.designer.cs">
-      <DependentUpon>ccjhap-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compliance\HARM\ccvharm-01.aspx.cs">
-      <DependentUpon>ccvharm-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compliance\HARM\ccvharm-01.aspx.designer.cs">
-      <DependentUpon>ccvharm-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.Designer.cs" />
-    <Compile Include="Compliance\HARM\PdfTemplate\HARMDataset.Designer.cs" />
     <Compile Include="Compliance\HARM\TempHarmDataTable.cs" />
     <Compile Include="Compliance\IRIS\ccasip-01.aspx.cs">
       <DependentUpon>ccasip-01.aspx</DependentUpon>
@@ -906,6 +832,13 @@
     </Compile>
     <Compile Include="Compliance\IRIS\ccasip-01.aspx.designer.cs">
       <DependentUpon>ccasip-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\HARM\cccharm-01.aspx.cs">
+      <DependentUpon>cccharm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\HARM\cccharm-01.aspx.designer.cs">
+      <DependentUpon>cccharm-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\cccmiris-01.aspx.cs">
       <DependentUpon>cccmiris-01.aspx</DependentUpon>
@@ -1013,6 +946,13 @@
     <Compile Include="Compliance\cchp-01.aspx.designer.cs">
       <DependentUpon>cchp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Compliance\HARM\ccjhap-01.aspx.cs">
+      <DependentUpon>ccjhap-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\HARM\ccjhap-01.aspx.designer.cs">
+      <DependentUpon>ccjhap-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compliance\MyDashboard\ccmdd-01.aspx.cs">
       <DependentUpon>ccmdd-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1033,6 +973,25 @@
     </Compile>
     <Compile Include="Compliance\MIRIS\ccvmiris-01.aspx.designer.cs">
       <DependentUpon>ccvmiris-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\HARM\cceharm-01.aspx.cs">
+      <DependentUpon>cceharm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\HARM\cceharm-01.aspx.designer.cs">
+      <DependentUpon>cceharm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\HARM\ccvharm-01.aspx.cs">
+      <DependentUpon>ccvharm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\HARM\ccvharm-01.aspx.designer.cs">
+      <DependentUpon>ccvharm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\HARM\PdfTemplate\HARMDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HARMDataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISDataset.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1137,13 +1096,6 @@
     <Compile Include="Employee\Course\lvcd-01.aspx.designer.cs">
       <DependentUpon>lvcd-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Employee\Course\p-lvcd-01.aspx.cs">
-      <DependentUpon>p-lvcd-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Employee\Course\p-lvcd-01.aspx.designer.cs">
-      <DependentUpon>p-lvcd-01.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Employee\Course\PdfTemplate\dsMyCourses.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1170,13 +1122,6 @@
     <Compile Include="Employee\Curricula\lvcure-01.aspx.designer.cs">
       <DependentUpon>lvcure-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Employee\Curricula\p-lvcurd-01.aspx.cs">
-      <DependentUpon>p-lvcurd-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Employee\Curricula\p-lvcurd-01.aspx.designer.cs">
-      <DependentUpon>p-lvcurd-01.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Employee\Curricula\PdfTemplate\dsMyCurricula.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1189,6 +1134,15 @@
     <Compile Include="Employee\Enroll\ecolt-01.aspx.designer.cs">
       <DependentUpon>ecolt-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Employee\LearningHistory\lmhp-01.aspx.cs">
+      <DependentUpon>lmhp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\LearningHistory\lmhp-01.aspx.designer.cs">
+      <DependentUpon>lmhp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\LearningHistory\PdfTemplate\dsMyLearningHistory.Designer.cs" />
+    <Compile Include="Employee\LearningHistory\PdfTemplate\MyCertificate.Designer.cs" />
     <Compile Include="Employee\Profile\lppp-01.aspx.cs">
       <DependentUpon>lppp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1251,13 +1205,6 @@
     </Compile>
     <Compile Include="Employee\eascp-01.aspx.designer.cs">
       <DependentUpon>eascp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Employee\lmhp-01.aspx.cs">
-      <DependentUpon>lmhp-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Employee\lmhp-01.aspx.designer.cs">
-      <DependentUpon>lmhp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee\lmlp-01.aspx.cs">
       <DependentUpon>lmlp-01.aspx</DependentUpon>
@@ -1416,19 +1363,26 @@
     <Compile Include="Manager\mmdd-01.aspx.designer.cs">
       <DependentUpon>mmdd-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Manager\mmtd-01.aspx.cs">
-      <DependentUpon>mmtd-01.aspx</DependentUpon>
+    <Compile Include="Manager\mmrp-01.aspx.cs">
+      <DependentUpon>mmrp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Manager\mmtd-01.aspx.designer.cs">
-      <DependentUpon>mmtd-01.aspx</DependentUpon>
+    <Compile Include="Manager\mmrp-01.aspx.designer.cs">
+      <DependentUpon>mmrp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Manager\mtdl-01.aspx.cs">
-      <DependentUpon>mtdl-01.aspx</DependentUpon>
+    <Compile Include="Manager\mmtdp-01.aspx.cs">
+      <DependentUpon>mmtdp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Manager\mtdl-01.aspx.designer.cs">
-      <DependentUpon>mtdl-01.aspx</DependentUpon>
+    <Compile Include="Manager\mmtdp-01.aspx.designer.cs">
+      <DependentUpon>mmtdp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\mmtp-01.aspx.cs">
+      <DependentUpon>mmtp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\mmtp-01.aspx.designer.cs">
+      <DependentUpon>mmtp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\Profile\mppp-01.aspx.cs">
       <DependentUpon>mppp-01.aspx</DependentUpon>
@@ -1640,6 +1594,48 @@
     </Compile>
     <Compile Include="SuccessStories\sssec-01.aspx.designer.cs">
       <DependentUpon>sssec-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\p-EditCompletionInfo.aspx.cs">
+      <DependentUpon>p-EditCompletionInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\p-EditCompletionInfo.aspx.designer.cs">
+      <DependentUpon>p-EditCompletionInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\p-sces-01.aspx.cs">
+      <DependentUpon>p-sces-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\p-sces-01.aspx.designer.cs">
+      <DependentUpon>p-sces-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\p-scesr-01.aspx.cs">
+      <DependentUpon>p-scesr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\p-scesr-01.aspx.designer.cs">
+      <DependentUpon>p-scesr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\samcmcp-01.aspx.cs">
+      <DependentUpon>samcmcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\samcmcp-01.aspx.designer.cs">
+      <DependentUpon>samcmcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\samcsp-01.aspx.cs">
+      <DependentUpon>samcsp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\samcsp-01.aspx.designer.cs">
+      <DependentUpon>samcsp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\samcsrp-01.aspx.cs">
+      <DependentUpon>samcsrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Completion\samcsrp-01.aspx.designer.cs">
+      <DependentUpon>samcsrp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Course\CategorySearch\sascn-01.aspx.cs">
       <DependentUpon>sascn-01.aspx</DependentUpon>
@@ -2376,6 +2372,41 @@
     <Compile Include="SystemHome\Catalog\samcmp-01.aspx.designer.cs">
       <DependentUpon>samcmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\p-sase.aspx.cs">
+      <DependentUpon>p-sase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\p-sase.aspx.designer.cs">
+      <DependentUpon>p-sase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\p-sausr.aspx.cs">
+      <DependentUpon>p-sausr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\p-sausr.aspx.designer.cs">
+      <DependentUpon>p-sausr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucmcp-01.aspx.cs">
+      <DependentUpon>saucmcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucmcp-01.aspx.designer.cs">
+      <DependentUpon>saucmcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsp-01.aspx.cs">
+      <DependentUpon>saucsp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsp-01.aspx.designer.cs">
+      <DependentUpon>saucsp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx.cs">
+      <DependentUpon>saucsrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx.designer.cs">
+      <DependentUpon>saucsrp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\ApprovalWorkflows\saanawn-01.aspx.cs">
       <DependentUpon>saanawn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2396,6 +2427,34 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\ApprovalWorkflows\samawmp-01.aspx.designer.cs">
       <DependentUpon>samawmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx.cs">
+      <DependentUpon>samcsmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx.designer.cs">
+      <DependentUpon>samcsmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx.cs">
+      <DependentUpon>saancsn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx.designer.cs">
+      <DependentUpon>saancsn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CurriculumStatuses\saecs-01.aspx.cs">
+      <DependentUpon>saecs-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CurriculumStatuses\saecs-01.aspx.designer.cs">
+      <DependentUpon>saecs-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CurriculumStatuses\samcsmp-01.aspx.cs">
+      <DependentUpon>samcsmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\CurriculumStatuses\samcsmp-01.aspx.designer.cs">
+      <DependentUpon>samcsmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\CurriculumTypes\saanctn-01.aspx.cs">
       <DependentUpon>saanctn-01.aspx</DependentUpon>
@@ -2522,6 +2581,41 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\FacilityTypes\samftmp-01.aspx.designer.cs">
       <DependentUpon>samftmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\add-grading-value.aspx.cs">
+      <DependentUpon>add-grading-value.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\add-grading-value.aspx.designer.cs">
+      <DependentUpon>add-grading-value.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\edit-grading-value.aspx.cs">
+      <DependentUpon>edit-grading-value.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\edit-grading-value.aspx.designer.cs">
+      <DependentUpon>edit-grading-value.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\saangsn-01.aspx.cs">
+      <DependentUpon>saangsn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\saangsn-01.aspx.designer.cs">
+      <DependentUpon>saangsn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\saegs-01.aspx.cs">
+      <DependentUpon>saegs-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\saegs-01.aspx.designer.cs">
+      <DependentUpon>saegs-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\samgsmp-01.aspx.cs">
+      <DependentUpon>samgsmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\samgsmp-01.aspx.designer.cs">
+      <DependentUpon>samgsmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\Holiday Schedules\p-sahs-01.aspx.cs">
       <DependentUpon>p-sahs-01.aspx</DependentUpon>
@@ -2804,6 +2898,55 @@
     <Compile Include="SystemHome\Configuration\UI Texts and Labels\samuiltdr-01.aspx.designer.cs">
       <DependentUpon>samuiltdr-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\create-pin-01.aspx.cs">
+      <DependentUpon>create-pin-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\create-pin-01.aspx.designer.cs">
+      <DependentUpon>create-pin-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\enter-notes-pin-01.aspx.cs">
+      <DependentUpon>enter-notes-pin-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\enter-notes-pin-01.aspx.designer.cs">
+      <DependentUpon>enter-notes-pin-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01.aspx.cs">
+      <DependentUpon>saucmcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01.aspx.designer.cs">
+      <DependentUpon>saucmcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmp.aspx.cs">
+      <DependentUpon>saucmcp-01_SearchEmp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmp.aspx.designer.cs">
+      <DependentUpon>saucmcp-01_SearchEmp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmpResults.aspx.cs">
+      <DependentUpon>saucmcp-01_SearchEmpResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmpResults.aspx.designer.cs">
+      <DependentUpon>saucmcp-01_SearchEmpResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsp-01.aspx.cs">
+      <DependentUpon>saucsp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsp-01.aspx.designer.cs">
+      <DependentUpon>saucsp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsrp-01.aspx.cs">
+      <DependentUpon>saucsrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsrp-01.aspx.designer.cs">
+      <DependentUpon>saucsrp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\Weekday Schedules\saanwdn-01.aspx.cs">
       <DependentUpon>saanwdn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2981,6 +3124,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ComplianceFactors.MyTeam\ComplianceFactors.MyTeam.csproj">
+      <Project>{F6D86296-4128-4636-A674-09E70EBB99BE}</Project>
+      <Name>ComplianceFactors.MyTeam</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ComplicanceFactor.BusinessComponent\ComplianceFactors.BusinessComponent.csproj">
       <Project>{844817C2-FF5B-4F99-A5E9-D88619987583}</Project>
       <Name>ComplianceFactors.BusinessComponent</Name>
@@ -3036,6 +3183,11 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="Compliance\HARM\tempHarmFiles\" />
+    <Folder Include="Compliance\HARM\Upload\CustomCustomer\" />
+    <Folder Include="Compliance\HARM\Upload\EmployeeInterview\" />
+    <Folder Include="Compliance\HARM\Upload\ExtenuatingCondtion\" />
+    <Folder Include="Compliance\HARM\Upload\Photo\" />
+    <Folder Include="Compliance\HARM\Upload\sceneSketch\" />
     <Folder Include="Compliance\MIRIS\tempCaseFiles\" />
     <Folder Include="Compliance\MIRIS\Upload\EmployeeInterview\" />
     <Folder Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\" />
@@ -3043,7 +3195,6 @@
     <Folder Include="Compliance\MIRIS\Upload\Police\" />
     <Folder Include="Compliance\MIRIS\Upload\sceneSketch\" />
     <Folder Include="Compliance\MIRIS\Upload\Witness\" />
-    <Folder Include="Employee\Learning History\" />
     <Folder Include="SystemHome\Catalog\Course\Delivery\Attachments\" />
     <Folder Include="SystemHome\Catalog\Course\Icons\" />
     <Folder Include="SystemHome\Catalog\Curriculum\Path\Locale\" />
@@ -3055,14 +3206,22 @@
     <None Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.xsc">
       <DependentUpon>HARMControlMeasureDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.xsd" />
+    <None Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HARMControlMeasureDataSet.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.xss">
       <DependentUpon>HARMControlMeasureDataSet.xsd</DependentUpon>
     </None>
     <None Include="Compliance\HARM\PdfTemplate\HARMDataset.xsc">
       <DependentUpon>HARMDataset.xsd</DependentUpon>
     </None>
-    <None Include="Compliance\HARM\PdfTemplate\HARMDataset.xsd" />
+    <None Include="Compliance\HARM\PdfTemplate\HARMDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HARMDataset.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Compliance\HARM\PdfTemplate\HARMDataset.xss">
       <DependentUpon>HARMDataset.xsd</DependentUpon>
     </None>
@@ -3122,6 +3281,20 @@
     <None Include="Employee\Curricula\PdfTemplate\dsMyCurricula.xss">
       <DependentUpon>dsMyCurricula.xsd</DependentUpon>
     </None>
+    <None Include="Employee\LearningHistory\PdfTemplate\dsMyLearningHistory.xsc">
+      <DependentUpon>dsMyLearningHistory.xsd</DependentUpon>
+    </None>
+    <None Include="Employee\LearningHistory\PdfTemplate\dsMyLearningHistory.xsd" />
+    <None Include="Employee\LearningHistory\PdfTemplate\dsMyLearningHistory.xss">
+      <DependentUpon>dsMyLearningHistory.xsd</DependentUpon>
+    </None>
+    <None Include="Employee\LearningHistory\PdfTemplate\MyCertificate.xsc">
+      <DependentUpon>MyCertificate.xsd</DependentUpon>
+    </None>
+    <None Include="Employee\LearningHistory\PdfTemplate\MyCertificate.xsd" />
+    <None Include="Employee\LearningHistory\PdfTemplate\MyCertificate.xss">
+      <DependentUpon>MyCertificate.xsd</DependentUpon>
+    </None>
     <None Include="Images\Zoom\Thumbs.db" />
     <Content Include="Solutions\Main.sitemap" />
     <None Include="SystemHome\Configuration\HRIS Integration\Sample\HRIS_import_csv_example.xlsx" />
@@ -3136,6 +3309,8 @@
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISReport.rdlc" />
     <EmbeddedResource Include="Employee\Course\PdfTemplate\MyCourses.rdlc" />
     <EmbeddedResource Include="Employee\Curricula\PdfTemplate\MyCurricula.rdlc" />
+    <EmbeddedResource Include="Employee\LearningHistory\PdfTemplate\MyCertificate.rdlc" />
+    <EmbeddedResource Include="Employee\LearningHistory\PdfTemplate\MyLearningHistory.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

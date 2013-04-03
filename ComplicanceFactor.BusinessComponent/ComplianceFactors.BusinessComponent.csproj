@@ -43,6 +43,7 @@
     <Compile Include="AuditlogBLL.cs" />
     <Compile Include="ComplianceBLL.cs" />
     <Compile Include="DataAccessObject\ComplainceVehicle.cs" />
+    <Compile Include="DataAccessObject\CurriculumStatuses.cs" />
     <Compile Include="DataAccessObject\Employee.cs" />
     <Compile Include="DataAccessObject\Enrollment.cs" />
     <Compile Include="DataAccessObject\Navigation.cs" />
@@ -51,7 +52,9 @@
     <Compile Include="DataAccessObject\SiteViewInspectionTemplate.cs" />
     <Compile Include="DataAccessObject\SystemApprovalWorkflow.cs" />
     <Compile Include="DataAccessObject\SystemCurriculum.cs" />
+    <Compile Include="DataAccessObject\SystemCurriculumStatus.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumType.cs" />
+    <Compile Include="DataAccessObject\SystemGradingSchemes.cs" />
     <Compile Include="DataAccessObject\SystemHolidaySchedules.cs" />
     <Compile Include="DataAccessObject\SystemHRISIntegration.cs" />
     <Compile Include="DataAccessObject\SystemNotification.cs" />
@@ -91,13 +94,16 @@
     <Compile Include="SysemDeliveryTypesBLL.cs" />
     <Compile Include="SystemApprovalWorkflowBLL.cs" />
     <Compile Include="SystemCategoriesBLL.cs" />
+    <Compile Include="SystemCompletionStatusesBLL.cs" />
     <Compile Include="SystemCurriculumBLL.cs" />
+    <Compile Include="SystemCurriculumStatusBLL.cs" />
     <Compile Include="SystemCurriculumTypeBLL.cs" />
     <Compile Include="SystemEmployeeTypesBLL.cs" />
     <Compile Include="SystemFacilityBLL.cs" />
     <Compile Include="SystemFacilityTypesBLL.cs" />
     <Compile Include="SystemCatalogBLL.cs" />
     <Compile Include="SystemDomainBLL.cs" />
+    <Compile Include="SystemGradingSchemesBLL.cs" />
     <Compile Include="SystemHolidaySchedulesBLL.cs" />
     <Compile Include="SystemHRISIntegrationBLL.cs" />
     <Compile Include="SystemInstructorBLL.cs" />

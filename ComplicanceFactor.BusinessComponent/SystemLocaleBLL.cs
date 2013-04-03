@@ -213,6 +213,29 @@ namespace ComplicanceFactor.BusinessComponent
             }
 
         }
+        /// <summary>
+        /// Update Locale
+        /// </summary>
+        /// <param name="updateLocale"></param>
+        /// <returns></returns>
+        public static int UpdatetLocale(string  updateLocale)
+        {
+            Hashtable htUpdateLocale = new Hashtable();
+            htUpdateLocale.Add("@updateLocale", updateLocale);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_locale", htUpdateLocale);
+
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+       
        
     }
 }

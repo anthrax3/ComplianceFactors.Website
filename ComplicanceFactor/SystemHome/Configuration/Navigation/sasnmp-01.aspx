@@ -173,6 +173,10 @@
 
     </script>
     <br />
+    <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
+    </div>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    </div>
     <div class="content_area_long">
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">

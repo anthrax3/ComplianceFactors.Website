@@ -54,7 +54,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.UI_Texts_and_Labels
         {
             try
             {
-                SystemUI_Texts_Labels_DropdownBLL.DeleteUiText(args2.Trim(),args.Trim());
+                SystemUI_Texts_Labels_DropdownBLL.DeleteUiText(args.Trim(),args1.Trim());
             }
             catch (Exception ex)
             {

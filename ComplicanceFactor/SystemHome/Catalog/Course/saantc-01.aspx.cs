@@ -32,7 +32,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_catalog_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_course_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_course_text");
                 //created by
                 lblCreatedBy.Text = SessionWrapper.u_firstname + ' ' + SessionWrapper.u_lastname;
                 //clear course related sessoin

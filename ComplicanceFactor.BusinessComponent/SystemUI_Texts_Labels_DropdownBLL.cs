@@ -499,10 +499,10 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static int DeleteUiText(string s_ui_text_id_pk, string s_locale_name)
+        public static int DeleteUiText(string s_ui_text_name, string s_locale_name)
         {
             Hashtable htUpdateUiText = new Hashtable();
-            htUpdateUiText.Add("@s_ui_text_id_pk", s_ui_text_id_pk);
+            htUpdateUiText.Add("@s_ui_text_name", s_ui_text_name);
             htUpdateUiText.Add("@s_locale_name", s_locale_name);
 
             try

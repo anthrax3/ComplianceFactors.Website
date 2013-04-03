@@ -38,7 +38,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="user_id_fk"></param>
         /// <returns>u_user_id_pk,u_firstname and u_last_name</returns>
-        public static DataSet GetEmployeeByManager(string user_id_fk, string u_name)
+        public static DataSet GetEmployeeByManager(string user_id_fk, string u_name, string course_id_or_curriculum_id, bool check_id)
         {
             try
             {
@@ -52,6 +52,8 @@ namespace ComplicanceFactor.BusinessComponent
                 {
                     htGetEmployeeByManager.Add("@u_name", DBNull.Value);
                 }
+                htGetEmployeeByManager.Add("@course_id_or_curriculum_id", course_id_or_curriculum_id);
+                htGetEmployeeByManager.Add("@check_id", check_id);
                 return DataProxy.FetchDataSet("e_sp_get_employee_list", htGetEmployeeByManager);
             }
             catch (Exception)
@@ -59,5 +61,6 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
     }
 }

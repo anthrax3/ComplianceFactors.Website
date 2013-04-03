@@ -230,12 +230,12 @@
                             <%=LocalResources.GetLabel("app_manage_delivery_types_text")%></a>
                     </td>
                     <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_scoring_schemes_text")%></a>
+                        <a href="GradingSchemes/samgsmp-01.aspx">Manage Grading Schemes</a>
+                         <%--<%=LocalResources.GetLabel("app_manage_scoring_schemes_text")%>--%>
                     </td>
                     <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_completion_status_text")%></a>
+                        <a href="CompletionStatuses/samcsmp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_completion_statuses_text")%></a>
                     </td>
                 </tr>
                 <tr>
@@ -327,7 +327,7 @@
                         <a href="FacilityTypes/samftmp-01.aspx"><%=LocalResources.GetLabel("app_manage_facility_types_text")%></a>
                     </td>
                     <td>
-                        <a href="#"></a>
+                        <a href="CurriculumStatuses/samcsmp-01.aspx"><%=LocalResources.GetLabel("app_manage_curriculum_statuses_text")%></a>
                     </td>
                 </tr>
                 <tr>

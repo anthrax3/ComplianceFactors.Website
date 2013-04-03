@@ -16,6 +16,7 @@ using System.IO;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using ComplicanceFactor.Common.Languages;
+using System.Xml.Serialization;
 
 
 
@@ -502,5 +503,292 @@ namespace ComplicanceFactor.SystemHome.Configuration.Languages
             Response.Redirect("~/SystemHome/Configuration/sascmp-01.aspx", false);
         }
 
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            SystemLocale locale = new SystemLocale();
+            DataTable dtLanguage = new DataTable();
+            dtLanguage.Columns.Add("Id");
+            dtLanguage.Columns.Add("LanguageName");
+            dtLanguage.Columns.Add("IsVisible");
+            DataRow dr;
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "us_english";
+            dr["LanguageName"] = txtus_english.Text;
+            dr["IsVisible"] = chk_us_english.Checked;
+            dtLanguage.Rows.Add(dr);
+
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "uk_english";
+            dr["LanguageName"] = txtEnglishUK.Text;
+            dr["IsVisible"] = chk_uk_english.Checked;
+            dtLanguage.Rows.Add(dr);
+
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "ca_french";
+            dr["LanguageName"] = txtFrenchCA.Text;
+            dr["IsVisible"] = chk_ca_french.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "fr_french";
+            dr["LanguageName"] = txtFrenchFR.Text;
+            dr["IsVisible"] = chk_fr_french.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "mx_spanish";
+            dr["LanguageName"] = txtSpanishMX.Text;
+            dr["IsVisible"] = chk_mx_spanish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "sp_spanish";
+            dr["LanguageName"] = txtSpanishSpain.Text;
+            dr["IsVisible"] = chk_sp_spanish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "portuguese";
+            dr["LanguageName"] = txtus_english.Text;
+            dr["IsVisible"] = chk_us_english.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "simp_chinese";
+            dr["LanguageName"] = txtChinese.Text;
+            dr["IsVisible"] = chk_simp_chinese.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "german";
+            dr["LanguageName"] = txtGerman.Text;
+            dr["IsVisible"] = chk_german.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "japanese";
+            dr["LanguageName"] = txtJapanese.Text;
+            dr["IsVisible"] = chk_japanese.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "russian";
+            dr["LanguageName"] = txtRussian.Text;
+            dr["IsVisible"] = chk_russian.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "danish";
+            dr["LanguageName"] = txtDanish.Text;
+            dr["IsVisible"] = chk_danish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "polish";
+            dr["LanguageName"] = txtPolish.Text;
+            dr["IsVisible"] = chk_polish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "swedish";
+            dr["LanguageName"] = txtSwedish.Text;
+            dr["IsVisible"] = chk_swedish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "finnish";
+            dr["LanguageName"] = txtFinnish.Text;
+            dr["IsVisible"] = chk_finnish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "korean";
+            dr["LanguageName"] = txtKorean.Text;
+            dr["IsVisible"] = chk_korean.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "italian";
+            dr["LanguageName"] = txtItalian.Text;
+            dr["IsVisible"] = chk_italian.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "dutch";
+            dr["LanguageName"] = txtDutch.Text;
+            dr["IsVisible"] = chk_dutch.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "indonesian";
+            dr["LanguageName"] = txtIndonesian.Text;
+            dr["IsVisible"] = chk_indonesian.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "greek";
+            dr["LanguageName"] = txtGreek.Text;
+            dr["IsVisible"] = chk_greek.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "hungarian";
+            dr["LanguageName"] = txtHungarian.Text;
+            dr["IsVisible"] = chk_hungarian.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "norwegian";
+            dr["LanguageName"] = txtNorwegian.Text;
+            dr["IsVisible"] = chk_norwegian.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "turkish";
+            dr["LanguageName"] = txtTurkish.Text;
+            dr["IsVisible"] = chk_turkish.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "arabic_rtl";
+            dr["LanguageName"] = txtArabic.Text;
+            dr["IsVisible"] = chk_arabic_rtl.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_01";
+            dr["LanguageName"] = txtCustom01.Text;
+            dr["IsVisible"] = chk_Custom01.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_02";
+            dr["LanguageName"] = txtCustom02.Text;
+            dr["IsVisible"] = chk_Custom02.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_03";
+            dr["LanguageName"] = txtCustom03.Text;
+            dr["IsVisible"] = chk_Custom03.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_04";
+            dr["LanguageName"] = txtCustom04.Text;
+            dr["IsVisible"] = chk_Custom04.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_05";
+            dr["LanguageName"] = txtCustom05.Text;
+            dr["IsVisible"] = chk_Custom05.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_06";
+            dr["LanguageName"] = txtCustom06.Text;
+            dr["IsVisible"] = chk_Custom06.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_07";
+            dr["LanguageName"] = txtCustom07.Text;
+            dr["IsVisible"] = chk_Custom07.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_08";
+            dr["LanguageName"] = txtCustom08.Text;
+            dr["IsVisible"] = chk_Custom08.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_09";
+            dr["LanguageName"] = txtCustom09.Text;
+            dr["IsVisible"] = chk_Custom09.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_10";
+            dr["LanguageName"] = txtCustom10.Text;
+            dr["IsVisible"] = chk_Custom10.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_11";
+            dr["LanguageName"] = txtCustom11.Text;
+            dr["IsVisible"] = chk_Custom11.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_12";
+            dr["LanguageName"] = txtCustom12.Text;
+            dr["IsVisible"] = chk_Custom12.Checked;
+            dtLanguage.Rows.Add(dr);
+
+            dr = dtLanguage.NewRow();
+            dr["Id"] = "custom_13";
+            dr["LanguageName"] = txtCustom13.Text;
+            dr["IsVisible"] = chk_Custom13.Checked;
+            dtLanguage.Rows.Add(dr);
+
+
+            try
+            {
+                string languageXML = ConvertDataTableToXml(dtLanguage);
+                int error;
+                error = SystemLocaleBLL.UpdatetLocale(languageXML);
+                if (error != -2)
+                {
+                    //Show success message
+                    divSuccess.Style.Add("display", "block");
+                    divError.Style.Add("display", "none");
+                    divSuccess.InnerHtml = "Update Successfully";
+
+
+                }
+                else
+                {
+                    //Show error message 
+                    divSuccess.Style.Add("display", "none");
+                    divError.Style.Add("display", "block");
+                    divError.InnerText = "Data not Updated";
+
+                }
+
+                //Call the business
+                //Show the message successfully inserted
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
+
+
+
+        public string ClassToXML(SystemLocale locale)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlSerializer xmlSerializer = new XmlSerializer(locale.GetType());
+            using (MemoryStream xmlStream = new MemoryStream())
+            {
+                xmlSerializer.Serialize(xmlStream, locale);
+                xmlStream.Position = 0;
+                xmlDoc.Load(xmlStream);
+                return xmlDoc.InnerXml;
+            }
+        }
+
+      
+
+        
     }
 }

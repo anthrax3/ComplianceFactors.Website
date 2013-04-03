@@ -213,8 +213,6 @@ namespace ComplicanceFactor.Employee.Catalog
                     Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                     Button btnAssign = (Button)e.Row.FindControl("btnAssign");
                     Label lblAlreadyEnrollMessage = (Label)e.Row.FindControl("lblAlreadyEnrollMessage");
-                    Label lblDeliveryType = (Label)e.Row.FindControl("lblDeliveryType");
-                    lblDeliveryType.Text = gvsearchDetails.DataKeys[e.Row.RowIndex].Values[3].ToString();
                     //check if the type is course or curriculum or program
                     if (type == "course")
                     {
@@ -307,7 +305,11 @@ namespace ComplicanceFactor.Employee.Catalog
                     int index = Convert.ToInt32(e.CommandArgument.ToString());
                     string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
                     string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
-                    Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id)+"&ca="+ SecurityCenter.EncryptText(c_course_approve_req), false);
+                    string c_type = gvsearchDetails.DataKeys[index].Values[1].ToString();
+                    if (c_type == "course")
+                        Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
+                    else
+                        Response.Redirect("~/Employee/Curricula/lvcure-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
 
                 }
                 else if (e.CommandName.Equals("Assign"))
@@ -318,10 +320,10 @@ namespace ComplicanceFactor.Employee.Catalog
                         assignCurricula.e_curriculum_assign_user_id_fk = SessionWrapper.u_userid;
                         assignCurricula.e_curriculum_assign_curriculum_id_fk = e.CommandArgument.ToString();
                         assignCurricula.e_curriculum_assign_required_flag = true;
-                        assignCurricula.e_curriculum_assign_target_due_date = DateTime.UtcNow;
+                        assignCurricula.e_curriculum_assign_target_due_date = DateTime.UtcNow; //set empty on EnrollmentBLL  for self assign
                         assignCurricula.e_curriculum_assign_recert_due_date = DateTime.UtcNow;
                         assignCurricula.e_curriculum_assign_recert_status_id_fk = string.Empty;
-                        assignCurricula.e_curriculum_assign_status_id_fk = "Enrolled";
+                        assignCurricula.e_curriculum_assign_status_id_fk = "Assigned";
                         assignCurricula.e_curriculum_assign_percent_complete = 0;
                         assignCurricula.e_curriculum_assign_active_flag = true;
                         EnrollmentBLL.AssignCurricula(assignCurricula);
@@ -346,10 +348,11 @@ namespace ComplicanceFactor.Employee.Catalog
                 }
                 else if (e.CommandName.Equals("Drop"))
                 {
-                    BusinessComponent.DataAccessObject.Enrollment UpdateEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
-                    UpdateEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                    UpdateEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                    EnrollmentBLL.UpdateEnrollmentStatus(UpdateEnrollmentStatus);
+                    BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
+                    DropEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                    DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                    EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
+                    Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
                     
                 }
             }

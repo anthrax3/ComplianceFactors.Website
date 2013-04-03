@@ -52,7 +52,7 @@ namespace ComplicanceFactor.Manager.Catalog
                 }
 
                 //+ " > " + "<a href=~/Employee/Catalog/bcdp-01.aspx?id="+"">" + catalog.categoryName + "</a>";
-                lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>" + " > " + "<a href=/Manager/Catalog/bchp-01.aspx>" + LocalResources.GetGlobalLabel("app_browse_catalog_text") + "</a>" + brdCrumb;
+                lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Manager/Catalog/bchp-01.aspx>" + LocalResources.GetGlobalLabel("app_browse_catalog_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_catalog_search_result_text");
 
 
                 ListItem liAll = new ListItem();

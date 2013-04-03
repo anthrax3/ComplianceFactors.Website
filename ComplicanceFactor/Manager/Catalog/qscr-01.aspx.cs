@@ -207,29 +207,34 @@ namespace ComplicanceFactor.Manager.Catalog
                     string type = gvsearchDetails.DataKeys[e.Row.RowIndex].Values[1].ToString();
                     //approval required or not for course
                     string approvalCourse = gvsearchDetails.DataKeys[e.Row.RowIndex].Values[2].ToString();
-                    //find controls
-                    Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
+                    ////find controls
+                    //Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                     Literal ltlAssign = (Literal)e.Row.FindControl("ltlAssign");
-                    Literal ltlEnrollOLT = (Literal)e.Row.FindControl("ltlEnrollOLT");
-                    //Button btnAssign = (Button)e.Row.FindControl("btnAssign");
-                    Label lblAlreadyEnrollMessage = (Label)e.Row.FindControl("lblAlreadyEnrollMessage");
-                    //Get "OLT" delivery 
+                    //Literal ltlEnrollOLT = (Literal)e.Row.FindControl("ltlEnrollOLT");
+                    ////Button btnAssign = (Button)e.Row.FindControl("btnAssign");
+                    //Label lblAlreadyEnrollMessage = (Label)e.Row.FindControl("lblAlreadyEnrollMessage");
+                    ////Get "OLT" delivery 
                     DataSet dsDelivery = new DataSet();
                     dsDelivery = EmployeeCatalogBLL.GetOLT(system_id);
-                    //approval required or not for delivery
+                    ////approval required or not for delivery
                     bool approvDelivery = EmployeeCatalogBLL.GetApprovalDelivery(system_id, dsDelivery.Tables[1]);
+
                     //check if the type is course or curriculum or program
                     if (type == "course")
                     {
-                        //get if "OLT" delivery exist or not
-                        EmployeeCatalog getOLTDelivery = new EmployeeCatalog();
-                        getOLTDelivery = EmployeeCatalogBLL.GetSingleOLTDelivery(system_id, dsDelivery.Tables[0]);
-                        string strDeliveryType = getOLTDelivery.c_delivery_type_text;
-                        //check delivery is already enrolled or not
-                        BusinessComponent.DataAccessObject.Enrollment getEnrollDelivery = new BusinessComponent.DataAccessObject.Enrollment();
-                        getEnrollDelivery = EnrollmentBLL.GetEnrollCourse(system_id, SessionWrapper.u_userid);
-                        //get enroll type
-                        string strEnrollType = getEnrollDelivery.e_enroll_type_name;
+                      
+                        Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
+                        btnEnroll.Style.Add("display", "inline");
+                        ////get if "OLT" delivery exist or not
+                        //EmployeeCatalog getOLTDelivery = new EmployeeCatalog();
+                        //getOLTDelivery = EmployeeCatalogBLL.GetSingleOLTDelivery(system_id, dsDelivery.Tables[0]);
+                        //string strDeliveryType = getOLTDelivery.c_delivery_type_text;
+                        ////check delivery is already enrolled or not
+                        //BusinessComponent.DataAccessObject.Enrollment getEnrollDelivery = new BusinessComponent.DataAccessObject.Enrollment();
+                        //getEnrollDelivery = EnrollmentBLL.GetEnrollCourse(system_id, SessionWrapper.u_userid);
+                        ////get enroll type
+                        //string strEnrollType = getEnrollDelivery.e_enroll_type_name;
+                        //ltlEnrollOLT.Text = "<input type=button id=" + getOLTDelivery.c_delivery_id_fk + "," + strDeliveryType + "," + system_id + "," + getOLTDelivery.c_delivery_waitlist_flag + "," + approvDelivery + "," + approvalCourse + "," + 1 + "  class='enroll' value='Enroll !' />";
                         //if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && string.IsNullOrEmpty(strEnrollType))
                         //{
                         //    btnQuickLunch.Style.Add("display", "inline");
@@ -237,50 +242,56 @@ namespace ComplicanceFactor.Manager.Catalog
                         ///<summary>
                         ///If the course has only 1 Delivery and it is OLT, then the system skip this step and goes directly to the employees search
                         ///</summary>
-                        if (strDeliveryType == "OLT"  && getOLTDelivery.c_delivery_count == 1)
-                        {
-                            btnEnroll.Style.Add("display", "none");
-                            ltlEnrollOLT.Text = "<input type=button id=" + getOLTDelivery.c_delivery_id_fk + "," + strDeliveryType + "," + system_id + "," + getOLTDelivery.c_delivery_waitlist_flag + "," + approvDelivery + "," + approvalCourse + "  class='enroll' value='Enroll !' />";
-                        }
-                        if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Manager-enroll")
-                        {
+                        
+                        //if (strDeliveryType == "OLT"  && getOLTDelivery.c_delivery_count == 1)
+                        //{
+                        //    bool isCheck = true;
+                        //    btnEnroll.Style.Add("display", "none");
+                        //    ltlEnrollOLT.Text = "<input type=button id=" + getOLTDelivery.c_delivery_id_fk + "," + strDeliveryType + "," + system_id + "," + getOLTDelivery.c_delivery_waitlist_flag + "," + approvDelivery + "," + approvalCourse + "," + 1 + "  class='enroll' value='Enroll !' />";
+                        //}
+                        //if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Manager-enroll")
+                        //{
 
-                            //btnDrop.Style.Add("display", "inline");
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnEnroll.Style.Add("display", "none");
-                            ltlEnrollOLT.Text = string.Empty;
+                        //    //btnDrop.Style.Add("display", "inline");
+                        //    //lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                        //    btnEnroll.Style.Add("display", "inline");
+                        //    ltlEnrollOLT.Text = string.Empty;
 
-                        }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Manager-enroll")
-                        {
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            //btnDrop.Style.Add("display", "none");
-                            btnEnroll.Style.Add("display", "none");
-                            ltlEnrollOLT.Text = string.Empty;
+                        //}
+                        //else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Manager-enroll")
+                        //{
+                        //    //lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                        //    //btnDrop.Style.Add("display", "none");
+                        //    btnEnroll.Style.Add("display", "inline");
+                        //    ltlEnrollOLT.Text = string.Empty;
 
-                        }
-                        else if (string.IsNullOrEmpty(strEnrollType))
-                        {
-                            //btnDrop.Style.Add("display", "none");
-                            lblAlreadyEnrollMessage.Text = string.Empty;
-                        }
+                        //}
+                        //else if (string.IsNullOrEmpty(strEnrollType))
+                        //{
+                        //    //btnDrop.Style.Add("display", "none");
+                        //    lblAlreadyEnrollMessage.Text = string.Empty;
+                        //}
                     }
                     else if (type == "curriculum")
                     {
-                        Enrollment getAssignCurriculum = new Enrollment();
-                        getAssignCurriculum = EnrollmentBLL.GetAssignCourse(system_id, SessionWrapper.u_userid);
+                        //Button btnAssign = (Button)e.Row.FindControl("btnAssign");
+                        //btnAssign.Style.Add("display", "inline");
+
+                        //Enrollment getAssignCurriculum = new Enrollment();
+                        //getAssignCurriculum = EnrollmentBLL.GetAssignCourse(system_id, SessionWrapper.u_userid);
                         //btnDrop.Style.Add("display", "none");
-                        btnEnroll.Style.Add("display", "none");
-                        if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_curriculum_id_fk))
-                        {
-                            lblAlreadyEnrollMessage.Text = "***Assigned***";
-                        }
-                        else
-                        {
-                            lblAlreadyEnrollMessage.Text = string.Empty;
-                            ltlAssign.Text = "<input type=button id=" + system_id + "," + type + ","+ approvDelivery+","+approvalCourse+ " class='assign' value='Assign !' />";
-                            //btnAssign.Style.Add("display", "inline");
-                        }
+                        //btnEnroll.Style.Add("display", "none");
+                        //if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_curriculum_id_fk))
+                        //{
+                        //lblAlreadyEnrollMessage.Text = "***Assigned***";
+                        //}
+                        //else
+                        //{
+                        //bool isCheck = false;
+                        // lblAlreadyEnrollMessage.Text = string.Empty;
+                        ltlAssign.Text = "<input type=button id=" + system_id + "," + type + "," + approvDelivery + "," + approvalCourse + "," + 0 + " class='enroll' value= " + LocalResources.GetLabel("app_assign_button_text") + " />";
+                        //btnAssign.Style.Add("display", "inline");
+                        //}
                     }
                 }
                 catch (Exception ex)
@@ -310,9 +321,24 @@ namespace ComplicanceFactor.Manager.Catalog
                     int index = Convert.ToInt32(e.CommandArgument.ToString());
                     string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
                     string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
-                    Response.Redirect("~/Manager/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
-
+                    string type = gvsearchDetails.DataKeys[index].Values[1].ToString();
+                    if (type == "course")
+                    {
+                        Response.Redirect("~/Manager/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
+                    }
+                    else
+                    {
+                        //Response.Redirect("~/Employee/Curricula/lvc")
+                    }
                 }
+                //else if (e.CommandName.Equals("Detail"))
+                //{
+                //    int index = Convert.ToInt32(e.CommandArgument.ToString());
+                //    string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
+                //    string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
+                //    Response.Redirect("~/Manager/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
+
+                //}
                 else if (e.CommandName.Equals("Assign"))
                 {
 

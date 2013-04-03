@@ -103,6 +103,15 @@ namespace ComplicanceFactor.Employee.Course {
         protected global::System.Web.UI.WebControls.Label lblCoordinator;
         
         /// <summary>
+        /// gvSession control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSession;
+        
+        /// <summary>
         /// lblRecurrence control.
         /// </summary>
         /// <remarks>

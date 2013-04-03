@@ -17,7 +17,7 @@ namespace ComplicanceFactor.Employee.Catalog
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + LocalResources.GetGlobalLabel("app_advanced_search_catalog_text");
+            lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_advanced_search_catalog_text");
             //go button
             Button btnGo = (Button)Master.FindControl("btnGo");
             btnGo.Click += new EventHandler(btnGo_Click);

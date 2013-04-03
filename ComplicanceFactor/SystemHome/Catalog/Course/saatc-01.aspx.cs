@@ -32,7 +32,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 try
                 {
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_catalog_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_archive_course");
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_archive_course");
 
 
                     ///<summary>
@@ -164,8 +164,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
             gvFulfillments.DataSource = dsprerequisiteEquivalenciesFullfillments.Tables[5];
             gvFulfillments.DataBind();
             //Get delivery(ies)
-            gvDeliveries.DataSource = SystemCatalogBLL.GetCourseDelivery(courseId);
-            gvDeliveries.DataBind();
+            DataSet dsGetcourseDelivery = new DataSet();
+            dsGetcourseDelivery = SystemCatalogBLL.GetCourseDelivery(courseId);
+            gvDeliveries.DataSource = dsGetcourseDelivery.Tables[0];
             //Get domain
             gvDomain.DataSource = SystemCatalogBLL.GetCourseDomain(courseId);
             gvDomain.DataBind();

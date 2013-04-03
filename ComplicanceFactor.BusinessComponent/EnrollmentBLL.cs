@@ -27,22 +27,11 @@ namespace ComplicanceFactor.BusinessComponent
                     getEnrollDeliveries.e_enroll_user_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_user_id_fk"].ToString();
                     getEnrollDeliveries.e_enroll_course_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_course_id_fk"].ToString();
                     getEnrollDeliveries.e_enroll_delivery_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_delivery_id_fk"].ToString();
-                    //getEnrollDeliveries.e_enroll_enroll_date_time = dtGetEnrollDeliveries.Rows[0]["e_enroll_enroll_date_time"].ToString();
-                    //getEnrollDeliveries.e_enroll_expire_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_expire_date"].ToString();
                     getEnrollDeliveries.e_enroll_enroll_type_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_enroll_type_id_fk"].ToString();
                     getEnrollDeliveries.e_enroll_required_flag = Convert.ToBoolean(dtGetEnrollDeliveries.Rows[0]["e_enroll_required_flag"]);
                     getEnrollDeliveries.e_enroll_approval_required_flag = Convert.ToBoolean(dtGetEnrollDeliveries.Rows[0]["e_enroll_approval_required_flag"]);
                     getEnrollDeliveries.e_enroll_approval_status_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_approval_status_id_fk"].ToString();
-                    //getEnrollDeliveries.e_enroll_approval_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_approval_date"].ToString();
-                    //getEnrollDeliveries.e_enroll_target_due_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_target_due_date"].ToString();
                     getEnrollDeliveries.e_enroll_status_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_status_id_fk"].ToString();
-                    //getEnrollDeliveries.e_enroll_assign_recert_due_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_assign_recert_due_date"].ToString();
-                    //getEnrollDeliveries.e_enroll_assign_recert_status_id_fk = dtGetEnrollDeliveries.Rows[0]["e_enroll_assign_recert_status_id_fk"].ToString();
-                    //getEnrollDeliveries.e_enroll_time_spent = dtGetEnrollDeliveries.Rows[0]["e_enroll_time_spent"].ToString();
-                    //getEnrollDeliveries.e_enroll_lesson_location = dtGetEnrollDeliveries.Rows[0]["e_enroll_lesson_location"].ToString();
-                    //getEnrollDeliveries.e_enroll_suspend_data = dtGetEnrollDeliveries.Rows[0]["e_enroll_suspend_data"].ToString();
-                    //getEnrollDeliveries.e_enroll_score = dtGetEnrollDeliveries.Rows[0]["e_enroll_score"].ToString();
-                    //getEnrollDeliveries.e_enroll_active_flag = dtGetEnrollDeliveries.Rows[0]["e_enroll_active_flag"].ToString();
                     getEnrollDeliveries.e_enroll_type_name = dtGetEnrollDeliveries.Rows[0]["e_enroll_type_name"].ToString();
 
                 }
@@ -316,7 +305,7 @@ namespace ComplicanceFactor.BusinessComponent
                 }
                 else
                 {
-                    htAssignCurricula.Add("@e_curriculum_assign_target_due_date", assignCurricula.e_curriculum_assign_target_due_date);
+                    htAssignCurricula.Add("@e_curriculum_assign_target_due_date", DBNull.Value);
                 }
                 if (assignCurricula.e_curriculum_assign_recert_due_date == null)
                 {
@@ -556,5 +545,167 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-    }
+
+
+        /// <summary>
+        /// delete enrollment 
+        /// </summary>
+        /// <param name="Enroll"></param>
+        /// <returns></returns>
+        public static int DropEnrollmentStatus(Enrollment enroll)
+        {
+            try
+            {
+                Hashtable htDropEnrollmentStatus = new Hashtable();
+                htDropEnrollmentStatus.Add("@e_enroll_user_id_fk", enroll.e_enroll_user_id_fk);
+                htDropEnrollmentStatus.Add("@e_enroll_course_id_fk", enroll.e_enroll_course_id_fk);
+                return DataProxy.FetchSPOutput("e_sp_drop_enrollment", htDropEnrollmentStatus);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public static bool CheckDeliveryEnrollorNot(string e_enroll_course_id_fk, string e_enroll_user_id_fk)
+        {
+            try
+            {
+                Hashtable htGetDelieryenroll = new Hashtable();
+                htGetDelieryenroll.Add("@e_enroll_course_id_fk", e_enroll_course_id_fk);
+                htGetDelieryenroll.Add("@e_enroll_user_id_fk", e_enroll_user_id_fk);
+                int res= DataProxy.FetchSPOutput("e_sp_check_delivery_enroll_or_not", htGetDelieryenroll);
+                return res == 1 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        
+        /// <summary>
+        /// Get all learning History
+        /// </summary>
+        /// <param name="e_user_id_fk"></param>
+        /// <returns></returns>
+        public static DataSet GetAllLearningHistory(string e_user_id_fk)
+        {
+            Hashtable htGetAllLearningHistory = new Hashtable();
+            htGetAllLearningHistory.Add("@e_user_id_fk", e_user_id_fk);
+            try
+            {
+                return DataProxy.FetchDataSet("e_sp_get_all_Learning_History", htGetAllLearningHistory);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        ///<summary>
+        ///Get status
+        ///</summary>
+        public static DataTable GetLearningHistoryStatus(string s_locale, string s_ui_page_name)
+        {
+            Hashtable htDeliveryType = new Hashtable();
+            if (!string.IsNullOrEmpty(s_locale))
+            {
+                htDeliveryType.Add("@s_ui_locale_name", s_locale);
+            }
+            else
+            {
+                htDeliveryType.Add("@s_ui_locale_name", "us_english");
+            }
+            htDeliveryType.Add("@s_ui_page_name", s_ui_page_name);
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_learning_history_status", htDeliveryType);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+        }
+        /// <summary>
+        /// Search learning History
+        /// </summary>
+        /// <param name="learningHistory"></param>
+        /// <returns></returns>
+        public static DataTable SerchLearningHistory(Enrollment learningHistory)
+        {
+            Hashtable htLearningHistory = new Hashtable();
+            htLearningHistory.Add("@e_enroll_user_id_fk", learningHistory.e_enroll_user_id_fk);
+
+            if (!string.IsNullOrEmpty(learningHistory.e_learning_keyword))
+            {
+                htLearningHistory.Add("@e_learning_keyword", learningHistory.e_learning_keyword);
+            }
+            else
+            {
+                htLearningHistory.Add("@e_learning_keyword", DBNull.Value);
+            }
+
+            if (learningHistory.e_learning_from_date!=null)
+            {
+                htLearningHistory.Add("@e_learning_from_date", learningHistory.e_learning_from_date);
+            }
+            else
+            {
+                htLearningHistory.Add("@e_learning_from_date", DBNull.Value);
+            }
+            if (learningHistory.e_learning_to_date != null)
+            {
+                htLearningHistory.Add("@e_learning_to_date", learningHistory.e_learning_to_date);
+            }
+            else
+            {
+                htLearningHistory.Add("@e_learning_to_date", DBNull.Value);
+            }
+            if (learningHistory.e_learning_status == "0" || learningHistory.e_learning_status == "app_ddl_all_text")
+            {
+                htLearningHistory.Add("@e_learning_status", DBNull.Value);
+            }
+            else
+            {
+                htLearningHistory.Add("@e_learning_status", learningHistory.e_learning_status);
+            }
+            if (learningHistory.e_learning_deliveryType == "0" || learningHistory.e_learning_deliveryType == "app_ddl_all_text")
+            {
+                htLearningHistory.Add("@e_learning_deliveryType", DBNull.Value);
+            }
+            else
+            {
+               htLearningHistory.Add("@e_learning_deliveryType", learningHistory.e_learning_deliveryType);
+            }
+            
+
+            return DataProxy.FetchDataTable("e_sp_search_learning_history", htLearningHistory);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e_user_id_fk"></param>
+        /// <returns></returns>
+        public static DataSet GetCertificatePDF(string e_user_id_fk,string e_course_id_fk,string s_locale_culture)
+        {
+            Hashtable htGetCertificatePDF = new Hashtable();
+            htGetCertificatePDF.Add("@e_user_id_fk", e_user_id_fk);
+            htGetCertificatePDF.Add("@e_course_id_fk", e_course_id_fk);
+            htGetCertificatePDF.Add("@s_locale_culture", s_locale_culture);
+            try
+            {
+                return DataProxy.FetchDataSet("e_sp_certificate_pdf", htGetCertificatePDF);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+    }   
 }

@@ -17,31 +17,32 @@
             height: 400px;
         }
     </style>
- <script type="text/javascript">
-     $(document).ready(function () {
-         var deliveryType = $('#<%=hdDeliveryType.ClientID %>').val();
-         $('#<%=btnRequestApproval.ClientID%>').click(function () {
-             if (deliveryType == 'OLT') {
-                 alert('This Enrollment Requires Approval.');
-             }
-             else if (deliveryType == 'ILT' || deliveryType =='VLT' || deliveryType == 'OLT-VLT-ILT') {
-                 alert('Your request for enrollment is pending approval and the approver(s) have been notified.');
-             }
-         });
-     });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var deliveryType = $('#<%=hdDeliveryType.ClientID %>').val();
+            $('#<%=btnRequestApproval.ClientID%>').click(function () {
+                if (deliveryType == 'OLT') {
+                    alert('This Enrollment Requires Approval.');
+                }
+                else if (deliveryType == 'ILT' || deliveryType == 'VLT' || deliveryType == 'OLT-VLT-ILT') {
+                    alert('Your request for enrollment is pending approval and the approver(s) have been notified.');
+                }
+            });
+        });
     </script>
-   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-   <asp:HiddenField ID="hdDeliveryType" runat="server" />
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:HiddenField ID="hdDeliveryType" runat="server" />
     <div>
         <div class="div_header_700">
-            Delivery Details:
+            <%=LocalResources.GetLabel("app_delivery_details_text")%>:
         </div>
     </div>
     <div class="div_controls">
         <table>
             <tr>
                 <td>
-                    Delivery Type:
+                    <%=LocalResources.GetLabel("app_delivery_type_text")%>:
                 </td>
                 <td class="align_left">
                     <b>
@@ -56,7 +57,7 @@
             </tr>
             <tr>
                 <td>
-                    Delivery ID:
+                    <%=LocalResources.GetLabel("app_delivery_id_text")%>:
                 </td>
                 <td class="align_left" colspan="3">
                     <b>
@@ -65,7 +66,7 @@
             </tr>
             <tr>
                 <td>
-                    Delivery Title:
+                    <%=LocalResources.GetLabel("app_delivery_title_text")%>:
                 </td>
                 <td colspan="3" class="align_left">
                     <b>
@@ -74,7 +75,7 @@
             </tr>
             <tr>
                 <td>
-                    Description:
+                    <%=LocalResources.GetLabel("app_description_text")%>:
                 </td>
                 <td class="align_left" colspan="3">
                     <asp:Label ID="lblDescription" runat="server"></asp:Label>
@@ -82,7 +83,7 @@
             </tr>
             <tr>
                 <td>
-                    Abstract:
+                    <%=LocalResources.GetLabel("app_abstract_text")%>:
                 </td>
                 <td class="align_left" colspan="3">
                     <asp:Label ID="lblAbstract" runat="server"></asp:Label>
@@ -90,7 +91,7 @@
             </tr>
             <tr>
                 <td>
-                    Approval Required:
+                    <%=LocalResources.GetLabel("app_approval_required_text")%>:
                 </td>
                 <td colspan="2" class="align_left">
                     <b>
@@ -99,13 +100,13 @@
             </tr>
             <tr>
                 <td>
-                    Credit Hours:
+                    <%=LocalResources.GetLabel("app_credit_hours_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCreditHours" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Credit Units:
+                    <%=LocalResources.GetLabel("app_credit_units_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCreditUnits" runat="server"></asp:Label>
@@ -113,7 +114,7 @@
             </tr>
             <tr>
                 <td>
-                    Owner:
+                    <%=LocalResources.GetLabel("app_owner_text")%>:
                 </td>
                 <td class="align_left" colspan="3">
                     <b>
@@ -122,7 +123,7 @@
             </tr>
             <tr>
                 <td>
-                    Coordinator:
+                    <%=LocalResources.GetLabel("app_coordinator_text")%>:
                 </td>
                 <td class="align_left" colspan="4">
                     <b>
@@ -131,13 +132,13 @@
             </tr>
             <tr>
                 <td>
-                    Min Enroll:
+                    <%=LocalResources.GetLabel("app_min_enroll_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblMinEnroll" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Max Enroll:
+                    <%=LocalResources.GetLabel("app_max_enroll_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblMaxEnroll" runat="server"></asp:Label>
@@ -145,13 +146,13 @@
             </tr>
             <tr>
                 <td>
-                    Currectly Enrolled:
+                    <%=LocalResources.GetLabel("app_currently_enrolled_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCurrentlyEnrolled" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Waitlist:
+                    <%=LocalResources.GetLabel("app_waitlist_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblWaitList" runat="server"></asp:Label>
@@ -176,13 +177,19 @@
     <div>
         <div class="div_padding_10">
             <div class="left">
-                <input id="btnCancel" class="cursor_hand" type="submit" value="Cancel" onclick="javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close()" />
+                <input id="btnCancel" class="cursor_hand" type="submit" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />'
+                onclick="javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close()" />
+                
             </div>
             <div class="right">
-                <asp:Button ID="btnConfirmEnrollment" runat="server" style="display:none;" Text="Confirm Enrollment" OnClick="btnConfirmEnrollment_Click" />
-                <asp:Button ID="btnGoToWaitList" runat="server" style="display:none;" Text="Go to Waitlist" OnClick="btnGoToWaitList_Click" />
-                <asp:Button ID="btnSubmitRequest" runat="server" style="display:none;" Text="Submit Request" OnClick="btnSubmitRequest_Click" />
-                <asp:Button ID="btnRequestApproval" runat="server" style="display:none;" Text="Request Approval!"  OnClick="btnRequestApproval_Click"/>
+                <asp:Button ID="btnConfirmEnrollment" runat="server" Style="display: none;" Text="<%$ LabelResourceExpression: app_confirm_enrollment_button_text %>"
+                    OnClick="btnConfirmEnrollment_Click" />
+                <asp:Button ID="btnGoToWaitList" runat="server" Style="display: none;" Text="<%$ LabelResourceExpression: app_go_to_waitlist_button_text %>"
+                    OnClick="btnGoToWaitList_Click" />
+                <asp:Button ID="btnSubmitRequest" runat="server" Style="display: none;" Text="<%$ LabelResourceExpression: app_submit_request_button_text %>"
+                    OnClick="btnSubmitRequest_Click" />
+                <asp:Button ID="btnRequestApproval" runat="server" Style="display: none;" Text="<%$ LabelResourceExpression: app_request_approval_button_text %>"
+                    OnClick="btnRequestApproval_Click" />
             </div>
             <div class="clear">
             </div>
@@ -190,7 +197,7 @@
     </div>
     <br />
     <div class="div_header_700">
-        Session(s):
+        <%=LocalResources.GetLabel("app_session_text")%>:
     </div>
     <br />
     <div class="div_padding_10">
@@ -228,7 +235,7 @@
     </div>
     <br />
     <div class="div_header_700">
-        Attachments:
+        <%=LocalResources.GetLabel("app_attachments_text")%>:
     </div>
     <br />
     <div class="div_padding_10">
@@ -258,20 +265,20 @@
     </div>
     <br />
     <div class="div_header_700">
-        Custom fields:
+        <%=LocalResources.GetLabel("app_custom_fields_text")%>:
     </div>
     <br />
     <div class="div_controls">
         <table>
             <tr>
                 <td>
-                    Custom 01:
+                    <%=LocalResources.GetLabel("app_custom_01_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom01" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Custom 02:
+                    <%=LocalResources.GetLabel("app_custom_02_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom02" runat="server"></asp:Label>
@@ -279,13 +286,13 @@
             </tr>
             <tr>
                 <td>
-                    Custom 03:
+                    <%=LocalResources.GetLabel("app_custom_03_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom03" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Custom 04:
+                    <%=LocalResources.GetLabel("app_custom_04_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom04" runat="server"></asp:Label>
@@ -293,13 +300,13 @@
             </tr>
             <tr>
                 <td>
-                    Custom 05:
+                    <%=LocalResources.GetLabel("app_custom_05_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom05" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Custom 06:
+                    <%=LocalResources.GetLabel("app_custom_06_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom06" runat="server"></asp:Label>
@@ -307,13 +314,13 @@
             </tr>
             <tr>
                 <td>
-                    Custom 07:
+                    <%=LocalResources.GetLabel("app_custom_07_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom07" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Custom 08:
+                    <%=LocalResources.GetLabel("app_custom_08_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom08" runat="server"></asp:Label>
@@ -321,13 +328,13 @@
             </tr>
             <tr>
                 <td>
-                    Custom 09:
+                    <%=LocalResources.GetLabel("app_custom_09_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom09" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Custom 10:
+                    <%=LocalResources.GetLabel("app_custom_10_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom10" runat="server"></asp:Label>
@@ -335,13 +342,13 @@
             </tr>
             <tr>
                 <td>
-                    Custom 11:
+                    <%=LocalResources.GetLabel("app_custom_11_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom11" runat="server"></asp:Label>
                 </td>
                 <td>
-                    Custom 12:
+                    <%=LocalResources.GetLabel("app_custom_12_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom12" runat="server"></asp:Label>
@@ -349,7 +356,7 @@
             </tr>
             <tr>
                 <td>
-                    Custom 13:
+                    <%=LocalResources.GetLabel("app_custom_13_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:Label ID="lblCustom13" runat="server"></asp:Label>

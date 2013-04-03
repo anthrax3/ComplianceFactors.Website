@@ -155,7 +155,7 @@ namespace ComplicanceFactor.Employee.Enroll
                     //ILT/VLT full and waitlist full,waitlist=false
                     else if ((delivery.c_delivery_max_enroll == Convert.ToInt32(delivery.c_enroll_delivery_count)) && waitList == "False" && delivery.c_waitlist_count != Convert.ToString(delivery.c_delivery_max_waitlist))
                     {
-                       btnGoToWaitList.Style.Add("display", "block");
+                        btnGoToWaitList.Style.Add("display", "block");
                     }
                     //ILT/VLT full and waitlist full
                     else if ((delivery.c_delivery_max_enroll == Convert.ToInt32(delivery.c_enroll_delivery_count)) && waitList == "False" && delivery.c_waitlist_count == Convert.ToString(delivery.c_delivery_max_waitlist))
@@ -177,7 +177,7 @@ namespace ComplicanceFactor.Employee.Enroll
                     {
                         btnGoToWaitList.Style.Add("display", "block");
                     }
-                    
+
                 }
 
                 ///
@@ -563,7 +563,7 @@ namespace ComplicanceFactor.Employee.Enroll
                 //popup active
                 //SessionWrapper.Active_Popup = "true";
                 //
-              
+
 
             }
             catch (Exception ex)
@@ -589,52 +589,68 @@ namespace ComplicanceFactor.Employee.Enroll
                 SystemCatalog Course = new SystemCatalog();
                 Course = SystemCatalogBLL.GetSingleDeliveryList(deliveryId);
                 StringBuilder sbApprovalRequest = new StringBuilder();
-                sbApprovalRequest.Append(SessionWrapper.u_firstname + ' ' + SessionWrapper.u_lastname + " has sent a request for the following training that requires your approval: ");
-                sbApprovalRequest.Append("<br>");
-                sbApprovalRequest.Append("Course: " + Course.c_course_list);
-                sbApprovalRequest.Append("<br>");
-                sbApprovalRequest.Append("Delivery: " + Course.c_delivery_list);
-                sbApprovalRequest.Append("<br>");
-                sbApprovalRequest.Append("Sessions: " + Course.c_session_list);
-                sbApprovalRequest.Append("<br>");
-                sbApprovalRequest.Append("Please login to the system and go to your “To Dos” section to approve or deny this request or simply click on the link below:");
-                sbApprovalRequest.Append("<br>");
-                sbApprovalRequest.Append("www.compliancefactors.com/login_redirect/?url=mmtdp-01.aspx ");
-                sbApprovalRequest.Append("<br>");
-                sbApprovalRequest.Append("Thanks!");
-                string toEmailid = EnrollmentBLL.GetApproverEmailAddress(SessionWrapper.u_userid);
-                string[] toaddress = toEmailid.Split(',');
-                List<MailAddress> mailAddresses = new List<MailAddress>();
-                foreach (string recipient in toaddress)
+
+                //To Manager Approval Request
+                SystemNotification notificationManager = new SystemNotification();
+                notificationManager = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-APPROVAL-NOTICE");
+                if (notificationManager.s_notification_on_off_flag == true)
                 {
-                    if (recipient.Trim() != string.Empty)
+                    string approvalSubjectMananger = string.Empty;
+                    approvalSubjectMananger = notificationManager.s_notification_email_subject;
+                    approvalSubjectMananger = approvalSubjectMananger.Replace("@$&Course Title&$@ (@$&Course ID&$@)", Course.c_course_list);
+                    approvalSubjectMananger = approvalSubjectMananger.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
+                    //approvalSubjectMananger = approvalSubjectMananger.Replace("@$&User Last Name&$@", SessionWrapper.u_lastname);
+
+                    string approvalTextManager = string.Empty;
+                    approvalTextManager = notificationManager.s_notification_email_text;
+                    approvalTextManager = approvalTextManager.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
+                    approvalTextManager = approvalTextManager.Replace("@$&User Last Name&$@", SessionWrapper.u_lastname);
+                    approvalTextManager = approvalTextManager.Replace("@$&Course Name&$@(@$&Course ID&$@)", Course.c_course_list);
+                    approvalTextManager = approvalTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", Course.c_delivery_list);
+                    approvalTextManager = approvalTextManager.Replace("@$&Session ID(s)&$@", Course.c_session_list);                    
+
+                    sbApprovalRequest.Append(approvalTextManager);
+                    
+                    string toEmailid = EnrollmentBLL.GetApproverEmailAddress(SessionWrapper.u_userid);
+                    string[] toaddress = toEmailid.Split(',');
+                    List<MailAddress> mailAddresses = new List<MailAddress>();
+                    foreach (string recipient in toaddress)
                     {
-                        mailAddresses.Add(new MailAddress(recipient));
+                        if (recipient.Trim() != string.Empty)
+                        {
+                            mailAddresses.Add(new MailAddress(recipient));
+                        }
                     }
+
+                    string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// for Approval request from:admin@compliancefactors.com to: approeremailid
+                    //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                    Utility.SendEMailMessages(mailAddresses, fromAddress, approvalSubjectMananger, sbApprovalRequest.ToString());
                 }
-                
-                string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// for Approval request from:admin@compliancefactors.com to: approeremailid
-                //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                Utility.SendEMailMessages(mailAddresses,fromAddress, "*** Request for enrollment in  " + Course.c_course_list + " from " + SessionWrapper.u_firstname + " " + SessionWrapper.u_lastname, sbApprovalRequest.ToString());
                 //send notification
                 SystemNotification notification = new SystemNotification();
                 notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-APPROVAL-PENDING");
                 if (notification.s_notification_on_off_flag == true)
                 {
                     StringBuilder sbNotification = new StringBuilder();
-                    sbNotification.Append("Hello " + Course.c_created_name + ",");
-                    sbNotification.Append("<br>");
-                    sbNotification.Append("This email is to confirm that you are enrolled in the " + Course.c_course_list + "is pending approval.)");
-                    sbNotification.Append("<br>");
-                    sbNotification.Append("You will be notified when the final approval decision is processed.");
-                    sbNotification.Append("<br>");
-                    sbNotification.Append("Thanks!");
-                    sbNotification.Append("<br><br>");
-                    sbNotification.Append("The Training Department");
+                    //To Employee pending Request
+                    string approvalSubjectEmployee = string.Empty;
+                    approvalSubjectEmployee = notification.s_notification_email_subject;
+                    approvalSubjectEmployee = approvalSubjectEmployee.Replace("@$&Course Title&$@", Course.c_course_title);
+
+                    string approvalTextEmployee = string.Empty;
+                    approvalTextEmployee = notification.s_notification_email_text;
+                    approvalTextEmployee = approvalTextEmployee.Replace("@$&User First Name&$@", Course.c_created_name);
+                    approvalTextEmployee = approvalTextEmployee.Replace("@$&Course Name&$@(@$&Course ID&$@)", Course.c_course_list);
+
+                    sbNotification.Append(approvalTextEmployee);
+                     
                     List<MailAddress> notifyMailAddress = new List<MailAddress>();
-                    notifyMailAddress.Add(new MailAddress(SessionWrapper.u_email_id));
-                    string fromaddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// the system also send pedind approval from:admin@compliancefactors.com to employeeemailaddress
-                    Utility.SendEMailMessages(notifyMailAddress, fromaddress, "*** Enrollment in  " + Course.c_course_title + " Pending Approval ***", sbNotification.ToString());
+                    if (!string.IsNullOrEmpty(SessionWrapper.u_email_id))
+                    {
+                        notifyMailAddress.Add(new MailAddress(SessionWrapper.u_email_id));
+                        string fromaddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// the system also send pedind approval from:admin@compliancefactors.com to employeeemailaddress
+                        Utility.SendEMailMessages(notifyMailAddress, fromaddress, approvalSubjectEmployee, sbNotification.ToString());
+                    }
                 }
             }
             catch (Exception ex)
@@ -660,67 +676,125 @@ namespace ComplicanceFactor.Employee.Enroll
                 SystemCatalog Course = new SystemCatalog();
                 Course = SystemCatalogBLL.GetSingleDeliveryList(deliveryId);
                 StringBuilder sbConfirmEnrollment = new StringBuilder();
-                if (waitList == "False" &&  submitRequest == false)
+                if (type == "OLT")
                 {
-                    SystemNotification notification = new SystemNotification();
-                    notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT");
-                    if (notification.s_notification_on_off_flag == true)
+                    if (waitList == "False" && submitRequest == false)
                     {
-                        sbConfirmEnrollment.Append("Hello " + Course.c_created_name + ",");
-                        sbConfirmEnrollment.Append("<br>");
-                        sbConfirmEnrollment.Append("This email is to confirm that you are enrolled in the {" + Course.c_course_title + "} + (" + Course.c_course_id_pk + ")).");
-                        sbConfirmEnrollment.Append("<br>");
-                        if ((type == "ILT" || type == "VLT") && (waitList == "False"))
+                        SystemNotification notification = new SystemNotification();
+                        notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT");
+                        if (notification.s_notification_on_off_flag == true)
                         {
-                            sbConfirmEnrollment.Append("Location:" + Course.c_session_location_names + ", " + Course.c_session_facility_names + ", " + Course.c_session_room_names + "");
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Instructor(S):" + Course.c_instructor_list);
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Starting on:" + Course.c_session_start_date_time);
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Ending on:" + Course.c_session_end_date_time);
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Please login to the system and go to your 'My Course' section to access the details for this training or launch the course for eLearning Training or simply click on the link below:");
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("www.compliancefactors.com/login_redirect/?url=lmcp-01.aspx");
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("We are looking forward to seeing you!");
-                        }
-                        sbConfirmEnrollment.Append("Thanks!");
-                        sbConfirmEnrollment.Append("<br><br>");
-                        sbConfirmEnrollment.Append("The Training Department");
-                        List<MailAddress> mailAddresses = new List<MailAddress>();
-                        mailAddresses.Add(new MailAddress(SessionWrapper.u_email_id));
-                        string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
-                        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                        Utility.SendEMailMessages(mailAddresses,fromAddress, "*** Enrollment Confirmation in " + Course.c_course_title + " ***", sbConfirmEnrollment.ToString());
-                    }
-                }
-                else if ((type == "ILT" || type == "VLT") && (waitList == "True")||(waitList == "False"))
-                {
-                    sbConfirmEnrollment.Append(SessionWrapper.u_firstname + ' ' + SessionWrapper.u_lastname + " has sent a request for the following training: ");
-                    sbConfirmEnrollment.Append("<br>");
-                    sbConfirmEnrollment.Append("Course: " + Course.c_course_list);
-                    sbConfirmEnrollment.Append("<br>");
-                    sbConfirmEnrollment.Append("Delivery: " + Course.c_delivery_list);
-                    sbConfirmEnrollment.Append("<br>");
-                    sbConfirmEnrollment.Append("Sessions: " + Course.c_session_list);
-                    sbConfirmEnrollment.Append("<br>");
-                    string toEmailid = Course.c_to_address;
-                    string[] toaddress = toEmailid.Split(',');
-                    List<MailAddress> mailAddresses = new List<MailAddress>();
-                    foreach (string recipient in toaddress)
-                    {
-                        if (recipient.Trim() != string.Empty)
-                        {
-                            mailAddresses.Add(new MailAddress(recipient));
-                        }
-                    }
-                    string fromAddress = SessionWrapper.u_email_id;// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
-                    //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                    Utility.SendEMailMessages(mailAddresses,fromAddress, "*** Request for " + Course.c_course_list + " from " + SessionWrapper.u_firstname + " " + SessionWrapper.u_lastname, sbConfirmEnrollment.ToString());
+                            //Enroll OLT
+                            string confirmOLTSubject = string.Empty;
+                            confirmOLTSubject = notification.s_notification_email_subject;
+                            confirmOLTSubject = confirmOLTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
 
+                            string sbConfirmOLT = string.Empty;
+                            sbConfirmOLT = notification.s_notification_email_text;
+
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&Course Name&$@", Course.c_course_title);
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
+
+                            List<MailAddress> mailAddresses = new List<MailAddress>();
+                            if (!string.IsNullOrEmpty(SessionWrapper.u_email_id))
+                            {
+                                mailAddresses.Add(new MailAddress(SessionWrapper.u_email_id));
+                                string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+                                sbConfirmEnrollment.Append(sbConfirmOLT);
+                                Utility.SendEMailMessages(mailAddresses, fromAddress, confirmOLTSubject, sbConfirmEnrollment.ToString());
+                            }
+                        }
+                    }
                 }
+
+                //Enroll ILT/VLT
+                else if ((type == "ILT" || type == "VLT") && (waitList == "False"))
+                {
+                    if (waitList == "False" && submitRequest == false)
+                    {
+                        SystemNotification notificationILT = new SystemNotification();
+                        notificationILT = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-IN-PERSON");
+                        if (notificationILT.s_notification_on_off_flag == true)
+                        {
+                            string confirmILTSubject = string.Empty;
+                            confirmILTSubject = notificationILT.s_notification_email_subject;
+                            confirmILTSubject = confirmILTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
+
+                            string confirmILT = string.Empty;
+                            confirmILT = notificationILT.s_notification_email_text;
+
+                            confirmILT = confirmILT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            confirmILT = confirmILT.Replace("@$&Course Name&$@", Course.c_course_title);
+                            confirmILT = confirmILT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
+                            confirmILT = confirmILT.Replace("@$&delivery_location&$@", Course.c_session_location_names);
+                            confirmILT = confirmILT.Replace("@$&delivery_facility&$@", Course.c_session_facility_names);
+                            confirmILT = confirmILT.Replace("@$&delivery_room&$@", Course.c_session_room_names);
+                            confirmILT = confirmILT.Replace("@$&delivery_intructors&$@", Course.c_instructor_list);
+                            confirmILT = confirmILT.Replace("@$&session_start_date&$@", Course.c_session_start_date_time);
+                            confirmILT = confirmILT.Replace("@$&session_start_time&$@", Course.c_session_end_date_time);
+
+                            List<MailAddress> mailAddresses = new List<MailAddress>();
+                            if (!string.IsNullOrEmpty(SessionWrapper.u_email_id))
+                            {
+                                mailAddresses.Add(new MailAddress(SessionWrapper.u_email_id));
+                                string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+                                sbConfirmEnrollment.Append(confirmILT);
+                                Utility.SendEMailMessages(mailAddresses, fromAddress, confirmILTSubject, sbConfirmEnrollment.ToString());
+                            }
+                        }
+                    }
+                    else if ((type == "ILT" || type == "VLT") && (waitList == "True") || (waitList == "False"))
+                    {
+                        SystemNotification notificationWaitList = new SystemNotification();
+                        notificationWaitList = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-WAITLIST");
+                        if (notificationWaitList.s_notification_on_off_flag == true)
+                        {
+                            string confirmWaitListSubject = string.Empty;
+                            confirmWaitListSubject = notificationWaitList.s_notification_email_subject;
+                            confirmWaitListSubject = confirmWaitListSubject.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                            confirmWaitListSubject = confirmWaitListSubject.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
+                            confirmWaitListSubject = confirmWaitListSubject.Replace("@$&User Last Name&$@", SessionWrapper.u_lastname);
+
+                            string confirmWaitlist = string.Empty;
+                            confirmWaitlist = notificationWaitList.s_notification_email_text;
+
+                            confirmWaitlist = confirmWaitlist.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&User Last Name&$@", SessionWrapper.u_lastname);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&Course Name&$@(@$&Course ID&$@)", Course.c_course_list);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", Course.c_delivery_list);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&Session ID(s)&$@", Course.c_session_list);
+
+                            sbConfirmEnrollment.Append(confirmWaitlist);
+
+                            //ENROLL-CONFIRM-WAITLIST
+                            //sbConfirmEnrollment.Append(SessionWrapper.u_firstname + ' ' + SessionWrapper.u_lastname + " has sent a request for the following training: ");
+                            //sbConfirmEnrollment.Append("<br>");
+                            //sbConfirmEnrollment.Append("Course: " + Course.c_course_list);
+                            //sbConfirmEnrollment.Append("<br>");
+                            //sbConfirmEnrollment.Append("Delivery: " + Course.c_delivery_list);
+                            //sbConfirmEnrollment.Append("<br>");
+                            //sbConfirmEnrollment.Append("Sessions: " + Course.c_session_list);
+                            //sbConfirmEnrollment.Append("<br>");
+                            string toEmailid = Course.c_to_address;
+                            string[] toaddress = toEmailid.Split(',');
+                            List<MailAddress> mailAddresses = new List<MailAddress>();
+                            foreach (string recipient in toaddress)
+                            {
+                                if (recipient.Trim() != string.Empty)
+                                {
+                                    mailAddresses.Add(new MailAddress(recipient));
+                                }
+                            }
+                            string fromAddress = SessionWrapper.u_email_id;// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
+                            //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmWaitListSubject, sbConfirmEnrollment.ToString());
+
+                        }
+                    }
+                }      
+               
+                
                 //Close popup
                 //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close()", true);
                 //SessionWrapper.u_firstname = "";
@@ -832,8 +906,5 @@ namespace ComplicanceFactor.Employee.Enroll
                 }
             }
         }
-
-        
-
     }
 }

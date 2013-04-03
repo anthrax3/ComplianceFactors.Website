@@ -48,7 +48,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Employee/Enroll/ecolt-01.aspx?id=' + element[0] + "&type=" + element[1] + "&courseid=" + element[2] + "&waitlist=" + element[3] + "&approval=" + element[4]+"&ca="+ element[5],
+                    'href': '/Employee/Enroll/ecolt-01.aspx?id=' + element[0] + "&type=" + element[1] + "&courseid=" + element[2] + "&waitlist=" + element[3] + "&approval=" + element[4] + "&ca=" + element[5],
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -75,6 +75,17 @@
         }
        
     </script>
+
+   <script type="text/javascript" language="javascript">
+            function confirmStatus() {
+                if (confirm('Are you sure?') == true)
+                    return true;
+                else
+                    return false;
+
+            }
+    </script>
+   
     <div class="content_area_long">
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_course_details_text")%>
@@ -86,8 +97,9 @@
         <div>
             <div class="page_text">
                 <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false"
-                    CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="No result found."
-                    AutoGenerateColumns="False" AllowPaging="false" EmptyDataRowStyle-CssClass="empty_row">
+                    CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
+                    AutoGenerateColumns="False" AllowPaging="false" 
+                    EmptyDataRowStyle-CssClass="empty_row" >
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -183,8 +195,11 @@
         <br />
         <div class="div_control_normal">
             <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CellPadding="0"
-                CellSpacing="0" ShowHeader="false" EmptyDataText="None" EmptyDataRowStyle-CssClass="empty_row"  ShowFooter="false" runat="server" AutoGenerateColumns="False"
-                OnRowDataBound="gvDeliveries_RowDataBound" DataKeyNames="c_delivery_system_id_pk,c_delivery_approval_req">
+                CellSpacing="0" ShowHeader="false" EmptyDataText="No record found." 
+                EmptyDataRowStyle-CssClass="empty_row"  ShowFooter="false" runat="server" AutoGenerateColumns="False"
+                OnRowDataBound="gvDeliveries_RowDataBound" 
+                DataKeyNames="c_delivery_system_id_pk,c_delivery_approval_req" 
+                onrowcommand="gvDeliveries_RowCommand1">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -204,9 +219,10 @@
                                     </td>
                                     <td class="gridview_row_width_300 tdright" align="right">
                                         <asp:Button ID="btnQuickLunch" CommandName="Detail" CommandArgument='<%#Eval("c_delivery_system_id_pk")%>'
-                                            CssClass="cursor_hand" Style="display: none;" runat="server" Text="Quick Launch!" />
+                                            CssClass="cursor_hand" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
                                          <asp:Label ID="lblAlreadyEnrollMessage" runat="server"></asp:Label>
-                                        <asp:Button ID="btnDrop" Style="display: none;" runat="server" Text="Drop" />
+                                        <asp:Button ID="btnDrop" Style="display: none;" OnClientClick="return confirmStatus();"
+                                         runat="server" Text="<%$ LabelResourceExpression: app_drop_button_text %>" CommandName="Drop" CommandArgument='<%#Eval("c_course_id_fk")%>' />
                                         <asp:Literal ID="ltlEnroll" runat="server"></asp:Literal>
                                         
                                     </td>
@@ -235,7 +251,7 @@
                 <tr>
                     <td>
                         <asp:GridView ID="gvPrerequisites" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
-                            CellPadding="0" CellSpacing="0" EmptyDataText="None" EmptyDataRowStyle-CssClass="empty_row"  ShowHeader="false" ShowFooter="false" runat="server"
+                            CellPadding="0" CellSpacing="0" EmptyDataText="<%$ LabelResourceExpression: app_none_text %>" EmptyDataRowStyle-CssClass="empty_row"  ShowHeader="false" ShowFooter="false" runat="server"
                             AutoGenerateColumns="False">
                             <RowStyle CssClass="record"></RowStyle>
                             <Columns>
@@ -249,7 +265,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                                    <asp:Label ID="lblOr" runat="server" Text="<%$LabelResourceExpression: app_or_text %>"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -270,7 +286,7 @@
                 <tr>
                     <td>
                         <asp:GridView ID="gvEquivalencies" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
-                            CellPadding="0" CellSpacing="0" EmptyDataText="None" EmptyDataRowStyle-CssClass="empty_row" ShowHeader="false" ShowFooter="false" runat="server"
+                            CellPadding="0" CellSpacing="0" EmptyDataText="<%$ LabelResourceExpression: app_none_text %>" EmptyDataRowStyle-CssClass="empty_row" ShowHeader="false" ShowFooter="false" runat="server"
                             AutoGenerateColumns="False">
                             <RowStyle CssClass="record"></RowStyle>
                             <Columns>
@@ -284,7 +300,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                                    <asp:Label ID="lblOr" runat="server" Text="<%$LabelResourceExpression: app_or_text %>"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -306,7 +322,7 @@
                 <tr>
                     <td>
                         <asp:GridView ID="gvFulfillments" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
-                            CellPadding="0" CellSpacing="0" EmptyDataText="None" EmptyDataRowStyle-CssClass="empty_row" ShowHeader="false" ShowFooter="false" runat="server"
+                            CellPadding="0" CellSpacing="0" EmptyDataText="<%$ LabelResourceExpression: app_none_text %>" EmptyDataRowStyle-CssClass="empty_row" ShowHeader="false" ShowFooter="false" runat="server"
                             AutoGenerateColumns="False">
                             <RowStyle CssClass="record"></RowStyle>
                             <Columns>
@@ -320,7 +336,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblOr" runat="server" Text="-or-"></asp:Label>
+                                                    <asp:Label ID="lblOr" runat="server" Text="<%$LabelResourceExpression: app_or_text %>"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>

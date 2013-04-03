@@ -21,23 +21,26 @@ namespace ComplicanceFactor.Manager.Enroll
         private string deliveryType;
         private bool c_course_approval;
         private bool c_delivery_approval;
+        private bool check_course_or_curriculum;
         private string waitList;
         private int approvalCount;
         private int max_enroll;
         private int enrolled_delivery_count;
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region
             courseid = Request.QueryString["courseid"];
             deliveryid = Request.QueryString["deliveryid"];
             deliveryType = Request.QueryString["deliveryType"];
             c_course_approval = Convert.ToBoolean(Request.QueryString["ca"]);
             c_delivery_approval = Convert.ToBoolean(Request.QueryString["da"]);
+            check_course_or_curriculum = Convert.ToBoolean(Request.QueryString["check"]);
+            #endregion
             if (!IsPostBack)
             {
                 try
                 {
-                    gvsearchDetails.DataSource = SessionWrapper.Employee;
-                    gvsearchDetails.DataBind();
+                    GetEmployee();
                     PopulateCourse(courseid);
                     if (!string.IsNullOrEmpty(deliveryType) && deliveryType == "OLT")
                     {
@@ -70,11 +73,11 @@ namespace ComplicanceFactor.Manager.Enroll
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("mesc-01.aspx", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("mesc-01.aspx (PopulateCourse)", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("mesc-01.aspx", ex.Message);
+                            Logger.WriteToErrorLog("mesc-01.aspx (PopulateCourse)", ex.Message);
                         }
                     }
                 }
@@ -94,14 +97,15 @@ namespace ComplicanceFactor.Manager.Enroll
             lblCost.Text = Convert.ToString(Course.cost_text);
             lblApproval.Text = Course.c_course_approval_req_text;
             lblCEU.Text = Convert.ToString(Course.c_course_credit_hours);
-
+            lblDeliveryType.Text = Course.c_delivery_type_id;
             //
             DataSet dsDeliveries = SystemCatalogBLL.GetDeliveries(deliveryid);
             //get delivery
             SystemCatalog delivery = new SystemCatalog();
             delivery = SystemCatalogBLL.GetDelivery(deliveryid, dsDeliveries.Tables[0]);
             hdnMe.Value = Convert.ToString(delivery.c_delivery_max_enroll);
-            hdEd.Value =delivery.c_enroll_delivery_count;
+            hdEd.Value = delivery.c_enroll_delivery_count;
+
         }
         protected void btnGosearch_Click(object sender, EventArgs e)
         {
@@ -143,11 +147,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("mesc-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("mesc-01.aspx (Assign Only)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("mesc-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("mesc-01.aspx (Assign Only)", ex.Message);
                     }
                 }
             }
@@ -159,7 +163,7 @@ namespace ComplicanceFactor.Manager.Enroll
         }
         private void confirmEnrollment()
         {
-             DataTable dtEmployees = new DataTable();
+            DataTable dtEmployees = new DataTable();
             TempDataTables dtTables = new TempDataTables();
             dtEmployees = dtTables.TempEmployee();
             DataTable dtEmployeeSelecteList = AddEmployee(dtEmployees);
@@ -179,7 +183,7 @@ namespace ComplicanceFactor.Manager.Enroll
                 SendConfirmationEmail();
             }
             ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "add", "window.top.location.href ='" + "../Home/mhp-01.aspx" + "'; parent.jQuery.fancybox.close();", true);
-        
+
         }
         protected void btnRequestAssignment_Click(object sender, EventArgs e)
         {
@@ -187,6 +191,7 @@ namespace ComplicanceFactor.Manager.Enroll
         }
         protected void btnRequestEnrollment_Click(object sender, EventArgs e)
         {
+
             confirmEnrollment();
         }
         private void Enrollment(bool check_enroll, bool course_approval, bool delivery_approval, string u_user_id_fk, string manager_id_fk)
@@ -204,7 +209,7 @@ namespace ComplicanceFactor.Manager.Enroll
                 enrollOLT.e_enroll_approval_required_flag = false;
                 enrollOLT.e_enroll_type_name = "Manager Enroll";
                 enrollOLT.e_enroll_approval_status_name = "Pending";
-                enrollOLT.e_enroll_status_name = "Assigned";
+                enrollOLT.e_enroll_status_name = "Enrolled";
                 DateTime? target_due_date = null;
                 DateTime temp_target_due_date;
                 if (DateTime.TryParse(txtTargetDueDate.Text, out temp_target_due_date))
@@ -241,11 +246,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment)", ex.Message);
                     }
                 }
             }
@@ -274,7 +279,7 @@ namespace ComplicanceFactor.Manager.Enroll
                 }
                 enrollOLT.e_enroll_target_due_date = target_due_date;
                 //for approval
-                enrollOLT.e_enroll_level_1_req_flag = false; 
+                enrollOLT.e_enroll_level_1_req_flag = false;
                 enrollOLT.e_enroll_approver_1_type = true;
                 enrollOLT.e_enroll_approver_1_id_fk = SessionWrapper.u_userid;
                 enrollOLT.e_enroll_approver_1_decision_flag = true; //it must be true because it does not create todo for this
@@ -302,11 +307,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment Approvels)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment Approvels)", ex.Message);
                     }
                 }
             }
@@ -316,7 +321,7 @@ namespace ComplicanceFactor.Manager.Enroll
             try
             {
 
-               
+
                 SystemCatalog Course = new SystemCatalog();
                 Course = SystemCatalogBLL.GetSingleDeliveryList(deliveryid);
                 StringBuilder sbConfirmEnrollment = new StringBuilder();
@@ -325,63 +330,124 @@ namespace ComplicanceFactor.Manager.Enroll
                 SystemCatalog courseDetails = new SystemCatalog();
                 courseDetails = EnrollmentBLL.GetCourseDetails(deliveryid);
 
-                if (string.IsNullOrEmpty(waitList))
+                if (deliveryType == "OLT")
                 {
-                    SystemNotification notification = new SystemNotification();
-                    notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT");
-                    if (notification.s_notification_on_off_flag == true)
+                    if (string.IsNullOrEmpty(waitList))
                     {
-                        sbConfirmEnrollment.Append("Hello " + Course.c_created_name + ",");//Doubt which name need to use. Manager Id or User name
-                        sbConfirmEnrollment.Append("<br>");
-                        sbConfirmEnrollment.Append("This email is to confirm that you are enrolled in the {" + courseDetails.c_course_title + "} + (" + courseDetails.c_course_id_pk + ").)");
-                        sbConfirmEnrollment.Append("<br>");
-                        if ((deliveryType == "ILT" || deliveryType == "VLT") && string.IsNullOrEmpty(waitList))
+                        SystemNotification notification = new SystemNotification();
+                        notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT");
+                        if (notification.s_notification_on_off_flag == true)
                         {
-                            sbConfirmEnrollment.Append("Location:" + Course.c_session_location_names + ", " + Course.c_session_facility_names + ", " + Course.c_session_room_names + "");
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Instructor(S):" + Course.c_instructor_list);
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Starting on:" + Course.c_session_start_date_time);
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Ending on:" + Course.c_session_end_date_time);
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("Please login to the system and go to your 'My Course' section to access the details for this training or launch the course for eLearning Training or simply click on the link below:");
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("www.compliancefactors.com/login_redirect/?url=lmcp-01.aspx");
-                            sbConfirmEnrollment.Append("<br>");
-                            sbConfirmEnrollment.Append("We are looking forward to seeing you!");
+                            //Enroll OLT
+                            string confirmOLTSubject = string.Empty;
+                            confirmOLTSubject = notification.s_notification_email_subject;
+                            confirmOLTSubject = confirmOLTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
+
+                            string sbConfirmOLT = string.Empty;
+                            sbConfirmOLT = notification.s_notification_email_text;
+
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&Course Name&$@", courseDetails.c_course_title);
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&Course ID&$@", courseDetails.c_course_id_pk);
+
+                            string toEmailid = Course.c_to_address;
+                            string[] toaddress = toEmailid.Split(',');
+                            List<MailAddress> mailAddresses = new List<MailAddress>();
+                            foreach (string recipient in toaddress)
+                            {
+                                if (recipient.Trim() != string.Empty)
+                                {
+                                    mailAddresses.Add(new MailAddress(recipient));
+                                }
+                            }
+                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+                            sbConfirmEnrollment.Append(sbConfirmOLT);
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmOLTSubject, sbConfirmEnrollment.ToString());
+
                         }
-                        sbConfirmEnrollment.Append("Thanks!");
-                        sbConfirmEnrollment.Append("<br><br>");
-                        sbConfirmEnrollment.Append("The Training Department");
-                        List<MailAddress> mailAddresses = new List<MailAddress>();
-                        mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                        Utility.SendEMailMessage(mailAddresses, "*** Enrollment Confirmation in " + Course.c_course_title + " ***", sbConfirmEnrollment.ToString());
                     }
                 }
-                else if ((deliveryType == "ILT" || deliveryType == "VLT") && !string.IsNullOrEmpty(waitList))
+
+                //Enroll ILT/VLT
+                else if ((deliveryType == "ILT" || deliveryType == "VLT") && (waitList == "False"))
                 {
-                    sbConfirmEnrollment.Append(SessionWrapper.u_firstname + ' ' + SessionWrapper.u_lastname + " has sent a request for the following training: ");
-                    sbConfirmEnrollment.Append("<br>");
-                    sbConfirmEnrollment.Append("Course: " + Course.c_course_list);
-                    sbConfirmEnrollment.Append("<br>");
-                    sbConfirmEnrollment.Append("Delivery: " + Course.c_delivery_list);
-                    sbConfirmEnrollment.Append("<br>");
-                    sbConfirmEnrollment.Append("Sessions: " + Course.c_session_list);
-                    sbConfirmEnrollment.Append("<br>");
-                    string toEmailid = Course.c_to_address;
-                    string[] toaddress = toEmailid.Split(',');
-                    List<MailAddress> mailAddresses = new List<MailAddress>();
-                    foreach (string recipient in toaddress)
+                    if (string.IsNullOrEmpty(waitList))
                     {
-                        if (recipient.Trim() != string.Empty)
+                        SystemNotification notificationILT = new SystemNotification();
+                        notificationILT = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-IN-PERSON");
+                        if (notificationILT.s_notification_on_off_flag == true)
                         {
-                            mailAddresses.Add(new MailAddress(recipient));
+                            string confirmILTSubject = string.Empty;
+                            confirmILTSubject = notificationILT.s_notification_email_subject;
+                            confirmILTSubject = confirmILTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
+
+                            string confirmILT = string.Empty;
+                            confirmILT = notificationILT.s_notification_email_text;
+
+                            confirmILT = confirmILT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            confirmILT = confirmILT.Replace("@$&Course Name&$@", courseDetails.c_course_title);
+                            confirmILT = confirmILT.Replace("@$&Course ID&$@", courseDetails.c_course_id_pk);
+                            confirmILT = confirmILT.Replace("@$&delivery_location&$@", Course.c_session_location_names);
+                            confirmILT = confirmILT.Replace("@$&delivery_facility&$@", Course.c_session_facility_names);
+                            confirmILT = confirmILT.Replace("@$&delivery_room&$@", Course.c_session_room_names);
+                            confirmILT = confirmILT.Replace("@$&delivery_intructors&$@", Course.c_instructor_list);
+                            confirmILT = confirmILT.Replace("@$&session_start_date&$@", Course.c_session_start_date_time);
+                            confirmILT = confirmILT.Replace("@$&session_start_time&$@", Course.c_session_end_date_time);
+
+                            string toEmailid = Course.c_to_address;
+                            string[] toaddress = toEmailid.Split(',');
+                            List<MailAddress> mailAddresses = new List<MailAddress>();
+                            foreach (string recipient in toaddress)
+                            {
+                                if (recipient.Trim() != string.Empty)
+                                {
+                                    mailAddresses.Add(new MailAddress(recipient));
+                                }
+                            }
+                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+                            sbConfirmEnrollment.Append(confirmILT);
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmILTSubject, sbConfirmEnrollment.ToString());
                         }
                     }
-                    mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                    Utility.SendEMailMessage(mailAddresses, "*** Request for " + Course.c_course_list + " from " + SessionWrapper.u_firstname + " " + SessionWrapper.u_lastname, sbConfirmEnrollment.ToString());
+                    else if ((deliveryType == "ILT" || deliveryType == "VLT") && !string.IsNullOrEmpty(waitList))
+                    {
+                        SystemNotification notificationWaitList = new SystemNotification();
+                        notificationWaitList = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-WAITLIST");
+                        if (notificationWaitList.s_notification_on_off_flag == true)
+                        {
+                            string confirmWaitListSubject = string.Empty;
+                            confirmWaitListSubject = notificationWaitList.s_notification_email_subject;
+                            confirmWaitListSubject = confirmWaitListSubject.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                            confirmWaitListSubject = confirmWaitListSubject.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
+                            confirmWaitListSubject = confirmWaitListSubject.Replace("@$&User Last Name&$@", SessionWrapper.u_lastname);
 
+                            string confirmWaitlist = string.Empty;
+                            confirmWaitlist = notificationWaitList.s_notification_email_text;
+
+                            confirmWaitlist = confirmWaitlist.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&User Last Name&$@", SessionWrapper.u_lastname);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&Course Name&$@(@$&Course ID&$@)", Course.c_course_list);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", Course.c_delivery_list);
+                            confirmWaitlist = confirmWaitlist.Replace("@$&Session ID(s)&$@", Course.c_session_list);
+
+                            sbConfirmEnrollment.Append(confirmWaitlist);
+
+                            string toEmailid = Course.c_to_address;
+                            string[] toaddress = toEmailid.Split(',');
+                            List<MailAddress> mailAddresses = new List<MailAddress>();
+                            foreach (string recipient in toaddress)
+                            {
+                                if (recipient.Trim() != string.Empty)
+                                {
+                                    mailAddresses.Add(new MailAddress(recipient));
+                                }
+                            }
+                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
+                            //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmWaitListSubject, sbConfirmEnrollment.ToString());
+
+                        }
+                    }
                 }
 
             }
@@ -418,16 +484,42 @@ namespace ComplicanceFactor.Manager.Enroll
             foreach (GridViewRow grdCategoryRow in gvsearchDetails.Rows)
             {
                 CheckBox chkSelect = (CheckBox)(grdCategoryRow.Cells[1].FindControl("chkSelect"));
-                if (chkSelect.Checked == true)
-                {
-                    AddEmployeeRow(gvsearchDetails.DataKeys[grdCategoryRow.RowIndex].Values[0].ToString(), courseid, deliveryid, string.Empty, dtEmployee);
-                }
+                //if (chkSelect.Checked == true)
+                //{
+                AddEmployeeRow(gvsearchDetails.DataKeys[grdCategoryRow.RowIndex].Values[0].ToString(), courseid, deliveryid, string.Empty, dtEmployee);
+                //}
             }
             //Remove duplicate employee
             ConvertDataTables removeDuplicateRows = new ConvertDataTables();
             dtEmployee = removeDuplicateRows.RemoveDuplicateRows(dtEmployee, "u_user_id_fk");
             return dtEmployee;
 
+        }
+
+        protected void btnRemoveSelected_Click(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < gvsearchDetails.Rows.Count; i++)
+            {
+                CheckBox chkSelect = (CheckBox)gvsearchDetails.Rows[i].FindControl("chkSelect");
+                if (chkSelect.Checked == true)
+                {
+                    string u_user_id_fk = gvsearchDetails.DataKeys[i]["u_user_id_fk"].ToString();
+                    var rows = SessionWrapper.Employee.Select("u_user_id_fk= '" + u_user_id_fk.Trim() + "'");
+                    foreach (var row in rows)
+                        row.Delete();
+                    SessionWrapper.Employee.AcceptChanges();
+                    GetEmployee();
+                }
+            }
+
+
+        }
+
+        private void GetEmployee()
+        {
+            gvsearchDetails.DataSource = SessionWrapper.Employee;
+            gvsearchDetails.DataBind();
         }
 
     }

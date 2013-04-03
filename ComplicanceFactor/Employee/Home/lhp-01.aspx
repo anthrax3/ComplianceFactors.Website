@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
     CodeBehind="lhp-01.aspx.cs" Inherits="ComplicanceFactor.lhp_01" MaintainScrollPositionOnPostback="true" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -9,6 +11,8 @@
     <link href="../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script src="../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
+
+    
 
     <script type="text/javascript">
 
@@ -34,57 +38,93 @@
 			.tablesorter({ headers: { 4: { sorter: false }, 5: { sorter: false}} });
             $('#<%=gvCurriculum.ClientID %>')
 			.tablesorter({ headers: { 4: { sorter: false }, 5: { sorter: false}} });
+            $('#<%=gvLearningHistory.ClientID %>')
+			.tablesorter({ headers: { 5: { sorter: false }, 6: { sorter: false}} });
 
         });
 
-        function expandDetailsInCourse(_this) {
 
+        function expandDetailsInCourse(_this) {
+            //
+            var div_course = document.getElementById('<%=this.div_course.ClientID %>');
             var id = _this.id;
             var imgelem = document.getElementById(_this.id);
-
-            var currowid = id.replace("imgCourse", "div_course") //GETTING THE ID OF SUMMARY ROW
-
-            var rowdetelemid = currowid;
-
-            var rowdetelem = document.getElementById(rowdetelemid);
+            //var currowid = id.replace("imgCourse", "div_course");  //GETTING THE ID OF SUMMARY ROW
+            //var rowdetelemid = currowid;
+            //var rowdetelem = document.getElementById(rowdetelemid);
             if (imgelem.alt == "plus") {
                 imgelem.src = "../../Images/addminus-sm.gif"
-                imgelem.alt = "minus"
-                rowdetelem.style.display = 'block';
+                imgelem.alt = "minus";
+                //
+                div_course.style.display = 'block';
+                //rowdetelem.style.display = 'block';
             }
             else {
                 imgelem.src = "../../Images/addplus-sm.gif"
-                imgelem.alt = "plus"
-                rowdetelem.style.display = 'none';
+                imgelem.alt = "plus";
+                //
+                div_course.style.display = 'none';
+                //rowdetelem.style.display = 'none';
             }
 
             return false;
 
         }
         function expandDetailsInCurriculum(_this) {
-
+            //
+            var div_curriculum = document.getElementById('<%= this.div_curriculum.ClientID %>');
             var id = _this.id;
             var imgelem = document.getElementById(_this.id);
-
-            var currowid = id.replace("imgCurriculum", "div_curriculum") //GETTING THE ID OF SUMMARY ROW
-
-            var rowdetelemid = currowid;
-
-            var rowdetelem = document.getElementById(rowdetelemid);
+            //var currowid = id.replace("imgCurriculum", "div_curriculum") //GETTING THE ID OF SUMMARY ROW
+            //var rowdetelemid = currowid;
+            //var rowdetelem = document.getElementById(rowdetelemid);
             if (imgelem.alt == "plus") {
                 imgelem.src = "../../Images/addminus-sm.gif"
                 imgelem.alt = "minus"
-                rowdetelem.style.display = 'block';
+                //
+                div_curriculum.style.display = 'block';
+                //rowdetelem.style.display = 'block';
             }
             else {
                 imgelem.src = "../../Images/addplus-sm.gif"
                 imgelem.alt = "plus"
-                rowdetelem.style.display = 'none';
+                //
+                div_curriculum.style.display = 'none';
+                //rowdetelem.style.display = 'none';
             }
 
             return false;
 
         }
+
+
+        function expandDetailsLearningHistory(_this) {
+            //
+            var div_LearningHistory = document.getElementById('<%= this.div_LearningHistory.ClientID %>');
+            var id = _this.id;
+            var imgelem = document.getElementById(_this.id);
+            //var currowid = id.replace("imgLearningHistory", "div_LearningHistory") //GETTING THE ID OF SUMMARY ROW
+            //var rowdetelemid = currowid;
+            //var rowdetelem = document.getElementById(rowdetelemid);
+            if (imgelem.alt == "plus") {
+                imgelem.src = "../../Images/addminus-sm.gif"
+                imgelem.alt = "minus"
+                //
+                div_LearningHistory.style.display = 'block';
+                //rowdetelem.style.display = 'block';
+            }
+            else {
+                imgelem.src = "../../Images/addplus-sm.gif"
+                imgelem.alt = "plus"
+                //
+                div_LearningHistory.style.display = 'none';
+                //rowdetelem.style.display = 'none';
+            }
+
+            return false;
+
+        }
+
 
         // Course view popup
         $(document).ready(function () {
@@ -111,7 +151,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Employee/Course/p-lvcd-01.aspx?id=' + record_id,
+                    'href': '/Employee/Course/lvcd-01.aspx?id=' + record_id,
                     'onComplete': function () {
                         $.fancybox.showActivity();
                         $('#fancybox-frame').load(function () {
@@ -178,45 +218,66 @@
         });
 
     </script>
+    <script type="text/javascript" language="javascript">
+        function confirmStatus() {
+            if (confirm('Are you sure?') == true)
+                return true;
+            else
+                return false;
+
+        }
+    </script>
+    <script type="text/javascript">
+
+        function Navigate(a) {
+            alert(a);
+            javascript: window.open("http://www.microsoft.com");
+
+        } 
+
+</script>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <div class="content_area">
         <div>
-            <%= LocalResources.GetText("app_welcome_content")%><br />
+            <%= LocalResources.GetText("app_welcome_content_employee_home_text")%><br />
             <br />
             <br />
         </div>
     </div>
     <div class="div_header_long">
-        My Courses:
+        <%=LocalResources.GetLabel("app_my_courses_text")%>:
         <div class="right div_padding_10">
-            <asp:ImageButton OnClientClick="expandDetailsInCourse(this);return false;" runat="server"
+            <asp:ImageButton Onclientclick="expandDetailsInCourse(this);return false;" runat="server"
                 ID="imgCourse" ImageUrl="~/Images/addplus-sm.gif" />
+            
         </div>
         <div class="clear">
         </div>
     </div>
     <div class="div_padding_10" id="div_course" runat="server">
         <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
-            runat="server" EmptyDataText="No result found." GridLines="None" DataKeyNames="e_enroll_course_id_fk"
+            runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>" GridLines="None" DataKeyNames="e_enroll_course_id_fk"
             AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
             OnRowDataBound="gvCourses_RowDataBound" OnRowCommand="gvCourses_RowCommand">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="Course Title (ID)" DataField='title' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text%>" DataField='title' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Required" DataField='required' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$ LabelResourceExpression: app_required_text %>" DataField='required' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="Due Date" DataField='duedate' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$LabelResourceExpression: app_due_date_text %>" DataField='duedate' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="Status" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    HeaderText="<%$LabelResourceExpression: app_status_text %>" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
 <%--                        <asp:Button ID="btnViewDetail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                             CommandName="View" runat="server" Text="View Details"/>--%>
-                  <input type="button" id='<%# Eval("deliveryId") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="View Details" />'
+                  <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$LabelResourceExpression: app_view_details_button_text %>" />'
                    class="courseviewdetails cursor_hand" />
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -224,24 +285,24 @@
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Button ID="btnDrop" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' CommandName="Drop"
-                            runat="server" Text="Drop" Style="display: none;" />
+                            runat="server" Text="<%$LabelResourceExpression: app_drop_button_text %>" Style="display: none;" OnClientClick="return confirmStatus();" />
                         <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>'
-                            runat="server" CommandName="Enroll" Text="Enroll" Style="display: none;" />
-                        <asp:Button ID="btnLaunch" runat="server" CommandArgument='<%# Eval("e_enroll_course_id_fk") %>'
-                            CommandName="Launch" Text="Launch" Style="display: none;" />
+                            runat="server" CommandName="Enroll" Text="<%$LabelResourceExpression: app_enroll_button_text %>" Style="display: none;" />
+                         <asp:Button ID="btnLaunch" runat="server" CommandArgument='<%# Eval("scormURL") %>' 
+                            CommandName="Launch" Text="<%$LabelResourceExpression: app_launch_button_text %>" Style="display: none;"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkViewAllCourses" runat="server" Text="View All My Courses..."
+            <asp:LinkButton ID="lnkViewAllCourses" runat="server" Text="<%$LabelResourceExpression: app_view_all_my_course_button_text%>"
                 OnClick="lnkViewAllCourses_Click"></asp:LinkButton></b>
     </div>
     <br />
     <div class="div_header_long">
-        My Curricula:
+        <%=LocalResources.GetLabel("app_my_curricula_text")%>:
         <div class="right div_padding_10">
-            <asp:ImageButton OnClientClick="expandDetailsInCurriculum(this);return false;" runat="server"
+            <asp:ImageButton Onclientclick="expandDetailsInCurriculum(this);return false;" runat="server"
                 ID="imgCurriculum" ImageUrl="~/Images/addplus-sm.gif" />
         </div>
         <div class="clear">
@@ -250,26 +311,26 @@
     <br />
     <div class="div_padding_10" id="div_curriculum" runat="server">
         <asp:GridView ID="gvCurriculum" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
-            runat="server" EmptyDataText="No result found." GridLines="None" DataKeyNames="e_curriculum_assign_curriculum_id_fk"
+            runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>" GridLines="None" DataKeyNames="e_curriculum_assign_curriculum_id_fk"
             AutoGenerateColumns="False" OnRowCommand="gvCurriculum_RowCommand" EmptyDataRowStyle-CssClass="empty_row"
             PagerSettings-Visible="false">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="Curriculum Title (ID)" DataField='title' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$LabelResourceExpression: app_curriculum_title_with_id_text%>" DataField='title' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Assignment Date" DataField='e_curriculum_assign_date_time' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$LabelResourceExpression: app_assignment_date_text%>" DataField='e_curriculum_assign_date_time' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="Due Date" DataField='e_curriculum_assign_target_due_date' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$LabelResourceExpression: app_due_date_text %>" DataField='e_curriculum_assign_target_due_date' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="Status" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    HeaderText="<%$LabelResourceExpression: app_status_text %>" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Button ID="btnViewDetail" CommandArgument='<%#Eval("e_curriculum_assign_curriculum_id_fk")%>'
-                            CommandName="View" runat="server" Text="View Details" class="" />
+                            CommandName="View" runat="server" Text="<%$LabelResourceExpression: app_view_details_button_text %>" class="" />
                 <%--   <input type="button" id='<%# Eval("e_curriculum_assign_curriculum_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="View Details" />'--%>
                   <%-- class="curriculumviewdetails cursor_hand" />--%>
                     </ItemTemplate>
@@ -278,29 +339,80 @@
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("e_curriculum_assign_curriculum_id_fk")%>'
-                            CommandName="Enroll" runat="server" Text="Enroll" />
+                            CommandName="Enroll" runat="server" Text="<%$LabelResourceExpression: app_enroll_button_text %>" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkViewAllCurriculum" runat="server" Text="View All My Curricula..."
+            <asp:LinkButton ID="lnkViewAllCurriculum" runat="server" Text="<%$LabelResourceExpression: app_view_all_my_curricula_button_text%>"
                 OnClick="lnkViewAllCurriculum_Click"></asp:LinkButton></b>
     </div>
     <br />
-    <div class="div_header_long">
-        My Learning History:
+   <div class="div_header_long">
+        <%=LocalResources.GetLabel("app_my_learning_history_text")%>:
+        <div class="right div_padding_10">
+            <asp:ImageButton Onclientclick="expandDetailsLearningHistory(this);return false;" runat="server"
+                ID="imgLearningHistory" ImageUrl="~/Images/addplus-sm.gif" />
+        </div>
+        <div class="clear">
+        </div>
     </div>
     <br />
-    <div class="div_header_long">
-        &nbsp;
+       <div class="div_padding_10" id="div_LearningHistory" runat="server">
+        <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
+            runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>" GridLines="None" 
+            AutoGenerateColumns="False"  EmptyDataRowStyle-CssClass="empty_row"
+            PagerSettings-Visible="false" onrowcommand="gvLearningHistory_RowCommand" 
+               onrowdatabound="gvLearningHistory_RowDataBound">
+              
+            <Columns>
+                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+                    HeaderText="<%$LabelResourceExpression: app_course_title_text%>" DataField='title' HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Left" />
+                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
+                    HeaderText="<%$LabelResourceExpression: app_completion_date_text%>" DataField='date' HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                    HeaderText="<%$LabelResourceExpression: app_status_text %>" DataField='status' HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                    HeaderText="<%$LabelResourceExpression: app_score_text %>" DataField='score' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                    HeaderText="<%$LabelResourceExpression: app_delivery_text %>" DataField='deliveryType' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                        <asp:Button ID="btnReview" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' CommandName="Review"
+                            runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"  Style="display: none;"/>
+                        <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' Style="display:none;" 
+                            runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
+                        <%-- <asp:Button ID="btnViewDetails" runat="server" CommandArgument='<%# Eval("t_transcript_course_id_fk") %>' 
+                            CommandName="ViewDetails" Text="View Details" Style="display: none;"/>--%>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                       <asp:Button ID="btnCertificate" CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'
+                         CommandName="Certificate" runat="server" Text="Certificate" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+          <b>
+            <asp:LinkButton ID="lnkViewAllLearningHistory" runat="server" 
+               Text="<%$LabelResourceExpression: app_view_all_my_learning_history_button_text %>" 
+               onclick="lnkViewAllLearningHistory_Click"></asp:LinkButton></b>
     </div>
     <br />
     <div class="content_area">
-        <%= LocalResources.GetText("app_welcome_footer_content")%>
+        <%= LocalResources.GetText("app_welcome_content_footer_employee_home_text")%>
         <br />
         <br />
     </div>
     <br />
-    <br />
+    <rsweb:ReportViewer ID="rvLearningHistory" runat="server" Style="display: none;"
+        DocumentMapCollapsed="true" ShowDocumentMapButton="false">
+    </rsweb:ReportViewer>
 </asp:Content>

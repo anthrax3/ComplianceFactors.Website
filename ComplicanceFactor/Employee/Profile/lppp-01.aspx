@@ -69,7 +69,7 @@
     </div>
     <div>
         <div class="content_area">
-            <%= LocalResources.GetText("app_welcome_content")%>
+            <%= LocalResources.GetText("app_welcome_content_employee_profile_text")%>
             <br />
             <br />
             <br />
@@ -156,7 +156,7 @@
                         <asp:Label ID="lblUserName" runat="server"></asp:Label>
                     </td>
                     <td align="right">
-                        <input type="button" class="rstpwd" value='<asp:Literal ID="Literal1" runat="server" Text="Reset Your Password" />' />
+                        <input type="button" class="rstpwd" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_reset_your_password_button_text %>" />' /> 
                     </td>
                 </tr>
             </table>
@@ -420,7 +420,7 @@
         </div>
         <br />
         <div class="content_area">
-            <%= LocalResources.GetText("app_welcome_footer_content")%>
+            <%= LocalResources.GetText("app_welcome_content_footer_employee_profile_text")%>
         </div>
         <br />
         <br />
