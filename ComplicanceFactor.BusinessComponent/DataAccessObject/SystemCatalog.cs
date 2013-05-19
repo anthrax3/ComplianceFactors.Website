@@ -202,6 +202,9 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_waitlist_count { get; set; }
         public string c_session_date_format { get; set; }
         public string c_delivery_type_id { get; set; }
+        public string c_location_airport_code { get; set; }
+
+        public string s_locale_culture { get; set; }
     }
 }
 

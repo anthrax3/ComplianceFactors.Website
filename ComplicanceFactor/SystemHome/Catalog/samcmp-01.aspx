@@ -9,7 +9,7 @@
 
         $(document).ready(function () {
             $('#app_nav_system').addClass('selected');
-            // toggles the slickbox on clicking the noted link  
+            // toggles the slickbox on clicking the noted link
             $('.main_menu li a').hover(function () {
 
                 $('.main_menu li a').removeClass('selected');
@@ -35,8 +35,9 @@
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_programs_text")%></a>
+                        <a href="Documents/samdimp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_documents_text")%>
+                        </a>
                     </td>
                     <td>
                         <a href="Instructor/samip-01.aspx">
@@ -92,54 +93,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="Category/samccmp-01.aspx">
-                            <%=LocalResources.GetLabel("app_manage_categories_text")%></a>
+                        <a href="MassEnrollment/samep-01.aspx">Mass Enrollment</a>
                     </td>
                     <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_packages_text")%></a>
+                       <a href="Approvals/samamp-01.aspx">Manage Approvals Queue</a>
                     </td>
                     <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_bundles_text")%></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_exams_text")%></a>
-                    </td>
-                    <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_surveys_text")%></a>
-                    </td>
-                    <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_checklists_text")%></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_tasks_text")%></a>
-                    </td>
-                    <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_requests_text")%></a>
-                    </td>
-                    <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_manage_documents_text")%></a>
+                       <a href="Waitlist/samwmp-01.aspx">Manage Waitlists</a>
                     </td>
                 </tr>
                 <tr>
@@ -157,8 +117,7 @@
                             <%=LocalResources.GetLabel("app_manage_assignment_rules_text")%></a>
                     </td>
                     <td>
-                        <a href="#">
-                            <%=LocalResources.GetLabel("app_import_aicc_scorm_package_text")%></a>
+                       <a> Manage Audiences</a>
                     </td>
                 </tr>
                 <tr>
@@ -167,16 +126,104 @@
                     </td>
                 </tr>
                 <tr>
-                <td>
-                    <a href="Completion/samcsp-01.aspx">
-                    <%=LocalResources.GetLabel("app_manage_completions_text")%></a>
-                </td>
-                <td>
-                    <a href="../Configuration/Update Curriculum/saucsp-01.aspx">
-                    Update Curriculum Statuses</a>
-                </td>
+                    <td>
+                        <a href="Completion/samcsp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_completions_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="MassCompletions/samcp-01.aspx">Mass Completions</a>
+                    </td>
+                    <td>
+                        <a href="UpdateCurriculumStatuses/saucsp-01.aspx">
+                            <%=LocalResources.GetLabel("app_update_curriculum_statuses_text")%>
+                        </a>
+                    </td>
                 </tr>
+               <%-- <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_programs_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="Category/samccmp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_categories_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_import_aicc_scorm_package_text")%>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_packages_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_bundles_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_exams_text")%>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_surveys_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_checklists_text")%>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_tasks_text")%>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">
+                            <%=LocalResources.GetLabel("app_manage_requests_text")%>
+                        </a>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>--%>
             </table>
+            <br />
         </div>
     </div>
 </asp:Content>

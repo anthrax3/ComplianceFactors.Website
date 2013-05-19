@@ -97,6 +97,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string e_learning_keyword { get; set; }
         public string e_learning_status { get; set; }
         public string e_learning_deliveryType { get; set; }
+        public bool e_re_enroll { get; set; }
 
     }
 }

@@ -9,7 +9,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -20,7 +22,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -54,8 +56,9 @@
     </script>
     <br />
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_advanced_resource_search_results_text")%>:  
+            <%=LocalResources.GetLabel("app_advanced_resource_search_results_text")%>:
         </div>
         <br />
         <div>
@@ -102,20 +105,20 @@
                 OnRowEditing="gvsearchDetails_RowEditing" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="<%$ LabelResourceExpression: app_resource_id_text %>" HeaderStyle-HorizontalAlign="Center" DataField="c_resource_id_pk"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_resource_id_text %>" HeaderStyle-HorizontalAlign="Center"
+                        DataField="c_resource_id_pk" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="<%$ LabelResourceExpression: app_resource_name_text %>" HeaderStyle-HorizontalAlign="Center" DataField="c_resource_name"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_resource_name_text %>" HeaderStyle-HorizontalAlign="Center"
+                        DataField="c_resource_name" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_2"
-                        HeaderText="<%$ LabelResourceExpression: app_resource_type_text %>" HeaderStyle-HorizontalAlign="Center" DataField="s_resource_type_name_us_english"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_resource_type_text %>" HeaderStyle-HorizontalAlign="Center"
+                        DataField="s_resource_type_name_us_english" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_2"
-                        HeaderText="<%$ LabelResourceExpression: app_serial_number_text %>" HeaderStyle-HorizontalAlign="Center" DataField="c_resource_serial_number"
-                        ItemStyle-HorizontalAlign="Center" />
+                        HeaderText="<%$ LabelResourceExpression: app_serial_number_text %>" HeaderStyle-HorizontalAlign="Center"
+                        DataField="c_resource_serial_number" ItemStyle-HorizontalAlign="Center" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField="s_status_name" HeaderStyle-HorizontalAlign="Center"
-                        ItemStyle-HorizontalAlign="Center" />
+                        HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField="s_status_name"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -189,13 +192,13 @@
                 <table>
                     <tr>
                         <td>
-                           <%=LocalResources.GetLabel("app_resource_id_text")%>:
+                            <%=LocalResources.GetLabel("app_resource_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtResourceId" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                           <%=LocalResources.GetLabel("app_name_text")%>: 
+                            <%=LocalResources.GetLabel("app_name_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtResourceName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -223,7 +226,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                           <%=LocalResources.GetLabel("app_serial_number_text")%>: 
+                            <%=LocalResources.GetLabel("app_serial_number_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtSerialNumber" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -251,8 +254,8 @@
                                 Text="<%$ LabelResourceExpression: app_reset_button_text %>" runat="server" />
                         </td>
                         <td colspan="2" class="btncancel_td">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" runat="server"
-                                OnClick="btnGosearch_Click" />
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                                runat="server" OnClick="btnGosearch_Click" />
                         </td>
                     </tr>
                 </table>
@@ -260,5 +263,4 @@
         </asp:Panel>
     </div>
     <br />
-   
 </asp:Content>

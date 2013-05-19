@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
-using System.Globalization;
-using System.Web.Security;
 using ComplicanceFactor.Common.Languages;
 using ComplicanceFactor.BusinessComponent;
 
@@ -16,8 +10,27 @@ namespace ComplicanceFactor.SystemHome
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+            //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;<a href=/SystemHome/sahp-01.aspx>" + "Home" + "</a>&nbsp;>&nbsp;" + LocalResources.GetLabel("app_Manage_users_text");
+            //if (!string.IsNullOrEmpty(Request.QueryString["id"].ToString()))
+            //{
+            //    if (Request.QueryString["id"].ToString() == "ad")
+            //    {
+            //        SessionWrapper.navigationText = "app_nav_admin";
+            //    }
+            //    else if (Request.QueryString["id"].ToString() == "sa")
+            //    {
+            //        SessionWrapper.navigationText = "app_nav_system";
+            //    }
+            //}
+
+            SessionWrapper.navigationText = "app_nav_system";
+            string navigationText;
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_Manage_users_text");
+            navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+            hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+            lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_Manage_users_text");
+
             if (!IsPostBack)
             {
                 try

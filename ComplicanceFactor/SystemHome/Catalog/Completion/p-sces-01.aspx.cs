@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using ComplicanceFactor.Common;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Completion
 {
@@ -13,5 +9,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
         {
 
         }
+
+        protected void btnGoSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SystemHome/Catalog/Completion/p-scesr-01.aspx?eno=" + SecurityCenter.EncryptText(txtEmployeeNumber.Text) + "&ename=" + SecurityCenter.EncryptText(txtEmployeeName.Text) + "&editDeliveryId=" + SecurityCenter.EncryptText(Request.QueryString["editDeliveryId"].ToString()), false);
+        }
+        
     }
 }

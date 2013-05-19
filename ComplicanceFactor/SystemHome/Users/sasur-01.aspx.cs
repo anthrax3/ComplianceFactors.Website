@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using ComplicanceFactor.BusinessComponent;
@@ -11,19 +7,20 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.Common.Languages;
 namespace ComplicanceFactor.SystemHome
 {
+
     public partial class sasur_01 : BasePage
     {
-
-
-
-
-
-
         public void Page_Load(object sender, EventArgs e)
         {
 
+            //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+            //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_Manage_users_text");
+
+            string navigationText;
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_Manage_users_text");
+            navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+            hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+            lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_Manage_users_text");
 
 
             if (!IsPostBack)
@@ -309,10 +306,7 @@ namespace ComplicanceFactor.SystemHome
 
         }
 
-        protected void gvsearchDetails_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-
-        }
+        
         //protected void gvsearchDetails_RowCreated1(object sender, GridViewRowEventArgs e)
         //{
         //    if (e.Row.RowType == DataControlRowType.Pager)

@@ -104,14 +104,14 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNewDomain" ValidationGroup="saandn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LocalizationResourceExpression: app_save_new_domain_button_text %>" OnClick="btnHeaderSaveNewDomain_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_domain_button_text %>" OnClick="btnHeaderSaveNewDomain_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_reset_button_text %>"
+                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnHeaderReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LocalizationResourceExpression: app_cancel_button_text %>"
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
@@ -119,7 +119,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            <%=LocalResources.GetLocalizationResourceLabelText("app_domain_information_text")%>:
+            <%=LocalResources.GetLabel("app_domain_information_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -127,9 +127,9 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvDomainId" runat="server" ValidationGroup="saandn"
-                            ControlToValidate="txtDomainId" ErrorMessage="<%$ LocalizationResourceExpression: app_domain_id_error_msg %>">&nbsp;
+                            ControlToValidate="txtDomainId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLocalizationResourceLabelText("app_domain_id_text")%>:
+                        * <%=LocalResources.GetLabel("app_domain_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDomainId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -145,9 +145,9 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvDomainName" runat="server" ValidationGroup="saandn"
-                            ControlToValidate="txtDomainName" ErrorMessage="<%$ LocalizationResourceExpression: app_domain_name_error_msg %>">&nbsp;
+                            ControlToValidate="txtDomainName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLocalizationResourceLabelText("app_domain_name_text")%>:
+                        * <%=LocalResources.GetLabel("app_domain_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDomainName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -156,9 +156,9 @@
                 <tr>
                     <td valign="top">
                         <asp:RequiredFieldValidator ID="rfvDomainDescription" runat="server" ValidationGroup="saandn"
-                            ControlToValidate="txtDescription" ErrorMessage="<%$ LocalizationResourceExpression: app_domain_description_error_msg %>">&nbsp;
+                            ControlToValidate="txtDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLocalizationResourceLabelText("app_description_text")%>:
+                        * <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtDescription" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -166,22 +166,22 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLocalizationResourceLabelText("app_owner_text")%>:
+                        <%=LocalResources.GetLabel("app_owner_text")%>:
                     </td>
                     <td colspan="3" class="align_left">
                         <asp:Label ID="lblOwner" CssClass="font_normal cursor_hand" runat="server"></asp:Label>
                         <asp:Button ID="btnOnwer" runat="server" CausesValidation="false" CssClass="cursor_hand"
-                            Text="<%$ LocalizationResourceExpression: app_select_button_text %>" />
+                            Text="<%$ LabelResourceExpression: app_select_button_text %>" />
                     </td>
                     <td colspan="3" class="align_right">
-                        <%=LocalResources.GetLocalizationResourceLabelText("app_coordinator_text")%>:&nbsp;
+                        <%=LocalResources.GetLabel("app_coordinator_text")%>:&nbsp;
                         <asp:Label ID="lblcoordinator" CssClass="font_normal cursor_hand" runat="server"></asp:Label>
-                        <asp:Button ID="btnCoordinator" runat="server" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_select_button_text %>" />
+                        <asp:Button ID="btnCoordinator" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_select_button_text %>" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLocalizationResourceLabelText("app_status_text")%>:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td colspan="3" class="align_left">
                         <asp:DropDownList ID="ddlStatus" DataTextField="u_status_name" DataValueField="u_status_id_pk"
@@ -189,7 +189,7 @@
                         </asp:DropDownList>
                     </td>
                     <td colspan="3" class="align_right">
-                        <%=LocalResources.GetLocalizationResourceLabelText("app_theme_text")%>:&nbsp;
+                        <%=LocalResources.GetLabel("app_theme_text")%>:&nbsp;
                         <asp:DropDownList ID="ddlTheme" DataTextField="u_theme_name" DataValueField="u_theme_system_id_pk"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
@@ -207,14 +207,14 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveNewDomain" ValidationGroup="saandn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LocalizationResourceExpression: app_save_new_domain_button_text %>" OnClick="btnFooterSaveNewDomain_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_domain_button_text %>" OnClick="btnFooterSaveNewDomain_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_reset_button_text %>"
+                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnFooterReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LocalizationResourceExpression: app_cancel_button_text %>"
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>

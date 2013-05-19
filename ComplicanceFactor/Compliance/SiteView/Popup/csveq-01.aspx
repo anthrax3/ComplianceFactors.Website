@@ -48,7 +48,7 @@
             ValidationGroup="csveq"></asp:ValidationSummary>
         <div>
             <div class="div_header_700">
-                Question:
+                <%=LocalResources.GetLabel("app_question_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -56,10 +56,10 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvQuestionType" InitialValue="0" runat="server"
-                                ControlToValidate="ddlQuestionType" ErrorMessage="Please select question type"
+                                ControlToValidate="ddlQuestionType" ErrorMessage="<%$ TextResourceExpression: app_select_question_type_error_empty %>"
                                 ValidationGroup="csveq" Causesvalidation="True">&nbsp;
                             </asp:RequiredFieldValidator>
-                            * Question Type:
+                            * <%=LocalResources.GetLabel("app_question_type_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:DropDownList ID="ddlQuestionType" onchange="DisableRequiredField(this);" CssClass="ddl_user_advanced_search"
@@ -80,13 +80,13 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvQuestionOrder" runat="server" ControlToValidate="txtQuestionOrder"
-                                ErrorMessage="Please Enter Question Order" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_question_order_error_empty %>" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revQuestionOrder" runat="server" ControlToValidate="txtQuestionOrder"
-                                ErrorMessage="Please Enter Only Numbers In Question Order" ValidationExpression="^\d+$"
+                                ErrorMessage="<%$ TextResourceExpression: app_question_order_error_wrong %>" ValidationExpression="^\d+$"
                                 ValidationGroup="csveq">&nbsp;
                             </asp:RegularExpressionValidator>
-                            * Question Order:
+                            * <%=LocalResources.GetLabel("app_question_order_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtQuestionOrder" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -101,9 +101,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvQuestion" runat="server" ControlToValidate="txtQuestion"
-                                ErrorMessage="Please enter question type" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_question_type_error_empty %>" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
-                            * Enter Question:
+                            * <%=LocalResources.GetLabel("app_enter_question_text")%>:
                         </td>
                         <td colspan="3">
                             <textarea id="txtQuestion" runat="server" class="textarea_long_3" rows="3" cols="200"></textarea>
@@ -112,9 +112,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvOption1" runat="server" ControlToValidate="txtOption1"
-                                ErrorMessage="Please enter option 1" Enabled="false" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_option_1_error_empty %>" Enabled="false" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
-                            Option 1:
+                            <%=LocalResources.GetLabel("app_option_text")%> 1:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtOption1" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -123,9 +123,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvOption2" runat="server" ControlToValidate="txtOption2"
-                                ErrorMessage="Please enter option 2" Enabled="false" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_option_2_error_empty %>" Enabled="false" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
-                            Option 2:
+                            <%=LocalResources.GetLabel("app_option_text")%> 2:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtOption2" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -134,9 +134,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvOption3" runat="server" ControlToValidate="txtOption3"
-                                ErrorMessage="Please enter option 3" Enabled="false" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_option_3_error_empty %>" Enabled="false" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
-                            Option 3:
+                            <%=LocalResources.GetLabel("app_option_text")%> 3:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtOption3" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -145,9 +145,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvOption4" runat="server" ControlToValidate="txtOption4"
-                                ErrorMessage="Please enter option 4" Enabled="false" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_option_4_error_empty %>" Enabled="false" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
-                            Option 4:
+                            <%=LocalResources.GetLabel("app_option_text")%> 4:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtOption4" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -156,9 +156,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvAnswer" runat="server" ControlToValidate="txtAnswer"
-                                ErrorMessage="Please enter answer" ValidationGroup="csveq">&nbsp;
+                                ErrorMessage="<%$ TextResourceExpression: app_answer_error_empty %>" ValidationGroup="csveq">&nbsp;
                             </asp:RequiredFieldValidator>
-                            * Answer:
+                            * <%=LocalResources.GetLabel("app_answer_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtAnswer" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -171,14 +171,14 @@
                     </tr>
                     <tr>
                         <td class="align_right">
-                            <asp:Button ID="btnAddQuestion" CssClass="cursor_hand" runat="server" Text="Add Question"
+                            <asp:Button ID="btnAddQuestion" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_question_button_text %>"
                                 OnClick="btnAddQuestion_Click" ValidationGroup="csveq" />
                         </td>
                         <td colspan="2">
                             &nbsp;
                         </td>
                         <td>
-                            <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+                            <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" OnClick="btnCancel_Click" />
                         </td>
                     </tr>
                 </table>

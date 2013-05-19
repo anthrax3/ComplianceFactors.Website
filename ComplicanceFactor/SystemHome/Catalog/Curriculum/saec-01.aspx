@@ -12,7 +12,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -23,7 +25,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -49,7 +51,6 @@
             document.getElementById('<%=chkPrerequisite.ClientID %>').checked = false;
             document.getElementById('<%=chkEquivalencies.ClientID %>').checked = false;
             document.getElementById('<%=chkFulfillments.ClientID %>').checked = false;
-            document.getElementById('<%=chkDeliveries.ClientID %>').checked = false;
             document.getElementById('<%=chkAttachments.ClientID %>').checked = false;
             document.getElementById('<%=chkPaths.ClientID %>').checked = false;
             document.getElementById('<%=chkRecertification.ClientID %>').checked = false;
@@ -1042,7 +1043,6 @@
 
         });
     </script>
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -1085,47 +1085,47 @@
             });
         });
     </script>
-            <script type="text/javascript">
+    <script type="text/javascript">
 
-                $(document).ready(function () {
+        $(document).ready(function () {
 
-                    $(".deletecurriculumrecertpath").click(function () {
+            $(".deletecurriculumrecertpath").click(function () {
 
-                        //Get the Id of the record to delete
-                        var record_id = $(this).attr("id");
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
 
-                        //Get the GridView Row reference
-                        var tr_id = $(this).parents("#.record");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
 
-                        // Ask user's confirmation before delete records
-                        if (confirm("Do you want to delete this record?")) {
+                // Ask user's confirmation before delete records
+                if (confirm("Do you want to delete this record?")) {
 
-                            $.ajax({
-                                type: "POST",
+                    $.ajax({
+                        type: "POST",
 
-                                //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
-                                url: "saec-01.aspx/DeleteRecertPath",
+                        //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
+                        url: "saec-01.aspx/DeleteRecertPath",
 
-                                //Pass the selected record id
-                                data: "{'args': '" + record_id + "'}",
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                success: function () {
+                        //Pass the selected record id
+                        data: "{'args': '" + record_id + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
 
-                                    // Do some animation effect
-                                    tr_id.fadeOut(500, function () {
+                            // Do some animation effect
+                            tr_id.fadeOut(500, function () {
 
-                                        //Remove GridView row
-                                        tr_id.remove();
+                                //Remove GridView row
+                                tr_id.remove();
 
-                                    });
-                                }
                             });
-
                         }
-                        return false;
                     });
-                });
+
+                }
+                return false;
+            });
+        });
     </script>
     <script type="text/javascript">
 
@@ -1214,7 +1214,7 @@
             }
 
         }
-</script>
+    </script>
     <script type="text/javascript" language="javascript">
         function confirmStatus() {
             if (confirm('Are you sure?') == true)
@@ -1228,7 +1228,7 @@
         ValidationGroup="saec"></asp:ValidationSummary>
     <asp:HiddenField ID="hdCurriculumId" runat="server" />
     <asp:CustomValidator ID="cvRecurranceEvery" EnableClientScript="true" ClientValidationFunction="RecurranceEvery"
-        ValidationGroup="saec" runat="server" ErrorMessage="Please fill or empty the recurrance section.">&nbsp;</asp:CustomValidator>
+        ValidationGroup="saec" runat="server" ErrorMessage="<%$ TextResourceExpression: app_recurrance_error_empty%>">&nbsp;</asp:CustomValidator>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         <Scripts>
             <asp:ScriptReference Path="~/SystemHome/Catalog/Curriculum/GenerateFile/iframe.js" />
@@ -1239,19 +1239,20 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveCurriculum" ValidationGroup="saec" CssClass="cursor_hand"
-                            runat="server" Text="Save Curriculum" OnClick="btnHeaderSaveCurriculum_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text%>" OnClick="btnHeaderSaveCurriculum_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="Reset"
+                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
                             OnClick="btnHeaderReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="Cancel"
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>"
                             OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
@@ -1259,14 +1260,14 @@
         </div>
         <br />
         <div class="div_header_long">
-            Curriculum Information:
+            <%=LocalResources.GetLabel("app_curriculum_information_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                        Created by:
+                        <%=LocalResources.GetLabel("app_created_by_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCreatedBy" runat="server"></asp:Label>
@@ -1281,7 +1282,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        Created On:
+                        <%=LocalResources.GetLabel("app_created_on_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCreatedOn" runat="server"></asp:Label>
@@ -1290,9 +1291,10 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvCurriculumId" runat="server" ValidationGroup="saec"
-                            ControlToValidate="txtCurriculumId" ErrorMessage="Please Enter Curriculum Id.">&nbsp;
+                            ControlToValidate="txtCurriculumId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty%>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Curriculum Id:
+                        *
+                        <%=LocalResources.GetLabel("app_curriculum_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCurriculumId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -1308,9 +1310,10 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvCurriculumTitle" runat="server" ValidationGroup="saec"
-                            ControlToValidate="txtCurriculumTitle" ErrorMessage="Please Enter Curriculum Title.">&nbsp;
+                            ControlToValidate="txtCurriculumTitle" ErrorMessage="<%$ TextResourceExpression: app_title_error_empty%>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Curriculum Title:
+                        *
+                        <%=LocalResources.GetLabel("app_curriculum_title_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCurriculumTitle" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -1319,9 +1322,10 @@
                 <tr>
                     <td valign="top">
                         <asp:RequiredFieldValidator ID="rfvDescription" runat="server" ValidationGroup="saec"
-                            ControlToValidate="txtDescription" ErrorMessage="Please Enter Description.">&nbsp;
+                            ControlToValidate="txtDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty%>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Description:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtDescription" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -1329,7 +1333,7 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                        Abstract:
+                        <%=LocalResources.GetLabel("app_abstract_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtAbstract" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -1337,31 +1341,30 @@
                 </tr>
                 <tr>
                     <td>
-                        Version:
+                        <%=LocalResources.GetLabel("app_version_text")%>:
                     </td>
                     <td colspan="4" class="align_left">
                         <asp:TextBox ID="txtVersion" runat="server" CssClass="textbox_long"></asp:TextBox>
-                        <asp:Button ID="btnCreateNewVersion" runat="server" Text="Create New Version" />
-                        <asp:Button ID="btnViewVersions" runat="server" Text="View All Versions" />
-                        
+                        <asp:Button ID="btnCreateNewVersion" runat="server" Text="<%$ LabelResourceExpression: app_create_new_version_button_text%>" />
+                        <asp:Button ID="btnViewVersions" runat="server" Text="<%$ LabelResourceExpression: app_view_all_version_button_text%>" />
                     </td>
                     <td>
                         <table>
                             <tr>
                                 <td>
-                                    Type:
+                                    <%=LocalResources.GetLabel("app_type_text")%>:
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="ddlCurriculumType" DataValueField="s_curriculum_type_system_id_pk" CssClass="ddl_user_advanced_search"
-                                    DataTextField="s_curriculum_type_name" runat="server" />
+                                    <asp:DropDownList ID="ddlCurriculumType" DataValueField="s_curriculum_type_system_id_pk"
+                                        CssClass="ddl_user_advanced_search" DataTextField="s_curriculum_type_name" runat="server" />
                                 </td>
                             </tr>
                         </table>
                     </td>
-                    <td  class="align_right">
+                    <td class="align_right">
                         <div class="right">
                             <asp:Button ID="btnRemove" CssClass="deleteicon cursor_hand" Style="display: none;"
-                                runat="server" Text="Remove" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />
                         </div>
                         <div class="right">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -1369,10 +1372,10 @@
                                     <table cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td style="white-space: nowrap">
-                                                Icon:
+                                                <%=LocalResources.GetLabel("app_icon_text")%>:
                                                 <asp:LinkButton ID="lnkDownload" CssClass="font_normal cursor_hand" runat="server"></asp:LinkButton>
                                                 <asp:Button ID="btnSelectIconUri" runat="server" CssClass="selecticonuri cursor_hand"
-                                                    Text="Select" />
+                                                    Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                                             </td>
                                         </tr>
                                     </table>
@@ -1385,24 +1388,24 @@
                 </tr>
                 <tr>
                     <td>
-                        Owner:
+                        <%=LocalResources.GetLabel("app_owner_text")%>:
                     </td>
                     <td colspan="3" class="align_left">
                         <asp:Label ID="lblOwner" CssClass="font_normal cursor_hand" runat="server"></asp:Label>
                         <asp:Button ID="btnOnwer" runat="server" CausesValidation="false" CssClass="cursor_hand"
-                            Text="Select" />
+                            Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                     </td>
                     <td colspan="3" class="align_right">
-                        Coordinator:
+                        <%=LocalResources.GetLabel("app_coordinator_text")%>
                         <asp:Label ID="lblcoordinator" CssClass="font_normal cursor_hand" runat="server"></asp:Label>
-                        <asp:Button ID="btnCoordinator" runat="server" CssClass="cursor_hand" Text="Select" />
+                        <asp:Button ID="btnCoordinator" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:RegularExpressionValidator ID="revcost" runat="server" ErrorMessage="Cost allow only numeric."
+                        <asp:RegularExpressionValidator ID="revcost" runat="server" ErrorMessage="<%$ TextResourceExpression: app_cost_error_wrong%>"
                             ControlToValidate="txtcost" ValidationGroup="saec" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                        Cost:
+                        <%=LocalResources.GetLabel("app_cost_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtcost" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -1411,9 +1414,9 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
-                                    <asp:RegularExpressionValidator ID="rfvCreditHours" runat="server" ErrorMessage="Credit hours allow only numeric."
+                                    <asp:RegularExpressionValidator ID="rfvCreditHours" runat="server" ErrorMessage="<%$ TextResourceExpression: app_credit_hours_error_wrong%>"
                                         ControlToValidate="txtCreditHours" ValidationGroup="saec" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                                    Credit Hours:
+                                    <%=LocalResources.GetLabel("app_credit_hours_text")%>:
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtCreditHours" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -1422,9 +1425,9 @@
                         </table>
                     </td>
                     <td>
-                        <asp:RegularExpressionValidator ID="rfvCreditUnits" runat="server" ErrorMessage="Credit units allow only numeric."
+                        <asp:RegularExpressionValidator ID="rfvCreditUnits" runat="server" ErrorMessage="<%$ TextResourceExpression: app_credit_units_error_wrong%>"
                             ControlToValidate="txtCreditUnits" ValidationGroup="saec" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                        Credit Units:
+                        <%=LocalResources.GetLabel("app_credit_units_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCreditUnits" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -1432,7 +1435,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Status:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlStatus" DataValueField="c_curriculum_status_id_pk" DataTextField="c_curriculum_status_name"
@@ -1443,7 +1446,7 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 70px;">
                             <tr>
                                 <td>
-                                    Visible:
+                                    <%=LocalResources.GetLabel("app_visible_text")%>:
                                 </td>
                                 <td class="align_left">
                                     <asp:CheckBox ID="chkVisible" runat="server" />
@@ -1452,7 +1455,7 @@
                         </table>
                     </td>
                     <td colspan="2">
-                        Approval Required:
+                        <%=LocalResources.GetLabel("app_approval_required_text")%>:
                         <asp:CheckBox ID="chkApprovalRequired" runat="server" />
                     </td>
                     <td class="align_left">
@@ -1465,7 +1468,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Path(s):
+            <%=LocalResources.GetLabel("app_paths_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1493,13 +1496,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_curricula_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
+                                <input type="button" id='<%# Eval("c_curricula_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                     class="editcurriculumpath cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_curricula_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                <input type="button" id='<%# Eval("c_curricula_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                     class="deletecurriculumpath cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1509,14 +1512,14 @@
         </div>
         <br />
         <div class="div_controls font_1">
-            <asp:Button ID="btnAddPath" runat="server" CssClass="cursor_hand" Text="Add Path" />
+            <asp:Button ID="btnAddPath" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_Path_button_text%>" />
         </div>
         <br />
         <div class="div_header_long">
-            Recertificstion Path(s):
+            <%=LocalResources.GetLabel("app_recertificstion_path_text")%>:
         </div>
         <br />
-                <div class="div_controls_from_left">
+        <div class="div_controls_from_left">
             <div>
                 <asp:GridView ID="gvRecertPath" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                     CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
@@ -1541,13 +1544,13 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_curricula_recert_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
+                                <input type="button" id='<%# Eval("c_curricula_recert_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                     class="editcurriculumrecertpath cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_curricula_recert_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                <input type="button" id='<%# Eval("c_curricula_recert_path_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                     class="deletecurriculumrecertpath cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1556,13 +1559,12 @@
             </div>
         </div>
         <br />
-
         <div class="div_controls font_1">
             <asp:Button ID="btnAddRecertificstion" runat="server" CssClass="cursor_hand" Text="Add Recertificstion" />
         </div>
         <br />
         <div class="div_header_long">
-            Category(ies):
+            <%=LocalResources.GetLabel("app_category_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1590,7 +1592,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_related_category_id_fk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                <input type="button" id='<%# Eval("c_related_category_id_fk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                     class="deleteCategory cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1599,11 +1601,11 @@
             </div>
         </div>
         <div class="div_controls font_1">
-            <asp:Button ID="btnAddCategory" runat="server" CssClass="cursor_hand" Text="Add" />
+            <asp:Button ID="btnAddCategory" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_button_text%>" />
         </div>
         <br />
         <div class="div_header_long">
-            Domain(s):
+            <%=LocalResources.GetLabel("app_domain_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1631,7 +1633,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_related_domain_id_fk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                <input type="button" id='<%# Eval("c_related_domain_id_fk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                     class="deletedomain cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1640,39 +1642,39 @@
             </div>
         </div>
         <div class="div_controls font_1">
-            <asp:Button ID="btnAddDomain" runat="server" CssClass="cursor_hand" Text="Add" />
+            <asp:Button ID="btnAddDomain" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_button_text%>" />
         </div>
         <br />
         <div class="div_header_long">
-            Audience(s):
+            <%=LocalResources.GetLabel("app_audience_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
-            <asp:Button ID="btnAddAudience" runat="server" CssClass="cursor_hand" Text="Add" />
+            <asp:Button ID="btnAddAudience" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_button_text%>" />
         </div>
         <br />
         <div class="div_header_long">
-            Recurrance:
+            <%=LocalResources.GetLabel("app_Recurrance_text")%>:
         </div>
         <br />
         <div class="default_font_size ">
             <table cellpadding="3" cellspacing="3">
                 <tr>
                     <td valign="top">
-                        <asp:RegularExpressionValidator ID="rfvEvery" runat="server" ErrorMessage="Every allow only numeric."
+                        <asp:RegularExpressionValidator ID="rfvEvery" runat="server" ErrorMessage="<%$ TextResourceExpression: app_every_error_wrong%>"
                             ControlToValidate="txtEvery" ValidationGroup="saec" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                        Every
+                        <%=LocalResources.GetLabel("app_every_text")%>
                         <asp:TextBox ID="txtEvery" runat="server" Width="50px"></asp:TextBox>
                         <asp:DropDownList ID="ddlEvery" runat="server">
                             <asp:ListItem Text="Days" Value="days"></asp:ListItem>
                             <asp:ListItem Text="Months" Value="months"></asp:ListItem>
                             <asp:ListItem Text="Years" Value="years"></asp:ListItem>
                         </asp:DropDownList>
-                        Grace Period:
+                        <%=LocalResources.GetLabel("app_grace_period_text")%>:
                         <asp:TextBox ID="txtGracePreiod" runat="server" Width="50px"></asp:TextBox>
                     </td>
                     <td valign="top">
-                        From:
+                        <%=LocalResources.GetLabel("app_from_text")%>:
                     </td>
                     <td>
                         <asp:RadioButtonList runat="server" ID="rbtnDate" RepeatColumns="1" RepeatDirection="Vertical">
@@ -1685,19 +1687,20 @@
                     <td valign="top">
                         <asp:RegularExpressionValidator ID="regexDate" runat="server" ControlToValidate="txtDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Invalid recurrance date." Display="Dynamic" ValidationGroup="saec">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong%>" Display="Dynamic"
+                            ValidationGroup="saec">&nbsp;</asp:RegularExpressionValidator>
                         <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceDate" Format="MM/dd/yyyy" TargetControlID="txtDate" runat="server">
                         </asp:CalendarExtender>
                         <asp:Button ID="btnClearRecurrences" CssClass="cursor_hand" OnClientClick="return clearRadioButtonList();"
-                            runat="server" Text="Clear Recurrences" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_clear_recurrance_button_text%>" />
                     </td>
                 </tr>
             </table>
         </div>
         <br />
         <div class="div_header_long">
-            Attachment(s):
+            <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1716,20 +1719,20 @@
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Button ID="btnViewWitnessFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="View" CssClass="cursor_hand" />
+                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text%>" CssClass="cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Button ID="btnEditWitnessFiles" CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="Edit" CssClass="cursor_hand" />
+                                    runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" CssClass="cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Button ID="btnRemoveWitnessFiles" OnClientClick="return confirmStatus();" CommandName="Remove"
                                     runat="server" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    Text="Remove" CssClass="cursor_hand" />
+                                    Text="<%$ LabelResourceExpression: app_remove_button_text%>" CssClass="cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -1738,19 +1741,19 @@
         </div>
         <div>
             <div class="div_controls font_1">
-                <asp:Button ID="btnAddAttachment" CssClass="cursor_hand" runat="server" Text="Add Attachment" />
+                <asp:Button ID="btnAddAttachment" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_attachment_button_text%>" />
             </div>
         </div>
         <br />
         <div class="div_header_long">
-            Prerequisites:
+            <%=LocalResources.GetLabel("app_prerequisites_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
             <table>
                 <tr>
                     <td valign="top">
-                        <asp:Button ID="btnPrerequisites" CssClass="cursor_hand" runat="server" Text="Select" />
+                        <asp:Button ID="btnPrerequisites" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                     </td>
                     <td>
                         <asp:GridView ID="gvPrerequisites" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
@@ -1776,13 +1779,13 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
+                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                             class="editprerequisities cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                             class="deleteprerequisities cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -1794,14 +1797,14 @@
         </div>
         <br />
         <div class="div_header_long">
-            Equivalencies:
+            <%=LocalResources.GetLabel("app_equivalencies_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
             <table>
                 <tr>
                     <td valign="top">
-                        <asp:Button ID="btnEquivalencies" CssClass="cursor_hand" runat="server" Text="Select" />
+                        <asp:Button ID="btnEquivalencies" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                     </td>
                     <td>
                         <asp:GridView ID="gvEquivalencies" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
@@ -1827,13 +1830,13 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
+                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                             class="editEquivalencies cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                             class="deleteEquivalencies cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -1845,14 +1848,14 @@
         </div>
         <br />
         <div class="div_header_long">
-            Fulfillments:
+            <%=LocalResources.GetLabel("app_fulfillments_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
             <table>
                 <tr>
                     <td valign="top">
-                        <asp:Button ID="btnFulfillments" CssClass="cursor_hand" runat="server" Text="Select" />
+                        <asp:Button ID="btnFulfillments" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                     </td>
                     <td>
                         <asp:GridView ID="gvFulfillments" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
@@ -1878,13 +1881,13 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
+                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>"/>'
                                             class="editFulfillments cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                        <input type="button" id='<%# Eval("c_related_curriculum_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                             class="deleteFulfillments cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -1896,7 +1899,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            All Locale(s):
+            <%=LocalResources.GetLabel("app_all_locale_text")%>:
         </div>
         <br />
         <div>
@@ -1913,7 +1916,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="width_40">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("s_locale_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
+                                <input type="button" id='<%# Eval("s_locale_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                     class="editlocale cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1935,7 +1938,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td class="align_right">
-                                <input type="button" id="btnCreateNewLocale" value='<asp:Literal ID="Literal3" runat="server" Text="Create New Locale" />' />
+                                <input type="button" id="btnCreateNewLocale" value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_create_new_locale_button_text%>" />' />
                                 <br />
                                 <br />
                             </td>
@@ -1950,26 +1953,26 @@
             </div>
         </div>
         <div class="div_header_long">
-            Custom Fields:
+            <%=LocalResources.GetLabel("app_custom_fields_text")%>:
         </div>
         <br />
         <div class="div_controls font_1 ">
             <table>
                 <tr>
                     <td>
-                        Custom 01:
+                        <%=LocalResources.GetLabel("app_custom_01_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom01" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 02:
+                        <%=LocalResources.GetLabel("app_custom_02_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom02" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 03:
+                        <%=LocalResources.GetLabel("app_custom_03_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom03" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -1977,19 +1980,19 @@
                 </tr>
                 <tr>
                     <td>
-                        Custom 04:
+                        <%=LocalResources.GetLabel("app_custom_04_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom04" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 05:
+                        <%=LocalResources.GetLabel("app_custom_05_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom05" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 06:
+                        <%=LocalResources.GetLabel("app_custom_06_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom06" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -1997,19 +2000,19 @@
                 </tr>
                 <tr>
                     <td>
-                        Custom 07:
+                        <%=LocalResources.GetLabel("app_custom_07_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom07" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 08:
+                        <%=LocalResources.GetLabel("app_custom_08_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom08" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 09:
+                        <%=LocalResources.GetLabel("app_custom_09_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom09" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -2017,19 +2020,19 @@
                 </tr>
                 <tr>
                     <td>
-                        Custom 10:
+                        <%=LocalResources.GetLabel("app_custom_10_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom10" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 11:
+                        <%=LocalResources.GetLabel("app_custom_11_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom11" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Custom 12:
+                        <%=LocalResources.GetLabel("app_custom_12_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom12" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -2037,7 +2040,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Custom 13:
+                        <%=LocalResources.GetLabel("app_custom_13_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom13" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -2062,14 +2065,14 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveCurriculum" ValidationGroup="saec" CssClass="cursor_hand"
-                            runat="server" Text="Save Curriculum" OnClick="btnFooterSaveCurriculum_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text%>" OnClick="btnFooterSaveCurriculum_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="Reset"
+                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
                             OnClick="btnFooterReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="Cancel"
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>"
                             OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>
@@ -2089,7 +2092,7 @@
                 <div>
                     <div class="uploadpopup_header">
                         <div class="left">
-                            Upload File:
+                            <%=LocalResources.GetLabel("app_upload_file_text")%>:
                             <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                                 z-index: 1103; position: absolute; width: 30px; height: 30px;" runat="server"
                                 ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -2102,7 +2105,7 @@
             <div>
                 <br />
                 <div class="uploadpanel">
-                    Select File:
+                    <%=LocalResources.GetLabel("app_select_file_text")%>:
                     <br />
                     <br />
                     <asp:FileUpload ID="FileUpload1" runat="server" Width="525" size="70" />
@@ -2110,10 +2113,10 @@
                     <br />
                     <br />
                     <div class="uploadbutton">
-                        <asp:Button ID="btnUploadAttachements" runat="server" Text="Upload" OnClick="btnUploadattachments_Click"
-                            CssClass="cursor_hand" />
+                        <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text%>"
+                            OnClick="btnUploadattachments_Click" CssClass="cursor_hand" />
                     </div>
-                    <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="Cancel" />
+                    <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />
                 </div>
                 <br />
             </div>
@@ -2127,7 +2130,7 @@
             <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">
-                        Create New Version:
+                        <%=LocalResources.GetLabel("app_create_new_version_text")%>:
                     </div>
                     <asp:ImageButton ID="ImageButton1" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                         z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -2138,7 +2141,7 @@
                 <table>
                     <tr>
                         <td>
-                            New Version Number:
+                            <%=LocalResources.GetLabel("app_new_version_number_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtNewVersionNumber" runat="server"></asp:TextBox><br />
@@ -2146,7 +2149,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Category(ies):
+                            <%=LocalResources.GetLabel("app_copy_categories_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkCategorys" type="checkbox" runat="server" />
@@ -2154,7 +2157,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Domain(s):
+                            <%=LocalResources.GetLabel("app_copy_domains_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkDomains" type="checkbox" runat="server" />
@@ -2162,7 +2165,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Audiences(s):
+                            <%=LocalResources.GetLabel("app_copy_audeiences_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkAudiences" type="checkbox" runat="server" />
@@ -2170,7 +2173,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Recurrance:
+                            <%=LocalResources.GetLabel("app_copy_recurrence_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkRecurrance" type="checkbox" runat="server" />
@@ -2178,7 +2181,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Prerequisite(s):
+                            <%=LocalResources.GetLabel("app_copy_prerequisite_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkPrerequisite" type="checkbox" runat="server" />
@@ -2186,7 +2189,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Equivalency(ies):
+                            <%=LocalResources.GetLabel("app_copy_equivalency_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkEquivalencies" type="checkbox" runat="server" />
@@ -2194,7 +2197,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Fulfillment(s):
+                            <%=LocalResources.GetLabel("app_copy_fulfillments_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkFulfillments" type="checkbox" runat="server" />
@@ -2202,15 +2205,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Delivery(ies):
-                        </td>
-                        <td class="align_left">
-                            <input id="chkDeliveries" type="checkbox" runat="server" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Copy Attachments:
+                            <%=LocalResources.GetLabel("app_copy_attachments_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkAttachments" type="checkbox" runat="server" />
@@ -2218,7 +2213,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Path(s)
+                            <%=LocalResources.GetLabel("app_copy_path_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkPaths" type="checkbox" runat="server" />
@@ -2226,7 +2221,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Copy Recertification(s)
+                            <%=LocalResources.GetLabel("app_copy_recertification_text")%>:
                         </td>
                         <td class="align_left">
                             <input id="chkRecertification" type="checkbox" runat="server" />
@@ -2243,14 +2238,14 @@
                     <tr>
                         <td align="left">
                             <asp:Button ID="btnSaveNewVersion" CssClass="cursor_hand" OnClick="btnSaveNewVersion_Click"
-                                runat="server" Text="Create New Version" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_save_button_text%>" />
                         </td>
                         <td align="left">
                             <asp:Button ID="btnResetNewVersion" CssClass="cursor_hand" OnClientClick="return ClearVersion();"
-                                runat="server" Text="Reset" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text%>" />
                         </td>
                         <td align="right">
-                            <asp:Button ID="btnCancelNewVersion" CssClass="cursor_hand" runat="server" Text="Cancel" />
+                            <asp:Button ID="btnCancelNewVersion" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />
                         </td>
                     </tr>
                 </table>
@@ -2263,7 +2258,7 @@
             <asp:Panel ID="pnlViewPreviousVersionHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">
-                        All Previous Version(s):
+                        <%=LocalResources.GetLabel("app_all_previous_version_text")%>:
                     </div>
                     <asp:ImageButton ID="imgClosePreviousVersionList" CssClass="cursor_hand" Style="top: -15px;
                         right: -15px; z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -2282,7 +2277,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:Button ID="btnViewVersion" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="View" />
+                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text%>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -2293,7 +2288,7 @@
                 <table cellpadding="0" cellspacing="0" class="button_600">
                     <tr>
                         <td align="left">
-                            <asp:Button ID="btnCloseVersionList" CssClass="cursor_hand" runat="server" Text="Close" />
+                            <asp:Button ID="btnCloseVersionList" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_close_button_text%>" />
                         </td>
                     </tr>
                 </table>

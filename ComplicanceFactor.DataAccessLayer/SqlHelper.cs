@@ -124,6 +124,7 @@ namespace ComplicanceFactor.DataAccessLayer
                     DataSet ds = new DataSet();
                     //// Fill the DataSet using default values for DataTable names, etc
                     adapter.Fill(ds);
+                    //adapter.SelectCommand.CommandTimeout = 0;
                     //// Detach the SqlParameters from the command object, so they can be used again
                     command.Parameters.Clear();
                     //// Return the int value from dataset

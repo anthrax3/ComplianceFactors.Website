@@ -405,10 +405,11 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static SystemSplashPage GetSplashContent(string u_splash_domain_id_fk)
+        public static SystemSplashPage GetSplashContent(string u_splash_domain_id_fk, string selected_language)
         {
             Hashtable htGetSplashContent = new Hashtable();
             htGetSplashContent.Add("@u_splash_domain_id", u_splash_domain_id_fk);
+            htGetSplashContent.Add("@selected_language", selected_language);
             SystemSplashPage splashPage = new SystemSplashPage();
             try
             {
@@ -419,6 +420,18 @@ namespace ComplicanceFactor.BusinessComponent
                 }
 
                 return splashPage;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetSplashPages()
+        {
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_splash_pages");
             }
             catch (Exception)
             {

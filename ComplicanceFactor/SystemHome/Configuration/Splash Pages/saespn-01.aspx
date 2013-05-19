@@ -289,7 +289,7 @@
                         <asp:Button ID="btnHeaderSaveSplashPage" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
                             ValidationGroup="saespn02" OnClick="btnHeaderSaveSplashPage_Click" />
                     </td>
-                    <td align="left">
+                    <td align="center">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnHeaderReset_Click" />
                     </td>
@@ -440,7 +440,7 @@
                         <asp:Button ID="btnFooterSaveSplashPage" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
                             ValidationGroup="saespn02" OnClick="btnFooterSaveSplashPage_Click" />
                     </td>
-                    <td align="left">
+                    <td align="center">
                         <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnFooterReset_Click" />
                     </td>

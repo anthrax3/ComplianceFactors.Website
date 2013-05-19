@@ -9,7 +9,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -20,7 +22,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -53,11 +55,10 @@
 
             }
         });
-
-
     </script>
     <br />
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_advanced_catalog_course_search_text")%>:
         </div>
@@ -104,8 +105,7 @@
                 runat="server" EmptyDataText="No result found." DataKeyNames="c_course_system_id_pk"
                 AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
                 PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
-                OnRowCommand="gvsearchDetails_RowCommand" 
-                onrowediting="gvsearchDetails_RowEditing">
+                OnRowCommand="gvsearchDetails_RowCommand" OnRowEditing="gvsearchDetails_RowEditing">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_course_id_text %>" DataField='c_course_id_pk'

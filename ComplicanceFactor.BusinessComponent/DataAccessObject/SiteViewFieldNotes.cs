@@ -19,6 +19,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string sv_fieldnote_id { get; set; }
 
         public string sv_fieldnote_attachment { get; set; }
+        public bool sv_fieldnote_is_acknowledge { get; set; }
 
         //FieldNotes Attachments
 

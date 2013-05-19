@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,14 +8,7 @@ using ComplicanceFactor.BusinessComponent;
 using System.Globalization;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.IO;
-using System.Text;
-using System.Net.Mail;
-using System.Web.UI.HtmlControls;
-using System.Configuration;
-
-using System.Web.Security;
 using ComplicanceFactor.Common.Languages;
-using ComplicanceFactor.SystemHome.Catalog.DeliveryPopup;
 
 
 namespace ComplicanceFactor.SystemHome.Catalog
@@ -43,8 +34,16 @@ namespace ComplicanceFactor.SystemHome.Catalog
             DataSet dsprerequisiteEquivalenciesFullfillments = SystemCatalogBLL.GetprerequisiteEquivalenciesFullfillments(editCourseId);
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_course_text");
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_course_text");
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_course_text");
+
+
                 //bind locale
                 ddlLocale.DataSource = SystemLocaleBLL.GetLocaleListExceptEnglish();
                 ddlLocale.DataBind();
@@ -108,6 +107,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                     SessionWrapper.ResetFulfillments = dsprerequisiteEquivalenciesFullfillments.Tables[2];
                     //RevertBack
                     RevertBack(editCourseId);
+                    
 
                 }
                 catch (Exception ex)
@@ -166,10 +166,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 gvFulfillments.DataSource = dsprerequisiteEquivalenciesFullfillments.Tables[5];
                 gvFulfillments.DataBind();
                 //Get delivery(ies)
-                DataSet dsGetcourseDelivery = new DataSet();
-                dsGetcourseDelivery = SystemCatalogBLL.GetCourseDelivery(editCourseId);
-                gvDeliveries.DataSource = dsGetcourseDelivery.Tables[0];
-                gvDeliveries.DataBind();
+                GetDeliveries();
                 //Get domain
                 gvDomain.DataSource = SystemCatalogBLL.GetCourseDomain(editCourseId);
                 gvDomain.DataBind();
@@ -1290,6 +1287,15 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 }
             }
 
+        }
+
+        
+        private void GetDeliveries()
+        {
+            DataSet dsGetcourseDelivery = new DataSet();
+            dsGetcourseDelivery = SystemCatalogBLL.GetCourseDelivery(editCourseId);
+            gvDeliveries.DataSource = dsGetcourseDelivery.Tables[0];
+            gvDeliveries.DataBind();
         }
 
        

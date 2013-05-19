@@ -22,14 +22,14 @@
     <form id="form1" runat="server">
     <div>
         <div class="div_header_popup_1">
-            Inspection Details:
+            <%=LocalResources.GetLabel("app_inspection_details_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="text_font_normal">
-                        Inspection Id:
+                        <%=LocalResources.GetLabel("app_inspection_id_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>
@@ -44,7 +44,7 @@
                         &nbsp;
                     </td>
                     <td class="text_font_normal">
-                        Inspection Name:
+                        <%=LocalResources.GetLabel("app_inspection_name_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblInspectionName" runat="server" Text="Label"></asp:Label>
@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Inspection Description:
+                        <%=LocalResources.GetLabel("app_inspection_description_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label>
@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        IsDefault:
+                        <%=LocalResources.GetLabel("app_is_default_text")%>:
                     </td>
                     <td class="align_left">
                         &nbsp;
@@ -69,7 +69,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Status:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
@@ -79,7 +79,7 @@
         </div>
         <br />
         <div class="div_header_popup_1">
-            Questions:
+            <%=LocalResources.GetLabel("app_questions_text")%>:
         </div>
         <br />
         <div class="div_padding_40 align_center">
@@ -117,7 +117,7 @@
         <br />
         <div class="div_controls font_1">
             <center>
-                <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="Cancel"
+                <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                     OnClick="btnFooterCancel_Click" />
             </center>
         </div>

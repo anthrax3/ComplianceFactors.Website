@@ -20,7 +20,6 @@
             height: 400px;
         }
     </style>
-
     <script type="text/javascript">
 
         $(function () {
@@ -57,7 +56,6 @@
 
         }
     </script>
-   
     <script type="text/javascript" language="javascript">
         function validateCheckBoxes() {
             var isValid = false;
@@ -77,19 +75,18 @@
             return false;
         }
     </script>
+    <script type="text/javascript">
+        function resetall() {
+            document.getElementById('<%=txtCurriculumId.ClientID %>').value = '';
+            document.getElementById('<%=txtTitle.ClientID %>').value = '';
 
-     <script type="text/javascript">
-         function resetall() {
-             document.getElementById('<%=txtCurriculumId.ClientID %>').value = '';
-             document.getElementById('<%=txtTitle.ClientID %>').value = '';
-
-             return false;
-         }
+            return false;
+        }
     </script>
-       <script type="text/javascript" language="javascript">
-           function DeleteAnd() {
-               $('#<%=dlstCurriculumSelected.ClientID %> tr td:last').eq(-1).css("display", "none");
-           }
+    <script type="text/javascript" language="javascript">
+        function DeleteAnd() {
+            $('#<%=dlstCurriculumSelected.ClientID %> tr td:last').eq(-1).css("display", "none");
+        }
     </script>
 </head>
 <body>
@@ -97,7 +94,7 @@
     <div>
         <div id="curriculumselected" runat="server" style="display: none;">
             <div class="div_header_popup_1">
-               Curriculum Selected:
+                <%=LocalResources.GetLabel("app_curriculum_selected_text")%>:
             </div>
             <br />
             <div>
@@ -110,8 +107,9 @@
                                     <%# Eval("c_curriculum_text") %>
                                 </td>
                                 <td style="width: 80px;">
-                                    <asp:Button ID="btnRemove" CssClass="cursor_hand" OnClientClick="return confirmremove();" CommandName="Remove"
-                                        CommandArgument='<%#Container.ItemIndex %>' runat="server" Text="Remove" />
+                                    <asp:Button ID="btnRemove" CssClass="cursor_hand" OnClientClick="return confirmremove();"
+                                        CommandName="Remove" CommandArgument='<%#Container.ItemIndex %>' runat="server"
+                                        Text="<%$ LabelResourceExpression: app_remove_button_text%>" />
                                 </td>
                                 <td class="red_color">
                                     *and*
@@ -120,31 +118,30 @@
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
-                <asp:Button ID="btnSaveandExit" CssClass="cursor_hand" runat="server" Text="Save and Exit" 
-                OnClick="btnSaveandExit_Click"/>
+                <asp:Button ID="btnSaveandExit" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_and_exit_button_text%>"
+                    OnClick="btnSaveandExit_Click" />
             </div>
-             <br />
+            <br />
         </div>
-       
         <div class="div_header_popup_1">
-            Curriculum Search:
+            <%=LocalResources.GetLabel("app_curriculum_search_text")%>:
         </div>
         <br />
         <div>
-            <table cellpadding="0" cellspacing="0" class="paging_popup_1">
+            <table cellpadding="0" cellspacing="0" class="paging_700">
                 <tr>
                     <td align="left">
-                        <asp:Button ID="btnHeaderFirst" CssClass="cursor_hand" runat="server" Text="|<<First"
+                        <asp:Button ID="btnHeaderFirst" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_first_button_text%>"
                             OnClick="btnHeaderFirst_Click" />
-                        <asp:Button ID="btnHeaderPrevious" CssClass="cursor_hand" runat="server" Text="<<Previous"
+                        <asp:Button ID="btnHeaderPrevious" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_previous_button_text%>"
                             OnClick="btnHeaderPrevious_Click" />
-                        <asp:Button ID="btnHeaderNext" CssClass="cursor_hand" runat="server" Text="Next>>"
+                        <asp:Button ID="btnHeaderNext" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_next_button_text%>"
                             OnClick="btnHeaderNext_Click" />
-                        <asp:Button ID="btnHeaderLast" CssClass="cursor_hand" runat="server" Text="Last>>|"
+                        <asp:Button ID="btnHeaderLast" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_last_button_text%>"
                             OnClick="btnHeaderLast_Click" />
                     </td>
                     <td align="center">
-                        <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="Result Per Page"></asp:Label>
+                        <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text%>"></asp:Label>
                         <asp:DropDownList ID="ddlHeaderResultPerPage" runat="server" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlHeaderResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>5</asp:ListItem>
@@ -157,10 +154,10 @@
                         </asp:DropDownList>
                     </td>
                     <td align="right">
-                        <asp:Label ID="lblHeaderPage" runat="server" Text="Page"></asp:Label>
+                        <asp:Label ID="lblHeaderPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text%>"></asp:Label>
                         <asp:TextBox ID="txtHeaderPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblHeaderPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="Go To"
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text%>"
                             OnClick="btnHeaderGoto_Click" />
                     </td>
                 </tr>
@@ -174,14 +171,14 @@
                 PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Curriculum Id" DataField='c_curriculum_id_pk'
+                        HeaderText="<%$ LabelResourceExpression: app_curriculum_id_text%>" DataField='c_curriculum_id_pk'
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="Title" DataField='c_curriculum_title'
+                        HeaderText="<%$ LabelResourceExpression: app_title_text%>" DataField='c_curriculum_title'
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
-                       <HeaderTemplate>
+                        <HeaderTemplate>
                             <asp:CheckBox ID="chkSelectAll" onclick="toggleSelection(this);" runat="server" />
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -190,10 +187,9 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            
         </div>
         <div class="right">
-            <asp:Button ID="btnAddSelected" CssClass="cursor_hand" runat="server" Text="Add Selected"
+            <asp:Button ID="btnAddSelected" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_selected_button_text%>"
                 OnClientClick="return validateCheckBoxes();" OnClick="btnAddSelected_Click" />
         </div>
         <br />
@@ -201,20 +197,20 @@
         <div class="clear">
         </div>
         <div>
-            <table cellpadding="0" cellspacing="0" class="paging_popup_1">
+            <table cellpadding="0" cellspacing="0" class="paging_700">
                 <tr>
                     <td align="left">
-                        <asp:Button ID="btnFooterFirst" CssClass="cursor_hand" runat="server" Text="|<<First"
+                        <asp:Button ID="btnFooterFirst" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_first_button_text%>"
                             OnClick="btnFooterFirst_Click" />
-                        <asp:Button ID="btnFooterPrevious" CssClass="cursor_hand" runat="server" Text="<<Previous"
+                        <asp:Button ID="btnFooterPrevious" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_previous_button_text%>"
                             OnClick="btnFooterPrevious_Click" />
-                        <asp:Button ID="btnFooterNext" CssClass="cursor_hand" runat="server" Text="Next>>"
+                        <asp:Button ID="btnFooterNext" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_next_button_text%>"
                             OnClick="btnFooterNext_Click" />
-                        <asp:Button ID="btnFooterLast" CssClass="cursor_hand" runat="server" Text="Last>>|"
+                        <asp:Button ID="btnFooterLast" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_last_button_text%>"
                             OnClick="btnFooterLast_Click" />
                     </td>
                     <td align="center">
-                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="Result Per Page"></asp:Label>
+                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text%>"></asp:Label>
                         <asp:DropDownList ID="ddlFooterResultPerPage" runat="server" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlFooterResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>5</asp:ListItem>
@@ -227,10 +223,10 @@
                         </asp:DropDownList>
                     </td>
                     <td align="right">
-                        <asp:Label ID="lblFooterPage" runat="server" Text="Page"></asp:Label>
+                        <asp:Label ID="lblFooterPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text%>"></asp:Label>
                         <asp:TextBox ID="txtFooterPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblFooterPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="Go To"
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text%>"
                             OnClick="btnFooterGoto_Click" />
                     </td>
                 </tr>
@@ -242,20 +238,20 @@
         <br />
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
-                Curriculum Advanced Search:
+                <%=LocalResources.GetLabel("app_curriculum_advanced_search_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                            Curriculum Id:
+                            <%=LocalResources.GetLabel("app_curriculum_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtCurriculumId" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            Title:
+                            <%=LocalResources.GetLabel("app_title_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtTitle" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -267,16 +263,16 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="align_left">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="Go Search !"
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text%>"
                                 runat="server" OnClick="btnGosearch_Click" />
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="Reset"
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
                                 OnClientClick="return resetall();" runat="server" />
                         </td>
                         <td class="align_right">
                             <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                             Text="Cancel" />
+                                Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />
                         </td>
                     </tr>
                 </table>

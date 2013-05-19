@@ -133,5 +133,6 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_curriculum_recert_path_sections { get; set; }
         public string c_curriculum_recert_path_courses { get; set; }
         public bool c_recert_path { get; set; }
+        public string c_curriculum_type_name { get; set; }
     }
 }

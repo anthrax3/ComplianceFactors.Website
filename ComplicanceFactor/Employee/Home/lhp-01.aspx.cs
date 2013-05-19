@@ -362,30 +362,54 @@ namespace ComplicanceFactor
             {
                 Button btnReview = (Button)e.Row.FindControl("btnReview");
                 Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
+                Button btnCertificate = (Button)e.Row.FindControl("btnCertificate");
+                Button btnViewDetails = (Button)e.Row.FindControl("btnViewDetails");
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
                 if (status == "Completed")
                 {
                     
                     btnReview.Style.Add("display", "inline");
+                    btnCertificate.Style.Add("display", "none");
                 }
-                else
+                else if (status == "Passed")
                 {
-                    
-                    btnEnroll.Style.Add("display", "inline");
+
+                    btnViewDetails.Style.Add("display", "Block");
+                    btnCertificate.Style.Add("display", "Block");
+                }
+                else if (status == "Failed")
+                {
+                    btnEnroll.Style.Add("display", "Block");
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                 }
             }
         }
 
         protected void gvLearningHistory_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int rowIndex = int.Parse(e.CommandArgument.ToString());
+            string t_transcript_course_id_fk = gvLearningHistory.DataKeys[rowIndex][0].ToString();
+            string title = gvLearningHistory.DataKeys[rowIndex][1].ToString();
+            bool isEnroll;
             if (e.CommandName.Equals("Enroll"))
             {
-                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
-
+                
+                isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk,SessionWrapper.u_userid);
+                if (isEnroll == true)
+                {
+                    SessionWrapper.isLeraningHistory = true;
+                }
+                else
+                {
+                    SessionWrapper.isLeraningHistory = false;
+                }
+                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
+                
             }
             else if (e.CommandName.Equals("Certificate"))
             {
-                string t_transcript_course_id_fk = e.CommandArgument.ToString();
+                
                 rvLearningHistory.LocalReport.DataSources.Clear();
                 DataSet dsCertificate = new DataSet();
                 try
@@ -411,6 +435,7 @@ namespace ComplicanceFactor
                 }
                 if (dsCertificate.Tables[0].Rows.Count > 0)
                 {
+                    divError.Style.Add("display", "none");
                     Warning[] warnings;
                     string[] streamIds;
                     string mimeType = string.Empty;
@@ -430,6 +455,13 @@ namespace ComplicanceFactor
                     Response.Flush(); // send it to the client to download  
                     Response.End();
                     Response.Close();
+                    
+                }
+                else
+                {
+                    divError.Style.Add("display", "block");
+                    divError.InnerText = "Please add atleast one instructor for " + title+".";
+                    
                 }
             }
         }

@@ -38,26 +38,26 @@
     <br />
         <div class="content_area_long">
             <div class="div_header_long">
-                UI Advanced Search:
+            <%=LocalResources.GetLabel("app_ui_advanced_search_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            UI ID:
+                           <%=LocalResources.GetLabel("app_ui_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtUiId" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            UI Page(s):
+                            <%=LocalResources.GetLabel("app_ui_page_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtUiPages" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            Keyword:
+                            <%=LocalResources.GetLabel("app_keyword_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtKeyWord" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -69,7 +69,7 @@
                     </tr>
                     <tr>
                         <td>
-                            UI Type:
+                            <%=LocalResources.GetLabel("app_ui_type_text")%>:
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlUiTypes" CssClass="ddl_user_advanced_search" runat="server">
@@ -80,7 +80,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Languages:
+                            <%=LocalResources.GetLabel("app_languages_text")%>: 
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlLanguages" DataTextField="s_locale_description" DataValueField="s_locale_short_Name"
@@ -88,7 +88,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Native Label:
+                            <%=LocalResources.GetLabel("app_ui_id_text")%>: :
                         </td>
                         <td>
                             <asp:TextBox ID="txtNativeLabel" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -108,10 +108,10 @@
                             &nbsp;
                         </td>
                         <td class="btnreset_td">
-                            <asp:Button ID="btnReset" OnClientClick="return resetall();" CssClass="cursor_hand" Text="Reset" runat="server" />
+                            <asp:Button ID="btnReset" OnClientClick="return resetall();" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" runat="server" />
                         </td>
                         <td colspan="2" class="btncancel_td">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="Go Search !" 
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" 
                                 runat="server" onclick="btnGosearch_Click" />
                         </td>
                     </tr>

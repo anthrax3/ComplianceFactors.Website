@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.RecertPath
 {
@@ -46,7 +44,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.RecertPath
         {
             Label lblSectionNumber = e.Item.FindControl("lblSectionNumber") as Label;
             int seqHazard = Convert.ToInt32(e.Item.ItemIndex) + 1;
-            lblSectionNumber.Text = "Section " + seqHazard + ":";
+            lblSectionNumber.Text = LocalResources.GetLabel("app_section_text") + seqHazard + ":";
             if (e.Item.ItemType == ListItemType.Item)
             {
                 string c_curricula_recert_path_section_id_fk = dlSection.DataKeys[e.Item.ItemIndex].ToString();
@@ -205,7 +203,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.RecertPath
             {
                 string c_curricula_recert_path_section_id_pk = dlSection.DataKeys[dle.Item.ItemIndex].ToString();
 
-                e.Row.Cells[0].Text = "<input id=" + c_curricula_recert_path_section_id_pk + " class='newcourse cursor_hand' type='button' value='Add Course'>";
+                e.Row.Cells[0].Text = "<input id=" + c_curricula_recert_path_section_id_pk + " class='newcourse cursor_hand' type='button' value='" + LocalResources.GetLabel("app_add_course_button_text") + "'/>";
 
             }
         }

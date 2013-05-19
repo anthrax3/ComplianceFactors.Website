@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome {
     public partial class saru_01 {
         
         /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// btnConfirm_header control.
         /// </summary>
         /// <remarks>

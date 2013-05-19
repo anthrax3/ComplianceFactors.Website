@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
@@ -9,7 +6,6 @@ using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
 using System.Collections;
-using System.Text;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CourseSearch
 {

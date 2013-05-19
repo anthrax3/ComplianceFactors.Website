@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.UI_Texts_and_Labels
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/sastcp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_manage_catalog_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_catalog_search_result_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_ui_labels_texts_dropdowns_text");
 
                 //bind language
                 ddlLanguages.DataSource = SystemLocaleBLL.GetLocaleList();

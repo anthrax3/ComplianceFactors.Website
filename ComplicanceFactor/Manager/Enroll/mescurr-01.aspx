@@ -69,7 +69,7 @@
                     <asp:Label ID="lblRevision" runat="server"></asp:Label>
                 </td>
                 <td>
-                    OLT - VLT - ILT
+                   
                 </td>
             </tr>
             <tr>

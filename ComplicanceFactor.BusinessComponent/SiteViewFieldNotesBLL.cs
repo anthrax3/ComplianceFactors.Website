@@ -42,7 +42,14 @@ namespace ComplicanceFactor.BusinessComponent
                 fieldNotes.sv_fieldnote_id = dtGetFieldNotes.Rows[0]["sv_fieldnote_id"].ToString();
                 fieldNotes.sv_fieldnote_location = dtGetFieldNotes.Rows[0]["sv_fieldnote_location"].ToString();
                 fieldNotes.sv_fieldnote_creation_date = dtGetFieldNotes.Rows[0]["sv_fieldnote_creation_date"].ToString();
-                fieldNotes.sv_fieldnote_is_save_sync = Convert.ToBoolean(dtGetFieldNotes.Rows[0]["sv_fieldnote_is_save_sync"]);
+                if (!string.IsNullOrEmpty(dtGetFieldNotes.Rows[0]["sv_fieldnote_is_save_sync"].ToString()))
+                {
+                    fieldNotes.sv_fieldnote_is_save_sync = Convert.ToBoolean(dtGetFieldNotes.Rows[0]["sv_fieldnote_is_save_sync"]);
+                }
+                if (!string.IsNullOrEmpty(dtGetFieldNotes.Rows[0]["sv_fieldnote_is_acknowledge"].ToString()))
+                {
+                    fieldNotes.sv_fieldnote_is_acknowledge = Convert.ToBoolean(dtGetFieldNotes.Rows[0]["sv_fieldnote_is_acknowledge"]);
+                }
 
                 return fieldNotes;
             }
@@ -66,6 +73,21 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable GetFieldNotesAcknowledge(string sv_fieldnote_id_pk)
+        {
+            Hashtable htgetFieldNotesAcknowledge = new Hashtable();
+            htgetFieldNotesAcknowledge.Add("@sv_fieldnote_id_pk", sv_fieldnote_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_fieldnotes_acknowledge", htgetFieldNotesAcknowledge);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        
 
         //s_sp_insert_field_notes_attachment
 
@@ -115,6 +137,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertFieldNotesSent.Add("@sv_fieldnote_location", fieldNotes.sv_fieldnote_location);
             htInsertFieldNotesSent.Add("@sv_fieldnote_is_save_sync", fieldNotes.sv_fieldnote_is_save_sync);
             htInsertFieldNotesSent.Add("@sv_fieldnote_id", fieldNotes.sv_fieldnote_id);
+            htInsertFieldNotesSent.Add("@sv_fieldnote_is_acknowledge", fieldNotes.sv_fieldnote_is_acknowledge);
             htInsertFieldNotesSent.Add("@sv_fieldnote_attachment", fieldNotes.sv_fieldnote_attachment);
             htInsertFieldNotesSent.Add("@sv_mi_fieldnote_sent_to_user", fieldNotes.sv_mi_fieldnote_sent_to_user);
 
@@ -157,7 +180,8 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateFieldNotes.Add("@sv_fieldnote_description", fieldNotes.sv_fieldnote_description);
             htUpdateFieldNotes.Add("@sv_fieldnote_location", fieldNotes.sv_fieldnote_location);
             htUpdateFieldNotes.Add("@sv_fieldnote_is_save_sync", fieldNotes.sv_fieldnote_is_save_sync);
-            htUpdateFieldNotes.Add("@sv_fieldnote_id", fieldNotes.sv_fieldnote_id);      
+            htUpdateFieldNotes.Add("@sv_fieldnote_id", fieldNotes.sv_fieldnote_id);
+            htUpdateFieldNotes.Add("@sv_fieldnote_is_acknowledge", fieldNotes.sv_fieldnote_is_acknowledge);           
 
             try
             {
@@ -180,6 +204,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertFieldNotes.Add("@sv_fieldnote_location", fieldNotes.sv_fieldnote_location);
             htInsertFieldNotes.Add("@sv_fieldnote_is_save_sync", fieldNotes.sv_fieldnote_is_save_sync);
             htInsertFieldNotes.Add("@sv_fieldnote_id", fieldNotes.sv_fieldnote_id);
+            htInsertFieldNotes.Add("@sv_fieldnote_is_acknowledge", fieldNotes.sv_fieldnote_is_acknowledge);
             htInsertFieldNotes.Add("@sv_fieldnote_attachment", fieldNotes.sv_fieldnote_attachment);
 
             try

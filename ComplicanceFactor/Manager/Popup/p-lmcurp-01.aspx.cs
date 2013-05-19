@@ -46,10 +46,10 @@ namespace ComplicanceFactor.Manager.Popup
         }
         protected void btnExportExcel_Click(object sender, EventArgs e)
         {
-            DataSet dsEmployee = new DataSet();
+            DataSet dsCurricula = new DataSet();
             try
             {
-                dsEmployee = EnrollmentBLL.GetAllCurricula(Request.QueryString["id"]);
+                dsCurricula = EnrollmentBLL.GetCurriculaPdf(Request.QueryString["id"], SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -68,12 +68,12 @@ namespace ComplicanceFactor.Manager.Popup
                 }
 
             }
-            if (dsEmployee.Tables[1].Rows.Count > 0)
+            if (dsCurricula.Tables[1].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsEmployee.Tables[1]);
+                exportDataTableToCsv(dsCurricula.Tables[0], dsCurricula.Tables[2]);
             }
         }
-        private void exportDataTableToCsv(DataTable dt)
+        private void exportDataTableToCsv(DataTable dt, DataTable dtCurriculaColumnName)
         {
             Response.Clear();
             Response.ContentType = "application/csv";
@@ -81,10 +81,10 @@ namespace ComplicanceFactor.Manager.Popup
             Response.AddHeader("Content-Disposition", "attachment;filename=MyCurricula.csv");
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < dt.Columns.Count; k++)
+            for (int k = 0; k < dtCurriculaColumnName.Rows.Count; k++)
             {
                 //add separator
-                sb.Append(dt.Columns[k].ColumnName + ',');
+                sb.Append(dtCurriculaColumnName.Rows[k]["curriculaColumnName"].ToString() + ',');
             }
             //append new line
             sb.Append("\r\n");
@@ -113,7 +113,7 @@ namespace ComplicanceFactor.Manager.Popup
             DataSet dsHeaderFooter = new DataSet();
             try
             {
-                dsCurricula = EnrollmentBLL.GetAllCurricula(Request.QueryString["id"]);
+                dsCurricula = EnrollmentBLL.GetCurriculaPdf(Request.QueryString["id"], SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace ComplicanceFactor.Manager.Popup
                 rvCurricula.LocalReport.EnableExternalImages = true;
                 rvCurricula.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Curricula.PdfTemplate.MyCurricula.rdlc";
                 rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("MyCurricula", dsCurricula.Tables[0]));
-                rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsCurricula.Tables[2]));
+                rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsCurricula.Tables[1]));
                 byte[] bytes = rvCurricula.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();

@@ -64,7 +64,7 @@
         <div id="divError" runat="server" class="msgarea_error" style="display: none;">
         </div>
         <div class="div_header_700">
-            Inspection Details:
+            <%=LocalResources.GetLabel("app_inspection_details_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -74,13 +74,13 @@
                         <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUserName"
                             ErrorMessage="Please enter user name" ValidationGroup="csvsfn">&nbsp;
                         </asp:RequiredFieldValidator>
-                        User Name:
+                        <%=LocalResources.GetLabel("app_user_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtUserName" CssClass="textbox_width_260" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" ValidationGroup="csvsfn" />
+                        <asp:Button ID="btnAdd" runat="server" Text="<%$ LabelResourceExpression: app_add_button_text %>" OnClick="btnAdd_Click" ValidationGroup="csvsfn" />
                     </td>
                 </tr>
             </table>
@@ -111,7 +111,7 @@
                         <td align="left">
                         </td>
                         <td align="left">
-                            <asp:Button ID="btnSend" runat="server" Text="Send" OnClick="btnSend_Click" />
+                            <asp:Button ID="btnSend" runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSend_Click" />
                         </td>
                         <td align="right">
                         </td>

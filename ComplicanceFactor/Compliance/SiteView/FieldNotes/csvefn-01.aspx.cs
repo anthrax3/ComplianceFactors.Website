@@ -9,6 +9,7 @@ using System.IO;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
 {
@@ -24,7 +25,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
         {
             //Label Bread Crumb
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + "Compliance" + "</a>&nbsp;" + " >&nbsp;" + "<a href=../ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + "Edit FieldNotes";
+            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../ccsv-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_fieldnotes_text");
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
@@ -69,6 +70,15 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
                 txtLocation.Text = fieldnotes.sv_fieldnote_location;
                 txtTitle.Text = fieldnotes.sv_fieldnote_title;
 
+                if (fieldnotes.sv_fieldnote_is_acknowledge == true)
+                {
+                    chkIsAcknowledge.Checked = true;
+                }
+                else
+                {
+                    chkIsAcknowledge.Checked = false;
+                }
+
                 gvFieldNotesAttachments.DataSource = SiteViewFieldNotesBLL.GetFieldNotesAttachment(fieldnotesId);
                 gvFieldNotesAttachments.DataBind();
             }
@@ -107,7 +117,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
                     {
                         // Add attachment to Session 
                         AddDataToTempAttachment(s_file_guid + s_file_extension, s_file_extension, s_file_name, SessionWrapper.TempAttachment);
-                        
+
                         gvFieldNotesAttachments.DataSource = SessionWrapper.TempAttachment;
                         gvFieldNotesAttachments.DataBind();
                     }
@@ -153,7 +163,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
             {
                 try
                 {
-                    if (SessionWrapper.TempAttachment.Rows.Count >0)
+                    if (SessionWrapper.TempAttachment.Rows.Count > 0)
                     {
                         //Delete previous selected course
                         var rows = SessionWrapper.TempAttachment.Select("sv_fieldnotes_attachments_id_pk= '" + attachmentId + "'");
@@ -167,8 +177,8 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
                     else
                     {
                         SiteViewFieldNotesBLL.DeleteFieldNotesAttachment(attachmentId);
-                        this.gvFieldNotesAttachments.DataSource = SystemNotificationBLL.GetNotificationAttchments(editFieldNoteId);
-                        this.gvFieldNotesAttachments.DataBind();
+                        gvFieldNotesAttachments.DataSource = SiteViewFieldNotesBLL.GetFieldNotesAttachment(editFieldNoteId);
+                        gvFieldNotesAttachments.DataBind();
                     }
                 }
                 catch (Exception ex)
@@ -221,7 +231,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
                 }
             }
         }
-       
+
         /// <summary>
         /// Add the attachment to the Session
         /// </summary>
@@ -259,18 +269,26 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
         /// </summary>
         private void SaveFieldNote()
         {
+            SiteViewFieldNotes createField = new SiteViewFieldNotes();
+            createField.sv_fieldnote_id = lblFieldNotesId.Text;
+            createField.sv_fieldnote_description = txtFieldDescription.InnerText;
+            createField.sv_fieldnote_location = txtLocation.Text;
+            createField.sv_fieldnote_title = txtTitle.Text;
+            createField.sv_fieldnote_created_by_fk = SessionWrapper.u_userid;
+            createField.sv_fieldnote_is_save_sync = false;
+            if (chkIsAcknowledge.Checked == true)
+            {
+                createField.sv_fieldnote_is_acknowledge = true;
+            }
+            else
+            {
+                createField.sv_fieldnote_is_acknowledge = false;
+            }
             //update process when the field notes are saved 
             if ((!string.IsNullOrEmpty(Request.QueryString["mode"]) && Request.QueryString["mode"].ToString() == "saved"))
             {
-                SiteViewFieldNotes createField = new SiteViewFieldNotes();
-                createField.sv_fieldnote_id_pk = editFieldNoteId;
-                createField.sv_fieldnote_id = lblFieldNotesId.Text;
-                createField.sv_fieldnote_description = txtFieldDescription.InnerText;
-                createField.sv_fieldnote_location = txtLocation.Text;
-                createField.sv_fieldnote_title = txtTitle.Text;
-                createField.sv_fieldnote_created_by_fk = SessionWrapper.u_userid;
-                createField.sv_fieldnote_is_save_sync = false;
 
+                createField.sv_fieldnote_id_pk = editFieldNoteId;
                 try
                 {
                     int result = SiteViewFieldNotesBLL.UpdateFieldNotes(createField);
@@ -278,7 +296,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = "Field Notes are updated Successfully.";
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
                     }
                 }
                 catch (Exception ex)
@@ -299,18 +317,10 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
             //Create New Field Notes when the field Notes are Received
             else if ((!string.IsNullOrEmpty(Request.QueryString["mode"]) && Request.QueryString["mode"].ToString() == "received"))
             {
-                SiteViewFieldNotes createField = new SiteViewFieldNotes();
+
                 createField.sv_fieldnote_id_pk = Guid.NewGuid().ToString();
-                createField.sv_fieldnote_id = lblFieldNotesId.Text;
-                createField.sv_fieldnote_description = txtFieldDescription.InnerText;
-                createField.sv_fieldnote_location = txtLocation.Text;
-                createField.sv_fieldnote_creation_date = DateTime.Now.ToShortDateString();
-                createField.sv_fieldnote_title = txtTitle.Text;
-                createField.sv_fieldnote_created_by_fk = SessionWrapper.u_userid;
-                createField.sv_fieldnote_is_save_sync = false;
-
+                createField.sv_fieldnote_creation_date = DateTime.Now.ToString();
                 createField.sv_fieldnote_attachment = ConvertDataTableToXml(SessionWrapper.TempAttachment);
-
                 try
                 {
                     int result = SiteViewFieldNotesBLL.InsertFieldNotes(createField);
@@ -318,7 +328,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = "Created New Field Notes Successfully.";
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
                     }
                 }
                 catch (Exception ex)
@@ -443,7 +453,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
         /// </summary>
         /// <returns></returns>
         private DataTable tempAttachment()
-        {            
+        {
             DataTable dt = new DataTable();
             DataColumn dtUserColumn;
             dtUserColumn = new DataColumn();
@@ -475,7 +485,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes
             dtUserColumn = new DataColumn();
             dtUserColumn.DataType = Type.GetType("System.Boolean");
             dtUserColumn.ColumnName = "sv_fieldnote_is_save_sync";
-            dt.Columns.Add(dtUserColumn);          
+            dt.Columns.Add(dtUserColumn);
 
             return dt;
         }

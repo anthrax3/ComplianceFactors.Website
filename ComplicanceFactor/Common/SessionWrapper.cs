@@ -290,7 +290,7 @@ namespace ComplicanceFactor.Common
         {
             get
             {
-                if (HttpContext.Current.Session["u_profile_my_courses_records_display_pref"] != null )
+                if (HttpContext.Current.Session["u_profile_my_courses_records_display_pref"] != null)
                 {
                     return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_courses_records_display_pref"]);
                 }
@@ -5088,6 +5088,30 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["AddUserForSendFieldNotes"] = value;
             }
         }
+        public static DataTable AddUserForSendOjt
+        {
+            get
+            {
+                if (HttpContext.Current.Session["AddUserForSendOjt"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["AddUserForSendOjt"];
+
+
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+
+                    return dtnull;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["AddUserForSendOjt"] = value;
+            }
+        }
         public static DataTable TempAttachment
         {
             get
@@ -5385,131 +5409,797 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["session_vehicle_values"] = value;
             }
         }
+        /// <summary>
+        /// GradingSchemeValues
+        /// </summary>
+        public static DataTable GradingSchemeValues
+        {
+            get
+            {
+                if (HttpContext.Current.Session["GradingSchemeValues"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["GradingSchemeValues"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
 
-        //public static DataTable session_EmployeeStatement
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["session_EmployeeStatement"] != null)
-        //        {
+            }
+            set
+            {
+                HttpContext.Current.Session["GradingSchemeValues"] = value;
+            }
+        }
+        public static DataTable TempEmployeelist
+        {
+            get
+            {
+                if (HttpContext.Current.Session["TempEmployeelist"] != null)
+                {
 
-        //            return (DataTable)HttpContext.Current.Session["session_EmployeeStatement"];
-        //        }
-        //        else
-        //        {
-        //            DataTable dtnull = new DataTable();
-        //            return dtnull;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["session_EmployeeStatement"] = value;
-        //    }
-        //}
-        //public static DataTable session_Policies
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["session_Policies"] != null)
-        //        {
+                    return (DataTable)HttpContext.Current.Session["TempEmployeelist"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["TempEmployeelist"] = value;
+            }
+        }
+        public static DataTable SelectedEmployeelist
+        {
+            get
+            {
+                if (HttpContext.Current.Session["SelectedEmployeelist"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["SelectedEmployeelist"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
 
-        //            return (DataTable)HttpContext.Current.Session["session_Policies"];
-        //        }
-        //        else
-        //        {
-        //            DataTable dtnull = new DataTable();
-        //            return dtnull;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["session_Policies"] = value;
-        //    }
-        //}
-        //public static DataTable session_TrainingHistory
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["session_TrainingHistory"] != null)
-        //        {
+            }
+            set
+            {
+                HttpContext.Current.Session["SelectedEmployeelist"] = value;
+            }
+        }
 
-        //            return (DataTable)HttpContext.Current.Session["session_TrainingHistory"];
-        //        }
-        //        else
-        //        {
-        //            DataTable dtnull = new DataTable();
-        //            return dtnull;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["session_TrainingHistory"] = value;
-        //    }
-        //}
-        //public static DataTable session_Observation
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["session_Observation"] != null)
-        //        {
+        public static DataTable TempEmployeelist_delivery
+        {
+            get
+            {
+                if (HttpContext.Current.Session["TempEmployeelist_delivery"] != null)
+                {
 
-        //            return (DataTable)HttpContext.Current.Session["session_Observation"];
-        //        }
-        //        else
-        //        {
-        //            DataTable dtnull = new DataTable();
-        //            return dtnull;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["session_Observation"] = value;
-        //    }
-        //}
-        //public static DataTable session_IncidentHistory
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["session_IncidentHistory"] != null)
-        //        {
+                    return (DataTable)HttpContext.Current.Session["TempEmployeelist_delivery"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["TempEmployeelist_delivery"] = value;
+            }
+        }
+        public static string selecteduserId_OLT
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selecteduserId_OLT"] != null)
+                {
+                    return HttpContext.Current.Session["selecteduserId_OLT"].ToString();
 
-        //            return (DataTable)HttpContext.Current.Session["session_IncidentHistory"];
-        //        }
-        //        else
-        //        {
-        //            DataTable dtnull = new DataTable();
-        //            return dtnull;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["session_IncidentHistory"] = value;
-        //    }
-        //}
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selecteduserId_OLT"] = value;
+            }
+        }
+        public static string u_profile_my_system_splashes_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_system_splashes_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_system_splashes_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_system_splashes_collapse_pref"] = value;
+            }
 
-
-
-        //public static bool u_sr_is_compliance_approver
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current.Session["u_sr_is_compliance_approver"] != null)
-        //        {
-        //            return Convert.ToBoolean(HttpContext.Current.Session["u_sr_is_compliance_approver"]);
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-
-        //    }
-        //    set
-        //    {
-        //        HttpContext.Current.Session["u_sr_is_compliance_approver"] = value;
-        //    }
-        //}
+        }
 
 
+        public static int u_profile_my_system_splashes_records_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_system_splashes_records_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_system_splashes_records_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_system_splashes_records_display_pref"] = value;
+            }
+
+        }
+
+
+        public static string u_profile_my_system_themes_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_system_themes_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_system_themes_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_system_themes_collapse_pref"] = value;
+            }
+
+        }
+
+
+        public static int u_profile_my_system_themes_records_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_system_themes_records_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_system_themes_records_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_system_themes_records_display_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_system_reports_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_system_reports_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_system_reports_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_system_reports_collapse_pref"] = value;
+            }
+
+        }
+
+
+        public static int u_profile_my_system_reports_records_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_system_reports_records_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_system_reports_records_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_system_reports_records_display_pref"] = value;
+            }
+
+        }
+
+
+        public static int u_profile_my_admin_todos_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_admin_todos_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_admin_todos_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_admin_todos_display_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_admin_courses_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_admin_courses_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_admin_courses_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_admin_courses_display_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_admin_reports_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_admin_reports_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_admin_reports_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_admin_reports_display_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_admin_todos_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_admin_todos_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_admin_todos_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_admin_todos_collapse_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_amdin_courses_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_amdin_courses_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_amdin_courses_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_amdin_courses_collapse_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_admin_reports_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_admin_reports_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_admin_reports_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_admin_reports_collapse_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_inst_todos_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_inst_todos_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_inst_todos_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_inst_todos_collapse_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_inst_rosters_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_inst_rosters_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_inst_rosters_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_inst_rosters_collapse_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_inst_reports_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_inst_reports_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_inst_reports_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_inst_reports_collapse_pref"] = value;
+            }
+
+        }
+
+        public static int u_profile_my_inst_todos_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_inst_todos_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_inst_todos_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_inst_todos_display_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_inst_rosters_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_inst_rosters_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_inst_rosters_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_inst_rosters_display_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_inst_reports_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_inst_reports_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_inst_reports_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_inst_reports_display_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_train_todos_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_train_todos_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_train_todos_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_train_todos_collapse_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_train_deliveries_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_train_deliveries_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_train_deliveries_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_train_deliveries_collapse_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_train_reports_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_train_reports_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_train_reports_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_train_reports_collapse_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_train_todos_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_train_todos_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_train_todos_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_train_todos_display_pref"] = value;
+            }
+
+        }
+
+        public static int u_profile_my_train_deliveries_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_train_deliveries_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_train_deliveries_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_train_deliveries_display_pref"] = value;
+            }
+
+        }
+
+        public static int u_profile_my_train_reports_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_train_reports_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_train_reports_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_train_reports_display_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_comp_todos_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_todos_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_comp_todos_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_todos_collapse_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_comp_harm_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_harm_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_comp_harm_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_harm_collapse_pref"] = value;
+            }
+
+        }
+        public static string u_profile_my_comp_giris_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_giris_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_comp_giris_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_giris_collapse_pref"] = value;
+            }
+
+        }
+
+        public static string u_profile_my_comp_reports_collapse_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_reports_collapse_pref"] != null)
+                {
+                    return HttpContext.Current.Session["u_profile_my_comp_reports_collapse_pref"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_reports_collapse_pref"] = value;
+            }
+
+        }
+
+        public static int u_profile_my_comp_todos_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_todos_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_comp_todos_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_todos_display_pref"] = value;
+            }
+
+        }
+
+        public static int u_profile_my_comp_harm_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_harm_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_comp_harm_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_harm_display_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_comp_giris_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_giris_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_comp_giris_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_giris_display_pref"] = value;
+            }
+
+        }
+        public static int u_profile_my_comp_reports_display_pref
+        {
+            get
+            {
+                if (HttpContext.Current.Session["u_profile_my_comp_reports_display_pref"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["u_profile_my_comp_reports_display_pref"]);
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["u_profile_my_comp_reports_display_pref"] = value;
+            }
+
+        }
+
+        public static string navigationText
+        {
+            get
+            {
+                if (HttpContext.Current.Session["navigationText"] != null)
+                {
+                    return HttpContext.Current.Session["navigationText"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["navigationText"] = value;
+            }
+
+        }
+        public static bool isLeraningHistory
+        {
+            get
+            {
+                if (HttpContext.Current.Session["isLeraningHistory"] != null)
+                {
+                    return Convert.ToBoolean(HttpContext.Current.Session["isLeraningHistory"]);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["isLeraningHistory"] = value;
+            }
+        }
+        public static DataTable ResetOjtAttachment
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ResetOjtAttachment"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["ResetOjtAttachment"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["ResetOjtAttachment"] = value;
+            }
+        }
         public static void clearsession()
         {
             sessionid = "";

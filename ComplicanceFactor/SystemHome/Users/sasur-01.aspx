@@ -9,7 +9,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -20,7 +22,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -59,6 +61,7 @@
     </script>
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_users_search_details_text")%>
             </div>
@@ -106,7 +109,7 @@
                         runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" DataKeyNames="u_username_enc,u_user_id_pk"
                         AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
                         PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowDataBound="gvsearchDetails_RowDataBound"
-                        OnRowCommand="gvsearchDetails_RowCommand" OnRowEditing="gvsearchDetails_RowEditing">
+                        OnRowCommand="gvsearchDetails_RowCommand">
                         <Columns>
                             <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                                 HeaderStyle-HorizontalAlign="Left" DataField="u_last_name" HeaderText="<%$ LabelResourceExpression: app_last_name_text_header %>" />

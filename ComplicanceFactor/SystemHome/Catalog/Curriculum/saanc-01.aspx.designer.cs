@@ -58,6 +58,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// btnHeaderSaveNewCurriculum control.
         /// </summary>
         /// <remarks>

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
@@ -18,8 +14,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
         {
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Curricula Search Result";
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Curricula Search Result";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + LocalResources.GetLabel("app_manage_curriculam_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_curricula_search_result_text");
+
+
                 //Bind curriculum status
                 ddlStatus.DataSource = SystemCurriculumBLL.GetCurriculumAllStatus(SessionWrapper.CultureName, "sascr-01");
                 ddlStatus.DataBind();

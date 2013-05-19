@@ -8,6 +8,7 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Data;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.SiteView
 {
@@ -20,7 +21,7 @@ namespace ComplicanceFactor.Compliance.SiteView
             {
                 //Label Bread Crumb
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + "Compliance" + "</a>&nbsp;" + " >&nbsp;" + "<a href=../SiteView/ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + "Edit M-Inspection";
+                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../SiteView/ccsv-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_m_inspection_text");
 
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
@@ -193,7 +194,7 @@ namespace ComplicanceFactor.Compliance.SiteView
                 {
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
-                    divSuccess.InnerText = "Inspection Updated successfully";
+                    divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
                 }
             }
             catch (Exception ex)

@@ -28,9 +28,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvName" runat="server" ValidationGroup="saeloc"
-                                ControlToValidate="txtTitle" ErrorMessage="Please enter the Curriculum title.">&nbsp;
+                                ControlToValidate="txtTitle" ErrorMessage="<%$ TextResourceExpression: app_title_error_empty%>">&nbsp;
                             </asp:RequiredFieldValidator>
-                            * Curriculum Title:
+                            * <%=LocalResources.GetLabel("app_curriculum_title_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtTitle" runat="server" CssClass="textbox_long_444"></asp:TextBox>
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td valign="top">
-                            Description:
+                           <%=LocalResources.GetLabel("app_description_text")%>:
                         </td>
                         <td>
                             <textarea id="txtDescriptoin" runat="server" rows="3" cols="53"></textarea>
@@ -46,7 +46,7 @@
                     </tr>
                     <tr>
                         <td valign="top">
-                            Abstract:
+                           <%=LocalResources.GetLabel("app_abstract_text")%>:
                         </td>
                         <td class="align_left">
                             <textarea id="txtAbstract" runat="server" rows="3" cols="53"></textarea>
@@ -57,12 +57,12 @@
             <br />
             <div class="div_padding_10">
                 <div class="left">
-                    <asp:Button ID="btnSave" ValidationGroup="saeloc" runat="server" Text="Save Course"
+                    <asp:Button ID="btnSave" ValidationGroup="saeloc" runat="server" Text="<%$ LabelResourceExpression: app_save_locale_button_text%>"
                         OnClick="btnSave_Click" />
                 </div>
                 <div class="right">
                     <asp:Button ID="btnCancel" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()"
-                        Text="Cancel" />
+                        Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />
                 </div>
                 <div class="clear">
                 </div>

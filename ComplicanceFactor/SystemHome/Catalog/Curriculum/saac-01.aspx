@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="saac-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Curriculum.saac_01" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
+    CodeBehind="saac-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Curriculum.saac_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -9,7 +9,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -20,7 +22,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -50,34 +52,34 @@
         EnableScriptLocalization="true">
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderArchiveCurriculum" OnClientClick="return ConfrimArchive();"
-                            CssClass="cursor_hand" runat="server" Text="Confirm Archive Curriculum" 
-                            onclick="btnHeaderArchiveCurriculum_Click"/>
+                            CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_confirm_archive_curriculum_text%>" OnClick="btnHeaderArchiveCurriculum_Click" />
                     </td>
                     <td align="left">
                         &nbsp;
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" 
-                            Text="Cancel" onclick="btnHeaderCancel_Click"/>
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>"
+                            OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
         </div>
         <br />
         <div class="div_header_long">
-           Curriculum Information:
+             <%=LocalResources.GetLabel("app_curriculum_information_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="text_font_normal">
-                        Created by:
+                       <%=LocalResources.GetLabel("app_created_by_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCreatedBy" runat="server"></asp:Label>
@@ -92,7 +94,7 @@
                         &nbsp;
                     </td>
                     <td class="text_font_normal" valign="top">
-                        Created On:
+                        <%=LocalResources.GetLabel("app_created_on_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCreatedOn" runat="server"></asp:Label>
@@ -100,7 +102,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        * Curriculum Id
+                        * <%=LocalResources.GetLabel("app_curriculum_id_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCurriculumId" runat="server"></asp:Label>
@@ -115,7 +117,7 @@
                         &nbsp;
                     </td>
                     <td class="text_font_normal">
-                        * Curriculum Title
+                        * <%=LocalResources.GetLabel("app_curriculum_title_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCurriculumTitle" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -123,7 +125,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal" valign="top">
-                        * Description
+                        * <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="lable_td_width_1" colspan="6">
                         <asp:Label ID="lblDescription" runat="server"></asp:Label>
@@ -131,7 +133,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal" valign="top">
-                        Abstract:
+                        <%=LocalResources.GetLabel("app_abstract_text")%>:
                     </td>
                     <td class="lable_td_width_1" colspan="6">
                         <asp:Label ID="lblAbstract" runat="server"></asp:Label>
@@ -139,7 +141,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                       Version:
+                        <%=LocalResources.GetLabel("app_version_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblVersion" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -148,13 +150,13 @@
                         &nbsp;
                     </td>
                     <td>
-                        &nbsp;
+                        <asp:Label ID="lblCurriculumType" CssClass="lable_td_width" runat="server"></asp:Label>
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td class="text_font_normal">
-                       Icon:
+                        <%=LocalResources.GetLabel("app_icon_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:LinkButton ID="lnkDownload" runat="server" OnClick="lnkDownload_Click"></asp:LinkButton>
@@ -162,7 +164,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Owner:
+                       <%=LocalResources.GetLabel("app_owner_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOwner" runat="server"></asp:Label>
@@ -177,7 +179,7 @@
                         &nbsp;
                     </td>
                     <td class="text_font_normal">
-                        Coordinator:
+                        <%=LocalResources.GetLabel("app_coordinator_text")%>
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblcoordinator" runat="server"></asp:Label>
@@ -185,7 +187,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Cost:
+                       <%=LocalResources.GetLabel("app_cost_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCost" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -194,7 +196,7 @@
                         <table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="text_font_normal">
-                                    Credit Hours
+                                   <%=LocalResources.GetLabel("app_credit_hours_text")%>:
                                 </td>
                                 <td class="lable_td_width_1">
                                     <asp:Label ID="lblCreditHours" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -203,7 +205,7 @@
                         </table>
                     </td>
                     <td class="text_font_normal">
-                        Credit Units: 	
+                         <%=LocalResources.GetLabel("app_credit_units_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCreditUnits" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -211,7 +213,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Status: 
+                       <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblStatus" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -220,7 +222,7 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td class="text_font_normal">
-                                    Visible:
+                                   <%=LocalResources.GetLabel("app_visible_text")%>:
                                 </td>
                                 <td class="lable_td_width_1">
                                     <asp:Label ID="lblVisible" runat="server"></asp:Label>
@@ -229,7 +231,7 @@
                         </table>
                     </td>
                     <td colspan="2" class="text_font_normal">
-                        Approval Required: 
+                       <%=LocalResources.GetLabel("app_approval_required_text")%>:
                         <asp:Label ID="lblChkApprovalRequired" Font-Bold="true" CssClass="lable_td_width"
                             runat="server"></asp:Label>
                     </td>
@@ -241,7 +243,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Path(s):
+           <%=LocalResources.GetLabel("app_paths_text")%>:
         </div>
         <br />
         <div>
@@ -273,7 +275,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Recertificstion Path(s):
+            <%=LocalResources.GetLabel("app_recertificstion_path_text")%>:
         </div>
         <br />
         <div>
@@ -305,10 +307,10 @@
         </div>
         <br />
         <div class="div_header_long">
-            Category(ies): 
+           <%=LocalResources.GetLabel("app_category_text")%>:
         </div>
         <br />
-       <div class="div_controls_from_left">
+        <div class="div_controls_from_left">
             <asp:GridView ID="gvCategory" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
@@ -337,7 +339,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Domain(s): 
+            <%=LocalResources.GetLabel("app_domain_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -369,11 +371,11 @@
         </div>
         <br />
         <div class="div_header_long">
-           Audience(s): 
+            <%=LocalResources.GetLabel("app_audience_text")%>:
         </div>
         <br />
         <div class="div_header_long">
-        Recurrance: 
+            <%=LocalResources.GetLabel("app_Recurrance_text")%>:
         </div>
         <br />
         <div class="default_font_size font_1 ">
@@ -385,28 +387,27 @@
                 </tr>
             </table>
         </div>
-         <br />
+        <br />
         <div class="div_header_long">
-         Attachment(s):  
+             <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
-         <div class="div_controls_from_left">
+        <div class="div_controls_from_left">
             <asp:GridView ID="gvCurriculumAttachments" Width="530px" GridLines="None" CellPadding="0"
-                    CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_curriculum_attachment_file_guid,c_curriculum_attachment_file_name,c_curriculum_attchments_system_id_pk"
-                    runat="server" AutoGenerateColumns="False" CssClass="gridview_normal_800" 
-                onrowcommand="gvCurriculumAttachments_RowCommand">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_curriculum_attachment_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
+                CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_curriculum_attachment_file_guid,c_curriculum_attachment_file_name,c_curriculum_attchments_system_id_pk"
+                runat="server" AutoGenerateColumns="False" CssClass="gridview_normal_800" OnRowCommand="gvCurriculumAttachments_RowCommand">
+                <Columns>
+                    <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                runat="server" Text='<%#Eval("c_curriculum_attachment_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
         <br />
         <div class="div_header_long">
-          Prerequisites: 
+            <%=LocalResources.GetLabel("app_prerequisites_text")%>:
         </div>
         <div class="div_controls_from_left">
             <asp:GridView ID="gvPrerequisites" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
@@ -435,10 +436,10 @@
         </div>
         <br />
         <div class="div_header_long">
-           Equivalencies: 
+           <%=LocalResources.GetLabel("app_equivalencies_text")%>:
         </div>
-         <div class="div_controls_from_left">
-        <asp:GridView ID="gvEquivalencies" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
+        <div class="div_controls_from_left">
+            <asp:GridView ID="gvEquivalencies" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
                 <RowStyle CssClass="record"></RowStyle>
@@ -464,10 +465,10 @@
         </div>
         <br />
         <div class="div_header_long">
-           Fulfillments: 
+            <%=LocalResources.GetLabel("app_fulfillments_text")%>:
         </div>
-          <div class="div_controls_from_left">
-        <asp:GridView ID="gvFulfillments" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
+        <div class="div_controls_from_left">
+            <asp:GridView ID="gvFulfillments" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
                 <RowStyle CssClass="record"></RowStyle>
@@ -490,29 +491,29 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            </div>
+        </div>
         <br />
         <div class="div_header_long">
-            Custom Fields: 
+             <%=LocalResources.GetLabel("app_custom_fields_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td class="text_font_normal">
-                        Custom 01:
+                         <%=LocalResources.GetLabel("app_custom_01_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom01" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                         Custom 02:
+                         <%=LocalResources.GetLabel("app_custom_02_text")%>:
                     </td>
                     <td class="lable_td_width_1">
-                      <asp:Label ID="lblCustom02" runat="server"></asp:Label>
+                        <asp:Label ID="lblCustom02" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                        Custom 03:
+                         <%=LocalResources.GetLabel("app_custom_03_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom03" runat="server"></asp:Label>
@@ -520,19 +521,19 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Custom 04:
+                         <%=LocalResources.GetLabel("app_custom_04_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom04" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                         Custom 05:
+                        <%=LocalResources.GetLabel("app_custom_05_text")%>:
                     </td>
                     <td class="lable_td_width_1">
-                      <asp:Label ID="lblCustom05" runat="server"></asp:Label>
+                        <asp:Label ID="lblCustom05" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                        Custom 06:
+                         <%=LocalResources.GetLabel("app_custom_06_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom06" runat="server"></asp:Label>
@@ -540,19 +541,19 @@
                 </tr>
                 <tr>
                     <td class=" text_font_normal">
-                        Custom 07:
+                         <%=LocalResources.GetLabel("app_custom_07_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom07" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                        Custom 08:
+                        <%=LocalResources.GetLabel("app_custom_08_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom08" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                        Custom 09:
+                        <%=LocalResources.GetLabel("app_custom_09_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom09" runat="server"></asp:Label>
@@ -560,19 +561,19 @@
                 </tr>
                 <tr>
                     <td class=" text_font_normal">
-                        Custom 10:
+                         <%=LocalResources.GetLabel("app_custom_10_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom10" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                        Custom 11:
+                         <%=LocalResources.GetLabel("app_custom_11_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom11" runat="server"></asp:Label>
                     </td>
                     <td class=" text_font_normal">
-                        Custom 12:
+                         <%=LocalResources.GetLabel("app_custom_12_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom12" runat="server"></asp:Label>
@@ -580,7 +581,7 @@
                 </tr>
                 <tr>
                     <td class=" text_font_normal">
-                        Custom 13:
+                         <%=LocalResources.GetLabel("app_custom_13_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCustom13" runat="server"></asp:Label>
@@ -605,15 +606,14 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterConfirmArchiveCurriculum" OnClientClick="return ConfrimArchive();"
-                            CssClass="cursor_hand" runat="server" Text="Confirm Archive Curriculum" 
-                            onclick="btnFooterConfirmArchiveCurriculum_Click"/>
+                            CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_confirm_archive_curriculum_text%>" OnClick="btnFooterConfirmArchiveCurriculum_Click" />
                     </td>
                     <td align="left">
                         &nbsp;
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" 
-                            Text="Cancel" onclick="btnFooterCancel_Click"/>
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>"
+                            OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>

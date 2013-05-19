@@ -8,6 +8,7 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Data;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.SiteView
 {
@@ -19,7 +20,7 @@ namespace ComplicanceFactor.Compliance.SiteView
             {
                 //Label Bread Crumb
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=../SiteView/ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + "Create New M-Inspection";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../SiteView/ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title");
 
                 SessionWrapper.session_Add_Questions = TempQuestions();
                 //ddlStatus Bind

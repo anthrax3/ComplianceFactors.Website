@@ -101,7 +101,7 @@ namespace ComplicanceFactor
                     Response.Redirect("~/Compliance/cchp-01.aspx", false);
 
                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_instructor) == true)
-                    Response.Redirect("~/Instructor/ihp-01.aspx", false);
+                    Response.Redirect("~/Instructor/tihp-01.aspx", false);
 
                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_training) == true)
                     Response.Redirect("~/Training/tchp-01.aspx", false);
@@ -280,6 +280,47 @@ namespace ComplicanceFactor
                             SessionWrapper.u_profile_my_courses_records_display_pref = userLogin.u_profile_my_courses_records_display_pref;
                             SessionWrapper.u_profile_my_curricula_records_display_pref = userLogin.u_profile_my_curricula_records_display_pref;
                             SessionWrapper.u_profile_my_learning_history_records_display_pref = userLogin.u_profile_my_learning_history_records_display_pref;
+
+                            SessionWrapper.u_profile_my_system_splashes_collapse_pref = userLogin.u_profile_my_system_splashes_collapse_pref;
+                            SessionWrapper.u_profile_my_system_themes_collapse_pref = userLogin.u_profile_my_system_themes_collapse_pref;
+                            SessionWrapper.u_profile_my_system_reports_collapse_pref = userLogin.u_profile_my_system_reports_collapse_pref;
+                            SessionWrapper.u_profile_my_system_splashes_records_display_pref = userLogin.u_profile_my_system_splashes_records_display_pref;
+                            SessionWrapper.u_profile_my_system_themes_records_display_pref = userLogin.u_profile_my_system_themes_records_display_pref;
+                            SessionWrapper.u_profile_my_system_reports_records_display_pref = userLogin.u_profile_my_system_reports_records_display_pref;
+
+                            SessionWrapper.u_profile_my_admin_todos_collapse_pref = userLogin.u_profile_my_admin_todos_collapse_pref;
+                            SessionWrapper.u_profile_my_amdin_courses_collapse_pref = userLogin.u_profile_my_amdin_courses_collapse_pref;
+                            SessionWrapper.u_profile_my_admin_reports_collapse_pref = userLogin.u_profile_my_admin_reports_collapse_pref;
+                            SessionWrapper.u_profile_my_admin_todos_display_pref = userLogin.u_profile_my_admin_todos_display_pref;
+                            SessionWrapper.u_profile_my_admin_courses_display_pref = userLogin.u_profile_my_admin_courses_display_pref;
+                            SessionWrapper.u_profile_my_admin_reports_display_pref = userLogin.u_profile_my_admin_reports_display_pref;
+
+
+                            SessionWrapper.u_profile_my_inst_todos_collapse_pref = userLogin.u_profile_my_inst_todos_collapse_pref;
+                            SessionWrapper.u_profile_my_inst_rosters_collapse_pref = userLogin.u_profile_my_inst_rosters_collapse_pref;
+                            SessionWrapper.u_profile_my_inst_reports_collapse_pref = userLogin.u_profile_my_inst_reports_collapse_pref;
+                            SessionWrapper.u_profile_my_inst_todos_display_pref = userLogin.u_profile_my_inst_todos_display_pref;
+                            SessionWrapper.u_profile_my_inst_rosters_display_pref = userLogin.u_profile_my_inst_rosters_display_pref;
+                            SessionWrapper.u_profile_my_inst_reports_display_pref = userLogin.u_profile_my_inst_reports_display_pref;
+
+                            SessionWrapper.u_profile_my_train_todos_collapse_pref = userLogin.u_profile_my_train_todos_collapse_pref;
+                            SessionWrapper.u_profile_my_train_deliveries_collapse_pref = userLogin.u_profile_my_train_deliveries_collapse_pref;
+                            SessionWrapper.u_profile_my_train_reports_collapse_pref = userLogin.u_profile_my_train_reports_collapse_pref;
+                            SessionWrapper.u_profile_my_train_todos_display_pref = userLogin.u_profile_my_train_todos_display_pref;
+                            SessionWrapper.u_profile_my_train_deliveries_display_pref = userLogin.u_profile_my_train_deliveries_display_pref;
+                            SessionWrapper.u_profile_my_train_reports_display_pref = userLogin.u_profile_my_train_reports_display_pref;
+
+                            SessionWrapper.u_profile_my_comp_todos_collapse_pref = userLogin.u_profile_my_comp_todos_collapse_pref;
+                            SessionWrapper.u_profile_my_comp_harm_collapse_pref = userLogin.u_profile_my_comp_harm_collapse_pref;
+                            SessionWrapper.u_profile_my_comp_giris_collapse_pref = userLogin.u_profile_my_comp_giris_collapse_pref;
+                            SessionWrapper.u_profile_my_comp_reports_collapse_pref = userLogin.u_profile_my_comp_reports_collapse_pref;
+
+                            SessionWrapper.u_profile_my_comp_todos_display_pref = userLogin.u_profile_my_comp_todos_display_pref;
+                            SessionWrapper.u_profile_my_comp_harm_display_pref = userLogin.u_profile_my_comp_harm_display_pref;
+                            SessionWrapper.u_profile_my_comp_giris_display_pref = userLogin.u_profile_my_comp_giris_display_pref;
+                            SessionWrapper.u_profile_my_comp_reports_display_pref = userLogin.u_profile_my_comp_reports_display_pref;
+
+
                             //SessionWrapper.CultureName = userLogin.CultureName;
 
                             home.lastvisited = userLogin.lastvisited;
@@ -374,7 +415,7 @@ namespace ComplicanceFactor
 
                                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_manager) == true)
                                 {
-                                    Response.Redirect("~/Manager/mhp-01.aspx?in=" + SecurityCenter.EncryptText("success"), false);
+                                    Response.Redirect("~/Manager/Home/mhp-01.aspx?in=" + SecurityCenter.EncryptText("success"), false);
 
                                 }
 
@@ -386,7 +427,7 @@ namespace ComplicanceFactor
 
                                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_instructor) == true)
                                 {
-                                    Response.Redirect("~/Instructor/ihp-01.aspx?in=" + SecurityCenter.EncryptText("success"), false);
+                                    Response.Redirect("~/Instructor/tihp-01.aspx?in=" + SecurityCenter.EncryptText("success"), false);
 
                                 }
 

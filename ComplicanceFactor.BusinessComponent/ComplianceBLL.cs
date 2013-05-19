@@ -5201,6 +5201,120 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static DataSet GetTodoHarmGirisReport(string userid_pk)
+        {
+            Hashtable htDeleteFile = new Hashtable();
+            htDeleteFile.Add("@u_user_id_pk", userid_pk);
+            try
+            {
+                return DataProxy.FetchDataSet("c_sp_get_todo_harm_giris_report", htDeleteFile);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int UpdateUserProfile_Compliance(User user)
+        {
+            Hashtable htUpdateUserInfo = new Hashtable();
+            htUpdateUserInfo.Add("@u_user_id_pk", user.Userid);
+            htUpdateUserInfo.Add("@u_middle_name", user.Middlename);
+            htUpdateUserInfo.Add("@u_email_address", user.EmailId);
+            htUpdateUserInfo.Add("@u_mobile_type_fk", user.Mobiletype);
+            htUpdateUserInfo.Add("@u_mobile_carrier_fk", user.MobileCarrier);
+            htUpdateUserInfo.Add("@u_mobile_number", user.MobileNumber);
+            htUpdateUserInfo.Add("@u_work_phone", user.WorkPhone);
+            htUpdateUserInfo.Add("@u_work_extension", user.Workextension);
+            htUpdateUserInfo.Add("@u_address_1", user.Address1);
+            htUpdateUserInfo.Add("@u_address_2", user.Address2);
+            htUpdateUserInfo.Add("@u_address_3", user.Address3);
+            htUpdateUserInfo.Add("@u_city", user.City);
+            htUpdateUserInfo.Add("@u_state_province_ddl", user.StateProvince);
+            htUpdateUserInfo.Add("@u_zip_postal_code_ddl", user.ZipPostalcode);
+            htUpdateUserInfo.Add("@u_country_id_fk", user.Country);
+            htUpdateUserInfo.Add("@u_locale_id_fk", user.LocaleId);
+            htUpdateUserInfo.Add("@u_timezone_fk", user.TimezoneId);
+
+            htUpdateUserInfo.Add("@u_profile_my_comp_todos_collapse_pref", user.u_profile_my_comp_todos_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_comp_harm_collapse_pref", user.u_profile_my_comp_harm_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_comp_giris_collapse_pref", user.u_profile_my_comp_giris_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_comp_reports_collapse_pref", user.u_profile_my_comp_reports_collapse_pref);      
+
+            if (user.u_profile_my_comp_todos_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_todos_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_todos_display_pref", user.u_profile_my_comp_todos_display_pref);
+            }
+            if (user.u_profile_my_comp_harm_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_harm_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_harm_display_pref", user.u_profile_my_comp_harm_display_pref);
+            }
+            if (user.u_profile_my_comp_giris_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_giris_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_giris_display_pref", user.u_profile_my_comp_giris_display_pref);
+            }
+            if (user.u_profile_my_comp_reports_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_reports_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_comp_reports_display_pref", user.u_profile_my_comp_reports_display_pref);
+            }
+
+            // 
+            htUpdateUserInfo.Add("@u_profile_my_todos_collapse_pref", user.u_profile_my_todos_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_team_collapse_pref", user.u_profile_my_team_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_report_history_collapse_pref", user.u_profile_my_report_history_collapse_pref);
+            if (user.u_profile_my_todos_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_todos_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_todos_records_display_pref", user.u_profile_my_todos_records_display_pref);
+            }
+            if (user.u_profile_my_team_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_team_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_team_records_display_pref", user.u_profile_my_team_records_display_pref);
+            }
+            if (user.u_profile_my_report_history_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_report_history_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_report_history_records_display_pref", user.u_profile_my_report_history_records_display_pref);
+            }
+            htUpdateUserInfo.Add("@type", user.type);
+            try
+            {
+                return DataProxy.FetchSPOutput("u_sp_update_compliance_user_profile", htUpdateUserInfo);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
 

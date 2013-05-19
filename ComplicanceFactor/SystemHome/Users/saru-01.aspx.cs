@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
@@ -25,9 +21,13 @@ namespace ComplicanceFactor.SystemHome
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+            //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_retire_user_text");
+            string navigationText;
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_retire_user_text");
-
+            navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+            hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+            lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_retire_user_text");
             if (!string.IsNullOrEmpty(Request.QueryString["Retire"]))
             {
                 populateuserinfo(SecurityCenter.DecryptText(Request.QueryString["Retire"]));

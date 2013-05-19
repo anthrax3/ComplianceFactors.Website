@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
@@ -45,8 +42,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Materials
                     PopulateMaterial();
 
                     //LabelCrumb
+                    //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Materials/sammimp-01.aspx>" + LocalResources.GetLabel("app_manage_material_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_material_text");
+
+                    string navigationText;
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Materials/sammimp-01.aspx>" + LocalResources.GetLabel("app_manage_material_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_material_text");
+                    navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                    hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Materials/sammimp-01.aspx>" + LocalResources.GetLabel("app_manage_material_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_material_text");
+
+
                     Attachment();
                     //Success Message
                     if (!string.IsNullOrEmpty(Request.QueryString["succ"]))

@@ -13,6 +13,33 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
     public partial class samcsp_01 {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
+        /// pnlDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
+        
+        /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// txtCourseId control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
         protected global::System.Web.UI.WebControls.TextBox txtDateFrom;
         
         /// <summary>
+        /// ceDateFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDateFrom;
+        
+        /// <summary>
         /// txtDateTo control.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateTo;
+        
+        /// <summary>
+        /// ceDateTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDateTo;
         
         /// <summary>
         /// txtInstructor control.

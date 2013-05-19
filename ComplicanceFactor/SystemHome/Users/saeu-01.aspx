@@ -12,7 +12,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -23,7 +25,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -192,7 +194,7 @@
                     'width': 980,
                     'height': 200,
                     'margin': 0,
-                     'padding':5,
+                    'padding': 5,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
@@ -226,7 +228,7 @@
                     'width': 980,
                     'height': 200,
                     'margin': 0,
-                     'padding':5,
+                    'padding': 5,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
@@ -259,7 +261,7 @@
                     'width': 980,
                     'height': 200,
                     'margin': 0,
-                     'padding':5,
+                    'padding': 5,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
@@ -292,7 +294,7 @@
                     'width': 980,
                     'height': 200,
                     'margin': 0,
-                     'padding':5,
+                    'padding': 5,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
@@ -325,7 +327,7 @@
                     'width': 980,
                     'height': 200,
                     'margin': 0,
-                     'padding':5,
+                    'padding': 5,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
@@ -358,7 +360,7 @@
                     'width': 980,
                     'height': 200,
                     'margin': 0,
-                     'padding':5,
+                    'padding': 5,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
@@ -407,6 +409,7 @@
         <%=LocalResources.GetText("app_date_not_updated_error_wrong")%>
     </div>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_controls">
             <table class="div_table">
                 <tr>
@@ -816,7 +819,8 @@
                             <td class="align_left" style="white-space: nowrap;" colspan="2">
                                 <asp:Label ID="lblAltMentor" CssClass="cursor_hand" runat="server"></asp:Label>
                                 <asp:Button ID="btnAltMentor" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_select_button_text %>" />
-                                <asp:Button ID="btnRemoveAltMentor" CssClass="cursor_hand" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                                <asp:Button ID="btnRemoveAltMentor" CssClass="cursor_hand" Style="display: none;"
+                                    runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
                                     OnClick="btnRemoveAltMentor_Click" />
                             </td>
                         </tr>
@@ -841,8 +845,8 @@
                                 <%=LocalResources.GetLabel("app_employee_type_text")%>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlEmployeeType" DataValueField="s_employee_type_system_id_pk" DataTextField="s_employee_type_name"
-                                    runat="server" CssClass="ddl_user_advanced_search">
+                                <asp:DropDownList ID="ddlEmployeeType" DataValueField="s_employee_type_system_id_pk"
+                                    DataTextField="s_employee_type_name" runat="server" CssClass="ddl_user_advanced_search">
                                 </asp:DropDownList>
                             </td>
                             <td>
@@ -856,7 +860,8 @@
                             <td>
                                 <asp:RegularExpressionValidator ID="reHiredate" runat="server" ControlToValidate="txtHiredate"
                                     ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                                    ErrorMessage="<%$ TextResourceExpression: app_hire_date_error_valid %>" Display="Dynamic" ValidationGroup="saau">&nbsp;</asp:RegularExpressionValidator>
+                                    ErrorMessage="<%$ TextResourceExpression: app_hire_date_error_valid %>" Display="Dynamic"
+                                    ValidationGroup="saau">&nbsp;</asp:RegularExpressionValidator>
                                 <%=LocalResources.GetLabel("app_hire_date_text")%>
                             </td>
                             <td>
@@ -874,7 +879,8 @@
                             <td>
                                 <asp:RegularExpressionValidator ID="reLastrehire" runat="server" ControlToValidate="txtHiredate"
                                     ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                                    ErrorMessage="<%$ TextResourceExpression: app_last_hire_date_error_valid %>" Display="Dynamic" ValidationGroup="saau">&nbsp;</asp:RegularExpressionValidator>
+                                    ErrorMessage="<%$ TextResourceExpression: app_last_hire_date_error_valid %>"
+                                    Display="Dynamic" ValidationGroup="saau">&nbsp;</asp:RegularExpressionValidator>
                                 <%=LocalResources.GetLabel("app_last_rehire_text")%>
                             </td>
                             <td>
@@ -1186,7 +1192,8 @@
                                 OnClick="btnRemoveSubmit_Click" />
                         </div>
                         <div class="right">
-                            <asp:Button ID="btnRemoveCancel" OnClientClick="Hidepopup();" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                            <asp:Button ID="btnRemoveCancel" OnClientClick="Hidepopup();" CssClass="cursor_hand"
+                                runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </div>
                         <div class="clear">
                         </div>

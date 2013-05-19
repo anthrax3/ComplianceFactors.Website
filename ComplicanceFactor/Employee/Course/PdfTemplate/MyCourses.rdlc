@@ -12,21 +12,9 @@
   <DataSets>
     <DataSet Name="MyCourses">
       <Fields>
-        <Field Name="e_enroll_course_id_fk">
-          <DataField>e_enroll_course_id_fk</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
-        </Field>
-        <Field Name="e_enroll_system_id_pk">
-          <DataField>e_enroll_system_id_pk</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
-        </Field>
         <Field Name="title">
           <DataField>title</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="duedate">
-          <DataField>duedate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="required">
           <DataField>required</DataField>
@@ -36,6 +24,10 @@
           <DataField>status</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="duedate">
+          <DataField>duedate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>dsMyCourses</DataSourceName>
@@ -43,15 +35,35 @@
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>dsMyCourses</rd:DataSetName>
-        <rd:SchemaPath>D:\Staff\Pandiyan\Projects\ComplianceFactor\WorkingCopy3\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\Employee\Course\PdfTemplate\dsMyCourses.xsd</rd:SchemaPath>
-        <rd:TableName>e_sp_get_all_employee</rd:TableName>
+        <rd:SchemaPath>D:\Staff\Balaji.S\Project\ComplianceFactors\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\Employee\Course\PdfTemplate\dsMyCourses.xsd</rd:SchemaPath>
+        <rd:TableName>e_sp_create_course_pdf</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>e_sp_get_all_employeeTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>e_sp_create_course_pdfTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="HeaderFooter">
       <Fields>
+        <Field Name="my_courses_label">
+          <DataField>my_courses_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="course_title_with_id_label">
+          <DataField>course_title_with_id_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="required_label">
+          <DataField>required_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="status_label">
+          <DataField>status_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="due_date_label">
+          <DataField>due_date_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="powered_by_text">
           <DataField>powered_by_text</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -60,14 +72,6 @@
           <DataField>release_number_text</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="content_header">
-          <DataField>content_header</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="content_footer">
-          <DataField>content_footer</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>dsMyCourses</DataSourceName>
@@ -75,17 +79,97 @@
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>dsMyCourses</rd:DataSetName>
-        <rd:SchemaPath>D:\Staff\Pandiyan\Projects\ComplianceFactor\WorkingCopy3\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\Employee\Course\PdfTemplate\dsMyCourses.xsd</rd:SchemaPath>
-        <rd:TableName>s_sp_get_header_footer</rd:TableName>
+        <rd:SchemaPath>D:\Staff\Balaji.S\Project\ComplianceFactors\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\Employee\Course\PdfTemplate\dsMyCourses.xsd</rd:SchemaPath>
+        <rd:TableName>e_sp_create_course_pdf1</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>s_sp_get_header_footerTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>e_sp_create_course_pdf1TableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix10">
+      <Tablix Name="Tablix3">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.60588in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.60588in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.60588in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="my_courses_label">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!my_courses_label.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>my_courses_label</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>HeaderFooter</DataSetName>
+        <Top>0.06944in</Top>
+        <Left>0.06083in</Left>
+        <Height>0.25in</Height>
+        <Width>10.81764in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix5">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
@@ -107,145 +191,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox61">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Course Title (ID)</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>#000000</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox61</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox63">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Required</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox63</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox65">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Due Date</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox65</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox67">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Status</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox67</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="title">
+                    <Textbox Name="title1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -253,31 +199,29 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!title.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>title</rd:DefaultName>
+                      <rd:DefaultName>title1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
                         </Border>
-                        <PaddingLeft>3pt</PaddingLeft>
+                        <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>6pt</PaddingBottom>
+                        <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="required">
+                    <Textbox Name="required1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -285,31 +229,29 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!required.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>required</rd:DefaultName>
+                      <rd:DefaultName>required1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
                         </Border>
-                        <PaddingLeft>3pt</PaddingLeft>
+                        <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>6pt</PaddingBottom>
+                        <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="duedate">
+                    <Textbox Name="duedate1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -317,31 +259,29 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!duedate.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>duedate</rd:DefaultName>
+                      <rd:DefaultName>duedate1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
                         </Border>
-                        <PaddingLeft>3pt</PaddingLeft>
+                        <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>6pt</PaddingBottom>
+                        <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="status">
+                    <Textbox Name="status1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -349,118 +289,26 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!status.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>status</rd:DefaultName>
+                      <rd:DefaultName>status1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>3pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>6pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="Details" />
-              <TablixMembers>
-                <TablixMember />
-              </TablixMembers>
-            </TablixMember>
-          </TablixMembers>
-        </TablixRowHierarchy>
-        <DataSetName>MyCourses</DataSetName>
-        <Top>0.74479in</Top>
-        <Left>0.47583in</Left>
-        <Height>0.5in</Height>
-        <Width>10.03458in</Width>
-        <Style>
-          <Border>
-            <Color>White</Color>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
-      <Tablix Name="Tablix11">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>3.20366in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>3.20366in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>4.34949in</Width>
-            </TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox77">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>My Courses:</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox77</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>White</Color>
+                          <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>3</ColSpan>
                   </CellContents>
                 </TablixCell>
-                <TablixCell />
-                <TablixCell />
               </TablixCells>
             </TablixRow>
           </TablixRows>
@@ -470,115 +318,73 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
-            <TablixMember />
+            <TablixMember>
+              <Group Name="Details1" />
+            </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>MyCourses</DataSetName>
-        <Top>0.27097in</Top>
-        <Left>0.12167in</Left>
+        <Top>0.94097in</Top>
+        <Left>0.40292in</Left>
         <Height>0.25in</Height>
-        <Width>10.75681in</Width>
+        <Width>10.03459in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
-            <Color>White</Color>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="Textbox810">
+      <Textbox Name="Textbox32">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Code.SetMyVarPowered(First(Fields!powered_by_text.Value,"HeaderFooter"))</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
+                <Value />
+                <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox809</rd:DefaultName>
-        <Top>1.31424in</Top>
-        <Left>6.43523in</Left>
-        <Height>0.11458in</Height>
-        <Width>0.47917in</Width>
+        <rd:DefaultName>Textbox32</rd:DefaultName>
+        <Top>1.75013in</Top>
+        <Left>0.06083in</Left>
+        <Height>0.25in</Height>
+        <Width>10.81764in</Width>
         <ZIndex>2</ZIndex>
-        <Visibility>
-          <Hidden>true</Hidden>
-        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
+          <BackgroundColor>#96cd10</BackgroundColor>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox809">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Code.SetMyVar(First(Fields!release_number_text.Value,"HeaderFooter"))</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox809</rd:DefaultName>
-        <Top>1.31424in</Top>
-        <Left>6.07411in</Left>
-        <Height>0.11458in</Height>
-        <Width>0.29167in</Width>
-        <ZIndex>3</ZIndex>
-        <Visibility>
-          <Hidden>true</Hidden>
-        </Visibility>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Tablix Name="Tablix12">
+      <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.20366in</Width>
+              <Width>3.59708in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.20366in</Width>
+              <Width>2.13542in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.42241in</Width>
+              <Width>2.07292in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.22917in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -587,14 +393,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox79">
+                    <Textbox Name="course_title_with_id_label">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!course_title_with_id_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -603,24 +409,120 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox77</rd:DefaultName>
+                      <rd:DefaultName>course_title_with_id_label</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>3</ColSpan>
                   </CellContents>
                 </TablixCell>
-                <TablixCell />
-                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="required_label">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!required_label.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>required_label</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="due_date_label">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!due_date_label.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>due_date_label</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="status_label">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!status_label.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>status_label</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
@@ -630,19 +532,22 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
-            <TablixMember />
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>MyCourses</DataSetName>
-        <Top>1.48438in</Top>
-        <Left>0.06083in</Left>
+        <DataSetName>HeaderFooter</DataSetName>
+        <Top>0.66319in</Top>
+        <Left>0.40292in</Left>
         <Height>0.25in</Height>
-        <Width>10.82973in</Width>
-        <ZIndex>4</ZIndex>
+        <Width>10.03459in</Width>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -650,35 +555,9 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.84375in</Height>
+    <Height>2.05208in</Height>
     <Style />
   </Body>
-  <Code>Public Shared Dim MyVar as String
-Public Shared Dim MyVarr as String
-
-
-Public Function SetMyVar ( ByVal var as String)
-	MyVar = var
-             
-End Function
-
- Function CoDeDemo(ByVal cField As String) As String
-   MyVarr=cField
-   End Function
-
-Public Shared Dim MyVarPowered as String
-Public Shared Dim MyVarrPowered as String
-
-
-Public Function SetMyVarPowered ( ByVal varpowered as String)
-	MyVarPowered = varpowered 
-             
-End Function
-
- Function CoDePowered(ByVal cField As String) As String
-   MyVarrPowered =cField
-   End Function
-</Code>
   <Width>11in</Width>
   <Page>
     <PageHeader>
@@ -706,14 +585,15 @@ End Function
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.5625in</Height>
+      <Height>0.55208in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Line Name="Line3">
           <Top>0.13555in</Top>
+          <Left>0.06083in</Left>
           <Height>0in</Height>
-          <Width>10.87847in</Width>
+          <Width>10.81764in</Width>
           <Style>
             <Border>
               <Color>#96cd19</Color>
@@ -722,25 +602,25 @@ End Function
             </Border>
           </Style>
         </Line>
-        <Textbox Name="Textbox812">
+        <Textbox Name="Textbox21">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=code.MyVar</Value>
+                  <Value>=First(Fields!release_number_text.Value, "HeaderFooter")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox812</rd:DefaultName>
-          <Top>0.205in</Top>
-          <Left>0.19458in</Left>
-          <Height>0.23171in</Height>
-          <Width>2.40625in</Width>
+          <rd:DefaultName>Textbox21</rd:DefaultName>
+          <Top>0.13556in</Top>
+          <Left>0.06083in</Left>
+          <Height>0.26208in</Height>
+          <Width>2.0366in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -752,22 +632,15 @@ End Function
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox813">
+        <Textbox Name="Textbox22">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=code.MyVarPowered</Value>
-                  <Style>
-                    <FontStyle>Normal</FontStyle>
-                    <FontFamily>Times New Roman</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Normal</FontWeight>
-                    <TextDecoration>None</TextDecoration>
-                    <Color>#000000</Color>
-                  </Style>
+                  <Value>=First(Fields!powered_by_text.Value, "HeaderFooter")</Value>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -775,11 +648,11 @@ End Function
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox813</rd:DefaultName>
-          <Top>0.205in</Top>
-          <Left>4.73732in</Left>
-          <Height>0.23171in</Height>
-          <Width>6.14115in</Width>
+          <rd:DefaultName>Textbox22</rd:DefaultName>
+          <Top>0.16333in</Top>
+          <Left>6.53472in</Left>
+          <Height>0.23431in</Height>
+          <Width>4.34375in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -791,6 +664,19 @@ End Function
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Line Name="Line4">
+          <Top>0.4375in</Top>
+          <Left>0.06083in</Left>
+          <Height>0in</Height>
+          <Width>10.81764in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+              <Width>1.5pt</Width>
+            </Border>
+          </Style>
+        </Line>
       </ReportItems>
       <Style>
         <Border>

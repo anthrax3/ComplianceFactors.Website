@@ -41,6 +41,9 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
 
                  gvAttachment.DataSource = SiteViewFieldNotesBLL.GetFieldNotesAttachment(fieldNote);
                  gvAttachment.DataBind();
+
+                 gvAcknowledgement.DataSource = SiteViewFieldNotesBLL.GetFieldNotesAcknowledge(fieldNote);
+                 gvAcknowledgement.DataBind();
             }
             catch (Exception ex)
             {
@@ -48,11 +51,11 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("csvefn-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("csvvfn-01", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("csvefn-01", ex.Message);
+                        Logger.WriteToErrorLog("csvvfn-01", ex.Message);
                     }
                 }
             }

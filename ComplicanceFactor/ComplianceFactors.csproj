@@ -44,6 +44,9 @@
     <Reference Include="DocumentFormat.OpenXml.Extensions">
       <HintPath>C:\Users\PIXEL\Downloads\DocumentFormat.OpenXml.Extensions\DocumentFormat.OpenXml.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="EventCalendar">
+      <HintPath>C:\Users\PIXEL\Desktop\Apr24\OLD\EventCalendar\EventCalendar.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>C:\Documents and Settings\Developer\My Documents\Downloads\DotNetZipLib-DevKit-v1.9\Examples\ASPNET\Bin\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -88,12 +91,21 @@
     <Content Include="AboutUs\auplt-01.aspx" />
     <Content Include="AboutUs\auppl-01.aspx" />
     <Content Include="Administrator\ascrp-01.aspx" />
+    <Content Include="Administrator\change-password.aspx" />
+    <Content Include="Administrator\sasup-01.aspx" />
+    <Content Include="Administrator\taddp-01.aspx" />
     <Content Include="Administrator\tahp-01.aspx" />
     <Content Include="Administrator\tamcc-01.aspx" />
     <Content Include="Administrator\tamdd-01.aspx" />
+    <Content Include="Administrator\tamrp-01.aspx" />
+    <Content Include="Administrator\tamtdp-01.aspx" />
+    <Content Include="Administrator\tamtp-01.aspx" />
+    <Content Include="Administrator\tappp-01.aspx" />
     <Content Include="Administrator\tatdl-01.aspx" />
     <Content Include="App_Data\test.htm" />
     <Content Include="Blog\blgp-01.aspx" />
+    <Content Include="Compliance\ccmrp-01.aspx" />
+    <Content Include="Compliance\ccppp.aspx" />
     <Content Include="Compliance\HARM\ccasharm-01.aspx" />
     <Content Include="Compliance\IRIS\ccasip-01.aspx" />
     <Content Include="Compliance\HARM\cccharm-01.aspx" />
@@ -115,6 +127,7 @@
     <Content Include="Compliance\cchp-01.aspx" />
     <Content Include="Compliance\HARM\ccjhap-01.aspx" />
     <Content Include="Compliance\MyDashboard\ccmdd-01.aspx" />
+    <Content Include="Compliance\MyToDo\ccmtdp-01.aspx" />
     <Content Include="Compliance\MyToDo\cctdl-01.aspx" />
     <Content Include="Compliance\MIRIS\ccvmiris-01.aspx" />
     <Content Include="Compliance\HARM\cceharm-01.aspx" />
@@ -168,6 +181,13 @@
     <Content Include="Compliance\SiteView\FieldNotes\csvefn-01.aspx" />
     <Content Include="Compliance\SiteView\FieldNotes\Popup\csvsfn-01.aspx" />
     <Content Include="Compliance\SiteView\FieldNotes\Popup\csvvfn-01.aspx" />
+    <Content Include="Compliance\SiteView\Ojt\Attachments\298b423e-f60a-46f7-965d-7f3abac13e57.txt" />
+    <Content Include="Compliance\SiteView\Ojt\Attachments\c9f0507c-c778-4c7a-9b55-f016e5ebfb4a.txt" />
+    <Content Include="Compliance\SiteView\Ojt\Attachments\d10f86df-d5e6-42da-98a7-7776c6416dda.txt" />
+    <Content Include="Compliance\SiteView\Ojt\Attachments\e0614cb9-0da2-40d4-8d8f-fe50daf62868.txt" />
+    <Content Include="Compliance\SiteView\Ojt\csveojt-01.aspx" />
+    <Content Include="Compliance\SiteView\Ojt\Popup\csvsojt.aspx" />
+    <Content Include="Compliance\SiteView\Ojt\Popup\csvvojt.aspx" />
     <Content Include="Compliance\SiteView\Popup\csvanq-01.aspx" />
     <Content Include="Compliance\SiteView\Popup\csveq-01.aspx" />
     <Content Include="Compliance\SiteView\Popup\csvsq-01.aspx" />
@@ -220,11 +240,18 @@
     <Content Include="Images\Zoom\fancy_title_main.png" />
     <Content Include="Images\Zoom\fancy_title_over.png" />
     <Content Include="Images\Zoom\fancy_title_right.png" />
+    <Content Include="Employee\Home\lhp-01.aspx" />
     <Content Include="Instructor\ihp-01.aspx" />
     <Content Include="Instructor\imcr-01.aspx" />
     <Content Include="Instructor\imdd-01.aspx" />
     <Content Include="Instructor\itdl-01.aspx" />
-    <Content Include="Employee\Home\lhp-01.aspx" />
+    <Content Include="Instructor\tiddv-01.aspx" />
+    <Content Include="Instructor\tihp-01.aspx" />
+    <Content Include="Instructor\timcalendarp-01.aspx" />
+    <Content Include="Instructor\timrostersp-01.aspx" />
+    <Content Include="Instructor\timrp-01.aspx" />
+    <Content Include="Instructor\timtdp-01.aspx" />
+    <Content Include="Instructor\tippp-01.aspx" />
     <Content Include="Logs\AppLog.txt" />
     <Content Include="Logs\ErrorLog.txt" />
     <Content Include="Manager\Catalog\ascp-01.aspx" />
@@ -242,6 +269,11 @@
     <Content Include="Manager\mmrp-01.aspx" />
     <Content Include="Manager\mmtdp-01.aspx" />
     <Content Include="Manager\mmtp-01.aspx" />
+    <Content Include="Manager\Popup\p-lmcp-01.aspx" />
+    <Content Include="Manager\Popup\p-lmcurp-01.aspx" />
+    <Content Include="Manager\Popup\p-lmhp-01.aspx" />
+    <Content Include="Manager\Popup\p-lvcurd-01.aspx" />
+    <Content Include="Manager\Popup\p_lvcd-01.aspx" />
     <Content Include="Manager\Profile\mppp-01.aspx" />
     <Content Include="RequestDemo\rad-01.aspx" />
     <Content Include="Resources\rlp-01.aspx" />
@@ -261,7 +293,7 @@
     <Content Include="Scripts\querystring-0.9.0-min.js" />
     <Content Include="Scripts\querystring-0.9.0.js" />
     <Content Include="Scripts\spin.min.js" />
-    <Content Include="SystemHome\Catalog\Completion\p-EditCompletionInfo.aspx" />
+    <Content Include="SystemHome\Catalog\Completion\p-sceci-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sces-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-scesr-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\samcmcp-01.aspx" />
@@ -474,6 +506,12 @@
     <Content Include="SystemHome\Catalog\Course\DomainSearch\sasdn-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\DomainSearch\sasrdn-01.aspx" />
     <Content Include="SystemHome\Catalog\Curriculum\sautc-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\add_document_locale.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\document_locales_list.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\edit_document_locale.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\saandin-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\saedin-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\samdimp-01.aspx" />
     <Content Include="SystemHome\Catalog\Facilities\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Facilities\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Facilities\Locale\savloc-01.aspx" />
@@ -524,6 +562,11 @@
     <Content Include="SystemHome\Catalog\Locations\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Locations\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Locations\Locale\savloc-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\catalog_istems_search_2.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\catalog_items_search.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\enter-mass-completion-pin-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\GenerateFile\iframe.js" />
     <Content Include="SystemHome\Catalog\Materials\Locale\GenerateFile\sagf-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\saaloc-01.aspx" />
@@ -564,6 +607,9 @@
     <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucmcp-01.aspx" />
     <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsp-01.aspx" />
     <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Waitlist\saews-01.aspx" />
+    <Content Include="SystemHome\Catalog\Waitlist\samwmp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Waitlist\samwsrp-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\saanawn-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\saeaw-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\samawmp-01.aspx" />
@@ -583,14 +629,17 @@
     <Content Include="SystemHome\Configuration\DeliveryTypes\saandtn-01.aspx" />
     <Content Include="SystemHome\Configuration\DeliveryTypes\saedtn-01.aspx" />
     <Content Include="SystemHome\Configuration\DeliveryTypes\samdtmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\DocumentTypes\saandoctn-01.aspx" />
+    <Content Include="SystemHome\Configuration\DocumentTypes\saedoctn-01.aspx" />
+    <Content Include="SystemHome\Configuration\DocumentTypes\samdoctmp-01.aspx" />
     <Content Include="SystemHome\Configuration\EmployeeTypes\saanetn-01.aspx" />
     <Content Include="SystemHome\Configuration\EmployeeTypes\saeetn-01.aspx" />
     <Content Include="SystemHome\Configuration\EmployeeTypes\sametmp-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\saanftn-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\saeftn-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\samftmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\GradingSchemes\add-grading-value.aspx" />
-    <Content Include="SystemHome\Configuration\GradingSchemes\edit-grading-value.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\p-sgscv-01.aspx" />
+    <Content Include="SystemHome\Configuration\GradingSchemes\p-sgsev-01.aspx" />
     <Content Include="SystemHome\Configuration\GradingSchemes\saangsn-01.aspx" />
     <Content Include="SystemHome\Configuration\GradingSchemes\saegs-01.aspx" />
     <Content Include="SystemHome\Configuration\GradingSchemes\samgsmp-01.aspx" />
@@ -634,19 +683,14 @@
     <Content Include="SystemHome\Configuration\UI Texts and Labels\p-sput-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\samuiltdp-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\samuiltdr-01.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\create-pin-01.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\enter-notes-pin-01.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\saucmcp-01.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmp.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmpResults.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\saucsp-01.aspx" />
-    <Content Include="SystemHome\Configuration\Update Curriculum\saucsrp-01.aspx" />
     <Content Include="SystemHome\Configuration\Weekday Schedules\saanwdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Weekday Schedules\saewdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Weekday Schedules\samwdmp-01.aspx" />
     <Content Include="SystemHome\Configuration\Domains\saandn-01.aspx" />
     <Content Include="SystemHome\Configuration\Domains\saedn-01.aspx" />
     <Content Include="SystemHome\Configuration\Domains\samdmp-01.aspx" />
+    <Content Include="SystemHome\Profile\tappp-01.aspx" />
+    <Content Include="SystemHome\samrp-01.aspx" />
     <Content Include="SystemHome\Users\ChangePassword\sacpu-01.aspx" />
     <Content Include="SystemHome\Users\saau-01.aspx" />
     <Content Include="SystemHome\Users\sacmu-01.aspx" />
@@ -661,10 +705,18 @@
     <Content Include="SystemHome\sasumsmr-01.aspx" />
     <Content Include="SystemHome\Users\sasup-01.aspx" />
     <Content Include="SystemHome\Users\sasur-01.aspx" />
+    <Content Include="Training\Popup\p-tcdlp-01.aspx" />
+    <Content Include="Training\tcmddp-01.aspx" />
+    <Content Include="Training\tcmdmp-01.aspx" />
+    <Content Include="Training\tcmdsrp-01.aspx" />
+    <Content Include="Training\tcmrp-01.aspx" />
     <Content Include="Training\tcmtd-01.aspx" />
     <Content Include="Training\tchp-01.aspx" />
     <Content Include="Training\tcmdd-01.aspx" />
     <Content Include="Training\tcmtc-01.aspx" />
+    <Content Include="Training\tcmtdp-01.aspx" />
+    <Content Include="Training\tcmtp-01.aspx" />
+    <Content Include="Training\tcppp-01.aspx" />
     <Content Include="Training\tctdl-01.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -740,6 +792,28 @@
     <Compile Include="Administrator\ascrp-01.aspx.designer.cs">
       <DependentUpon>ascrp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrator\change-password.aspx.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\change-password.aspx.designer.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\PdfTemplate\AdminCourse.Designer.cs" />
+    <Compile Include="Administrator\sasup-01.aspx.cs">
+      <DependentUpon>sasup-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\sasup-01.aspx.designer.cs">
+      <DependentUpon>sasup-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\taddp-01.aspx.cs">
+      <DependentUpon>taddp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\taddp-01.aspx.designer.cs">
+      <DependentUpon>taddp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrator\tahp-01.aspx.cs">
       <DependentUpon>tahp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -760,6 +834,34 @@
     </Compile>
     <Compile Include="Administrator\tamdd-01.aspx.designer.cs">
       <DependentUpon>tamdd-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\tamrp-01.aspx.cs">
+      <DependentUpon>tamrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\tamrp-01.aspx.designer.cs">
+      <DependentUpon>tamrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\tamtdp-01.aspx.cs">
+      <DependentUpon>tamtdp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\tamtdp-01.aspx.designer.cs">
+      <DependentUpon>tamtdp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\tamtp-01.aspx.cs">
+      <DependentUpon>tamtp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\tamtp-01.aspx.designer.cs">
+      <DependentUpon>tamtp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\tappp-01.aspx.cs">
+      <DependentUpon>tappp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\tappp-01.aspx.designer.cs">
+      <DependentUpon>tappp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\tatdl-01.aspx.cs">
       <DependentUpon>tatdl-01.aspx</DependentUpon>
@@ -793,6 +895,7 @@
     <Compile Include="Common\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Common\BreadCrumb.cs" />
     <Compile Include="Common\ConvertDataTables.cs" />
     <Compile Include="Common\ExcelUtility.cs" />
     <Compile Include="Common\Languages\GlobalResourceExpression.cs" />
@@ -813,6 +916,20 @@
     <Compile Include="Common\SessionWrapper.cs" />
     <Compile Include="Common\TempDataTables.cs" />
     <Compile Include="Common\Utility.cs" />
+    <Compile Include="Compliance\ccmrp-01.aspx.cs">
+      <DependentUpon>ccmrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\ccmrp-01.aspx.designer.cs">
+      <DependentUpon>ccmrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\ccppp.aspx.cs">
+      <DependentUpon>ccppp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\ccppp.aspx.designer.cs">
+      <DependentUpon>ccppp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compliance\HARM\ccasharm-01.aspx.cs">
       <DependentUpon>ccasharm-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -960,6 +1077,13 @@
     <Compile Include="Compliance\MyDashboard\ccmdd-01.aspx.designer.cs">
       <DependentUpon>ccmdd-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Compliance\MyToDo\ccmtdp-01.aspx.cs">
+      <DependentUpon>ccmtdp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MyToDo\ccmtdp-01.aspx.designer.cs">
+      <DependentUpon>ccmtdp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compliance\MyToDo\cctdl-01.aspx.cs">
       <DependentUpon>cctdl-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1039,6 +1163,27 @@
     </Compile>
     <Compile Include="Compliance\SiteView\FieldNotes\Popup\csvvfn-01.aspx.designer.cs">
       <DependentUpon>csvvfn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\SiteView\Ojt\csveojt-01.aspx.cs">
+      <DependentUpon>csveojt-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\SiteView\Ojt\csveojt-01.aspx.designer.cs">
+      <DependentUpon>csveojt-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\SiteView\Ojt\Popup\csvsojt.aspx.cs">
+      <DependentUpon>csvsojt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\SiteView\Ojt\Popup\csvsojt.aspx.designer.cs">
+      <DependentUpon>csvsojt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\SiteView\Ojt\Popup\csvvojt.aspx.cs">
+      <DependentUpon>csvvojt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\SiteView\Ojt\Popup\csvvojt.aspx.designer.cs">
+      <DependentUpon>csvvojt.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\SiteView\Popup\csvanq-01.aspx.cs">
       <DependentUpon>csvanq-01.aspx</DependentUpon>
@@ -1150,6 +1295,91 @@
     <Compile Include="Employee\Profile\lppp-01.aspx.designer.cs">
       <DependentUpon>lppp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Instructor\EventCalendar.cs" />
+    <Compile Include="Instructor\ihp-01.aspx.cs">
+      <DependentUpon>ihp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\ihp-01.aspx.designer.cs">
+      <DependentUpon>ihp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\imcr-01.aspx.cs">
+      <DependentUpon>imcr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\imcr-01.aspx.designer.cs">
+      <DependentUpon>imcr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\imdd-01.aspx.cs">
+      <DependentUpon>imdd-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\imdd-01.aspx.designer.cs">
+      <DependentUpon>imdd-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\itdl-01.aspx.cs">
+      <DependentUpon>itdl-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\itdl-01.aspx.designer.cs">
+      <DependentUpon>itdl-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\PdfTemplate\MyCalendar1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyCalendar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\PdfTemplate\MyInstructor.Designer.cs" />
+    <Compile Include="Instructor\PdfTemplate\SignUpSheet.Designer.cs" />
+    <Compile Include="Instructor\tiddv-01.aspx.cs">
+      <DependentUpon>tiddv-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\tiddv-01.aspx.designer.cs">
+      <DependentUpon>tiddv-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\tihp-01.aspx.cs">
+      <DependentUpon>tihp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\tihp-01.aspx.designer.cs">
+      <DependentUpon>tihp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\timcalendarp-01.aspx.cs">
+      <DependentUpon>timcalendarp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\timcalendarp-01.aspx.designer.cs">
+      <DependentUpon>timcalendarp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\timrostersp-01.aspx.cs">
+      <DependentUpon>timrostersp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\timrostersp-01.aspx.designer.cs">
+      <DependentUpon>timrostersp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\timrp-01.aspx.cs">
+      <DependentUpon>timrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\timrp-01.aspx.designer.cs">
+      <DependentUpon>timrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\timtdp-01.aspx.cs">
+      <DependentUpon>timtdp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\timtdp-01.aspx.designer.cs">
+      <DependentUpon>timtdp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\tippp-01.aspx.cs">
+      <DependentUpon>tippp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Instructor\tippp-01.aspx.designer.cs">
+      <DependentUpon>tippp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1236,34 +1466,6 @@
     </Compile>
     <Compile Include="glp-01.aspx.designer.cs">
       <DependentUpon>glp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\ihp-01.aspx.cs">
-      <DependentUpon>ihp-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Instructor\ihp-01.aspx.designer.cs">
-      <DependentUpon>ihp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\imcr-01.aspx.cs">
-      <DependentUpon>imcr-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Instructor\imcr-01.aspx.designer.cs">
-      <DependentUpon>imcr-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\imdd-01.aspx.cs">
-      <DependentUpon>imdd-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Instructor\imdd-01.aspx.designer.cs">
-      <DependentUpon>imdd-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\itdl-01.aspx.cs">
-      <DependentUpon>itdl-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Instructor\itdl-01.aspx.designer.cs">
-      <DependentUpon>itdl-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee\Home\lhp-01.aspx.cs">
       <DependentUpon>lhp-01.aspx</DependentUpon>
@@ -1383,6 +1585,41 @@
     </Compile>
     <Compile Include="Manager\mmtp-01.aspx.designer.cs">
       <DependentUpon>mmtp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lmcp-01.aspx.cs">
+      <DependentUpon>p-lmcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lmcp-01.aspx.designer.cs">
+      <DependentUpon>p-lmcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lmcurp-01.aspx.cs">
+      <DependentUpon>p-lmcurp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lmcurp-01.aspx.designer.cs">
+      <DependentUpon>p-lmcurp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lmhp-01.aspx.cs">
+      <DependentUpon>p-lmhp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lmhp-01.aspx.designer.cs">
+      <DependentUpon>p-lmhp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lvcurd-01.aspx.cs">
+      <DependentUpon>p-lvcurd-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Popup\p-lvcurd-01.aspx.designer.cs">
+      <DependentUpon>p-lvcurd-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Popup\p_lvcd-01.aspx.cs">
+      <DependentUpon>p_lvcd-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Popup\p_lvcd-01.aspx.designer.cs">
+      <DependentUpon>p_lvcd-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\Profile\mppp-01.aspx.cs">
       <DependentUpon>mppp-01.aspx</DependentUpon>
@@ -1595,12 +1832,12 @@
     <Compile Include="SuccessStories\sssec-01.aspx.designer.cs">
       <DependentUpon>sssec-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Catalog\Completion\p-EditCompletionInfo.aspx.cs">
-      <DependentUpon>p-EditCompletionInfo.aspx</DependentUpon>
+    <Compile Include="SystemHome\Catalog\Completion\p-sceci-01.aspx.cs">
+      <DependentUpon>p-sceci-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Catalog\Completion\p-EditCompletionInfo.aspx.designer.cs">
-      <DependentUpon>p-EditCompletionInfo.aspx</DependentUpon>
+    <Compile Include="SystemHome\Catalog\Completion\p-sceci-01.aspx.designer.cs">
+      <DependentUpon>p-sceci-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Completion\p-sces-01.aspx.cs">
       <DependentUpon>p-sces-01.aspx</DependentUpon>
@@ -1994,6 +2231,48 @@
     <Compile Include="SystemHome\Catalog\Curriculum\sautc-01.aspx.designer.cs">
       <DependentUpon>sautc-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\add_document_locale.aspx.cs">
+      <DependentUpon>add_document_locale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\add_document_locale.aspx.designer.cs">
+      <DependentUpon>add_document_locale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\document_locales_list.aspx.cs">
+      <DependentUpon>document_locales_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\document_locales_list.aspx.designer.cs">
+      <DependentUpon>document_locales_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\edit_document_locale.aspx.cs">
+      <DependentUpon>edit_document_locale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\edit_document_locale.aspx.designer.cs">
+      <DependentUpon>edit_document_locale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\saandin-01.aspx.cs">
+      <DependentUpon>saandin-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\saandin-01.aspx.designer.cs">
+      <DependentUpon>saandin-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\saedin-01.aspx.cs">
+      <DependentUpon>saedin-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\saedin-01.aspx.designer.cs">
+      <DependentUpon>saedin-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\samdimp-01.aspx.cs">
+      <DependentUpon>samdimp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\samdimp-01.aspx.designer.cs">
+      <DependentUpon>samdimp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Locale\saaloc-01.aspx.cs">
       <DependentUpon>saaloc-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2133,6 +2412,41 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Locations\Locale\savloc-01.aspx.designer.cs">
       <DependentUpon>savloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_istems_search_2.aspx.cs">
+      <DependentUpon>catalog_istems_search_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_istems_search_2.aspx.designer.cs">
+      <DependentUpon>catalog_istems_search_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_items_search.aspx.cs">
+      <DependentUpon>catalog_items_search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_items_search.aspx.designer.cs">
+      <DependentUpon>catalog_items_search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\enter-mass-completion-pin-01.aspx.cs">
+      <DependentUpon>enter-mass-completion-pin-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\enter-mass-completion-pin-01.aspx.designer.cs">
+      <DependentUpon>enter-mass-completion-pin-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx.cs">
+      <DependentUpon>samcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx.designer.cs">
+      <DependentUpon>samcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx.cs">
+      <DependentUpon>samep-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx.designer.cs">
+      <DependentUpon>samep-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Materials\Locale\GenerateFile\sagf-01.aspx.cs">
       <DependentUpon>sagf-01.aspx</DependentUpon>
@@ -2407,6 +2721,27 @@
     <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx.designer.cs">
       <DependentUpon>saucsrp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\saews-01.aspx.cs">
+      <DependentUpon>saews-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\saews-01.aspx.designer.cs">
+      <DependentUpon>saews-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\samwmp-01.aspx.cs">
+      <DependentUpon>samwmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\samwmp-01.aspx.designer.cs">
+      <DependentUpon>samwmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\samwsrp-01.aspx.cs">
+      <DependentUpon>samwsrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\samwsrp-01.aspx.designer.cs">
+      <DependentUpon>samwsrp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\ApprovalWorkflows\saanawn-01.aspx.cs">
       <DependentUpon>saanawn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2540,6 +2875,27 @@
     <Compile Include="SystemHome\Configuration\DeliveryTypes\samdtmp-01.aspx.designer.cs">
       <DependentUpon>samdtmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\DocumentTypes\saandoctn-01.aspx.cs">
+      <DependentUpon>saandoctn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DocumentTypes\saandoctn-01.aspx.designer.cs">
+      <DependentUpon>saandoctn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DocumentTypes\saedoctn-01.aspx.cs">
+      <DependentUpon>saedoctn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DocumentTypes\saedoctn-01.aspx.designer.cs">
+      <DependentUpon>saedoctn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DocumentTypes\samdoctmp-01.aspx.cs">
+      <DependentUpon>samdoctmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DocumentTypes\samdoctmp-01.aspx.designer.cs">
+      <DependentUpon>samdoctmp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\EmployeeTypes\saanetn-01.aspx.cs">
       <DependentUpon>saanetn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2582,19 +2938,19 @@
     <Compile Include="SystemHome\Configuration\FacilityTypes\samftmp-01.aspx.designer.cs">
       <DependentUpon>samftmp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\GradingSchemes\add-grading-value.aspx.cs">
-      <DependentUpon>add-grading-value.aspx</DependentUpon>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\p-sgscv-01.aspx.cs">
+      <DependentUpon>p-sgscv-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Configuration\GradingSchemes\add-grading-value.aspx.designer.cs">
-      <DependentUpon>add-grading-value.aspx</DependentUpon>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\p-sgscv-01.aspx.designer.cs">
+      <DependentUpon>p-sgscv-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\GradingSchemes\edit-grading-value.aspx.cs">
-      <DependentUpon>edit-grading-value.aspx</DependentUpon>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\p-sgsev-01.aspx.cs">
+      <DependentUpon>p-sgsev-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Configuration\GradingSchemes\edit-grading-value.aspx.designer.cs">
-      <DependentUpon>edit-grading-value.aspx</DependentUpon>
+    <Compile Include="SystemHome\Configuration\GradingSchemes\p-sgsev-01.aspx.designer.cs">
+      <DependentUpon>p-sgsev-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\GradingSchemes\saangsn-01.aspx.cs">
       <DependentUpon>saangsn-01.aspx</DependentUpon>
@@ -2898,55 +3254,6 @@
     <Compile Include="SystemHome\Configuration\UI Texts and Labels\samuiltdr-01.aspx.designer.cs">
       <DependentUpon>samuiltdr-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\create-pin-01.aspx.cs">
-      <DependentUpon>create-pin-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\create-pin-01.aspx.designer.cs">
-      <DependentUpon>create-pin-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\enter-notes-pin-01.aspx.cs">
-      <DependentUpon>enter-notes-pin-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\enter-notes-pin-01.aspx.designer.cs">
-      <DependentUpon>enter-notes-pin-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01.aspx.cs">
-      <DependentUpon>saucmcp-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01.aspx.designer.cs">
-      <DependentUpon>saucmcp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmp.aspx.cs">
-      <DependentUpon>saucmcp-01_SearchEmp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmp.aspx.designer.cs">
-      <DependentUpon>saucmcp-01_SearchEmp.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmpResults.aspx.cs">
-      <DependentUpon>saucmcp-01_SearchEmpResults.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucmcp-01_SearchEmpResults.aspx.designer.cs">
-      <DependentUpon>saucmcp-01_SearchEmpResults.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsp-01.aspx.cs">
-      <DependentUpon>saucsp-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsp-01.aspx.designer.cs">
-      <DependentUpon>saucsp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsrp-01.aspx.cs">
-      <DependentUpon>saucsrp-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Update Curriculum\saucsrp-01.aspx.designer.cs">
-      <DependentUpon>saucsrp-01.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SystemHome\Configuration\Weekday Schedules\saanwdn-01.aspx.cs">
       <DependentUpon>saanwdn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2988,6 +3295,20 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\Domains\samdmp-01.aspx.designer.cs">
       <DependentUpon>samdmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Profile\tappp-01.aspx.cs">
+      <DependentUpon>tappp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Profile\tappp-01.aspx.designer.cs">
+      <DependentUpon>tappp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\samrp-01.aspx.cs">
+      <DependentUpon>samrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\samrp-01.aspx.designer.cs">
+      <DependentUpon>samrp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Users\ChangePassword\sacpu-01.aspx.cs">
       <DependentUpon>sacpu-01.aspx</DependentUpon>
@@ -3087,6 +3408,47 @@
     <Compile Include="SystemHome\Users\sasur-01.aspx.designer.cs">
       <DependentUpon>sasur-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Training\PdfTemplate\MyCourses.Designer.cs" />
+    <Compile Include="Training\Popup\PdfTemplate\MyDeliveries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDeliveries.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Training\Popup\p-tcdlp-01.aspx.cs">
+      <DependentUpon>p-tcdlp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\Popup\p-tcdlp-01.aspx.designer.cs">
+      <DependentUpon>p-tcdlp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcmddp-01.aspx.cs">
+      <DependentUpon>tcmddp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcmddp-01.aspx.designer.cs">
+      <DependentUpon>tcmddp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcmdmp-01.aspx.cs">
+      <DependentUpon>tcmdmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcmdmp-01.aspx.designer.cs">
+      <DependentUpon>tcmdmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcmdsrp-01.aspx.cs">
+      <DependentUpon>tcmdsrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcmdsrp-01.aspx.designer.cs">
+      <DependentUpon>tcmdsrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcmrp-01.aspx.cs">
+      <DependentUpon>tcmrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcmrp-01.aspx.designer.cs">
+      <DependentUpon>tcmrp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Training\tcmtd-01.aspx.cs">
       <DependentUpon>tcmtd-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3114,6 +3476,27 @@
     </Compile>
     <Compile Include="Training\tcmtc-01.aspx.designer.cs">
       <DependentUpon>tcmtc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcmtdp-01.aspx.cs">
+      <DependentUpon>tcmtdp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcmtdp-01.aspx.designer.cs">
+      <DependentUpon>tcmtdp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcmtp-01.aspx.cs">
+      <DependentUpon>tcmtp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcmtp-01.aspx.designer.cs">
+      <DependentUpon>tcmtp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Training\tcppp-01.aspx.cs">
+      <DependentUpon>tcppp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Training\tcppp-01.aspx.designer.cs">
+      <DependentUpon>tcppp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Training\tctdl-01.aspx.cs">
       <DependentUpon>tctdl-01.aspx</DependentUpon>
@@ -3170,9 +3553,6 @@
     <Content Include="Employee\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Instructor\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Training\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -3195,14 +3575,21 @@
     <Folder Include="Compliance\MIRIS\Upload\Police\" />
     <Folder Include="Compliance\MIRIS\Upload\sceneSketch\" />
     <Folder Include="Compliance\MIRIS\Upload\Witness\" />
+    <Folder Include="Controls\" />
     <Folder Include="SystemHome\Catalog\Course\Delivery\Attachments\" />
     <Folder Include="SystemHome\Catalog\Course\Icons\" />
-    <Folder Include="SystemHome\Catalog\Curriculum\Path\Locale\" />
     <Folder Include="SystemHome\Catalog\Materials\Upload\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Administrator\PdfTemplate\AdminCourse.xsc">
+      <DependentUpon>AdminCourse.xsd</DependentUpon>
+    </None>
+    <None Include="Administrator\PdfTemplate\AdminCourse.xsd" />
+    <None Include="Administrator\PdfTemplate\AdminCourse.xss">
+      <DependentUpon>AdminCourse.xsd</DependentUpon>
+    </None>
     <None Include="Compliance\HARM\PdfTemplate\HARMControlMeasureDataSet.xsc">
       <DependentUpon>HARMControlMeasureDataSet.xsd</DependentUpon>
     </None>
@@ -3259,6 +3646,8 @@
     <None Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIDataset.xss">
       <DependentUpon>MIRISOIDataset.xsd</DependentUpon>
     </None>
+    <None Include="Compliance\SiteView\Ojt\Attachments\aed92037-3655-476d-af79-924134e387ec.docx" />
+    <None Include="Compliance\SiteView\Ojt\Attachments\ef0d5130-b104-4ef5-8fd1-34c6ec1d4049.xlsx" />
     <None Include="Employee\Course\PdfTemplate\dsMyCourses.xsc">
       <DependentUpon>dsMyCourses.xsd</DependentUpon>
     </None>
@@ -3297,11 +3686,70 @@
     </None>
     <None Include="Images\Zoom\Thumbs.db" />
     <Content Include="Solutions\Main.sitemap" />
+    <None Include="Instructor\PdfTemplate\MyCalendar.xsc">
+      <DependentUpon>MyCalendar.xsd</DependentUpon>
+    </None>
+    <None Include="Instructor\PdfTemplate\MyCalendar.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyCalendar1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Instructor\PdfTemplate\MyCalendar.xss">
+      <DependentUpon>MyCalendar.xsd</DependentUpon>
+    </None>
+    <None Include="Instructor\PdfTemplate\MyInstructor.xsc">
+      <DependentUpon>MyInstructor.xsd</DependentUpon>
+    </None>
+    <None Include="Instructor\PdfTemplate\MyInstructor.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyInstructor1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Instructor\PdfTemplate\MyInstructor.xss">
+      <DependentUpon>MyInstructor.xsd</DependentUpon>
+    </None>
+    <None Include="Instructor\PdfTemplate\SignUpSheet.xsc">
+      <DependentUpon>SignUpSheet.xsd</DependentUpon>
+    </None>
+    <None Include="Instructor\PdfTemplate\SignUpSheet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SignUpSheet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Instructor\PdfTemplate\SignUpSheet.xss">
+      <DependentUpon>SignUpSheet.xsd</DependentUpon>
+    </None>
+    <Content Include="Instructor\Web.config" />
+    <Content Include="SystemHome\Catalog\Web.config" />
     <None Include="SystemHome\Configuration\HRIS Integration\Sample\HRIS_import_csv_example.xlsx" />
     <None Include="SystemHome\Configuration\HRIS Integration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
     <None Include="SystemHome\Configuration\Navigation\myPageTemplate.tmp" />
+    <Content Include="SystemHome\Users\Web.config" />
+    <None Include="Training\PdfTemplate\MyCourses.xsc">
+      <DependentUpon>MyCourses.xsd</DependentUpon>
+    </None>
+    <None Include="Training\PdfTemplate\MyCourses.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyCourses1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Training\PdfTemplate\MyCourses.xss">
+      <DependentUpon>MyCourses.xsd</DependentUpon>
+    </None>
+    <None Include="Training\Popup\PdfTemplate\MyDeliveries.xsc">
+      <DependentUpon>MyDeliveries.xsd</DependentUpon>
+    </None>
+    <None Include="Training\Popup\PdfTemplate\MyDeliveries.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDeliveries.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Training\Popup\PdfTemplate\MyDeliveries.xss">
+      <DependentUpon>MyDeliveries.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Administrator\PdfTemplate\MyCourse_Admin.rdlc" />
     <EmbeddedResource Include="Compliance\HARM\PdfTemplate\HARMControlMeasure.rdlc" />
     <EmbeddedResource Include="Compliance\HARM\PdfTemplate\HARMReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVReport.rdlc" />
@@ -3311,6 +3759,12 @@
     <EmbeddedResource Include="Employee\Curricula\PdfTemplate\MyCurricula.rdlc" />
     <EmbeddedResource Include="Employee\LearningHistory\PdfTemplate\MyCertificate.rdlc" />
     <EmbeddedResource Include="Employee\LearningHistory\PdfTemplate\MyLearningHistory.rdlc" />
+    <EmbeddedResource Include="Instructor\PdfTemplate\MyCalendar.rdlc" />
+    <EmbeddedResource Include="Instructor\PdfTemplate\MyRoasters.rdlc" />
+    <EmbeddedResource Include="Instructor\PdfTemplate\SignUpEmployeeList.rdlc" />
+    <EmbeddedResource Include="Instructor\PdfTemplate\SignUpSheet.rdlc" />
+    <EmbeddedResource Include="Training\PdfTemplate\MyCourse.rdlc" />
+    <EmbeddedResource Include="Training\Popup\PdfTemplate\MyDeliveries.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

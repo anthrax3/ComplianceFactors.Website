@@ -17,17 +17,21 @@ namespace ComplicanceFactor.Compliance.SiteView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SessionWrapper.navigationText = "app_nav_compliance";
             if (!IsPostBack)
             {
+                
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + "Compliance" + "</a>&nbsp;" + " >&nbsp;" + "Site View";
+                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" +" >&nbsp;"+ LocalResources.GetGlobalLabel("app_siteview_text");
                 BindFieldNotes();
                 lblHeaderPageOf.Text = "of " + (gvFieldNoteDetails.PageCount).ToString();
                 BindInspection();
                 lblInspectionHeaderPageof.Text = "of " + (gvInspectionDetails.PageCount).ToString();
                 BindJobTraining();
                 lblTrainingPageOf.Text = "of " + (gvJobTrainingDetails.PageCount).ToString();
+                
             }
+           
         }
 
         protected void ddlHeaderResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
@@ -223,35 +227,81 @@ namespace ComplicanceFactor.Compliance.SiteView
         }
         private void BindJobTraining()
         {
-            DataTable dtTraining = new DataTable();
-            dtTraining.Columns.Add("OJTNumber", Type.GetType("System.String"));
-            dtTraining.Columns.Add("Title", Type.GetType("System.String"));
-            dtTraining.Columns.Add("Attachment", Type.GetType("System.String"));
-            dtTraining.Columns.Add("Created", Type.GetType("System.String"));
-            dtTraining.Columns.Add("CreatedBy", Type.GetType("System.String"));
-            DataRow dr;
-            for (int i = 0; i < 10; i++)
+            try
             {
-                dr = dtTraining.NewRow();
-                dr["OJTNumber"] = "OJT_001_1" + i;
-                dr["Title"] = "Warehouse - D.C.";
-                dr["Attachment"] = "picture";
-                dr["Created"] = DateTime.Now.AddDays(-5).ToShortDateString();
-                dr["CreatedBy"] = "D.Scott";
-                dtTraining.Rows.Add(dr);
+                gvJobTrainingDetails.DataSource = SiteViewOnJobTrainingBLL.SearchOnJobTraining(SessionWrapper.u_userid);
+                gvJobTrainingDetails.DataBind();
             }
-            gvJobTrainingDetails.DataSource = dtTraining;
-            gvJobTrainingDetails.DataBind();
-            //if (dtTraining.Rows.Count > 0)
-            //{
-            //    gvJobTrainingDetails.UseAccessibleHeader = true;
-            //    if (gvJobTrainingDetails.HeaderRow != null)
-            //    {
-            //        //This will tell ASP.NET to render the <thead> for the header row
-            //        //using instead of the simple <tr>
-            //        gvJobTrainingDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
-            //    }
-            //}            
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("ccsv-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("ccsv-01.aspx", ex.Message);
+                    }
+                }
+            }
+            if (gvJobTrainingDetails.Rows.Count == 0)
+            {
+                disableOJT();
+            }
+            else
+            {
+                enableOJT();
+            }
+            if (gvJobTrainingDetails.Rows.Count > 0)
+            {
+                gvJobTrainingDetails.UseAccessibleHeader = true;
+                if (gvJobTrainingDetails.HeaderRow != null)
+                {
+                    //This will tell ASP.NET to render the <thead> for the header row
+                    //using instead of the simple <tr>
+                    gvJobTrainingDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+            }
+              
+        }
+        private void disableOJT()
+        {
+            btnTrainingHeaderFirst.Visible = false;
+            btnTraningHeaderPrevious.Visible = false;
+            btnTrainingHeaderNext.Visible = false;
+            btnTrainingHeaderLast.Visible = false;
+
+            ddlTrainingResultPerPage.Visible = false;
+
+            txtTrainingPage.Visible = false;
+            lblTraingPage.Visible = false;
+
+            btnTrainingGoTo.Visible = false;
+
+            lblTrainingResultPerPage.Visible = false;
+
+            lblTrainingPageOf.Visible = false;
+
+        }
+        private void enableOJT()
+        {
+            btnTrainingHeaderFirst.Visible = true;
+            btnTraningHeaderPrevious.Visible = true;
+            btnTrainingHeaderNext.Visible = true;
+            btnTrainingHeaderLast.Visible = true;
+
+            ddlTrainingResultPerPage.Visible = true;
+
+            txtTrainingPage.Visible = true;
+            lblTraingPage.Visible = true;
+
+            btnTrainingGoTo.Visible = true;
+
+            lblTrainingResultPerPage.Visible = true;
+
+            lblTrainingPageOf.Visible = true;
         }
 
         protected void ddlTrainingResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
@@ -531,6 +581,66 @@ namespace ComplicanceFactor.Compliance.SiteView
                 col.ColumnMapping = MappingType.Attribute;
             }
             return dsBuildSql.GetXml().ToString();
+        }
+
+        protected void gvJobTrainingDetails_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rowIndex = int.Parse(e.CommandArgument.ToString());
+            if (e.CommandName.Equals("Edit"))
+            {
+                //here we have to check the fieldnotes are saved or received.
+                if (gvJobTrainingDetails.DataKeys[rowIndex].Values[1].ToString() == SessionWrapper.u_userid)
+                {
+                    Response.Redirect("~/Compliance/SiteView/Ojt/csveojt-01.aspx?mode=saved&id=" + SecurityCenter.EncryptText(gvJobTrainingDetails.DataKeys[rowIndex].Values[0].ToString()), false);
+                }
+                else
+                {
+                    SiteViewOnJobTraining ojtId = new SiteViewOnJobTraining();
+                    ojtId = SiteViewOnJobTrainingBLL.GetOjtId();
+                    Response.Redirect("~/Compliance/SiteView/Ojt/csveojt-01.aspx?mode=received&OjtId=" + SecurityCenter.EncryptText(ojtId.sv_ojt_id_pk) + "&id=" + SecurityCenter.EncryptText(gvJobTrainingDetails.DataKeys[rowIndex].Values[0].ToString()), false);
+                }
+            }
+            if (e.CommandName.Equals("Archive"))
+            {
+                //here we have to check the fieldnotes are saved or received.
+                string ojtId = gvJobTrainingDetails.DataKeys[rowIndex].Values[0].ToString();
+                string userId = gvJobTrainingDetails.DataKeys[rowIndex].Values[1].ToString();
+                try
+                {
+                    if (gvJobTrainingDetails.DataKeys[rowIndex].Values[1].ToString() == SessionWrapper.u_userid)
+                    {
+                        SiteViewOnJobTrainingBLL.UpdateSavedOjtStatus(SessionWrapper.u_userid, ojtId);
+                        //SiteViewFieldNotesBLL.UpdateSavedFieldNotesStatus(SessionWrapper.u_userid, ojtId);
+                    }
+                    else
+                    {
+                        SiteViewOnJobTrainingBLL.UpdateReceivedOjtStatus(SessionWrapper.u_userid, ojtId);
+                        //SiteViewFieldNotesBLL.UpdateReceivedFieldNotesStatus(SessionWrapper.u_userid, ojtId);
+                    }
+                    //SiteViewInspectionBLL.UpdateInspectionStatus(gvInspectionDetails.DataKeys[rowIndex].Values[0].ToString());
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Show user friendly error here
+                    //Log here
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("ccsv-01.aspx", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("ccsv-01.aspx", ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void gvJobTrainingDetails_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
         }
 
     }

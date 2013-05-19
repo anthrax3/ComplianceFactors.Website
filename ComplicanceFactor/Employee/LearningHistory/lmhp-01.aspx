@@ -87,6 +87,8 @@
 
   
     </script>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    </div>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_lmhp" runat="server" ValidationGroup="lmhp" />
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
@@ -156,7 +158,7 @@
             OnRowCommand="gvLearningHistory_RowCommand">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_course_title_text %>" DataField='title'
+                    HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
                     HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>" DataField='date'
@@ -177,22 +179,18 @@
                             runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"  Style="display: none;"/>
                         <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' Style="display:none;" 
                             runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
-                        <%-- <asp:Button ID="btnViewDetails" runat="server" CommandArgument='<%# Eval("t_transcript_course_id_fk") %>' 
-                            CommandName="ViewDetails" Text="View Details" Style="display: none;"/>--%>
+                        <asp:Button ID="btnViewDetails" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' Style="display:none;" 
+                            runat="server" CommandName="View" Text="View Details" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:Button ID="btnCertificate" CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'
-                         CommandName="Certificate" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
+                       <asp:Button ID="btnCertificate" CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'
+                         CommandName="Certificate" style="display:none;" runat="server" Text="Certificate" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField>
-                    <FooterTemplate>
-                         <%--<div class="div_padding_10 gridview_long_no_border" runat="server"/>--%>
-                    </FooterTemplate>
-                </asp:TemplateField>
+                
                 
             </Columns>
         </asp:GridView>

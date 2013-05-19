@@ -13,7 +13,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -24,10 +26,14 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
 
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
             var editResourceId = $('input#<%=hdResourceId.ClientID %>').val();
             // Add and view  locale
@@ -67,6 +73,7 @@
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saerin" runat="server"
         ValidationGroup="saerin"></asp:ValidationSummary>
     <asp:HiddenField ID="hdResourceId" runat="server" />
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
@@ -102,7 +109,8 @@
                         <asp:RequiredFieldValidator ID="rfvResourceId" runat="server" ValidationGroup="saerin"
                             ControlToValidate="txtResourceId" ErrorMessage="<%$ TextResourceExpression: app_resource_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_resource_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_resource_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtResourceId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -120,7 +128,8 @@
                         <asp:RequiredFieldValidator ID="rfvResourceName" runat="server" ValidationGroup="saerin"
                             ControlToValidate="txtResourceName" ErrorMessage="<%$ TextResourceExpression: app_resource_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_resource_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_resource_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtResourceName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -131,7 +140,8 @@
                         <asp:RequiredFieldValidator ID="rfvResourceDescription" runat="server" ValidationGroup="saerin"
                             ControlToValidate="txtResourceDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtResourceDescription" runat="server" class="txtInput_long" rows="3"
@@ -159,7 +169,7 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
-                                   <%=LocalResources.GetLabel("app_resource_type_text")%>:
+                                    <%=LocalResources.GetLabel("app_resource_type_text")%>:
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="ddlResourceType" DataTextField="s_resource_type_name" DataValueField="s_resource_type_system_id_pk"

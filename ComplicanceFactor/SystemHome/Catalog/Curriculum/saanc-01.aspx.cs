@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,7 +9,6 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.IO;
 using System.Globalization;
 using ComplicanceFactor.Common.Languages;
-using ComplicanceFactor.SystemHome.Catalog.DeliveryPopup;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
 {
@@ -19,14 +16,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
     {
         #region "Private Member Variables"
         private string _attachmentpath = "~/SystemHome/Catalog/Curriculum/Attachments/";
-              private string _pathIcon = "~/SystemHome/Catalog/Curriculum/Icons/";
+        private string _pathIcon = "~/SystemHome/Catalog/Curriculum/Icons/";
         #endregion
-    
-        
-       protected void Page_Load(object sender, EventArgs e)
-       {
-           
-           ///<summary>
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+            ///<summary>
             ///Hide validation on postback (if user select owner,coordinator,prerequisite,equivalence and fullfillments)
             ///</summary>
             vs_saanc.Style.Add("display", "none");
@@ -34,8 +31,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             {
                 try
                 {
+                    //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Create Curriculum";
+
+                    string navigationText;
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Create Curriculum";
+                    navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                    hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + LocalResources.GetLabel("app_manage_curriculam_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_curriculum_text");
+
+
                     // Clear Curriculum Related Session
                     ClearCurriculumeRelatedSession();
                     //Created By
@@ -143,8 +148,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 //Get Fulfillments session
                 gvFulfillments.DataSource = SessionWrapper.TempCurriculumFulfillments;
                 gvFulfillments.DataBind();
-              
-                
+
+
 
             }
             catch (Exception ex)
@@ -285,7 +290,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 error = SystemCurriculumBLL.CreateCurriculum(CreateCurriculum);
                 if (error != -2)
                 {
-                    
+
                     Response.Redirect("~/SystemHome/Catalog/Curriculum/saec-01.aspx?id=" + SecurityCenter.EncryptText(CreateCurriculum.c_curriculum_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true"), false);
                 }
                 else
@@ -294,7 +299,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     ///Show error message 
                     ///</summary>
                     divError.Style.Add("display", "block");
-                    divError.InnerText = "Error: The Curriculum id you have entered already exist; please enter a different Curriculum id.";
+                    divError.InnerText = LocalResources.GetText("app_curriculum_id_already_exist_error_wrong");
                 }
 
             }
@@ -388,12 +393,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
 
             //clear Category
             SessionWrapper.CurriculumCategory = null;
-          
+
 
             //Attachments
             SessionWrapper.TempCurriculumAttachments = null;
 
-          
+
 
         }
 
@@ -867,7 +872,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
 
         private void CopyCurriculum(string curriculumId)
         {
-              ClearCurriculumeRelatedSession();
+            ClearCurriculumeRelatedSession();
             SystemCurriculum Curriculum = new SystemCurriculum();
             Curriculum = SystemCurriculumBLL.GetCurriculum(curriculumId, SessionWrapper.CultureName);
             txtCurriculumId.Text = Curriculum.c_curriculum_id_pk + "_Copy";
@@ -1098,8 +1103,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
         protected void lnkDownload_Click(object sender, EventArgs e)
         {
             string filePath = Server.MapPath(_pathIcon + SessionWrapper.c_curriculum_icon_uri);
-           
-         
+
+
             if (System.IO.File.Exists(filePath))
             {
 
@@ -1134,11 +1139,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             }
         }
 
-       
 
-       
 
-        
+
+
+
     }
 }
 

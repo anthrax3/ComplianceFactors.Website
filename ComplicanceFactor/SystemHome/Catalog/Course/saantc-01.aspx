@@ -15,7 +15,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -26,13 +28,12 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
 
     </script>
-  
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -294,9 +295,6 @@
                 }
 
             });
-
-
-
 
         });
     </script>
@@ -686,7 +684,7 @@
             var txtDate = document.getElementById('<%=txtDate.ClientID %>').value;
             var chkRecurranceDate = checkRecurranceDate();
             var fixedDate = checkingFixedDate();
-            
+
             if ((txtEvery == '' && txtGracePreiod == '' && txtDate == '' && chkRecurranceDate == false) || (txtEvery == 0 && txtGracePreiod == 0 && txtDate == '' && chkRecurranceDate == false)) {
                 args.IsValid = true;
             }
@@ -723,7 +721,7 @@
                 }
             }
             if (atLeast = counter) {
-                  isChecked = true;
+                isChecked = true;
             }
             else {
                 isChecked = false;
@@ -744,7 +742,7 @@
             }
 
         }
-</script>
+    </script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -915,6 +913,50 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".copydelivery").click(function () {
+
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1040,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '../Course/Delivery/sand-01.aspx?mode=createcopy&copydelivery=' + record_id,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+            });
+
+        });
+    </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saantc" runat="server"
         ValidationGroup="saantc"></asp:ValidationSummary>
     <asp:CustomValidator ID="cvRecurranceEvery" EnableClientScript="true" ClientValidationFunction="RecurranceEvery"
@@ -930,6 +972,7 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
         <%--<%=LocalResources.GetLabel("app_error_msg")%>--%>
     </div>
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
@@ -959,7 +1002,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                         <%=LocalResources.GetLabel("app_created_by_text")%>:
+                        <%=LocalResources.GetLabel("app_created_by_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCreatedBy" runat="server"></asp:Label>
@@ -974,7 +1017,7 @@
                         &nbsp;
                     </td>
                     <td>
-                         <%=LocalResources.GetLabel("app_created_on_text")%>:
+                        <%=LocalResources.GetLabel("app_created_on_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCreatedOn" runat="server"></asp:Label>
@@ -1152,8 +1195,7 @@
             <div>
                 <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_95"
                     CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_delivery_system_id_pk"
-                    runat="server" AutoGenerateColumns="False" 
-                    onrowdatabound="gvDeliveries_RowDataBound">
+                    runat="server" AutoGenerateColumns="False" OnRowDataBound="gvDeliveries_RowDataBound">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -1169,17 +1211,21 @@
                                         </td>
                                         <td class="gridview_row_width_350">
                                             <%#Eval("c_delivery_title")%>
-                                            <asp:Label ID="lblSession" runat="server" ></asp:Label>
+                                            <asp:Label ID="lblSession" runat="server"></asp:Label>
                                         </td>
                                         <td class="gridview_row_width_300" align="right">
                                             <table>
                                                 <tr>
                                                     <td class="gridview_row_width_1" align="right">
-                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
+                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
                                                             class="editdelivery cursor_hand" />
                                                     </td>
                                                     <td class="gridview_row_width_1" align="right">
-                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="Remove" />'
+                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="Copy" />'
+                                                            class="copydelivery cursor_hand" />
+                                                    </td>
+                                                    <td class="gridview_row_width_1" align="right">
+                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="Remove" />'
                                                             class="deletedelivery cursor_hand" />
                                                     </td>
                                                 </tr>
@@ -1226,7 +1272,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("CategoryID") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                <input type="button" id='<%# Eval("CategoryID") %>' value='<asp:Literal ID="Literal4" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                     class="deleteCategory cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1267,7 +1313,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("c_related_domain_id_fk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                <input type="button" id='<%# Eval("c_related_domain_id_fk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                     class="deletedomain cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -1321,8 +1367,8 @@
                     <td valign="top">
                         <asp:RegularExpressionValidator ID="regexDate" runat="server" ControlToValidate="txtDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong%>"
-                            Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong%>" Display="Dynamic"
+                            ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                         <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceDate" Format="MM/dd/yyyy" TargetControlID="txtDate" runat="server">
                         </asp:CalendarExtender>
@@ -1367,13 +1413,13 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
+                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                             class="editprerequisities cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                             class="deleteprerequisities cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -1418,13 +1464,13 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
+                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal17" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                             class="editEquivalencies cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal7" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                             class="deleteEquivalencies cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -1469,13 +1515,13 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
+                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal8" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                             class="editFulfillments cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                        <input type="button" id='<%# Eval("c_related_course_group_id") %>' value='<asp:Literal ID="Literal8" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                             class="deleteFulfillments cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>

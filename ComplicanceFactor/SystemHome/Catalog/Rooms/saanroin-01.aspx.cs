@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
@@ -22,8 +18,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Rooms
                 vs_saanroin.Style.Add("display", "none");
                 if (!IsPostBack)
                 {
+                    //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Rooms/samroimp-01.aspx>" + LocalResources.GetLabel("app_manage_rooms_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_room_text");
+
+                    string navigationText;
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Rooms/samroimp-01.aspx>" + LocalResources.GetLabel("app_manage_rooms_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_room_text");
+                    navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                    hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Rooms/samroimp-01.aspx>" + LocalResources.GetLabel("app_manage_rooms_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_room_text");
+
+
                     //temp locale column
                     SessionWrapper.Locale = TempDataTables.TempLocale();
                     SessionWrapper.TempLocale = TempDataTables.TempLocale();

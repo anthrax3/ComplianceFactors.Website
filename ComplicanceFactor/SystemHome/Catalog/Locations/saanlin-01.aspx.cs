@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
@@ -21,8 +17,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.Locations
                 if (!IsPostBack)
                 {
                     //Label BreadCrumb
+                    //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Locations/samlimp-01.aspx>" +LocalResources.GetLabel("app_manage_locations_text")  + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_location_text");
+
+                    string navigationText;
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Locations/samlimp-01.aspx>" +LocalResources.GetLabel("app_manage_locations_text")  + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_location_text");
+                    navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                    hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Locations/samlimp-01.aspx>" + LocalResources.GetLabel("app_manage_locations_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_location_text");
+
+
+                   
+
                     //temp locale column
                     SessionWrapper.Locale = TempDataTables.TempLocale();
                     SessionWrapper.TempLocale = TempDataTables.TempLocale();

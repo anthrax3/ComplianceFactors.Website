@@ -1185,6 +1185,15 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateCourseDelivery.Add("@c_delivery_max_waitlist", DBNull.Value);
             }
+            if (updateCourseDelivery.c_survey_scoring_scheme_id_fk == "app_ddl_all_text")
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_grading_scheme_id_fk", DBNull.Value);
+            }
+            else
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_grading_scheme_id_fk", updateCourseDelivery.c_survey_scoring_scheme_id_fk);
+            }
+            
 
             htUpdateCourseDelivery.Add("@c_vlt_launch_url", updateCourseDelivery.c_vlt_launch_url);
             htUpdateCourseDelivery.Add("@c_olt_launch_url", updateCourseDelivery.c_olt_launch_url);
@@ -1301,6 +1310,7 @@ namespace ComplicanceFactor.BusinessComponent
                 courseDelivery.c_vlt_launch_url = dtGetCourseDelivery.Rows[0]["c_vlt_launch_url"].ToString();
                 courseDelivery.c_olt_launch_url = dtGetCourseDelivery.Rows[0]["c_olt_launch_url"].ToString();
                 courseDelivery.c_olt_launch_param = dtGetCourseDelivery.Rows[0]["c_olt_launch_param"].ToString();
+                courseDelivery.c_survey_scoring_scheme_id_fk = dtGetCourseDelivery.Rows[0]["c_delivery_grading_scheme_id_fk"].ToString();
                 courseDelivery.c_delivery_custom_01 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_01"].ToString();
                 courseDelivery.c_delivery_custom_02 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_02"].ToString();
                 courseDelivery.c_delivery_custom_03 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_03"].ToString();
@@ -2313,6 +2323,25 @@ namespace ComplicanceFactor.BusinessComponent
             try
             {
                 return DataProxy.FetchDataTable("c_sp_get_session_by_course_id", htGetSessionByCourseID);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// Copy Single Session
+        /// </summary>
+        /// <param name="c_session_system_id_pk"></param>
+        /// <returns></returns>
+        public static int CopySingleSession(string c_session_system_id_pk, string c_delivery_id_fk)
+        {
+            try
+            {
+                Hashtable htCopySingleSession = new Hashtable();
+                htCopySingleSession.Add("@c_session_system_id_pk", c_session_system_id_pk);
+                htCopySingleSession.Add("@c_delivery_id_fk", c_delivery_id_fk);
+                return DataProxy.FetchSPOutput("c_course_sp_copy_single_session", htCopySingleSession);
             }
             catch (Exception)
             {

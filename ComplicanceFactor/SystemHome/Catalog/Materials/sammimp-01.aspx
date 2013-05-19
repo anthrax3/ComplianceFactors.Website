@@ -6,24 +6,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+   <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
-            // toggles the slickbox on clicking the noted link  
-            $('.main_menu li a').hover(function () {
+       $(document).ready(function () {
+           var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-                $('.main_menu li a').removeClass('selected');
-                $(this).addClass('active');
+           $(navigationSelectedValue).addClass('selected');
+           // toggles the slickbox on clicking the noted link  
+           $('.main_menu li a').hover(function () {
 
-                return false;
-            });
-            $('.main_menu li a').mouseleave(function () {
+               $('.main_menu li a').removeClass('selected');
+               $(this).addClass('active');
 
-                $('#app_nav_system').addClass('selected');
-                return false;
-            });
-        });
+               return false;
+           });
+           $('.main_menu li a').mouseleave(function () {
+
+               $(navigationSelectedValue).addClass('selected');
+               return false;
+           });
+       });
 
     </script>
     <script type="text/javascript" language="javascript">
@@ -57,6 +59,7 @@
            <%=LocalResources.GetLabel("app_advanced_materials_search_results_text")%>:
         </div>
         <br />
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>

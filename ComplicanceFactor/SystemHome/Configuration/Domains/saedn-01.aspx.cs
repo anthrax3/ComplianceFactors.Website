@@ -29,7 +29,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                     ClearSession();
                     //set breadcrumb
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Domains/samdmp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_manage_domain_text") + "</a>" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_edit_domain_text");
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Domains/samdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_domain_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_domain_text");
                     //Bind domain status
                     ddlStatus.DataSource = SystemDomainBLL.GetDomainStatus(SessionWrapper.CultureName, "saedn-01");
                     ddlStatus.DataBind();                   
@@ -42,7 +42,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerHtml = LocalResources.GetLocalizationResourceLabelText("app_success_msg_text");
+                        divSuccess.InnerHtml = LocalResources.GetText("app_success_msg_text");
                     }
                 }
                 //set owner and coordiantor

@@ -13,7 +13,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -24,9 +26,15 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
 
             //Get the Id 
             var uid = $('input#<%=hdId.ClientID %>').val();
@@ -99,6 +107,7 @@
 
     </script>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <asp:HiddenField ID="hdId" runat="server" />
         <br />
         <br />
@@ -106,8 +115,8 @@
             <table cellpadding="0" cellspacing="0" class="controls_long">
                 <tr>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderClose" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_close_button_text%>" OnClick="btnHeaderClose_Click" />
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderClose" runat="server" Text="<%$ LabelResourceExpression: app_close_button_text%>"
+                            OnClick="btnHeaderClose_Click" />
                     </td>
                 </tr>
             </table>
@@ -212,8 +221,8 @@
             <table cellpadding="0" cellspacing="0" class="controls_long">
                 <tr>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterClose" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_close_button_text%>" onclick="btnFooterClose_Click" />
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterClose" runat="server" Text="<%$ LabelResourceExpression: app_close_button_text%>"
+                            OnClick="btnFooterClose_Click" />
                     </td>
                 </tr>
             </table>

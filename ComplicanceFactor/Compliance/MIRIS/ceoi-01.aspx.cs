@@ -459,6 +459,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     try
                     {
                         ComplianceDAO witness = new ComplianceDAO();
+                        witness.s_locale_culture = SessionWrapper.CultureName;
                         witness.c_file_guid = c_file_guid + c_file_extension;
                         witness.c_file_name = c_file_name;
                         witness.c_case_id_pk = edit;
@@ -694,6 +695,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     try
                     {
                         ComplianceDAO extenautingcond = new ComplianceDAO();
+                        extenautingcond.s_locale_culture = SessionWrapper.CultureName;
                         extenautingcond.c_file_guid = c_file_guid + c_file_extension;
                         extenautingcond.c_file_name = c_file_name;
                         extenautingcond.c_case_id_pk = edit;
@@ -756,6 +758,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     try
                     {
                         ComplianceDAO employeeInterview = new ComplianceDAO();
+                        employeeInterview.s_locale_culture = SessionWrapper.CultureName;
                         employeeInterview.c_file_guid = c_file_guid + c_file_extension;
                         employeeInterview.c_file_name = c_file_name;
                         employeeInterview.c_case_id_pk = edit;
@@ -1143,6 +1146,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     ComplianceDAO miris = new ComplianceDAO();
                     miris.c_file_id = caseFileId;
+                    miris.s_locale_culture = SessionWrapper.CultureName;
                     miris.c_case_id_pk = edit;
                     ComplianceBLL.DeleteWitnessFile(miris);
                     //witness
@@ -1529,6 +1533,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     ComplianceDAO miris = new ComplianceDAO();
                     miris.c_file_id = caseFileId;
+                    miris.s_locale_culture = SessionWrapper.CultureName;
                     ComplianceBLL.DeleteExtenautingConditionFile(miris);
 
                     //Extenautingcondition
@@ -1612,6 +1617,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     ComplianceDAO miris = new ComplianceDAO();
                     miris.c_file_id = caseFileId;
+                    miris.s_locale_culture = SessionWrapper.CultureName;
                     ComplianceBLL.DeleteEmployeeInterviewFile(miris);
                     miris.c_case_id_pk = edit;
                     DataTable dtGetEmployeeInterview = new DataTable();
@@ -2055,6 +2061,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
             {
                 ComplianceDAO resetCase = new ComplianceDAO();
                 resetCase.c_case_id_pk = edit;
+                resetCase.s_locale_culture = SessionWrapper.CultureName;
                 ComplianceBLL.DeleteAdditionalInformation(resetCase);
 
                 //WITENSS

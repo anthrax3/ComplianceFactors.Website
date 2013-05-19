@@ -113,6 +113,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string text_sr_is_system_admin { get; set; }
         public string text_sr_is_compliance_approver { get; set; }
 
+        public bool text_sr_is_compliance_approver_text { get; set; }
+
 
 
         public bool u_hris_is_rehire { get; set; }
@@ -141,6 +143,41 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public int u_profile_my_todos_records_display_pref { get; set; }
         public int u_profile_my_team_records_display_pref { get; set; }
         public int u_profile_my_report_history_records_display_pref { get; set; }
+        public string u_profile_my_system_splashes_collapse_pref { get; set; }
+        public string u_profile_my_system_themes_collapse_pref { get; set; }
+        public string u_profile_my_system_reports_collapse_pref { get; set; }
+        public int u_profile_my_system_splashes_records_display_pref { get; set; }
+        public int u_profile_my_system_themes_records_display_pref { get; set; }
+        public int u_profile_my_system_reports_records_display_pref { get; set; }
+
+        public string u_profile_my_admin_todos_collapse_pref { get; set; }
+        public string u_profile_my_amdin_courses_collapse_pref { get; set; }
+        public string u_profile_my_admin_reports_collapse_pref { get; set; }
+        public int u_profile_my_admin_todos_display_pref { get; set; }
+        public int u_profile_my_admin_courses_display_pref { get; set; }
+        public int u_profile_my_admin_reports_display_pref { get; set; }
+
+        public string u_profile_my_inst_todos_collapse_pref { get; set; }
+        public string u_profile_my_inst_rosters_collapse_pref { get; set; }
+        public string u_profile_my_inst_reports_collapse_pref { get; set; }
+        public int u_profile_my_inst_todos_display_pref { get; set; }
+        public int u_profile_my_inst_rosters_display_pref { get; set; }
+        public int u_profile_my_inst_reports_display_pref { get; set; }
+        public string u_profile_my_train_todos_collapse_pref { get; set; }
+        public string u_profile_my_train_deliveries_collapse_pref { get; set; }
+        public string u_profile_my_train_reports_collapse_pref { get; set; }
+        public int u_profile_my_train_todos_display_pref { get; set; }
+        public int u_profile_my_train_deliveries_display_pref { get; set; }
+        public int u_profile_my_train_reports_display_pref { get; set; }
+        public string u_profile_my_comp_todos_collapse_pref { get; set; }
+        public string u_profile_my_comp_harm_collapse_pref { get; set; }
+        public string u_profile_my_comp_giris_collapse_pref { get; set; }
+        public string u_profile_my_comp_reports_collapse_pref { get; set; }
+        public int u_profile_my_comp_todos_display_pref { get; set; }
+        public int u_profile_my_comp_harm_display_pref { get; set; }
+        public int u_profile_my_comp_giris_display_pref { get; set; }
+        public int u_profile_my_comp_reports_display_pref { get; set; }
+
         public string type { get; set; }
     }
 }

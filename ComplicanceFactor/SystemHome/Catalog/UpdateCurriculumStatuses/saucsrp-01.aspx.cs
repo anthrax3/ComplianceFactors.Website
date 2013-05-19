@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 {
@@ -17,8 +14,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/UpdateCurriculumStatuses/saucsp-01.aspx>" + LocalResources.GetGlobalLabel("app_update_curriculum_statuses_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_curricula_search_result_text");
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/UpdateCurriculumStatuses/saucsp-01.aspx>" + "Update Curriculum Statuses" + "</a>&nbsp;" + " >&nbsp;" + "Curricula Search Result";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/UpdateCurriculumStatuses/saucsp-01.aspx>" + LocalResources.GetGlobalLabel("app_update_curriculum_statuses_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_curricula_search_result_text");
+
+
                 //Bind curriculum status
                 ddlStatus.DataSource = SystemCurriculumBLL.GetCurriculumAllStatus(SessionWrapper.CultureName, string.Empty);
                 ddlStatus.DataBind();

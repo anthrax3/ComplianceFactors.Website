@@ -72,6 +72,23 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+       /// <summary>
+       /// Get Cuuriculum Type Main
+       /// </summary>
+       /// <returns></returns>
+        public static DataTable Getcurriculumtype(string s_ui_locale_name)
+        {
+            Hashtable htGetCurriculumType = new Hashtable();
+            htGetCurriculumType.Add("@s_locale", s_ui_locale_name);
+            try
+            {
+                return DataProxy.FetchDataTable("c_curriculum_sp_get_curriculum_type", htGetCurriculumType);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         /// <summary>
         /// Search Curriculum
         /// </summary>
@@ -301,6 +318,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateCurriculum.Add("@c_curriculum_approval_id_fk", DBNull.Value);
             }
+            if (curriculum.c_curriculum_type_id_fk != "0")
+            {
+                htUpdateCurriculum.Add("@c_curriculum_type_id_fk", curriculum.c_curriculum_type_id_fk);
+            }
+            else
+            {
+                htUpdateCurriculum.Add("@c_curriculum_type_id_fk", DBNull.Value);
+            }
             if (curriculum.c_curriculum_credit_hours != null)
             {
                 htUpdateCurriculum.Add("@c_curriculum_credit_hours", curriculum.c_curriculum_credit_hours);
@@ -365,7 +390,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCurriculum.Add("@c_curriculum_custom_13", curriculum.c_curriculum_custom_13);
             htUpdateCurriculum.Add("@c_curriculum_title", curriculum.c_curriculum_title);
             htUpdateCurriculum.Add("@c_curriculum_system_id_pk", curriculum.c_curriculum_system_id_pk);
-            htUpdateCurriculum.Add("@c_curriculum_type_id_fk", curriculum.c_curriculum_type_id_fk);
+            
 
             if (curriculum.c_curriculum_recurrance_every != null)
             {
@@ -571,6 +596,7 @@ namespace ComplicanceFactor.BusinessComponent
                 curriculum.c_curriculum_version = dtGetCurriculum.Rows[0]["c_curriculum_version"].ToString();
                 curriculum.c_curriculum_approval_req = Convert.ToBoolean(dtGetCurriculum.Rows[0]["c_curriculum_approval_req"]);
                 curriculum.c_curriculum_approval_id_fk = dtGetCurriculum.Rows[0]["c_curriculum_approval_id_fk"].ToString();
+                curriculum.c_curriculum_type_id_fk = dtGetCurriculum.Rows[0]["c_curriculum_type_id_fk"].ToString();
 
                 if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_credit_hours"].ToString()))
                 {
@@ -629,7 +655,6 @@ namespace ComplicanceFactor.BusinessComponent
                 curriculum.c_curriculum_approval_name = dtGetCurriculum.Rows[0]["c_curriculum_approval_name"].ToString();
                 curriculum.c_curriculum_recurrences_text = dtGetCurriculum.Rows[0]["c_curriculum_recurrences_text"].ToString();
                 curriculum.c_curriculum_approval_req_text = dtGetCurriculum.Rows[0]["c_curriculum_approval_req_text"].ToString();
-
                 if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_recurance_date"].ToString()))
                 {
                     curriculum.c_curriculum_recurance_date = Convert.ToDateTime(dtGetCurriculum.Rows[0]["c_curriculum_recurance_date"], culture);
@@ -2222,6 +2247,12 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        /// <summary>
+        /// Get single 
+        /// </summary>
+        /// <param name="c_curricula_id_fk"></param>
+        /// <param name="c_curricula_path_id_fk"></param>
+        /// <returns></returns>
         public static DataTable GetSingleCurriculaRecertPathCourse(string c_curricula_id_fk, string c_curricula_path_id_fk)
         {
             Hashtable htGetSingleCurriculaRecertPathCourse = new Hashtable();
@@ -2256,6 +2287,48 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        /// <summary>
+        /// Get Curriculum Path only
+        /// </summary>
+        /// <param name="c_curriculum_system_id_pk"></param>
+        /// <returns></returns>
+
+        public static DataTable GetCurriculumPathOnly(string c_curriculum_system_id_pk)
+        {
+            Hashtable htGetPath = new Hashtable();
+            htGetPath.Add("@c_curriculum_system_id_pk", c_curriculum_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("c_sp_get_curriculum_path_only", htGetPath);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+       /// <summary>
+       /// Get Grading Schemes Values
+       /// </summary>
+       /// <returns></returns>
+        public static DataTable GetGradingScheme(string s_locale)
+        {
+
+            try
+            {
+                Hashtable htGetGradingScheme = new Hashtable();
+                htGetGradingScheme.Add("@s_locale", s_locale);
+                return DataProxy.FetchDataTable("c_get_grading_scheme", htGetGradingScheme);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
     }
 }

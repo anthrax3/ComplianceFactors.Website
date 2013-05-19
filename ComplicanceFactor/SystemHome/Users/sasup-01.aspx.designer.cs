@@ -22,6 +22,15 @@ namespace ComplicanceFactor.SystemHome {
         protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// txtLastName control.
         /// </summary>
         /// <remarks>

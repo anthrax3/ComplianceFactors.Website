@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorBLL.cs" />
     <Compile Include="AuditlogBLL.cs" />
     <Compile Include="ComplianceBLL.cs" />
     <Compile Include="DataAccessObject\ComplainceVehicle.cs" />
+    <Compile Include="DataAccessObject\CurriculumStatus.cs" />
     <Compile Include="DataAccessObject\CurriculumStatuses.cs" />
     <Compile Include="DataAccessObject\Employee.cs" />
     <Compile Include="DataAccessObject\Enrollment.cs" />
@@ -50,19 +52,25 @@
     <Compile Include="DataAccessObject\SiteViewFieldNotes.cs" />
     <Compile Include="DataAccessObject\SiteViewInspection.cs" />
     <Compile Include="DataAccessObject\SiteViewInspectionTemplate.cs" />
+    <Compile Include="DataAccessObject\SiteViewOnJobTraining.cs" />
+    <Compile Include="DataAccessObject\SystemApproval.cs" />
     <Compile Include="DataAccessObject\SystemApprovalWorkflow.cs" />
     <Compile Include="DataAccessObject\SystemCurriculum.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumStatus.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumType.cs" />
+    <Compile Include="DataAccessObject\SystemDocumentTypes.cs" />
     <Compile Include="DataAccessObject\SystemGradingSchemes.cs" />
     <Compile Include="DataAccessObject\SystemHolidaySchedules.cs" />
     <Compile Include="DataAccessObject\SystemHRISIntegration.cs" />
     <Compile Include="DataAccessObject\SystemNotification.cs" />
     <Compile Include="DataAccessObject\SystemSplashPage.cs" />
+    <Compile Include="DataAccessObject\SystemTranscripts.cs" />
     <Compile Include="DataAccessObject\SystemUI_Texts_Labels_Dropdown.cs" />
     <Compile Include="DataAccessObject\SystemWeekdaySchedules.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="EnrollmentBLL.cs" />
+    <Compile Include="InstructorBLL.cs" />
+    <Compile Include="ManageCompletionBLL.cs" />
     <Compile Include="ManageCourseBLL.cs" />
     <Compile Include="DataAccessObject\Auditlog.cs" />
     <Compile Include="DataAccessObject\ComplianceDAO.cs" />
@@ -91,13 +99,16 @@
     <Compile Include="NavigationBLL.cs" />
     <Compile Include="SiteViewFieldNotesBLL.cs" />
     <Compile Include="SiteViewInspectionBLL.cs" />
+    <Compile Include="SiteViewOnJobTrainingBLL.cs" />
     <Compile Include="SysemDeliveryTypesBLL.cs" />
+    <Compile Include="SystemApprovalBLL.cs" />
     <Compile Include="SystemApprovalWorkflowBLL.cs" />
     <Compile Include="SystemCategoriesBLL.cs" />
     <Compile Include="SystemCompletionStatusesBLL.cs" />
     <Compile Include="SystemCurriculumBLL.cs" />
     <Compile Include="SystemCurriculumStatusBLL.cs" />
     <Compile Include="SystemCurriculumTypeBLL.cs" />
+    <Compile Include="SystemDocumentTypesBLL.cs" />
     <Compile Include="SystemEmployeeTypesBLL.cs" />
     <Compile Include="SystemFacilityBLL.cs" />
     <Compile Include="SystemFacilityTypesBLL.cs" />
@@ -121,6 +132,8 @@
     <Compile Include="SystemUI_Texts_Labels_DropdownBLL.cs" />
     <Compile Include="SystemWeekdaySchedulesBLL.cs" />
     <Compile Include="TimeZoneBLL.cs" />
+    <Compile Include="TrainingBLL.cs" />
+    <Compile Include="UpdateCurriculumStatusesBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="DataAccessObject\User.cs" />
     <Compile Include="LanguageBLL.cs" />

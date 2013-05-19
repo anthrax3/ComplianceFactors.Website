@@ -22,6 +22,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// txtCurriculumId control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.TextBox txtCoordinator;
         
         /// <summary>
-        /// ddlType control.
+        /// ddlCurriculumType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurriculumType;
         
         /// <summary>
         /// btnAddNewCurriculum control.

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using System.Globalization;
 using System.Data;
 using System.Collections;
 using ComplicanceFactor.BusinessComponent;
-using ComplicanceFactor.SystemHome.Catalog.DeliveryPopup;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {

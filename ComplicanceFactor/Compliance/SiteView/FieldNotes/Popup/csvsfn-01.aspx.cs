@@ -103,6 +103,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 createField.sv_fieldnote_title = fieldnotes.sv_fieldnote_title;
                 createField.sv_fieldnote_created_by_fk = SessionWrapper.u_userid;
                 createField.sv_fieldnote_is_save_sync = false;
+                createField.sv_fieldnote_is_acknowledge = fieldnotes.sv_fieldnote_is_acknowledge;
 
                 DataTable dt = SiteViewFieldNotesBLL.GetFieldNotesAttachment(fielsnotesId);
                 createField.sv_fieldnote_attachment = ConvertDataTableToXml(dt);

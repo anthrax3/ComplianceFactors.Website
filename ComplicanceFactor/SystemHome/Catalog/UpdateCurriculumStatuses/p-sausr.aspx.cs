@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
-using System.Data;
 
 namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 {
@@ -14,10 +11,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 SessionWrapper.TempEmployeelist = Employee();
                 SearchResult();
+                //count page of page in search result
+                lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+                lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             }
         }
 
@@ -27,6 +28,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
             {
                 string empName = string.Empty;
                 string empId = string.Empty;
+                string curriculumId = string.Empty;
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
                 {
                     empName = txtEmployeeName.Text;
@@ -36,10 +38,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
                 {
                     empName = SecurityCenter.DecryptText(Request.QueryString["ename"]);
                     empId = SecurityCenter.DecryptText(Request.QueryString["eno"]);
-                }
 
-                gvsearchDetails.DataSource = UpdateCurriculumStatusesBLL.GetCurriculumEmployee(empName, empId);
+                }
+                curriculumId = SecurityCenter.DecryptText(Request.QueryString["curriculumId"]);
+                //curriculumId
+
+                gvsearchDetails.DataSource = UpdateCurriculumStatusesBLL.GetCurriculumEmployee(empName, empId, curriculumId);
                 gvsearchDetails.DataBind();
+
+                
             }
             catch (Exception ex)
             {
@@ -49,11 +56,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saucsrp-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("p-sausr.aspx(Update curriculum statuses)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saucsrp-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("p-sausr.aspx(Update curriculum statuses)", ex.Message);
                     }
                 }
             }
@@ -262,18 +269,17 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 
         protected void btnGoSearch_Click(object sender, EventArgs e)
         {
+            ViewState["SearchResult"] = "true";
+            gvsearchDetails.PageIndex = 0;
+            SearchResult();
 
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-
-        }
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            ddlFooterResultPerPage.SelectedIndex = 0;
+            ddlHeaderResultPerPage.SelectedIndex = 0;
+        }    
 
         protected void ddlHeaderResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -328,12 +334,30 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 
         protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
+            string employeeNumber = string.Empty;
+            string lastName = string.Empty;
             foreach (GridViewRow grdEmployeeRow in gvsearchDetails.Rows)
             {
                 CheckBox chkSelect = (CheckBox)(grdEmployeeRow.Cells[2].FindControl("chkSelect"));
                 if (chkSelect.Checked == true)
                 {
-                    AddDataToEmployee(gvsearchDetails.DataKeys[grdEmployeeRow.RowIndex].Values[0].ToString(), grdEmployeeRow.Cells[0].Text, grdEmployeeRow.Cells[1].Text, grdEmployeeRow.Cells[2].Text, gvsearchDetails.DataKeys[grdEmployeeRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdEmployeeRow.RowIndex].Values[2].ToString(), SessionWrapper.TempEmployeelist);
+                    if (string.IsNullOrWhiteSpace(grdEmployeeRow.Cells[2].Text) || grdEmployeeRow.Cells[2].Text.Contains("&nbsp;"))
+                    {
+                        employeeNumber = string.Empty; 
+                    }
+                    else
+                    {
+                        employeeNumber = grdEmployeeRow.Cells[2].Text;
+                    }
+                    if (string.IsNullOrWhiteSpace(grdEmployeeRow.Cells[0].Text)||grdEmployeeRow.Cells[0].Text.Contains("&nbsp;"))
+                    {
+                        lastName = string.Empty;                       
+                    }
+                    else
+                    {
+                        lastName = grdEmployeeRow.Cells[0].Text;
+                    }
+                    AddDataToEmployee(gvsearchDetails.DataKeys[grdEmployeeRow.RowIndex].Values[0].ToString(), grdEmployeeRow.Cells[1].Text,lastName,employeeNumber, gvsearchDetails.DataKeys[grdEmployeeRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdEmployeeRow.RowIndex].Values[2].ToString(), SessionWrapper.TempEmployeelist);
                 }
             }
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
@@ -386,10 +410,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
             dtTempEmployeeColumn.ColumnName = "e_curriculum_assign_percent_complete";
             dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
 
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.Boolean");
+            dtTempEmployeeColumn.ColumnName = "e_is_user_selected";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
 
             return dtTempEmployee;
-
-
 
         }
 
@@ -403,7 +429,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
             row["u_hris_employee_id"] = employeeId;
             row["e_enroll_status_name"] = status;
             row["e_curriculum_assign_percent_complete"] = Convert.ToInt32(percent);
+            row["e_is_user_selected"] = false;
             dtTempEmployee.Rows.Add(row);
+
+
+
         }
 
     }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
@@ -16,16 +12,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
         {
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "Manage Curriculum";
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "Manage Curriculum";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_curriculam_text");
 
                 try
                 {
                     ddlStatus.DataSource = SystemCurriculumBLL.GetCurriculumAllStatus(SessionWrapper.CultureName,"sascp-01");
                     ddlStatus.DataBind();
                     ddlStatus.SelectedValue = "app_ddl_all_text";
-                    ddlType.DataSource = SystemCurriculumBLL.GetCurriculumType();
-                    ddlType.DataBind();
+                    ddlCurriculumType.DataSource = SystemCurriculumBLL.GetCurriculumType(SessionWrapper.CultureName);
+                    ddlCurriculumType.DataBind();
 
                 }
                 catch (Exception ex)

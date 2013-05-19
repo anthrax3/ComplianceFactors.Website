@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
@@ -20,8 +16,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Locations
                 if (!IsPostBack)
                 {
                     //Label Breadcrumb
+                    //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_locations_text");
+
+                    string navigationText;
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_locations_text");
+                    navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                    hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_locations_text");
+
                     //Status Bind
                     ddlStatus.DataSource = SystemLocationBLL.GetAllStatus(SessionWrapper.CultureName, "samlimp-01"); ;
                     ddlStatus.DataBind();

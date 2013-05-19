@@ -53,7 +53,7 @@ namespace ComplicanceFactor.Employee.Curricula
             DataSet dsEmployee = new DataSet();
             try
             {
-                dsEmployee = EnrollmentBLL.GetAllCurricula(SessionWrapper.u_userid);
+                dsEmployee = EnrollmentBLL.GetCurriculaPdf(SessionWrapper.u_userid, SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -74,10 +74,10 @@ namespace ComplicanceFactor.Employee.Curricula
             }
             if (dsEmployee.Tables[1].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsEmployee.Tables[1]);
+                exportDataTableToCsv(dsEmployee.Tables[0],dsEmployee.Tables[2]);
             }
         }
-        private void exportDataTableToCsv(DataTable dt)
+        private void exportDataTableToCsv(DataTable dt,DataTable dtCurriculaColumnName)
         {
             Response.Clear();
             Response.ContentType = "application/csv";
@@ -85,10 +85,10 @@ namespace ComplicanceFactor.Employee.Curricula
             Response.AddHeader("Content-Disposition", "attachment;filename=MyCurricula.csv");
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < dt.Columns.Count; k++)
+            for (int k = 0; k < dtCurriculaColumnName.Rows.Count; k++)
             {
                 //add separator
-                sb.Append(dt.Columns[k].ColumnName + ',');
+                sb.Append(dtCurriculaColumnName.Rows[k]["curriculaColumnName"].ToString() + ',');
             }
             //append new line
             sb.Append("\r\n");
@@ -117,7 +117,7 @@ namespace ComplicanceFactor.Employee.Curricula
             DataSet dsHeaderFooter = new DataSet();
             try
             {
-                dsCurricula = EnrollmentBLL.GetAllCurricula(SessionWrapper.u_userid);
+                dsCurricula = EnrollmentBLL.GetCurriculaPdf(SessionWrapper.u_userid,SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -147,7 +147,7 @@ namespace ComplicanceFactor.Employee.Curricula
                 rvCurricula.LocalReport.EnableExternalImages = true;
                 rvCurricula.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Curricula.PdfTemplate.MyCurricula.rdlc";
                 rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("MyCurricula", dsCurricula.Tables[0]));
-                rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsCurricula.Tables[2]));
+                rvCurricula.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsCurricula.Tables[1]));
                 byte[] bytes = rvCurricula.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();

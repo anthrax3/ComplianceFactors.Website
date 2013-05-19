@@ -10,10 +10,10 @@
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
-
         $(document).ready(function () {
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-            $('#app_nav_system').addClass('selected');
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -24,10 +24,13 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
+
+    </script>
+    <script type="text/javascript">
 
         // Add and view  locale
         $(document).ready(function () {
@@ -73,7 +76,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNewResource" ValidationGroup="saanrin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_resource_button_text %>" OnClick="btnHeaderSaveNewResource_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_resource_button_text %>"
+                            OnClick="btnHeaderSaveNewResource_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" OnClick="btnHeaderReset_Click" CssClass="cursor_hand"
@@ -87,6 +91,7 @@
             </table>
         </div>
         <br />
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_resource_information_english_us_text")%>:
         </div>
@@ -98,7 +103,8 @@
                         <asp:RequiredFieldValidator ID="rfvResourceId" runat="server" ValidationGroup="saanrin"
                             ControlToValidate="txtResourceId" ErrorMessage="<%$ TextResourceExpression: app_resource_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_resource_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_resource_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtResourceId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -116,7 +122,8 @@
                         <asp:RequiredFieldValidator ID="rfvResourceName" runat="server" ValidationGroup="saanrin"
                             ControlToValidate="txtResourceName" ErrorMessage="<%$ TextResourceExpression: app_resource_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        *  <%=LocalResources.GetLabel("app_resource_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_resource_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtResourceName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -127,7 +134,8 @@
                         <asp:RequiredFieldValidator ID="rfvResourceDescription" runat="server" ValidationGroup="saanrin"
                             ControlToValidate="txtResourceDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtResourceDescription" runat="server" class="txtInput_long" rows="3"
@@ -151,7 +159,7 @@
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
-                     <td>
+                    <td>
                         &nbsp;
                     </td>
                     <td>
@@ -162,7 +170,7 @@
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
-                     <td>
+                    <td>
                         &nbsp;
                     </td>
                     <td class="align_right">
@@ -178,7 +186,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveNewResource" ValidationGroup="saanrin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_resource_button_text %>" OnClick="btnFooterSaveNewResource_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_resource_button_text %>"
+                            OnClick="btnFooterSaveNewResource_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnFooterReset" OnClick="btnFooterReset_Click" runat="server" CssClass="cursor_hand"

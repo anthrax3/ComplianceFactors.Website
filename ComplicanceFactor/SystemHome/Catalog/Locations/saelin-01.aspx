@@ -13,7 +13,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -24,9 +26,15 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
             var editLocationeId = $('input#<%=hdLocationId.ClientID %>').val();
             // Add and view  locale
             $("#btnManageLocale").fancybox({
@@ -71,12 +79,14 @@
     </div>
     <asp:HiddenField ID="hdLocationId" runat="server" />
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveLocation" ValidationGroup="saelin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_location_button_text %>" OnClick="btnHeaderSaveLocation_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_location_button_text %>"
+                            OnClick="btnHeaderSaveLocation_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
@@ -91,7 +101,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_location_information_english_us_text")%>: 
+            <%=LocalResources.GetLabel("app_location_information_english_us_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -101,14 +111,15 @@
                         <asp:RequiredFieldValidator ID="rfvLocationId" runat="server" ValidationGroup="saelin"
                             ControlToValidate="txtLocationId" ErrorMessage="<%$ TextResourceExpression: app_location_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_location_id_text")%>: 
+                        *
+                        <%=LocalResources.GetLabel("app_location_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtLocationId" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
-                    </td>                  
+                    </td>
                     <td>
                         &nbsp;
                     </td>
@@ -119,7 +130,8 @@
                         <asp:RequiredFieldValidator ID="rfvLocationName" runat="server" ValidationGroup="saelin"
                             ControlToValidate="txtLocationName" ErrorMessage="<%$ TextResourceExpression: app_location_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_location_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_location_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtLocationName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -130,7 +142,8 @@
                         <asp:RequiredFieldValidator ID="rfvLocationDescription" runat="server" ValidationGroup="saelin"
                             ControlToValidate="txtLocationDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtLocationDescription" runat="server" class="txtInput_long" rows="3"
@@ -139,7 +152,7 @@
                 </tr>
                 <tr>
                     <td>
-                       <%=LocalResources.GetLabel("app_airport_code_text")%>:
+                        <%=LocalResources.GetLabel("app_airport_code_text")%>:
                     </td>
                     <td colspan="3" class="align_left">
                         <asp:TextBox ID="txtAirportCode" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -179,7 +192,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveLocation" ValidationGroup="saelin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_location_button_text %>" OnClick="btnFooterSaveLocation_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_location_button_text %>"
+                            OnClick="btnFooterSaveLocation_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"

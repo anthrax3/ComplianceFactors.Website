@@ -227,17 +227,11 @@
 
         }
     </script>
-    <script type="text/javascript">
-
-        function Navigate(a) {
-            alert(a);
-            javascript: window.open("http://www.microsoft.com");
-
-        } 
-
-</script>
+    
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    </div>
     <div class="content_area">
         <div>
             <%= LocalResources.GetText("app_welcome_content_employee_home_text")%><br />
@@ -362,13 +356,13 @@
        <div class="div_padding_10" id="div_LearningHistory" runat="server">
         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>" GridLines="None" 
-            AutoGenerateColumns="False"  EmptyDataRowStyle-CssClass="empty_row"
+            AutoGenerateColumns="False"  EmptyDataRowStyle-CssClass="empty_row" DataKeyNames="t_transcript_course_id_fk,title"
             PagerSettings-Visible="false" onrowcommand="gvLearningHistory_RowCommand" 
                onrowdatabound="gvLearningHistory_RowDataBound">
               
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$LabelResourceExpression: app_course_title_text%>" DataField='title' HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$LabelResourceExpression: app_course_title_with_id_text%>" DataField='title' HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
                     HeaderText="<%$LabelResourceExpression: app_completion_date_text%>" DataField='date' HeaderStyle-HorizontalAlign="Center"
@@ -383,19 +377,19 @@
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:Button ID="btnReview" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' CommandName="Review"
+                        <asp:Button ID="btnReview" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' CommandName="Review"
                             runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"  Style="display: none;"/>
-                        <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' Style="display:none;" 
+                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' Style="display:none;" 
                             runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
-                        <%-- <asp:Button ID="btnViewDetails" runat="server" CommandArgument='<%# Eval("t_transcript_course_id_fk") %>' 
-                            CommandName="ViewDetails" Text="View Details" Style="display: none;"/>--%>
+                        <asp:Button ID="btnViewDetails" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' Style="display:none;" 
+                            runat="server" CommandName="View" Text="View Details" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                       <asp:Button ID="btnCertificate" CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'
-                         CommandName="Certificate" runat="server" Text="Certificate" />
+                       <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                         CommandName="Certificate" style="display:none;" runat="server" Text="Certificate" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

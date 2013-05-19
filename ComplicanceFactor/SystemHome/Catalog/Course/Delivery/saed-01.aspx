@@ -458,6 +458,12 @@
 
         });
     </script>
+        <script type="text/javascript">
+            function checkCopy() {
+                document.getElementById('<%=hdCheckCopy.ClientID %>').value = "1";
+            }
+    </script>
+     <asp:HiddenField ID="hdCheckCopy" runat="server" />
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
@@ -635,13 +641,14 @@
             <div>
                 <asp:GridView ID="gvSession" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                     CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_session_system_id_pk"
-                    runat="server" AutoGenerateColumns="False" OnRowDataBound="gvSession_RowDataBound">
+                    runat="server" AutoGenerateColumns="False" 
+                    OnRowDataBound="gvSession_RowDataBound" onrowcommand="gvSession_RowCommand">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <table cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td class="horizontal_line" colspan="4">
+                                        <td class="horizontal_line" colspan="5">
                                             <hr>
                                         </td>
                                     </tr>
@@ -655,6 +662,10 @@
                                         <td class="gridview_row_width_1" align="center">
                                             <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                                 class="editsession cursor_hand" />
+                                        </td>
+                                         <td class="gridview_row_width_1" align="center">
+                                            <asp:Button ID="btnCopy" runat="server" CommandName='Copy' CommandArgument='<%#DataBinder.Eval(Container,"RowIndex") %>'
+                                                OnClientClick='javascript:checkCopy();' Text="Copy" />
                                         </td>
                                         <td class="gridview_row_width_1" align="center">
                                             <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
@@ -846,7 +857,7 @@
         </div>
         <br />
         <div class="div_control_normal">
-            <asp:DropDownList ID="ddlScoringScheme" CssClass="textbox_long" runat="server">
+            <asp:DropDownList ID="ddlScoringScheme" DataTextField="s_grading_scheme_english_us_name" DataValueField="s_grading_scheme_system_id_pk" CssClass="textbox_long" runat="server">
             </asp:DropDownList>
         </div>
         <br />

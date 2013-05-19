@@ -258,7 +258,7 @@
     <asp:HiddenField ID="hdEditCurriculumId" runat="server" />
     <asp:HiddenField ID="hdEditCurriculumPathId" runat="server" />
     <div class="div_header_1005">
-        Curriculum Path Information:
+         <%=LocalResources.GetLabel("app_curriculum_path_information_text")%>:
     </div>
     <div>
         <br />
@@ -266,7 +266,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                        Path Name:
+                        <%=LocalResources.GetLabel("app_path_name_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtPathName" runat="server" CssClass="textarea_long_3"></asp:TextBox>
@@ -274,7 +274,7 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                        Description:
+                       <%=LocalResources.GetLabel("app_description_text")%>: 
                     </td>
                     <td class="align_left">
                         <textarea id="txtDescription" runat="server" rows="7" cols="60"></textarea>
@@ -282,7 +282,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Abstract:
+                       <%=LocalResources.GetLabel("app_abstract_text")%>:
                     </td>
                     <td class="align_left">
                         <textarea id="txtAbstract" runat="server" rows="7" cols="60"></textarea>
@@ -294,7 +294,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="width_200">
-                        Enforce Sections Sequence:
+                         <%=LocalResources.GetLabel("app_enforce_sections_sequence_text")%>: 
                     </td>
                     <td class="align_left">
                         <asp:CheckBox ID="chkHeaderEnforceSectionsSequence" runat="server" />
@@ -303,12 +303,12 @@
                         &nbsp;
                     </td>
                     <td class="width_230_bold">
-                        Complete&nbsp;<asp:TextBox ID="txtComplete" runat="server" CssClass="textbox_50" />
+                       <%=LocalResources.GetLabel("app_completed_text")%>&nbsp;<asp:TextBox ID="txtComplete" runat="server" CssClass="textbox_50" />
                     </td>
                     <td class="align_left">
-                        Out of
+                      <%=LocalResources.GetLabel("app_out_text")%>&nbsp;<%=LocalResources.GetLabel("app_of_text")%>
                         <asp:Label ID="lblSectionCount" runat="server"></asp:Label>
-                        Section(s)
+                       <%=LocalResources.GetLabel("app_sections_text")%>
                     </td>
                 </tr>
                 <tr>
@@ -330,15 +330,15 @@
                     <table cellpadding="0" cellspacing="0" class="grid_870">
                         <tr>
                             <td valign="top" class="width_280">
-                                Enforce Courses Sequence:
+                               <%=LocalResources.GetLabel("app_enforce_courses_sequence_text")%>
                                 <asp:Literal ID="ltlcheckSection" runat="server"></asp:Literal>
                             </td>
                             <td>
-                                Complete&nbsp;<asp:TextBox ID="txtCourseComplete" runat="server" CssClass="textbox_50" />
-                                Out of
+                                 <%=LocalResources.GetLabel("app_completed_text")%>&nbsp;<asp:TextBox ID="txtCourseComplete" runat="server" CssClass="textbox_50" />
+                               <%=LocalResources.GetLabel("app_out_text")%>&nbsp;<%=LocalResources.GetLabel("app_of_text")%>
                                 <asp:Label ID="lblCourse" runat="server"></asp:Label>
                                 <asp:TextBox ID="txtCourse" Style="display: none;" runat="server"></asp:TextBox>
-                                Course(s)
+                               <%=LocalResources.GetLabel("app_courses_text")%>
                             </td>
                         </tr>
                         <tr>
@@ -362,7 +362,7 @@
                                             <%#Eval("c_course_name") %>
                                         </td>
                                         <td class="width_75">
-                                            Required:
+                                             <%=LocalResources.GetLabel("app_required_text")%>:
                                         </td>
                                         <td class="width_30">
                                             <asp:Literal ID="ltlcheck" runat="server"></asp:Literal>
@@ -373,14 +373,14 @@
                                                 runat="server" oncheckedchanged="chkRequired_CheckedChanged" />--%>
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnUp" runat="server" Text="Up" CommandName="Up" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' />
+                                            <asp:Button ID="btnUp" runat="server" Text="<%$ LabelResourceExpression: app_up_button_text%>" CommandName="Up" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' />
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnDown" runat="server" Text="Down" CommandName="Down" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' />
+                                            <asp:Button ID="btnDown" runat="server" Text="<%$ LabelResourceExpression: app_down_button_text%>" CommandName="Down" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' />
                                         </td>
                                         <td>
                                             <asp:Button ID="btnRemove" OnClientClick="return Removeconfirmation();" runat="server"
-                                                Text="Remove" CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' />
+                                                Text="<%$ LabelResourceExpression: app_remove_button_text%>" CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' />
                                         </td>
                                     </tr>
                                 </table>
@@ -412,7 +412,7 @@
                 <tr>
                     <td class="align_left">
                         <asp:Button ID="btnAddSection" OnClientClick="return CountSection();" runat="server"
-                            Text="Add Section" OnClick="btnAddSection_Click" />
+                            Text="<%$ LabelResourceExpression: app_add_section_button_text%>" OnClick="btnAddSection_Click" />
                     </td>
                     <td colspan="3">
                         &nbsp;
@@ -425,14 +425,14 @@
                 </tr>
                 <tr>
                     <td class="align_left">
-                        <asp:Button ID="btnSavePath" runat="server" Text="SavePath" OnClick="btnSavePath_Click" />
+                        <asp:Button ID="btnSavePath" runat="server" Text="<%$ LabelResourceExpression: app_save_path_button_text%>" OnClick="btnSavePath_Click" />
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td>
                         <asp:Button ID="btnCancel" runat="server" OnClientClick="javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close()"
-                            Text="Cancel" />
+                            Text="<%$ LabelResourceExpression: app_save_path_button_text%>" />
                     </td>
                 </tr>
             </table>

@@ -13,6 +13,33 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
     public partial class saangsn_01 {
         
         /// <summary>
+        /// hdUpdateValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdUpdateValue;
+        
+        /// <summary>
+        /// vs_saangsn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_saangsn;
+        
+        /// <summary>
+        /// divError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        
+        /// <summary>
         /// btnHeaderSave control.
         /// </summary>
         /// <remarks>
@@ -40,6 +67,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.WebControls.Button btnHeaderCancel;
         
         /// <summary>
+        /// rfvGradingSchemeId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGradingSchemeId;
+        
+        /// <summary>
         /// txtGradingSchemeId_EnglishUs control.
         /// </summary>
         /// <remarks>
@@ -49,6 +85,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.WebControls.TextBox txtGradingSchemeId_EnglishUs;
         
         /// <summary>
+        /// rfvGradingSchemeName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGradingSchemeName;
+        
+        /// <summary>
         /// txtGradingSchmeName_EnglishUs control.
         /// </summary>
         /// <remarks>
@@ -56,6 +101,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtGradingSchmeName_EnglishUs;
+        
+        /// <summary>
+        /// rfvGradingSchemeDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGradingSchemeDescription;
         
         /// <summary>
         /// txtGradingDescription_EnglishUs control.
@@ -85,13 +139,22 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
-        /// btnAddNew control.
+        /// gvGradingSchemeValues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNew;
+        protected global::System.Web.UI.WebControls.GridView gvGradingSchemeValues;
+        
+        /// <summary>
+        /// btnUpdateValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateValue;
         
         /// <summary>
         /// txtGradingSchemeName_EnglishUk control.

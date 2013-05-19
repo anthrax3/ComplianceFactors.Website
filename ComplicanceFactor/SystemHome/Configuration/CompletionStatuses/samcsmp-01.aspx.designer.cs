@@ -13,6 +13,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
     public partial class samcsmp_01 {
         
         /// <summary>
+        /// divSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        
+        /// <summary>
+        /// divError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        
+        /// <summary>
         /// pnlDefault control.
         /// </summary>
         /// <remarks>
@@ -130,13 +148,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         protected global::System.Web.UI.WebControls.TextBox txtlblUnknown;
         
         /// <summary>
-        /// CheckBox1 control.
+        /// chkUnknown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.CheckBox chkUnknown;
         
         /// <summary>
         /// txtlblOltPlayer control.
@@ -148,13 +166,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         protected global::System.Web.UI.WebControls.TextBox txtlblOltPlayer;
         
         /// <summary>
-        /// CheckBox2 control.
+        /// chkOLTPlayer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
+        protected global::System.Web.UI.WebControls.CheckBox chkOLTPlayer;
         
         /// <summary>
         /// txtlblVLSSystem control.
@@ -164,6 +182,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtlblVLSSystem;
+        
+        /// <summary>
+        /// chkVLSSystem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkVLSSystem;
         
         /// <summary>
         /// txtlblPassed control.
@@ -193,6 +220,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         protected global::System.Web.UI.WebControls.TextBox txtlblExempt;
         
         /// <summary>
+        /// chkExempt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkExempt;
+        
+        /// <summary>
         /// txtlblNotScord control.
         /// </summary>
         /// <remarks>
@@ -200,6 +236,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtlblNotScord;
+        
+        /// <summary>
+        /// chkNotScored control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNotScored;
         
         /// <summary>
         /// txtlblPendingAssesmentSurvey control.
@@ -211,6 +256,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         protected global::System.Web.UI.WebControls.TextBox txtlblPendingAssesmentSurvey;
         
         /// <summary>
+        /// chkPending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkPending;
+        
+        /// <summary>
         /// hfldAssignId control.
         /// </summary>
         /// <remarks>
@@ -218,5 +272,140 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfldAssignId;
+        
+        /// <summary>
+        /// hfldEnrolled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldEnrolled;
+        
+        /// <summary>
+        /// hfldIncomplete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldIncomplete;
+        
+        /// <summary>
+        /// hfldCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldCompleted;
+        
+        /// <summary>
+        /// hfldBrowse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldBrowse;
+        
+        /// <summary>
+        /// hfldAttended control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldAttended;
+        
+        /// <summary>
+        /// hfldDidNotAttend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldDidNotAttend;
+        
+        /// <summary>
+        /// hfldAttendedWaikIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldAttendedWaikIn;
+        
+        /// <summary>
+        /// hfldUnknown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldUnknown;
+        
+        /// <summary>
+        /// hfldOltPlayer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldOltPlayer;
+        
+        /// <summary>
+        /// hfldVLSSystem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldVLSSystem;
+        
+        /// <summary>
+        /// hfldPassed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldPassed;
+        
+        /// <summary>
+        /// hfldFailed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldFailed;
+        
+        /// <summary>
+        /// hfldExempt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldExempt;
+        
+        /// <summary>
+        /// hfldNotScord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldNotScord;
+        
+        /// <summary>
+        /// hfldPendingAssesmentSurvey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfldPendingAssesmentSurvey;
     }
 }

@@ -43,20 +43,20 @@
     <div>
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
-                <%=LocalResources.GetLocalizationResourceLabelText("app_domains_search_text")%>:
+                <%=LocalResources.GetLabel("app_domains_search_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                            <%=LocalResources.GetLocalizationResourceLabelText("app_domain_name_text")%>:
+                            <%=LocalResources.GetLabel("app_domain_name_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtDomainName" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                             <%=LocalResources.GetLocalizationResourceLabelText("app_domain_id_text")%>:
+                             <%=LocalResources.GetLabel("app_domain_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtDomainId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -68,16 +68,16 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="align_left">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_go_search_button_text%>" runat="server"
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text%>" runat="server"
                                 OnClick="btnGosearch_Click" />
                         </td>
                         <td class="align_left" >
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_reset_button_text%>" OnClientClick="return resetall();"
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>" OnClientClick="return resetall();"
                                 runat="server" />
                         </td>
                         <td class="align_right"  >
                             <asp:Button ID="btnCancel" CssClass="cursor_hand"  OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();" 
-                            runat="server" Text="<%$ LocalizationResourceExpression: app_cancel_button_text%>" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />
                         </td>
                     </tr>
                 </table>

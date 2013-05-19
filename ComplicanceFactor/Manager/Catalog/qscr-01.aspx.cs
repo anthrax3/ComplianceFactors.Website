@@ -289,7 +289,7 @@ namespace ComplicanceFactor.Manager.Catalog
                         //{
                         //bool isCheck = false;
                         // lblAlreadyEnrollMessage.Text = string.Empty;
-                        ltlAssign.Text = "<input type=button id=" + system_id + "," + type + "," + approvDelivery + "," + approvalCourse + "," + 0 + " class='enroll' value= " + LocalResources.GetLabel("app_assign_button_text") + " />";
+                        ltlAssign.Text = "<input type=button id=" + system_id + "," + type + "," + approvDelivery + "," + approvalCourse + "," + 0 + " class='assign' value= " + LocalResources.GetLabel("app_assign_button_text") + " />";
                         //btnAssign.Style.Add("display", "inline");
                         //}
                     }

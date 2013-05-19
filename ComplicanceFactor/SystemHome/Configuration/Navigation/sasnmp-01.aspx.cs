@@ -129,7 +129,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Navigation
                 if (str_s_web_nav_default_page == "False")
                 {
                     Literal ltlRemove = (Literal)e.Row.FindControl("ltlRemove");
-                    ltlRemove.Text = "<input id=" + str_s_web_nav_id + ',' + str_s_web_nav_url + " class='deleteui cursor_hand' type='button' value='Remove UI Page'>";
+                    ltlRemove.Text = "<input id=" + str_s_web_nav_id + ',' + str_s_web_nav_url + " class='deleteui cursor_hand' type='button' value='" + LocalResources.GetLabel("app_remove_ui_page_button_text") + "'>";
                 }
             }
             if (e.Row.RowType == DataControlRowType.Footer)
@@ -137,7 +137,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Navigation
                 string s_web_nav_id = dlWebNav.DataKeys[dle.Item.ItemIndex].ToString();
                 if (dle.Item.ItemIndex != 0)
                 {
-                    e.Row.Cells[0].Text = "<input id=" + s_web_nav_id + " class='newpage cursor_hand' type='button' value='Add UI Page'/>";
+                    e.Row.Cells[0].Text = "<input id=" + s_web_nav_id + " class='newpage cursor_hand' type='button' value='" + LocalResources.GetLabel("app_add_ui_page_button_text") + "'>";
                 }
             }
         }

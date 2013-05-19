@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
     public partial class p_sces_01 {
         
         /// <summary>
+        /// pnlDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
+        
+        /// <summary>
         /// txtEmployeeName control.
         /// </summary>
         /// <remarks>

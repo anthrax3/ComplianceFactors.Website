@@ -15,7 +15,7 @@ namespace ComplicanceFactor.Instructor
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Instructor/ihp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_instructor") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_instructor_pod_mtodo_title");
+            lblBreadCrumb.Text = "<a href=/Instructor/tihp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_instructor") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_instructor_pod_mtodo_title");
         }
     }
 }

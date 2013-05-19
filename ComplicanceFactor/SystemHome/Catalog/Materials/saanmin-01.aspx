@@ -12,7 +12,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -23,9 +25,15 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
 
             $("#btnManageLocale").fancybox({
                 'type': 'iframe',
@@ -105,12 +113,14 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNewMaterial" ValidationGroup="saanmin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_material_button_text %> " OnClick="btnHeaderSaveNewMaterial_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_material_button_text %> "
+                            OnClick="btnHeaderSaveNewMaterial_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
@@ -125,7 +135,7 @@
         </div>
         <br />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_material_information_english_us_types_text")%>:
+            <%=LocalResources.GetLabel("app_material_information_english_us_types_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -135,7 +145,8 @@
                         <asp:RequiredFieldValidator ID="rfvMaterialId" runat="server" ValidationGroup="saanmin"
                             ControlToValidate="txtMaterialId" ErrorMessage="<%$ TextResourceExpression: app_material_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_material_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_material_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtMaterialId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -153,7 +164,8 @@
                         <asp:RequiredFieldValidator ID="rfvMaterialName" runat="server" ValidationGroup="saanmin"
                             ControlToValidate="txtMaterialName" ErrorMessage="<%$ TextResourceExpression: app_material_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_material_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_material_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtMaterialName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -164,7 +176,8 @@
                         <asp:RequiredFieldValidator ID="rfvMaterialDescription" runat="server" ValidationGroup="saanmin"
                             ControlToValidate="txtMaterialDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtMaterialDescription" runat="server" class="txtInput_long" rows="3"
@@ -178,10 +191,13 @@
                     <td class="align_left" colspan="6">
                         <asp:Button ID="btnAttachment" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_attachment_text %>" />
                         <asp:LinkButton ID="lnkFileName" runat="server" CssClass="cursor_hand" OnClick="lnkFileName_Click"></asp:LinkButton>
-                        <asp:Button ID="btnView" runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" OnClick="btnView_Click" />
-                        <asp:Button ID="btnEdit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                        <asp:Button ID="btnView" runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>"
+                            CssClass="cursor_hand" OnClick="btnView_Click" />
+                        <asp:Button ID="btnEdit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>"
+                            CssClass="cursor_hand" />
                         <asp:Button ID="btnRemove" OnClientClick="return confirmremove();" runat="server"
-                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" OnClick="btnRemove_Click" />
+                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand"
+                            OnClick="btnRemove_Click" />
                     </td>
                     <%-- <td class="align_left" colspan="4">
                         <asp:GridView ID="gvAttachment" GridLines="None" CssClass="grid_table_850" CellPadding="0"
@@ -253,7 +269,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveNewMaterials" ValidationGroup="saanmin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_material_button_text %>" OnClick="btnFooterSaveNewMaterials_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_material_button_text %>"
+                            OnClick="btnFooterSaveNewMaterials_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
@@ -283,7 +300,8 @@
             <div>
                 <div class="uploadpopup_header">
                     <div class="left">
-                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>" runat="server"></asp:Label>
+                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>"
+                            runat="server"></asp:Label>
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
@@ -301,7 +319,8 @@
                 <asp:ValidationSummary class="validation_summary_error_popup" ID="vsFileUpload" runat="server"
                     ValidationGroup="ccaharmfileupload" />
                 <asp:CustomValidator ValidationGroup="ccaharmfileupload" ID="cvFileUpload" runat="server"
-                    EnableClientScript="true" ErrorMessage="<%$ LabelResourceExpression: app_file_upload_valid_msg_text %>" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
+                    EnableClientScript="true" ErrorMessage="<%$ LabelResourceExpression: app_file_upload_valid_msg_text %>"
+                    ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
                 <div class="div_controls">
                     <table cellpadding="0" cellspacing="0">
                         <tr>
@@ -319,7 +338,8 @@
                 <br />
                 <div class="multiple_button">
                     <asp:Button ID="btnUploadAttachment" ValidationGroup="ccaharmfileupload" runat="server"
-                        Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" OnClick="btnUploadAttachment_Click" />
+                        Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand"
+                        OnClick="btnUploadAttachment_Click" />
                 </div>
                 <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
             </div>

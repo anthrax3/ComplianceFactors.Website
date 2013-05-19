@@ -180,7 +180,7 @@ namespace ComplicanceFactor.Manager.Enroll
                     //Enrollment without approval
                     Enrollment(false, c_course_approval, c_delivery_approval, dtEmployeeSelecteList.Rows[i]["u_user_id_fk"].ToString(), string.Empty);
                 }
-                SendConfirmationEmail();
+                SendConfirmationEmail(dtEmployeeSelecteList.Rows[i]["u_user_id_fk"].ToString());
             }
             ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "add", "window.top.location.href ='" + "../Home/mhp-01.aspx" + "'; parent.jQuery.fancybox.close();", true);
 
@@ -316,11 +316,12 @@ namespace ComplicanceFactor.Manager.Enroll
                 }
             }
         }
-        private void SendConfirmationEmail()
+        private void SendConfirmationEmail(string userid)
         {
             try
             {
-
+                User user = new User();
+                user = UserBLL.GetUserInfo_by_id(userid);
 
                 SystemCatalog Course = new SystemCatalog();
                 Course = SystemCatalogBLL.GetSingleDeliveryList(deliveryid);
@@ -335,7 +336,7 @@ namespace ComplicanceFactor.Manager.Enroll
                     if (string.IsNullOrEmpty(waitList))
                     {
                         SystemNotification notification = new SystemNotification();
-                        notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT");
+                        notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT",SessionWrapper.CultureName);
                         if (notification.s_notification_on_off_flag == true)
                         {
                             //Enroll OLT
@@ -346,24 +347,48 @@ namespace ComplicanceFactor.Manager.Enroll
                             string sbConfirmOLT = string.Empty;
                             sbConfirmOLT = notification.s_notification_email_text;
 
-                            sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", user.Firstname);
                             sbConfirmOLT = sbConfirmOLT.Replace("@$&Course Name&$@", courseDetails.c_course_title);
                             sbConfirmOLT = sbConfirmOLT.Replace("@$&Course ID&$@", courseDetails.c_course_id_pk);
 
-                            string toEmailid = Course.c_to_address;
-                            string[] toaddress = toEmailid.Split(',');
-                            List<MailAddress> mailAddresses = new List<MailAddress>();
-                            foreach (string recipient in toaddress)
+                            string toEmailid = user.EmailId;
+                            if (!string.IsNullOrEmpty(toEmailid))
                             {
-                                if (recipient.Trim() != string.Empty)
+                                string[] toaddress = toEmailid.Split(',');
+                                List<MailAddress> mailAddresses = new List<MailAddress>();
+                                foreach (string recipient in toaddress)
                                 {
-                                    mailAddresses.Add(new MailAddress(recipient));
+                                    if (recipient.Trim() != string.Empty)
+                                    {
+                                        mailAddresses.Add(new MailAddress(recipient));
+                                    }
+                                }
+                                string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+                                sbConfirmEnrollment.Append(sbConfirmOLT);
+                                Utility.SendEMailMessages(mailAddresses, fromAddress, confirmOLTSubject, sbConfirmEnrollment.ToString());
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
+                                {
+                                    StringBuilder smsText = new StringBuilder();
+                                    string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                    string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                    string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                    string messagetext = notification.s_notification_SMS_text;
+                                    messagetext = messagetext.Replace("", "");
+                                    messagetext = messagetext.Replace("", "");
+
+                                    if (messagetext.Length > 180)
+                                    {
+                                        messagetext = messagetext.Substring(0, 179);
+                                    }
+                                    messagetext = messagetext.Replace("@$&Status&$@", "Enroll Confirm");
+                                    messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                                    Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
                                 }
                             }
-                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
-                            sbConfirmEnrollment.Append(sbConfirmOLT);
-                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmOLTSubject, sbConfirmEnrollment.ToString());
-
                         }
                     }
                 }
@@ -374,7 +399,7 @@ namespace ComplicanceFactor.Manager.Enroll
                     if (string.IsNullOrEmpty(waitList))
                     {
                         SystemNotification notificationILT = new SystemNotification();
-                        notificationILT = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-IN-PERSON");
+                        notificationILT = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-IN-PERSON",SessionWrapper.CultureName);
                         if (notificationILT.s_notification_on_off_flag == true)
                         {
                             string confirmILTSubject = string.Empty;
@@ -384,7 +409,7 @@ namespace ComplicanceFactor.Manager.Enroll
                             string confirmILT = string.Empty;
                             confirmILT = notificationILT.s_notification_email_text;
 
-                            confirmILT = confirmILT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            confirmILT = confirmILT.Replace("@$&User First Name&$@", user.Firstname);
                             confirmILT = confirmILT.Replace("@$&Course Name&$@", courseDetails.c_course_title);
                             confirmILT = confirmILT.Replace("@$&Course ID&$@", courseDetails.c_course_id_pk);
                             confirmILT = confirmILT.Replace("@$&delivery_location&$@", Course.c_session_location_names);
@@ -394,25 +419,50 @@ namespace ComplicanceFactor.Manager.Enroll
                             confirmILT = confirmILT.Replace("@$&session_start_date&$@", Course.c_session_start_date_time);
                             confirmILT = confirmILT.Replace("@$&session_start_time&$@", Course.c_session_end_date_time);
 
-                            string toEmailid = Course.c_to_address;
-                            string[] toaddress = toEmailid.Split(',');
-                            List<MailAddress> mailAddresses = new List<MailAddress>();
-                            foreach (string recipient in toaddress)
+                            string toEmailid = user.EmailId;//Course.c_to_address;
+                            if (!string.IsNullOrEmpty(toEmailid))
                             {
-                                if (recipient.Trim() != string.Empty)
+                                string[] toaddress = toEmailid.Split(',');
+                                List<MailAddress> mailAddresses = new List<MailAddress>();
+                                foreach (string recipient in toaddress)
                                 {
-                                    mailAddresses.Add(new MailAddress(recipient));
+                                    if (recipient.Trim() != string.Empty)
+                                    {
+                                        mailAddresses.Add(new MailAddress(recipient));
+                                    }
+                                }
+                                string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+                                sbConfirmEnrollment.Append(confirmILT);
+                                Utility.SendEMailMessages(mailAddresses, fromAddress, confirmILTSubject, sbConfirmEnrollment.ToString());
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
+                                {
+                                    StringBuilder smsText = new StringBuilder();
+                                    string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                    string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                    string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                    string messagetext = notificationILT.s_notification_SMS_text;
+                                    messagetext = messagetext.Replace("", "");
+                                    messagetext = messagetext.Replace("", "");
+
+                                    if (messagetext.Length > 180)
+                                    {
+                                        messagetext = messagetext.Substring(0, 179);
+                                    }
+                                    messagetext = messagetext.Replace("@$&Status&$@", "Enroll Confirm");
+                                    messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                                    Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
                                 }
                             }
-                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
-                            sbConfirmEnrollment.Append(confirmILT);
-                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmILTSubject, sbConfirmEnrollment.ToString());
                         }
                     }
                     else if ((deliveryType == "ILT" || deliveryType == "VLT") && !string.IsNullOrEmpty(waitList))
                     {
                         SystemNotification notificationWaitList = new SystemNotification();
-                        notificationWaitList = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-WAITLIST");
+                        notificationWaitList = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-WAITLIST",SessionWrapper.CultureName);
                         if (notificationWaitList.s_notification_on_off_flag == true)
                         {
                             string confirmWaitListSubject = string.Empty;
@@ -433,18 +483,43 @@ namespace ComplicanceFactor.Manager.Enroll
                             sbConfirmEnrollment.Append(confirmWaitlist);
 
                             string toEmailid = Course.c_to_address;
-                            string[] toaddress = toEmailid.Split(',');
-                            List<MailAddress> mailAddresses = new List<MailAddress>();
-                            foreach (string recipient in toaddress)
+                            if (!string.IsNullOrEmpty(toEmailid))
                             {
-                                if (recipient.Trim() != string.Empty)
+                                string[] toaddress = toEmailid.Split(',');
+                                List<MailAddress> mailAddresses = new List<MailAddress>();
+                                foreach (string recipient in toaddress)
                                 {
-                                    mailAddresses.Add(new MailAddress(recipient));
+                                    if (recipient.Trim() != string.Empty)
+                                    {
+                                        mailAddresses.Add(new MailAddress(recipient));
+                                    }
+                                }
+                                string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
+                                //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                                Utility.SendEMailMessages(mailAddresses, fromAddress, confirmWaitListSubject, sbConfirmEnrollment.ToString());
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
+                                {
+                                    StringBuilder smsText = new StringBuilder();
+                                    string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                    string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                    string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                    string messagetext = notificationWaitList.s_notification_SMS_text;
+                                    messagetext = messagetext.Replace("", "");
+                                    messagetext = messagetext.Replace("", "");
+
+                                    if (messagetext.Length > 180)
+                                    {
+                                        messagetext = messagetext.Substring(0, 179);
+                                    }
+                                    messagetext = messagetext.Replace("@$&Status&$@", "Enroll Confirm");
+                                    messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                                    Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
                                 }
                             }
-                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
-                            //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                            Utility.SendEMailMessages(mailAddresses, fromAddress, confirmWaitListSubject, sbConfirmEnrollment.ToString());
 
                         }
                     }

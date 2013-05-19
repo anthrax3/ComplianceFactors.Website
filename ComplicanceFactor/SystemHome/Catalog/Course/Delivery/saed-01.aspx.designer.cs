@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup {
     public partial class saed_01 {
         
         /// <summary>
+        /// hdCheckCopy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCheckCopy;
+        
+        /// <summary>
         /// ToolkitScriptManager1 control.
         /// </summary>
         /// <remarks>

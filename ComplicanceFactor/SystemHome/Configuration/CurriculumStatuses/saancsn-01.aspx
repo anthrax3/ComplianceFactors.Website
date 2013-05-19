@@ -35,7 +35,7 @@
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNewCurriculumStatus" ValidationGroup="saancsn" CssClass="cursor_hand"
                             runat="server" Text="<%$ LabelResourceExpression: app_save_new_curriculum_status_button_text %>" 
-                            />
+                            onclick="btnHeaderSaveNewCurriculumStatus_Click"/>
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" 

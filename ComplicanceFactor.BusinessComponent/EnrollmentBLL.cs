@@ -185,7 +185,14 @@ namespace ComplicanceFactor.BusinessComponent
                 {
                     htConfirmEnroll.Add("@e_enroll_manger_id_fk", DBNull.Value);
                 }
-                return DataProxy.FetchSPOutput("e_sp_insert_enrollment", htConfirmEnroll);
+                if (Enroll.e_re_enroll == true)
+                {
+                    return DataProxy.FetchSPOutput("e_sp_insert_reenrollment", htConfirmEnroll);
+                }
+                else
+                {
+                    return DataProxy.FetchSPOutput("e_sp_insert_enrollment", htConfirmEnroll);
+                }
 
             }
             catch (Exception)
@@ -590,10 +597,11 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="e_user_id_fk"></param>
         /// <returns></returns>
-        public static DataSet GetAllLearningHistory(string e_user_id_fk)
+        public static DataSet GetAllLearningHistory(string e_user_id_fk, string s_locale_culture)
         {
             Hashtable htGetAllLearningHistory = new Hashtable();
             htGetAllLearningHistory.Add("@e_user_id_fk", e_user_id_fk);
+            htGetAllLearningHistory.Add("@s_locale_culture", s_locale_culture);
             try
             {
                 return DataProxy.FetchDataSet("e_sp_get_all_Learning_History", htGetAllLearningHistory);
@@ -700,6 +708,44 @@ namespace ComplicanceFactor.BusinessComponent
             try
             {
                 return DataProxy.FetchDataSet("e_sp_certificate_pdf", htGetCertificatePDF);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public static DataSet GetCurriculaPdf(string user_id_fk, string s_locale_culture)
+        {
+            try
+            {
+                Hashtable htGetCurriculaPdf = new Hashtable();
+
+                if (user_id_fk != null)
+                {
+                    htGetCurriculaPdf.Add("@e_user_id_fk", user_id_fk);
+                }
+                else
+                {
+                    htGetCurriculaPdf.Add("@e_user_id_fk", DBNull.Value);
+                }
+                htGetCurriculaPdf.Add("@s_locale_culture", s_locale_culture);
+                return DataProxy.FetchDataSet("e_sp_create_curricula_pdf", htGetCurriculaPdf);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static bool ChecReEnrollorNot(string e_enroll_course_id_fk, string e_enroll_user_id_fk)
+        {
+            try
+            {
+                Hashtable htChecReEnrollorNot = new Hashtable();
+                htChecReEnrollorNot.Add("@e_enroll_course_id_fk", e_enroll_course_id_fk);
+                htChecReEnrollorNot.Add("@e_enroll_user_id_fk", e_enroll_user_id_fk);
+                int res = DataProxy.FetchSPOutput("e_sp_check_re_enroll_or_not", htChecReEnrollorNot);
+                return res == 1 ? true : false;
             }
             catch (Exception ex)
             {

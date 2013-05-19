@@ -240,6 +240,13 @@ namespace ComplicanceFactor.Employee.Catalog
                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
                             btnEnroll.Style.Add("display", "none");
                         }
+                        // Because this course is alredy enrolled and completed. see lerning history
+                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Completed")
+                        {
+                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                            btnDrop.Style.Add("display", "none");
+                            btnEnroll.Style.Add("display", "none");
+                        }
                         if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
                         {
 
@@ -255,6 +262,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
+                        
                         else if (string.IsNullOrEmpty(strEnrollType))
                         {
                             btnDrop.Style.Add("display", "none");

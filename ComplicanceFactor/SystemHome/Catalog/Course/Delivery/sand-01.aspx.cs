@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,9 +7,7 @@ using ComplicanceFactor.BusinessComponent;
 using System.Data;
 using System.IO;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
-using System.Text;
 using System.Globalization;
-using ComplicanceFactor.SystemHome.Catalog.DeliveryPopup;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {
@@ -34,6 +30,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 if (!IsPostBack)
                 {
                     clearDeliverySession();
+
+                    if( !string.IsNullOrEmpty(Request.QueryString["userName"]))
+                    {
+                        SessionWrapper.c_delivery_coordinator_name = Request.QueryString["userName"].ToString();
+                        
+                    }
+                    if (!string.IsNullOrEmpty(Request.QueryString["userId"]))
+                    {
+                        
+                        SessionWrapper.c_delivery_coordinator_id_fk = Request.QueryString["userId"].ToString();
+                    }
+
+                    
 
                     //Add column in resource datatable
                     SessionWrapper.TempDeliveryResource = TempDataTables.TempDeliveryResource();
@@ -64,35 +73,78 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                     ddlNcWrapper.DataBind();
                     //Set delivery system id 
                     SessionWrapper.c_delivery_system_id_pk = Guid.NewGuid().ToString();
-                    //copy 
-                    if (!string.IsNullOrEmpty(Request.QueryString["Copy"]))
-                    {
-                        //TODO
-                    }
-                    //create
-                    else
+                    if (Request.QueryString["mode"] == "createcopy")
                     {
 
-                        this.gvAddDeliveryAttachments.DataSource = SessionWrapper.TempDeliveryAttachments;
-                        this.gvAddDeliveryAttachments.DataBind();
+                        //Set checkcopy value because instead of postback
+                        hdCheckCopy.Value = "1";
+                        DataView dvcopyDelivery = new DataView(SessionWrapper.Deliveries);
+                        DataView dvcopySession = new DataView(SessionWrapper.DeliverySessions);
+                        DataView dvcopyResources = new DataView(SessionWrapper.DeliveryResource);
+                        DataView dvcopyMaterials = new DataView(SessionWrapper.DeliveryMaterial);
+                        DataView dvcopyattachment = new DataView(SessionWrapper.DeliveryAttachments);
+
+                        dvcopyDelivery.RowFilter = "c_delivery_system_id_pk= '" + Request.QueryString["copydelivery"] + "'";
+                        dvcopySession.RowFilter = "c_delivery_id_fk= '" + Request.QueryString["copydelivery"] + "'";
+                        dvcopyResources.RowFilter = "c_delivery_id_fk= '" + Request.QueryString["copydelivery"] + "'";
+                        dvcopyMaterials.RowFilter = "c_delivery_id_fk= '" + Request.QueryString["copydelivery"] + "'";
+                        dvcopyattachment.RowFilter = "c_delivery_id_fk= '" + Request.QueryString["copydelivery"] + "'";
+                        TempCopyDeliveries(Request.QueryString["id"], dvcopyDelivery.ToTable(), dvcopySession.ToTable(), dvcopyResources.ToTable(), dvcopyMaterials.ToTable(), dvcopyattachment.ToTable());
                     }
+                    else if (Request.QueryString["mode"] == "editcopy")
+                    {
+                        string newDeliveryId = Guid.NewGuid().ToString();
+                        int error = TrainingBLL.CopyDelivery(Request.QueryString["copydelivery"].ToString(), Request.QueryString["editcourseId"].ToString(), newDeliveryId);
+                        if (error != -2)
+                        {
+                            Response.Redirect("/SystemHome/Catalog/Course/Delivery/saed-02.aspx?editdelivery=" + newDeliveryId, false);
+                        }
+
+                    }
+                    //copy 
+                    //if (!string.IsNullOrEmpty(Request.QueryString["Copy"]))
+                    //{
+                    //    //TODO
+                    //}
+                    ////create
+                    //else
+                    //{
+
+                    //    this.gvAddDeliveryAttachments.DataSource = SessionWrapper.TempDeliveryAttachments;
+                    //    this.gvAddDeliveryAttachments.DataBind();
+                    //}
+
+                    //Bind Grading Scheme
+                    ddlScoringScheme.DataSource = SystemCurriculumBLL.GetGradingScheme(SessionWrapper.CultureName);
+                    ddlScoringScheme.DataBind();
+
                 }
 
                 //Get owner name
                 lblDeliveryOwner.Text = SessionWrapper.c_delivery_owner_name;
                 lblDeliveryCoordinator.Text = SessionWrapper.c_delivery_coordinator_name;
 
-                //Bind Resource
-                gvResources.DataSource = SessionWrapper.TempDeliveryResource;
-                gvResources.DataBind();
+                if(hdCheckCopy.Value!="1" || string.IsNullOrEmpty(hdCheckCopy.Value))
+                {
+                    if (Request.QueryString["mode"] != "createcopy" || Request.QueryString["mode"] != "editcopy")
+                    {
+                        //Bind Resource
+                        gvResources.DataSource = SessionWrapper.TempDeliveryResource;
+                        gvResources.DataBind();
 
-                //Bind materials
-                gvMaterials.DataSource = SessionWrapper.TempDeliveryMaterial;
-                gvMaterials.DataBind();
+                        //Bind materials
+                        gvMaterials.DataSource = SessionWrapper.TempDeliveryMaterial;
+                        gvMaterials.DataBind();
 
-                //Bind sessions
-                gvSession.DataSource = SessionWrapper.TempDeliverySessions;
-                gvSession.DataBind();
+                        //Bind sessions
+                        gvSession.DataSource = SessionWrapper.TempDeliverySessions;
+                        gvSession.DataBind();
+
+                        this.gvAddDeliveryAttachments.DataSource = SessionWrapper.TempDeliveryAttachments;
+                        this.gvAddDeliveryAttachments.DataBind();
+                    }
+                    
+                }
             }
             catch (Exception ex)
             {
@@ -576,22 +628,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                     txtCustom11.Text,
                     txtCustom12.Text,
                     txtCustom13.Text, ddlDeliveryType.SelectedItem.Text, lblDeliveryOwner.Text, lblDeliveryCoordinator.Text,
-                    txtNCUrl.Text,txtNcLaunchParameter.Text,chkNcWaitList.Checked,ddlNcWrapper.SelectedValue,
+                    txtNCUrl.Text,txtNcLaunchParameter.Text,chkNcWaitList.Checked,ddlNcWrapper.SelectedValue,ddlScoringScheme.SelectedValue,
                     SessionWrapper.Deliveries);
 
 
-
-                SessionWrapper.DeliveryResource.Merge(SessionWrapper.TempDeliveryResource);
-                SessionWrapper.DeliveryMaterial.Merge(SessionWrapper.TempDeliveryMaterial);
-                SessionWrapper.DeliveryAttachments.Merge(SessionWrapper.TempDeliveryAttachments);
-                //Aug 24,2012 at 6:27
-                SessionWrapper.DeliverySessions.Merge(SessionWrapper.TempDeliverySessions);
+               
+                    SessionWrapper.DeliveryResource.Merge(SessionWrapper.TempDeliveryResource);
+                    SessionWrapper.DeliveryMaterial.Merge(SessionWrapper.TempDeliveryMaterial);
+                    SessionWrapper.DeliveryAttachments.Merge(SessionWrapper.TempDeliveryAttachments);
+                    //Aug 24,2012 at 6:27
+                    SessionWrapper.DeliverySessions.Merge(SessionWrapper.TempDeliverySessions);
+                
 
                 //Add new delivery and session on while in edit course
                 if (Request.QueryString["mode"] == "adddelivery")
                 {
                     CultureInfo culture = new CultureInfo("en-US");
                     SystemCatalog createCourseDelivery = new SystemCatalog();
+                    
                     createCourseDelivery.c_course_id_fk = Request.QueryString["editCourseId"];
                     //delivery(ies)
                     createCourseDelivery.c_deliveries = ConvertDataTableToXml(SessionWrapper.Deliveries);
@@ -735,6 +789,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                                             string c_nc_olt_launch_param,
                                             bool c_nc_olt_waitlist_flag,
                                             string c_nc_olt_wrapper_id_fk,
+                                            string c_survey_scoring_scheme_id_fk,
                                             DataTable dtTempDeliveries)
         {
 
@@ -834,6 +889,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             {
                 row["c_nc_olt_wrapper_id_fk"] = DBNull.Value;
             }
+            row["c_survey_scoring_scheme_id_fk"] = c_survey_scoring_scheme_id_fk;
 
             dtTempDeliveries.Rows.Add(row);
         }
@@ -994,5 +1050,177 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             //Close fancybox
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
+
+        private void TempCopyDeliveries(string s_grading_scheme_system_value_id_pk, DataTable dtCopydeliveries,DataTable dtCopySession,DataTable dtCopyResources ,DataTable dtCopyMaterials,DataTable dtCopyAttachment)
+        {
+            txtDeliveyID.Text = dtCopydeliveries.Rows[0]["c_delivery_id_pk"].ToString()+"_copy";
+            ddlDeliveryType.SelectedValue = dtCopydeliveries.Rows[0]["c_delivery_type_id_fk"].ToString();
+            txtDeliveryTitle.Text = dtCopydeliveries.Rows[0]["c_delivery_title"].ToString();
+            txtDescription.Value = dtCopydeliveries.Rows[0]["c_delivery_desc"].ToString();
+            txtAbstract.Value = dtCopydeliveries.Rows[0]["c_delivery_abstract"].ToString();
+            chkApproval.Checked = Convert.ToBoolean(dtCopydeliveries.Rows[0]["c_delivery_approval_req"]);
+            ddlApprovalRequired.SelectedValue = dtCopydeliveries.Rows[0]["c_delivery_approval_id_fk"].ToString();
+            txtCreditHours.Text = Convert.ToString(dtCopydeliveries.Rows[0]["c_delivery_credit_hours"]);
+            txtCreditUnits.Text = Convert.ToString(dtCopydeliveries.Rows[0]["c_delivery_credit_units"]);
+            SessionWrapper.c_delivery_owner_id_fk = dtCopydeliveries.Rows[0]["c_delivery_owner_id_fk"].ToString();
+            SessionWrapper.c_delivery_coordinator_id_fk = dtCopydeliveries.Rows[0]["c_delivery_coordinator_id_fk"].ToString();
+            SessionWrapper.c_delivery_owner_name = dtCopydeliveries.Rows[0]["c_delivery_owner_name"].ToString();
+            SessionWrapper.c_delivery_coordinator_name = dtCopydeliveries.Rows[0]["c_delivery_coordinator_name"].ToString();
+            ddlStatus.SelectedValue = dtCopydeliveries.Rows[0]["c_delivery_active_type_id_fk"].ToString();
+            chkVisible.Checked = Convert.ToBoolean(dtCopydeliveries.Rows[0]["c_delivery_visible_flag"].ToString());
+            txtMinEnroll.Text = Convert.ToString(dtCopydeliveries.Rows[0]["c_delivery_min_enroll"]);
+            txtMaxEnroll.Text = Convert.ToString(dtCopydeliveries.Rows[0]["c_delivery_max_enroll"]);
+            txtEnrollThreshhold.Text = Convert.ToString(dtCopydeliveries.Rows[0]["c_delivery_enroll_threshold"]);
+            chkWaitingList.Checked = Convert.ToBoolean(dtCopydeliveries.Rows[0]["c_delivery_waitlist_flag"].ToString());
+            txtMaxwaitList.Text = Convert.ToString(dtCopydeliveries.Rows[0]["c_delivery_max_waitlist"].ToString());
+            txtScormUrl.Text = dtCopydeliveries.Rows[0]["c_olt_launch_url"].ToString();
+            txtScromLaunchParameters.Text = dtCopydeliveries.Rows[0]["c_olt_launch_param"].ToString();
+            txtVlsUrl.Text = dtCopydeliveries.Rows[0]["c_vlt_launch_url"].ToString();
+            txtCustom01.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_01"].ToString();
+            txtCustom02.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_02"].ToString();
+            txtCustom03.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_03"].ToString();
+            txtCustom04.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_04"].ToString();
+            txtCustom05.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_05"].ToString();
+            txtCustom06.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_06"].ToString();
+            txtCustom07.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_07"].ToString();
+            txtCustom08.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_08"].ToString();
+            txtCustom09.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_09"].ToString();
+            txtCustom10.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_10"].ToString();
+            txtCustom11.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_11"].ToString();
+            txtCustom12.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_12"].ToString();
+            txtCustom13.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_13"].ToString();
+            lblDeliveryOwner.Text = dtCopydeliveries.Rows[0]["c_delivery_owner_name"].ToString();
+            lblDeliveryCoordinator.Text = dtCopydeliveries.Rows[0]["c_delivery_coordinator_name"].ToString();
+            txtNCUrl.Text = dtCopydeliveries.Rows[0]["c_nc_olt_launch_url"].ToString();
+            txtNcLaunchParameter.Text = dtCopydeliveries.Rows[0]["c_nc_olt_launch_param"].ToString();
+            chkNcWaitList.Checked = Convert.ToBoolean(dtCopydeliveries.Rows[0]["c_nc_olt_waitlist_flag"].ToString());
+            if (!string.IsNullOrEmpty(dtCopydeliveries.Rows[0]["c_nc_olt_wrapper_id_fk"].ToString()))
+            {
+                ddlNcWrapper.SelectedValue = dtCopydeliveries.Rows[0]["c_nc_olt_wrapper_id_fk"].ToString();
+            }
+            ddlScoringScheme.SelectedValue = dtCopydeliveries.Rows[0]["c_survey_scoring_scheme_id_fk"].ToString(); ;
+
+            SessionWrapper.TempDeliverySessions = CopyDelivery(dtCopySession, SessionWrapper.c_delivery_system_id_pk,"session");
+
+            SessionWrapper.TempDeliveryResource = CopyDelivery(dtCopyResources, SessionWrapper.c_delivery_system_id_pk, "resource");
+
+            SessionWrapper.TempDeliveryMaterial = CopyDelivery(dtCopyMaterials, SessionWrapper.c_delivery_system_id_pk, "material");
+
+            SessionWrapper.TempDeliveryAttachments = CopyDelivery(dtCopyAttachment, SessionWrapper.c_delivery_system_id_pk, "attachment");
+            //Bind Session
+            gvSession.DataSource = SessionWrapper.TempDeliverySessions;
+            gvSession.DataBind();
+            //Bind Resources
+            gvResources.DataSource = SessionWrapper.TempDeliveryResource;
+            gvResources.DataBind();
+            //Bind Materials
+            gvMaterials.DataSource = SessionWrapper.TempDeliveryMaterial;
+            gvMaterials.DataBind();
+            //Bind Attachment
+            gvAddDeliveryAttachments.DataSource = SessionWrapper.TempDeliveryAttachments;
+            gvAddDeliveryAttachments.DataBind();
+        }
+
+        protected void gvSession_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            
+            if (e.CommandName.Equals("Copy"))
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument.ToString());
+                string c_session_system_id_pk = gvSession.DataKeys[rowIndex].Values[0].ToString();
+                //string c_session_id_pk = gvSession.DataKeys[rowIndex].Values[1].ToString();
+                DataView dvcopySession = new DataView(SessionWrapper.TempDeliverySessions);
+                dvcopySession.RowFilter = "c_session_system_id_pk= '" + c_session_system_id_pk + "'";
+                DataTable dtCopySession = dvcopySession.ToTable();
+                DataRow row;
+                row = SessionWrapper.TempDeliverySessions.NewRow();
+                row["c_session_system_id_pk"] = Guid.NewGuid().ToString();
+                row["c_session_id_pk"] = dtCopySession.Rows[0]["c_session_id_pk"].ToString()+"_copy";
+                row["c_delivery_id_fk"] = dtCopySession.Rows[0]["c_delivery_id_fk"].ToString();
+                row["c_session_title"] = dtCopySession.Rows[0]["c_session_title"].ToString();
+                row["c_sessions_desc"] = dtCopySession.Rows[0]["c_sessions_desc"].ToString();
+
+                row["c_session_start_date"] = dtCopySession.Rows[0]["c_session_start_date"].ToString();
+                row["c_session_end_date"] = dtCopySession.Rows[0]["c_session_end_date"].ToString();
+                row["c_session_duration"] = dtCopySession.Rows[0]["c_session_duration"].ToString();
+
+                row["c_session_start_time"] = dtCopySession.Rows[0]["c_session_start_time"].ToString();
+                row["c_sessions_end_time"] = dtCopySession.Rows[0]["c_sessions_end_time"].ToString();
+
+                row["c_session_location_id_fk"] = dtCopySession.Rows[0]["c_session_location_id_fk"].ToString();
+                row["c_session_facility_id_fk"] = dtCopySession.Rows[0]["c_session_facility_id_fk"].ToString();
+                row["c_sessions_room_id_fk"] = dtCopySession.Rows[0]["c_sessions_room_id_fk"].ToString();
+
+                row["c_location_name"] = dtCopySession.Rows[0]["c_location_name"].ToString();
+                row["c_facility_name"] = dtCopySession.Rows[0]["c_facility_name"].ToString();
+                row["c_room_name"] = dtCopySession.Rows[0]["c_room_name"].ToString();
+
+                row["c_session_date"] = dtCopySession.Rows[0]["c_session_date"].ToString();
+                if (!string.IsNullOrEmpty(dtCopySession.Rows[0]["c_session_confirm"].ToString()))
+                {
+                    row["c_session_confirm"] = Convert.ToBoolean(dtCopySession.Rows[0]["c_session_confirm"].ToString());
+                }
+                SessionWrapper.TempDeliverySessions.Rows.Add(row);
+                SessionWrapper.TempDeliverySessions.AcceptChanges();
+
+                ConvertDataTables removeDuplicaterow = new ConvertDataTables();
+                if (SessionWrapper.TempDeliverySessions.Rows.Count > 0)
+                {
+                    SessionWrapper.TempDeliverySessions = removeDuplicaterow.RemoveDuplicateRows(SessionWrapper.TempDeliverySessions, "c_session_id_pk");
+                }
+                
+                //Bind sessions
+                gvSession.DataSource = SessionWrapper.TempDeliverySessions;
+                gvSession.DataBind();
+                
+            }
+            
+
+        }
+
+        private DataTable CopyDelivery(DataTable dt, string c_delivery_system_id_pk, string type)
+        {
+          
+            if (type == "session")
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["c_session_system_id_pk"] = Guid.NewGuid().ToString();
+                    row["c_delivery_id_fk"] = c_delivery_system_id_pk;
+                    
+                }
+            }
+            else if (type == "resource")
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["c_resource_system_id_pk"] = Guid.NewGuid().ToString();
+                    row["c_delivery_id_fk"] = c_delivery_system_id_pk;
+                    
+                }
+            }
+            
+            else if (type == "material")
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["c_material_system_id_pk"] = Guid.NewGuid().ToString();
+                    row["c_delivery_id_fk"] = c_delivery_system_id_pk;
+                    
+                }
+            }
+            else if (type == "attachment")
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["c_delivery_attachment_id_pk"] = Guid.NewGuid().ToString();
+                    row["c_delivery_id_fk"] = c_delivery_system_id_pk;
+                   
+                }
+            }
+            return dt;
+            
+        }
+
     }
 }

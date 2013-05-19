@@ -24,9 +24,9 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class dsMyCurricula : global::System.Data.DataSet {
         
-        private e_sp_get_all_curriculaDataTable tablee_sp_get_all_curricula;
+        private e_sp_create_curricula_pdfDataTable tablee_sp_create_curricula_pdf;
         
-        private s_sp_get_header_footerDataTable tables_sp_get_header_footer;
+        private e_sp_create_curricula_pdf1DataTable tablee_sp_create_curricula_pdf1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -56,11 +56,11 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["e_sp_get_all_curricula"] != null)) {
-                    base.Tables.Add(new e_sp_get_all_curriculaDataTable(ds.Tables["e_sp_get_all_curricula"]));
+                if ((ds.Tables["e_sp_create_curricula_pdf"] != null)) {
+                    base.Tables.Add(new e_sp_create_curricula_pdfDataTable(ds.Tables["e_sp_create_curricula_pdf"]));
                 }
-                if ((ds.Tables["s_sp_get_header_footer"] != null)) {
-                    base.Tables.Add(new s_sp_get_header_footerDataTable(ds.Tables["s_sp_get_header_footer"]));
+                if ((ds.Tables["e_sp_create_curricula_pdf1"] != null)) {
+                    base.Tables.Add(new e_sp_create_curricula_pdf1DataTable(ds.Tables["e_sp_create_curricula_pdf1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +84,9 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public e_sp_get_all_curriculaDataTable e_sp_get_all_curricula {
+        public e_sp_create_curricula_pdfDataTable e_sp_create_curricula_pdf {
             get {
-                return this.tablee_sp_get_all_curricula;
+                return this.tablee_sp_create_curricula_pdf;
             }
         }
         
@@ -94,9 +94,9 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public s_sp_get_header_footerDataTable s_sp_get_header_footer {
+        public e_sp_create_curricula_pdf1DataTable e_sp_create_curricula_pdf1 {
             get {
-                return this.tables_sp_get_header_footer;
+                return this.tablee_sp_create_curricula_pdf1;
             }
         }
         
@@ -167,11 +167,11 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["e_sp_get_all_curricula"] != null)) {
-                    base.Tables.Add(new e_sp_get_all_curriculaDataTable(ds.Tables["e_sp_get_all_curricula"]));
+                if ((ds.Tables["e_sp_create_curricula_pdf"] != null)) {
+                    base.Tables.Add(new e_sp_create_curricula_pdfDataTable(ds.Tables["e_sp_create_curricula_pdf"]));
                 }
-                if ((ds.Tables["s_sp_get_header_footer"] != null)) {
-                    base.Tables.Add(new s_sp_get_header_footerDataTable(ds.Tables["s_sp_get_header_footer"]));
+                if ((ds.Tables["e_sp_create_curricula_pdf1"] != null)) {
+                    base.Tables.Add(new e_sp_create_curricula_pdf1DataTable(ds.Tables["e_sp_create_curricula_pdf1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +206,16 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tablee_sp_get_all_curricula = ((e_sp_get_all_curriculaDataTable)(base.Tables["e_sp_get_all_curricula"]));
+            this.tablee_sp_create_curricula_pdf = ((e_sp_create_curricula_pdfDataTable)(base.Tables["e_sp_create_curricula_pdf"]));
             if ((initTable == true)) {
-                if ((this.tablee_sp_get_all_curricula != null)) {
-                    this.tablee_sp_get_all_curricula.InitVars();
+                if ((this.tablee_sp_create_curricula_pdf != null)) {
+                    this.tablee_sp_create_curricula_pdf.InitVars();
                 }
             }
-            this.tables_sp_get_header_footer = ((s_sp_get_header_footerDataTable)(base.Tables["s_sp_get_header_footer"]));
+            this.tablee_sp_create_curricula_pdf1 = ((e_sp_create_curricula_pdf1DataTable)(base.Tables["e_sp_create_curricula_pdf1"]));
             if ((initTable == true)) {
-                if ((this.tables_sp_get_header_footer != null)) {
-                    this.tables_sp_get_header_footer.InitVars();
+                if ((this.tablee_sp_create_curricula_pdf1 != null)) {
+                    this.tablee_sp_create_curricula_pdf1.InitVars();
                 }
             }
         }
@@ -228,21 +228,21 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             this.Namespace = "http://tempuri.org/dsMyCurricula.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tablee_sp_get_all_curricula = new e_sp_get_all_curriculaDataTable();
-            base.Tables.Add(this.tablee_sp_get_all_curricula);
-            this.tables_sp_get_header_footer = new s_sp_get_header_footerDataTable();
-            base.Tables.Add(this.tables_sp_get_header_footer);
+            this.tablee_sp_create_curricula_pdf = new e_sp_create_curricula_pdfDataTable();
+            base.Tables.Add(this.tablee_sp_create_curricula_pdf);
+            this.tablee_sp_create_curricula_pdf1 = new e_sp_create_curricula_pdf1DataTable();
+            base.Tables.Add(this.tablee_sp_create_curricula_pdf1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializee_sp_get_all_curricula() {
+        private bool ShouldSerializee_sp_create_curricula_pdf() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializes_sp_get_header_footer() {
+        private bool ShouldSerializee_sp_create_curricula_pdf1() {
             return false;
         }
         
@@ -302,48 +302,30 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void e_sp_get_all_curriculaRowChangeEventHandler(object sender, e_sp_get_all_curriculaRowChangeEvent e);
+        public delegate void e_sp_create_curricula_pdfRowChangeEventHandler(object sender, e_sp_create_curricula_pdfRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void s_sp_get_header_footerRowChangeEventHandler(object sender, s_sp_get_header_footerRowChangeEvent e);
+        public delegate void e_sp_create_curricula_pdf1RowChangeEventHandler(object sender, e_sp_create_curricula_pdf1RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class e_sp_get_all_curriculaDataTable : global::System.Data.TypedTableBase<e_sp_get_all_curriculaRow> {
+        public partial class e_sp_create_curricula_pdfDataTable : global::System.Data.TypedTableBase<e_sp_create_curricula_pdfRow> {
             
-            private global::System.Data.DataColumn columne_curriculum_assign_system_id_pk;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_user_id_fk;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_curriculum_id_fk;
+            private global::System.Data.DataColumn columntitle;
             
             private global::System.Data.DataColumn columne_curriculum_assign_date_time;
             
-            private global::System.Data.DataColumn columnrequired;
-            
             private global::System.Data.DataColumn columne_curriculum_assign_target_due_date;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_recert_due_date;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_recert_status_id_fk;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_status_id_fk;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_percent_complete;
-            
-            private global::System.Data.DataColumn columne_curriculum_assign_active_flag;
-            
-            private global::System.Data.DataColumn columntitle;
             
             private global::System.Data.DataColumn columnstatus;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaDataTable() {
-                this.TableName = "e_sp_get_all_curricula";
+            public e_sp_create_curricula_pdfDataTable() {
+                this.TableName = "e_sp_create_curricula_pdf";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -351,7 +333,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal e_sp_get_all_curriculaDataTable(global::System.Data.DataTable table) {
+            internal e_sp_create_curricula_pdfDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -368,32 +350,16 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected e_sp_get_all_curriculaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected e_sp_create_curricula_pdfDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_system_id_pkColumn {
+            public global::System.Data.DataColumn titleColumn {
                 get {
-                    return this.columne_curriculum_assign_system_id_pk;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_user_id_fkColumn {
-                get {
-                    return this.columne_curriculum_assign_user_id_fk;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_curriculum_id_fkColumn {
-                get {
-                    return this.columne_curriculum_assign_curriculum_id_fk;
+                    return this.columntitle;
                 }
             }
             
@@ -407,65 +373,9 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn requiredColumn {
-                get {
-                    return this.columnrequired;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn e_curriculum_assign_target_due_dateColumn {
                 get {
                     return this.columne_curriculum_assign_target_due_date;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_recert_due_dateColumn {
-                get {
-                    return this.columne_curriculum_assign_recert_due_date;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_recert_status_id_fkColumn {
-                get {
-                    return this.columne_curriculum_assign_recert_status_id_fk;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_status_id_fkColumn {
-                get {
-                    return this.columne_curriculum_assign_status_id_fk;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_percent_completeColumn {
-                get {
-                    return this.columne_curriculum_assign_percent_complete;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn e_curriculum_assign_active_flagColumn {
-                get {
-                    return this.columne_curriculum_assign_active_flag;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn titleColumn {
-                get {
-                    return this.columntitle;
                 }
             }
             
@@ -488,64 +398,48 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaRow this[int index] {
+            public e_sp_create_curricula_pdfRow this[int index] {
                 get {
-                    return ((e_sp_get_all_curriculaRow)(this.Rows[index]));
+                    return ((e_sp_create_curricula_pdfRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event e_sp_get_all_curriculaRowChangeEventHandler e_sp_get_all_curriculaRowChanging;
+            public event e_sp_create_curricula_pdfRowChangeEventHandler e_sp_create_curricula_pdfRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event e_sp_get_all_curriculaRowChangeEventHandler e_sp_get_all_curriculaRowChanged;
+            public event e_sp_create_curricula_pdfRowChangeEventHandler e_sp_create_curricula_pdfRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event e_sp_get_all_curriculaRowChangeEventHandler e_sp_get_all_curriculaRowDeleting;
+            public event e_sp_create_curricula_pdfRowChangeEventHandler e_sp_create_curricula_pdfRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event e_sp_get_all_curriculaRowChangeEventHandler e_sp_get_all_curriculaRowDeleted;
+            public event e_sp_create_curricula_pdfRowChangeEventHandler e_sp_create_curricula_pdfRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Adde_sp_get_all_curriculaRow(e_sp_get_all_curriculaRow row) {
+            public void Adde_sp_create_curricula_pdfRow(e_sp_create_curricula_pdfRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaRow Adde_sp_get_all_curriculaRow(System.Guid e_curriculum_assign_system_id_pk, System.Guid e_curriculum_assign_user_id_fk, System.Guid e_curriculum_assign_curriculum_id_fk, string e_curriculum_assign_date_time, string required, string e_curriculum_assign_target_due_date, System.DateTime e_curriculum_assign_recert_due_date, System.Guid e_curriculum_assign_recert_status_id_fk, System.Guid e_curriculum_assign_status_id_fk, int e_curriculum_assign_percent_complete, bool e_curriculum_assign_active_flag, string title, string status) {
-                e_sp_get_all_curriculaRow rowe_sp_get_all_curriculaRow = ((e_sp_get_all_curriculaRow)(this.NewRow()));
+            public e_sp_create_curricula_pdfRow Adde_sp_create_curricula_pdfRow(string title, string e_curriculum_assign_date_time, string e_curriculum_assign_target_due_date, string status) {
+                e_sp_create_curricula_pdfRow rowe_sp_create_curricula_pdfRow = ((e_sp_create_curricula_pdfRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        e_curriculum_assign_system_id_pk,
-                        e_curriculum_assign_user_id_fk,
-                        e_curriculum_assign_curriculum_id_fk,
-                        e_curriculum_assign_date_time,
-                        required,
-                        e_curriculum_assign_target_due_date,
-                        e_curriculum_assign_recert_due_date,
-                        e_curriculum_assign_recert_status_id_fk,
-                        e_curriculum_assign_status_id_fk,
-                        e_curriculum_assign_percent_complete,
-                        e_curriculum_assign_active_flag,
                         title,
+                        e_curriculum_assign_date_time,
+                        e_curriculum_assign_target_due_date,
                         status};
-                rowe_sp_get_all_curriculaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowe_sp_get_all_curriculaRow);
-                return rowe_sp_get_all_curriculaRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaRow FindBye_curriculum_assign_system_id_pk(System.Guid e_curriculum_assign_system_id_pk) {
-                return ((e_sp_get_all_curriculaRow)(this.Rows.Find(new object[] {
-                            e_curriculum_assign_system_id_pk})));
+                rowe_sp_create_curricula_pdfRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowe_sp_create_curricula_pdfRow);
+                return rowe_sp_create_curricula_pdfRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                e_sp_get_all_curriculaDataTable cln = ((e_sp_get_all_curriculaDataTable)(base.Clone()));
+                e_sp_create_curricula_pdfDataTable cln = ((e_sp_create_curricula_pdfDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -553,98 +447,63 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new e_sp_get_all_curriculaDataTable();
+                return new e_sp_create_curricula_pdfDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columne_curriculum_assign_system_id_pk = base.Columns["e_curriculum_assign_system_id_pk"];
-                this.columne_curriculum_assign_user_id_fk = base.Columns["e_curriculum_assign_user_id_fk"];
-                this.columne_curriculum_assign_curriculum_id_fk = base.Columns["e_curriculum_assign_curriculum_id_fk"];
-                this.columne_curriculum_assign_date_time = base.Columns["e_curriculum_assign_date_time"];
-                this.columnrequired = base.Columns["required"];
-                this.columne_curriculum_assign_target_due_date = base.Columns["e_curriculum_assign_target_due_date"];
-                this.columne_curriculum_assign_recert_due_date = base.Columns["e_curriculum_assign_recert_due_date"];
-                this.columne_curriculum_assign_recert_status_id_fk = base.Columns["e_curriculum_assign_recert_status_id_fk"];
-                this.columne_curriculum_assign_status_id_fk = base.Columns["e_curriculum_assign_status_id_fk"];
-                this.columne_curriculum_assign_percent_complete = base.Columns["e_curriculum_assign_percent_complete"];
-                this.columne_curriculum_assign_active_flag = base.Columns["e_curriculum_assign_active_flag"];
                 this.columntitle = base.Columns["title"];
+                this.columne_curriculum_assign_date_time = base.Columns["e_curriculum_assign_date_time"];
+                this.columne_curriculum_assign_target_due_date = base.Columns["e_curriculum_assign_target_due_date"];
                 this.columnstatus = base.Columns["status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columne_curriculum_assign_system_id_pk = new global::System.Data.DataColumn("e_curriculum_assign_system_id_pk", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_system_id_pk);
-                this.columne_curriculum_assign_user_id_fk = new global::System.Data.DataColumn("e_curriculum_assign_user_id_fk", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_user_id_fk);
-                this.columne_curriculum_assign_curriculum_id_fk = new global::System.Data.DataColumn("e_curriculum_assign_curriculum_id_fk", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_curriculum_id_fk);
-                this.columne_curriculum_assign_date_time = new global::System.Data.DataColumn("e_curriculum_assign_date_time", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_date_time);
-                this.columnrequired = new global::System.Data.DataColumn("required", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrequired);
-                this.columne_curriculum_assign_target_due_date = new global::System.Data.DataColumn("e_curriculum_assign_target_due_date", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_target_due_date);
-                this.columne_curriculum_assign_recert_due_date = new global::System.Data.DataColumn("e_curriculum_assign_recert_due_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_recert_due_date);
-                this.columne_curriculum_assign_recert_status_id_fk = new global::System.Data.DataColumn("e_curriculum_assign_recert_status_id_fk", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_recert_status_id_fk);
-                this.columne_curriculum_assign_status_id_fk = new global::System.Data.DataColumn("e_curriculum_assign_status_id_fk", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_status_id_fk);
-                this.columne_curriculum_assign_percent_complete = new global::System.Data.DataColumn("e_curriculum_assign_percent_complete", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_percent_complete);
-                this.columne_curriculum_assign_active_flag = new global::System.Data.DataColumn("e_curriculum_assign_active_flag", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columne_curriculum_assign_active_flag);
                 this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntitle);
+                this.columne_curriculum_assign_date_time = new global::System.Data.DataColumn("e_curriculum_assign_date_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columne_curriculum_assign_date_time);
+                this.columne_curriculum_assign_target_due_date = new global::System.Data.DataColumn("e_curriculum_assign_target_due_date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columne_curriculum_assign_target_due_date);
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columne_curriculum_assign_system_id_pk}, true));
-                this.columne_curriculum_assign_system_id_pk.AllowDBNull = false;
-                this.columne_curriculum_assign_system_id_pk.Unique = true;
-                this.columne_curriculum_assign_user_id_fk.AllowDBNull = false;
-                this.columne_curriculum_assign_curriculum_id_fk.AllowDBNull = false;
-                this.columne_curriculum_assign_date_time.ReadOnly = true;
-                this.columne_curriculum_assign_date_time.MaxLength = 30;
-                this.columnrequired.ReadOnly = true;
-                this.columnrequired.MaxLength = 8;
-                this.columne_curriculum_assign_target_due_date.ReadOnly = true;
-                this.columne_curriculum_assign_target_due_date.MaxLength = 30;
                 this.columntitle.ReadOnly = true;
-                this.columntitle.MaxLength = 104;
+                this.columntitle.MaxLength = 1;
+                this.columne_curriculum_assign_date_time.ReadOnly = true;
+                this.columne_curriculum_assign_date_time.MaxLength = 1;
+                this.columne_curriculum_assign_target_due_date.ReadOnly = true;
+                this.columne_curriculum_assign_target_due_date.MaxLength = 1;
                 this.columnstatus.ReadOnly = true;
                 this.columnstatus.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaRow Newe_sp_get_all_curriculaRow() {
-                return ((e_sp_get_all_curriculaRow)(this.NewRow()));
+            public e_sp_create_curricula_pdfRow Newe_sp_create_curricula_pdfRow() {
+                return ((e_sp_create_curricula_pdfRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new e_sp_get_all_curriculaRow(builder);
+                return new e_sp_create_curricula_pdfRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(e_sp_get_all_curriculaRow);
+                return typeof(e_sp_create_curricula_pdfRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.e_sp_get_all_curriculaRowChanged != null)) {
-                    this.e_sp_get_all_curriculaRowChanged(this, new e_sp_get_all_curriculaRowChangeEvent(((e_sp_get_all_curriculaRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdfRowChanged != null)) {
+                    this.e_sp_create_curricula_pdfRowChanged(this, new e_sp_create_curricula_pdfRowChangeEvent(((e_sp_create_curricula_pdfRow)(e.Row)), e.Action));
                 }
             }
             
@@ -652,8 +511,8 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.e_sp_get_all_curriculaRowChanging != null)) {
-                    this.e_sp_get_all_curriculaRowChanging(this, new e_sp_get_all_curriculaRowChangeEvent(((e_sp_get_all_curriculaRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdfRowChanging != null)) {
+                    this.e_sp_create_curricula_pdfRowChanging(this, new e_sp_create_curricula_pdfRowChangeEvent(((e_sp_create_curricula_pdfRow)(e.Row)), e.Action));
                 }
             }
             
@@ -661,8 +520,8 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.e_sp_get_all_curriculaRowDeleted != null)) {
-                    this.e_sp_get_all_curriculaRowDeleted(this, new e_sp_get_all_curriculaRowChangeEvent(((e_sp_get_all_curriculaRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdfRowDeleted != null)) {
+                    this.e_sp_create_curricula_pdfRowDeleted(this, new e_sp_create_curricula_pdfRowChangeEvent(((e_sp_create_curricula_pdfRow)(e.Row)), e.Action));
                 }
             }
             
@@ -670,14 +529,14 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.e_sp_get_all_curriculaRowDeleting != null)) {
-                    this.e_sp_get_all_curriculaRowDeleting(this, new e_sp_get_all_curriculaRowChangeEvent(((e_sp_get_all_curriculaRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdfRowDeleting != null)) {
+                    this.e_sp_create_curricula_pdfRowDeleting(this, new e_sp_create_curricula_pdfRowChangeEvent(((e_sp_create_curricula_pdfRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Removee_sp_get_all_curriculaRow(e_sp_get_all_curriculaRow row) {
+            public void Removee_sp_create_curricula_pdfRow(e_sp_create_curricula_pdfRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -704,7 +563,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "e_sp_get_all_curriculaDataTable";
+                attribute2.FixedValue = "e_sp_create_curricula_pdfDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -750,20 +609,26 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class s_sp_get_header_footerDataTable : global::System.Data.TypedTableBase<s_sp_get_header_footerRow> {
+        public partial class e_sp_create_curricula_pdf1DataTable : global::System.Data.TypedTableBase<e_sp_create_curricula_pdf1Row> {
+            
+            private global::System.Data.DataColumn columnmy_curricula_label;
+            
+            private global::System.Data.DataColumn columncurriculum_title_with_id_label;
+            
+            private global::System.Data.DataColumn columnassignment_date_label;
+            
+            private global::System.Data.DataColumn columndue_date_label;
+            
+            private global::System.Data.DataColumn columnstatus_label;
             
             private global::System.Data.DataColumn columnpowered_by_text;
             
             private global::System.Data.DataColumn columnrelease_number_text;
             
-            private global::System.Data.DataColumn columncontent_header;
-            
-            private global::System.Data.DataColumn columncontent_footer;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public s_sp_get_header_footerDataTable() {
-                this.TableName = "s_sp_get_header_footer";
+            public e_sp_create_curricula_pdf1DataTable() {
+                this.TableName = "e_sp_create_curricula_pdf1";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -771,7 +636,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal s_sp_get_header_footerDataTable(global::System.Data.DataTable table) {
+            internal e_sp_create_curricula_pdf1DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -788,9 +653,49 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected s_sp_get_header_footerDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected e_sp_create_curricula_pdf1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn my_curricula_labelColumn {
+                get {
+                    return this.columnmy_curricula_label;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn curriculum_title_with_id_labelColumn {
+                get {
+                    return this.columncurriculum_title_with_id_label;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn assignment_date_labelColumn {
+                get {
+                    return this.columnassignment_date_label;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn due_date_labelColumn {
+                get {
+                    return this.columndue_date_label;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn status_labelColumn {
+                get {
+                    return this.columnstatus_label;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -811,22 +716,6 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn content_headerColumn {
-                get {
-                    return this.columncontent_header;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn content_footerColumn {
-                get {
-                    return this.columncontent_footer;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -836,48 +725,51 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public s_sp_get_header_footerRow this[int index] {
+            public e_sp_create_curricula_pdf1Row this[int index] {
                 get {
-                    return ((s_sp_get_header_footerRow)(this.Rows[index]));
+                    return ((e_sp_create_curricula_pdf1Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event s_sp_get_header_footerRowChangeEventHandler s_sp_get_header_footerRowChanging;
+            public event e_sp_create_curricula_pdf1RowChangeEventHandler e_sp_create_curricula_pdf1RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event s_sp_get_header_footerRowChangeEventHandler s_sp_get_header_footerRowChanged;
+            public event e_sp_create_curricula_pdf1RowChangeEventHandler e_sp_create_curricula_pdf1RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event s_sp_get_header_footerRowChangeEventHandler s_sp_get_header_footerRowDeleting;
+            public event e_sp_create_curricula_pdf1RowChangeEventHandler e_sp_create_curricula_pdf1RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event s_sp_get_header_footerRowChangeEventHandler s_sp_get_header_footerRowDeleted;
+            public event e_sp_create_curricula_pdf1RowChangeEventHandler e_sp_create_curricula_pdf1RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Adds_sp_get_header_footerRow(s_sp_get_header_footerRow row) {
+            public void Adde_sp_create_curricula_pdf1Row(e_sp_create_curricula_pdf1Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public s_sp_get_header_footerRow Adds_sp_get_header_footerRow(string powered_by_text, string release_number_text, string content_header, string content_footer) {
-                s_sp_get_header_footerRow rows_sp_get_header_footerRow = ((s_sp_get_header_footerRow)(this.NewRow()));
+            public e_sp_create_curricula_pdf1Row Adde_sp_create_curricula_pdf1Row(string my_curricula_label, string curriculum_title_with_id_label, string assignment_date_label, string due_date_label, string status_label, string powered_by_text, string release_number_text) {
+                e_sp_create_curricula_pdf1Row rowe_sp_create_curricula_pdf1Row = ((e_sp_create_curricula_pdf1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        my_curricula_label,
+                        curriculum_title_with_id_label,
+                        assignment_date_label,
+                        due_date_label,
+                        status_label,
                         powered_by_text,
-                        release_number_text,
-                        content_header,
-                        content_footer};
-                rows_sp_get_header_footerRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rows_sp_get_header_footerRow);
-                return rows_sp_get_header_footerRow;
+                        release_number_text};
+                rowe_sp_create_curricula_pdf1Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowe_sp_create_curricula_pdf1Row);
+                return rowe_sp_create_curricula_pdf1Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                s_sp_get_header_footerDataTable cln = ((s_sp_get_header_footerDataTable)(base.Clone()));
+                e_sp_create_curricula_pdf1DataTable cln = ((e_sp_create_curricula_pdf1DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -885,63 +777,78 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new s_sp_get_header_footerDataTable();
+                return new e_sp_create_curricula_pdf1DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnmy_curricula_label = base.Columns["my_curricula_label"];
+                this.columncurriculum_title_with_id_label = base.Columns["curriculum_title_with_id_label"];
+                this.columnassignment_date_label = base.Columns["assignment_date_label"];
+                this.columndue_date_label = base.Columns["due_date_label"];
+                this.columnstatus_label = base.Columns["status_label"];
                 this.columnpowered_by_text = base.Columns["powered_by_text"];
                 this.columnrelease_number_text = base.Columns["release_number_text"];
-                this.columncontent_header = base.Columns["content_header"];
-                this.columncontent_footer = base.Columns["content_footer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnmy_curricula_label = new global::System.Data.DataColumn("my_curricula_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmy_curricula_label);
+                this.columncurriculum_title_with_id_label = new global::System.Data.DataColumn("curriculum_title_with_id_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncurriculum_title_with_id_label);
+                this.columnassignment_date_label = new global::System.Data.DataColumn("assignment_date_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnassignment_date_label);
+                this.columndue_date_label = new global::System.Data.DataColumn("due_date_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndue_date_label);
+                this.columnstatus_label = new global::System.Data.DataColumn("status_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_label);
                 this.columnpowered_by_text = new global::System.Data.DataColumn("powered_by_text", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpowered_by_text);
                 this.columnrelease_number_text = new global::System.Data.DataColumn("release_number_text", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrelease_number_text);
-                this.columncontent_header = new global::System.Data.DataColumn("content_header", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncontent_header);
-                this.columncontent_footer = new global::System.Data.DataColumn("content_footer", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncontent_footer);
+                this.columnmy_curricula_label.ReadOnly = true;
+                this.columnmy_curricula_label.MaxLength = 1;
+                this.columncurriculum_title_with_id_label.ReadOnly = true;
+                this.columncurriculum_title_with_id_label.MaxLength = 1;
+                this.columnassignment_date_label.ReadOnly = true;
+                this.columnassignment_date_label.MaxLength = 1;
+                this.columndue_date_label.ReadOnly = true;
+                this.columndue_date_label.MaxLength = 1;
+                this.columnstatus_label.ReadOnly = true;
+                this.columnstatus_label.MaxLength = 1;
                 this.columnpowered_by_text.ReadOnly = true;
-                this.columnpowered_by_text.MaxLength = 2147483647;
+                this.columnpowered_by_text.MaxLength = 1;
                 this.columnrelease_number_text.ReadOnly = true;
-                this.columnrelease_number_text.MaxLength = 2147483647;
-                this.columncontent_header.ReadOnly = true;
-                this.columncontent_header.MaxLength = 2147483647;
-                this.columncontent_footer.ReadOnly = true;
-                this.columncontent_footer.MaxLength = 2147483647;
+                this.columnrelease_number_text.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public s_sp_get_header_footerRow News_sp_get_header_footerRow() {
-                return ((s_sp_get_header_footerRow)(this.NewRow()));
+            public e_sp_create_curricula_pdf1Row Newe_sp_create_curricula_pdf1Row() {
+                return ((e_sp_create_curricula_pdf1Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new s_sp_get_header_footerRow(builder);
+                return new e_sp_create_curricula_pdf1Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(s_sp_get_header_footerRow);
+                return typeof(e_sp_create_curricula_pdf1Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.s_sp_get_header_footerRowChanged != null)) {
-                    this.s_sp_get_header_footerRowChanged(this, new s_sp_get_header_footerRowChangeEvent(((s_sp_get_header_footerRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdf1RowChanged != null)) {
+                    this.e_sp_create_curricula_pdf1RowChanged(this, new e_sp_create_curricula_pdf1RowChangeEvent(((e_sp_create_curricula_pdf1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -949,8 +856,8 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.s_sp_get_header_footerRowChanging != null)) {
-                    this.s_sp_get_header_footerRowChanging(this, new s_sp_get_header_footerRowChangeEvent(((s_sp_get_header_footerRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdf1RowChanging != null)) {
+                    this.e_sp_create_curricula_pdf1RowChanging(this, new e_sp_create_curricula_pdf1RowChangeEvent(((e_sp_create_curricula_pdf1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -958,8 +865,8 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.s_sp_get_header_footerRowDeleted != null)) {
-                    this.s_sp_get_header_footerRowDeleted(this, new s_sp_get_header_footerRowChangeEvent(((s_sp_get_header_footerRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdf1RowDeleted != null)) {
+                    this.e_sp_create_curricula_pdf1RowDeleted(this, new e_sp_create_curricula_pdf1RowChangeEvent(((e_sp_create_curricula_pdf1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -967,14 +874,14 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.s_sp_get_header_footerRowDeleting != null)) {
-                    this.s_sp_get_header_footerRowDeleting(this, new s_sp_get_header_footerRowChangeEvent(((s_sp_get_header_footerRow)(e.Row)), e.Action));
+                if ((this.e_sp_create_curricula_pdf1RowDeleting != null)) {
+                    this.e_sp_create_curricula_pdf1RowDeleting(this, new e_sp_create_curricula_pdf1RowChangeEvent(((e_sp_create_curricula_pdf1Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Removes_sp_get_header_footerRow(s_sp_get_header_footerRow row) {
+            public void Removee_sp_create_curricula_pdf1Row(e_sp_create_curricula_pdf1Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -1001,7 +908,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "s_sp_get_header_footerDataTable";
+                attribute2.FixedValue = "e_sp_create_curricula_pdf1DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1045,47 +952,30 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class e_sp_get_all_curriculaRow : global::System.Data.DataRow {
+        public partial class e_sp_create_curricula_pdfRow : global::System.Data.DataRow {
             
-            private e_sp_get_all_curriculaDataTable tablee_sp_get_all_curricula;
+            private e_sp_create_curricula_pdfDataTable tablee_sp_create_curricula_pdf;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal e_sp_get_all_curriculaRow(global::System.Data.DataRowBuilder rb) : 
+            internal e_sp_create_curricula_pdfRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablee_sp_get_all_curricula = ((e_sp_get_all_curriculaDataTable)(this.Table));
+                this.tablee_sp_create_curricula_pdf = ((e_sp_create_curricula_pdfDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Guid e_curriculum_assign_system_id_pk {
+            public string title {
                 get {
-                    return ((global::System.Guid)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_system_id_pkColumn]));
+                    try {
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf.titleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'title\' in table \'e_sp_create_curricula_pdf\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_system_id_pkColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Guid e_curriculum_assign_user_id_fk {
-                get {
-                    return ((global::System.Guid)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_user_id_fkColumn]));
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_user_id_fkColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Guid e_curriculum_assign_curriculum_id_fk {
-                get {
-                    return ((global::System.Guid)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_curriculum_id_fkColumn]));
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_curriculum_id_fkColumn] = value;
+                    this[this.tablee_sp_create_curricula_pdf.titleColumn] = value;
                 }
             }
             
@@ -1094,31 +984,15 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             public string e_curriculum_assign_date_time {
                 get {
                     try {
-                        return ((string)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_date_timeColumn]));
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf.e_curriculum_assign_date_timeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_date_time\' in table \'e_sp_get_all_curri" +
-                                "cula\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_date_time\' in table \'e_sp_create_curric" +
+                                "ula_pdf\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_date_timeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string required {
-                get {
-                    try {
-                        return ((string)(this[this.tablee_sp_get_all_curricula.requiredColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'required\' in table \'e_sp_get_all_curricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.requiredColumn] = value;
+                    this[this.tablee_sp_create_curricula_pdf.e_curriculum_assign_date_timeColumn] = value;
                 }
             }
             
@@ -1127,116 +1001,15 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             public string e_curriculum_assign_target_due_date {
                 get {
                     try {
-                        return ((string)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_target_due_dateColumn]));
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf.e_curriculum_assign_target_due_dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_target_due_date\' in table \'e_sp_get_all" +
-                                "_curricula\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_target_due_date\' in table \'e_sp_create_" +
+                                "curricula_pdf\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_target_due_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime e_curriculum_assign_recert_due_date {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_due_dateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_recert_due_date\' in table \'e_sp_get_all" +
-                                "_curricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_due_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Guid e_curriculum_assign_recert_status_id_fk {
-                get {
-                    try {
-                        return ((global::System.Guid)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_status_id_fkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_recert_status_id_fk\' in table \'e_sp_get" +
-                                "_all_curricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_status_id_fkColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.Guid e_curriculum_assign_status_id_fk {
-                get {
-                    try {
-                        return ((global::System.Guid)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_status_id_fkColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_status_id_fk\' in table \'e_sp_get_all_cu" +
-                                "rricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_status_id_fkColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int e_curriculum_assign_percent_complete {
-                get {
-                    try {
-                        return ((int)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_percent_completeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_percent_complete\' in table \'e_sp_get_al" +
-                                "l_curricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_percent_completeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool e_curriculum_assign_active_flag {
-                get {
-                    try {
-                        return ((bool)(this[this.tablee_sp_get_all_curricula.e_curriculum_assign_active_flagColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'e_curriculum_assign_active_flag\' in table \'e_sp_get_all_cur" +
-                                "ricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.e_curriculum_assign_active_flagColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string title {
-                get {
-                    try {
-                        return ((string)(this[this.tablee_sp_get_all_curricula.titleColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'title\' in table \'e_sp_get_all_curricula\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablee_sp_get_all_curricula.titleColumn] = value;
+                    this[this.tablee_sp_create_curricula_pdf.e_curriculum_assign_target_due_dateColumn] = value;
                 }
             }
             
@@ -1245,150 +1018,163 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             public string status {
                 get {
                     try {
-                        return ((string)(this[this.tablee_sp_get_all_curricula.statusColumn]));
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf.statusColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'status\' in table \'e_sp_get_all_curricula\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'status\' in table \'e_sp_create_curricula_pdf\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablee_sp_get_all_curricula.statusColumn] = value;
+                    this[this.tablee_sp_create_curricula_pdf.statusColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_date_timeNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_date_timeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_date_timeNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_date_timeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsrequiredNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.requiredColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetrequiredNull() {
-                this[this.tablee_sp_get_all_curricula.requiredColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_target_due_dateNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_target_due_dateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_target_due_dateNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_target_due_dateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_recert_due_dateNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_due_dateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_recert_due_dateNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_due_dateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_recert_status_id_fkNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_status_id_fkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_recert_status_id_fkNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_recert_status_id_fkColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_status_id_fkNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_status_id_fkColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_status_id_fkNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_status_id_fkColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_percent_completeNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_percent_completeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_percent_completeNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_percent_completeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ise_curriculum_assign_active_flagNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.e_curriculum_assign_active_flagColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sete_curriculum_assign_active_flagNull() {
-                this[this.tablee_sp_get_all_curricula.e_curriculum_assign_active_flagColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstitleNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.titleColumn);
+                return this.IsNull(this.tablee_sp_create_curricula_pdf.titleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettitleNull() {
-                this[this.tablee_sp_get_all_curricula.titleColumn] = global::System.Convert.DBNull;
+                this[this.tablee_sp_create_curricula_pdf.titleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ise_curriculum_assign_date_timeNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf.e_curriculum_assign_date_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sete_curriculum_assign_date_timeNull() {
+                this[this.tablee_sp_create_curricula_pdf.e_curriculum_assign_date_timeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ise_curriculum_assign_target_due_dateNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf.e_curriculum_assign_target_due_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sete_curriculum_assign_target_due_dateNull() {
+                this[this.tablee_sp_create_curricula_pdf.e_curriculum_assign_target_due_dateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsstatusNull() {
-                return this.IsNull(this.tablee_sp_get_all_curricula.statusColumn);
+                return this.IsNull(this.tablee_sp_create_curricula_pdf.statusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetstatusNull() {
-                this[this.tablee_sp_get_all_curricula.statusColumn] = global::System.Convert.DBNull;
+                this[this.tablee_sp_create_curricula_pdf.statusColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class s_sp_get_header_footerRow : global::System.Data.DataRow {
+        public partial class e_sp_create_curricula_pdf1Row : global::System.Data.DataRow {
             
-            private s_sp_get_header_footerDataTable tables_sp_get_header_footer;
+            private e_sp_create_curricula_pdf1DataTable tablee_sp_create_curricula_pdf1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal s_sp_get_header_footerRow(global::System.Data.DataRowBuilder rb) : 
+            internal e_sp_create_curricula_pdf1Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tables_sp_get_header_footer = ((s_sp_get_header_footerDataTable)(this.Table));
+                this.tablee_sp_create_curricula_pdf1 = ((e_sp_create_curricula_pdf1DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string my_curricula_label {
+                get {
+                    try {
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.my_curricula_labelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'my_curricula_label\' in table \'e_sp_create_curricula_pdf1\' i" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablee_sp_create_curricula_pdf1.my_curricula_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string curriculum_title_with_id_label {
+                get {
+                    try {
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.curriculum_title_with_id_labelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'curriculum_title_with_id_label\' in table \'e_sp_create_curri" +
+                                "cula_pdf1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablee_sp_create_curricula_pdf1.curriculum_title_with_id_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string assignment_date_label {
+                get {
+                    try {
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.assignment_date_labelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'assignment_date_label\' in table \'e_sp_create_curricula_pdf1" +
+                                "\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablee_sp_create_curricula_pdf1.assignment_date_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string due_date_label {
+                get {
+                    try {
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.due_date_labelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'due_date_label\' in table \'e_sp_create_curricula_pdf1\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablee_sp_create_curricula_pdf1.due_date_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string status_label {
+                get {
+                    try {
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.status_labelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_label\' in table \'e_sp_create_curricula_pdf1\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablee_sp_create_curricula_pdf1.status_labelColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1396,15 +1182,15 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             public string powered_by_text {
                 get {
                     try {
-                        return ((string)(this[this.tables_sp_get_header_footer.powered_by_textColumn]));
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.powered_by_textColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'powered_by_text\' in table \'s_sp_get_header_footer\' is DBNul" +
-                                "l.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'powered_by_text\' in table \'e_sp_create_curricula_pdf1\' is D" +
+                                "BNull.", e);
                     }
                 }
                 set {
-                    this[this.tables_sp_get_header_footer.powered_by_textColumn] = value;
+                    this[this.tablee_sp_create_curricula_pdf1.powered_by_textColumn] = value;
                 }
             }
             
@@ -1413,98 +1199,100 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
             public string release_number_text {
                 get {
                     try {
-                        return ((string)(this[this.tables_sp_get_header_footer.release_number_textColumn]));
+                        return ((string)(this[this.tablee_sp_create_curricula_pdf1.release_number_textColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'release_number_text\' in table \'s_sp_get_header_footer\' is D" +
-                                "BNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'release_number_text\' in table \'e_sp_create_curricula_pdf1\' " +
+                                "is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tables_sp_get_header_footer.release_number_textColumn] = value;
+                    this[this.tablee_sp_create_curricula_pdf1.release_number_textColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string content_header {
-                get {
-                    try {
-                        return ((string)(this[this.tables_sp_get_header_footer.content_headerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'content_header\' in table \'s_sp_get_header_footer\' is DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tables_sp_get_header_footer.content_headerColumn] = value;
-                }
+            public bool Ismy_curricula_labelNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.my_curricula_labelColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string content_footer {
-                get {
-                    try {
-                        return ((string)(this[this.tables_sp_get_header_footer.content_footerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'content_footer\' in table \'s_sp_get_header_footer\' is DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tables_sp_get_header_footer.content_footerColumn] = value;
-                }
+            public void Setmy_curricula_labelNull() {
+                this[this.tablee_sp_create_curricula_pdf1.my_curricula_labelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscurriculum_title_with_id_labelNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.curriculum_title_with_id_labelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcurriculum_title_with_id_labelNull() {
+                this[this.tablee_sp_create_curricula_pdf1.curriculum_title_with_id_labelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isassignment_date_labelNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.assignment_date_labelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setassignment_date_labelNull() {
+                this[this.tablee_sp_create_curricula_pdf1.assignment_date_labelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isdue_date_labelNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.due_date_labelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setdue_date_labelNull() {
+                this[this.tablee_sp_create_curricula_pdf1.due_date_labelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isstatus_labelNull() {
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.status_labelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setstatus_labelNull() {
+                this[this.tablee_sp_create_curricula_pdf1.status_labelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ispowered_by_textNull() {
-                return this.IsNull(this.tables_sp_get_header_footer.powered_by_textColumn);
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.powered_by_textColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setpowered_by_textNull() {
-                this[this.tables_sp_get_header_footer.powered_by_textColumn] = global::System.Convert.DBNull;
+                this[this.tablee_sp_create_curricula_pdf1.powered_by_textColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isrelease_number_textNull() {
-                return this.IsNull(this.tables_sp_get_header_footer.release_number_textColumn);
+                return this.IsNull(this.tablee_sp_create_curricula_pdf1.release_number_textColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setrelease_number_textNull() {
-                this[this.tables_sp_get_header_footer.release_number_textColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iscontent_headerNull() {
-                return this.IsNull(this.tables_sp_get_header_footer.content_headerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setcontent_headerNull() {
-                this[this.tables_sp_get_header_footer.content_headerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iscontent_footerNull() {
-                return this.IsNull(this.tables_sp_get_header_footer.content_footerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setcontent_footerNull() {
-                this[this.tables_sp_get_header_footer.content_footerColumn] = global::System.Convert.DBNull;
+                this[this.tablee_sp_create_curricula_pdf1.release_number_textColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1512,22 +1300,22 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class e_sp_get_all_curriculaRowChangeEvent : global::System.EventArgs {
+        public class e_sp_create_curricula_pdfRowChangeEvent : global::System.EventArgs {
             
-            private e_sp_get_all_curriculaRow eventRow;
+            private e_sp_create_curricula_pdfRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaRowChangeEvent(e_sp_get_all_curriculaRow row, global::System.Data.DataRowAction action) {
+            public e_sp_create_curricula_pdfRowChangeEvent(e_sp_create_curricula_pdfRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public e_sp_get_all_curriculaRow Row {
+            public e_sp_create_curricula_pdfRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1546,22 +1334,22 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class s_sp_get_header_footerRowChangeEvent : global::System.EventArgs {
+        public class e_sp_create_curricula_pdf1RowChangeEvent : global::System.EventArgs {
             
-            private s_sp_get_header_footerRow eventRow;
+            private e_sp_create_curricula_pdf1Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public s_sp_get_header_footerRowChangeEvent(s_sp_get_header_footerRow row, global::System.Data.DataRowAction action) {
+            public e_sp_create_curricula_pdf1RowChangeEvent(e_sp_create_curricula_pdf1Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public s_sp_get_header_footerRow Row {
+            public e_sp_create_curricula_pdf1Row Row {
                 get {
                     return this.eventRow;
                 }
@@ -1589,7 +1377,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class e_sp_get_all_curriculaTableAdapter : global::System.ComponentModel.Component {
+    public partial class e_sp_create_curricula_pdfTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1603,7 +1391,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public e_sp_get_all_curriculaTableAdapter() {
+        public e_sp_create_curricula_pdfTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1700,19 +1488,10 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "e_sp_get_all_curricula";
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_system_id_pk", "e_curriculum_assign_system_id_pk");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_user_id_fk", "e_curriculum_assign_user_id_fk");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_curriculum_id_fk", "e_curriculum_assign_curriculum_id_fk");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_date_time", "e_curriculum_assign_date_time");
-            tableMapping.ColumnMappings.Add("required", "required");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_target_due_date", "e_curriculum_assign_target_due_date");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_recert_due_date", "e_curriculum_assign_recert_due_date");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_recert_status_id_fk", "e_curriculum_assign_recert_status_id_fk");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_status_id_fk", "e_curriculum_assign_status_id_fk");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_percent_complete", "e_curriculum_assign_percent_complete");
-            tableMapping.ColumnMappings.Add("e_curriculum_assign_active_flag", "e_curriculum_assign_active_flag");
+            tableMapping.DataSetTable = "e_sp_create_curricula_pdf";
             tableMapping.ColumnMappings.Add("title", "title");
+            tableMapping.ColumnMappings.Add("e_curriculum_assign_date_time", "e_curriculum_assign_date_time");
+            tableMapping.ColumnMappings.Add("e_curriculum_assign_target_due_date", "e_curriculum_assign_target_due_date");
             tableMapping.ColumnMappings.Add("status", "status");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -1730,23 +1509,30 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.e_sp_get_all_curricula";
+            this._commandCollection[0].CommandText = "dbo.e_sp_create_curricula_pdf";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@e_user_id_fk", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@s_locale_culture", global::System.Data.SqlDbType.NVarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsMyCurricula.e_sp_get_all_curriculaDataTable dataTable, global::System.Nullable<global::System.Guid> e_user_id_fk) {
+        public virtual int Fill(dsMyCurricula.e_sp_create_curricula_pdfDataTable dataTable, global::System.Nullable<global::System.Guid> e_user_id_fk, string s_locale_culture) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((e_user_id_fk.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(e_user_id_fk.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((s_locale_culture == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(s_locale_culture));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1759,7 +1545,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsMyCurricula.e_sp_get_all_curriculaDataTable GetData(global::System.Nullable<global::System.Guid> e_user_id_fk) {
+        public virtual dsMyCurricula.e_sp_create_curricula_pdfDataTable GetData(global::System.Nullable<global::System.Guid> e_user_id_fk, string s_locale_culture) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((e_user_id_fk.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(e_user_id_fk.Value));
@@ -1767,7 +1553,13 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            dsMyCurricula.e_sp_get_all_curriculaDataTable dataTable = new dsMyCurricula.e_sp_get_all_curriculaDataTable();
+            if ((s_locale_culture == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(s_locale_culture));
+            }
+            dsMyCurricula.e_sp_create_curricula_pdfDataTable dataTable = new dsMyCurricula.e_sp_create_curricula_pdfDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1782,7 +1574,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class s_sp_get_header_footerTableAdapter : global::System.ComponentModel.Component {
+    public partial class e_sp_create_curricula_pdf1TableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1796,7 +1588,7 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public s_sp_get_header_footerTableAdapter() {
+        public e_sp_create_curricula_pdf1TableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1893,11 +1685,14 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "s_sp_get_header_footer";
+            tableMapping.DataSetTable = "e_sp_create_curricula_pdf1";
+            tableMapping.ColumnMappings.Add("my_curricula_label", "my_curricula_label");
+            tableMapping.ColumnMappings.Add("curriculum_title_with_id_label", "curriculum_title_with_id_label");
+            tableMapping.ColumnMappings.Add("assignment_date_label", "assignment_date_label");
+            tableMapping.ColumnMappings.Add("due_date_label", "due_date_label");
+            tableMapping.ColumnMappings.Add("status_label", "status_label");
             tableMapping.ColumnMappings.Add("powered_by_text", "powered_by_text");
             tableMapping.ColumnMappings.Add("release_number_text", "release_number_text");
-            tableMapping.ColumnMappings.Add("content_header", "content_header");
-            tableMapping.ColumnMappings.Add("content_footer", "content_footer");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1914,17 +1709,31 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.s_sp_get_header_footer";
+            this._commandCollection[0].CommandText = "dbo.e_sp_create_curricula_pdf";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@e_user_id_fk", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@s_locale_culture", global::System.Data.SqlDbType.NVarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsMyCurricula.s_sp_get_header_footerDataTable dataTable) {
+        public virtual int Fill(dsMyCurricula.e_sp_create_curricula_pdf1DataTable dataTable, global::System.Nullable<global::System.Guid> e_user_id_fk, string s_locale_culture) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((e_user_id_fk.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(e_user_id_fk.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((s_locale_culture == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(s_locale_culture));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1936,9 +1745,21 @@ namespace ComplicanceFactor.Employee.Curricula.PdfTemplate.dsMyCurriculaTableAda
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsMyCurricula.s_sp_get_header_footerDataTable GetData() {
+        public virtual dsMyCurricula.e_sp_create_curricula_pdf1DataTable GetData(global::System.Nullable<global::System.Guid> e_user_id_fk, string s_locale_culture) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dsMyCurricula.s_sp_get_header_footerDataTable dataTable = new dsMyCurricula.s_sp_get_header_footerDataTable();
+            if ((e_user_id_fk.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(e_user_id_fk.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((s_locale_culture == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(s_locale_culture));
+            }
+            dsMyCurricula.e_sp_create_curricula_pdf1DataTable dataTable = new dsMyCurricula.e_sp_create_curricula_pdf1DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

@@ -108,16 +108,17 @@
                 runat="server" EmptyDataText="No result found." 
                 AutoGenerateColumns="False" AllowPaging="true"
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" PageSize="10"
-                DataKeyNames="s_curriculum_status_system_id_pk" 
+                DataKeyNames="s_curr_status_system_id_pk" 
                 onpageindexchanging="gvsearchDetails_PageIndexChanging" 
-                onrowcommand="gvsearchDetails_RowCommand">
+                onrowcommand="gvsearchDetails_RowCommand" 
+                onrowediting="gvsearchDetails_RowEditing">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
                         HeaderText="<%$ LabelResourceExpression: app_curriculum_status_id_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left"
-                        DataField="s_curriculum_Status_id" />
+                        DataField="s_curr_status_id" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
                         HeaderText="<%$ LabelResourceExpression: app_curriculum_status_name_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left"
-                        DataField="s_curriculum_type_name_us_english" />
+                        DataField="s_curr_status_name_us_english" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"
                         DataField="s_status_name" />

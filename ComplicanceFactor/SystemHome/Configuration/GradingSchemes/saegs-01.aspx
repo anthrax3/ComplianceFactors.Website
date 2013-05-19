@@ -4,6 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -21,92 +23,292 @@
                 $('#app_nav_system').addClass('selected');
                 return false;
             });
+
+
+            var gradingSchemeId = $('input#<%=hdGradingSchemeId.ClientID %>').val();
+            //Get poup for grading value
+            $(document).ready(function () {
+                $(".createSchemeValue").fancybox({
+                    'type': 'iframe',
+                    'titleShow': true,
+                    'titlePosition': 'over',
+                    'showCloseButton': true,
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 800,
+                    'height': 300,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'margin': 0,
+                    'padding': 0,
+                    'hideOnOverlayClick': false,
+                    'href': '/SystemHome/Configuration/GradingSchemes/p-sgscv-01.aspx?mode=edit&page=saegs' + "&GradingSchemesId=" + gradingSchemeId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+
+
+                    }
+
+                });
+            });
         });
 
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var editGradingSchemesId = $('input#<%=hdGradingSchemeId.ClientID %>').val();
+
+            $(".editGradingSchemes").click(function () {
+
+                document.getElementById('<%=hdUpdateValue.ClientID %>').value = '0';
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 920,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '/SystemHome/Configuration/GradingSchemes/p-sgsev-01.aspx?mode=edit&page=saegs' + "&GradingSchemesId=" + editGradingSchemesId + "&id=" + record_id,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".deleteGradingSchemes").click(function () {
+
+                document.getElementById('<%=hdUpdateValue.ClientID %>').value = '0';
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+
+                // Ask user's confirmation before delete records
+                if (confirm("Do you want to delete this record?")) {
+
+                    $.ajax({
+                        type: "POST",
+
+                        //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
+                        url: "saegs-01.aspx/DeleteGradingSchemes",
+
+                        //Pass the selected record id
+                        data: "{'args': '" + record_id + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
+
+                            // Do some animation effect
+                            tr_id.fadeOut(500, function () {
+                                //                                window.location.replace("/SystemHome/Configuration/GradingSchemes/saegs-01.aspx");    
+                            });
+                        }
+                    });
+
+                }
+                return false;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var copyGradingSchemesId = $('input#<%=hdGradingSchemeId.ClientID %>').val();
+
+            $(".copyGradingSchemes").click(function () {
+
+                document.getElementById('<%=hdUpdateValue.ClientID %>').value = '0';
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 920,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '/SystemHome/Configuration/GradingSchemes/p-sgscv-01.aspx?mode=copy&page=saegs' + "&GradingSchemesId=" + copyGradingSchemesId + "&id=" + record_id,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+        function check_hdUpdateValue(id) {
+            if (id != "ContentPlaceHolder1_btnUpdateValue") {
+                document.getElementById('<%=hdUpdateValue.ClientID %>').value = "0";
+            }
+            else {
+                document.getElementById('<%=hdUpdateValue.ClientID %>').value = "1";
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:HiddenField ID="hdUpdateValue" runat="server" />
+    <asp:ValidationSummary class="validation_summary_error" ID="vs_saegs" runat="server"
+        ValidationGroup="saegs"></asp:ValidationSummary>
+    <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
+    </div>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    </div>
+    <asp:HiddenField ID="hdGradingSchemeId" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table>
                 <tr>
-                    <td>
+                    <td class="btnsave_new_user_td">
+                        <asp:Button ID="btnHeaderSave" ValidationGroup="saegs" CssClass="cursor_hand" runat="server"
+                            Text="<%$ LabelResourceExpression: app_save_button_text %>" OnClick="btnHeaderSave_Click" />
                     </td>
-                    <td colspan="2" class="btnsave_new_user_td">
-                        <asp:Button ID="btnHeaderSave" CssClass="cursor_hand" runat="server" Text="Save New Grading Scheme" />
-                    </td>
-                    <td>
-                    </td>
-                    <td align="center" class="btnreset_td">
-                        <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" Text="Reset" runat="server" />
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
+                    <td>
+                    </td>
+                    <td class="btnreset_td align_left">
+                        <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            runat="server" OnClick="btnHeaderReset_Click" />
+                    </td>
+
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td></td>
                     <td class="btncancel_td">
-                        <asp:Button ID="btnHeaderCancel" CssClass="cursor_hand" Text="Cancel" runat="server" />
-                    </td>
-                    <td>
-                    </td>
-                    <td>
+                        <asp:Button ID="btnHeaderCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            runat="server" OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
             <br />
         </div>
         <div class="div_header_long">
-            Grading Scheme Information (English US):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_english_us_text")%>
+            :
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Id:
+                        *<%=LocalResources.GetLabel("app_grading_scheme_id_text ")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtGradingSchemeId_EnglishUs" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvGradingSchemeId" runat="server" ValidationGroup="saegs"
+                            ControlToValidate="txtGradingSchemeId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtGradingSchemeId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
                     <td>
-                        Grading Scheme Name:
+                        *<%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlGradingSchemeName_EnglishUs" CssClass="ddl_user_advanced_search"
-                            runat="server">
-                            <asp:ListItem>Active</asp:ListItem>
-                            <asp:ListItem>InActive</asp:ListItem>
-                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvGradingSchemeName" runat="server" ValidationGroup="saegs"
+                            ControlToValidate="txtGradingSchemeName_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtGradingSchemeName_EnglishUs" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        *<%=LocalResources.GetLabel("app_description_text")%>
+                        :
                     </td>
                     <td colspan="5">
+                        <asp:RequiredFieldValidator ID="rfvGradingSchemeDescr" runat="server" ValidationGroup="saegs"
+                            ControlToValidate="txtGradingDescription_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtGradingDescription_EnglishUs" TextMode="MultiLine" Rows="7" Width="672px"
                             runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Status:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlStatus" CssClass="ddl_user_advanced_search" runat="server">
-                            <asp:ListItem>Active</asp:ListItem>
-                            <asp:ListItem>Inactive</asp:ListItem>
+                        <asp:DropDownList ID="ddlStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
+                            CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td colspan="2">
                     </td>
                     <td>
-                        Type:
+                        <%=LocalResources.GetLabel("app_type_text")%>
+                        :
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlType" CssClass="ddl_user_advanced_search" runat="server">
-                            <asp:ListItem>NUMERIC</asp:ListItem>
-                            <asp:ListItem>ACADEMIA</asp:ListItem>
+                        <asp:DropDownList ID="ddlType" DataTextField="s_grading_scheme_type_name" DataValueField="s_grading_scheme_type_id"
+                            CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -114,129 +316,105 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Values (Minimum of 2 Values for Pass / Fail):
+            <%=LocalResources.GetLabel("app_grading_scheme_values_pass_fail_text")%>:
         </div>
         <br />
-        <div style="font-family: Arial, Sans-Serif; font-size: 9pt; font-weight: 700">
-            <table cellspacing="5">
+        <div class="div_controls_from_left">
+            <table>
                 <tr>
                     <td>
-                        Passing Score(P)
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        Score:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtMinPassValue" runat="server" CssClass="textbox_75"></asp:TextBox>
-                    </td>
-                    <td>to</td>
-                    <td class="text_align">
-                        <asp:TextBox ID="txtMaxPassValue" runat="server" CssClass="textbox_75"></asp:TextBox>
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlChangeStatus1" runat="server">
-                            <asp:ListItem>PASS</asp:ListItem>
-                            <asp:ListItem>FAIL</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        GPA:
-                    </td>
-                    <td class="text_align">
-                        <asp:TextBox ID="txtGpa1" CssClass="textbox_50" runat="server"></asp:TextBox>
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        <asp:Button ID="btnEdit1" runat="server" Text="Edit" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnCopy1" runat="server" Text="Copy" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnRemove1" runat="server" Text="Remove" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Failing Score(F)
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        Score:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtMinFailScore" runat="server" CssClass="textbox_75"></asp:TextBox>
-                    </td>
-                    <td>to</td>
-                    <td class="text_align">
-                        <asp:TextBox ID="txtMaxFailScore" runat="server" CssClass="textbox_75"></asp:TextBox>
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlChangeStatus2" runat="server">
-                            <asp:ListItem>FAIL</asp:ListItem>
-                            <asp:ListItem>PASS</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        GPA:
-                    </td>
-                    <td class="text_align">
-                        <asp:TextBox ID="txtGpa2" CssClass="textbox_50" runat="server"></asp:TextBox>
-                    </td>
-                    <td style="width: 50px">
-                    </td>
-                    <td>
-                        <asp:Button ID="btnEdit2" runat="server" Text="Edit" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnCopy2" runat="server" Text="Copy" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnRemove2" runat="server" Text="Remove" />
+                        <asp:GridView ID="gvGradingSchemes" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
+                            CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="true" runat="server"
+                            AutoGenerateColumns="False" OnRowDataBound="gvGradingSchemes_RowDataBound" DataKeyNames="s_grading_scheme_system_value_id_pk">
+                            <RowStyle CssClass="record"></RowStyle>
+                            <Columns>
+                                <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <table class="gridview_row_width_5">
+                                            <tr>
+                                                <td>
+                                                    <%#Eval("s_grading_scheme_value_name")%>
+                                                </td>
+                                                <td class="gridview_row_width_1">
+                                                    <%=LocalResources.GetLabel("app_score_text")%>:
+                                                    <asp:TextBox ID="txtMinscore" runat="server" CssClass="textbox_50" />&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
+                                                    <asp:TextBox ID="txtMaxscore" runat="server" CssClass="textbox_50" />
+                                                </td>
+                                                <td>
+                                                    <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saegs" ControlToValidate="txtGpa"
+                                                        ErrorMessage="<%$ TextResourceExpression: app_gpa_error_empty %>">&nbsp;
+                                                    </asp:RequiredFieldValidator>
+                                                    <asp:DropDownList ID="ddlPassingStatus" runat="server" DataTextField="s_grading_scheme_value_pass_status_name"
+                                                        DataValueField="s_grading_scheme_value_pass_status_id_fk" />
+                                                    &nbsp; GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" CssClass="textbox_50" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
+                                            class="editGradingSchemes cursor_hand" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_copy_button_text %>" />'
+                                            class="copyGradingSchemes cursor_hand" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                            class="deleteGradingSchemes cursor_hand" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                     </td>
                 </tr>
             </table>
-
-            <asp:Button ID="btnAddNew" runat="server" Text="Add New Value" />
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td style="padding-left: 150px;">
+                        <input type="button" id="btnAddNew" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression:app_add_new_value_button_text%>" />'
+                            onclick="javascript:check_hdUpdateValue(this.id)" class="createSchemeValue cursor_hand" />
+                    </td>
+                    <td style="padding-left: 450px;">
+                        <asp:Button ID="btnUpdateValue" OnClientClick="javascript:check_hdUpdateValue(this.id)"
+                            ValidationGroup="saegs" runat="server" Text="<%$ LabelResourceExpression: app_update_value_button_text %>"
+                            OnClick="btnUpdateValue_Click" />
+                    </td>
+                </tr>
+            </table>
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (English UK):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_english_uk_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_EnglishUk" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_EnglishUk" TextMode="MultiLine" Rows="7" Width="670px"
@@ -247,30 +425,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (French CA):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_french_ca_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_FrenchCa" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_FrenchCa" TextMode="MultiLine" Rows="7" Width="670px"
@@ -281,30 +457,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (French FR):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_french_fr_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_FrenchFr" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_FrenchFr" TextMode="MultiLine" Rows="7" Width="670px"
@@ -315,30 +489,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Spanish MX):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_spanish_mx")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_SpanishMx" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_SpanishMx" TextMode="MultiLine" Rows="7" Width="670px"
@@ -349,30 +521,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Spanish SP):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_spanish_sp")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_SpanishSp" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_SpanishSp" TextMode="MultiLine" Rows="7" Width="670px"
@@ -383,31 +553,29 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Portuguese):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_portuguese")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Portuguese" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Portuguese" TextMode="MultiLine" Rows="7" Width="670px"
@@ -418,30 +586,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Chinese Simplified):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_chinese_simplified")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Chinese" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Chinese" TextMode="MultiLine" Rows="7" Width="670px"
@@ -452,30 +618,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (German):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_german")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_German" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_German" TextMode="MultiLine" Rows="7" Width="670px"
@@ -486,30 +650,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Japanese):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_japanese")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Japanese" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Japanese" TextMode="MultiLine" Rows="7" Width="670px"
@@ -520,30 +682,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Russian):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_russian")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Russian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Russian" TextMode="MultiLine" Rows="7" Width="670px"
@@ -554,30 +714,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Danish):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_danish")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Danish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Danish" TextMode="MultiLine" Rows="7" Width="670px"
@@ -588,30 +746,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Polish):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_polish")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Polish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Polish" TextMode="MultiLine" Rows="7" Width="670px"
@@ -622,30 +778,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Swedish):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_swedish")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Swedish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Swedish" TextMode="MultiLine" Rows="7" Width="670px"
@@ -656,30 +810,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Finnish):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_finnish")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Finnish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Finnish" TextMode="MultiLine" Rows="7" Width="670px"
@@ -690,30 +842,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Korean):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_korean")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Korean" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Korean" TextMode="MultiLine" Rows="7" Width="670px"
@@ -724,30 +874,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Italian):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_italian")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Italian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Italian" TextMode="MultiLine" Rows="7" Width="670px"
@@ -758,30 +906,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Dutch):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_dutch")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Dutch" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Dutch" TextMode="MultiLine" Rows="7" Width="670px"
@@ -792,31 +938,29 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Indonesian):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_indonesian")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Indonesian" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Indonesian" TextMode="MultiLine" Rows="7" Width="670px"
@@ -827,30 +971,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Greek):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_greek")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Greek" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Greek" TextMode="MultiLine" Rows="7" Width="670px"
@@ -861,30 +1003,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Hungarian):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_hungarian")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Hungarian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Hungarian" TextMode="MultiLine" Rows="7" Width="670px"
@@ -895,30 +1035,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Norwegian):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_norwegian")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Norwegian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Norwegian" TextMode="MultiLine" Rows="7" Width="670px"
@@ -929,30 +1067,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Turkish):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_turkish")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Turkish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Turkish" TextMode="MultiLine" Rows="7" Width="670px"
@@ -963,30 +1099,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Arabic - Right-to-Left):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_arabic")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Arabic" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Arabic" TextMode="MultiLine" Rows="7" Width="670px"
@@ -997,30 +1131,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 01):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_01")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom01" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom01" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1031,30 +1163,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 02):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_02")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom02" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom02" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1065,30 +1195,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 03):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_03")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom03" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom03" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1099,30 +1227,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 04):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_04")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom04" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom04" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1133,30 +1259,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 05):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_05")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom05" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom05" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1167,30 +1291,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 06):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_06")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom06" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom06" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1201,30 +1323,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 07):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_07")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom07" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom07" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1235,30 +1355,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 08):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_08")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom08" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom08" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1269,30 +1387,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 09):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_09")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom09" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom09" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1303,30 +1419,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 10):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_10")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom10" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom10" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1337,30 +1451,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 11):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_11")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom11" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom11" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1371,30 +1483,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 12):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_12")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom12" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom12" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1405,30 +1515,28 @@
         </div>
         <br />
         <div class="div_header_long">
-            Grading Scheme Information (Custom 13):
+            <%=LocalResources.GetLabel("app_grading_scheme_information_custom_13")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        Grading Scheme Name:
+                        <%=LocalResources.GetLabel("app_grading_scheme_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom13" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td class="style1">
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription_Custom13" TextMode="MultiLine" Rows="7" Width="670px"
@@ -1439,30 +1547,34 @@
         </div>
         <br />
         <div class="div_header_long">
-
+            <br />
         </div>
         <br />
         <div class="div_controls font_1">
             <table>
                 <tr>
+                    <td class="btnsave_new_user_td">
+                        <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
+                            OnClick="btnFooterSave_Click" ValidationGroup="saegs" />
+                    </td>
+                    <td colspan="2">
+                    </td>
                     <td>
                     </td>
-                    <td colspan="2" class="btnsave_new_user_td">
-                        <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="Save New Grading Scheme" />
-                    </td>
-                    <td>
-                    </td>
+                    <td></td>
                     <td align="center" class="btnreset_td">
-                        <asp:Button ID="btnFooterReset" CssClass="cursor_hand" Text="Reset" runat="server" />
+                        <asp:Button ID="btnFooterReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            runat="server" OnClick="btnFooterReset_Click" />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
                     </td>
                     <td>
                     </td>
                     <td class="btncancel_td">
-                        <asp:Button ID="btnFooterCancel" CssClass="cursor_hand" Text="Cancel" runat="server" />
-                    </td>
-                    <td>
-                    </td>
-                    <td>
+                        <asp:Button ID="btnFooterCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            runat="server" OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>

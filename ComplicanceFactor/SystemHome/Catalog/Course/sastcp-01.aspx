@@ -8,7 +8,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -19,12 +21,13 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
 
     </script>
+   
     <script type="text/javascript">
         function resetall() {
             document.getElementById('<%=txtCourseID.ClientID %>').value = '';
@@ -50,6 +53,7 @@
     <br />
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div class="content_area_long">
+         <asp:HiddenField ID="hdNav_selected" runat="server" />
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_catalog_search_text")%>:
             </div>
@@ -58,7 +62,7 @@
                 <table>
                     <tr>
                         <td>
-                          <%=LocalResources.GetLabel("app_course_id_text")%>:
+                            <%=LocalResources.GetLabel("app_course_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtCourseID" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -85,7 +89,8 @@
                             <%=LocalResources.GetLabel("app_status_text")%>:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlStatus"  DataTextField="c_course_status_name" DataValueField="c_course_status_id" CssClass="ddl_user_advanced_search" runat="server">
+                            <asp:DropDownList ID="ddlStatus" DataTextField="c_course_status_name" DataValueField="c_course_status_id"
+                                CssClass="ddl_user_advanced_search" runat="server">
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -108,20 +113,19 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="btnsave_new_user_td">
-                            <asp:Button ID="btnAddNewCourse" runat="server" CssClass="cursor_hand"
-                                Text="<%$ LabelResourceExpression: app_add_new_course_text %>" 
-                                onclick="btnAddNewCourse_Click" />
+                            <asp:Button ID="btnAddNewCourse" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_new_course_text %>"
+                                OnClick="btnAddNewCourse_Click" />
                         </td>
                         <td>
                             &nbsp;
                         </td>
                         <td class="btnreset_td">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_text %>" OnClientClick="return resetall();"
-                                runat="server" />
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_text %>"
+                                OnClientClick="return resetall();" runat="server" />
                         </td>
                         <td colspan="2" class="btncancel_td">
                             <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_text %>"
-                                runat="server" onclick="btnGosearch_Click" />
+                                runat="server" OnClick="btnGosearch_Click" />
                         </td>
                     </tr>
                 </table>

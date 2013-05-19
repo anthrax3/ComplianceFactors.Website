@@ -10,6 +10,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Collections;
 using System.Reflection;
+using System.Net;
 
 namespace ComplicanceFactor.Common
 {
@@ -130,6 +131,39 @@ namespace ComplicanceFactor.Common
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public static void SendSms(string[] toPhoneNumber, string username, string passwd, string text)
+        {
+            string MATRIXURL = "http://www.smsmatrix.com/matrix";
+            string[] toNumber = toPhoneNumber;
+            foreach (string phone in toNumber)
+            {
+                if (phone.Trim() != string.Empty)
+                {
+                    string PHONE = phone;
+
+                    StringBuilder sbSendCaseDetails = new StringBuilder();
+                    string q = "username=" + username +
+                    "&password=" + passwd +
+                    "&phone=" + PHONE +
+                    "&txt=" + text;
+
+                    HttpWebRequest req = (HttpWebRequest)WebRequest.Create(MATRIXURL);
+                    req.Method = "POST";
+                    req.ContentType = "application/x-www-form-urlencoded";
+                    req.ContentLength = q.Length;
+
+                    StreamWriter streamOut = new StreamWriter(req.GetRequestStream(), System.Text.Encoding.ASCII);
+                    streamOut.Write(q);
+                    streamOut.Close();
+
+                    StreamReader streamIn = new StreamReader(req.GetResponse().GetResponseStream());
+                    string res = streamIn.ReadToEnd();
+                    //Console.WriteLine("Matrix API Response:\n" + res);
+                    streamIn.Close();
+                }
             }
         }
     }

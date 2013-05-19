@@ -392,7 +392,7 @@ namespace ComplicanceFactor.BusinessComponent
                     userInfo.Hris_last_rehire_date = Convert.ToDateTime(dtUser.Rows[0]["u_hris_last_rehire_date"], culture);
 
                 }
-               
+
                 userInfo.Hris_company = dtUser.Rows[0]["u_hris_company_fk"].ToString();
                 userInfo.Hris_region = dtUser.Rows[0]["u_hris_region_fk"].ToString();
                 userInfo.Hris_division = dtUser.Rows[0]["u_hris_division_fk"].ToString();
@@ -430,7 +430,7 @@ namespace ComplicanceFactor.BusinessComponent
                 userInfo.sr_is_administrator = Convert.ToBoolean(dtUser.Rows[0]["u_sr_is_administrator"]);
                 userInfo.sr_is_system_admin = Convert.ToBoolean(dtUser.Rows[0]["u_sr_is_system_admin"]);
                 userInfo.sr_is_compliance_approver = Convert.ToBoolean(dtUser.Rows[0]["u_sr_is_compliance_approver"]);
-                
+
                 userInfo.Custom_01 = dtUser.Rows[0]["u_custom_01"].ToString();
                 userInfo.Custom_02 = dtUser.Rows[0]["u_custom_02"].ToString();
                 userInfo.Custom_03 = dtUser.Rows[0]["u_custom_03"].ToString();
@@ -465,6 +465,48 @@ namespace ComplicanceFactor.BusinessComponent
                 userInfo.u_profile_my_courses_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_courses_records_display_pref"]);
                 userInfo.u_profile_my_curricula_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_curricula_records_display_pref"]);
                 userInfo.u_profile_my_learning_history_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_learning_history_records_display_pref"]);
+
+
+                userInfo.u_profile_my_system_splashes_collapse_pref = dtUser.Rows[0]["u_profile_my_system_splashes_collapse_pref"].ToString();
+                userInfo.u_profile_my_system_themes_collapse_pref = dtUser.Rows[0]["u_profile_my_system_themes_collapse_pref"].ToString();
+                userInfo.u_profile_my_system_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_system_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_system_splashes_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_system_splashes_records_display_pref"]);
+                userInfo.u_profile_my_system_themes_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_system_themes_records_display_pref"]);
+                userInfo.u_profile_my_system_reports_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_system_reports_records_display_pref"]);
+
+
+                userInfo.u_profile_my_admin_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_admin_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_amdin_courses_collapse_pref = dtUser.Rows[0]["u_profile_my_amdin_courses_collapse_pref"].ToString();
+                userInfo.u_profile_my_admin_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_admin_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_admin_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_admin_todos_display_pref"]);
+                userInfo.u_profile_my_admin_courses_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_admin_courses_display_pref"]);
+                userInfo.u_profile_my_admin_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_admin_reports_display_pref"]);
+
+
+                userInfo.u_profile_my_inst_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_inst_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_inst_rosters_collapse_pref = dtUser.Rows[0]["u_profile_my_inst_rosters_collapse_pref"].ToString();
+                userInfo.u_profile_my_inst_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_inst_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_inst_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_inst_todos_display_pref"]);
+                userInfo.u_profile_my_inst_rosters_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_inst_rosters_display_pref"]);
+                userInfo.u_profile_my_inst_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_inst_reports_display_pref"]);
+
+                userInfo.u_profile_my_train_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_train_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_train_deliveries_collapse_pref = dtUser.Rows[0]["u_profile_my_train_deliveries_collapse_pref"].ToString();
+                userInfo.u_profile_my_train_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_train_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_train_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_train_todos_display_pref"]);
+                userInfo.u_profile_my_train_deliveries_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_train_deliveries_display_pref"]);
+                userInfo.u_profile_my_train_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_train_reports_display_pref"]);
+
+                userInfo.u_profile_my_comp_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_comp_harm_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_harm_collapse_pref"].ToString();
+                userInfo.u_profile_my_comp_giris_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_giris_collapse_pref"].ToString();
+                userInfo.u_profile_my_comp_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_reports_collapse_pref"].ToString();
+
+                userInfo.u_profile_my_comp_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_todos_display_pref"]);
+                userInfo.u_profile_my_comp_harm_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_harm_display_pref"]);
+                userInfo.u_profile_my_comp_giris_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_giris_display_pref"]);
+                userInfo.u_profile_my_comp_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_reports_display_pref"]);
+
                 // userInfo.LastPassword_enc = rijndaelKey.Encrypt(txtPassword_login.Text);
 
                 return userInfo;
@@ -744,12 +786,52 @@ namespace ComplicanceFactor.BusinessComponent
                 userInfo.u_profile_my_curricula_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_curricula_records_display_pref"]);
                 userInfo.u_profile_my_learning_history_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_learning_history_records_display_pref"]);
 
+                userInfo.u_profile_my_system_splashes_collapse_pref = dtUser.Rows[0]["u_profile_my_system_splashes_collapse_pref"].ToString();
+                userInfo.u_profile_my_system_themes_collapse_pref = dtUser.Rows[0]["u_profile_my_system_themes_collapse_pref"].ToString();
+                userInfo.u_profile_my_system_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_system_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_system_splashes_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_system_splashes_records_display_pref"]);
+                userInfo.u_profile_my_system_themes_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_system_themes_records_display_pref"]);
+                userInfo.u_profile_my_system_reports_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_system_reports_records_display_pref"]);
+
                 userInfo.u_profile_my_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_todos_collapse_pref"].ToString();
                 userInfo.u_profile_my_team_collapse_pref = dtUser.Rows[0]["u_profile_my_team_collapse_pref"].ToString();
                 userInfo.u_profile_my_report_history_collapse_pref = dtUser.Rows[0]["u_profile_my_report_history_collapse_pref"].ToString();
                 userInfo.u_profile_my_todos_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_todos_records_display_pref"]);
                 userInfo.u_profile_my_team_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_team_records_display_pref"]);
                 userInfo.u_profile_my_report_history_records_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_report_history_records_display_pref"]);
+
+                userInfo.u_profile_my_admin_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_admin_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_amdin_courses_collapse_pref = dtUser.Rows[0]["u_profile_my_amdin_courses_collapse_pref"].ToString();
+                userInfo.u_profile_my_admin_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_admin_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_admin_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_admin_todos_display_pref"]);
+                userInfo.u_profile_my_admin_courses_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_admin_courses_display_pref"]);
+                userInfo.u_profile_my_admin_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_admin_reports_display_pref"]);
+
+                userInfo.u_profile_my_inst_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_inst_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_inst_rosters_collapse_pref = dtUser.Rows[0]["u_profile_my_inst_rosters_collapse_pref"].ToString();
+                userInfo.u_profile_my_inst_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_inst_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_inst_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_inst_todos_display_pref"]);
+                userInfo.u_profile_my_inst_rosters_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_inst_rosters_display_pref"]);
+                userInfo.u_profile_my_inst_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_inst_reports_display_pref"]);
+
+                userInfo.u_profile_my_train_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_train_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_train_deliveries_collapse_pref = dtUser.Rows[0]["u_profile_my_train_deliveries_collapse_pref"].ToString();
+                userInfo.u_profile_my_train_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_train_reports_collapse_pref"].ToString();
+                userInfo.u_profile_my_train_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_train_todos_display_pref"]);
+                userInfo.u_profile_my_train_deliveries_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_train_deliveries_display_pref"]);
+                userInfo.u_profile_my_train_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_train_reports_display_pref"]);
+
+                userInfo.u_profile_my_comp_todos_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_todos_collapse_pref"].ToString();
+                userInfo.u_profile_my_comp_harm_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_harm_collapse_pref"].ToString();
+                userInfo.u_profile_my_comp_giris_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_giris_collapse_pref"].ToString();
+                userInfo.u_profile_my_comp_reports_collapse_pref = dtUser.Rows[0]["u_profile_my_comp_reports_collapse_pref"].ToString();
+
+                userInfo.u_profile_my_comp_todos_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_todos_display_pref"]);
+                userInfo.u_profile_my_comp_harm_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_harm_display_pref"]);
+                userInfo.u_profile_my_comp_giris_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_giris_display_pref"]);
+                userInfo.u_profile_my_comp_reports_display_pref = Convert.ToInt32(dtUser.Rows[0]["u_profile_my_comp_reports_display_pref"]);
+
+
 
                 // userInfo.LastPassword_enc = rijndaelKey.Encrypt(txtPassword_login.Text);
 
@@ -770,7 +852,7 @@ namespace ComplicanceFactor.BusinessComponent
 
             try
             {
-                userInfo = new User(); 
+                userInfo = new User();
                 DataTable dtUser = DataProxy.FetchDataTable("app_sp_get_user_by_id", htRetireUserInfo);
                 userInfo.Username_enc_ash = dtUser.Rows[0]["u_username_enc"].ToString();
                 userInfo.Password_enc_salt = dtUser.Rows[0]["u_password_enc_salt"].ToString();
@@ -903,7 +985,7 @@ namespace ComplicanceFactor.BusinessComponent
                 userInfo.text_sr_is_training = dtUser.Rows[0]["u_retire_sr_is_training"].ToString();
                 userInfo.text_sr_is_administrator = dtUser.Rows[0]["u_retire_sr_is_administrator"].ToString();
                 userInfo.text_sr_is_system_admin = dtUser.Rows[0]["u_retire_sr_is_system_admin"].ToString();
-                userInfo.text_sr_is_compliance_approver = dtUser.Rows[0]["u_retire_sr_is_compliance_approver"].ToString();
+                //userInfo.text_sr_is_compliance_approver_text = Convert.ToBoolean(dtUser.Rows[0]["u_retire_sr_is_compliance_approver"]);
 
                 userInfo.Custom_01 = dtUser.Rows[0]["u_custom_01"].ToString();
                 userInfo.Custom_02 = dtUser.Rows[0]["u_custom_02"].ToString();
@@ -1206,7 +1288,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateUserInfo.Add("@u_profile_my_learning_history_records_display_pref", user.u_profile_my_learning_history_records_display_pref);
             }
-            
+
             // 
             htUpdateUserInfo.Add("@u_profile_my_todos_collapse_pref", user.u_profile_my_todos_collapse_pref);
             htUpdateUserInfo.Add("@u_profile_my_team_collapse_pref", user.u_profile_my_team_collapse_pref);
@@ -1268,7 +1350,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static int ResetPassword(string u_user_id_pk,string u_password_enc_ash, string u_password_enc_salt)
+        public static int ResetPassword(string u_user_id_pk, string u_password_enc_ash, string u_password_enc_salt)
         {
             try
             {
@@ -1276,7 +1358,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htResetPassword.Add("@u_user_id_pk", u_user_id_pk);
                 htResetPassword.Add("@u_password_enc_ash", u_password_enc_ash);
                 htResetPassword.Add("@u_password_enc_salt", u_password_enc_salt);
-                return DataProxy.FetchSPOutput("u_sp_reset_password",htResetPassword);
+                return DataProxy.FetchSPOutput("u_sp_reset_password", htResetPassword);
             }
             catch (Exception)
             {
@@ -1322,6 +1404,95 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
 
+        }
+
+        public static int UpdateUserProfile_System(User user)
+        {
+            Hashtable htUpdateUserInfo = new Hashtable();
+            htUpdateUserInfo.Add("@u_user_id_pk", user.Userid);
+            htUpdateUserInfo.Add("@u_middle_name", user.Middlename);
+            htUpdateUserInfo.Add("@u_email_address", user.EmailId);
+            htUpdateUserInfo.Add("@u_mobile_type_fk", user.Mobiletype);
+            htUpdateUserInfo.Add("@u_mobile_carrier_fk", user.MobileCarrier);
+            htUpdateUserInfo.Add("@u_mobile_number", user.MobileNumber);
+            htUpdateUserInfo.Add("@u_work_phone", user.WorkPhone);
+            htUpdateUserInfo.Add("@u_work_extension", user.Workextension);
+            htUpdateUserInfo.Add("@u_address_1", user.Address1);
+            htUpdateUserInfo.Add("@u_address_2", user.Address2);
+            htUpdateUserInfo.Add("@u_address_3", user.Address3);
+            htUpdateUserInfo.Add("@u_city", user.City);
+            htUpdateUserInfo.Add("@u_state_province_ddl", user.StateProvince);
+            htUpdateUserInfo.Add("@u_zip_postal_code_ddl", user.ZipPostalcode);
+            htUpdateUserInfo.Add("@u_country_id_fk", user.Country);
+            htUpdateUserInfo.Add("@u_locale_id_fk", user.LocaleId);
+            htUpdateUserInfo.Add("@u_timezone_fk", user.TimezoneId);
+            htUpdateUserInfo.Add("@u_profile_my_system_splashes_collapse_pref", user.u_profile_my_system_splashes_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_system_themes_collapse_pref", user.u_profile_my_system_themes_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_system_reports_collapse_pref", user.u_profile_my_system_reports_collapse_pref);
+
+            if (user.u_profile_my_system_splashes_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_system_splashes_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_system_splashes_records_display_pref", user.u_profile_my_system_splashes_records_display_pref);
+            }
+            if (user.u_profile_my_system_themes_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_system_themes_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_system_themes_records_display_pref", user.u_profile_my_system_themes_records_display_pref);
+            }
+            if (user.u_profile_my_system_reports_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_system_reports_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_system_reports_records_display_pref", user.u_profile_my_system_reports_records_display_pref);
+            }
+
+            // 
+            htUpdateUserInfo.Add("@u_profile_my_todos_collapse_pref", user.u_profile_my_todos_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_team_collapse_pref", user.u_profile_my_team_collapse_pref);
+            htUpdateUserInfo.Add("@u_profile_my_report_history_collapse_pref", user.u_profile_my_report_history_collapse_pref);
+            if (user.u_profile_my_todos_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_todos_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_todos_records_display_pref", user.u_profile_my_todos_records_display_pref);
+            }
+            if (user.u_profile_my_team_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_team_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_team_records_display_pref", user.u_profile_my_team_records_display_pref);
+            }
+            if (user.u_profile_my_report_history_records_display_pref == 0)
+            {
+                htUpdateUserInfo.Add("@u_profile_my_report_history_records_display_pref", DBNull.Value);
+            }
+            else
+            {
+                htUpdateUserInfo.Add("@u_profile_my_report_history_records_display_pref", user.u_profile_my_report_history_records_display_pref);
+            }
+            htUpdateUserInfo.Add("@type", user.type);
+            try
+            {
+                return DataProxy.FetchSPOutput("u_sp_update_system_user_profile", htUpdateUserInfo);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
+using ComplicanceFactor.Common.Languages;
 
 
 namespace ComplicanceFactor.SystemHome.Users.ChangePassword
@@ -77,14 +73,14 @@ namespace ComplicanceFactor.SystemHome.Users.ChangePassword
                 else
                 {
                     div_error.Style.Add("display", "block");
-                    div_error.InnerHtml = "Please enter the valid current password.";
+                    div_error.InnerHtml = LocalResources.GetText("app_current_password_error_wrong");
                     div_success.Style.Add("display", "none");
                 }
             }
             catch (Exception ex)
             {
                 div_error.Style.Add("display", "block");
-                div_error.InnerHtml = "Error: Updating data." ;
+                div_error.InnerHtml = LocalResources.GetText("app_date_not_updated_error_wrong");
                 div_success.Style.Add("display", "none");
                 //Log here
                 if (ConfigurationWrapper.LogErrors == true)

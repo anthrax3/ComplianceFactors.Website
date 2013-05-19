@@ -1,0 +1,343 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
+    CodeBehind="aappp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.aappp_01" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../../Scripts/jquery-1.6.2.min.js" type="text/javascript"></script>
+    <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="content_area">
+        <p>
+            Welcome to ComplianceFactors!</p>
+        <p>
+            ComplianceFactors™ (CF) provides an innovative turnkey solution to ensure full compliance
+            with any regulation such as: OSHA, DOT, EPA, FDA CFR 21 Part 11, FAA, ISO, SEC,
+            JCAHO.</p>
+    </div>
+    <div class="div_header_long">
+        My Personal Information:
+    </div>
+    <div class="div_controls font_1">
+        <table>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td class="align_left">
+                    Tourigny
+                </td>
+                <td>
+                </td>
+                <td>
+                    First Name:
+                </td>
+                <td class="align_left">
+                    Guy
+                </td>
+                <td>
+                </td>
+                <td>
+                    Middle Name:
+                </td>
+                <td class="align_left">
+                    <asp:TextBox ID="txtMiddleName" CssClass="textbox_65" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Manager:
+                </td>
+                <td class="align_left">
+                    David Ealy
+                </td>
+                <td>
+                </td>
+                <td>
+                    Supervisor:
+                </td>
+                <td class="align_left">
+                    Jeff Kady
+                </td>
+                <td>
+                </td>
+                <td>
+                    Mentor:
+                </td>
+                <td class="align_left">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Alt Manager:
+                </td>
+                <td class="align_left">
+                </td>
+                <td>
+                </td>
+                <td>
+                    Alt Supervisor:
+                </td>
+                <td class="align_left">
+                </td>
+                <td>
+                </td>
+                <td>
+                    Alt Mentor:
+                </td>
+                <td class="align_left">
+                </td>
+            </tr>
+        </table>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="div_header_long">
+        Login Information:
+    </div>
+    <div class="clear">
+    </div>
+    <div class="div_controls font_1">
+        <table>
+            <tr>
+                <td>
+                    UserName:
+                </td>
+                <td class="align_left">
+                    gt
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <asp:Button ID="btnResetPassword" runat="server" Text="Reset Your Password" />
+                </td>
+            </tr>
+        </table>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="div_header_long">
+        Contact And Locale Information:
+    </div>
+    <div class="div_controls font_1">
+        <table>
+            <tr>
+                <td>
+                    Email Address:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtEmailAddress" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    Work Phone:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtWorkPhone" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    Work Extension:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtWorkExtension" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mobile Number:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtMobileNumber" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    Mobile Type:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlMobileType" CssClass="ddl_user_advanced_search" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    Carrier:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlCarrier" CssClass="ddl_user_advanced_search" runat="server">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address1:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtAddressLine1" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    Address2:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtAddressLine2" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    Address3:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtAddressLine3" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtCity" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    State/Province:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtState" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    ZIP/Postal Code:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtZipCode" CssClass="textbox_long" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlCountry" CssClass="ddl_user_advanced_search" runat="server"
+                        AutoPostBack="true">
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    *Locale:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlLocale" CssClass="ddl_user_advanced_search" runat="server"
+                        AutoPostBack="true">
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    *Timezone:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlTimeZone" CssClass="ddl_user_advanced_search" runat="server"
+                        AutoPostBack="true">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="clear">
+    </div>
+    <div>
+        <div class="div_header_long">
+            My Preferences:
+        </div>
+        <div class="clear">
+        </div>
+        <div class="div_padding_10" id="div_MyPrefernces" runat="server">
+            <asp:GridView ID="gvMyPreferences" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
+                runat="server" EmptyDataText="No Result Found" GridLines="None" DataKeyNames=""
+                AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
+                <Columns>
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+                        HeaderText="Description" DataField='' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
+                        HeaderText="" DataField='' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="" DataField='' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="" DataField='' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_4"  HeaderText="Number of Records" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:DropDownList ID="ddlNumberOfRecords" CssClass="width_75" runat="server">
+                            </asp:DropDownList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderText="Collapsed" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:DropDownList ID="ddlCollapsePreference" CssClass="width_auto" runat="server">
+                                <asp:ListItem>Expanded</asp:ListItem>
+                                <asp:ListItem>Collapsed</asp:ListItem>
+                            </asp:DropDownList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div>
+        <div class="div_header_long">
+        </div>
+        <div class="clear">
+        </div>
+        <div class="div_controls font_1">
+            <table class="table_td_300">
+                <tr>
+                    <td class="align_center">
+                        <asp:Button ID="btnSave" runat="server" Text="Save My Profile Information" />
+                    </td>
+                    <td class="align_center">
+                        <asp:Button ID="btnReset" runat="server" Text="Reset" />
+                    </td>
+                    <td class="align_center">
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div>
+        <div class="div_header_long">
+        </div>
+        <div class="content_area">
+            <p>
+                If you need assistance with the ComplianceFactors™ (CF), please email David Ealy
+                at: <a>dealy@ComplianceFactors.com</a>
+            </p>
+        </div>
+    </div>
+</asp:Content>

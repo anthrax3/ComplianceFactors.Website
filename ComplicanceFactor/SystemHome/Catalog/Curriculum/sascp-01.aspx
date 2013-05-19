@@ -4,26 +4,29 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+  <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
-            // toggles the slickbox on clicking the noted link  
-            $('.main_menu li a').hover(function () {
+      $(document).ready(function () {
+          var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-                $('.main_menu li a').removeClass('selected');
-                $(this).addClass('active');
+          $(navigationSelectedValue).addClass('selected');
+          // toggles the slickbox on clicking the noted link  
+          $('.main_menu li a').hover(function () {
 
-                return false;
-            });
-            $('.main_menu li a').mouseleave(function () {
+              $('.main_menu li a').removeClass('selected');
+              $(this).addClass('active');
 
-                $('#app_nav_system').addClass('selected');
-                return false;
-            });
-        });
+              return false;
+          });
+          $('.main_menu li a').mouseleave(function () {
+
+              $(navigationSelectedValue).addClass('selected');
+              return false;
+          });
+      });
 
     </script>
+ 
     <script type="text/javascript">
         function resetall() {
             document.getElementById('<%=txtCurriculumId.ClientID %>').value = '';
@@ -32,7 +35,7 @@
             document.getElementById('<%=txtOwner.ClientID %>').value = '';
             document.getElementById('<%=txtCoordinator.ClientID %>').value = '';
             document.getElementById('<%=ddlStatus.ClientID %>').selectedIndex = '0';
-            document.getElementById('<%=ddlType.ClientID %>').selectedIndex = '0';
+            document.getElementById('<%=ddlCurriculumType.ClientID %>').selectedIndex = '0';
 
             return false;
         }
@@ -50,27 +53,28 @@
     </script>
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
             <div class="div_header_long">
-                Curriculum Search:
+                 <%=LocalResources.GetLabel("app_curriculum_search_text")%>: 
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                            Curriculum Id:
+                           <%=LocalResources.GetLabel("app_curriculum_id_text")%>:  
                         </td>
                         <td>
                             <asp:TextBox ID="txtCurriculumId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            Title:
+                            <%=LocalResources.GetLabel("app_title_text")%>: 
                         </td>
                         <td>
                             <asp:TextBox ID="txtTitle" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            Version:
+                            <%=LocalResources.GetLabel("app_version_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtVersion" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -82,20 +86,20 @@
                     </tr>
                     <tr>
                         <td>
-                            Status:
+                            <%=LocalResources.GetLabel("app_status_text")%>: 
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlStatus" DataTextField="c_curriculum_status_name" DataValueField="c_curriculum_status_id_pk" CssClass="ddl_user_advanced_search" runat="server">
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Owner:
+                            <%=LocalResources.GetLabel("app_owner_text")%>:  
                         </td>
                         <td>
                             <asp:TextBox ID="txtOwner" runat="server" CssClass="textbox_long"></asp:TextBox>
                         </td>
                         <td>
-                            Coordinator:
+                            <%=LocalResources.GetLabel("app_coordinator_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtCoordinator" runat="server" CssClass="textbox_long"></asp:TextBox>
@@ -107,11 +111,11 @@
                     </tr>
                     <tr>
                         <td>
-                            Type:
+                            <%=LocalResources.GetLabel("app_type_text")%>: 
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlType" DataTextField="c_curriculum_type_name"  DataValueField="c_curriculum_type_system_id_pk" CssClass="ddl_user_advanced_search" runat="server">
-                            </asp:DropDownList>
+                           <asp:DropDownList ID="ddlCurriculumType" DataValueField="s_curriculum_type_system_id_pk" CssClass="ddl_user_advanced_search"
+                                    DataTextField="s_curriculum_type_name" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -122,17 +126,17 @@
                     <tr>
                         <td colspan="2" class="btnsave_new_user_td">
                             <asp:Button ID="btnAddNewCurriculum" CssClass="cursor_hand" runat="server" 
-                                Text="Add New Curriculum" onclick="btnAddNewCurriculum_Click"  />
+                                Text="<%$ LabelResourceExpression: app_add_new_curriculum_button_text%>" onclick="btnAddNewCurriculum_Click"  />
                         </td>
                         <td>
                             &nbsp;
                         </td>
                         <td class="btnreset_td">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="Reset" OnClientClick="return resetall();"
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>" OnClientClick="return resetall();"
                                 runat="server" />
                         </td>
                         <td colspan="2" class="btncancel_td">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="Go Search" 
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text%>"
                                 runat="server" onclick="btnGosearch_Click" />
                         </td>
                     </tr>

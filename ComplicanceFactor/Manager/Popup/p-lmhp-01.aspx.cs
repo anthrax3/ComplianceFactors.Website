@@ -38,7 +38,7 @@ namespace ComplicanceFactor.Manager.Popup
             DataSet dsHeaderFooter = new DataSet();
             try
             {
-                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(Request.QueryString["id"]);
+                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(Request.QueryString["id"],SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -68,7 +68,6 @@ namespace ComplicanceFactor.Manager.Popup
                 rvLearningHistory.LocalReport.EnableExternalImages = true;
                 rvLearningHistory.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.LearningHistory.PdfTemplate.MyLearningHistory.rdlc";
                 rvLearningHistory.LocalReport.DataSources.Add(new ReportDataSource("MyLearningHistory", dsLearningHistory.Tables[0]));
-                rvLearningHistory.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsLearningHistory.Tables[2]));
                 byte[] bytes = rvLearningHistory.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();
@@ -87,7 +86,7 @@ namespace ComplicanceFactor.Manager.Popup
             DataSet dsLearningHistory = new DataSet();
             try
             {
-                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(Request.QueryString["id"]);
+                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(Request.QueryString["id"],SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -108,11 +107,11 @@ namespace ComplicanceFactor.Manager.Popup
             }
             if (dsLearningHistory.Tables[1].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsLearningHistory.Tables[1]);
+                exportDataTableToCsv(dsLearningHistory.Tables[1], dsLearningHistory.Tables[2]);
             }
         }
 
-        private void exportDataTableToCsv(DataTable dt)
+        private void exportDataTableToCsv(DataTable dt, DataTable dtcolumnName)
         {
             Response.Clear();
             Response.ContentType = "application/csv";
@@ -120,10 +119,10 @@ namespace ComplicanceFactor.Manager.Popup
             Response.AddHeader("Content-Disposition", "attachment;filename=MyLearningHistory.csv");
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < dt.Columns.Count; k++)
+            for (int k = 0; k < dtcolumnName.Rows.Count; k++)
             {
                 //add separator
-                sb.Append(dt.Columns[k].ColumnName + ',');
+                sb.Append(dtcolumnName.Rows[k]["columnName"].ToString() + ',');
             }
             //append new line
             sb.Append("\r\n");

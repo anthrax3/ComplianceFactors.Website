@@ -419,11 +419,17 @@
 
         });
     </script>
+    <script type="text/javascript">
+        function checkCopy() {
+            document.getElementById('<%=hdCheckCopy.ClientID %>').value = "1";
+     }
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
         ValidationGroup="sand"></asp:ValidationSummary>
     <div>
+        <asp:HiddenField ID="hdCheckCopy" runat="server" />
         <div class="div_header_1005">
             <%=LocalResources.GetLabel("app_delivery_text")%>:
         </div>
@@ -595,14 +601,15 @@
         <div class="div_control_normal">
             <div>
                 <asp:GridView ID="gvSession" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
-                    CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_session_system_id_pk"
-                    runat="server" AutoGenerateColumns="False" OnRowDataBound="gvSession_RowDataBound">
+                    CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_session_system_id_pk,c_session_id_pk"
+                    runat="server" AutoGenerateColumns="False" OnRowDataBound="gvSession_RowDataBound"
+                    OnRowCommand="gvSession_RowCommand">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <table cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td class="horizontal_line" colspan="4">
+                                        <td class="horizontal_line" colspan="5">
                                             <hr>
                                         </td>
                                     </tr>
@@ -614,11 +621,17 @@
                                             <asp:Label ID="lblSession2" runat="server"></asp:Label>
                                         </td>
                                         <td class="gridview_row_width_1" align="center">
-                                            <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
+                                            <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                                 class="editsession cursor_hand" />
                                         </td>
+                                        <td>
+                                            <%--                                            <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="Copy" />'
+                                                class="copysession cursor_hand" />--%>
+                                            <asp:Button ID="btnCopy" runat="server" CommandName='Copy' CommandArgument='<%#DataBinder.Eval(Container,"RowIndex") %>'
+                                                OnClientClick='javascript:checkCopy();' Text="Copy" />
+                                        </td>
                                         <td class="gridview_row_width_1" align="center">
-                                            <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                            <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
                                                 class="deletesession cursor_hand" />
                                         </td>
                                     </tr>
@@ -708,7 +721,7 @@
                                             <%#Eval("c_material_description")%>
                                         </td>
                                         <td class="gridview_row_width_1" align="center">
-                                            <input type="button" id='<%# Eval("c_material_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                            <input type="button" id='<%# Eval("c_material_system_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                                 class="deletematerial cursor_hand" />
                                         </td>
                                     </tr>
@@ -725,7 +738,7 @@
         </div>
         <br />
         <div class="div_header_1005">
-             <%=LocalResources.GetLabel("app_non_conformant_aicc_text")%>:
+            <%=LocalResources.GetLabel("app_non_conformant_aicc_text")%>:
         </div>
         <br />
         <div class="div_control_normal">
@@ -803,7 +816,8 @@
         </div>
         <br />
         <div class="div_control_normal">
-            <asp:DropDownList ID="ddlScoringScheme" CssClass="textbox_long" runat="server">
+            <asp:DropDownList ID="ddlScoringScheme" DataTextField="s_grading_scheme_english_us_name"
+                DataValueField="s_grading_scheme_system_id_pk" CssClass="textbox_long" runat="server">
             </asp:DropDownList>
         </div>
         <br />
@@ -826,15 +840,13 @@
                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnViewWitnessFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>"
-                                CssClass="cursor_hand" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnEditWitnessFiles" CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>"
-                                CssClass="cursor_hand" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Center">

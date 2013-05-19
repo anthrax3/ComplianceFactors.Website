@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Configuration.UI_Texts_and_Labels
 {
@@ -15,6 +16,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.UI_Texts_and_Labels
         {
             if (!IsPostBack)
             {
+                Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_ui_labels_texts_dropdowns_text");
+
                 //bind language
                 ddlLanguages.DataSource = SystemLocaleBLL.GetLocaleList();
                 ddlLanguages.DataBind();

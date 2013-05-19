@@ -13,7 +13,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -24,9 +26,15 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
+
+    </script>
+        <script type="text/javascript">
+
+        $(document).ready(function () {          
 
             var editRoomId = $('input#<%=hdRoomId.ClientID %>').val();
             // Add and view  locale
@@ -176,6 +184,7 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
     <asp:HiddenField ID="hdRoomId" runat="server" />
+     <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">

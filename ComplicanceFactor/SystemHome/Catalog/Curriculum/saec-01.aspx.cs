@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,7 +9,6 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.IO;
 using System.Globalization;
 using ComplicanceFactor.Common.Languages;
-using ComplicanceFactor.SystemHome.Catalog.DeliveryPopup;
 
 
 namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
@@ -46,21 +43,27 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             DataSet dsprerequisiteEquivalenciesFullfillments = SystemCurriculumBLL.GetprerequisiteEquivalenciesFullfillments(editCurriculumId);
             if (!Page.IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Edit Curriculum";
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Edit Curriculum";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + LocalResources.GetLabel("app_manage_curriculam_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_curriculum_text");
 
               
                 ///Show success message
                 if (!string.IsNullOrEmpty(Request.QueryString["arc"]))
                 {
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = "Curriculum Archived Successfully";
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_archieved_text");
 
                 }
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     divSuccess.Style.Add("display", "Block");
-                    divSuccess.InnerHtml = "Curriculam Saved Successfully";
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
                     
                 }
                 
@@ -249,6 +252,25 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     ddlApprovalRequired.Items.Insert(0, liFirstItem);
 
                 }
+
+
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_type_id_fk))
+                {
+                    if (curriculum.c_curriculum_type_id_fk != "0")
+                    {
+                        ddlCurriculumType.SelectedValue = curriculum.c_curriculum_type_id_fk;
+                    }
+                }
+                else
+                {
+                    ListItem liFirstItem = new ListItem();
+                    liFirstItem.Text = "Select";
+                    liFirstItem.Value = "0";
+                    ddlCurriculumType.Items.Insert(0, liFirstItem);
+
+                }
+
+
                 //recurrance
                 txtEvery.Text = Convert.ToString(curriculum.c_curriculum_recurrance_every);
                 ddlEvery.SelectedValue = curriculum.c_curriculum_recurrance_period;
@@ -277,6 +299,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     btnSelectIconUri.Style.Add("display", "none");
 
                 }
+                
                 //custom section
                 txtCustom01.Text = curriculum.c_curriculum_custom_01;
                 txtCustom02.Text = curriculum.c_curriculum_custom_02;
@@ -383,6 +406,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 UpdateCurriculum.c_curriculum_visible_flag = chkVisible.Checked;
                 UpdateCurriculum.c_curriculum_approval_req = chkApprovalRequired.Checked;
                 UpdateCurriculum.c_curriculum_approval_id_fk = ddlApprovalRequired.SelectedValue;
+                UpdateCurriculum.c_curriculum_type_id_fk = ddlCurriculumType.SelectedValue;
                 //recurrance
                 int tempEvery;
                 if (int.TryParse(txtEvery.Text, out tempEvery))
@@ -419,7 +443,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 UpdateCurriculum.c_curriculum_custom_13 = txtCustom13.Text;
                 //c_curriculum_cert_flag
                 UpdateCurriculum.c_curriculum_cert_flag = false;
-                UpdateCurriculum.c_curriculum_type_id_fk = ddlCurriculumType.SelectedValue;
+               
                 //c_curriculum_recurrance_grace_days
                 int tempGraceDays;
                 if (int.TryParse(txtGracePreiod.Text, out tempGraceDays))
@@ -447,7 +471,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     //Show success message
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
-                    divSuccess.InnerHtml = "Curriculum Updated Sucessfully";
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_update_text");
 
 
                 }
@@ -456,7 +480,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     //Show error message 
                     divSuccess.Style.Add("display", "none");
                     divError.Style.Add("display", "block");
-                    divError.InnerText = "Error: The Curriculum id you have entered already exist; please enter a different Curriculum id.";
+                    LocalResources.GetText("app_curriculum_id_already_exist_error_wrong");
 
                 }
 
@@ -467,7 +491,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             {
                 //Show error message
                 divError.Style.Add("display", "block");
-                divError.InnerText = "Error: Data not updated";
+                LocalResources.GetText("app_date_not_updated_error_wrong");
                 divSuccess.Style.Add("display", "none");
                 //TODO: Show user friendly error here
                 //Log here

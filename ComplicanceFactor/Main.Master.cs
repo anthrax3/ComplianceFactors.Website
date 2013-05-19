@@ -17,12 +17,15 @@ namespace ComplicanceFactor
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            bool isAccess = SessioninfoBLL.ManageSession(SessionWrapper.u_userid, SessionWrapper.sessionid);
-
-            if (isAccess == true)
+            if ((!string.IsNullOrEmpty(SessionWrapper.u_userid)) && (!string.IsNullOrEmpty(SessionWrapper.sessionid)))
             {
-                Session.Abandon();
-                SessionWrapper.clearsession();                 
+                bool isAccess = SessioninfoBLL.ManageSession(SessionWrapper.u_userid, SessionWrapper.sessionid);
+
+                if (isAccess == true)
+                {
+                    Session.Abandon();
+                    SessionWrapper.clearsession();
+                }
             }
         }
 
@@ -47,7 +50,7 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\Employee\\Course"
                         || Path.GetDirectoryName(Request.FilePath) == "\\Employee\\Curricula"
                         || Path.GetDirectoryName(Request.FilePath) == "\\Employee\\Home"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\Employee\\Learning History")
+                        || Path.GetDirectoryName(Request.FilePath) == "\\Employee\\LearningHistory")
                     {
                         hmeLastVisisted.lastvisited = "/Employee/Home/lhp-01.aspx";
                     }
@@ -67,13 +70,14 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\Compliance\\MySurveys"
                         || Path.GetDirectoryName(Request.FilePath) == "\\Compliance\\MyToDo"
                         || Path.GetDirectoryName(Request.FilePath) == "\\Compliance\\SiteView"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\Compliance\\SiteView\\FieldNotes")
+                        || Path.GetDirectoryName(Request.FilePath) == "\\Compliance\\SiteView\\FieldNotes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\Compliance\\SiteView\\Ojt")
                     {
                         hmeLastVisisted.lastvisited = "/Compliance/cchp-01.aspx";
                     }
                     else if (Path.GetDirectoryName(Request.FilePath) == "\\Instructor")
                     {
-                        hmeLastVisisted.lastvisited = "/Instructor/ihp-01.aspx";
+                        hmeLastVisisted.lastvisited = "/Instructor/tihp-01.aspx";
                     }
                     else if (Path.GetDirectoryName(Request.FilePath) == "\\Training")
                     {
@@ -118,19 +122,34 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Instructor"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Category"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Course"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Completion"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\UpdateCurriculumStatuses"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Languages"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Navigation"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Curriculum"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\ApprovalWorkflows"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\CompletionStatuses"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\CurriculumStatuses"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\CurriculumTypes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Data Exports"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Data Imports"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\DeliveryTypes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Domains"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\EmployeeTypes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\FacilityTypes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\GradingSchemes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Holiday Schedules"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\HRIS Integration"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\InstructorTypes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Languages"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\MaterialTypes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Navigation"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\ResourceTypes"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\RoomTypes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\UI Texts and Labels"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Weekday Schedules"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Holiday Schedules"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Splash Pages")
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Splash Pages"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Profile")
                     {
                         hmeLastVisisted.lastvisited = "/SystemHome/sahp-01.aspx";
                     }
@@ -246,7 +265,7 @@ namespace ComplicanceFactor
                         //splash page content
                         SystemSplashPage splashContent = new SystemSplashPage();
                         //Here we can get the splash content based on the domain Id
-                        splashContent = SystemSplashPageBLL.GetSplashContent(SessionWrapper.u_domain);
+                        splashContent = SystemSplashPageBLL.GetSplashContent(SessionWrapper.u_domain,SessionWrapper.CultureName);
                         spalsh.InnerHtml = WebUtility.HtmlDecode(splashContent.u_splash_content);
                         //update last selected language
                         User hmelanguage = new User();

@@ -47,7 +47,7 @@ namespace ComplicanceFactor.Employee.LearningHistory
             DataSet dsHeaderFooter = new DataSet();
             try
             {
-                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(SessionWrapper.u_userid);
+                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(SessionWrapper.u_userid,SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -77,13 +77,12 @@ namespace ComplicanceFactor.Employee.LearningHistory
                 rvLearningHistory.LocalReport.EnableExternalImages = true;
                 rvLearningHistory.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.LearningHistory.PdfTemplate.MyLearningHistory.rdlc";
                 rvLearningHistory.LocalReport.DataSources.Add(new ReportDataSource("MyLearningHistory", dsLearningHistory.Tables[0]));
-                rvLearningHistory.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsLearningHistory.Tables[2]));
                 byte[] bytes = rvLearningHistory.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();
                 Response.ClearHeaders();
                 Response.ContentType = mimeType;
-                Response.AddHeader("content-disposition", "attachment; filename=\"" + "MyLearningHistory" + ".pdf" + "\"");
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + LocalResources.GetLabel("app_my_learning_history_text") + ".pdf" + "\"");
                 Response.BinaryWrite(bytes); // create the file     
                 Response.Flush(); // send it to the client to download  
                 Response.End();
@@ -96,7 +95,7 @@ namespace ComplicanceFactor.Employee.LearningHistory
             DataSet dsLearningHistory = new DataSet();
             try
             {
-                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(SessionWrapper.u_userid);
+                dsLearningHistory = EnrollmentBLL.GetAllLearningHistory(SessionWrapper.u_userid,SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -117,22 +116,21 @@ namespace ComplicanceFactor.Employee.LearningHistory
             }
             if (dsLearningHistory.Tables[0].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsLearningHistory.Tables[1]);
+                exportDataTableToCsv(dsLearningHistory.Tables[1],dsLearningHistory.Tables[2]);
             }
         }
 
-        private void exportDataTableToCsv(DataTable dt)
+        private void exportDataTableToCsv(DataTable dt, DataTable dtcolumnName)
         {
             Response.Clear();
             Response.ContentType = "application/csv";
             Response.Charset = "";
             Response.AddHeader("Content-Disposition", "attachment;filename=MyLearningHistory.csv");
-            Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < dt.Columns.Count; k++)
+            for (int k = 0; k < dtcolumnName.Rows.Count; k++)
             {
                 //add separator
-                sb.Append(dt.Columns[k].ColumnName + ',');
+                sb.Append(dtcolumnName.Rows[k]["columnName"].ToString()+ ',');
             }
             //append new line
             sb.Append("\r\n");
@@ -159,18 +157,29 @@ namespace ComplicanceFactor.Employee.LearningHistory
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = gvLearningHistory.DataKeys[e.Row.RowIndex][0].ToString();
+                Button btnReview = (Button)e.Row.FindControl("btnReview");
+                Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
+                Button btnCertificate = (Button)e.Row.FindControl("btnCertificate");
+                Button btnViewDetails = (Button)e.Row.FindControl("btnViewDetails");
+                string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
                 if (status == "Completed")
                 {
-                    Button btnReview = (Button)e.Row.FindControl("btnReview");
+
                     btnReview.Style.Add("display", "inline");
+                    btnCertificate.Style.Add("display", "none");
                 }
-                else
+                else if (status == "Passed")
                 {
-                    Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
-                    btnEnroll.Style.Add("display", "inline");
+
+                    btnViewDetails.Style.Add("display", "Block");
+                    btnCertificate.Style.Add("display", "Block");
                 }
-                
+                else if (status == "Failed")
+                {
+                    btnEnroll.Style.Add("display", "Block");
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
+                }
             }
         }
         protected void btnHeaderFirst_Click(object sender, EventArgs e)
@@ -485,14 +494,25 @@ namespace ComplicanceFactor.Employee.LearningHistory
 
         protected void gvLearningHistory_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            string t_transcript_course_id_fk = e.CommandArgument.ToString();
+            bool isEnroll;
             if (e.CommandName.Equals("Enroll"))
             {
+
+                isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
+                if (isEnroll == true)
+                {
+                    SessionWrapper.isLeraningHistory = true;
+                }
+                else
+                {
+                    SessionWrapper.isLeraningHistory = false;
+                }
                 Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
 
             }
             else if (e.CommandName.Equals("Certificate"))
             {
-                string t_transcript_course_id_fk = e.CommandArgument.ToString();
                 rvLearningHistory.LocalReport.DataSources.Clear();
                 DataSet dsCertificate = new DataSet();
                 try
@@ -518,6 +538,7 @@ namespace ComplicanceFactor.Employee.LearningHistory
                 }
                 if (dsCertificate.Tables[0].Rows.Count > 0)
                 {
+                    divError.Style.Add("display", "none");
                     Warning[] warnings;
                     string[] streamIds;
                     string mimeType = string.Empty;
@@ -537,6 +558,11 @@ namespace ComplicanceFactor.Employee.LearningHistory
                     Response.Flush(); // send it to the client to download  
                     Response.End();
                     Response.Close();
+                }
+                else
+                {
+                    divError.Style.Add("display", "block");
+                    divError.InnerText = "Please add atleast one instructor.";
                 }
             }
         }

@@ -11,26 +11,29 @@
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/querystring-0.9.0-min.js" type="text/javascript"></script>
     <script src="../../../Scripts/querystring-0.9.0.js" type="text/javascript"></script>
-    <script type="text/javascript">
+   <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
-            // toggles the slickbox on clicking the noted link  
-            $('.main_menu li a').hover(function () {
+       $(document).ready(function () {
+           var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-                $('.main_menu li a').removeClass('selected');
-                $(this).addClass('active');
+           $(navigationSelectedValue).addClass('selected');
+           // toggles the slickbox on clicking the noted link  
+           $('.main_menu li a').hover(function () {
 
-                return false;
-            });
-            $('.main_menu li a').mouseleave(function () {
+               $('.main_menu li a').removeClass('selected');
+               $(this).addClass('active');
 
-                $('#app_nav_system').addClass('selected');
-                return false;
-            });
-        });
+               return false;
+           });
+           $('.main_menu li a').mouseleave(function () {
+
+               $(navigationSelectedValue).addClass('selected');
+               return false;
+           });
+       });
 
     </script>
+ 
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -1111,6 +1114,51 @@
             });
         });
     </script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                    var editcourseId = $('input#<%=hdCourseId.ClientID %>').val();
+                    $(".copydelivery").click(function () {
+
+                        //Get the Id of the record to delete
+                        var record_id = $(this).attr("id");
+
+                        //Get the GridView Row reference
+                        var tr_id = $(this).parents("#.record");
+                        $.fancybox({
+                            'type': 'iframe',
+                            'titlePosition': 'over',
+                            'titleShow': true,
+                            'showCloseButton': true,
+                            'scrolling': 'yes',
+                            'autoScale': false,
+                            'autoDimensions': false,
+                            'helpers': { overlay: { closeClick: false} },
+                            'width': 1040,
+                            'height': 200,
+                            'margin': 0,
+                            'padding': 0,
+                            'overlayColor': '#000',
+                            'overlayOpacity': 0.7,
+                            'hideOnOverlayClick': false,
+                            'href': '../Course/Delivery/sand-01.aspx?mode=editcopy&copydelivery=' + record_id + '&editcourseId=' + editcourseId,
+                            'onComplete': function () {
+                                $('#fancybox-frame').load(function () {
+                                    $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                    var heightPane = $(this).contents().find('#content').height();
+                                    $(this).contents().find('#fancybox-frame').css({
+                                        'height': heightPane + 'px'
+
+                                    })
+                                });
+
+                            }
+
+                        });
+                    });
+
+                });
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         <Scripts>
             <asp:ScriptReference Path="~/SystemHome/Catalog/Course/GenerateFile/iframe.js" />
@@ -1124,6 +1172,7 @@
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <asp:HiddenField ID="hdCourseId" runat="server" />
     <div class="content_area_long">
         <div>
@@ -1371,11 +1420,15 @@
                                             <table>
                                                 <tr>
                                                     <td class="gridview_row_width_1" align="right">
-                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
+                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Edit" />'
                                                             class="editdelivery cursor_hand" />
                                                     </td>
                                                     <td class="gridview_row_width_1" align="right">
-                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="Copy" />'
+                                                            class="copydelivery cursor_hand" />
+                                                    </td>
+                                                    <td class="gridview_row_width_1" align="right">
+                                                        <input type="button" id='<%# Eval("c_delivery_system_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="Remove" />'
                                                             class="deletedelivery cursor_hand" />
                                                     </td>
                                                 </tr>

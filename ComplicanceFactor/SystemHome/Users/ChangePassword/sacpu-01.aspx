@@ -21,7 +21,7 @@
         <div id="Message">
         </div>
         <div class="div_header_600">
-            Reset Your Password:
+            <%=LocalResources.GetLabel("app_reset_your_password_text")%>:
         </div>
         <br />
         <asp:ValidationSummary ID="vsPassword" CssClass="validation_summary_error" ValidationGroup="Password"
@@ -29,49 +29,49 @@
         <div id="div_error" runat="server" style="display: none;" class="validation_summary_error">
             
         </div>
-        <div id="div_success" runat="server" style="display: none;" class="msgarea_success">
-            Your password is successfully reset.
+        <div id="div_success" runat="server" style="display: none;" class="msgarea_success"> 
+            <%=LocalResources.GetText("app_succ_update_text")%>:  
         </div>
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td>
-                        Current Password:
+                        <%=LocalResources.GetLabel("app_current_password_text")%>:
                     </td>
                     <td>
                         <input id="txtCurrentPassword" runat="server" type="text" class="textbox_250" />
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvCurrentPassword" runat="server" ErrorMessage="Please enter the current password."
+                        <asp:RequiredFieldValidator ID="rfvCurrentPassword" runat="server" ErrorMessage="<%$ TextResourceExpression: app_current_password_error_empty %>"
                             ValidationGroup="Password" ControlToValidate="txtCurrentPassword"> &nbsp;
                         </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        New Password:
+                        <%=LocalResources.GetLabel("app_new_password_text")%>:
                     </td>
                     <td>
                         <input id="txtNewPassWord" runat="server" type="text" class="textbox_250" />
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server" ErrorMessage="Please enter the new password."
+                        <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server" ErrorMessage="<%$ TextResourceExpression: app_new_password_error_empty %>"
                             ValidationGroup="Password" ControlToValidate="txtNewPassWord">&nbsp;
                         </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Confirm Password:
+                        <%=LocalResources.GetLabel("app_confirm_password_text")%>:
                     </td>
                     <td>
                         <input id="txtConfirmPassword" runat="server" type="text" class="textbox_250" />
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ErrorMessage="Please enter the confirm password."
+                        <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ErrorMessage="<%$ TextResourceExpression: app_confirm_password_error_empty %>"
                             ValidationGroup="Password" ControlToValidate="txtNewPassWord">&nbsp;
                         </asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="Password do not match."
+                        <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="<%$ TextResourceExpression: app_password_match_error_wrong %>"
                             ControlToCompare="txtNewPassword" ValidationGroup="Password" ControlToValidate="txtConfirmPassword">
                         &nbsp;</asp:CompareValidator>
                     </td>
@@ -81,11 +81,12 @@
         <br />
         <div class="div_padding_10">
             <div class="left">
-                <asp:Button ID="btnSave" ValidationGroup="Password" runat="server" Text="Save New Password"
+                <asp:Button ID="btnSave" ValidationGroup="Password" runat="server" Text="<%$ LabelResourceExpression: app_save_new_password_button_text %>"
                     OnClick="btnSave_Click" />
             </div>
             <div class="right">
-                <input id="btnCancel" class="cursor_hand" type="submit" value="Cancel" onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()" />
+                <input id="btnCancel" class="cursor_hand" type="submit" value='<asp:Literal ID="Literal1" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" runat="server"></asp:Literal>' onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()" />
+                
             </div>
             <div class="clear">
             </div>

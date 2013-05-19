@@ -17,5 +17,6 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
        public DateTime u_datetime {get;set;}
        public string ipaddress { get; set; }
        public string device { get; set; }
+       public string a_values { get; set; }
     }
 }

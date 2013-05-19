@@ -13,7 +13,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -24,9 +26,15 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
             var editFacilityId = $('input#<%=hdFacilityId.ClientID %>').val();
             // Add and view  locale
             $("#btnManageLocale").fancybox({
@@ -114,10 +122,10 @@
                         success: function () {
 
                             // Do some animation effect
-                           // tr_id.fadeOut(500, function () {
+                            // tr_id.fadeOut(500, function () {
 
-                                //Remove GridView row
-                              //  tr_id.remove();
+                            //Remove GridView row
+                            //  tr_id.remove();
 
                             //});
                         }
@@ -213,13 +221,15 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
     <asp:HiddenField ID="hdFacilityId" runat="server" />
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveFacility" ValidationGroup="saefin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_facility_button_text %>" OnClick="btnHeaderSaveFacility_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_facility_button_text %>"
+                            OnClick="btnHeaderSaveFacility_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
@@ -234,7 +244,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_facility_information_english_us_text")%>: 
+            <%=LocalResources.GetLabel("app_facility_information_english_us_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -244,7 +254,8 @@
                         <asp:RequiredFieldValidator ID="rfvFacilitylId" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtFacilityId" ErrorMessage="<%$ TextResourceExpression: app_facility_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_facility_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_facility_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtFacilityId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -259,7 +270,8 @@
                         <asp:RequiredFieldValidator ID="rfvFacilityName" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtFacilityName" ErrorMessage="<%$ TextResourceExpression: app_facility_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_facility_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_facility_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtFacilityName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -270,7 +282,8 @@
                         <asp:RequiredFieldValidator ID="rfvFacilityDescription" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtFacilityDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtFacilityDescription" runat="server" class="txtInput_long" rows="3"
@@ -290,9 +303,8 @@
                         <%=LocalResources.GetLabel("app_facility_type_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlFacilityType" DataTextField="s_facility_type_name"
-                            DataValueField="s_facility_type_system_id_pk" CssClass="ddl_user_advanced_search"
-                            runat="server">
+                        <asp:DropDownList ID="ddlFacilityType" DataTextField="s_facility_type_name" DataValueField="s_facility_type_system_id_pk"
+                            CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -335,7 +347,8 @@
                     <td>
                         <asp:RequiredFieldValidator ID="rfvAddress1" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtAddress1" ErrorMessage="<%$ TextResourceExpression: app_address_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>&nbsp; * <%=LocalResources.GetLabel("app_address_1_text")%>:
+                        </asp:RequiredFieldValidator>&nbsp; *
+                        <%=LocalResources.GetLabel("app_address_1_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtAddress1" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -357,7 +370,8 @@
                     <td>
                         <asp:RequiredFieldValidator ID="rfvCity" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtCity" ErrorMessage="<%$ TextResourceExpression: app_city_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>* <%=LocalResources.GetLabel("app_city_text")%>:
+                        </asp:RequiredFieldValidator>*
+                        <%=LocalResources.GetLabel("app_city_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCity" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -366,7 +380,8 @@
                         <asp:RequiredFieldValidator ID="rfvState" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtState" ErrorMessage="<%$ TextResourceExpression: app_state_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_state_province_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_state_province_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtState" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -375,7 +390,8 @@
                         <asp:RequiredFieldValidator ID="rfvZipCode" runat="server" ValidationGroup="saefin"
                             ControlToValidate="txtZipCode" ErrorMessage="<%$ TextResourceExpression: app_zipcode_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_zip_postal_code_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_zip_postal_code_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtZipCode" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -391,7 +407,7 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                         <%=LocalResources.GetLabel("app_locale_text")%>:
+                        <%=LocalResources.GetLabel("app_locale_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlLocale" DataTextField="s_locale_description" DataValueField="s_locale_id_pk"
@@ -399,7 +415,7 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                         <%=LocalResources.GetLabel("app_timezone_text")%>:
+                        <%=LocalResources.GetLabel("app_timezone_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlTimezone" DataTextField="u_time_zone_description" DataValueField="u_time_zone_id_pk"
@@ -463,7 +479,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveFacility" ValidationGroup="saefin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_facility_button_text %>" OnClick="btnFooterSaveFacility_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_facility_button_text %>"
+                            OnClick="btnFooterSaveFacility_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"

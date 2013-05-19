@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -58,9 +56,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                         //Get particular delivery attachments
                         DataView dvAttachments = new DataView(SessionWrapper.DeliveryAttachments);
                         dvAttachments.RowFilter = "c_delivery_id_fk= '" + editDelivery + "'";
+
+                        //Bind Grading Scheme
+                        ddlScoringScheme.DataSource = SystemCurriculumBLL.GetGradingScheme(SessionWrapper.CultureName);
+                        ddlScoringScheme.DataBind();
+
                         //Bind delivery attachments
                         gvAddDeliveryAttachments.DataSource = dvAttachments.ToTable();
                         gvAddDeliveryAttachments.DataBind();
+
+
                     }
                     //For reset
                     RevertBack();
@@ -84,12 +89,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 //Bind material
                 gvMaterials.DataSource = dvMaterials.ToTable();
                 gvMaterials.DataBind();
-                //Get particular delivery related session
-                DataView dtSessions = new DataView(SessionWrapper.DeliverySessions);
-                dtSessions.RowFilter = "c_delivery_id_fk= '" + editDelivery + "'";
-                //Bind session
-                gvSession.DataSource = dtSessions.ToTable();
-                gvSession.DataBind();
+                if (hdCheckCopy.Value != "1" || string.IsNullOrEmpty(hdCheckCopy.Value))
+                {
+                    //Get particular delivery related session
+                    DataView dtSessions = new DataView(SessionWrapper.DeliverySessions);
+                    dtSessions.RowFilter = "c_delivery_id_fk= '" + editDelivery + "'";
+                    //Bind session
+                    gvSession.DataSource = dtSessions.ToTable();
+                    gvSession.DataBind();
+                }
                 //Delete if confirm instructor is false
                 var rows = SessionWrapper.DeliveryInstructor.Select("c_instructor_confirm= '" + false + "'");
                 foreach (var row in rows)
@@ -181,6 +189,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             txtMaxwaitList.Text = Convert.ToString(delivery.c_delivery_max_waitlist);
             txtScormUrl.Text = delivery.c_olt_launch_url;
             txtScromLaunchParameters.Text = delivery.c_olt_launch_param;
+            ddlScoringScheme.SelectedValue = delivery.c_survey_scoring_scheme_id_fk;
             txtVlsUrl.Text = delivery.c_vlt_launch_url;
             txtCustom01.Text = delivery.c_delivery_custom_01;
             txtCustom02.Text = delivery.c_delivery_custom_02;
@@ -199,6 +208,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             lblDeliveryCoordinator.Text = delivery.c_delivery_coordinator_name;
             txtNCUrl.Text = delivery.c_nc_olt_launch_url;
             txtNcLaunchParameter.Text = delivery.c_nc_olt_launch_param;
+            ddlScoringScheme.SelectedValue = delivery.c_survey_scoring_scheme_id_fk;
+            
             chkNcWaitList.Checked = delivery.c_nc_olt_waitlist_flag;
             if (!string.IsNullOrEmpty(delivery.c_nc_olt_wrapper_id_fk))
             {
@@ -364,8 +375,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 foreach (var row in rows)
                     row.Delete();
                 SessionWrapper.DeliveryAttachments.AcceptChanges();
-
-
 
             }
             catch (Exception ex)
@@ -731,6 +740,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_vlt_launch_url"] = txtVlsUrl.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_olt_launch_url"] = txtScormUrl.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_olt_launch_param"] = txtScromLaunchParameters.Text;
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_grading_scheme_id_fk"] = ddlScoringScheme.SelectedValue;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_01"] = txtCustom01.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_02"] = txtCustom02.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_03"] = txtCustom03.Text;
@@ -750,6 +760,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
 
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_nc_olt_launch_url"] = txtNCUrl.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_nc_olt_launch_param"] = txtNcLaunchParameter.Text;
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_survey_scoring_scheme_id_fk"] = ddlScoringScheme.SelectedValue;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_nc_olt_waitlist_flag"] = chkNcWaitList.Checked;
             if (chkNcWaitList.Checked == true)
             {
@@ -1009,6 +1020,60 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             //lblDeliveryCoordinator.Text = SessionWrapper.Reset_c_delivery_coordinator_name;
 
 
+        }
+
+        protected void gvSession_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Copy"))
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument.ToString());
+                string c_session_system_id_pk = gvSession.DataKeys[rowIndex].Values[0].ToString();
+                //string c_session_id_pk = gvSession.DataKeys[rowIndex].Values[1].ToString();
+                DataView dvcopySession = new DataView(SessionWrapper.DeliverySessions);
+                dvcopySession.RowFilter = "c_session_system_id_pk= '" + c_session_system_id_pk + "'";
+                DataTable dtCopySession = dvcopySession.ToTable();
+                DataRow row;
+                row = SessionWrapper.TempDeliverySessions.NewRow();
+                row["c_session_system_id_pk"] = Guid.NewGuid().ToString();
+                row["c_session_id_pk"] = dtCopySession.Rows[0]["c_session_id_pk"].ToString() + "_copy";
+                row["c_delivery_id_fk"] = dtCopySession.Rows[0]["c_delivery_id_fk"].ToString();
+                row["c_session_title"] = dtCopySession.Rows[0]["c_session_title"].ToString();
+                row["c_sessions_desc"] = dtCopySession.Rows[0]["c_sessions_desc"].ToString();
+
+                row["c_session_start_date"] = dtCopySession.Rows[0]["c_session_start_date"].ToString();
+                row["c_session_end_date"] = dtCopySession.Rows[0]["c_session_end_date"].ToString();
+                row["c_session_duration"] = dtCopySession.Rows[0]["c_session_duration"].ToString();
+
+                row["c_session_start_time"] = dtCopySession.Rows[0]["c_session_start_time"].ToString();
+                row["c_sessions_end_time"] = dtCopySession.Rows[0]["c_sessions_end_time"].ToString();
+
+                row["c_session_location_id_fk"] = dtCopySession.Rows[0]["c_session_location_id_fk"].ToString();
+                row["c_session_facility_id_fk"] = dtCopySession.Rows[0]["c_session_facility_id_fk"].ToString();
+                row["c_sessions_room_id_fk"] = dtCopySession.Rows[0]["c_sessions_room_id_fk"].ToString();
+
+                row["c_location_name"] = dtCopySession.Rows[0]["c_location_name"].ToString();
+                row["c_facility_name"] = dtCopySession.Rows[0]["c_facility_name"].ToString();
+                row["c_room_name"] = dtCopySession.Rows[0]["c_room_name"].ToString();
+
+                row["c_session_date"] = dtCopySession.Rows[0]["c_session_date"].ToString();
+                if (!string.IsNullOrEmpty(dtCopySession.Rows[0]["c_session_confirm"].ToString()))
+                {
+                    row["c_session_confirm"] = Convert.ToBoolean(dtCopySession.Rows[0]["c_session_confirm"].ToString());
+                }
+                SessionWrapper.TempDeliverySessions.Rows.Add(row);
+                SessionWrapper.TempDeliverySessions.AcceptChanges();
+
+                ConvertDataTables removeDuplicaterow = new ConvertDataTables();
+                if (SessionWrapper.TempDeliverySessions.Rows.Count > 0)
+                {
+                    SessionWrapper.TempDeliverySessions = removeDuplicaterow.RemoveDuplicateRows(SessionWrapper.TempDeliverySessions, "c_session_id_pk");
+                }
+
+                //Bind sessions
+                gvSession.DataSource = SessionWrapper.TempDeliverySessions;
+                gvSession.DataBind();
+
+            }
         }
 
     }

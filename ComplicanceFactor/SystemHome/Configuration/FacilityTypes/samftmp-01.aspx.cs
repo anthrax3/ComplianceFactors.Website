@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.FacilityTypes
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLocalizationResourceLabelText("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocalizationResourceLabelText("app_manage_facility_types_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_facility_types_text");
                 //Bind Facility Type Status
                 ddlStatus.DataSource = SystemFacilityTypesBLL.GetAllStatus(SessionWrapper.CultureName,"samftmp-01");
                 ddlStatus.DataBind();

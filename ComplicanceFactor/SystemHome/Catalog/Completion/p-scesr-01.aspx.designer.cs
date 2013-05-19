@@ -103,13 +103,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
         protected global::System.Web.UI.WebControls.Button btnHeaderGoto;
         
         /// <summary>
-        /// gvEmployeeSearchResults control.
+        /// gvsearchDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEmployeeSearchResults;
+        protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
         
         /// <summary>
         /// btnSaveSelected control.
@@ -209,6 +209,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFooterGoto;
+        
+        /// <summary>
+        /// pnlDefault control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
         /// txtEmployeeName control.

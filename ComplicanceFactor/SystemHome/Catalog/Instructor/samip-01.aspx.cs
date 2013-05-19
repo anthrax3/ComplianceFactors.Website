@@ -12,10 +12,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
 {
     public partial class samip_01 : BasePage
     {
+        string navigationText;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Request.QueryString["page"] == "training")
+            //{
+            //    hdNav_selected.Value = "#app_nav_training";
+            //    Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+            //    lblBreadCrumb.Text = "<a href=/Training/tchp-01.aspx>" + "Training" + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_instructors_text");
+            //}
+            //else
+            //{
+            //    Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+            //    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_instructors_text");
+            //}             
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_instructors_text");
+            navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+            hdNav_selected.Value = "#"+SessionWrapper.navigationText;
+            lblBreadCrumb.Text =navigationText +"&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_instructors_text");  
             if (!IsPostBack)
             {
                 try

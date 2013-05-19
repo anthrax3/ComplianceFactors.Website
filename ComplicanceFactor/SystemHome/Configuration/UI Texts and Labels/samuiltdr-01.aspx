@@ -154,7 +154,7 @@
     <br />
     <div class="content_area_long">
         <div class="div_header_long">
-            UI Search Results:
+            <%=LocalResources.GetLabel("app_ui_search_results_text")%>:
         </div>
         <br />
         <div>
@@ -171,7 +171,7 @@
                             runat="server" Text="<%$ LabelResourceExpression: app_last_button_text %>" />
                     </td>
                     <td align="center">
-                        <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="Result Per Page"></asp:Label>
+                        <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
                         <asp:DropDownList ID="ddlHeaderResultPerPage" OnSelectedIndexChanged="ddlHeaderResultPerPage_SelectedIndexChanged"
                             runat="server" AutoPostBack="true">
                             <asp:ListItem>10</asp:ListItem>
@@ -183,11 +183,11 @@
                         </asp:DropDownList>
                     </td>
                     <td align="right">
-                        <asp:Label ID="lblHeaderPage" runat="server" Text="Page"></asp:Label>
+                        <asp:Label ID="lblHeaderPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtHeaderPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblHeaderPageOf" runat="server" />
                         <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" OnClick="btnHeaderGoto_Click"
-                            runat="server" Text="Go To" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" />
                     </td>
                 </tr>
             </table>
@@ -200,21 +200,21 @@
                 PagerSettings-Visible="false" PageSize="10">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="UI ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left"
+                        HeaderText="<%$ LabelResourceExpression: app_ui_id_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left"
                         DataField="uid" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="UI Page(s)" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left"
+                        HeaderText="<%$ LabelResourceExpression: app_ui_page_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left"
                         DataField="uipage" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Native Label" ItemStyle-HorizontalAlign="Left" DataField="nativelabel" />
+                        HeaderText="<%$ LabelResourceExpression: app_native_label_text %>" ItemStyle-HorizontalAlign="Left" DataField="nativelabel" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="UI Type" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"
+                        HeaderText="<%$ LabelResourceExpression: app_ui_type_text %>" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center"
                         DataField="uitype" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <input type="button" id='<%# Eval("system_id").ToString() + "," +  Eval("uitype").ToString()%>'
-                                value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />' class="EditUi cursor_hand" />
+                                value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />' class="EditUi cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -235,7 +235,7 @@
                             runat="server" Text="<%$ LabelResourceExpression: app_last_button_text %>" />
                     </td>
                     <td align="center">
-                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="Result Per Page"></asp:Label>
+                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
                         <asp:DropDownList ID="ddlFooterResultPerPage" OnSelectedIndexChanged="ddlFooterResultPerPage_SelectedIndexChanged"
                             runat="server" AutoPostBack="true">
                             <asp:ListItem>10</asp:ListItem>
@@ -247,11 +247,11 @@
                         </asp:DropDownList>
                     </td>
                     <td align="right">
-                        <asp:Label ID="lblFooterPage" runat="server" Text="Page"></asp:Label>
+                        <asp:Label ID="lblFooterPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtFooterPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblFooterPageOf" runat="server" />
                         <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" OnClick="btnFooterGoto_Click"
-                            runat="server" Text="Go To" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" />
                     </td>
                 </tr>
             </table>
@@ -262,26 +262,26 @@
         <br />
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_long">
-                UI Advanced Search:
+                <%=LocalResources.GetLabel("app_ui_advanced_search_text")%>: 
             </div>
             <br />
             <div class="div_controls font_1">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            UI ID:
+                            <%=LocalResources.GetLabel("app_ui_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtUiId" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            UI Page(s):
+                            <%=LocalResources.GetLabel("app_ui_page_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtUiPages" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            Keyword:
+                            <%=LocalResources.GetLabel("app_keyword_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtKeyWord" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -293,7 +293,7 @@
                     </tr>
                     <tr>
                         <td>
-                            UI Type:
+                            <%=LocalResources.GetLabel("app_ui_type_text")%>: 
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlUiType" CssClass="ddl_user_advanced_search" runat="server">
@@ -304,7 +304,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Languages:
+                            <%=LocalResources.GetLabel("app_languages_text")%>:
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlLanguages" DataTextField="s_locale_description" DataValueField="s_locale_short_Name"
@@ -312,7 +312,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Native Label:
+                            <%=LocalResources.GetLabel("app_native_label_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtNativeLabel" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -324,17 +324,17 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="btnsave_new_user_td">
-                            <asp:Button ID="btnAddNewUser" CssClass="cursor_hand" runat="server" Text="Add New User" />
+                            <asp:Button ID="btnAddNewUser" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_new_user_button_text %>" />
                         </td>
                         <td>
                             &nbsp;
                         </td>
                         <td class="btnreset_td">
                             <asp:Button ID="btnReset" CssClass="cursor_hand" OnClientClick="return resetall();"
-                                Text="Reset" runat="server" />
+                                Text="<%$ LabelResourceExpression: app_reset_button_text %>" runat="server" />
                         </td>
                         <td colspan="2" class="btncancel_td">
-                            <asp:Button ID="btnGosearch" OnClick="btnGosearch_Click" CssClass="cursor_hand" Text="Go Search !"
+                            <asp:Button ID="btnGosearch" OnClick="btnGosearch_Click" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
                                 runat="server" />
                         </td>
                     </tr>

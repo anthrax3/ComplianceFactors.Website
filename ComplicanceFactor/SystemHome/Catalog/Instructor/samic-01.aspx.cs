@@ -18,8 +18,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
 
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Instructor/samir-01.aspx>" + LocalResources.GetLabel("app_manage_instructors_text") + "</a>&nbsp;>&nbsp;" + LocalResources.GetLabel("app_manage_instructors_courses_text");
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Instructor/samir-01.aspx>" + LocalResources.GetLabel("app_manage_instructors_text") + "</a>&nbsp;>&nbsp;" + LocalResources.GetLabel("app_manage_instructors_courses_text");
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Instructor/samir-01.aspx>" + LocalResources.GetLabel("app_manage_instructors_text") + "</a>&nbsp;>&nbsp;" + LocalResources.GetLabel("app_manage_instructors_courses_text");
+
 
                 try
                 {

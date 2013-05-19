@@ -234,7 +234,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="width_35">
                             <ItemTemplate>
-                                <input type="button" id='<%# Eval("s_ui_text_name") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
+                                <input type="button" id='<%# Eval("s_locale_id_fk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
                                     class="editlocale cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>

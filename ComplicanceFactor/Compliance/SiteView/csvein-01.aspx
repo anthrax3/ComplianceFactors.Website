@@ -156,14 +156,14 @@
         <div id="divError" runat="server" class="msgarea_error" style="display: none;">
         </div>
         <div class="div_header_long">
-            Inspection Details:
+            <%=LocalResources.GetLabel("app_inspection_details_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                        Inspection Id:
+                        <%=LocalResources.GetLabel("app_inspection_id_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblInspectionId" runat="server" Text=""></asp:Label>
@@ -180,9 +180,9 @@
                     </td>
                     <td class="width_180 align_right">
                         <asp:RequiredFieldValidator ID="rfvInspectionName" runat="server" ControlToValidate="txtInspectionName"
-                            ValidationGroup="csvein" ErrorMessage="Please Enter Inspection Name">&nbsp;
+                            ValidationGroup="csvein" ErrorMessage="<%$ TextResourceExpression: app_inspection_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Inspection Name:
+                        * <%=LocalResources.GetLabel("app_inspection_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtInspectionName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -193,7 +193,7 @@
                         <%-- <asp:RequiredFieldValidator ID="rfvInspectionDescription" runat="server"  
                             ControlToValidate="txtInspectionDescription" ErrorMessage="Please Enter Description">&nbsp;
                         </asp:RequiredFieldValidator>--%>
-                        Inspection Description:
+                        <%=LocalResources.GetLabel("app_inspection_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtInspectionDescription" runat="server" class="txtInput_long" rows="3"
@@ -202,7 +202,7 @@
                 </tr>
                 <tr>
                     <td>
-                        IsDefault:
+                        <%=LocalResources.GetLabel("app_is_default_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:CheckBox ID="chkIsDefault" runat="server" />
@@ -210,7 +210,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Status:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
@@ -222,7 +222,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Questions:
+            <%=LocalResources.GetLabel("app_questions_text")%>:
         </div>
         <br />
         <div align="center">
@@ -250,11 +250,11 @@
                                        <%-- <%#Eval("sv_mi_templete_question_type")%>--%>
                                     </td>
                                     <td class="gridview_row_width_1" align="center">
-                                        <input type="button" id='<%# Eval("sv_mi_templete_question_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="Edit" />'
+                                        <input type="button" id='<%# Eval("sv_mi_templete_question_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
                                             class="editQuestion cursor_hand" />
                                     </td>
                                     <td class="gridview_row_width_1" align="center">
-                                        <input type="button" id='<%# Eval("sv_mi_templete_question_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="Remove" />'
+                                        <input type="button" id='<%# Eval("sv_mi_templete_question_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                             class="deleteQuestion cursor_hand" />
                                     </td>
                                 </tr>
@@ -269,7 +269,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                        <asp:Button ID="btnAddQuestions" runat="server" CssClass="cursor_hand" Text="Add Questions" />
+                        <asp:Button ID="btnAddQuestions" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_question_button_text %>" />
                     </td>
                 </tr>
             </table>
@@ -284,7 +284,7 @@
                 <tr>
                     <td colspan="2" class="btnsave_new_user_td">
                         <asp:Button ID="btnFooterSaveInspection" ValidationGroup="csvein" CssClass="cursor_hand"
-                            runat="server" Text="Save Inspection" OnClick="btnFooterSaveInspection_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_inspection_button_text %>" OnClick="btnFooterSaveInspection_Click" />
                     </td>
                     <td>
                         &nbsp;
@@ -293,7 +293,7 @@
                         &nbsp;
                     </td>
                     <td class="btnreset_td">
-                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="Reset"
+                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnFooterReset_Click" />
                     </td>
                     <td>
@@ -303,7 +303,7 @@
                         &nbsp;
                     </td>
                     <td colspan="2" class="btncancel_td">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="Cancel"
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>

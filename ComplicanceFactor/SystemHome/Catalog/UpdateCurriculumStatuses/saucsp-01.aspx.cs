@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 {
@@ -16,8 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_update_curriculum_statuses_text");
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "Update Curriculum Statuses";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_update_curriculum_statuses_text");
+
 
                 try
                 {
@@ -33,8 +37,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
                     liFirstItem.Value = "0";
                     ddlCurriculumType.Items.Insert(0, liFirstItem);
                     ddlCurriculumType.SelectedIndex = 0;
-
-
+ 
+                     
 
                     //ddlCurriculumType.DataSource = SystemCurriculumBLL.Getcurriculumtype(SessionWrapper.CultureName);
                     //ddlCurriculumType.DataBind();
@@ -48,11 +52,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("sascp-01", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("saucsp(update Curriculum Status)", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("sascp-01", ex.Message);
+                            Logger.WriteToErrorLog("saucsp(update Curriculum Status)", ex.Message);
                         }
                     }
                 }

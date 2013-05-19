@@ -676,6 +676,13 @@ namespace ComplicanceFactor.Common
             dtTempDeliverysColumn.ColumnName = "c_olt_launch_param";
             dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
 
+            //c_survey_scoring_scheme_id_fk
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.String");
+            dtTempDeliverysColumn.ColumnName = "c_survey_scoring_scheme_id_fk";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
+
             //c_delivery_custom_01
             dtTempDeliverysColumn = new DataColumn();
             dtTempDeliverysColumn.DataType = Type.GetType("System.String");
@@ -1303,6 +1310,165 @@ namespace ComplicanceFactor.Common
             dtTempEmployeeColumn = new DataColumn();
             dtTempEmployeeColumn.DataType = Type.GetType("System.String");
             dtTempEmployeeColumn.ColumnName = "u_employee_number";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+            return dtTempEmployee;
+
+        }
+        public static DataTable GradingSchemeValues()
+        {
+            DataTable dtGradingSchemeValues = new DataTable();
+            DataColumn dtGradingSchemeValuesColumn;
+
+           
+            /// temp s_grading_scheme_system_value_id_pk 
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_system_value_id_pk";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            
+            //s_grading_scheme_value_id
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_id";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            
+            /// s_grading_scheme_system_id_fk
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_system_id_fk";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+
+
+            //s_grading_scheme_value_name
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_name";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+
+            //s_grading_scheme_value_description
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_description";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            
+            //s_grading_scheme_value_min_score
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_min_score";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+
+            /// s_grading_scheme_value_max_score
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.Int32");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_max_score";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            //s_grading_scheme_value_grade
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_grade";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            //s_grading_scheme_value_min_num
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_min_num";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+
+            //s_grading_scheme_value_max_num
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_max_num";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            
+            /// s_grading_scheme_value_gpa
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_gpa";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+
+
+            //s_grading_scheme_value_descriptior
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_descriptior";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+
+            //s_grading_scheme_value_qualification
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_qualification";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            //s_grading_scheme_value_pass_status_id_fk
+            dtGradingSchemeValuesColumn = new DataColumn();
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_pass_status_id_fk";
+            dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
+
+            return dtGradingSchemeValues;
+
+        }
+
+
+        public static DataTable Employee()
+        {
+            DataTable dtTempEmployee = new DataTable();
+            DataColumn dtTempEmployeeColumn;
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "u_user_id_pk";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "u_first_name";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "u_last_name";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "u_hris_employee_id";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "t_transcript_attendance_id_fk";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "t_transcript_passing_status_id_fk";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "t_transcript_grade_id_fk";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.Boolean");
+            dtTempEmployeeColumn.ColumnName = "isSaved";
+            dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
+
+            dtTempEmployeeColumn = new DataColumn();
+            dtTempEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempEmployeeColumn.ColumnName = "t_transcript_id_pk";
             dtTempEmployee.Columns.Add(dtTempEmployeeColumn);
             return dtTempEmployee;
 

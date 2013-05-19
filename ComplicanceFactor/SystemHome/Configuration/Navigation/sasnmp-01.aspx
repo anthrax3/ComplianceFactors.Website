@@ -182,11 +182,11 @@
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
-                        <asp:Button ID="btnHeaderSave" CssClass="cursor_hand" runat="server" Text="Save"
+                        <asp:Button ID="btnHeaderSave" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
                             OnClick="btnHeaderSave_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="Cancel"
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
@@ -2068,11 +2068,11 @@
         <table cellpadding="0" cellspacing="0" class="paging">
             <tr>
                 <td align="left">
-                    <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="Save"
+                    <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
                         OnClick="btnFooterSave_Click" />
                 </td>
                 <td align="right">
-                    <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="Cancel"
+                    <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                         OnClick="btnFooterCancel_Click" />
                 </td>
             </tr>

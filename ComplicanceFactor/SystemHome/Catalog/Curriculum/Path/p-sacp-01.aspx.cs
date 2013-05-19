@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
 {
@@ -132,7 +130,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
 
             Label lblSectionNumber = e.Item.FindControl("lblSectionNumber") as Label;
             int seqHazard = Convert.ToInt32(e.Item.ItemIndex) + 1;
-            lblSectionNumber.Text = "Section " + seqHazard + ":";
+            lblSectionNumber.Text = LocalResources.GetLabel("app_section_text") + seqHazard + ":";
             GridView gvCourse = (GridView)e.Item.FindControl("gvCourse");
             BindPathCourse(gvCourse, dlSection.DataKeys[e.Item.ItemIndex].ToString());
 
@@ -167,7 +165,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
             {
                 string c_curricula_path_section_id_pk = dlSection.DataKeys[dle.Item.ItemIndex].ToString();
 
-                e.Row.Cells[0].Text = "<input id=" + c_curricula_path_section_id_pk + " class='newcourse cursor_hand' type='button' value='Add Course'>";
+                e.Row.Cells[0].Text = "<input id=" + c_curricula_path_section_id_pk + " class='newcourse cursor_hand' type='button' value='" + LocalResources.GetLabel("app_add_course_button_text") + "'/>";
 
             }
         }
@@ -383,8 +381,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
                 }
                 path.c_curricula_path_section = ConvertDataTableToXml(SessionWrapper.TempPathSection);
                 path.c_curricula_path_courses = ConvertDataTableToXml(SessionWrapper.TempPathCourse);
-                int result = 0;
-                SystemCurriculumBLL.InsertCurriculaPath(path);
+                int result = SystemCurriculumBLL.InsertCurriculaPath(path);
                 //Close fancybox
                 if (result != -1)
                 {

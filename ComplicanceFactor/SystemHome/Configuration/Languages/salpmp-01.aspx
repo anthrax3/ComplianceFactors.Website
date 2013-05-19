@@ -77,7 +77,7 @@
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
     <div class="left div_padding_10">
-      <asp:Button ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click" />
+      <asp:Button ID="btnSave" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" onclick="btnSave_Click" />
     </div>
       <div class="right div_padding_10">
             <asp:Button ID="btnHeaderClose" runat="server" 

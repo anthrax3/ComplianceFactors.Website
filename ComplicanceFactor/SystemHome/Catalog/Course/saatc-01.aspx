@@ -9,7 +9,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -20,7 +22,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -50,6 +52,7 @@
         EnableScriptLocalization="true">
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
@@ -77,7 +80,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="text_font_normal">
-                         <%=LocalResources.GetLabel("app_created_by_text")%>:
+                        <%=LocalResources.GetLabel("app_created_by_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblCreatedBy" runat="server"></asp:Label>
@@ -248,12 +251,13 @@
         </div>
         <br />
         <div>
-            <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CellPadding="0" DataKeyNames="c_delivery_system_id_pk"
-                CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server" AutoGenerateColumns="False" onrowdatabound="gvDeliveries_RowDataBound">
+            <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CellPadding="0"
+                DataKeyNames="c_delivery_system_id_pk" CellSpacing="0" ShowHeader="false" ShowFooter="false"
+                runat="server" AutoGenerateColumns="False" OnRowDataBound="gvDeliveries_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <table  class="font_normal">
+                            <table class="font_normal">
                                 <tr>
                                     <td class="horizontal_line2" colspan="3">
                                         <hr>
@@ -264,7 +268,7 @@
                                         <%#Eval("c_delivery_type_text")%>
                                     </td>
                                     <td class="gridview_row_width_350 font_12_pixel">
-                                          <asp:Label ID="lblSession" runat="server" ></asp:Label>
+                                        <asp:Label ID="lblSession" runat="server"></asp:Label>
                                     </td>
                                     <td class="gridview_row_width_300" align="right">
                                         <table>
@@ -354,7 +358,6 @@
         <br />
         <div class="div_controls_from_left">
         </div>
-       
         <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_Recurrance_text")%>:
@@ -433,11 +436,9 @@
             </asp:GridView>
         </div>
         <br />
-     
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_fulfillments_text")%>:
         </div>
-      
         <div class="div_controls_from_left">
             <asp:GridView ID="gvFulfillments" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_95"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"

@@ -137,7 +137,7 @@
             <div id="container">
                 <div class="page_text" align="center">
                     <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
-                        runat="server" EmptyDataText="No result found." DataKeyNames="h_harm_id_pk" AutoGenerateColumns="False"
+                        runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" DataKeyNames="h_harm_id_pk" AutoGenerateColumns="False"
                         AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
                         PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowCommand="gvsearchDetails_RowCommand"
                         OnRowDataBound="gvsearchDetails_RowDataBound">

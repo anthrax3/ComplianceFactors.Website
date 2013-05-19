@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
@@ -9,6 +6,7 @@ using System.IO;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
 {
@@ -26,9 +24,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             {
                 try
                 {
-                    Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Archive Curriculum";
+                    //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + "Manage Curriculum" + "</a>&nbsp;" + " >&nbsp;" + "Archive Curriculum";
 
+                    string navigationText;
+                    Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                    navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                    hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + LocalResources.GetLabel("app_manage_curriculam_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_archive_curriculum_text"); 
 
                     ///<summary>
                     //Get Curriculum id
@@ -175,6 +178,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             lblCustom11.Text = Curriculum.c_curriculum_custom_11;
             lblCustom12.Text = Curriculum.c_curriculum_custom_12;
             lblCustom13.Text = Curriculum.c_curriculum_custom_13;
+            lblCurriculumType.Text = Curriculum.c_curriculum_type_name;
             //Store Prerequisites,Equivalencies and Fulfillments in dataset
             DataSet dsprerequisiteEquivalenciesFullfillments = SystemCurriculumBLL.GetprerequisiteEquivalenciesFullfillments(CurriculumId);
             //Get Prerequisites session

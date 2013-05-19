@@ -247,7 +247,7 @@ namespace ComplicanceFactor.Manager.Profile
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Manager/Home/lhp-01.aspx");
+            Response.Redirect("~/Manager/Home/mhp-01.aspx");
         }
     }
 }

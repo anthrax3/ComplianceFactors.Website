@@ -78,7 +78,7 @@ namespace ComplicanceFactor.Employee.Course
             DataSet dsHeaderFooter = new DataSet();
             try
             {
-                dsEmployee = EmployeeBLL.GetAllEmployee(SessionWrapper.u_userid);
+                dsEmployee = EmployeeBLL.GetCoursePDFExcel(SessionWrapper.u_userid,SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace ComplicanceFactor.Employee.Course
                 rvCourses.LocalReport.EnableExternalImages = true;
                 rvCourses.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Course.PdfTemplate.MyCourses.rdlc";
                 rvCourses.LocalReport.DataSources.Add(new ReportDataSource("MyCourses", dsEmployee.Tables[0]));
-                rvCourses.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsEmployee.Tables[2]));
+                rvCourses.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsEmployee.Tables[1]));
                 byte[] bytes = rvCourses.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();
@@ -130,7 +130,7 @@ namespace ComplicanceFactor.Employee.Course
             DataSet dsEmployee = new DataSet();
             try
             {
-                dsEmployee = EmployeeBLL.GetAllEmployee(SessionWrapper.u_userid);
+                dsEmployee = EmployeeBLL.GetCoursePDFExcel(SessionWrapper.u_userid, SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -149,12 +149,12 @@ namespace ComplicanceFactor.Employee.Course
                 }
 
             }
-            if (dsEmployee.Tables[3].Rows.Count > 0)
+            if (dsEmployee.Tables[0].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsEmployee.Tables[3]);
+                exportDataTableToCsv(dsEmployee.Tables[0],dsEmployee.Tables[2]);
             }
         }
-        private void exportDataTableToCsv(DataTable dt)
+        private void exportDataTableToCsv(DataTable dt, DataTable dtCourseColumnName)
         {
             Response.Clear();
             Response.ContentType = "application/csv";
@@ -162,10 +162,10 @@ namespace ComplicanceFactor.Employee.Course
             Response.AddHeader("Content-Disposition", "attachment;filename=MyCourses.csv");
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < dt.Columns.Count; k++)
+            for (int k = 0; k < dtCourseColumnName.Rows.Count; k++)
             {
                 //add separator
-                sb.Append(dt.Columns[k].ColumnName + ',');
+                sb.Append(dtCourseColumnName.Rows[k]["courseColumnName"].ToString() + ',');
             }
             //append new line
             sb.Append("\r\n");

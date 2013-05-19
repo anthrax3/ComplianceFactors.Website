@@ -19,14 +19,14 @@
     </style>
     <div>
         <div class="div_header_popup_1">
-            FieldNote Details:
+            <%=LocalResources.GetLabel("app_fieldnote_details_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="text_font_normal">
-                        FieldNote Id
+                        <%=LocalResources.GetLabel("app_fieldnote_id_text")%>
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblFieldNote" runat="server" Text="Label"></asp:Label>
@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Title:
+                        <%=LocalResources.GetLabel("app_title_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblTitle" runat="server" Text="Label"></asp:Label>
@@ -49,7 +49,7 @@
                         &nbsp;
                     </td>
                     <td class="text_font_normal">
-                        Location:
+                        <%=LocalResources.GetLabel("app_location_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblLocation" runat="server" Text="Label"></asp:Label>
@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label>
@@ -67,13 +67,29 @@
         </div>
         <br />
         <div class="div_header_popup_1">
-            Attachments:
+            <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
         <br />
         <div class="div_padding_40 align_center">
             <asp:GridView ID="gvAttachment" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
+                <RowStyle CssClass="record"></RowStyle>
+                <Columns>
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_7"
+                        HeaderStyle-HorizontalAlign="Left" DataField="sv_file_name" HeaderText="Acknowledgements" />
+                </Columns>
+            </asp:GridView>
+        </div>
+        <br />
+        <div class="div_header_popup_1">
+            Acknowledgement:
+        </div>
+        <br />
+        <div class="div_padding_40 font_1">
+            <asp:GridView ID="gvAcknowledgement" RowStyle-CssClass="record" GridLines="None"
+                CssClass="gridview_normal_800" CellPadding="0" CellSpacing="0" ShowHeader="false"
+                ShowFooter="false" runat="server" AutoGenerateColumns="False">
                 <RowStyle CssClass="record"></RowStyle>
                 <Columns>
                     <asp:TemplateField>
@@ -84,8 +100,11 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="gridview_row_width_5">
+                                        <%#Eval("acknowlegmentUser")%>
+                                    </td>
                                     <td class="gridview_row_width_1" align="center">
-                                        <%#Eval("sv_file_name")%>
+                                        <%#Eval("acknowledged")%>
                                     </td>
                                 </tr>
                             </table>
@@ -98,8 +117,9 @@
         <br />
         <div class="div_controls font_1">
             <center>
-            <input type="button" value="Cancel" onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();" class="cursor_hand" />
-               
+                <input type="button" value="<%=LocalResources.GetLabel("app_cancel_button_text")%>"
+                    onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                    class="cursor_hand" />
             </center>
         </div>
     </div>

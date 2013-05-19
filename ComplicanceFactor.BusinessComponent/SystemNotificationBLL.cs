@@ -284,13 +284,14 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static SystemNotification GetSingleNotificationbyId(string s_notification_system_id_pk)
+        public static SystemNotification GetSingleNotificationbyId(string s_notification_system_id_pk, string selected_language)
         {
             SystemNotification notification;
             try
             {
                 Hashtable htGetNotification = new Hashtable();
                 htGetNotification.Add("@s_notification_id_pk", s_notification_system_id_pk);
+                htGetNotification.Add("@selected_language", selected_language);
                 notification = new SystemNotification();
                 DataTable dtGetNotification = DataProxy.FetchDataTable("s_sp_get_notification_on_off", htGetNotification);
 

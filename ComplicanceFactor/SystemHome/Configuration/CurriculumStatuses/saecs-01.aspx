@@ -1586,7 +1586,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveCurriculumStatus" ValidationGroup="saectn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" onclick="btnFooterSaveCurriculumType_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" 
+                            onclick="btnFooterSaveCurriculumStatus_Click"/>
                     </td>
                     <td align="center">
                         <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" 
@@ -1594,7 +1595,7 @@
                     </td>
                     <td align="right">
                         <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" onclick="btnFooterCancel_Click" />
+                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" onclick="btnFooterCancel_Click"/>
                     </td>
                 </tr>
             </table>

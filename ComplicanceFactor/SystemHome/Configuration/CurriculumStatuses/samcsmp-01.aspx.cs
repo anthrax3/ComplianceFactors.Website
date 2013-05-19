@@ -50,18 +50,18 @@ namespace ComplicanceFactor.SystemHome.Configuration.Curriculum_Statuses
             try
             {
                 SystemCurriculumStatus curriculum = new SystemCurriculumStatus();
-                curriculum.s_curriculum_status_id = txtCurriculamId.Text;
-                curriculum.s_curriculum_status_name_us_english = txtCurriculamName.Text;
+                curriculum.s_curr_status_id = txtCurriculamId.Text;
+                curriculum.s_curr_status_name_us_english = txtCurriculamName.Text;
                 if (ddlStatus.SelectedValue == "app_ddl_all_text")
                 {
-                    curriculum.s_curriculum_status_status_id_fk = "0";
+                    curriculum.s_curr_status_status_id_fk = "0";
                 }
                 else
                 {
-                    curriculum.s_curriculum_status_status_id_fk = ddlStatus.SelectedValue;
+                    curriculum.s_curr_status_status_id_fk = ddlStatus.SelectedValue;
                 }
-                //gvsearchDetails.DataSource = SystemCurriculumStatusBLL.SearchCurriculumStatus(curriculum);
-                //gvsearchDetails.DataBind();
+                gvsearchDetails.DataSource = SystemCurriculumStatusBLL.SearchCurriculumStatus(curriculum);
+                gvsearchDetails.DataBind();
             }
             catch (Exception ex)
             {
@@ -279,11 +279,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Curriculum_Statuses
             int rowIndex = int.Parse(e.CommandArgument.ToString());
             if (e.CommandName.Equals("Edit"))
             {
-                Response.Redirect("~/SystemHome/Configuration/CurriculumStatus/saecs-01.aspx?edit=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex].Values[0].ToString()), false);
+                Response.Redirect("~/SystemHome/Configuration/CurriculumStatuses/saecs-01.aspx?edit=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex].Values[0].ToString()), false);
             }
             else if (e.CommandName.Equals("Copy"))
             {
-                Response.Redirect("~/SystemHome/Configuration/CurriculumStatus/saancsn-01.aspx?copy=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex].Values[0].ToString()), false);
+                Response.Redirect("~/SystemHome/Configuration/CurriculumStatuses/saancsn-01.aspx?copy=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex].Values[0].ToString()), false);
             }
             else if (e.CommandName.Equals("Archive"))
             {
@@ -380,6 +380,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Curriculum_Statuses
         protected void btnAddNewCurriculamStatus_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/SystemHome/Configuration/CurriculumStatuses/saancsn-01.aspx");
+        }
+
+        protected void gvsearchDetails_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
         }
 
     }

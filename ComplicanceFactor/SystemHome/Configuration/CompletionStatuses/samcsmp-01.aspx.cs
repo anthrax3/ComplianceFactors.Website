@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Globalization;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses
 {
@@ -16,33 +17,151 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Bind the values into the label values.
-            //DataTable dtCompletionStatuses = new DataTable();
-            //dtCompletionStatuses = SystemCompletionStatusesBLL.GetLocalCompletionStatuses();
-            //hfldAssignId.Value = dtCompletionStatuses.Rows[63]["s_ui_dropdown_id_pk"].ToString();
-            //txtlblAssigned.Text = dtCompletionStatuses.Rows[63]["s_ui_dropdown_native"].ToString();
-            //txtlblEnrolled.Text = dtCompletionStatuses.Rows[21]["s_ui_dropdown_native"].ToString();
-            //txtlblIncomplete.Text = dtCompletionStatuses.Rows[28]["s_ui_dropdown_native"].ToString();
-            //txtlblCompleted.Text = dtCompletionStatuses.Rows[29]["s_ui_dropdown_native"].ToString();
-            //txtlblBrowse.Text = dtCompletionStatuses.Rows[70]["s_ui_dropdown_native"].ToString();
-            //txtlblAttended.Text = dtCompletionStatuses.Rows[71]["s_ui_dropdown_native"].ToString();
-            //txtlblDidNotAttend.Text = dtCompletionStatuses.Rows[7]["s_ui_dropdown_native"].ToString();
-            //txtlblAttendedWaikIn.Text = dtCompletionStatuses.Rows[47]["s_ui_dropdown_native"].ToString();
-            //txtlblUnknown.Text = dtCompletionStatuses.Rows[66]["s_ui_dropdown_native"].ToString();
-            //txtlblOltPlayer.Text = dtCompletionStatuses.Rows[19]["s_ui_dropdown_native"].ToString();
-            //txtlblVLSSystem.Text = dtCompletionStatuses.Rows[26]["s_ui_dropdown_native"].ToString();
-            //txtlblPassed.Text = dtCompletionStatuses.Rows[61]["s_ui_dropdown_native"].ToString();
-            //txtlblFailed.Text = dtCompletionStatuses.Rows[76]["s_ui_dropdown_native"].ToString();
-            //txtlblExempt.Text = dtCompletionStatuses.Rows[52]["s_ui_dropdown_native"].ToString();
-            //txtlblNotScord.Text = dtCompletionStatuses.Rows[69]["s_ui_dropdown_native"].ToString();
-            //txtlblPendingAssesmentSurvey.Text = dtCompletionStatuses.Rows[17]["s_ui_dropdown_native"].ToString();
+            if (!IsPostBack)
+            {
+                // Bind the values into the label values.
+                bindLabels();
+                Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                lblBreadCrumb.Text = "<a href=/SystemHome/Configuration/sascmp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp; " + LocalResources.GetGlobalLabel("app_manage_completion_statuses_text");
+                
+               
+            }
 
+        }
+
+        private void bindLabels()
+        {
+            DataSet dsCompletionStatuses = new DataSet();
+            DataTable dtCompletionStatuses = new DataTable();
+            DataTable dtCompletionsStatusesFlag = new DataTable();
+           
+            dsCompletionStatuses = SystemCompletionStatusesBLL.GetLocalCompletionStatuses();
+            DataView dvCompletionStatuses = new DataView(dsCompletionStatuses.Tables[0]);
+
+            dtCompletionStatuses =  dsCompletionStatuses.Tables[0];
+            dtCompletionsStatusesFlag = dsCompletionStatuses.Tables[1];
+
+            hfldAssignId.Value = dtCompletionStatuses.Rows[0]["s_ui_dropdown_id_pk"].ToString();
+            txtlblAssigned.Text = dtCompletionStatuses.Rows[0]["s_ui_dropdown_us_english"].ToString();
+
+            hfldAttended.Value = dtCompletionStatuses.Rows[1]["s_ui_dropdown_id_pk"].ToString();
+            txtlblAttended.Text = dtCompletionStatuses.Rows[1]["s_ui_dropdown_us_english"].ToString();
+
+            hfldAttendedWaikIn.Value = dtCompletionStatuses.Rows[2]["s_ui_dropdown_id_pk"].ToString();
+            txtlblAttendedWaikIn.Text = dtCompletionStatuses.Rows[2]["s_ui_dropdown_us_english"].ToString();
+
+            hfldBrowse.Value = dtCompletionStatuses.Rows[3]["s_ui_dropdown_id_pk"].ToString();
+            txtlblBrowse.Text = dtCompletionStatuses.Rows[3]["s_ui_dropdown_us_english"].ToString();
+
+            hfldCompleted.Value = dtCompletionStatuses.Rows[4]["s_ui_dropdown_id_pk"].ToString();
+            txtlblCompleted.Text = dtCompletionStatuses.Rows[4]["s_ui_dropdown_us_english"].ToString();
+
+            hfldDidNotAttend.Value = dtCompletionStatuses.Rows[5]["s_ui_dropdown_id_pk"].ToString();
+            txtlblDidNotAttend.Text = dtCompletionStatuses.Rows[5]["s_ui_dropdown_us_english"].ToString();
+
+            hfldEnrolled.Value = dtCompletionStatuses.Rows[6]["s_ui_dropdown_id_pk"].ToString();
+            txtlblEnrolled.Text = dtCompletionStatuses.Rows[6]["s_ui_dropdown_us_english"].ToString();
+
+            hfldExempt.Value = dtCompletionStatuses.Rows[7]["s_ui_dropdown_id_pk"].ToString();
+            txtlblExempt.Text = dtCompletionStatuses.Rows[7]["s_ui_dropdown_us_english"].ToString();
+
+            hfldFailed.Value = dtCompletionStatuses.Rows[8]["s_ui_dropdown_id_pk"].ToString();
+            txtlblFailed.Text = dtCompletionStatuses.Rows[8]["s_ui_dropdown_us_english"].ToString();
+
+
+            hfldIncomplete.Value = dtCompletionStatuses.Rows[9]["s_ui_dropdown_id_pk"].ToString();
+            txtlblIncomplete.Text = dtCompletionStatuses.Rows[9]["s_ui_dropdown_us_english"].ToString();
+
+            hfldNotScord.Value = dtCompletionStatuses.Rows[10]["s_ui_dropdown_id_pk"].ToString();
+            txtlblNotScord.Text = dtCompletionStatuses.Rows[10]["s_ui_dropdown_us_english"].ToString();
+
+            hfldOltPlayer.Value = dtCompletionStatuses.Rows[11]["s_ui_dropdown_id_pk"].ToString();
+            txtlblOltPlayer.Text = dtCompletionStatuses.Rows[11]["s_ui_dropdown_us_english"].ToString();
+
+            hfldPassed.Value = dtCompletionStatuses.Rows[12]["s_ui_dropdown_id_pk"].ToString();
+            txtlblPassed.Text = dtCompletionStatuses.Rows[12]["s_ui_dropdown_us_english"].ToString();
+
+            hfldPendingAssesmentSurvey.Value = dtCompletionStatuses.Rows[13]["s_ui_dropdown_id_pk"].ToString();
+            txtlblPendingAssesmentSurvey.Text = dtCompletionStatuses.Rows[13]["s_ui_dropdown_us_english"].ToString();
+
+            hfldUnknown.Value = dtCompletionStatuses.Rows[14]["s_ui_dropdown_id_pk"].ToString();
+            txtlblUnknown.Text = dtCompletionStatuses.Rows[14]["s_ui_dropdown_us_english"].ToString();
+
+            
+
+            hfldVLSSystem.Value = dtCompletionStatuses.Rows[15]["s_ui_dropdown_id_pk"].ToString();
+            txtlblVLSSystem.Text = dtCompletionStatuses.Rows[15]["s_ui_dropdown_us_english"].ToString();
+            
+            
+            
+            
+            
+
+            chkBrowse.Checked = Convert.ToBoolean( dtCompletionsStatusesFlag.Rows[0]["s_comp_status_browse_enabled_flag"]);
+            chkUnknown.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_unknown_enabled_flag"]);
+            chkOLTPlayer.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_olt_enabled_flag"]);
+            chkVLSSystem.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_vls_enabled_flag"]);
+            chkExempt.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_exempt_enabled_flag"]);
+            chkNotScored.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_noscore_enabled_flag"]);
+            chkPending.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_pending_enabled_flag"]);
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            int result=SystemCompletionStatusesBLL.updateCompletionLocales(txtlblAssigned.Text, txtlblEnrolled.Text, txtlblIncomplete.Text, txtlblCompleted.Text, txtlblBrowse.Text, txtlblAttended.Text, txtlblDidNotAttend.Text, txtlblAttendedWaikIn.Text, txtlblUnknown.Text, txtlblOltPlayer.Text, txtlblVLSSystem.Text, txtlblPassed.Text, txtlblFailed.Text, txtlblExempt.Text, txtlblNotScord.Text, txtlblPendingAssesmentSurvey.Text, chkBrowse.Checked, chkUnknown.Checked, chkOLTPlayer.Checked, chkVLSSystem.Checked, chkExempt.Checked, chkNotScored.Checked, chkPending.Checked);
+            if (result == 0)
+            {
+                divSuccess.Style.Add("display", "block");
+                divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
+            }
+            else
+            {
+                divError.Style.Add("display", "block");
+                divError.InnerText = LocalResources.GetText("app_date_not_updated_error_wrong");
+            }
         }
+
+        protected void chkBrowse_CheckedChanged(object sender, EventArgs e)
+        {
+          SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "browse");
+        }
+
+        protected void chkUnknown_CheckedChanged(object sender, EventArgs e)
+        {
+            SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "unknown");
+        }
+
+        protected void chkOLTPlayer_CheckedChanged(object sender, EventArgs e)
+        {
+            SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "olt");
+        }
+
+        protected void chkVLSSystem_CheckedChanged(object sender, EventArgs e)
+        {
+            SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "vls");
+        }
+
+        protected void chkExempt_CheckedChanged(object sender, EventArgs e)
+        {
+            SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "exempt");
+        }
+
+        protected void chkNotScored_CheckedChanged(object sender, EventArgs e)
+        {
+            SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "notscore");
+        }
+
+        protected void chkPending_CheckedChanged(object sender, EventArgs e)
+        {
+            SystemCompletionStatusesBLL.UpdateCompletionLocaleVisibility(chkBrowse.Checked, "pending");
+        }
+
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SystemHome/Configuration/sascmp-01.aspx", false);
+        }
+
+     
 
         //protected void gvsearchDetails_RowCommand(object sender, GridViewCommandEventArgs e)
         //{

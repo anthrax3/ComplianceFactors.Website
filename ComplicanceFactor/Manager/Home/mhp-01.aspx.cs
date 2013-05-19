@@ -261,7 +261,7 @@ namespace ComplicanceFactor.Manager
             LinkButton lbt = (LinkButton)item.FindControl("lnkExpandCollapse");
             lbt.CommandArgument = DataBinder.Eval(item.DataItem, "userId").ToString() + "," + DataBinder.Eval(item.DataItem, "LevelPos").ToString();
 
-            
+
 
             string id = DataBinder.Eval(item.DataItem, "userId").ToString();
             SetPlusSymbol(id, lbt);
@@ -364,7 +364,7 @@ namespace ComplicanceFactor.Manager
             StringBuilder sbConfirmEnrollment = new StringBuilder();
 
             SystemNotification notification = new SystemNotification();
-            notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL- APPROVAL-DENIED");//Enroll-Approval-Denied
+            notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL- APPROVAL-DENIED", SessionWrapper.CultureName);//Enroll-Approval-Denied
             if (notification.s_notification_on_off_flag == true)
             {
                 string denySubject = string.Empty;
@@ -381,17 +381,42 @@ namespace ComplicanceFactor.Manager
                 sbConfirmEnrollment.Append(denyText);
 
                 string toEmailid = user.EmailId;
-                string[] toaddress = toEmailid.Split(',');
-                List<MailAddress> mailAddresses = new List<MailAddress>();
-                foreach (string recipient in toaddress)
+                if (!string.IsNullOrEmpty(toEmailid))
                 {
-                    if (recipient.Trim() != string.Empty)
+                    string[] toaddress = toEmailid.Split(',');
+                    List<MailAddress> mailAddresses = new List<MailAddress>();
+                    foreach (string recipient in toaddress)
                     {
-                        mailAddresses.Add(new MailAddress(recipient));
+                        if (recipient.Trim() != string.Empty)
+                        {
+                            mailAddresses.Add(new MailAddress(recipient));
+                        }
+                    }
+                    string fromaddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
+                    Utility.SendEMailMessages(mailAddresses, fromaddress, denySubject, sbConfirmEnrollment.ToString());
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
+                    {
+                        StringBuilder smsText = new StringBuilder();
+                        string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                        string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                        string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                        string messagetext = notification.s_notification_SMS_text;
+                        messagetext = messagetext.Replace("", "");
+                        messagetext = messagetext.Replace("", "");
+
+                        if (messagetext.Length > 180)
+                        {
+                            messagetext = messagetext.Substring(0, 179);
+                        }
+                        messagetext = messagetext.Replace("@$&Status&$@", "Denied");
+                        messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                        Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
                     }
                 }
-                string fromaddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
-                Utility.SendEMailMessages(mailAddresses, fromaddress, denySubject, sbConfirmEnrollment.ToString());
             }
         }
 
@@ -409,28 +434,25 @@ namespace ComplicanceFactor.Manager
             string type = Course.c_delivery_type_id;
 
             SystemNotification notificationApproval = new SystemNotification();
-            notificationApproval = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL- APPROVAL-APPROVED");
+            notificationApproval = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL- APPROVAL-APPROVED", SessionWrapper.CultureName);
             if (notificationApproval.s_notification_on_off_flag == true)
             {
-                if (type == "OLT")
+                string ApproveSubject = string.Empty;
+                ApproveSubject = notificationApproval.s_notification_email_subject;
+                ApproveSubject = ApproveSubject.Replace("@$&Course Title&$@", Course.c_course_title);
+
+                string ApproveText = string.Empty;
+                ApproveText = notificationApproval.s_notification_email_text;
+                ApproveText = ApproveText.Replace("@$&user_name&$@", user.Firstname);
+                ApproveText = ApproveText.Replace("@$&Course Title&$@", Course.c_course_title);
+                ApproveText = ApproveText.Replace("@$&Course ID&$@", Course.c_course_id_pk);
+                ApproveText = ApproveText.Replace("@$&manager_name&$@", SessionWrapper.u_username);
+
+                sbConfirmEnrollment.Append(ApproveText);
+
+                string toEmailid = user.EmailId;
+                if (!string.IsNullOrEmpty(toEmailid))
                 {
-                    SystemNotification notification = new SystemNotification();
-                    notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT");
-                    //if (notification.s_notification_on_off_flag == true)
-                    //{
-                    //Enroll OLT
-                    string confirmOLTSubject = string.Empty;
-                    confirmOLTSubject = notification.s_notification_email_subject;
-                    confirmOLTSubject = confirmOLTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
-
-                    string sbConfirmOLT = string.Empty;
-                    sbConfirmOLT = notification.s_notification_email_text;
-
-                    sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", user.Firstname);
-                    sbConfirmOLT = sbConfirmOLT.Replace("@$&Course Name&$@", Course.c_course_title);
-                    sbConfirmOLT = sbConfirmOLT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
-
-                    string toEmailid = user.EmailId;
                     string[] toaddress = toEmailid.Split(',');
                     List<MailAddress> mailAddresses = new List<MailAddress>();
                     foreach (string recipient in toaddress)
@@ -440,82 +462,190 @@ namespace ComplicanceFactor.Manager
                             mailAddresses.Add(new MailAddress(recipient));
                         }
                     }
-                    string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
-                    sbConfirmEnrollment.Append(sbConfirmOLT);
-                    Utility.SendEMailMessages(mailAddresses, fromAddress, confirmOLTSubject, sbConfirmEnrollment.ToString());
-                    // }
+                    string fromaddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
+                    Utility.SendEMailMessages(mailAddresses, fromaddress, ApproveSubject, sbConfirmEnrollment.ToString());
                 }
-
-               //Enroll ILT/VLT
-                else if ((type == "ILT" || type == "VLT"))
+                else
                 {
-                    SystemNotification notificationILT = new SystemNotification();
-                    notificationILT = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-IN-PERSON");
-                    //if (notificationILT.s_notification_on_off_flag == true)
-                    //{
-                    string confirmILTSubject = string.Empty;
-                    confirmILTSubject = notificationILT.s_notification_email_subject;
-                    confirmILTSubject = confirmILTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
-
-                    string confirmILT = string.Empty;
-                    confirmILT = notificationILT.s_notification_email_text;
-
-                    confirmILT = confirmILT.Replace("@$&User First Name&$@", user.Firstname);
-                    confirmILT = confirmILT.Replace("@$&Course Name&$@", Course.c_course_title);
-                    confirmILT = confirmILT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
-                    confirmILT = confirmILT.Replace("@$&delivery_location&$@", Course.c_session_location_names);
-                    confirmILT = confirmILT.Replace("@$&delivery_facility&$@", Course.c_session_facility_names);
-                    confirmILT = confirmILT.Replace("@$&delivery_room&$@", Course.c_session_room_names);
-                    confirmILT = confirmILT.Replace("@$&delivery_intructors&$@", Course.c_instructor_list);
-                    confirmILT = confirmILT.Replace("@$&session_start_date&$@", Course.c_session_start_date_time);
-                    confirmILT = confirmILT.Replace("@$&session_start_time&$@", Course.c_session_end_date_time);
-
-                    string toEmailid = user.EmailId;
-                    string[] toaddress = toEmailid.Split(',');
-                    List<MailAddress> mailAddresses = new List<MailAddress>();
-                    foreach (string recipient in toaddress)
+                    if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
                     {
-                        if (recipient.Trim() != string.Empty)
+                        StringBuilder smsText = new StringBuilder();
+                        string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                        string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                        string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                        string messagetext = notificationApproval.s_notification_SMS_text;
+                        messagetext = messagetext.Replace("", "");
+                        messagetext = messagetext.Replace("", "");
+
+                        if (messagetext.Length > 180)
                         {
-                            mailAddresses.Add(new MailAddress(recipient));
+                            messagetext = messagetext.Substring(0, 179);
                         }
+                        messagetext = messagetext.Replace("@$&Status&$@", "Approved");
+                        messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+                        Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
                     }
-                    string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
-                    sbConfirmEnrollment.Append(confirmILT);
-                    Utility.SendEMailMessages(mailAddresses, fromAddress, confirmILTSubject, sbConfirmEnrollment.ToString());
-                    // }
                 }
             }
-            //sbConfirmEnrollment.Append("Hello " + user.Firstname + ",");
-            //sbConfirmEnrollment.Append("<br>");
-            //sbConfirmEnrollment.Append("This email is to confirm that you are enrolled in the {" + Course.c_course_title + "} + (" + Course.c_course_id_pk + ")).");
-            //sbConfirmEnrollment.Append("<br>");
-            //if ((type == "ILT" || type == "VLT"))
-            //{
-            //      sbConfirmEnrollment.Append("Location:" + Course.c_session_location_names + ", " + Course.c_session_facility_names + ", " + Course.c_session_room_names + "");
-            //      sbConfirmEnrollment.Append("<br>");
-            //      sbConfirmEnrollment.Append("Instructor(S):" + Course.c_instructor_list);
-            //      sbConfirmEnrollment.Append("<br>");
-            //      sbConfirmEnrollment.Append("Starting on:" + Course.c_session_start_date_time);
-            //      sbConfirmEnrollment.Append("<br>");
-            //      sbConfirmEnrollment.Append("Ending on:" + Course.c_session_end_date_time);
-            //      sbConfirmEnrollment.Append("<br>");
-            //      sbConfirmEnrollment.Append("Please login to the system and go to your 'My Course' section to access the details for this training or launch the course for eLearning Training or simply click on the link below:");
-            //      sbConfirmEnrollment.Append("<br>");
-            //      sbConfirmEnrollment.Append("www.compliancefactors.com/login_redirect/?url=lmcp-01.aspx");
-            //      sbConfirmEnrollment.Append("<br>");
-            //      sbConfirmEnrollment.Append("We are looking forward to seeing you!");
-            //}
-            //sbConfirmEnrollment.Append("Thanks!");
-            //sbConfirmEnrollment.Append("<br><br>");
-            //sbConfirmEnrollment.Append("The Training Department");
-            //List<MailAddress> mailAddresses = new List<MailAddress>();
-            //mailAddresses.Add(new MailAddress(user.EmailId));
-            //string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
-            ////mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-            //Utility.SendEMailMessages(mailAddresses, fromAddress, "*** Enrollment Confirmation Approved in " + Course.c_course_title + " ***", sbConfirmEnrollment.ToString());
-
         }
+
+
+        // if (type == "OLT")
+        // {
+        //     SystemNotification notification = new SystemNotification();
+        //     notification = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-OLT",SessionWrapper.CultureName);
+        //     //if (notification.s_notification_on_off_flag == true)
+        //     //{
+        //     //Enroll OLT
+        //     string confirmOLTSubject = string.Empty;
+        //     confirmOLTSubject = notification.s_notification_email_subject;
+        //     confirmOLTSubject = confirmOLTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
+
+        //     string sbConfirmOLT = string.Empty;
+        //     sbConfirmOLT = notification.s_notification_email_text;
+
+        //     sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", user.Firstname);
+        //     sbConfirmOLT = sbConfirmOLT.Replace("@$&Course Name&$@", Course.c_course_title);
+        //     sbConfirmOLT = sbConfirmOLT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
+
+        //     string toEmailid = user.EmailId;
+        //     if (!string.IsNullOrEmpty(toEmailid))
+        //     {
+        //         string[] toaddress = toEmailid.Split(',');
+        //         List<MailAddress> mailAddresses = new List<MailAddress>();
+        //         foreach (string recipient in toaddress)
+        //         {
+        //             if (recipient.Trim() != string.Empty)
+        //             {
+        //                 mailAddresses.Add(new MailAddress(recipient));
+        //             }
+        //         }
+        //         string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+        //         sbConfirmEnrollment.Append(sbConfirmOLT);
+        //         Utility.SendEMailMessages(mailAddresses, fromAddress, confirmOLTSubject, sbConfirmEnrollment.ToString());
+        //     }
+        //     else
+        //     {
+        //         if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
+        //         {
+        //             StringBuilder smsText = new StringBuilder();
+        //             string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+        //             string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+        //             string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+        //             string messagetext = notification.s_notification_SMS_text;
+        //             messagetext = messagetext.Replace("", "");
+        //             messagetext = messagetext.Replace("", "");
+
+        //             if (messagetext.Length > 180)
+        //             {
+        //                 messagetext = messagetext.Substring(0, 179);
+        //             }
+        //             messagetext = messagetext.Replace("@$&Status&$@", "Approved");
+        //             messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+        //             Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+        //         }
+        //     }
+
+        //     // }
+
+
+        ////Enroll ILT/VLT
+        // else if ((type == "ILT" || type == "VLT"))
+        // {
+        //     SystemNotification notificationILT = new SystemNotification();
+        //     notificationILT = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-CONFIRM-IN-PERSON",SessionWrapper.CultureName);
+        //     //if (notificationILT.s_notification_on_off_flag == true)
+        //     //{
+        //     string confirmILTSubject = string.Empty;
+        //     confirmILTSubject = notificationILT.s_notification_email_subject;
+        //     confirmILTSubject = confirmILTSubject.Replace("@$&Course Title&$@", Course.c_course_title);
+
+        //     string confirmILT = string.Empty;
+        //     confirmILT = notificationILT.s_notification_email_text;
+
+        //     confirmILT = confirmILT.Replace("@$&User First Name&$@", user.Firstname);
+        //     confirmILT = confirmILT.Replace("@$&Course Name&$@", Course.c_course_title);
+        //     confirmILT = confirmILT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
+        //     confirmILT = confirmILT.Replace("@$&delivery_location&$@", Course.c_session_location_names);
+        //     confirmILT = confirmILT.Replace("@$&delivery_facility&$@", Course.c_session_facility_names);
+        //     confirmILT = confirmILT.Replace("@$&delivery_room&$@", Course.c_session_room_names);
+        //     confirmILT = confirmILT.Replace("@$&delivery_intructors&$@", Course.c_instructor_list);
+        //     confirmILT = confirmILT.Replace("@$&session_start_date&$@", Course.c_session_start_date_time);
+        //     confirmILT = confirmILT.Replace("@$&session_start_time&$@", Course.c_session_end_date_time);
+
+        //     string toEmailid = user.EmailId;
+        //     if (!string.IsNullOrEmpty(toEmailid))
+        //     {
+        //         string[] toaddress = toEmailid.Split(',');
+        //         List<MailAddress> mailAddresses = new List<MailAddress>();
+        //         foreach (string recipient in toaddress)
+        //         {
+        //             if (recipient.Trim() != string.Empty)
+        //             {
+        //                 mailAddresses.Add(new MailAddress(recipient));
+        //             }
+        //         }
+        //         string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+        //         sbConfirmEnrollment.Append(confirmILT);
+        //         Utility.SendEMailMessages(mailAddresses, fromAddress, confirmILTSubject, sbConfirmEnrollment.ToString());
+        //     }
+        //     else
+        //     {
+        //         if (!string.IsNullOrEmpty(SessionWrapper.u_mobile_number))
+        //         {
+        //             StringBuilder smsText = new StringBuilder();
+        //             string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+        //             string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+        //             string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+        //             string messagetext = notificationILT.s_notification_SMS_text;
+        //             messagetext = messagetext.Replace("", "");
+        //             messagetext = messagetext.Replace("", "");
+
+        //             if (messagetext.Length > 180)
+        //             {
+        //                 messagetext = messagetext.Substring(0, 179);
+        //             }
+        //             messagetext = messagetext.Replace("@$&Status&$@", "Approved");
+        //             messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", Course.c_course_list);
+        //             Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+        //         }
+        //     }
+        //     // }
+        // }
+
+        //sbConfirmEnrollment.Append("Hello " + user.Firstname + ",");
+        //sbConfirmEnrollment.Append("<br>");
+        //sbConfirmEnrollment.Append("This email is to confirm that you are enrolled in the {" + Course.c_course_title + "} + (" + Course.c_course_id_pk + ")).");
+        //sbConfirmEnrollment.Append("<br>");
+        //if ((type == "ILT" || type == "VLT"))
+        //{
+        //      sbConfirmEnrollment.Append("Location:" + Course.c_session_location_names + ", " + Course.c_session_facility_names + ", " + Course.c_session_room_names + "");
+        //      sbConfirmEnrollment.Append("<br>");
+        //      sbConfirmEnrollment.Append("Instructor(S):" + Course.c_instructor_list);
+        //      sbConfirmEnrollment.Append("<br>");
+        //      sbConfirmEnrollment.Append("Starting on:" + Course.c_session_start_date_time);
+        //      sbConfirmEnrollment.Append("<br>");
+        //      sbConfirmEnrollment.Append("Ending on:" + Course.c_session_end_date_time);
+        //      sbConfirmEnrollment.Append("<br>");
+        //      sbConfirmEnrollment.Append("Please login to the system and go to your 'My Course' section to access the details for this training or launch the course for eLearning Training or simply click on the link below:");
+        //      sbConfirmEnrollment.Append("<br>");
+        //      sbConfirmEnrollment.Append("www.compliancefactors.com/login_redirect/?url=lmcp-01.aspx");
+        //      sbConfirmEnrollment.Append("<br>");
+        //      sbConfirmEnrollment.Append("We are looking forward to seeing you!");
+        //}
+        //sbConfirmEnrollment.Append("Thanks!");
+        //sbConfirmEnrollment.Append("<br><br>");
+        //sbConfirmEnrollment.Append("The Training Department");
+        //List<MailAddress> mailAddresses = new List<MailAddress>();
+        //mailAddresses.Add(new MailAddress(user.EmailId));
+        //string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);// For controlment from:admin@compliancefactors.com to:employee id
+        ////mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+        //Utility.SendEMailMessages(mailAddresses, fromAddress, "*** Enrollment Confirmation Approved in " + Course.c_course_title + " ***", sbConfirmEnrollment.ToString());
+
+
 
         protected void btnDenyAll_Click(object sender, EventArgs e)
         {

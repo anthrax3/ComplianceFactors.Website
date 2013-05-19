@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -55,6 +53,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                         //Bind wrapper
                         ddlNcWrapper.DataSource = ManageCourseBLL.GetOLTWrapper(SessionWrapper.CultureName, "saed-02");
                         ddlNcWrapper.DataBind();
+
+                        //Bind Grading Scheme
+                        ddlScoringScheme.DataSource = SystemCurriculumBLL.GetGradingScheme(SessionWrapper.CultureName);
+                        ddlScoringScheme.DataBind();
+
+
                         //Dataset get delivery,resource,materials and attachments
                         dsDeliveries = SystemCatalogBLL.GetDeliveries(editDelivery);
                         PopulateDelivery(editDelivery, dsDeliveries.Tables[0]);
@@ -68,20 +72,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 //set delivery id in session
                 SessionWrapper.c_delivery_system_id_pk = Request.QueryString["editdelivery"];
                 //Dataset get resource,materials and attachments
-                dsDeliveries = SystemCatalogBLL.GetDeliveries(editDelivery);
-                //Get owner name
-                lblDeliveryOwner.Text = SessionWrapper.c_delivery_owner_name;
-                //Get coordinator name
-                lblDeliveryCoordinator.Text = SessionWrapper.c_delivery_coordinator_name;
-                //Get resources
-                gvResources.DataSource = dsDeliveries.Tables[1];
-                gvResources.DataBind();
-                //Get Materials
-                gvMaterials.DataSource = dsDeliveries.Tables[2];
-                gvMaterials.DataBind();
-                //Get sessions
-                gvSession.DataSource = dsDeliveries.Tables[4];
-                gvSession.DataBind();
+                if (hdCheckCopy.Value != "1")
+                {
+                    dsDeliveries = SystemCatalogBLL.GetDeliveries(editDelivery);
+                    //Get owner name
+                    lblDeliveryOwner.Text = SessionWrapper.c_delivery_owner_name;
+                    //Get coordinator name
+                    lblDeliveryCoordinator.Text = SessionWrapper.c_delivery_coordinator_name;
+                    //Get resources
+                    gvResources.DataSource = dsDeliveries.Tables[1];
+                    gvResources.DataBind();
+                    //Get Materials
+                    gvMaterials.DataSource = dsDeliveries.Tables[2];
+                    gvMaterials.DataBind();
+                    //Get sessions
+                    gvSession.DataSource = dsDeliveries.Tables[4];
+                    gvSession.DataBind();
+                }
                 //Get course locale
                 DataTable dtLocale = new DataTable();
                 SessionWrapper.Locale.Clear();
@@ -340,7 +347,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             {
                 ddlNcWrapper.SelectedValue = delivery.c_nc_olt_wrapper_id_fk;
             }
-
+            ddlScoringScheme.SelectedValue = delivery.c_survey_scoring_scheme_id_fk;
         }
         protected void gvSession_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -737,6 +744,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             updateDelivery.c_nc_olt_launch_url = txtNCUrl.Text;
             updateDelivery.c_nc_olt_launch_param = txtNcLaunchParameter.Text;
             updateDelivery.c_nc_olt_waitlist_flag = chkNcWaitList.Checked;
+            updateDelivery.c_survey_scoring_scheme_id_fk = ddlScoringScheme.SelectedValue;
             if (chkNcWaitList.Checked == true)
             {
                 updateDelivery.c_nc_olt_wrapper_id_fk = ddlNcWrapper.SelectedValue;
@@ -900,6 +908,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 col.ColumnMapping = MappingType.Attribute;
             }
             return dsBuildSql.GetXml().ToString();
+        }
+
+        protected void gvSession_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Copy"))
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument.ToString());
+                int error = SystemCatalogBLL.CopySingleSession(gvSession.DataKeys[rowIndex].Values[0].ToString(), gvSession.DataKeys[rowIndex].Values[1].ToString());
+                if (error == -2)
+                {
+                    //
+                }
+                DataSet dsDeliveries = new DataSet();
+                dsDeliveries = SystemCatalogBLL.GetDeliveries(editDelivery);
+                gvSession.DataSource = dsDeliveries.Tables[4];
+                gvSession.DataBind();
+            }
         }
     }
 }

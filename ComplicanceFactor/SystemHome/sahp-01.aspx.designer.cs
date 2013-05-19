@@ -13,75 +13,111 @@ namespace ComplicanceFactor.SystemHome {
     public partial class sahp_01 {
         
         /// <summary>
-        /// ToolkitScriptManager1 control.
+        /// imgSpalshPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        protected global::System.Web.UI.WebControls.ImageButton imgSpalshPage;
         
         /// <summary>
-        /// btnSplash control.
+        /// div_SplashPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSplash;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_SplashPages;
         
         /// <summary>
-        /// pnlSplashPage control.
+        /// gvSplashPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSplashPage;
+        protected global::System.Web.UI.WebControls.GridView gvSplashPages;
         
         /// <summary>
-        /// pnlSplashPageHeading control.
+        /// lnkManageSplashPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSplashPageHeading;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManageSplashPage;
         
         /// <summary>
-        /// spalsh control.
+        /// imgTheme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spalsh;
+        protected global::System.Web.UI.WebControls.ImageButton imgTheme;
         
         /// <summary>
-        /// btnDonotShow control.
+        /// div_Themes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDonotShow;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_Themes;
         
         /// <summary>
-        /// btnCloseSplashPage control.
+        /// gvThemes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCloseSplashPage;
+        protected global::System.Web.UI.WebControls.GridView gvThemes;
         
         /// <summary>
-        /// mpSplashPage control.
+        /// lnkManageThemes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpSplashPage;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManageThemes;
+        
+        /// <summary>
+        /// imgReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgReport;
+        
+        /// <summary>
+        /// div_MyReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_MyReports;
+        
+        /// <summary>
+        /// gvMyReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvMyReports;
+        
+        /// <summary>
+        /// btnViewAllReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnViewAllReports;
     }
 }

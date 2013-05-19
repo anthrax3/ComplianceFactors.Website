@@ -11,7 +11,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -22,10 +24,13 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
+        });
 
+    </script>
+    <script type="text/javascript">
 
 
             // Add and view  locale
@@ -173,6 +178,7 @@
     <br />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanroin" runat="server"
         ValidationGroup="saanroin"></asp:ValidationSummary>
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <asp:TextBox ID="txtTempFacility" runat="server" Style="display: none;"></asp:TextBox>
     <div class="content_area_long">
         <div>
@@ -180,7 +186,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNewRoom" ValidationGroup="saanroin" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_room_button_text %>" OnClick="btnHeaderSaveNewRoom_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_room_button_text %>"
+                            OnClick="btnHeaderSaveNewRoom_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
@@ -205,7 +212,8 @@
                         <asp:RequiredFieldValidator ID="rfvFacility" runat="server" ValidationGroup="saanroin"
                             ControlToValidate="txtTempFacility" ErrorMessage="<%$ TextResourceExpression: app_facility_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_facility_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_facility_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblFacility" runat="server"></asp:Label>
@@ -217,7 +225,8 @@
                         <asp:RequiredFieldValidator ID="rfvRoomId" runat="server" ValidationGroup="saanroin"
                             ControlToValidate="txtRoomId" ErrorMessage="<%$ TextResourceExpression: app_room_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_room_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_room_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtRoomId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -235,7 +244,8 @@
                         <asp:RequiredFieldValidator ID="rfvRoomName" runat="server" ValidationGroup="saanroin"
                             ControlToValidate="txtRoomName" ErrorMessage="<%$ TextResourceExpression: app_room_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        *  <%=LocalResources.GetLabel("app_room_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_room_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtRoomName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -246,7 +256,8 @@
                         <asp:RequiredFieldValidator ID="rfvRoomDescription" runat="server" ValidationGroup="saanroin"
                             ControlToValidate="txtRoomDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>: 
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtRoomDescription" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -254,8 +265,7 @@
                 </tr>
                 <tr>
                     <td>
-                        
-                         <%=LocalResources.GetLabel("app_status_text")%>:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
@@ -266,8 +276,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        
-                         <%=LocalResources.GetLabel("app_room_type_text")%>:
+                        <%=LocalResources.GetLabel("app_room_type_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlRoomType" DataTextField="s_room_type_name" DataValueField="s_room_type_system_id_pk"
@@ -285,7 +294,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_resources_text")%>: 
+            <%=LocalResources.GetLabel("app_resources_text")%>:
         </div>
         <br />
         <div class="div_control_normal">
@@ -315,13 +324,14 @@
         </div>
         <div class="div_controls font_1">
             <br />
-            <input type="button" id="btnAddResource"  value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_add_resources_button_text %>" />' />
+            <input type="button" id="btnAddResource" value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_add_resources_button_text %>" />' />
         </div>
         <br />
         <div class="div_padding_10">
             <div class="left">
                 <asp:Button ID="btnFooterSaveNewRoom" ValidationGroup="saanroin" CssClass="cursor_hand"
-                    runat="server" Text="<%$ LabelResourceExpression: app_save_new_room_button_text %>" OnClick="btnFooterSaveNewRoom_Click" />
+                    runat="server" Text="<%$ LabelResourceExpression: app_save_new_room_button_text %>"
+                    OnClick="btnFooterSaveNewRoom_Click" />
             </div>
             <div>
                 <div class="right">

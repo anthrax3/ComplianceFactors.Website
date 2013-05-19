@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
@@ -11,7 +8,6 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.IO;
 using System.Globalization;
 using ComplicanceFactor.Common.Languages;
-using ComplicanceFactor.SystemHome.Catalog.DeliveryPopup;
 
 namespace ComplicanceFactor.SystemHome.Catalog
 {
@@ -31,8 +27,15 @@ namespace ComplicanceFactor.SystemHome.Catalog
             {
 
 
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_course_text");
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_course_text");
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_course_text");
+
                 //created by
                 lblCreatedBy.Text = SessionWrapper.u_firstname + ' ' + SessionWrapper.u_lastname;
                 //clear course related sessoin
@@ -137,6 +140,8 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 gvFulfillments.DataSource = SessionWrapper.TempFulfillments;
                 gvFulfillments.DataBind();
                 //Get delivery(ies)
+                ConvertDataTables removeDuplicateRows = new ConvertDataTables();
+                SessionWrapper.Deliveries = removeDuplicateRows.RemoveDuplicateRows(SessionWrapper.Deliveries, "c_delivery_id_pk");
                 gvDeliveries.DataSource = SessionWrapper.Deliveries;
                 gvDeliveries.DataBind();
                 //using jquery hide the '-or-' in last row

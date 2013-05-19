@@ -46,16 +46,16 @@
             <div id="divIcon">
                 <div class="fancy-popup-header">
                     <div class="left">
-                        <%=LocalResources.GetLocalizationResourceLabelText("app_upload_icon_text")%>:
+                        <%=LocalResources.GetLabel("app_upload_icon_text")%>:
                     </div>
                 </div>
                 <div>
                     <asp:ValidationSummary class="validation_summary_error" ID="vs_saantc" runat="server"
                         ValidationGroup="vsIcon"></asp:ValidationSummary>
-                    <asp:CustomValidator ID="cvIconUri" runat="server" ValidationGroup="vsIcon" ErrorMessage="<%$ LocalizationResourceExpression: app_icon_validation_error_msg%>"
+                    <asp:CustomValidator ID="cvIconUri" runat="server" ValidationGroup="vsIcon" ErrorMessage="<%$ TextResourceExpression: app_icon_image_error_wrong%>"
                         ClientValidationFunction="vali_type">&nbsp;</asp:CustomValidator>
                     <div class="uploadpanel">
-                      <b> <%=LocalResources.GetLocalizationResourceLabelText("app_select_file_text")%>: </b>
+                      <b> <%=LocalResources.GetLabel("app_select_file_text")%>: </b>
                         <br />
                         <br />
                         <asp:FileUpload Width="400" size="50" ID="FileUpload1" runat="server" /><br />
@@ -63,11 +63,11 @@
                         <table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="align_left" style="width: 350px;">
-                                    <asp:Button ID="btnUpload" runat="server" ValidationGroup="vsIcon" Text="<%$ LocalizationResourceExpression: app_upload_button_text%>"
+                                    <asp:Button ID="btnUpload" runat="server" ValidationGroup="vsIcon" Text="<%$ LabelResourceExpression: app_upload_button_text%>"
                                         OnClick="btnUpload_Click" CssClass="cursor_hand" />
                                 </td>
                                 <td class="align_right">
-                                    <input type="button" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LocalizationResourceExpression: app_cancel_button_text%>" />'
+                                    <input type="button" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />'
                                     onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
                                     class="cursor_hand" />
                                 </td>

@@ -1,0 +1,31 @@
+
+
+--function to be used to retreive text from db for html controls in design page
+
+<%=LocalResources.GetLabel("app_catalog_advanced_search_text")%>
+
+--function to be used to retreive text from db for server controls in design page
+
+<%$ LabelResourceExpression: app_No_result_found_text %>
+
+---function to be used to retreive text from db in codebehind
+
+LocalResources.GetGlobalLabel("app_nav_employee")
+
+
+
+EMPLOYEE
+--page--ecolt-01--
+download
+
+MANAGER-enroll
+--page--mesc-01--
+ErrorMessage=""(line 200)
+
+--page-mescurr-01--
+ErrorMessage=""(line 168)
+
+--page-mhp-01--
+link button   (line 178)
+app_reset_your_password_button_text
+

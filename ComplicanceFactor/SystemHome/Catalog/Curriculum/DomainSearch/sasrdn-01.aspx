@@ -92,7 +92,7 @@
         
        
         <div class="div_header_popup_1">
-          <%=LocalResources.GetLocalizationResourceLabelText("app_domains_search_results_text")%>:
+          <%=LocalResources.GetLabel("app_domains_search_results_text")%>:
          
         </div>
         <br />
@@ -100,17 +100,17 @@
             <table cellpadding="0" cellspacing="0" class="paging_popup_1">
                 <tr>
                     <td align="left">
-                        <asp:Button ID="btnHeaderFirst" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_first_button_text %>"
+                        <asp:Button ID="btnHeaderFirst" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_first_button_text %>"
                             OnClick="btnHeaderFirst_Click" />
-                        <asp:Button ID="btnHeaderPrevious" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_previous_button_text %>"
+                        <asp:Button ID="btnHeaderPrevious" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_previous_button_text %>"
                             OnClick="btnHeaderPrevious_Click" />
-                        <asp:Button ID="btnHeaderNext" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_next_button_text %>"
+                        <asp:Button ID="btnHeaderNext" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_next_button_text %>"
                             OnClick="btnHeaderNext_Click" />
-                        <asp:Button ID="btnHeaderLast" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_last_button_text %>"
+                        <asp:Button ID="btnHeaderLast" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_last_button_text %>"
                             OnClick="btnHeaderLast_Click" />
                     </td>
                     <td align="center">
-                        <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="<%$ LocalizationResourceExpression: app_results_per_page_text %>"></asp:Label>
+                        <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
                         <asp:DropDownList ID="ddlHeaderResultPerPage" runat="server" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlHeaderResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>5</asp:ListItem>
@@ -123,10 +123,10 @@
                         </asp:DropDownList>
                     </td>
                     <td align="right">
-                        <asp:Label ID="lblHeaderPage" runat="server" Text="<%$ LocalizationResourceExpression: app_page_text %>"></asp:Label>
+                        <asp:Label ID="lblHeaderPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtHeaderPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblHeaderPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LocalizationResourceExpression: app_go_to_button_text %>" 
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" 
                             onclick="btnHeaderGoto_Click1"/>
                     </td>
                 </tr>
@@ -140,10 +140,10 @@
                 PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="<%$ LocalizationResourceExpression: app_domain_name_text %>" DataField='u_domain_name'
+                        HeaderText="<%$ LabelResourceExpression: app_domain_name_text %>" DataField='u_domain_name'
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="<%$ LocalizationResourceExpression: app_domain_id_text %>" DataField='u_domain_id_pk'
+                        HeaderText="<%$ LabelResourceExpression: app_domain_id_text %>" DataField='u_domain_id_pk'
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
@@ -159,7 +159,7 @@
             </asp:GridView>
         </div>
         <div class="right">
-            <asp:Button ID="btnSaveSelected" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_save_selected_button_text %>"
+            <asp:Button ID="btnSaveSelected" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_selected_button_text %>"
                 OnClientClick="return validateCheckBoxes();" OnClick="btnSaveSelected_Click" />
         </div>
         <br />
@@ -170,17 +170,17 @@
             <table cellpadding="0" cellspacing="0" class="paging_popup_1">
                 <tr>
                     <td align="left">
-                        <asp:Button ID="btnFooterFirst" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_first_button_text %>"
+                        <asp:Button ID="btnFooterFirst" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_first_button_text %>"
                             OnClick="btnFooterFirst_Click" />
-                        <asp:Button ID="btnFooterPrevious" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_previous_button_text %>"
+                        <asp:Button ID="btnFooterPrevious" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_previous_button_text %>"
                             OnClick="btnFooterPrevious_Click" />
-                        <asp:Button ID="btnFooterNext" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_next_button_text %>"
+                        <asp:Button ID="btnFooterNext" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_next_button_text %>"
                             OnClick="btnFooterNext_Click" />
-                        <asp:Button ID="btnFooterLast" CssClass="cursor_hand" runat="server" Text="<%$ LocalizationResourceExpression: app_last_button_text %>"
+                        <asp:Button ID="btnFooterLast" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_last_button_text %>"
                             OnClick="btnFooterLast_Click" />
                     </td>
                     <td align="center">
-                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LocalizationResourceExpression: app_results_per_page_text %>"></asp:Label>
+                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
                         <asp:DropDownList ID="ddlFooterResultPerPage" runat="server" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlFooterResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>5</asp:ListItem>
@@ -193,10 +193,10 @@
                         </asp:DropDownList>
                     </td>
                     <td align="right">
-                        <asp:Label ID="lblFooterPage" runat="server" Text="<%$ LocalizationResourceExpression: app_page_text %>"></asp:Label>
+                        <asp:Label ID="lblFooterPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtFooterPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblFooterPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LocalizationResourceExpression: app_go_to_button_text %>" 
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" 
                             onclick="btnFooterGoto_Click1"/>
                     </td>
                 </tr>
@@ -209,7 +209,7 @@
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
    
-                <%=LocalResources.GetLocalizationResourceLabelText("app_domain_search_text")%>:
+                <%=LocalResources.GetLabel("app_domain_search_text")%>:
            
             </div>
             <br />
@@ -217,14 +217,14 @@
                 <table>
                     <tr>
                         <td>
-                            <%=LocalResources.GetLocalizationResourceLabelText("app_domain_name_text")%>:
+                            <%=LocalResources.GetLabel("app_domain_name_text")%>:
                           
                         </td>
                         <td>
                             <asp:TextBox ID="txtDomainName" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <%=LocalResources.GetLocalizationResourceLabelText("app_domain_id_text")%>:
+                            <%=LocalResources.GetLabel("app_domain_id_text")%>:
                           
                         </td>
                         <td>
@@ -237,16 +237,16 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="align_left">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_go_search_button_text %>"
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
                                 runat="server" OnClick="btnGosearch_Click" />
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LocalizationResourceExpression: app_reset_button_text %>"
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                                 OnClientClick="return resetall();" runat="server" />
                         </td>
                         <td class="align_right">
                             <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                            Text="<%$ LocalizationResourceExpression: app_cancel_button_text %>" />
+                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>

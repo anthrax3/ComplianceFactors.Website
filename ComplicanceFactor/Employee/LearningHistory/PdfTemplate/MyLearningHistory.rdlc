@@ -12,10 +12,6 @@
   <DataSets>
     <DataSet Name="MyLearningHistory">
       <Fields>
-        <Field Name="t_transcript_course_id_fk">
-          <DataField>t_transcript_course_id_fk</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
-        </Field>
         <Field Name="title">
           <DataField>title</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -30,10 +26,42 @@
         </Field>
         <Field Name="score">
           <DataField>score</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="deliveryType">
           <DataField>deliveryType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="my_learning_history_label">
+          <DataField>my_learning_history_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="course_title_with_id_label">
+          <DataField>course_title_with_id_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="completion_date_label">
+          <DataField>completion_date_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="score_label">
+          <DataField>score_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="status_label">
+          <DataField>status_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="delivery_label">
+          <DataField>delivery_label</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="powered_by_text">
+          <DataField>powered_by_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="release_number_text">
+          <DataField>release_number_text</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -48,38 +76,6 @@
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
         <rd:TableAdapterName>e_sp_get_all_Learning_HistoryTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="HeaderFooter">
-      <Fields>
-        <Field Name="powered_by_text">
-          <DataField>powered_by_text</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="release_number_text">
-          <DataField>release_number_text</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="content_header">
-          <DataField>content_header</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="content_footer">
-          <DataField>content_footer</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>dsMyLearningHistory</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <rd:DataSetInfo>
-        <rd:DataSetName>dsMyLearningHistory</rd:DataSetName>
-        <rd:SchemaPath>D:\Staff\Balaji.S\Project\ComplianceFactors\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\Employee\LearningHistory\PdfTemplate\dsMyLearningHistory.xsd</rd:SchemaPath>
-        <rd:TableName>s_sp_get_header_footer</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>s_sp_get_header_footerTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -97,39 +93,6 @@
           </Border>
         </Style>
       </Image>
-      <Textbox Name="Textbox9">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>My Learning History :</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>1.36125in</Top>
-        <Left>0.21007in</Left>
-        <Height>0.25in</Height>
-        <Width>10.0625in</Width>
-        <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <BackgroundColor>#96cd19</BackgroundColor>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
@@ -155,14 +118,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox10">
+                    <Textbox Name="Textbox24">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Course Title (ID)</Value>
+                              <Value>=Fields!course_title_with_id_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -171,11 +134,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <rd:DefaultName>Textbox24</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -188,14 +151,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox12">
+                    <Textbox Name="Textbox25">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Completion Date</Value>
+                              <Value>=Fields!completion_date_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -204,11 +167,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <rd:DefaultName>Textbox25</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -221,14 +184,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox14">
+                    <Textbox Name="Textbox26">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Status</Value>
+                              <Value>=Fields!status_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -237,11 +200,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox14</rd:DefaultName>
+                      <rd:DefaultName>Textbox26</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -254,14 +217,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox16">
+                    <Textbox Name="Textbox27">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Score</Value>
+                              <Value>=Fields!score_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -270,11 +233,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox16</rd:DefaultName>
+                      <rd:DefaultName>Textbox27</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -287,14 +250,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox18">
+                    <Textbox Name="Textbox28">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Delivery</Value>
+                              <Value>=Fields!delivery_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -303,11 +266,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox18</rd:DefaultName>
+                      <rd:DefaultName>Textbox28</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -325,7 +288,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="title">
+                    <Textbox Name="title1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -339,7 +302,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>title</rd:DefaultName>
+                      <rd:DefaultName>title1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -355,7 +318,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="date">
+                    <Textbox Name="date1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -369,7 +332,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>date</rd:DefaultName>
+                      <rd:DefaultName>date1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -385,7 +348,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="status">
+                    <Textbox Name="status1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -399,7 +362,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>status</rd:DefaultName>
+                      <rd:DefaultName>status1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -415,7 +378,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="score">
+                    <Textbox Name="score1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -429,7 +392,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>score</rd:DefaultName>
+                      <rd:DefaultName>score1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -445,7 +408,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="deliveryType">
+                    <Textbox Name="deliveryType1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -459,7 +422,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>deliveryType</rd:DefaultName>
+                      <rd:DefaultName>deliveryType1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -493,15 +456,18 @@
             </TablixMember>
             <TablixMember>
               <Group Name="Details" />
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>MyLearningHistory</DataSetName>
-        <Top>1.88208in</Top>
-        <Left>0.44965in</Left>
+        <Top>2.06958in</Top>
+        <Left>0.30729in</Left>
         <Height>0.5in</Height>
         <Width>9.67709in</Width>
-        <ZIndex>2</ZIndex>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -523,11 +489,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>2.65292in</Top>
+        <Top>2.86126in</Top>
         <Left>0.21007in</Left>
         <Height>0.25in</Height>
         <Width>10.0625in</Width>
-        <ZIndex>3</ZIndex>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -546,7 +512,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Code.SetMyVar(First(Fields!release_number_text.Value,"HeaderFooter"))</Value>
+                <Value>=Code.SetMyVar(First(Fields!release_number_text.Value,"MyLearningHistory"))</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Courier New</FontFamily>
@@ -560,11 +526,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox809</rd:DefaultName>
-        <Top>3.20146in</Top>
-        <Left>1.66492in</Left>
-        <Height>0.11458in</Height>
-        <Width>0.29167in</Width>
-        <ZIndex>4</ZIndex>
+        <Top>3.35771in</Top>
+        <Left>0.717in</Left>
+        <Height>0.30208in</Height>
+        <Width>0.27084in</Width>
+        <ZIndex>3</ZIndex>
         <Visibility>
           <Hidden>true</Hidden>
         </Visibility>
@@ -585,7 +551,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Code.SetMyVarPowered(First(Fields!powered_by_text.Value,"HeaderFooter"))</Value>
+                <Value>=Code.SetMyVarPowered(First(Fields!powered_by_text.Value,"MyLearningHistory"))</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Courier New</FontFamily>
@@ -599,11 +565,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox809</rd:DefaultName>
-        <Top>3.20146in</Top>
-        <Left>9.50521in</Left>
-        <Height>0.11458in</Height>
-        <Width>0.47917in</Width>
-        <ZIndex>5</ZIndex>
+        <Top>3.35771in</Top>
+        <Left>8.85313in</Left>
+        <Height>0.30208in</Height>
+        <Width>0.33334in</Width>
+        <ZIndex>4</ZIndex>
         <Visibility>
           <Hidden>true</Hidden>
         </Visibility>
@@ -617,8 +583,89 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.35417in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.35417in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.35417in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="my_learning_history_label">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!my_learning_history_label.Value &amp;":"</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>my_learning_history_label</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>MyLearningHistory</DataSetName>
+        <Top>1.42375in</Top>
+        <Left>0.21007in</Left>
+        <Height>0.25in</Height>
+        <Width>10.06251in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
     </ReportItems>
-    <Height>3.43417in</Height>
+    <Height>3.77792in</Height>
     <Style />
   </Body>
   <Code>Public Shared Dim MyVar as String
@@ -647,15 +694,15 @@ End Function
    MyVarrPowered =cField
    End Function
 </Code>
-  <Width>10.87847in</Width>
+  <Width>10.44097in</Width>
   <Page>
     <PageFooter>
-      <Height>0.69431in</Height>
+      <Height>0.69098in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Line Name="Line3">
-          <Top>0.15791in</Top>
+          <Top>0.20667in</Top>
           <Left>0.21007in</Left>
           <Height>0in</Height>
           <Width>10.0625in</Width>
@@ -682,8 +729,8 @@ End Function
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
-          <Top>0.19958in</Top>
-          <Left>0.21007in</Left>
+          <Top>0.1789in</Top>
+          <Left>0.2309in</Left>
           <Height>0.26208in</Height>
           <Width>2.0366in</Width>
           <ZIndex>1</ZIndex>
@@ -708,12 +755,14 @@ End Function
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>0.22735in</Top>
-          <Left>5.92882in</Left>
+          <Top>0.20667in</Top>
+          <Left>5.94965in</Left>
           <Height>0.23431in</Height>
           <Width>4.34375in</Width>
           <ZIndex>2</ZIndex>
@@ -727,9 +776,9 @@ End Function
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Line Name="Line4">
-          <Top>0.5311in</Top>
-          <Left>0.21007in</Left>
+        <Line Name="Line5">
+          <Top>0.46876in</Top>
+          <Left>0.2309in</Left>
           <Height>0in</Height>
           <Width>10.0625in</Width>
           <ZIndex>3</ZIndex>

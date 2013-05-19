@@ -33,6 +33,23 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        
+        public static DataSet GetCoursePDFExcel(string e_user_id_fk, string s_locale_culture)
+        {
+            try
+            {
+                Hashtable htGetCoursePDFExcel = new Hashtable();
+
+                htGetCoursePDFExcel.Add("@e_user_id_fk", e_user_id_fk);
+                htGetCoursePDFExcel.Add("@s_locale_culture", s_locale_culture);
+
+                return DataProxy.FetchDataSet("e_sp_create_course_pdf", htGetCoursePDFExcel);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         /// <summary>
         /// it get the employee based on the manager user id
         /// </summary>
@@ -54,7 +71,7 @@ namespace ComplicanceFactor.BusinessComponent
                 }
                 htGetEmployeeByManager.Add("@course_id_or_curriculum_id", course_id_or_curriculum_id);
                 htGetEmployeeByManager.Add("@check_id", check_id);
-                return DataProxy.FetchDataSet("e_sp_get_employee_list", htGetEmployeeByManager);
+                return DataProxy.FetchDataSet("e_sp_get_employee_list_by_manager", htGetEmployeeByManager);
             }
             catch (Exception)
             {

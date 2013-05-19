@@ -5,10 +5,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -19,11 +22,13 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
-
         });
+
+    </script>
+    <script type="text/javascript">
 
         $(function () {
             $('#<%=gvsearchDetails.ClientID %>').tablesorter({ headers: { 7: { sorter: false }, 8: { sorter: false }, 9: { sorter: false }, 10: { sorter: false}} });
@@ -41,6 +46,7 @@
     </script>
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div class="content_area_long">
+            <asp:HiddenField ID="hdNav_selected" runat="server" />
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_users_search_details_text")%>
             </div>
