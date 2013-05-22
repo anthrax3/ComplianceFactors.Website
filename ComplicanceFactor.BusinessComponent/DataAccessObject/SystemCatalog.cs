@@ -205,6 +205,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_location_airport_code { get; set; }
 
         public string s_locale_culture { get; set; }
+        public string s_reset_waitlist { get; set; }
     }
 }
 

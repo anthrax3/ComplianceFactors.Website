@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents {
     public partial class samdimp_01 {
         
         /// <summary>
+        /// divHeaderPaging control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divHeaderPaging;
+        
+        /// <summary>
         /// btnHeaderFirst control.
         /// </summary>
         /// <remarks>
@@ -103,13 +112,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents {
         protected global::System.Web.UI.WebControls.Button btnHeaderGoto;
         
         /// <summary>
-        /// gvDocuments control.
+        /// gvsearchDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDocuments;
+        protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
+        
+        /// <summary>
+        /// divFooterPaging control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFooterPaging;
         
         /// <summary>
         /// btnFooterFirst control.
@@ -218,6 +236,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDocumentName;
+        
+        /// <summary>
+        /// txtVersion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtVersion;
         
         /// <summary>
         /// ddlStatus control.

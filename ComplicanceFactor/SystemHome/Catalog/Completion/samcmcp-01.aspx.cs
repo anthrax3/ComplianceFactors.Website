@@ -609,7 +609,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                                     Enrollment enrollOLT = new Enrollment();
                                     //enrollOLT.e_check_course_approval = true;//Check yhe current course id is approval required
                                     //enrollOLT.e_check_delivery_approval = true;//Check yhe current delivery id is approval required
-                                    enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                                    enrollOLT.e_enroll_user_id_fk = u_user_id_pk;
                                     enrollOLT.e_enroll_delivery_id_fk = deliveryId;
                                     enrollOLT.e_enroll_course_id_fk = courseId;
                                     enrollOLT.e_enroll_required_flag = enroll.e_enroll_required_flag;

@@ -6200,6 +6200,149 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["ResetOjtAttachment"] = value;
             }
         }
+
+        public static DataTable WaitList_details
+        {
+            get
+            {
+                if (HttpContext.Current.Session["WaitList_details"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["WaitList_details"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["WaitList_details"] = value;
+            }
+        }
+
+        public static DataTable Reset_WaitList 
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_WaitList"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Reset_WaitList"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_WaitList"] = value;
+            }
+        }
+        public static bool isWaitlistAdded
+        {
+            get
+            {
+                if (HttpContext.Current.Session["isWaitlistAdded"] != null)
+                {
+                    return Convert.ToBoolean(HttpContext.Current.Session["isWaitlistAdded"]);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["isWaitlistAdded"] = value;
+            }
+        }
+
+        public static DataTable Compltion_courses
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Compltion_courses"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Compltion_courses"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Compltion_courses"] = value;
+            }
+        }
+
+        public static DataTable Compltion_employees
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Compltion_employees"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Compltion_employees"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Compltion_employees"] = value;
+            }
+        }
+
+        public static DataTable Enrollment_courses_curriculum
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Enrollment_courses_curriculum"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Enrollment_courses_curriculum"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Enrollment_courses_curriculum"] = value;
+            }
+        }
+        public static DataTable Enrollment_employees
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Enrollment_employees"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Enrollment_employees"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Enrollment_employees"] = value;
+            }
+        }
         public static void clearsession()
         {
             sessionid = "";

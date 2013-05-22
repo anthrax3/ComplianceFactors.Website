@@ -40,25 +40,29 @@
         </div>
         <br />
         <div>
-            <asp:GridView ID="gvSearchWaitlists" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
+            <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
                 runat="server" EmptyDataText="No Result Found" AutoGenerateColumns="False" AllowPaging="true"
-                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" PageSize="10">
+                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="c_delivery_system_id_pk,c_course_system_id_pk"
+                PageSize="10" onrowcommand="gvsearchDetails_RowCommand">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="Course ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
-                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="Course Name" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
-                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="WaitList Status" HeaderStyle-HorizontalAlign="Center" DataField="type"
+                        HeaderText="Course ID" HeaderStyle-HorizontalAlign="Center" DataField="c_course_id_pk"
+                        ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
+                        HeaderText="Course Name" HeaderStyle-HorizontalAlign="Center" DataField="c_course_title"
+                        ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderText="WaitList Status" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
+                        HeaderText="Delivery ID" HeaderStyle-HorizontalAlign="Center" DataField="c_delivery_id_pk"
                         ItemStyle-HorizontalAlign="Center" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Delivery ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Delivery Name" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                        HeaderText="Delivery Name" HeaderStyle-HorizontalAlign="Center" DataField="c_delivery_title"
+                        ItemStyle-HorizontalAlign="Center" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnSelect" CssClass="cursor_hand" CommandName="Copy" runat="server"
+                            <asp:Button ID="btnSelect" CssClass="cursor_hand" CommandName="Select" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Select" />
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -122,6 +126,7 @@
             </tr>
             <tr>
                 <td colspan="8">
+                    &nbsp;
                 </td>
             </tr>
             <tr>
@@ -131,14 +136,12 @@
                 <td>
                     <asp:TextBox ID="txtCourseId" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
-
                 <td>
                     Approver Name:
                 </td>
                 <td>
                     <asp:TextBox ID="txtCourseName" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
-
                 <td>
                     Coordinator:
                 </td>
@@ -147,7 +150,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="6"></td>
+                <td colspan="6">
+                    &nbsp;
+                </td>
             </tr>
             <tr>
                 <td>
@@ -156,14 +161,12 @@
                 <td>
                     <asp:TextBox ID="txtDeliveryId" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
-
                 <td>
                     Delivery Name:
                 </td>
                 <td>
                     <asp:TextBox ID="txtDeliveryName" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
-
                 <td>
                     Delivery Date:
                 </td>
@@ -171,14 +174,15 @@
                     <asp:TextBox ID="txtDeliveryDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
             </tr>
-
             <tr>
                 <td colspan="8">
+                    &nbsp;
                 </td>
             </tr>
         </table>
+        <br />
         <div class="div_header_long">
-            <br />
+            &nbsp;
         </div>
         <br />
         <table class="table_td_300">

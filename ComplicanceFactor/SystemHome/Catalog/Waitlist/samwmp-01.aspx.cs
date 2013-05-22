@@ -17,5 +17,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "Manage Waitlists";
             }
         }
+
+        protected void btnGoSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SystemHome/Catalog/Waitlist/samwsrp-01.aspx");
+        }
     }
 }

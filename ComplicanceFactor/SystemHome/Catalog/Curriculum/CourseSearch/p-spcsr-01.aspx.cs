@@ -196,24 +196,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CourseSearch
                 {
                     course.c_course_id_pk = txtCourseId.Text;
                     course.c_course_title = txtCourseName.Text;
-                    course.c_course_version = string.Empty;
-                    course.c_course_active_type_id_fk = "0";
-                    course.c_course_owner_name = string.Empty;
-                    course.c_course_coordinator_name = string.Empty;
-
+               
                 }
                 else
                 {
                     course.c_course_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     course.c_course_title = SecurityCenter.DecryptText(Request.QueryString["name"]);
-                    string sec = SecurityCenter.DecryptText(Request.QueryString["sec"]);
-                    course.c_course_version = string.Empty;
-                    course.c_course_active_type_id_fk = "0";
-                    course.c_course_owner_name = string.Empty;
-                    course.c_course_coordinator_name = string.Empty;
 
                 }
-                gvsearchDetails.DataSource = ManageCourseBLL.SearchSystemCatalog(course);
+                gvsearchDetails.DataSource = SystemCurriculumBLL.SearchSystemCatalog(course);
                 gvsearchDetails.DataBind();
 
 

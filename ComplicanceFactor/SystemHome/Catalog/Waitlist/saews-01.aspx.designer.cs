@@ -112,6 +112,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.Label lblMaxEnroll;
         
         /// <summary>
+        /// lblWaitlistStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWaitlistStatus;
+        
+        /// <summary>
         /// gvWaitlistDetails control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvWaitlistDetails;
+        
+        /// <summary>
+        /// hdnDeliveryId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnDeliveryId;
+        
+        /// <summary>
+        /// hdnCourseId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnCourseId;
         
         /// <summary>
         /// btnFooterSave control.

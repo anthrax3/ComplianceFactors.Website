@@ -65,5 +65,21 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static DataTable SearchSystemCatalog(ManageCourse course)
+        {
+            Hashtable htSearchCourse = new Hashtable();
+            htSearchCourse.Add("@c_course_id_pk", course.c_course_id_pk);
+            htSearchCourse.Add("@c_course_title", course.c_course_title);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_search_course_for_instructor", htSearchCourse);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }

@@ -33,6 +33,7 @@
                 </tr>
                 <tr>
                     <td colspan="6">
+                    &nbsp;
                     </td>
                 </tr>
                 <tr>
@@ -57,6 +58,7 @@
                 </tr>
                 <tr>
                     <td colspan="6">
+                    &nbsp;
                     </td>
                 </tr>
                 <tr>
@@ -81,6 +83,7 @@
                 </tr>
                 <tr>
                     <td colspan="6">
+                    &nbsp;
                     </td>
                 </tr>
             </table>
@@ -104,7 +107,8 @@
                     <td></td>
                     <td></td>
                     <td class="align_right">
-                        <asp:Button ID="btnGoSearch" runat="server" Text="Go Search!" />
+                        <asp:Button ID="btnGoSearch" runat="server" Text="Go Search!" 
+                            onclick="btnGoSearch_Click" />
                     </td>
                 </tr>
             </table>

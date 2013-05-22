@@ -103,13 +103,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.Button btnHeaderGoto;
         
         /// <summary>
-        /// gvSearchWaitlists control.
+        /// gvsearchDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSearchWaitlists;
+        protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
         
         /// <summary>
         /// btnFooterFirst control.

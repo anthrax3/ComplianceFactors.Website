@@ -11,28 +11,28 @@ namespace ComplicanceFactor.BusinessComponent
 {
     public class ManageCourseBLL
     {
-        public static DataTable SearchSystemCatalog(ManageCourse course)
-        {
-            Hashtable htSearchCourse = new Hashtable();
-            htSearchCourse.Add("@c_course_id_pk", course.c_course_id_pk);
-            htSearchCourse.Add("@c_course_title", course.c_course_title);
-            htSearchCourse.Add("@c_course_version", course.c_course_version);
-            if (course.c_course_active_type_id_fk == "0")
-                htSearchCourse.Add("@c_course_active_type_id_fk", DBNull.Value);
-            else
-                htSearchCourse.Add("@c_course_active_type_id_fk", course.c_course_active_type_id_fk);
-            htSearchCourse.Add("@c_course_owner_name", course.c_course_owner_name);
-            htSearchCourse.Add("@c_course_coordinator_name", course.c_course_coordinator_name);
-            try
-            {
-                return DataProxy.FetchDataTable("s_sp_search_course", htSearchCourse);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+        //public static DataTable SearchSystemCatalog(ManageCourse course)
+        //{
+        //    Hashtable htSearchCourse = new Hashtable();
+        //    htSearchCourse.Add("@c_course_id_pk", course.c_course_id_pk);
+        //    htSearchCourse.Add("@c_course_title", course.c_course_title);
+        //    //htSearchCourse.Add("@c_course_version", course.c_course_version);
+        //    //if (course.c_course_active_type_id_fk == "0")
+        //    //    htSearchCourse.Add("@c_course_active_type_id_fk", DBNull.Value);
+        //    //else
+        //    //    htSearchCourse.Add("@c_course_active_type_id_fk", course.c_course_active_type_id_fk);
+        //    //htSearchCourse.Add("@c_course_owner_name", course.c_course_owner_name);
+        //    //htSearchCourse.Add("@c_course_coordinator_name", course.c_course_coordinator_name);
+        //    try
+        //    {
+        //        return DataProxy.FetchDataTable("s_sp_search_course", htSearchCourse);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
 
-        }
+        //}
         /// <summary>
         /// Delete location locale
         /// </summary>

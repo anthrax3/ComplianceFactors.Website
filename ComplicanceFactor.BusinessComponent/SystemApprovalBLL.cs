@@ -49,5 +49,26 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        /// <summary>
+        /// Get approval queue information
+        /// </summary>
+        /// <param name="e_enroll_approval_system_id_pk"></param>
+        /// <returns></returns>
+        public static SystemApproval GetApprovalsQueue(string e_enroll_approval_system_id_pk)
+        {
+            Hashtable htGetApprovalsQueue = new Hashtable();
+            SystemApproval approval = new SystemApproval();
+            htGetApprovalsQueue.Add("@e_enroll_approval_system_id_pk", e_enroll_approval_system_id_pk);
+            DataTable dtApprovalQueueInfo =  DataProxy.FetchDataTable("s_sp_get_approval_queue_info", htGetApprovalsQueue);
+            approval.ApprovalID = dtApprovalQueueInfo.Rows[0]["approvalId"].ToString();
+            approval.ApprovalWorkflowName = dtApprovalQueueInfo.Rows[0]["ApprovalWorkflowName"].ToString();
+            approval.EmployeeId = dtApprovalQueueInfo.Rows[0]["EmployeeId"].ToString();
+            approval.EmployeeName = dtApprovalQueueInfo.Rows[0]["EmployeeName"].ToString();
+            approval.TrainingId = dtApprovalQueueInfo.Rows[0]["TrainingId"].ToString();
+            approval.TrainingTitle = dtApprovalQueueInfo.Rows[0]["TrainingTitle"].ToString();
+            return approval;
+
+            
+        }
     }
 }

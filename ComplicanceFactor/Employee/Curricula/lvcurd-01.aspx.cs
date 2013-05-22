@@ -284,6 +284,7 @@ namespace ComplicanceFactor.Employee.Curricula
                 Button btnDrop = (Button)e.Row.FindControl("btnDrop");
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
                 string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString();
+                string e_enroll_system_id_pk = DataBinder.Eval(e.Row.DataItem, "e_enroll_system_id_pk").ToString().Trim();
                 if (status == "Assigned")
                 {
                     btnEnroll.Style.Add("display", "inline");
@@ -291,6 +292,8 @@ namespace ComplicanceFactor.Employee.Curricula
                 else if (status == "Enrolled" && deliveryType == "OLT")
                 {
                     btnLaunch.Style.Add("display", "inline");
+                    string url = "http://compliancefactors.com.lavender.arvixe.com/LMS/CoursePlayer.aspx?&eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                    btnLaunch.OnClientClick = "window.open('" + url + "','_blank'); return true;";
                 }
                 else if (status == "Enrolled")
                 {
@@ -370,39 +373,39 @@ namespace ComplicanceFactor.Employee.Curricula
             {
                 Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
             }
-            else if (e.CommandName.Equals("Launch"))
-            {
-                string url = e.CommandArgument.ToString();
-                if (!string.IsNullOrEmpty(url))
-                {
-                    if (!url.Contains("http"))
-                        url = "http://" + url;
-                    ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
-                }
-                else
-                {
-                    //ClientScript.RegisterStartupScript(GetType(), "Navigate", "alert(Could not find the ScromURl....);", true);
-                    string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
-                }
+            //else if (e.CommandName.Equals("Launch"))
+            //{
+            //    //string url = e.CommandArgument.ToString();
+            //    //if (!string.IsNullOrEmpty(url))
+            //    //{
+            //    //    if (!url.Contains("http"))
+            //    //        url = "http://" + url;
+            //    //    ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
+            //    //}
+            //    //else
+            //    //{
+            //    //    //ClientScript.RegisterStartupScript(GetType(), "Navigate", "alert(Could not find the ScromURl....);", true);
+            //    //    string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
+            //    //    Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
+            //    //}
 
-                    //ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( 'www.google.com', '_blank' );", true);
+            //        //ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( 'www.google.com', '_blank' );", true);
 
-                //string url = e.CommandArgument.ToString();
-                //System.Diagnostics.Process.Start(url);
-                //insert enrollment
-                //BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
-                //enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                //enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                //enrollOLT.e_enroll_required_flag = true;
-                //enrollOLT.e_enroll_approval_required_flag = true;
-                //enrollOLT.e_enroll_type_name = "Self-enroll";
-                //enrollOLT.e_enroll_approval_status_name = "Pending";
-                //enrollOLT.e_enroll_status_name = "Enrolled";
-                //EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
-                //Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(CurriculumId), false);
+            //    //string url = e.CommandArgument.ToString();
+            //    //System.Diagnostics.Process.Start(url);
+            //    //insert enrollment
+            //    //BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
+            //    //enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
+            //    //enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
+            //    //enrollOLT.e_enroll_required_flag = true;
+            //    //enrollOLT.e_enroll_approval_required_flag = true;
+            //    //enrollOLT.e_enroll_type_name = "Self-enroll";
+            //    //enrollOLT.e_enroll_approval_status_name = "Pending";
+            //    //enrollOLT.e_enroll_status_name = "Enrolled";
+            //    //EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
+            //    //Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(CurriculumId), false);
                 
-            }
+            //}
             else if (e.CommandName.Equals("Drop"))
             {
                 BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();

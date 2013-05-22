@@ -99,5 +99,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string e_learning_deliveryType { get; set; }
         public bool e_re_enroll { get; set; }
 
+        //Waitlist - for move roaster
+        public string e_course_waitlist_system_id_pk { get; set; }
+
     }
 }

@@ -7,45 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.Documents {
+namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup {
     
     
-    public partial class document_locales_list {
+    public partial class p_mcsc_01 {
         
         /// <summary>
-        /// gvLocales control.
+        /// pnlDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvLocales;
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
-        /// ddlLocales control.
+        /// txtCatalogName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocales;
+        protected global::System.Web.UI.WebControls.TextBox txtCatalogName;
         
         /// <summary>
-        /// btnCreateNewLocale control.
+        /// txtCatalogId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateNewLocale;
+        protected global::System.Web.UI.WebControls.TextBox txtCatalogId;
         
         /// <summary>
-        /// btnClosePopup control.
+        /// btnGoSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClosePopup;
+        protected global::System.Web.UI.WebControls.Button btnGoSearch;
+        
+        /// <summary>
+        /// btnReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReset;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

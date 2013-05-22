@@ -13,6 +13,60 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
     public partial class samep_01 {
         
         /// <summary>
+        /// divSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        
+        /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
+        /// vs_samep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samep;
+        
+        /// <summary>
+        /// cvValidateCheckboxes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateCheckboxes;
+        
+        /// <summary>
+        /// cvValidateEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateEmployee;
+        
+        /// <summary>
+        /// hdCheckdelivery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdCheckdelivery;
+        
+        /// <summary>
         /// gvCatalog control.
         /// </summary>
         /// <remarks>
@@ -22,15 +76,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
         protected global::System.Web.UI.WebControls.GridView gvCatalog;
         
         /// <summary>
-        /// btnAddCatalogItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddCatalogItem;
-        
-        /// <summary>
         /// gvEmployee control.
         /// </summary>
         /// <remarks>
@@ -38,15 +83,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvEmployee;
-        
-        /// <summary>
-        /// btnAddEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddEmployee;
         
         /// <summary>
         /// chkRequired control.
@@ -65,6 +101,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTargetDueDate;
+        
+        /// <summary>
+        /// ceTargetDueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceTargetDueDate;
         
         /// <summary>
         /// btnProcessMassEnrollment control.

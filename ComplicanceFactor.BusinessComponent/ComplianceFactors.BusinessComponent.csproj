@@ -58,10 +58,12 @@
     <Compile Include="DataAccessObject\SystemCurriculum.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumStatus.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumType.cs" />
+    <Compile Include="DataAccessObject\SystemDocuments.cs" />
     <Compile Include="DataAccessObject\SystemDocumentTypes.cs" />
     <Compile Include="DataAccessObject\SystemGradingSchemes.cs" />
     <Compile Include="DataAccessObject\SystemHolidaySchedules.cs" />
     <Compile Include="DataAccessObject\SystemHRISIntegration.cs" />
+    <Compile Include="DataAccessObject\SystemMassEnrollment.cs" />
     <Compile Include="DataAccessObject\SystemNotification.cs" />
     <Compile Include="DataAccessObject\SystemSplashPage.cs" />
     <Compile Include="DataAccessObject\SystemTranscripts.cs" />
@@ -108,6 +110,7 @@
     <Compile Include="SystemCurriculumBLL.cs" />
     <Compile Include="SystemCurriculumStatusBLL.cs" />
     <Compile Include="SystemCurriculumTypeBLL.cs" />
+    <Compile Include="SystemDocumentsBLL.cs" />
     <Compile Include="SystemDocumentTypesBLL.cs" />
     <Compile Include="SystemEmployeeTypesBLL.cs" />
     <Compile Include="SystemFacilityBLL.cs" />
@@ -121,6 +124,8 @@
     <Compile Include="SystemInstructorTypeBLL.cs" />
     <Compile Include="SystemLocaleBLL.cs" />
     <Compile Include="SystemLocationBLL.cs" />
+    <Compile Include="SystemMassCompletionBLL.cs" />
+    <Compile Include="SystemMassEnrollmentBLL.cs" />
     <Compile Include="SystemMaterialBLL.cs" />
     <Compile Include="SystemMaterialTypeBLL.cs" />
     <Compile Include="SystemNotificationBLL.cs" />
@@ -130,6 +135,7 @@
     <Compile Include="SystemRoomTypeBLL.cs" />
     <Compile Include="SystemSplashPageBLL.cs" />
     <Compile Include="SystemUI_Texts_Labels_DropdownBLL.cs" />
+    <Compile Include="SystemWaitListBLL.cs" />
     <Compile Include="SystemWeekdaySchedulesBLL.cs" />
     <Compile Include="TimeZoneBLL.cs" />
     <Compile Include="TrainingBLL.cs" />

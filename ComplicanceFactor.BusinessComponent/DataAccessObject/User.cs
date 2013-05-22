@@ -179,5 +179,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public int u_profile_my_comp_reports_display_pref { get; set; }
 
         public string type { get; set; }
+        public string courseId { get; set; }
+        public string deliveryId { get; set; }
     }
 }

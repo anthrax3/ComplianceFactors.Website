@@ -181,23 +181,17 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
                 {
                     course.c_course_id_pk = txtCourseId.Text;
                     course.c_course_title = txtCourseTitle.Text;
-                    course.c_course_version = string.Empty;
-                    course.c_course_active_type_id_fk = "0";
-                    course.c_course_owner_name = string.Empty;
-                    course.c_course_coordinator_name = string.Empty;
+                    
 
                 }
                 else
                 {
                     course.c_course_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     course.c_course_title = SecurityCenter.DecryptText(Request.QueryString["name"]);
-                    course.c_course_version = string.Empty;
-                    course.c_course_active_type_id_fk = "0";
-                    course.c_course_owner_name = string.Empty;
-                    course.c_course_coordinator_name = string.Empty;
+                    
 
                 }
-                gvsearchDetails.DataSource = ManageCourseBLL.SearchSystemCatalog(course);
+                gvsearchDetails.DataSource = SystemInstructorBLL.SearchSystemCatalog(course);
                 gvsearchDetails.DataBind();
             }
             catch (Exception ex)

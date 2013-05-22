@@ -1474,5 +1474,90 @@ namespace ComplicanceFactor.Common
 
         }
 
+        public static DataTable TempCompletionCourse()
+        {
+            DataTable dtTempCompletionCourse = new DataTable();
+            DataColumn dtTempCompletionCourseColumn;           
+          
+            //c_course_system_id_fk
+            dtTempCompletionCourseColumn = new DataColumn();
+            dtTempCompletionCourseColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionCourseColumn.ColumnName = "c_course_system_id_pk";
+            dtTempCompletionCourse.Columns.Add(dtTempCompletionCourseColumn);
+            //c_course_id
+            dtTempCompletionCourseColumn = new DataColumn();
+            dtTempCompletionCourseColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionCourseColumn.ColumnName = "c_course_id_pk";
+            dtTempCompletionCourse.Columns.Add(dtTempCompletionCourseColumn);
+            //c_course_title
+            dtTempCompletionCourseColumn = new DataColumn();
+            dtTempCompletionCourseColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionCourseColumn.ColumnName = "c_course_title";
+            dtTempCompletionCourse.Columns.Add(dtTempCompletionCourseColumn);
+
+            //c_delivery_id
+            dtTempCompletionCourseColumn = new DataColumn();
+            dtTempCompletionCourseColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionCourseColumn.ColumnName = "c_delivery_system_id_pk";
+            dtTempCompletionCourse.Columns.Add(dtTempCompletionCourseColumn);
+            return dtTempCompletionCourse;
+
+        }
+
+        public static DataTable TempCompletionEmployee()
+        {
+            DataTable dtTempCompletionEmployee = new DataTable();
+            DataColumn dtTempCompletionEmployeeColumn;
+
+            //c_course_system_id_fk
+            dtTempCompletionEmployeeColumn = new DataColumn();
+            dtTempCompletionEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionEmployeeColumn.ColumnName = "u_user_id_pk";
+            dtTempCompletionEmployee.Columns.Add(dtTempCompletionEmployeeColumn);
+            //c_course_id
+            dtTempCompletionEmployeeColumn = new DataColumn();
+            dtTempCompletionEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionEmployeeColumn.ColumnName = "u_username";
+            dtTempCompletionEmployee.Columns.Add(dtTempCompletionEmployeeColumn);
+            //c_course_title
+            dtTempCompletionEmployeeColumn = new DataColumn();
+            dtTempCompletionEmployeeColumn.DataType = Type.GetType("System.String");
+            dtTempCompletionEmployeeColumn.ColumnName = "u_hris_employee_id";
+            dtTempCompletionEmployee.Columns.Add(dtTempCompletionEmployeeColumn);
+
+
+            return dtTempCompletionEmployee;
+
+        }
+
+        public static DataTable TempEnrollmentCourseCurriculum()
+        {
+            DataTable dtTempEnrollmentCourseCurriculum = new DataTable();
+            DataColumn dtTempEnrollmentCourseCurriculumColumn;
+
+            //c_course_system_id_fk
+            dtTempEnrollmentCourseCurriculumColumn = new DataColumn();
+            dtTempEnrollmentCourseCurriculumColumn.DataType = Type.GetType("System.String");
+            dtTempEnrollmentCourseCurriculumColumn.ColumnName = "sysId";
+            dtTempEnrollmentCourseCurriculum.Columns.Add(dtTempEnrollmentCourseCurriculumColumn);
+            //c_course_id
+            dtTempEnrollmentCourseCurriculumColumn = new DataColumn();
+            dtTempEnrollmentCourseCurriculumColumn.DataType = Type.GetType("System.String");
+            dtTempEnrollmentCourseCurriculumColumn.ColumnName = "Id";
+            dtTempEnrollmentCourseCurriculum.Columns.Add(dtTempEnrollmentCourseCurriculumColumn);
+            //c_course_title
+            dtTempEnrollmentCourseCurriculumColumn = new DataColumn();
+            dtTempEnrollmentCourseCurriculumColumn.DataType = Type.GetType("System.String");
+            dtTempEnrollmentCourseCurriculumColumn.ColumnName = "title";
+            dtTempEnrollmentCourseCurriculum.Columns.Add(dtTempEnrollmentCourseCurriculumColumn);
+
+            //c_delivery_id
+            dtTempEnrollmentCourseCurriculumColumn = new DataColumn();
+            dtTempEnrollmentCourseCurriculumColumn.DataType = Type.GetType("System.String");
+            dtTempEnrollmentCourseCurriculumColumn.ColumnName = "type";
+            dtTempEnrollmentCourseCurriculum.Columns.Add(dtTempEnrollmentCourseCurriculumColumn);
+            return dtTempEnrollmentCourseCurriculum;
+
+        }
     }
 }

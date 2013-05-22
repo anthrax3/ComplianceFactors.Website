@@ -345,7 +345,7 @@ namespace ComplicanceFactor.Employee.Catalog
                         enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
                         enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
                         enrollOLT.e_enroll_required_flag = true;
-                        enrollOLT.e_enroll_approval_required_flag = true;
+                        enrollOLT.e_enroll_approval_required_flag = false;
                         enrollOLT.e_enroll_type_name = "Self-enroll";
                         enrollOLT.e_enroll_approval_status_name = "Pending";
                         enrollOLT.e_enroll_status_name = "Enrolled";

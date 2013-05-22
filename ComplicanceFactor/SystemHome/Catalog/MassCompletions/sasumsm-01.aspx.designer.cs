@@ -7,46 +7,55 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.Documents {
+namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions {
     
     
-    public partial class add_document_locale {
+    public partial class sasumsm_01 {
         
         /// <summary>
-        /// txtDocumentName control.
+        /// pnlDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDocumentName;
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtEmployeeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeName;
         
         /// <summary>
-        /// btnUploadDocument control.
+        /// txtEmployeeId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadDocument;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeId;
         
         /// <summary>
-        /// btnSaveLocale control.
+        /// btnGoSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveLocale;
+        protected global::System.Web.UI.WebControls.Button btnGoSearch;
+        
+        /// <summary>
+        /// btnReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
         /// btnCancel control.
