@@ -263,7 +263,7 @@ namespace ComplicanceFactor
                 {
                     btnLaunch.Style.Add("display", "inline");
                     string url = "http://compliancefactors.com.lavender.arvixe.com/LMS/CoursePlayer.aspx?&eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
-                    btnLaunch.OnClientClick = "window.open('"+url+"','_blank'); return true;";
+                    btnLaunch.OnClientClick = "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1');";
                 }
                 else if(status == "Enrolled")
                 {
