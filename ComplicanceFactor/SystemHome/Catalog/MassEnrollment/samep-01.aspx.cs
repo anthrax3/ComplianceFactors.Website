@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Net.Mail;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Threading;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
 {
@@ -22,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "Mass Enrollment";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_mass_enrollment_text");
                 SessionWrapper.Enrollment_courses_curriculum.Clear();
                 SessionWrapper.Compltion_employees.Clear();
             }
@@ -62,7 +63,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                     chkSelectDelivery.Style.Add("display", "none");
                     ddlDelivery.Style.Add("display", "none");
                     //btnViewDetails.Style.Add("display", "inline"); Style='float:left;margin-left:70px;'
-                    ltlViewDetails.Text = "<input type= 'button' id =" + sysId + " value='View Details' class='cursor_hand'  align='center'/> ";
+                    ltlViewDetails.Text = "<input type= 'button' id =" + sysId + " value='" + LocalResources.GetGlobalLabel("app_view_details_button_text") + "' class='cursor_hand'  align='center'/> ";
                 }
 
 
@@ -73,6 +74,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                     ddlDelivery.DataBind();
                     ListItem liFirstItem = new ListItem();
                     liFirstItem.Text = "Select a Delivery";
+                    //liFirstItem.Text = LocalResources.GetGlobalLabel("app_select_a_delivery_text");
+                    
                     ///liFirstItem.Value = "0";
                     ddlDelivery.Items.Insert(0, liFirstItem);
                     ddlDelivery.SelectedIndex = 0;
@@ -157,7 +160,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
             if (SessionWrapper.Enrollment_courses_curriculum.Rows.Count > 0 && SessionWrapper.Compltion_employees.Rows.Count > 0)
             {
                 divSuccess.Style.Add("display", "block");
-                divSuccess.InnerText = "Mass Enrollment Processed successfully";
+                divSuccess.InnerText = LocalResources.GetText("app_succ_processed_text");
             }
         }
 

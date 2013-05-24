@@ -206,6 +206,9 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
 
         public string s_locale_culture { get; set; }
         public string s_reset_waitlist { get; set; }
+
+        public string u_hris_employee_id{ get; set; }
+        public string c_employee_name { get; set; }
     }
 }
 

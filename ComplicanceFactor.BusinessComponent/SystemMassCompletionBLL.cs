@@ -56,5 +56,58 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static int MassCompletion(SystemTranscripts transcripts)
+        {
+            try
+            {
+                Hashtable htInsertTranscripts = new Hashtable();                            
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_assign_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_assign_id_fk", transcripts.t_transcript_assign_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_assign_id_fk", DBNull.Value);
+                }                 
+                //htInsertTranscripts.Add("@t_transcript_completion_date_time", transcripts.t_transcript_completion_date_time);
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_completion_type_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_completion_type_id_fk", transcripts.t_transcript_completion_type_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_completion_type_id_fk", DBNull.Value);
+                }
+                //htInsertTranscripts.Add("@t_transcript_completion_type_id_fk", transcripts.t_transcript_completion_type_id_fk);
+                htInsertTranscripts.Add("@t_transcript_marked_by_user_id_fk", transcripts.t_transcript_marked_by_user_id_fk);
+                htInsertTranscripts.Add("@t_transcript_required_flag", transcripts.t_transcript_required_flag);
+                htInsertTranscripts.Add("@t_transcript_target_due_date", transcripts.t_transcript_target_due_date);
+                htInsertTranscripts.Add("@t_transcript_actual_date", transcripts.t_transcript_actual_date);
+                htInsertTranscripts.Add("@t_transcript_status_name", transcripts.t_transcript_status_name);
+                htInsertTranscripts.Add("@t_transcript_time_spent", transcripts.t_transcript_time_spent);
+                htInsertTranscripts.Add("@t_transcript_score", transcripts.t_transcript_score);
+                htInsertTranscripts.Add("@t_transcript_credits", transcripts.t_transcript_credits);
+                htInsertTranscripts.Add("@t_transcript_hours", transcripts.t_transcript_hours);
+                htInsertTranscripts.Add("@t_transcript_active_flag", transcripts.t_transcript_active_flag);
+
+                htInsertTranscripts.Add("@audit_Userid", transcripts.Userid);
+                htInsertTranscripts.Add("@audit_user_type", transcripts.user_type);
+                htInsertTranscripts.Add("@audit_user_detail", transcripts.user_detail);
+                htInsertTranscripts.Add("@audit_action_desc", transcripts.action_desc);
+                htInsertTranscripts.Add("@audit_ipaddress", transcripts.ipaddress);
+                htInsertTranscripts.Add("@audit_device", transcripts.device);
+
+                htInsertTranscripts.Add("@mass_completion", transcripts.mass_completion);
+
+
+
+                return DataProxy.FetchSPOutput("s_sp_mass_completion", htInsertTranscripts);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

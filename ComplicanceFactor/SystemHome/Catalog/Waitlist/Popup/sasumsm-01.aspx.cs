@@ -77,16 +77,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
 
         protected void btnGosearch_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["page"]))
-            {
-                Response.Redirect("~/SystemHome/Catalog/MassCompletions/sasumsmr-01.aspx?lastname=" + SecurityCenter.EncryptText(txtSearchLastName.Text) + "&firstname=" + SecurityCenter.EncryptText(txtSearchFirstName.Text) + "&username=" + SecurityCenter.EncryptText(txtSearchUserName.Text) + "&userstatus=" + SecurityCenter.EncryptText(ddlSearchUserStatus.SelectedValue) + "&usertype=" + SecurityCenter.EncryptText(ddlSearchUserTypes.SelectedValue) + "&userdomain=" + SecurityCenter.EncryptText(ddlSearchUserDomain.SelectedValue));
-            }
-            else
-            {
-                Response.Redirect("~/SystemHome/Catalog/Waitlist/Popup/sasumsmr-01.aspx?courseId=" + SecurityCenter.EncryptText(courseId) + "&deliveryId=" + SecurityCenter.EncryptText(deliveryId) + "&lastname=" + SecurityCenter.EncryptText(txtSearchLastName.Text) + "&firstname=" + SecurityCenter.EncryptText(txtSearchFirstName.Text) + "&username=" + SecurityCenter.EncryptText(txtSearchUserName.Text) + "&userstatus=" + SecurityCenter.EncryptText(ddlSearchUserStatus.SelectedValue) + "&usertype=" + SecurityCenter.EncryptText(ddlSearchUserTypes.SelectedValue) + "&userdomain=" + SecurityCenter.EncryptText(ddlSearchUserDomain.SelectedValue));
-            }
+            Response.Redirect("~/SystemHome/Catalog/Waitlist/Popup/sasumsmr-01.aspx?courseId=" + SecurityCenter.EncryptText(courseId) + "&deliveryId=" + SecurityCenter.EncryptText(deliveryId) + "&lastname=" + SecurityCenter.EncryptText(txtSearchLastName.Text) + "&firstname=" + SecurityCenter.EncryptText(txtSearchFirstName.Text) + "&username=" + SecurityCenter.EncryptText(txtSearchUserName.Text) + "&userstatus=" + SecurityCenter.EncryptText(ddlSearchUserStatus.SelectedValue) + "&usertype=" + SecurityCenter.EncryptText(ddlSearchUserTypes.SelectedValue) + "&userdomain=" + SecurityCenter.EncryptText(ddlSearchUserDomain.SelectedValue));
+
         }
-         
+
 
     }
 }

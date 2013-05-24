@@ -138,7 +138,7 @@
         <div>
             <div class="div_padding_25">
                 <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="table_700 tablesorter"
-                    runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" DataKeyNames="u_user_id_pk,u_username,EmployeeID"
+                    runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" AutoGenerateColumns="False" DataKeyNames="u_user_id_pk,u_username,EmployeeID"
                     AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
                     PageSize="10" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowEditing="gvsearchDetails_RowEditing">
                     <Columns>
@@ -147,7 +147,7 @@
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
                             HeaderStyle-HorizontalAlign="Left" DataField="u_first_name" HeaderText="<%$ LabelResourceExpression: app_first_name_text_header %>" />
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
-                            HeaderStyle-HorizontalAlign="Left" DataField="u_hris_employee_id" HeaderText="Employee Id"
+                            HeaderStyle-HorizontalAlign="Left" DataField="u_hris_employee_id" HeaderText="<%$ LabelResourceExpression: app_employee_id_text %>"
                             SortExpression="Domain" />
                         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                             ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
@@ -165,7 +165,7 @@
                 <table cellpadding="0" cellspacing="0" class="paging_700">
                     <tr>
                         <td align="right">
-                            <asp:Button ID="btnSaveSelected" CssClass="cursor_hand" runat="server" Text="Save Selected"
+                            <asp:Button ID="btnSaveSelected" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_selected_button_text %>"
                                 OnClientClick="return validateCheckBoxes();" OnClick="btnSaveSelected_Click" />
                         </td>
                     </tr>

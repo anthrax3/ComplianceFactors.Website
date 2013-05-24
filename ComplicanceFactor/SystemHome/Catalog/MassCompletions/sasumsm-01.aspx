@@ -32,13 +32,13 @@
             <table>
                 <tr>
                     <td>
-                        Catalog Item Name:
+                        Employee Name:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Catalog Item Id:
+                        Employee Id:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeId" CssClass="textbox_long" runat="server"></asp:TextBox>

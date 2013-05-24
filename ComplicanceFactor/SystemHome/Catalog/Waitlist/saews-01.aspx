@@ -8,6 +8,28 @@
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+        $(document).ready(function () {
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
+
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
+
+                $(navigationSelectedValue).addClass('selected');
+                return false;
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $(".moveRoaster").click(function () {
                 var record_id = $(this).attr("id");
@@ -18,7 +40,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".removeWaitlist").click(function () {                
+            $(".removeWaitlist").click(function () {
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
                 var element = $(this).attr("id").split(",");
@@ -52,7 +74,7 @@
                 return false;
             });
         });
-    </script>    
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".addUser").click(function () {
@@ -74,7 +96,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': 'Popup/sasumsm-01.aspx?courseId='+element[0] +'&deliveryId='+element[1],
+                    'href': 'Popup/sasumsm-01.aspx?courseId=' + element[0] + '&deliveryId=' + element[1],
                     'onComplete': function () {
                         $.fancybox.showActivity();
                         $('#fancybox-frame').load(function () {
@@ -94,25 +116,28 @@
         });
     </script>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnHeaderSave" runat="server" Text="Save Waitlist" />
+                        <asp:Button ID="btnHeaderSave" runat="server" Text="Save Waitlist" 
+                            onclick="btnHeaderSave_Click" />
                     </td>
                     <td>
                     </td>
-                    <td>
-                        <asp:Button ID="btnHeaderReset" runat="server" Text="Reset" />
+                    <td class="align_right">
+                        &nbsp;
                     </td>
                     <td>
                     </td>
-                    <td>
-                        <asp:Button ID="btnHeaderCancel" runat="server" Text="Cancel" />
+                    <td class="align_right">
+                        <asp:Button ID="btnHeaderCancel" runat="server" Text="Cancel" 
+                            onclick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
-        </div>
+        </div>        
         <br />
         <div class="div_header_long">
             Wailist Information:
@@ -122,22 +147,19 @@
             <table class="div_controls font_1">
                 <tr>
                     <td class="align_right">
-                        Waitlist ID:
+                        Course Name / Id:
                     </td>
-                    <td class="align_left">
-                        <asp:Label ID="lblWaitlistId" runat="server"></asp:Label>
-                    </td>
-                    <td>
-                        &nbsp;
+                    <td colspan="2" class="align_left">
+                        <asp:Label ID="lblCourseName" runat="server"></asp:Label>
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td class="align_right">
-                        Course Name / Id:
+                        &nbsp;
                     </td>
                     <td class="align_left">
-                        <asp:Label ID="lblCourseName" runat="server"></asp:Label>
+                        &nbsp;
                     </td>
                 </tr>
                 <tr>
@@ -227,10 +249,10 @@
             </tr>
         </table>
         <div>
-            <asp:GridView ID="gvWaitlistDetails" CellPadding="0" CellSpacing="0" RowStyle-CssClass="record" CssClass="gridview_long tablesorter"
-                runat="server" EmptyDataText="No Result Found" AutoGenerateColumns="False" AllowPaging="true"
-                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" PageSize="10"
-                DataKeyNames="e_enroll_waitlist_system_id_pk,e_enroll_waitlist_user_sequence"
+            <asp:GridView ID="gvWaitlistDetails" CellPadding="0" CellSpacing="0" RowStyle-CssClass="record"
+                CssClass="gridview_long tablesorter" runat="server" EmptyDataText="No Result Found"
+                AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
+                PagerSettings-Visible="false" PageSize="10" DataKeyNames="e_enroll_waitlist_system_id_pk,e_enroll_waitlist_user_sequence"
                 OnRowCommand="gvWaitlistDetails_RowCommand" OnRowDataBound="gvWaitlistDetails_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
@@ -292,19 +314,18 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnFooterSave" runat="server" Text="Save Waitlist" 
-                            onclick="btnFooterSave_Click" />
+                        <asp:Button ID="btnFooterSave" runat="server" Text="Save Waitlist" OnClick="btnFooterSave_Click" />
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnFooterReset" runat="server" Text="Reset" 
-                            onclick="btnFooterReset_Click" />
+                        &nbsp;
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnFooterCancel" runat="server" Text="Cancel" />
+                        <asp:Button ID="btnFooterCancel" runat="server" Text="Cancel" 
+                            onclick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>

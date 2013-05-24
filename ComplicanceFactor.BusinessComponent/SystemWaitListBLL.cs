@@ -11,20 +11,36 @@ namespace ComplicanceFactor.BusinessComponent
 {
     public class SystemWaitListBLL
     {
-        public static DataTable GetWaitList()
+        public static DataTable GetWaitList(SystemCatalog course)
         {
-            //Hashtable htGetWaitList = new Hashtable();
-            //htGetWaitList.Add("@c_course_id_pk", user.Userid);
-            //htGetWaitList.Add("@c_course_title", user.Userid);
-            //htGetWaitList.Add("@c_delivery_id_pk", user.Userid);
-            //htGetWaitList.Add("@c_delivery_title", user.Userid);
-            //htGetWaitList.Add("@u_hris_employee_id", user.Userid);
-            //htGetWaitList.Add("@employee_Name", user.Userid);
-            //htGetWaitList.Add("@coordinator_Name", user.Userid);
+            Hashtable htGetWaitList = new Hashtable();
+            htGetWaitList.Add("@c_course_id_pk", course.c_course_id_pk);
+            htGetWaitList.Add("@c_course_title", course.c_course_title);
+            htGetWaitList.Add("@c_delivery_id_pk", course.c_delivery_id_pk);
+            htGetWaitList.Add("@c_delivery_title", course.c_delivery_title);
+            htGetWaitList.Add("@u_hris_employee_id", course.u_hris_employee_id);
+            htGetWaitList.Add("@c_employee_name", course.c_employee_name);
+            htGetWaitList.Add("@c_course_coordinator_name", course.c_course_coordinator_name);
+            if (!string.IsNullOrEmpty(course.c_session_start_date.ToString()))
+            {
+                htGetWaitList.Add("@c_session_start_date", course.c_session_start_date);
+            }
+            else
+            {
+                htGetWaitList.Add("@c_session_start_date", DBNull.Value);
+            }
 
+            if (!string.IsNullOrEmpty(course.c_session_end_date.ToString()))
+            {
+                htGetWaitList.Add("@c_session_end_date", course.c_session_end_date);
+            }
+            else
+            {
+                htGetWaitList.Add("@c_session_end_date", DBNull.Value);
+            }
             try
             {
-                return DataProxy.FetchDataTable("s_sp_search_waitlist");
+                return DataProxy.FetchDataTable("s_sp_search_waitlist", htGetWaitList);
             }
             catch (Exception)
             {

@@ -38,7 +38,7 @@
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,14 +47,14 @@
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Extensions, Version=2.1.3842.36318, Culture=neutral, PublicKeyToken=bebd372c505097f2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DocumentFormat.OpenXml.Extensions.dll</HintPath>
+      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\DocumentFormat.OpenXml.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="EventCalendar">
       <HintPath>C:\Users\PIXEL\Desktop\Apr24\OLD\EventCalendar\EventCalendar.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Ionic.Zip.dll</HintPath>
+      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -82,9 +82,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="TimePicker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d25e9f59e49c4d2f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\TimePicker.dll</HintPath>
+    <Reference Include="TimePicker">
+      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\TimePicker.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -127,6 +126,80 @@
     <Content Include="Compliance\MIRIS\cvoi-01.aspx" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\coi.htm" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\cvmv.htm" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\00b46f82-c8a7-4bd9-87d7-4cb974c3a070.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\00d110f8-86fb-4ab5-aa80-dcce44653d19.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\10405cc9-32b4-480b-89cc-83463799a932.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\106246b1-29a5-40c3-98e6-55287eefec82.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\391370da-5ec9-4d26-b09a-871b6eda0674.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\470725fc-5511-4acc-b6db-9a458b281056.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\49db98b6-6d55-4746-ae87-b8223d16d67a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\4c5d5921-2ee9-4be0-b498-13eea7acc0d8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\4f09c6a5-6214-46be-abe6-2022bd72024c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\5be2de25-f683-4278-9751-a68a23b7a2e2.png" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\66a25641-752c-4fff-91da-b4281676212b.png" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\6f578f00-ca40-4f53-a559-ef827abd0198.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\7416df39-6ede-4f9f-a927-05ded3a0fc45.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\7bed5c37-7c29-4bf6-a070-3d6cdf066b1b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\7d9b3908-2a6b-47d8-ac25-42c97d180dc8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\7ef6078d-8936-49c1-a4fc-e18798b6c70d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\89bc50ac-ff73-4fbc-b9c1-6da717081e30.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\8ae3cea9-c37c-4f3f-a418-40592930a91f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\945bcacf-a282-4868-9979-4e120a7bd13b.png" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\97979837-48dd-4059-a67b-d6e810aebb37.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\a36bd594-82be-4d3d-8219-f77978a03795.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\a3b1f426-2ae1-4a60-914d-9372b3ebd8d1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\c75892f1-59c7-4153-a020-83d39935e487.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\c8655fad-2205-4696-b0d4-e018940561e0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\ccc07ba1-dad3-48f7-b7cc-614318bd1ff5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\d15d6381-a06a-43f7-834a-6ccbfb922c84.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\e7d3f07c-af45-4c9f-9858-63422add2e51.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\f266b387-f895-45f9-a7f3-d93fc03a7073.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\fa1f3ad1-103a-40af-bf09-82205b4d075b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\01aafcb8-f808-4715-8b9f-d24a356093c8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\22674571-7480-499d-af2e-450d6d58ca94.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\361af106-50fe-4bd4-b387-d663dd8531c8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\4432c1c2-82a9-4baa-8146-8f0c32120e0a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\4b48bd43-a291-4195-8e22-75f23f1d0574.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\6274454e-23c4-49bf-beb4-8cd3bdf9e45a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\6a01e70f-cda2-4f88-8934-dc9124ddab54.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\82c035f4-81e3-494b-a9b1-4c936b2e9e7b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\bccaaea2-f0b1-44a1-9be6-3714d6ad734d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\bdfe6742-0e07-4377-a956-e465997479e3.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\e623a936-8a1e-4cf6-ac8b-6707ff2a0442.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\eccf6ed4-c650-45cc-ad48-973c4894adc7.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\eef63ab8-eb5f-4c56-a31b-0f16e6e85636.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\IncidentHistory\fb7fce3a-9fb2-4339-8704-a67cf66eacd8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\0baefccb-976d-4409-9369-3fa49699b39c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\3b413959-5ef6-4798-affe-b944ba732eac.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\7667b0c8-8c49-4109-8dba-afbb030e196d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\7f6b0dac-571b-421a-8d6e-b51b18d7d1e6.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\856506b2-cc50-4b59-9011-250a7ca93cc4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\89012244-39e4-4336-86d0-2682d5a2e5b0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\96820ab5-003f-48fa-8c28-176da01951ac.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\9e073ff2-d648-48f8-bd7e-a2fe9c2c6b61.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Observation\bf5bc6a8-77a1-44bb-a9f5-5f68e8764107.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\2f0fc672-f3a3-44dd-aa52-7d7174ab7601.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\36832e22-6fb1-4f9c-b06f-50dc051f6251.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\39fdcf14-394c-46e0-a1f2-751e6c0a2f04.png" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\516ddc33-7c1d-40a1-9aba-c34d19110f28.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\5e7308ae-fcaa-43ab-809a-8b7eec058bf5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\94900a16-0afd-4f89-bf6a-d409de9c7af2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\9834a83e-7732-449d-93f9-551acebd8c7f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\a8bf6e8c-352b-468a-b0aa-77f5fbd9b0aa.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\c87b7566-240a-42af-8c63-12841f84727c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\dc215ef4-8399-4922-8c43-1d93b7fb08d9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Policies\ec1595b4-6740-4080-b16d-daacce6ef9e0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\146c55d8-453b-43c9-b288-fa83697c293e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\225eefab-f480-46cd-88b6-e38937c024a2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\3b56c1ce-8a48-436e-a688-0ce1a8b0a0cf.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\45b9ad1d-ad80-4774-959a-9a8fcafb5aa5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\76b96b75-c40a-4235-9f67-32510df058e1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\a108667d-1642-463a-8a90-474e012ee939.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\b12f7aed-f992-4ab2-937f-3f534f21527d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\b8a33f63-6bf5-41a3-935d-1a25e687bff2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\c2dcd9f7-41cc-4f58-b8da-f205de566c63.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\dda645b5-d717-4d2c-96f0-4574253c87bb.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\TrainingHistory\ebe07742-2b9c-4fde-83ff-a2fae32de9e4.jpg" />
     <Content Include="Compliance\MyLicenses\ccaslp-01.aspx" />
     <Content Include="Compliance\MySurveys\ccassp-01.aspx" />
     <Content Include="Compliance\MIRIS\ccamiris-01.aspx" />
@@ -300,6 +373,9 @@
     <Content Include="Scripts\querystring-0.9.0-min.js" />
     <Content Include="Scripts\querystring-0.9.0.js" />
     <Content Include="Scripts\spin.min.js" />
+    <Content Include="SystemHome\Catalog\Approvals\saeas-01.aspx" />
+    <Content Include="SystemHome\Catalog\Approvals\samamp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Approvals\samasrp-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sceci-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sces-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-scesr-01.aspx" />
@@ -513,6 +589,13 @@
     <Content Include="SystemHome\Catalog\Course\DomainSearch\sasdn-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\DomainSearch\sasrdn-01.aspx" />
     <Content Include="SystemHome\Catalog\Curriculum\sautc-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\Locale\GenerateFile\iframe.js" />
+    <Content Include="SystemHome\Catalog\Documents\Locale\GenerateFile\sagf-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\Locale\saal-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\Locale\saaloc-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\Locale\saeloc-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\Locale\savloc-01.aspx" />
+    <Content Include="SystemHome\Catalog\Documents\saad-01.aspx" />
     <Content Include="SystemHome\Catalog\Documents\saandin-01.aspx" />
     <Content Include="SystemHome\Catalog\Documents\saedin-01.aspx" />
     <Content Include="SystemHome\Catalog\Documents\samdimp-01.aspx" />
@@ -566,10 +649,15 @@
     <Content Include="SystemHome\Catalog\Locations\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Locations\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Locations\Locale\savloc-01.aspx" />
-    <Content Include="SystemHome\Catalog\MassCompletions\catalog_istems_search_2.aspx" />
-    <Content Include="SystemHome\Catalog\MassCompletions\catalog_items_search.aspx" />
-    <Content Include="SystemHome\Catalog\MassCompletions\enter-mass-completion-pin-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\p-mcsc-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\p-mcsr-01.aspx" />
     <Content Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\sasumsm-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassCompletions\sasumsmr-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsc-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsr-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsm-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsmr-01.aspx" />
     <Content Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\GenerateFile\iframe.js" />
     <Content Include="SystemHome\Catalog\Materials\Locale\GenerateFile\sagf-01.aspx" />
@@ -611,6 +699,8 @@
     <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucmcp-01.aspx" />
     <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsp-01.aspx" />
     <Content Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Waitlist\Popup\sasumsm-01.aspx" />
+    <Content Include="SystemHome\Catalog\Waitlist\Popup\sasumsmr-01.aspx" />
     <Content Include="SystemHome\Catalog\Waitlist\saews-01.aspx" />
     <Content Include="SystemHome\Catalog\Waitlist\samwmp-01.aspx" />
     <Content Include="SystemHome\Catalog\Waitlist\samwsrp-01.aspx" />
@@ -1816,6 +1906,27 @@
     <Compile Include="SuccessStories\sssec-01.aspx.designer.cs">
       <DependentUpon>sssec-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Catalog\Approvals\saeas-01.aspx.cs">
+      <DependentUpon>saeas-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Approvals\saeas-01.aspx.designer.cs">
+      <DependentUpon>saeas-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Approvals\samamp-01.aspx.cs">
+      <DependentUpon>samamp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Approvals\samamp-01.aspx.designer.cs">
+      <DependentUpon>samamp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Approvals\samasrp-01.aspx.cs">
+      <DependentUpon>samasrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Approvals\samasrp-01.aspx.designer.cs">
+      <DependentUpon>samasrp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Catalog\Completion\p-sceci-01.aspx.cs">
       <DependentUpon>p-sceci-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2215,6 +2326,48 @@
     <Compile Include="SystemHome\Catalog\Curriculum\sautc-01.aspx.designer.cs">
       <DependentUpon>sautc-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\GenerateFile\sagf-01.aspx.cs">
+      <DependentUpon>sagf-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\GenerateFile\sagf-01.aspx.designer.cs">
+      <DependentUpon>sagf-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\saal-01.aspx.cs">
+      <DependentUpon>saal-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\saal-01.aspx.designer.cs">
+      <DependentUpon>saal-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\saaloc-01.aspx.cs">
+      <DependentUpon>saaloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\saaloc-01.aspx.designer.cs">
+      <DependentUpon>saaloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\saeloc-01.aspx.cs">
+      <DependentUpon>saeloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\saeloc-01.aspx.designer.cs">
+      <DependentUpon>saeloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\savloc-01.aspx.cs">
+      <DependentUpon>savloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\Locale\savloc-01.aspx.designer.cs">
+      <DependentUpon>savloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\saad-01.aspx.cs">
+      <DependentUpon>saad-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Documents\saad-01.aspx.designer.cs">
+      <DependentUpon>saad-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Catalog\Documents\saandin-01.aspx.cs">
       <DependentUpon>saandin-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2376,26 +2529,19 @@
     <Compile Include="SystemHome\Catalog\Locations\Locale\savloc-01.aspx.designer.cs">
       <DependentUpon>savloc-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_istems_search_2.aspx.cs">
-      <DependentUpon>catalog_istems_search_2.aspx</DependentUpon>
+    <Compile Include="SystemHome\Catalog\MassCompletions\p-mcsc-01.aspx.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_istems_search_2.aspx.designer.cs">
-      <DependentUpon>catalog_istems_search_2.aspx</DependentUpon>
+    <Compile Include="SystemHome\Catalog\MassCompletions\p-mcsc-01.aspx.designer.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_items_search.aspx.cs">
-      <DependentUpon>catalog_items_search.aspx</DependentUpon>
+    <Compile Include="SystemHome\Catalog\MassCompletions\p-mcsr-01.aspx.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Catalog\MassCompletions\catalog_items_search.aspx.designer.cs">
-      <DependentUpon>catalog_items_search.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Catalog\MassCompletions\enter-mass-completion-pin-01.aspx.cs">
-      <DependentUpon>enter-mass-completion-pin-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Catalog\MassCompletions\enter-mass-completion-pin-01.aspx.designer.cs">
-      <DependentUpon>enter-mass-completion-pin-01.aspx</DependentUpon>
+    <Compile Include="SystemHome\Catalog\MassCompletions\p-mcsr-01.aspx.designer.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx.cs">
       <DependentUpon>samcp-01.aspx</DependentUpon>
@@ -2403,6 +2549,48 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx.designer.cs">
       <DependentUpon>samcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\sasumsm-01.aspx.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\sasumsm-01.aspx.designer.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\sasumsmr-01.aspx.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassCompletions\sasumsmr-01.aspx.designer.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsc-01.aspx.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsc-01.aspx.designer.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsr-01.aspx.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsr-01.aspx.designer.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsm-01.aspx.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsm-01.aspx.designer.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsmr-01.aspx.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsmr-01.aspx.designer.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx.cs">
       <DependentUpon>samep-01.aspx</DependentUpon>
@@ -2683,6 +2871,20 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\UpdateCurriculumStatuses\saucsrp-01.aspx.designer.cs">
       <DependentUpon>saucsrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\Popup\sasumsm-01.aspx.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\Popup\sasumsm-01.aspx.designer.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\Popup\sasumsmr-01.aspx.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Waitlist\Popup\sasumsmr-01.aspx.designer.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Waitlist\saews-01.aspx.cs">
       <DependentUpon>saews-01.aspx</DependentUpon>
@@ -3526,6 +3728,7 @@
     <Folder Include="Controls\" />
     <Folder Include="SystemHome\Catalog\Course\Delivery\Attachments\" />
     <Folder Include="SystemHome\Catalog\Course\Icons\" />
+    <Folder Include="SystemHome\Catalog\Documents\Upload\" />
     <Folder Include="SystemHome\Catalog\Materials\Upload\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
@@ -3671,7 +3874,6 @@
     <Content Include="SystemHome\Catalog\Web.config" />
     <None Include="SystemHome\Configuration\HRIS Integration\Sample\HRIS_import_csv_example.xlsx" />
     <None Include="SystemHome\Configuration\HRIS Integration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
-    <None Include="SystemHome\Configuration\Navigation\myPageTemplate.tmp" />
     <Content Include="SystemHome\Users\Web.config" />
     <None Include="Training\PdfTemplate\MyCourses.xsc">
       <DependentUpon>MyCourses.xsd</DependentUpon>

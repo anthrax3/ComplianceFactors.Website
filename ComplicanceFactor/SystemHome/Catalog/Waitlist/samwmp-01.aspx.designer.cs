@@ -13,6 +13,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
     public partial class samwmp_01 {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// txtEmployeeId control.
         /// </summary>
         /// <remarks>
@@ -29,15 +47,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmployeeName;
-        
-        /// <summary>
-        /// txtWaitListId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWaitListId;
         
         /// <summary>
         /// txtCourseId control.
@@ -58,15 +67,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.TextBox txtCourseName;
         
         /// <summary>
-        /// txtCoordinator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCoordinator;
-        
-        /// <summary>
         /// txtDeliveryId control.
         /// </summary>
         /// <remarks>
@@ -85,22 +85,49 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.TextBox txtDeliveryName;
         
         /// <summary>
-        /// txtDeliveryDate control.
+        /// txtCoordinator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeliveryDate;
+        protected global::System.Web.UI.WebControls.TextBox txtCoordinator;
         
         /// <summary>
-        /// btnCancel control.
+        /// ceDeliveryStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::AjaxControlToolkit.CalendarExtender ceDeliveryStartDate;
+        
+        /// <summary>
+        /// txtDeliveryStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryStartDate;
+        
+        /// <summary>
+        /// ceDeliveryEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDeliveryEndDate;
+        
+        /// <summary>
+        /// txtDeliveryEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryEndDate;
         
         /// <summary>
         /// btnReset control.

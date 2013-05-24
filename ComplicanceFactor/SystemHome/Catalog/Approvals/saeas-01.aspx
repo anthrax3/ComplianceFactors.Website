@@ -36,7 +36,7 @@
                         Approval ID:
                     </td>
                     <td>
-                        <asp:Label ID="lblApprovalID" runat="server" Text="0001"></asp:Label>
+                        <asp:Label ID="lblApprovalID" runat="server"></asp:Label>
                     </td>
                     <td>
                     </td>
@@ -44,7 +44,7 @@
                         Approval WorkFlow:
                     </td>
                     <td>
-                        <asp:Label ID="lblApprovalWorkFlowName" runat="server" Text="2nd Level Manager"></asp:Label>
+                        <asp:Label ID="lblApprovalWorkFlowName" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         Employee ID:
                     </td>
                     <td>
-                        <asp:Label ID="lblEmployeeId" runat="server" Text="0004"></asp:Label>
+                        <asp:Label ID="lblEmployeeId" runat="server"></asp:Label>
                     </td>
                     <td>
                     </td>
@@ -64,7 +64,7 @@
                         Employee Name:
                     </td>
                     <td>
-                        <asp:Label ID="lblEmployeeName" runat="server" Text="Muralikannan"></asp:Label>
+                        <asp:Label ID="lblEmployeeName" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -76,7 +76,7 @@
                         Training ID / Training Type:
                     </td>
                     <td>
-                        <asp:Label ID="lblTrainingId" runat="server" Text="0001"></asp:Label>
+                        <asp:Label ID="lblTrainingId" runat="server"></asp:Label>
                     </td>
                     <td>
                     </td>
@@ -84,7 +84,7 @@
                         Training Name:
                     </td>
                     <td>
-                        <asp:Label ID="lblTrainingName" runat="server" Text="New Hire OnBoarding Curriculum"></asp:Label>
+                        <asp:Label ID="lblTrainingName" runat="server"></asp:Label>
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +96,7 @@
                         Request Date:
                     </td>
                     <td>
-                        <asp:Label ID="lblRequestDate" runat="server" Text="02/21/2013"></asp:Label>
+                        <asp:Label ID="lblRequestDate" runat="server"></asp:Label>
                     </td>
                     <td>
                     </td>
@@ -104,7 +104,7 @@
                         Request Type:
                     </td>
                     <td>
-                        <asp:Label ID="lblRequestType" runat="server" Text="Manager-Enrolled"></asp:Label>
+                        <asp:Label ID="lblRequestType" runat="server"></asp:Label>
                     </td>
                 </tr>
             </table>
@@ -116,31 +116,29 @@
         <br />
         <div>
             <asp:GridView ID="gvApprovalWorkflowDetails" AutoGenerateColumns="false" GridLines="None"
-                ShowHeader="false" ShowFooter="false" runat="server">
+                ShowHeader="false" ShowFooter="false" runat="server" DataKeyNames="e_enroll_approval_system_id_pk,s_todo_system_id_pk,e_enroll_delivery_id_fk,e_enroll_user_id_fk"
+                OnRowDataBound="gvApprovalWorkflowDetails_RowDataBound" OnRowCommand="gvApprovalWorkflowDetails_RowCommand">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <table class=" table_td_300 div_controls font_1">
                                 <tr>
+                                    <td style="text-align: left;">
+                                        <%# Eval("ApproverRole")%>:
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <%# Eval("ApproverName")%>
+                                    </td>
+                                    <td class="gridview_row_width_1">
+                                        <%# Eval("ApprovalStatus")%>
+                                    </td>
                                     <td class="align_right">
-                                        <asp:Label ID="lblApproverLevel" runat="server" Text="Manager-Enrolled"></asp:Label>
+                                        <asp:Button ID="btnDeny" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                            CommandName="Deny" runat="server" Text="Deny" />
                                     </td>
-                                    <td>
-                                        <%--Approver Level Value--%>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lblStatus" runat="server" Text="Status"></asp:Label>
-                                    </td>
-                                    <td>
-                                        <%--Status Value--%>
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnDeny" runat="server" Text="Deny" />
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnApprove" runat="server" Text="Approve" />
+                                    <td class="align_right">
+                                        <asp:Button ID="btnApprove" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                            CommandName="Approve" runat="server" Text="Approve" />
                                     </td>
                                 </tr>
                             </table>
@@ -151,7 +149,7 @@
         </div>
         <br />
         <div class="div_header_long">
-           <br /> 
+            <br />
         </div>
         <br />
         <div>

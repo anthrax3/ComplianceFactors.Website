@@ -201,12 +201,12 @@
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samep" runat="server"
             ValidationGroup="samep"></asp:ValidationSummary>
         <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
-            ValidationGroup="samep" runat="server" ErrorMessage="Please select a delivery.">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
-            ValidationGroup="samep" runat="server" ErrorMessage="Please select atleast one employee.">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdCheckdelivery" runat="server" />
         <div class="div_header_long">
-            Catalog Item(s):
+            <%=LocalResources.GetLabel("app_catalog_items_text")%>:
         </div>
         <br />
         <div>
@@ -244,7 +244,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <input type="button" id='<%# Eval("sysId") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                            <input type="button" id='<%# Eval("sysId") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                 class="deletecoursecurriculum cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -252,12 +252,12 @@
             </asp:GridView>
             <br />
             <br />
-            <input type="button" class="addcourse cursor_hand" value="Add Catalog Item(s)" />
+            <input type="button" class="addcourse cursor_hand" value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_add_catalog_items_button_text %>" />' />
             <br />
             <br />
         </div>
         <div class="div_header_long">
-            Employee(s):
+            <%=LocalResources.GetLabel("app_employees_text")%>:
         </div>
         <div>
             <br />
@@ -277,7 +277,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <input type="button" id='<%# Eval("u_user_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="Remove" />'
+                            <input type="button" id='<%# Eval("u_user_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                 class="deleteemployee cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -285,7 +285,7 @@
             </asp:GridView>
             <br />
             <br />
-            <input type="button" class="addemployee cursor_hand" value="Add Employee(s)" />
+            <input type="button" class="addemployee cursor_hand" value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_employees_button_text %>" />' />
             <br />
             <br />
         </div>
@@ -300,13 +300,13 @@
                         &nbsp;
                     </td>
                     <td>
-                        Required&nbsp;<asp:CheckBox ID="chkRequired" runat="server" />
+                        <%=LocalResources.GetLabel("app_required_text")%>&nbsp;<asp:CheckBox ID="chkRequired" runat="server" />
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td>
-                        Target Due Date:
+                        <%=LocalResources.GetLabel("app_target_due_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -319,14 +319,14 @@
                 <tr>
                     <td colspan="3">
                        
-                        <asp:Button ID="btnProcessMassEnrollment" runat="server" Text="Process Mass Enrollment"
+                        <asp:Button ID="btnProcessMassEnrollment" runat="server" Text="<%$ LabelResourceExpression: app_process_mass_enrollment_button_text %>"
                             OnClientClick="javascript:check_hdCheckDelivery(this.id)" OnClick="btnProcessMassEnrollment_Click"
                             ValidationGroup="samep" />
                     </td>
                     <td colspan="4">
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" OnClick="btnCancel_Click" />
                     </td>
                 </tr>
             </table>

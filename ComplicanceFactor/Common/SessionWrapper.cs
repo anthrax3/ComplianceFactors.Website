@@ -6343,6 +6343,27 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["Enrollment_employees"] = value;
             }
         }
+        public static DataTable Selected_delivery
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Selected_delivery"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Selected_delivery"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Selected_delivery"] = value;
+            }
+        }
+
         public static void clearsession()
         {
             sessionid = "";

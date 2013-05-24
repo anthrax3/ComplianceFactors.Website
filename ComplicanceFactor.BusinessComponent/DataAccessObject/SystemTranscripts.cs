@@ -52,24 +52,21 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string t_transcript_session_status_id_fk { get; set; }
         public bool t_transcript_session_active_flag { get; set; }
 
+        public string mass_completion { get; set; }
 
 
-        //  t_transcript_session_id_fk
-        //t_transcript_id_pk
-        //t_transcript_session_user_id_fk
-        //t_transcript_sessiont_course_id_fk
-        //t_transcript_session_delivery_id_fk
-        //t_transcript_session_roster_id_fk
-        //t_transcript_session_attendance_id_fk
-        //t_transcript_session_passing_status_id_fk
-        //t_transcript_session_grade_id_fk
-        //t_transcript_session_completion_score
-        //t_transcript_session_completion_date_time
-        //t_transcript_session_completion_type_id_fk
-        //t_transcript_session_marked_by_user_id_fk
-        //t_transcript_session_actual_date
-        //t_transcript_session_status_id_fk
-        // t_transcript_session_active_flag
+        //Audit Log
 
+        public string Guid { get; set; }
+        public string Auditid { get; set; }
+        public string Userid { get; set; }
+        public string user_type { get; set; }
+        public string user_detail { get; set; }
+        public string action_desc { get; set; }
+        public DateTime u_datetime { get; set; }
+        public string ipaddress { get; set; }
+        public string device { get; set; }
+        public string a_values { get; set; }
+ 
     }
 }

@@ -24,9 +24,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
             {
                 SessionWrapper.isWaitlistAdded = false;
 
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "System" + "&nbsp;>&nbsp;" + "Manage Waitlist" + "&nbsp;>&nbsp;" + "Edit Waitlist Information";
-
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Waitlist/samwmp-01.aspx>Manage Waitlist</a>&nbsp;" + " >&nbsp;" + "Edit Waitlist Information";            
+                              
                 if (!string.IsNullOrEmpty(Request.QueryString["process"]))
                 {
                     if (!string.IsNullOrEmpty(Request.QueryString["waitlistId"].ToString()) && !string.IsNullOrEmpty(Request.QueryString["userId"].ToString()))
@@ -47,16 +50,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 {
                     courseId = SecurityCenter.DecryptText(Request.QueryString["courseId"].ToString());
                     hdnCourseId.Value = SecurityCenter.EncryptText(courseId);
-                }
-
-                SessionWrapper.Reset_WaitList = SystemWaitListBLL.GetAllWaitList(deliveryId);
-
+                }              
                 PopulateWaitList();
             }
             if (SessionWrapper.isWaitlistAdded == true)
             {
-                //gvWaitlistDetails.DataSource = SystemWaitListBLL.GetAllWaitList(deliveryId);
-                //gvWaitlistDetails.DataBind();
+                
                 PopulateWaitList();
                 SessionWrapper.isWaitlistAdded = false;
             }
@@ -85,7 +84,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 }
                 lblMaxEnroll.Text = catalog.c_delivery_max_enroll.ToString();
                 lblMinEnroll.Text = catalog.c_delivery_min_enroll.ToString();
-                lblWaitlistId.Text = "";
+                //lblWaitlistId.Text = "";
 
                 int? maxWaitlist = 0;
                 if (!string.IsNullOrEmpty(catalog.c_delivery_max_waitlist.ToString()))
@@ -118,6 +117,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 SessionWrapper.WaitList_details = dtWaitlist;
                 gvWaitlistDetails.DataSource = SessionWrapper.WaitList_details;
                 gvWaitlistDetails.DataBind();
+
+
+                GridViewRow FirstRow = gvWaitlistDetails.Rows[0];
+                Button btnUp = (Button)FirstRow.FindControl("btnUp");
+                btnUp.Enabled = false;
+                GridViewRow LastRow = gvWaitlistDetails.Rows[gvWaitlistDetails.Rows.Count - 1];
+                Button btnDown = (Button)LastRow.FindControl("btnDown");
+                btnDown.Enabled = false;
 
             }
             catch (Exception ex)
@@ -167,11 +174,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
             GridView GridView1 = (GridView)sender;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                int firstRow = gvWaitlistDetails.Rows.Count - 1;
                 //GridViewRow FirstRow = gvWaitlistDetails.Rows[0];
-                //Button btnUp = (Button)FirstRow.FindControl("btnUp");
+                Button btnUp = (Button)e.Row.FindControl("btnUp");
                 //btnUp.Enabled = false;
                 //GridViewRow LastRow = gvWaitlistDetails.Rows[gvWaitlistDetails.Rows.Count - 1];
-                //Button btnDown = (Button)LastRow.FindControl("btnDown");
+                Button btnDown = (Button)e.Row.FindControl("btnDown");
                 //btnDown.Enabled = false;
 
                 DataRowView drv = (DataRowView)e.Row.DataItem;
@@ -206,6 +214,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                     ltlRoaster.Visible = false;
                     ltlRemove.Visible = false;
                     ltlAdd.Visible = true;
+                    btnUp.Enabled = false;
+                    btnDown.Enabled = false;
                     ltlAdd.Text = "<input id=" + courseId + ',' + deliveryId + " class='addUser cursor_hand' type='button' value='Add' />";
                     //Button btnRoaster = (Button)e.Row.FindControl("btnManageRoster");
                     //Button btnRemove = (Button)e.Row.FindControl("btnRemove");
@@ -264,33 +274,33 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
             Response.Redirect("~/SystemHome/Catalog/Waitlist/saews-01.aspx?deliveryId=" + SecurityCenter.EncryptText(deliveryId) + "&courseId=" + SecurityCenter.EncryptText(courseId), false);
         }
 
-        protected void btnFooterReset_Click(object sender, EventArgs e)
-        {
-            SystemCatalog waitlistReset = new SystemCatalog();
-            waitlistReset.c_course_id_pk = courseId;
-            waitlistReset.c_delivery_id_pk = deliveryId;
-            waitlistReset.s_reset_waitlist = ConvertDataTableToXml(SessionWrapper.Reset_WaitList);
+        //protected void btnFooterReset_Click(object sender, EventArgs e)
+        //{
+        //    SystemCatalog waitlistReset = new SystemCatalog();
+        //    waitlistReset.c_course_id_pk = courseId;
+        //    waitlistReset.c_delivery_id_pk = deliveryId;
+        //    waitlistReset.s_reset_waitlist = ConvertDataTableToXml(SessionWrapper.Reset_WaitList);
 
-            try
-            {
-                int result = SystemWaitListBLL.ResetWaitlist(waitlistReset);
-            }
-            catch (Exception ex)
-            {
-                if (ConfigurationWrapper.LogErrors == true)
-                {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message);
-                    }
-                }
-            }
-            PopulateWaitList();
-        }
+        //    try
+        //    {
+        //        int result = SystemWaitListBLL.ResetWaitlist(waitlistReset);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (ConfigurationWrapper.LogErrors == true)
+        //        {
+        //            if (ex.InnerException != null)
+        //            {
+        //                Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message, ex.InnerException.Message);
+        //            }
+        //            else
+        //            {
+        //                Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message);
+        //            }
+        //        }
+        //    }
+        //    PopulateWaitList();
+        //}
 
         public string ConvertDataTableToXml(DataTable dtBuildSql)
         {
@@ -467,6 +477,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
 
         protected void btnFooterSave_Click(object sender, EventArgs e)
         {
+            updateWaitlistPriority();
+        }
+
+        private void updateWaitlistPriority()
+        {
+
             DataTable dtUpdateWaitlist = UpdateWaitlist();
             DataRow dr;
             foreach (GridViewRow row in gvWaitlistDetails.Rows)
@@ -552,6 +568,21 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 }
             }
 
+        }
+
+        protected void btnHeaderSave_Click(object sender, EventArgs e)
+        {
+            updateWaitlistPriority();
+        }
+
+        protected void btnHeaderCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SystemHome/Catalog/Waitlist/samwmp-01.aspx");
+        }
+
+        protected void btnFooterCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SystemHome/Catalog/Waitlist/samwmp-01.aspx");
         }
 
 

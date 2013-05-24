@@ -70,12 +70,12 @@
             return false;
         }
     </script>
-    <div class=" div_header_870">
+    <div class="div_header_700">
         Catalog Item Search Results:
     </div>
     <br />
     <div>
-        <table cellpadding="0" cellspacing="0" class="paging_800">
+        <table cellpadding="0" cellspacing="0" class="paging_700">
             <tr>
                 <td align="left">
                     <asp:Button ID="btnHeaderFirst" CssClass="cursor_hand" runat="server" Text="|<<First"
@@ -122,7 +122,7 @@
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                     HeaderText="Catalog Item ID" HeaderStyle-HorizontalAlign="Center" DataField="c_course_id_pk" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="Item Type" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    HeaderText="Item Type" HeaderStyle-HorizontalAlign="Center" DataField="Type" ItemStyle-HorizontalAlign="Left" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
                     <HeaderTemplate>
@@ -150,7 +150,7 @@
     <div class="clear">
     </div>
     <div>
-        <table cellpadding="0" cellspacing="0" class="paging_800">
+        <table cellpadding="0" cellspacing="0" class="paging_700">
             <tr>
                 <td align="left">
                     <asp:Button ID="btnFooterFirst" CssClass="cursor_hand" runat="server" Text="|<<First"
@@ -190,7 +190,7 @@
     <br />
     <br />
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
-        <div class="div_header_870">
+        <div class="div_header_700">
             Catalog Item Search:
         </div>
         <br />

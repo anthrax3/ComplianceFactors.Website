@@ -21,9 +21,9 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string Approver1Name;
         public string Approver2Name;
         public string Approver3Name;
-        public string approval1Status;
-        public string approval2Status;
-        public string approval3Status;
+        public string Approval1Status;
+        public string Approval2Status;
+        public string Approval3Status;
 
     }
 }

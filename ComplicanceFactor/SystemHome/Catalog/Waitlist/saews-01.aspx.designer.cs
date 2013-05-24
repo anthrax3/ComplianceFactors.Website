@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
     public partial class saews_01 {
         
         /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// btnHeaderSave control.
         /// </summary>
         /// <remarks>
@@ -22,15 +31,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.Button btnHeaderSave;
         
         /// <summary>
-        /// btnHeaderReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderReset;
-        
-        /// <summary>
         /// btnHeaderCancel control.
         /// </summary>
         /// <remarks>
@@ -38,15 +38,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnHeaderCancel;
-        
-        /// <summary>
-        /// lblWaitlistId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWaitlistId;
         
         /// <summary>
         /// lblCourseName control.
@@ -155,15 +146,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFooterSave;
-        
-        /// <summary>
-        /// btnFooterReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterReset;
         
         /// <summary>
         /// btnFooterCancel control.

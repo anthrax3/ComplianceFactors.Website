@@ -124,6 +124,15 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Course"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Completion"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\UpdateCurriculumStatuses"
+
+
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Approvals"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Documents"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\MassCompletions"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\MassEnrollment"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Waitlist"
+                       
+
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Languages"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Navigation"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Curriculum"
@@ -149,6 +158,7 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\UI Texts and Labels"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Weekday Schedules"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Splash Pages"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\DocumentTypes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Profile")
                     {
                         hmeLastVisisted.lastvisited = "/SystemHome/sahp-01.aspx";

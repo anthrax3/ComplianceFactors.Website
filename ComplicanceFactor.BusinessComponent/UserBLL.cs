@@ -1494,6 +1494,30 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static string GetUserPIN(string u_user_id_pk)
+        {
+            Hashtable htGetUserPIN = new Hashtable();
+            htGetUserPIN.Add("@u_user_id_pk", u_user_id_pk);
+            DataTable dtGetUserPIN = new DataTable();
+            string user_pinNumber;
+            try
+            {
+                dtGetUserPIN = DataProxy.FetchDataTable("s_sp_get_user_pin_number", htGetUserPIN);
+                if (!string.IsNullOrEmpty(dtGetUserPIN.Rows[0]["u_user_esig_pin"].ToString()))
+                {
+                    user_pinNumber = dtGetUserPIN.Rows[0]["u_user_esig_pin"].ToString();
+                    return user_pinNumber;
+                }
+                else
+                {
+                    return string.Empty;
+                }
 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
