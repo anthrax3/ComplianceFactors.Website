@@ -294,7 +294,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
+                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll" && strEnrollType != "Completed")
                         {
                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
                             btnDrop.Style.Add("display", "none");

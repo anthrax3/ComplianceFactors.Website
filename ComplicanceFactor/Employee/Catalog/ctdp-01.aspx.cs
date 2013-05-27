@@ -138,7 +138,7 @@ namespace ComplicanceFactor.Employee.Catalog
 
                 isEnroll = EnrollmentBLL.CheckDeliveryEnrollorNot(c_course_id_fk, SessionWrapper.u_userid);
                 //
-                //Call the BL for is Enroll
+                //Call the BL for is Enroll 
 
                 if (SessionWrapper.isLeraningHistory == false)
                 {
@@ -152,7 +152,9 @@ namespace ComplicanceFactor.Employee.Catalog
                     else
                     {
 
-                        if (!string.IsNullOrEmpty(strDeliveryType) && strDeliveryType == "OLT" && approvalDelivery == "False" && string.IsNullOrEmpty(strEnrollType))
+                        if (!string.IsNullOrEmpty(strDeliveryType) && strDeliveryType == "OLT" 
+                                && approvalDelivery == "False" && 
+                                    (string.IsNullOrEmpty(strEnrollType) || strEnrollType == "Completed"))
                         {
 
                             if (c_delivery_waitlist_flag == "True" && waitlistCountIdentification == 1)
@@ -182,7 +184,7 @@ namespace ComplicanceFactor.Employee.Catalog
 
                             //btnQuickLunch.Style.Add("display", "none");
                         }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
+                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll" && strEnrollType != "Completed")
                         {
 
                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
@@ -191,7 +193,7 @@ namespace ComplicanceFactor.Employee.Catalog
 
                             // btnQuickLunch.Style.Add("display", "none");
                         }
-                        else if (string.IsNullOrEmpty(strEnrollType))
+                        else if (string.IsNullOrEmpty(strEnrollType) || strEnrollType == "Completed")
                         {
 
                             btnDrop.Style.Add("display", "none");
