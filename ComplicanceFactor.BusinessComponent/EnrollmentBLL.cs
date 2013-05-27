@@ -283,6 +283,7 @@ namespace ComplicanceFactor.BusinessComponent
             try
             {
                 Hashtable htEnroll = new Hashtable();
+                htEnroll.Add("@e_enroll_system_id_pk", Enroll.e_enroll_system_id_pk);
                 htEnroll.Add("@e_enroll_user_id_fk", Enroll.e_enroll_user_id_fk);
                 htEnroll.Add("@e_enroll_course_id_fk", Enroll.e_enroll_course_id_fk);
                 htEnroll.Add("@e_enroll_required_flag", Enroll.e_enroll_required_flag);

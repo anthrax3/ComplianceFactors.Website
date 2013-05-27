@@ -286,14 +286,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.InstructorTypes
         {
             SystemInstructorType instructor = new SystemInstructorType();
             instructor.s_instructor_type_id = txtInstructorId.Text;
-            instructor.s_instructor_english_us_name = txtName.Text;
+            instructor.s_instructor_type_name_us_english = txtName.Text;
             if (ddlStatus.SelectedValue == "app_ddl_all_text")
             {
-                instructor.s_instructor_english_us_status_id_fk = "0";
+                instructor.s_instructor_type_status_id_fk = "0";
             }
             else
             {
-                instructor.s_instructor_english_us_status_id_fk = ddlStatus.SelectedValue;
+                instructor.s_instructor_type_status_id_fk = ddlStatus.SelectedValue;
             }
             try
             {

@@ -127,9 +127,9 @@
                     <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false"
                         CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                         AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
-                        DataKeyNames="system_id,type,c_approval_req,c_delivery_type" PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
-                        OnRowCommand="gvsearchDetails_RowCommand" OnRowDataBound="gvsearchDetails_RowDataBound"
-                        OnRowEditing="gvsearchDetails_RowEditing">
+                        DataKeyNames="system_id,type,c_approval_req,c_delivery_type" PagerSettings-Visible="false"
+                        PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowCommand="gvsearchDetails_RowCommand"
+                        OnRowDataBound="gvsearchDetails_RowDataBound" OnRowEditing="gvsearchDetails_RowEditing">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -137,39 +137,43 @@
                                         <tr>
                                             <td>
                                                 <tr>
-                                                    <td class="horizontal_line" colspan="3">
+                                                    <td class="horizontal_line" colspan="6">
                                                         <hr>
                                                     </td>
                                                 </tr>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <asp:LinkButton ID="lnkCourseDetailId" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' CommandName="Detail"
-                                                    runat="server" Text='<%#Bind("title_and_id")%>'></asp:LinkButton>
-                                                <%-- <asp:Label ID="lblCouseTitleID" runat="server" Text='<%#Bind("c_course_title_and_id")%>'></asp:Label>--%>
+                                            <td colspan="2">
+                                                <asp:LinkButton ID="lnkCourseDetailId" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                                    CommandName="Detail" runat="server" Text='<%#Bind("title_and_id")%>'></asp:LinkButton><br />
+                                                <asp:LinkButton ID="lnkViewDetails" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                                    CommandName="Detail" runat="server" Text="View Details..."></asp:LinkButton>
                                             </td>
+                                          
                                             <td>
                                                 <%=LocalResources.GetLabel("app_revision_text")%>
                                                 <asp:Label ID="lblVersion" runat="server" Text='<%#Bind("version")%>'></asp:Label>
+                                            </td>
+                                            <td colspan="2">
+                                                (<%#Eval("type")%>)
                                             </td>
                                             <td class="tdright">
                                                 <%#Eval("c_delivery_type")%>
                                             </td>
                                         </tr>
-                                        </td> </tr>
                                         <tr>
-                                            <td colspan="3">
+                                            <td colspan="6">
                                                 &nbsp;
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font_normal" colspan="3">
+                                            <td class="font_normal" colspan="6">
                                                 <asp:Label ID="lblCouseDescription" runat="server" Text='<%#Bind("description")%>'></asp:Label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3">
+                                            <td colspan="6">
                                                 &nbsp;
                                             </td>
                                         </tr>
@@ -178,22 +182,27 @@
                                                 <%=LocalResources.GetLabel("app_cost_text")%>
                                                 Free
                                             </td>
-                                            <td>
+                                            <td colspan="4">
+                                                &nbsp;
                                             </td>
                                             <td class="tdright">
                                                 <asp:Label ID="lblAlreadyEnrollMessage" runat="server"></asp:Label>
-                                                <asp:Button ID="btnDrop" CssClass="cursor_hand"  OnClientClick="return confirmStatus();" Style="display: none;" runat="server"
-                                                 CommandArgument='<%#Eval("system_id")%>' CommandName="Drop" Text="<%$ LabelResourceExpression: app_drop_button_text %>" />
+                                                <asp:Button ID="btnDrop" CssClass="cursor_hand" OnClientClick="return confirmStatus();"
+                                                    Style="display: none;" runat="server" CommandArgument='<%#Eval("system_id")%>'
+                                                    CommandName="Drop" Text="<%$ LabelResourceExpression: app_drop_button_text %>" />
                                                 <asp:Button ID="btnQuickLaunch" CommandName="QuickLaunch" CommandArgument='<%#Eval("system_id")%>'
-                                                    CssClass="cursor_hand" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
+                                                    CssClass="cursor_hand" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
                                                 <asp:Button ID="btnEnroll" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                                                     CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                                                 <asp:Button ID="btnAssign" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
-                                                    CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>" Style="display: none;" />
+                                                    CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>"
+                                                    Style="display: none;" />
+                                                <asp:Button ID="btnDocument" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
+                                                    CommandName="Document" runat="server" Text="Download" Style="display: none;" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3">
+                                            <td colspan="6">
                                                 &nbsp;
                                             </td>
                                         </tr>
@@ -204,7 +213,7 @@
                                         <tr>
                                             <td>
                                                 <tr>
-                                                    <td class="horizontal_line" colspan="3">
+                                                    <td class="horizontal_line" colspan="6">
                                                         <hr>
                                                     </td>
                                                 </tr>

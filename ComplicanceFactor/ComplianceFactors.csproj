@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -278,6 +278,7 @@
     <Content Include="Employee\Catalog\bchp-01.aspx" />
     <Content Include="Employee\Catalog\ascp-01.aspx" />
     <Content Include="Employee\Catalog\ascr-01.aspx" />
+    <Content Include="Employee\Catalog\ctdocp-01.aspx" />
     <Content Include="Employee\Catalog\ctdp-01.aspx" />
     <Content Include="Employee\Catalog\qscr-01.aspx" />
     <Content Include="Employee\Course\lmcp-01.aspx" />
@@ -1305,6 +1306,12 @@
     </Compile>
     <Compile Include="Default2.aspx.designer.cs">
       <DependentUpon>Default2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\Catalog\ctdocp-01.aspx.cs">
+      <DependentUpon>ctdocp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\Catalog\ctdocp-01.aspx.designer.cs">
+      <DependentUpon>ctdocp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee\Course\lmcp-01.aspx.cs">
       <DependentUpon>lmcp-01.aspx</DependentUpon>

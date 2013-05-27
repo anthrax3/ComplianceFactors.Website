@@ -15,7 +15,7 @@ namespace ComplicanceFactor.Employee.Catalog
 {
     public partial class qscr_01 : BasePage
     {
-      
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //go button
@@ -36,7 +36,7 @@ namespace ComplicanceFactor.Employee.Catalog
 
                 if (!string.IsNullOrEmpty(Request.QueryString["Keyword"]))
                 {
-                    
+
                     HtmlGenericControl divsearch = (HtmlGenericControl)Master.FindControl("divsearch");
                     divsearch.Style.Add("display", "block");
                     SearchResult();
@@ -201,7 +201,7 @@ namespace ComplicanceFactor.Employee.Catalog
             {
                 try
                 {
-                     //get system id (i.e course or curriculum or program)
+                    //get system id (i.e course or curriculum or program)
                     string system_id = gvsearchDetails.DataKeys[e.Row.RowIndex].Value.ToString();
                     //get type (course,curriculum and program)
                     string type = gvsearchDetails.DataKeys[e.Row.RowIndex].Values[1].ToString();
@@ -212,22 +212,23 @@ namespace ComplicanceFactor.Employee.Catalog
                     Button btnDrop = (Button)e.Row.FindControl("btnDrop");
                     Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                     Button btnAssign = (Button)e.Row.FindControl("btnAssign");
+                    Button btnDocument = (Button)e.Row.FindControl("btnDocument");
                     Label lblAlreadyEnrollMessage = (Label)e.Row.FindControl("lblAlreadyEnrollMessage");
                     //check if the type is course or curriculum or program
-                    if (type == "course")
+                    if (type == "Course")
                     {
                         //Get "OLT" delivery 
                         DataSet dsDelivery = new DataSet();
                         dsDelivery = EmployeeCatalogBLL.GetOLT(system_id);
                         //get if "OLT" delivery exist or not
                         EmployeeCatalog getOLTDelivery = new EmployeeCatalog();
-                        getOLTDelivery = EmployeeCatalogBLL.GetSingleOLTDelivery(system_id,dsDelivery.Tables[0]);
+                        getOLTDelivery = EmployeeCatalogBLL.GetSingleOLTDelivery(system_id, dsDelivery.Tables[0]);
                         string strDeliveryType = getOLTDelivery.c_delivery_type_text;
                         //check delivery is already enrolled or not
                         BusinessComponent.DataAccessObject.Enrollment getEnrollDelivery = new BusinessComponent.DataAccessObject.Enrollment();
                         getEnrollDelivery = EnrollmentBLL.GetEnrollCourse(system_id, SessionWrapper.u_userid);
                         //approval required or not for delivery
-                        bool approvDelivery = EmployeeCatalogBLL.GetApprovalDelivery(system_id,dsDelivery.Tables[1]);
+                        bool approvDelivery = EmployeeCatalogBLL.GetApprovalDelivery(system_id, dsDelivery.Tables[1]);
                         //get enroll type
                         string strEnrollType = getEnrollDelivery.e_enroll_type_name;
                         if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && string.IsNullOrEmpty(strEnrollType))
@@ -262,14 +263,14 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
-                        
+
                         else if (string.IsNullOrEmpty(strEnrollType))
                         {
                             btnDrop.Style.Add("display", "none");
                             lblAlreadyEnrollMessage.Text = string.Empty;
                         }
                     }
-                    else if (type == "curriculum")
+                    else if (type == "Curriculum")
                     {
                         Enrollment getAssignCurriculum = new Enrollment();
                         getAssignCurriculum = EnrollmentBLL.GetAssignCourse(system_id, SessionWrapper.u_userid);
@@ -284,6 +285,13 @@ namespace ComplicanceFactor.Employee.Catalog
                             lblAlreadyEnrollMessage.Text = string.Empty;
                             btnAssign.Style.Add("display", "inline");
                         }
+                    }
+                    else if (type == "Document")
+                    {
+
+                        btnDocument.Style.Add("display", "inline");
+                        btnDrop.Style.Add("display", "none");
+                        btnEnroll.Style.Add("display", "none");
                     }
                 }
                 catch (Exception ex)
@@ -314,45 +322,61 @@ namespace ComplicanceFactor.Employee.Catalog
                     string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
                     string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
                     string c_type = gvsearchDetails.DataKeys[index].Values[1].ToString();
-                    if (c_type == "course")
+                    if (c_type == "Course")
+                    {
                         Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
-                    else
+                    }
+                    else if (c_type == "Curriculum")
+                    {
                         Response.Redirect("~/Employee/Curricula/lvcure-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
+                    }
+                    else if(c_type =="Document")
+                    {
+                        Response.Redirect("~/Employee/Catalog/ctdocp-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
+                    }
 
                 }
                 else if (e.CommandName.Equals("Assign"))
                 {
-                    
-                        //Assign Curricula
+
+                    //Assign Curricula
                     BusinessComponent.DataAccessObject.Enrollment assignCurricula = new BusinessComponent.DataAccessObject.Enrollment();
-                        assignCurricula.e_curriculum_assign_user_id_fk = SessionWrapper.u_userid;
-                        assignCurricula.e_curriculum_assign_curriculum_id_fk = e.CommandArgument.ToString();
-                        assignCurricula.e_curriculum_assign_required_flag = true;
-                        assignCurricula.e_curriculum_assign_target_due_date = DateTime.UtcNow; //set empty on EnrollmentBLL  for self assign
-                        assignCurricula.e_curriculum_assign_recert_due_date = DateTime.UtcNow;
-                        assignCurricula.e_curriculum_assign_recert_status_id_fk = string.Empty;
-                        assignCurricula.e_curriculum_assign_status_id_fk = "Assigned";
-                        assignCurricula.e_curriculum_assign_percent_complete = 0;
-                        assignCurricula.e_curriculum_assign_active_flag = true;
-                        EnrollmentBLL.AssignCurricula(assignCurricula);
-                        Response.Redirect("~/Employee/Home/lhp-01.aspx",false);
+                    assignCurricula.e_curriculum_assign_user_id_fk = SessionWrapper.u_userid;
+                    assignCurricula.e_curriculum_assign_curriculum_id_fk = e.CommandArgument.ToString();
+                    assignCurricula.e_curriculum_assign_required_flag = true;
+                    assignCurricula.e_curriculum_assign_target_due_date = DateTime.UtcNow; //set empty on EnrollmentBLL  for self assign
+                    assignCurricula.e_curriculum_assign_recert_due_date = DateTime.UtcNow;
+                    assignCurricula.e_curriculum_assign_recert_status_id_fk = string.Empty;
+                    assignCurricula.e_curriculum_assign_status_id_fk = "Assigned";
+                    assignCurricula.e_curriculum_assign_percent_complete = 0;
+                    assignCurricula.e_curriculum_assign_active_flag = true;
+                    EnrollmentBLL.AssignCurricula(assignCurricula);
+                    Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
                 }
                 else if (e.CommandName.Equals("QuickLaunch"))
                 {
-                   
-                        //insert enrollment
-                    BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
-                        enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                        enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                        enrollOLT.e_enroll_required_flag = true;
-                        enrollOLT.e_enroll_approval_required_flag = false;
-                        enrollOLT.e_enroll_type_name = "Self-enroll";
-                        enrollOLT.e_enroll_approval_status_name = "Pending";
-                        enrollOLT.e_enroll_status_name = "Enrolled";
-                        EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
 
-                    
-                   
+                    //insert enrollment
+                    BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
+                    enrollOLT.e_enroll_system_id_pk = Guid.NewGuid().ToString();
+                    enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                    enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                    enrollOLT.e_enroll_required_flag = true;
+                    enrollOLT.e_enroll_approval_required_flag = false;
+                    enrollOLT.e_enroll_type_name = "Self-enroll";
+                    enrollOLT.e_enroll_approval_status_name = "Pending";
+                    enrollOLT.e_enroll_status_name = "Enrolled";
+                
+                    int result = EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
+                    if (result == 0)
+                    {
+                        string url = "/LMS/CoursePlayer.aspx?eid=" + enrollOLT.e_enroll_system_id_pk + "&AICC_SID=" + enrollOLT.e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "windowopen", "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1')", true);
+                    }
+
+
+
+
                 }
                 else if (e.CommandName.Equals("Drop"))
                 {
@@ -361,7 +385,7 @@ namespace ComplicanceFactor.Employee.Catalog
                     DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
                     EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
                     Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
-                    
+
                 }
             }
             catch (Exception ex)

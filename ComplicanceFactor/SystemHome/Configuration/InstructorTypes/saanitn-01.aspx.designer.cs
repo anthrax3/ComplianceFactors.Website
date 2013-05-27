@@ -22,6 +22,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.InstructorTypes {
         protected global::System.Web.UI.WebControls.ValidationSummary vs_saanitn;
         
         /// <summary>
+        /// divError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        
+        /// <summary>
         /// btnHeaderSaveNewInstructorType control.
         /// </summary>
         /// <remarks>

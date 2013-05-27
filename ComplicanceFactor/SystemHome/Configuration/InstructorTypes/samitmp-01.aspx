@@ -103,7 +103,7 @@
                         HeaderText="<%$ LabelResourceExpression: app_instructor_type_id_text %>" HeaderStyle-HorizontalAlign="Center"
                         DataField="s_instructor_type_id" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="<%$ LabelResourceExpression: app_instructor_type_name_text %>" DataField="s_instructor_english_us_name"
+                        HeaderText="<%$ LabelResourceExpression: app_instructor_type_name_text %>" DataField="s_instructor_type_name_us_english"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center"
