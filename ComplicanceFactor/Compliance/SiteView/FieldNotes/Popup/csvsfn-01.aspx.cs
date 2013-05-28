@@ -52,6 +52,21 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
         {
             DataTable dtUserInfo = new DataTable();
             dtUserInfo = SessionWrapper.AddUserForSendFieldNotes;
+            int i = 0;
+            foreach (GridViewRow row in gvNewUser.Rows)
+            {
+                CheckBox chkSelect = (CheckBox)row.FindControl("chkIsAcknowledge");
+                if (chkSelect.Checked == true)
+                {
+                    dtUserInfo.Rows[i]["sv_fieldnote_is_need_acknowledged"] = true; //sv_fieldnote_acknowledged_status
+                }
+                else
+                {
+                    dtUserInfo.Rows[i]["sv_fieldnote_is_need_acknowledged"] = false;
+                }
+                i = i+1;
+                dtUserInfo.AcceptChanges();
+            }          
             if (dtUserInfo.Rows.Count > 0)
             {
                 //if (Request.QueryString["CreatedBy"] == SessionWrapper.u_userid)
@@ -189,6 +204,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
             dtUserColumn.ColumnName = "sv_fieldnote_is_need_acknowledged";
             dt.Columns.Add(dtUserColumn);
 
+
             dtUserColumn = new DataColumn();
             dtUserColumn.DataType = Type.GetType("System.Boolean");
             dtUserColumn.ColumnName = "sv_fieldnote_acknowledged_status";
@@ -216,8 +232,8 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
             row["sv_fieldnote_id_fk"] = fielsnotesId;
             row["sv_fieldnote_sent_to_user_fk"] = u_user_id_pk;
             row["s_user_summary"] = s_user_summary;
-            row["sv_fieldnote_is_need_acknowledged"] = true;
-            row["sv_fieldnote_acknowledged_status"] = true;
+            row["sv_fieldnote_is_need_acknowledged"] = false;
+            row["sv_fieldnote_acknowledged_status"] = false;
             row["sv_fieldnote_is_sync_mobile"] = true;
 
             dtTempUser.Rows.Add(row);

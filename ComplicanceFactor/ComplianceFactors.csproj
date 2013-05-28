@@ -259,6 +259,7 @@
     <Content Include="Compliance\SiteView\FieldNotes\Attachments\fe759c71-6d40-448c-a509-0502b2d37c90.txt" />
     <Content Include="Compliance\SiteView\FieldNotes\Attachments\fe9d00d1-7812-44f6-90a4-2f3b2c41266b.txt" />
     <Content Include="Compliance\SiteView\FieldNotes\csvefn-01.aspx" />
+    <Content Include="Compliance\SiteView\FieldNotes\Popup\csvack-01.aspx" />
     <Content Include="Compliance\SiteView\FieldNotes\Popup\csvsfn-01.aspx" />
     <Content Include="Compliance\SiteView\FieldNotes\Popup\csvvfn-01.aspx" />
     <Content Include="Compliance\SiteView\Ojt\Attachments\298b423e-f60a-46f7-965d-7f3abac13e57.txt" />
@@ -1230,6 +1231,12 @@
     <Compile Include="Compliance\SiteView\FieldNotes\csvefn-01.aspx.designer.cs">
       <DependentUpon>csvefn-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Compliance\SiteView\FieldNotes\Popup\csvack-01.aspx.cs">
+      <DependentUpon>csvack-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\SiteView\FieldNotes\Popup\csvack-01.aspx.designer.cs">
+      <DependentUpon>csvack-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compliance\SiteView\FieldNotes\Popup\csvsfn-01.aspx.cs">
       <DependentUpon>csvsfn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1309,6 +1316,7 @@
     </Compile>
     <Compile Include="Employee\Catalog\ctdocp-01.aspx.cs">
       <DependentUpon>ctdocp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Employee\Catalog\ctdocp-01.aspx.designer.cs">
       <DependentUpon>ctdocp-01.aspx</DependentUpon>

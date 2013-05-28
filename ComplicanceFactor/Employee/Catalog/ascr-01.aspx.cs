@@ -177,9 +177,10 @@ namespace ComplicanceFactor.Employee.Catalog
                     Button btnDrop = (Button)e.Row.FindControl("btnDrop");
                     Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                     Button btnAssign = (Button)e.Row.FindControl("btnAssign");
+                    Button btnDocument = (Button)e.Row.FindControl("btnDocument");
                     Label lblAlreadyEnrollMessage = (Label)e.Row.FindControl("lblAlreadyEnrollMessage");
                     //check if the type is course or curriculum or program
-                    if (type == "course")
+                    if (type == "Course")
                     {
                         //Get "OLT" delivery 
                         DataSet dsDelivery = new DataSet();
@@ -220,7 +221,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             lblAlreadyEnrollMessage.Text = string.Empty;
                         }
                     }
-                    else if (type == "curriculum")
+                    else if (type == "Curriculum")
                     {
                         Enrollment getAssignCurriculum = new Enrollment();
                         getAssignCurriculum = EnrollmentBLL.GetAssignCourse(system_id, SessionWrapper.u_userid);
@@ -235,6 +236,13 @@ namespace ComplicanceFactor.Employee.Catalog
                             lblAlreadyEnrollMessage.Text = string.Empty;
                             btnAssign.Style.Add("display", "inline");
                         }
+                    }
+                    else if (type == "Document")
+                    {
+
+                        btnDocument.Style.Add("display", "inline");
+                        btnDrop.Style.Add("display", "none");
+                        btnEnroll.Style.Add("display", "none");
                     }
                 }
                 catch (Exception ex)

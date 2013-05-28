@@ -17,6 +17,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public bool sv_fieldnote_is_save_sync { get; set; }
         //public bool sv_fieldnote_status { get; set; }
         public string sv_fieldnote_id { get; set; }
+        public string sv_fieldnote_created_by { get; set; }
 
         public string sv_fieldnote_attachment { get; set; }
         public bool sv_fieldnote_is_acknowledge { get; set; }

@@ -305,7 +305,7 @@ namespace ComplicanceFactor.Manager.Popup
             {
                 DataTable dtPathCourse = new DataTable();
                 //DataView dvPathCourse = new DataView(SystemCurriculumBLL.GetSingleCurriculaPathCourse(CurriculumId, c_curricula_path_system_id_pk));
-                DataView dvPathCourse = new DataView(EnrollmentBLL.EnrollGetSingleCurriculaPathCourse(CurriculumId, c_curricula_path_system_id_pk));
+                DataView dvPathCourse = new DataView(EnrollmentBLL.EnrollGetSingleCurriculaPathCourse(CurriculumId, c_curricula_path_system_id_pk,SessionWrapper.u_userid));
                 dvPathCourse.RowFilter = "c_curricula_path_section_id_fk= '" + c_curricula_path_section_id_pk + "'";
                 dvPathCourse.Sort = "c_curricula_path_course_seq_number ASC";
                 dtPathCourse = dvPathCourse.ToTable();

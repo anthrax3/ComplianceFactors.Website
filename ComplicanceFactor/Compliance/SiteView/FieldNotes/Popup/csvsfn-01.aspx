@@ -84,14 +84,20 @@
                     </td>
                 </tr>
             </table>
+            <br />
             <div style="padding: 0 0 0 70px;">
-                <asp:GridView ID="gvNewUser" RowStyle-CssClass="record" ShowHeader="false" GridLines="None"
-                    CellPadding="0" CellSpacing="0" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="gvNewUser" RowStyle-CssClass="record" ShowHeader="true" GridLines="None"
+                    CellPadding="0" CellSpacing="0" runat="server" HeaderStyle-CssClass="gv_default_header" AutoGenerateColumns="false">
                     <Columns>
-                        <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-Width="350px">
+                        <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-Width="350px" HeaderText="Username">
                             <ItemTemplate>
                                 <asp:TextBox ID="txtAddUser" Text='<%#Eval("s_user_summary") %>' Enabled="false"
                                     CssClass="textbox_width_260" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-CssClass ="align_center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="30px" HeaderText="Acknowledge">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="chkIsAcknowledge" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-Width="35px">

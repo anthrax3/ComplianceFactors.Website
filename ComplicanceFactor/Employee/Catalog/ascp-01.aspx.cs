@@ -85,7 +85,7 @@ namespace ComplicanceFactor.Employee.Catalog
         }
         protected void btnGosearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Employee/Catalog/ascr-01.aspx?id="+ SecurityCenter.EncryptText(txtId.Text)+"&title="+SecurityCenter.EncryptText(txtTitle.Text)+"&keyword="+SecurityCenter.EncryptText(txtKeyword.Text)+"&type="+SecurityCenter.EncryptText(ddlType.SelectedItem.Text)+"&deliverytype="+ SecurityCenter.EncryptText(ddlDelivery.SelectedValue)+"&language="+SecurityCenter.EncryptText(ddlLanguage.SelectedValue)+"&typeval=" + SecurityCenter.EncryptText(ddlType.SelectedValue),false);
+            Response.Redirect("/Employee/Catalog/ascr-01.aspx?id="+ SecurityCenter.EncryptText(txtId.Text)+"&title="+SecurityCenter.EncryptText(txtTitle.Text)+"&keyword="+SecurityCenter.EncryptText(txtKeyword.Text)+"&type="+SecurityCenter.EncryptText(ddlType.SelectedValue)+"&deliverytype="+ SecurityCenter.EncryptText(ddlDelivery.SelectedValue)+"&language="+SecurityCenter.EncryptText(ddlLanguage.SelectedValue)+"&typeval=" + SecurityCenter.EncryptText(ddlType.SelectedValue),false);
 
         }
     }

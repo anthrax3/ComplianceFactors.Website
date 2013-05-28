@@ -50,6 +50,7 @@ namespace ComplicanceFactor.BusinessComponent
                 {
                     fieldNotes.sv_fieldnote_is_acknowledge = Convert.ToBoolean(dtGetFieldNotes.Rows[0]["sv_fieldnote_is_acknowledge"]);
                 }
+                fieldNotes.sv_fieldnote_created_by = dtGetFieldNotes.Rows[0]["CreatedBy"].ToString();
 
                 return fieldNotes;
             }
@@ -87,7 +88,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        
+
 
         //s_sp_insert_field_notes_attachment
 
@@ -101,7 +102,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertAttachment.Add("@sv_file_name", fieldNotes.sv_file_name);
             htInsertAttachment.Add("@sv_fieldnote_is_save_sync", fieldNotes.sv_fieldnote_is_save_sync);
 
-            
+
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_field_notes_attachment", htInsertAttachment);
@@ -128,7 +129,7 @@ namespace ComplicanceFactor.BusinessComponent
 
         public static int CreateFieldNotesSent(SiteViewFieldNotes fieldNotes)
         {
-            Hashtable htInsertFieldNotesSent = new Hashtable();            
+            Hashtable htInsertFieldNotesSent = new Hashtable();
             htInsertFieldNotesSent.Add("@sv_fieldnote_id_pk", fieldNotes.sv_fieldnote_id_pk);
             htInsertFieldNotesSent.Add("@sv_fieldnote_created_by_fk", fieldNotes.sv_fieldnote_created_by_fk);
             htInsertFieldNotesSent.Add("@sv_fieldnote_title", fieldNotes.sv_fieldnote_title);
@@ -171,7 +172,7 @@ namespace ComplicanceFactor.BusinessComponent
             return fieldNotes;
         }
 
-        public static int  UpdateFieldNotes(SiteViewFieldNotes fieldNotes)
+        public static int UpdateFieldNotes(SiteViewFieldNotes fieldNotes)
         {
             Hashtable htUpdateFieldNotes = new Hashtable();
             htUpdateFieldNotes.Add("@sv_fieldnote_id_pk", fieldNotes.sv_fieldnote_id_pk);
@@ -181,7 +182,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateFieldNotes.Add("@sv_fieldnote_location", fieldNotes.sv_fieldnote_location);
             htUpdateFieldNotes.Add("@sv_fieldnote_is_save_sync", fieldNotes.sv_fieldnote_is_save_sync);
             htUpdateFieldNotes.Add("@sv_fieldnote_id", fieldNotes.sv_fieldnote_id);
-            htUpdateFieldNotes.Add("@sv_fieldnote_is_acknowledge", fieldNotes.sv_fieldnote_is_acknowledge);           
+            htUpdateFieldNotes.Add("@sv_fieldnote_is_acknowledge", fieldNotes.sv_fieldnote_is_acknowledge);
 
             try
             {
@@ -268,7 +269,7 @@ namespace ComplicanceFactor.BusinessComponent
         }
         public static int InsertFieldNotesSentUser(string sv_mi_fieldnote_sent_to_user)
         {
-            Hashtable htInsertFieldNotesSent = new Hashtable();       
+            Hashtable htInsertFieldNotesSent = new Hashtable();
             htInsertFieldNotesSent.Add("@sv_mi_fieldnote_sent_to_user", sv_mi_fieldnote_sent_to_user);
 
             try
@@ -295,6 +296,23 @@ namespace ComplicanceFactor.BusinessComponent
                 return DataProxy.FetchDataTable("u_sp_get_user_id", htGetId);
             }
 
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public static int UpdateAcknowledgement(string u_user_id_pk,string sv_fieldnote_id_pk)
+        {
+            Hashtable htUpdateAcknowledgement = new Hashtable();
+            htUpdateAcknowledgement.Add("@sv_fieldnote_id_fk", sv_fieldnote_id_pk);
+            htUpdateAcknowledgement.Add("@sv_fieldnote_sent_to_user_fk", u_user_id_pk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_fieldnote_acknowledgement", htUpdateAcknowledgement);
+            }
             catch (Exception)
             {
                 throw;

@@ -100,8 +100,14 @@ namespace ComplicanceFactor.BusinessComponent
                     getAssignCourse.e_curriculum_assign_curriculum_id_fk = dtGetAssignCourse.Rows[0]["e_curriculum_assign_curriculum_id_fk"].ToString();
                     getAssignCourse.e_curriculum_assign_date_time = Convert.ToDateTime(dtGetAssignCourse.Rows[0]["e_curriculum_assign_date_time"].ToString());
                     getAssignCourse.e_curriculum_assign_required_flag = Convert.ToBoolean(dtGetAssignCourse.Rows[0]["e_curriculum_assign_required_flag"]);
-                    getAssignCourse.e_curriculum_assign_target_due_date = Convert.ToDateTime(dtGetAssignCourse.Rows[0]["e_curriculum_assign_target_due_date"]);
-                    getAssignCourse.e_curriculum_assign_recert_due_date = Convert.ToDateTime(dtGetAssignCourse.Rows[0]["e_curriculum_assign_recert_due_date"]);
+                    if (!string.IsNullOrEmpty((dtGetAssignCourse.Rows[0]["e_curriculum_assign_target_due_date"]).ToString()))
+                    {
+                        getAssignCourse.e_curriculum_assign_target_due_date = Convert.ToDateTime(dtGetAssignCourse.Rows[0]["e_curriculum_assign_target_due_date"]);
+                    }
+                    if (!string.IsNullOrEmpty((dtGetAssignCourse.Rows[0]["e_curriculum_assign_recert_due_date"]).ToString()))
+                    {
+                        getAssignCourse.e_curriculum_assign_recert_due_date = Convert.ToDateTime(dtGetAssignCourse.Rows[0]["e_curriculum_assign_recert_due_date"]);
+                    }
                     getAssignCourse.e_curriculum_assign_recert_status_id_fk = dtGetAssignCourse.Rows[0]["e_curriculum_assign_recert_status_id_fk"].ToString();
                     getAssignCourse.e_curriculum_assign_status_id_fk = dtGetAssignCourse.Rows[0]["e_curriculum_assign_status_id_fk"].ToString();
                     getAssignCourse.e_curriculum_assign_percent_complete = Convert.ToInt32(dtGetAssignCourse.Rows[0]["e_curriculum_assign_percent_complete"]);
@@ -349,11 +355,12 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static DataTable EnrollGetSingleCurriculaPathCourse(string c_curricula_id_fk, string c_curricula_path_id_fk)
+        public static DataTable EnrollGetSingleCurriculaPathCourse(string c_curricula_id_fk, string c_curricula_path_id_fk, string e_enroll_user_id_fk)
         {
             Hashtable htEnrollGetSingleCurriculaPathCourse = new Hashtable();
             htEnrollGetSingleCurriculaPathCourse.Add("@c_curricula_path_id_fk", c_curricula_path_id_fk);
             htEnrollGetSingleCurriculaPathCourse.Add("@c_curricula_id_fk", c_curricula_id_fk);
+            htEnrollGetSingleCurriculaPathCourse.Add("@e_enroll_user_id_fk", e_enroll_user_id_fk);
             try
             {
                 return DataProxy.FetchDataTable("e_sp_single_curricula_path_course", htEnrollGetSingleCurriculaPathCourse);
