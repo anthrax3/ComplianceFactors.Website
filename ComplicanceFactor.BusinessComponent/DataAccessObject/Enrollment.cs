@@ -43,7 +43,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string e_curriculum_assign_recert_status_id_fk { get; set; }
         public string e_curriculum_assign_status_id_fk { get; set; }
         public int e_curriculum_assign_percent_complete { get; set; }
-        public bool e_curriculum_assign_active_flag { get; set; }
+        public bool e_curriculum_assign_active_flag { get; set; }        
         //waitlist
         public string e_enroll_waitlist_system_id_pk { get; set; }
         public string e_enroll_waitlist_course_id_fk { get; set; }

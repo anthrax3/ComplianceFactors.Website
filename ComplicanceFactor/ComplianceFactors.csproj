@@ -1233,6 +1233,7 @@
     </Compile>
     <Compile Include="Compliance\SiteView\FieldNotes\Popup\csvack-01.aspx.cs">
       <DependentUpon>csvack-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Compliance\SiteView\FieldNotes\Popup\csvack-01.aspx.designer.cs">
       <DependentUpon>csvack-01.aspx</DependentUpon>

@@ -4,6 +4,8 @@ using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common.Languages;
 using System.Data;
+using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using System.Net;
 
 namespace ComplicanceFactor.SystemHome
 {
@@ -13,6 +15,39 @@ namespace ComplicanceFactor.SystemHome
         {
             if (!IsPostBack)
             {
+                if (!string.IsNullOrEmpty(SessionWrapper.u_userid))
+                {                     
+                    User userSplash = new User();
+                    try
+                    {
+                        userSplash = UserBLL.GetUserSplash(SessionWrapper.u_userid);
+                        bool result = userSplash.u_splash_display_flag;
+                        SystemSplashPage splashContent = new SystemSplashPage();
+                        //Here we can get the splash content based on the domain Id
+                        splashContent = SystemSplashPageBLL.GetSplashContent(SessionWrapper.u_domain,SessionWrapper.CultureName);
+                        spalsh.InnerHtml = WebUtility.HtmlDecode(splashContent.u_splash_content);
+                        if (result == false && (!string.IsNullOrEmpty(splashContent.u_splash_content)) && string.IsNullOrEmpty(SessionWrapper.IsClose))
+                        {
+                            mpSplashPage.Show();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("sahp-01.aspx", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("sahp-01.aspx", ex.Message);
+                            }
+                        }
+                    }
+                }
+
                 gvSplashPages.AllowPaging = true;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_home_text");
@@ -166,6 +201,37 @@ namespace ComplicanceFactor.SystemHome
         protected void btnViewAllReports_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/SystemHome/samrp-01.aspx");
+        }
+
+        protected void btnDonotShow_Click(object sender, EventArgs e)
+        {
+            //Set the u_splash_display_flag as 1.
+            User userSplash = new User();
+            userSplash.Userid = SessionWrapper.u_userid;
+            userSplash.u_splash_display_flag = true;
+
+            try
+            {
+                int result = UserBLL.UpdateSplash(userSplash);
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("sahp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("sahp-01.aspx", ex.Message);
+                    }
+                }
+            }
+        }
+        protected void btnCloseSplashPage_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.IsClose = "True";
         }
     }
 }

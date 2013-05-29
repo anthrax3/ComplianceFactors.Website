@@ -2,6 +2,7 @@
     CodeBehind="sahp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sahp_01"
     MaintainScrollPositionOnPostback="true" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -117,6 +118,8 @@
         }
     </script>
     <div class="content_area">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        </asp:ToolkitScriptManager>
         <%= LocalResources.GetText("app_welcome_content_system_home_text")%><br />
         <br />
         <br />
@@ -133,12 +136,14 @@
     </div>
     <div class="div_padding_10" id="div_SplashPages" runat="server">
         <asp:GridView ID="gvSplashPages" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" GridLines="None" DataKeyNames="u_splash_system_id_pk"
-            AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
-            OnRowCommand="gvSplashPages_RowCommand" OnRowEditing="gvSplashPages_RowEditing">
+            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
+            GridLines="None" DataKeyNames="u_splash_system_id_pk" AutoGenerateColumns="False"
+            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" OnRowCommand="gvSplashPages_RowCommand"
+            OnRowEditing="gvSplashPages_RowEditing">
             <Columns>
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderStyle-HorizontalAlign="Center" HeaderText="<%$ LabelResourceExpression: app_splash_page_name_with_id_text %>" ItemStyle-HorizontalAlign="Left">
+                    HeaderStyle-HorizontalAlign="Center" HeaderText="<%$ LabelResourceExpression: app_splash_page_name_with_id_text %>"
+                    ItemStyle-HorizontalAlign="Left">
                     <ItemTemplate>
                         <asp:LinkButton ID="lnkSplashName" ForeColor="Black" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                             CommandName="Detail" runat="server" Text='<%#Bind("splashname")%>'></asp:LinkButton>
@@ -148,11 +153,11 @@
                     HeaderText="Splash Page Name(ID)" DataField="splashname" HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Left" />--%>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_created_text %>" DataField="u_splash_created_date" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
+                    HeaderText="<%$ LabelResourceExpression: app_created_text %>" DataField="u_splash_created_date"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_domain_text %>" DataField="u_domain_name" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
+                    HeaderText="<%$ LabelResourceExpression: app_domain_text %>" DataField="u_domain_name"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
@@ -163,8 +168,8 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkManageSplashPage" Text="<%$ LabelResourceExpression: app_all_manage_splash_pages_button_text %>" runat="server"
-                OnClick="lnkManageSplashPage_Click"></asp:LinkButton></b>
+            <asp:LinkButton ID="lnkManageSplashPage" Text="<%$ LabelResourceExpression: app_all_manage_splash_pages_button_text %>"
+                runat="server" OnClick="lnkManageSplashPage_Click"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -179,18 +184,19 @@
     <br />
     <div class="div_padding_10" id="div_Themes" runat="server">
         <asp:GridView ID="gvThemes" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" GridLines="None" DataKeyNames=""
-            AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
+            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
+            GridLines="None" DataKeyNames="" AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row"
+            PagerSettings-Visible="false">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_theme_name_with_id_text %>" DataField="ThemeName" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
+                    HeaderText="<%$ LabelResourceExpression: app_theme_name_with_id_text %>" DataField="ThemeName"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_created_text %>" DataField="Created" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
+                    HeaderText="<%$ LabelResourceExpression: app_created_text %>" DataField="Created"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_domains_text %>" DataField="Domain" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
+                    HeaderText="<%$ LabelResourceExpression: app_domains_text %>" DataField="Domain"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
@@ -200,7 +206,8 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkManageThemes" Text="<%$ LabelResourceExpression: app_all_manage_themes_button_text %>" runat="server"></asp:LinkButton></b>
+            <asp:LinkButton ID="lnkManageThemes" Text="<%$ LabelResourceExpression: app_all_manage_themes_button_text %>"
+                runat="server"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -219,13 +226,14 @@
             AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_report_name_with_id_text %>" DataField="ReportName" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
+                    HeaderText="<%$ LabelResourceExpression: app_report_name_with_id_text %>" DataField="ReportName"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField="Type" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField="Created" HeaderStyle-HorizontalAlign="Center"
+                    HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField="Type" HeaderStyle-HorizontalAlign="Center"
                     ItemStyle-HorizontalAlign="Center" />
+                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
+                    HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField="Created"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
@@ -247,8 +255,8 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="btnViewAllReports" Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>" runat="server"
-                OnClick="btnViewAllReports_Click"></asp:LinkButton></b>
+            <asp:LinkButton ID="btnViewAllReports" Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>"
+                runat="server" OnClick="btnViewAllReports_Click"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -261,4 +269,45 @@
         <br />
         <br />
     </div>
+    <asp:Button ID="btnSplash" runat="server" Style="display: none;" />
+    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900" Style="display: none;
+        padding-left: 0px; background-color: White; padding-right: 0px;">
+        <asp:Panel ID="pnlSplashPageHeading" runat="server" CssClass="drag">
+            <div>
+                <div class="div_header_900">
+                    <span class="font_1" style="color:Black;">Splash Preview:</span>
+                </div>
+                <asp:ImageButton ID="imgCloseSplash" CssClass="cursor_hand" Style="top: -15px; right: -15px;
+                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
+            </div>
+        </asp:Panel>
+        <br />
+        <div class="div_controls">
+            <div class="div_padding_10" id="spalsh" style="height: 495px; overflow: auto" runat="server">
+            </div>
+        </div>
+        <div class="div_header_900">
+            &nbsp;
+        </div>
+        <br />
+        <div>
+            <div class="div_padding_10">
+                <div class="left">
+                    <asp:Button ID="btnDonotShow" ValidationGroup="JobTitle" runat="server" Text="Do Not Display Again"
+                        OnClick="btnDonotShow_Click" />
+                </div>
+                <div class="right">
+                    <asp:Button ID="btnCloseSplashPage" OnClick="btnCloseSplashPage_Click" CssClass="cursor_hand"
+                        runat="server" Text="Close Splash Page" />
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <br />
+    </asp:Panel>
+    <asp:ModalPopupExtender ID="mpSplashPage" runat="server" TargetControlID="btnSplash"
+        PopupControlID="pnlSplashPage" BackgroundCssClass="transparent_class" DropShadow="false"
+        PopupDragHandleControlID="pnlSplashPageHeading" OkControlID="imgCloseSplash">
+    </asp:ModalPopupExtender>
 </asp:Content>

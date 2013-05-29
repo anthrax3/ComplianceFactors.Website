@@ -67,11 +67,11 @@ namespace ComplicanceFactor.Employee.Catalog
                         {
                             if (ex.InnerException != null)
                             {
-                                Logger.WriteToErrorLog("qscr-01.aspx", ex.Message, ex.InnerException.Message);
+                                Logger.WriteToErrorLog("qscr-01.aspx (Dropdown DataBinding)", ex.Message, ex.InnerException.Message);
                             }
                             else
                             {
-                                Logger.WriteToErrorLog("qscr-01.aspx", ex.Message);
+                                Logger.WriteToErrorLog("qscr-01.aspx (Dropdown DataBinding)", ex.Message);
                             }
                         }
                     }
@@ -114,11 +114,11 @@ namespace ComplicanceFactor.Employee.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("qscr-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("qscr-01.aspx QuickSearchResult()", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("qscr-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("qscr-01.aspx QuickSearchResult()", ex.Message);
                     }
                 }
             }
@@ -300,11 +300,11 @@ namespace ComplicanceFactor.Employee.Catalog
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("qscr-01.aspx", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("qscr-01.aspx (RowDataBound)", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("qscr-01.aspx", ex.Message);
+                            Logger.WriteToErrorLog("qscr-01.aspx (RowDataBound)", ex.Message);
                         }
                     }
                 }
@@ -330,7 +330,7 @@ namespace ComplicanceFactor.Employee.Catalog
                     {
                         Response.Redirect("~/Employee/Curricula/lvcure-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
                     }
-                    else if(c_type =="Document")
+                    else if (c_type == "Document")
                     {
                         Response.Redirect("~/Employee/Catalog/ctdocp-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
                     }
@@ -366,17 +366,15 @@ namespace ComplicanceFactor.Employee.Catalog
                     enrollOLT.e_enroll_type_name = "Self-enroll";
                     enrollOLT.e_enroll_approval_status_name = "Pending";
                     enrollOLT.e_enroll_status_name = "Enrolled";
-                
+
                     int result = EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
                     if (result == 0)
                     {
                         string url = "/LMS/CoursePlayer.aspx?eid=" + enrollOLT.e_enroll_system_id_pk + "&AICC_SID=" + enrollOLT.e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "windowopen", "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1')", true);
                     }
-
-
-
-
+                    //Response.Redirect(Request.RawUrl);
+                    SearchResult();
 
 
                 }
@@ -397,11 +395,11 @@ namespace ComplicanceFactor.Employee.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("qscr-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("qscr-01.aspx (RowCommand)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("qscr-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("qscr-01.aspx (RowCommand)", ex.Message);
                     }
                 }
             }

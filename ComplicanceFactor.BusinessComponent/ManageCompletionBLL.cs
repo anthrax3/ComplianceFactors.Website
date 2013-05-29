@@ -475,9 +475,12 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetGrade.Add("@score", score);
 
                 grade = DataProxy.FetchDataTable("s_sp_get_grade_value_by_score", htGetGrade);
-                gradevalues.s_grading_scheme_value_grade = grade.Rows[0]["s_grading_scheme_value_grade"].ToString();
-                gradevalues.s_grading_scheme_value_pass_status_id_fk = grade.Rows[0]["s_grading_scheme_value_pass_status_id_fk"].ToString();
-                gradevalues.s_grading_scheme_system_value_id_pk = grade.Rows[0]["s_grading_scheme_system_value_id_pk"].ToString();
+                if (grade.Rows.Count > 0)
+                {
+                    gradevalues.s_grading_scheme_value_grade = grade.Rows[0]["s_grading_scheme_value_grade"].ToString();
+                    gradevalues.s_grading_scheme_value_pass_status_id_fk = grade.Rows[0]["s_grading_scheme_value_pass_status_id_fk"].ToString();
+                    gradevalues.s_grading_scheme_system_value_id_pk = grade.Rows[0]["s_grading_scheme_system_value_id_pk"].ToString();
+                }
 
                 return gradevalues;
             }

@@ -238,15 +238,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                     //do calculation and change the Passing status Grading Scheme
                     SystemGradingSchemes gradevalues = new SystemGradingSchemes();
                     gradevalues = ManageCompletionBLL.GetGradeByScore(c_delivery_id_pk, Convert.ToInt32(txtscore.Text));
-                    if (gradevalues.s_grading_scheme_value_pass_status_id_fk == "app_ddl_pass_text")
+                    if (!string.IsNullOrEmpty(gradevalues.s_grading_scheme_value_pass_status_id_fk))
                     {
-                        passingStatus = "app_ddl_passed_text";
+                        if (gradevalues.s_grading_scheme_value_pass_status_id_fk == "app_ddl_pass_text")
+                        {
+                            passingStatus = "app_ddl_passed_text";
+                        }
+                        else
+                        {
+                            passingStatus = "app_ddl_failed_text";
+                        }
+                        grade = gradevalues.s_grading_scheme_system_value_id_pk;
                     }
                     else
                     {
-                        passingStatus = "app_ddl_failed_text";
+                        passingStatus = ddlPassingStatus.SelectedValue;
+                        grade = ddlGrade.SelectedValue;
                     }
-                    grade = gradevalues.s_grading_scheme_system_value_id_pk;
                 }
                 else
                 {

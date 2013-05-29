@@ -111,7 +111,7 @@
                         HeaderText="<%$ LabelResourceExpression: app_splash_page_name_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_splash_name"
                         ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="<%$ LabelResourceExpression: app_domain_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_domain_name"
+                        HeaderText="<%$ LabelResourceExpression: app_domain_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_domain_id_pk"
                         ItemStyle-HorizontalAlign="Center" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center" DataField="s_status_name"

@@ -378,7 +378,7 @@
                       <%=LocalResources.GetLabel("app_domain_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlDomain" DataTextField="u_domain_name" DataValueField="u_domain_system_id_pk"
+                        <asp:DropDownList ID="ddlDomain" DataTextField="u_domain_id_pk" DataValueField="u_domain_system_id_pk"
                             CssClass="ddl_user_advanced_search" runat="server" />
                     </td>
                     <td colspan="5">

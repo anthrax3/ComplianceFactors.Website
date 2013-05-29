@@ -331,15 +331,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                         //do calculation and change the Passing status Grading Scheme
                         SystemGradingSchemes gradevalues = new SystemGradingSchemes();
                         gradevalues = ManageCompletionBLL.GetGradeByScore(deliveryId, Convert.ToInt32(txtscore.Text));
-                        if (gradevalues.s_grading_scheme_value_pass_status_id_fk == "app_ddl_pass_text")
+                        if (!string.IsNullOrEmpty(gradevalues.s_grading_scheme_value_pass_status_id_fk))
                         {
-                            passingStatus = "app_ddl_passed_text";
+                            if (gradevalues.s_grading_scheme_value_pass_status_id_fk == "app_ddl_pass_text")
+                            {
+                                passingStatus = "app_ddl_passed_text";
+                            }
+                            else
+                            {
+                                passingStatus = "app_ddl_failed_text";
+                            }
+                            grade = gradevalues.s_grading_scheme_system_value_id_pk;
                         }
                         else
                         {
-                            passingStatus = "app_ddl_failed_text";
+                            passingStatus = ddlPassingStatus.SelectedValue;
+                            grade = ddlGrade.SelectedValue;
                         }
-                        grade = gradevalues.s_grading_scheme_system_value_id_pk;
                     }
                     else
                     {
@@ -369,6 +377,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                         if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                         {
                             updateTranscripts.t_transcript_completion_score = Convert.ToInt32(txtscore.Text);
+                        }
+                        else
+                        {
+                            updateTranscripts.t_transcript_completion_score = 0;
                         }
 
                         try
@@ -408,6 +420,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                             {
                                 transcripts.t_transcript_completion_score = Convert.ToInt32(txtscore.Text);
+                            }
+                            else
+                            {
+                                transcripts.t_transcript_completion_score = 0;
                             }
                             transcripts.t_transcript_completion_date_time = DateTime.UtcNow;
                             transcripts.t_transcript_completion_type_id_fk = "app_ddl_manual_user_mark_completion_text";//doubt
@@ -463,6 +479,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                             {
                                 transcripts.t_transcript_completion_score = Convert.ToInt32(txtscore.Text);
+                            }
+                            else
+                            {
+                                transcripts.t_transcript_completion_score = 0;
                             }
                             transcripts.t_transcript_completion_date_time = DateTime.UtcNow;
                             transcripts.t_transcript_completion_type_id_fk = "app_ddl_manual_user_mark_completion_text";//doubt
