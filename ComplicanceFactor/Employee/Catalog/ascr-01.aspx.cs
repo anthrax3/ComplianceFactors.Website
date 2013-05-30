@@ -208,6 +208,13 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
+                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Assigned")
+                        {
+                            lblAlreadyEnrollMessage.Text = "***Assigned***";
+                            btnDrop.Style.Add("display", "none");
+                            btnEnroll.Style.Add("display", "none");
+
+                        }
                         else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
                         {
                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
@@ -215,6 +222,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
+                        
                         else if (string.IsNullOrEmpty(strEnrollType))
                         {
                             btnDrop.Style.Add("display", "none");
@@ -265,13 +273,34 @@ namespace ComplicanceFactor.Employee.Catalog
 
         protected void gvsearchDetails_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName.Equals("Detail"))
+            //if(e.CommandName.Equals("Detail"))
+            //{
+            //    //int index = Convert.ToInt32(e.CommandArgument.ToString());
+            //    //string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
+            //    //string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
+            //    //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
+            //    //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()));
+
+
+            //}
+            if (e.CommandName.Equals("Detail"))
             {
                 int index = Convert.ToInt32(e.CommandArgument.ToString());
                 string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
                 string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
-                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
-                //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()));
+                string c_type = gvsearchDetails.DataKeys[index].Values[1].ToString();
+                if (c_type == "Course")
+                {
+                    Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
+                }
+                else if (c_type == "Curriculum")
+                {
+                    Response.Redirect("~/Employee/Curricula/lvcure-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
+                }
+                else if (c_type == "Document")
+                {
+                    Response.Redirect("~/Employee/Catalog/ctdocp-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
+                }
 
             }
 

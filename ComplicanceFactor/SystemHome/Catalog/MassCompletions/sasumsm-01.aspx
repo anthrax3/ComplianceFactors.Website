@@ -38,7 +38,7 @@
                         <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Employee Id:
+                        Employee Number:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeId" CssClass="textbox_long" runat="server"></asp:TextBox>

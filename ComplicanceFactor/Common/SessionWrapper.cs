@@ -6303,6 +6303,27 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static DataTable MassEnrollment_employees
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MassEnrollment_employees"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["MassEnrollment_employees"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["MassEnrollment_employees"] = value;
+            }
+        }
+
         public static DataTable Enrollment_courses_curriculum
         {
             get

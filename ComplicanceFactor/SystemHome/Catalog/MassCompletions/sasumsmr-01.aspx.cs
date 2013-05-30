@@ -178,8 +178,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             User userSearch = new User();
             if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
             {
-                userSearch.Hris_employeid = txtEmployeeName.Text;
-                userSearch.Firstname = txtEmployeeId.Text;
+                userSearch.Firstname  = txtEmployeeName.Text;
+                userSearch.Hris_employeid = txtEmployeeId.Text;
 
             }
             else

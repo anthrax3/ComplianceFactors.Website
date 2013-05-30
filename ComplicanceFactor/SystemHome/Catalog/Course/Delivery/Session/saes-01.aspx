@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
-    CodeBehind="saes-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.saes_01"  MaintainScrollPositionOnPostback="true" %>
+    CodeBehind="saes-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.saes_01"
+    MaintainScrollPositionOnPostback="true" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -50,7 +51,6 @@
         })(jQuery);
 
     </script>
-   
     <script type="text/javascript">
         $(function () {
             $("#<%=txtStartTime.ClientID %>").watermark("HH:MM AM/PM");
@@ -73,7 +73,7 @@
             $("#<%=txtDuration.ClientID %>").click(
 			function () {
 			    $("#<%=txtDuration.ClientID %>")[0].focus();
-			   
+
 			}
 		);
         });
@@ -94,7 +94,7 @@
                 'width': 820,
                 'height': 200,
                 'margin': 0,
-               'padding': 0,
+                'padding': 0,
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,
                 'hideOnOverlayClick': false,
@@ -127,7 +127,7 @@
                 'width': 820,
                 'height': 200,
                 'margin': 0,
-               'padding': 0,
+                'padding': 0,
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,
                 'hideOnOverlayClick': false,
@@ -161,7 +161,7 @@
                 'width': 820,
                 'height': 200,
                 'margin': 0,
-               'padding': 0,
+                'padding': 0,
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,
                 'hideOnOverlayClick': false,
@@ -195,7 +195,7 @@
                 'width': 820,
                 'height': 200,
                 'margin': 0,
-               'padding': 0,
+                'padding': 0,
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,
                 'hideOnOverlayClick': false,
@@ -215,7 +215,7 @@
                 }
 
             });
-           
+
         });
     </script>
     <script type="text/javascript">
@@ -223,7 +223,7 @@
         function Checktime(sender, args) {
             var txtStartTime = document.getElementById('<%=txtStartTime.ClientID %>').value;
             var txtEndTime = document.getElementById('<%=txtEndTime.ClientID %>').value;
-            
+
             if (txtStartTime != '' && txtEndTime == '') {
 
                 args.IsValid = false;
@@ -239,7 +239,6 @@
             }
         }
     </script>
-    
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -282,10 +281,21 @@
             });
         });
     </script>
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server"  >
+    <script type="text/javascript">
+        function DateCheck(sender, args) {
+            var StartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
+            var EndDate = document.getElementById('<%=txtEndDate.ClientID %>').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                args.IsValid = false;
+            }
+        }    
+    </script>
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server">
     </asp:ToolkitScriptManager>
-
-   
+    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+        ValidationGroup="saes" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
         ValidationGroup="saes"></asp:ValidationSummary>
     <div class="div_header_940">
@@ -351,7 +361,6 @@
                     <%=LocalResources.GetLabel("app_start_date_text")%>:
                 </td>
                 <td>
-                    
                     <asp:TextBox ID="txtStartDate" runat="server" CssClass="textbox_long"></asp:TextBox>
                     <asp:CalendarExtender ID="ceStartDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtStartDate">
                     </asp:CalendarExtender>
@@ -366,7 +375,7 @@
                     <asp:RequiredFieldValidator ID="rfvSessionEndDate" runat="server" ValidationGroup="saes"
                         ControlToValidate="txtEndDate" ErrorMessage="<%$ TextResourceExpression: app_end_date_error_empty %>">&nbsp;
                     </asp:RequiredFieldValidator>
-                     <asp:RegularExpressionValidator ID="regexEndDate" runat="server" ControlToValidate="txtEndDate"
+                    <asp:RegularExpressionValidator ID="regexEndDate" runat="server" ControlToValidate="txtEndDate"
                         ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
                         ErrorMessage="<%$ TextResourceExpression: app_invalid_end_date_error_wrong%>"
                         Display="Dynamic" ValidationGroup="saes">&nbsp;</asp:RegularExpressionValidator>
@@ -374,7 +383,6 @@
                     <%=LocalResources.GetLabel("app_end_date_text")%>:
                 </td>
                 <td>
-                   
                     <asp:TextBox ID="txtEndDate" runat="server" CssClass="textbox_long"></asp:TextBox>
                     <asp:CalendarExtender ID="ceEndDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtEndDate">
                     </asp:CalendarExtender>
@@ -512,9 +520,8 @@
             <tr>
                 <td align="left">
                     <asp:Button ID="btnSaveSessionInformation" ValidationGroup="saes" CssClass="cursor_hand"
-                        runat="server" 
-                        Text="<%$ LabelResourceExpression: app_save_session_information_text %>" 
-                        onclick="btnSaveSessionInformation_Click" />
+                        runat="server" Text="<%$ LabelResourceExpression: app_save_session_information_text %>"
+                        OnClick="btnSaveSessionInformation_Click" />
                 </td>
                 <td class="textbox_long">
                     &nbsp;
@@ -523,9 +530,8 @@
                     &nbsp;
                 </td>
                 <td align="left">
-                    <asp:Button ID="btnReset" CssClass="cursor_hand" runat="server" 
-                        Text="<%$ LabelResourceExpression: app_reset_button_text %>" 
-                        onclick="btnReset_Click" />
+                    <asp:Button ID="btnReset" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                        OnClick="btnReset_Click" />
                 </td>
                 <td class="textbox_long">
                     &nbsp;
@@ -534,9 +540,8 @@
                     &nbsp;
                 </td>
                 <td align="right">
-                    <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" 
-                        Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
-                        onclick="btnCancel_Click" />
+                    <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                        OnClick="btnCancel_Click" />
                 </td>
             </tr>
         </table>

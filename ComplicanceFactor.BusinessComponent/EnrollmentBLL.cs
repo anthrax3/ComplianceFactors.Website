@@ -61,8 +61,14 @@ namespace ComplicanceFactor.BusinessComponent
                     //getEnrollDeliveries.e_enroll_enroll_date_time = dtGetEnrollDeliveries.Rows[0]["e_enroll_enroll_date_time"].ToString();
                     //getEnrollDeliveries.e_enroll_expire_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_expire_date"].ToString();
                     getEnrollCourse.e_enroll_enroll_type_id_fk = dtGetEnrollCourse.Rows[0]["e_enroll_enroll_type_id_fk"].ToString();
-                    getEnrollCourse.e_enroll_required_flag = Convert.ToBoolean(dtGetEnrollCourse.Rows[0]["e_enroll_required_flag"]);
-                    getEnrollCourse.e_enroll_approval_required_flag = Convert.ToBoolean(dtGetEnrollCourse.Rows[0]["e_enroll_approval_required_flag"]);
+                    if (!string.IsNullOrEmpty(dtGetEnrollCourse.Rows[0]["e_enroll_required_flag"].ToString()))
+                    {
+                        getEnrollCourse.e_enroll_required_flag = Convert.ToBoolean(dtGetEnrollCourse.Rows[0]["e_enroll_required_flag"]);
+                    }
+                    if (!string.IsNullOrEmpty(dtGetEnrollCourse.Rows[0]["e_enroll_approval_required_flag"].ToString()))
+                    {
+                        getEnrollCourse.e_enroll_approval_required_flag = Convert.ToBoolean(dtGetEnrollCourse.Rows[0]["e_enroll_approval_required_flag"]);
+                    }
                     getEnrollCourse.e_enroll_approval_status_id_fk = dtGetEnrollCourse.Rows[0]["e_enroll_approval_status_id_fk"].ToString();
                     //getEnrollDeliveries.e_enroll_approval_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_approval_date"].ToString();
                     //getEnrollDeliveries.e_enroll_target_due_date = dtGetEnrollDeliveries.Rows[0]["e_enroll_target_due_date"].ToString();

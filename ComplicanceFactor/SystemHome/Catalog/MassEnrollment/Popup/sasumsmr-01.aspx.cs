@@ -178,8 +178,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
             User userSearch = new User();
             if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
             {
-                userSearch.Hris_employeid = txtEmployeeName.Text;
-                userSearch.Firstname = txtEmployeeId.Text;
+                userSearch.Firstname = txtEmployeeName.Text;
+                userSearch.Hris_employeid = txtEmployeeId.Text;
 
             }
             else
@@ -315,13 +315,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
         protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
             //DataTable dtInstructorCourse = new DataTable();
-            SessionWrapper.Compltion_employees = TempDataTables.TempCompletionEmployee();
+            SessionWrapper.MassEnrollment_employees = TempDataTables.TempCompletionEmployee();
             foreach (GridViewRow grdResourceRow in gvsearchDetails.Rows)
             {
                 CheckBox chkSelect = (CheckBox)(grdResourceRow.Cells[1].FindControl("chkSelect"));
                 if (chkSelect.Checked == true)
                 {
-                    AddDataToCompletionEmployee(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[2].ToString(), SessionWrapper.Compltion_employees);
+                    AddDataToCompletionEmployee(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[2].ToString(), SessionWrapper.MassEnrollment_employees);
                 }
             }
             //SystemInstructorBLL.InsertInstructorCourse(ConvertDataTableToXml(dtInstructorCourse));

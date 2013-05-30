@@ -294,6 +294,13 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
+                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Assigned")
+                        {
+                            lblAlreadyEnrollMessage.Text = "***Assigned***";
+                            btnDrop.Style.Add("display", "none");
+                            btnEnroll.Style.Add("display", "none");
+
+                        }
                         else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll" && strEnrollType != "Completed")
                         {
                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
@@ -301,6 +308,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
+                        
                         else if (string.IsNullOrEmpty(strEnrollType))
                         {
                             btnDrop.Style.Add("display", "none");

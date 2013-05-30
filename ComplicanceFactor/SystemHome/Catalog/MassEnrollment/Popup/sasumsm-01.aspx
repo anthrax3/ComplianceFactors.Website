@@ -32,13 +32,13 @@
             <table>
                 <tr>
                     <td>
-                       <%=LocalResources.GetLabel("app_last_name_text")%>
+                      <%-- <%=LocalResources.GetLabel("app_last_name_text")%>:--%>Employee Name
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <%=LocalResources.GetLabel("app_first_name_text")%>
+                        <%--<%=LocalResources.GetLabel("app_first_name_text")%>--%>Employee Number:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeId" CssClass="textbox_long" runat="server"></asp:TextBox>

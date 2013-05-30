@@ -25,7 +25,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_mass_enrollment_text");
                 SessionWrapper.Enrollment_courses_curriculum.Clear();
-                SessionWrapper.Compltion_employees.Clear();
+                SessionWrapper.MassEnrollment_employees.Clear();
             }
 
             if (SessionWrapper.Enrollment_courses_curriculum.Rows.Count > 0 && (hdCheckdelivery.Value != "1" || string.IsNullOrEmpty(hdCheckdelivery.Value)))
@@ -33,9 +33,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                 gvCatalog.DataSource = SessionWrapper.Enrollment_courses_curriculum;
                 gvCatalog.DataBind();
             }
-            if (SessionWrapper.Compltion_employees.Rows.Count > 0)
+            if (SessionWrapper.MassEnrollment_employees.Rows.Count > 0)
             {
-                gvEmployee.DataSource = SessionWrapper.Compltion_employees;
+                gvEmployee.DataSource = SessionWrapper.MassEnrollment_employees;
                 gvEmployee.DataBind();
             }
 
@@ -129,10 +129,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
             {
 
                 //Delete previous selected course
-                var rows = SessionWrapper.Compltion_employees.Select("u_user_id_pk= '" + args.Trim() + "'");
+                var rows = SessionWrapper.MassEnrollment_employees.Select("u_user_id_pk= '" + args.Trim() + "'");
                 foreach (var row in rows)
                     row.Delete();
-                SessionWrapper.Compltion_employees.AcceptChanges();
+                SessionWrapper.MassEnrollment_employees.AcceptChanges();
             }
             catch (Exception ex)
             {
@@ -157,7 +157,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
         {
 
             EnrollCourseCurriculum();
-            if (SessionWrapper.Enrollment_courses_curriculum.Rows.Count > 0 && SessionWrapper.Compltion_employees.Rows.Count > 0)
+            if (SessionWrapper.Enrollment_courses_curriculum.Rows.Count > 0 && SessionWrapper.MassEnrollment_employees.Rows.Count > 0)
             {
                 divSuccess.Style.Add("display", "block");
                 divSuccess.InnerText = LocalResources.GetText("app_succ_processed_text");
@@ -293,7 +293,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                 CheckBox chkSelectDelivery = (CheckBox)gvCatalog.Rows[i].FindControl("chkSelectDelivery");
                 DropDownList ddlDelivery = (DropDownList)gvCatalog.Rows[i].FindControl("ddlDelivery");
 
-                for (int k = 0; SessionWrapper.Compltion_employees.Rows.Count > k; k++)
+                for (int k = 0; SessionWrapper.MassEnrollment_employees.Rows.Count > k; k++)
                 {
 
                     if (SessionWrapper.Enrollment_courses_curriculum.Rows[i]["type"].ToString() == "Course" && chkSelectDelivery.Checked == true)
@@ -303,7 +303,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                         courserow["course_id"] = SessionWrapper.Enrollment_courses_curriculum.Rows[i]["sysId"].ToString();
                         courserow["deliveryID"] = ddlDelivery.SelectedValue;
                         courserow["checked"] = chkSelectDelivery.Checked;
-                        courserow["employeeID"] = SessionWrapper.Compltion_employees.Rows[k]["u_user_id_pk"].ToString();
+                        courserow["employeeID"] = SessionWrapper.MassEnrollment_employees.Rows[k]["u_user_id_pk"].ToString();
                         courserow["required"] = chkRequired.Checked;
                         courserow["DueDate"] = TryParse(txtTargetDueDate.Text);
                         dtCourseEnroll.Rows.Add(courserow);
@@ -314,7 +314,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                         courserow = dtCourseAssign.NewRow();
                         courserow["course_id"] = SessionWrapper.Enrollment_courses_curriculum.Rows[i]["sysId"].ToString();
                         courserow["checked"] = chkSelectDelivery.Checked;
-                        courserow["employeeID"] = SessionWrapper.Compltion_employees.Rows[k]["u_user_id_pk"].ToString();
+                        courserow["employeeID"] = SessionWrapper.MassEnrollment_employees.Rows[k]["u_user_id_pk"].ToString();
                         courserow["required"] = chkRequired.Checked;
                         courserow["DueDate"] = TryParse(txtTargetDueDate.Text);
                         dtCourseAssign.Rows.Add(courserow);
@@ -325,7 +325,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                         DataRow curriculumrow;
                         curriculumrow = dtCurriculum.NewRow();
                         curriculumrow["curriculum_id"] = SessionWrapper.Enrollment_courses_curriculum.Rows[i]["sysId"].ToString();
-                        curriculumrow["employeeID"] = SessionWrapper.Compltion_employees.Rows[k]["u_user_id_pk"].ToString();
+                        curriculumrow["employeeID"] = SessionWrapper.MassEnrollment_employees.Rows[k]["u_user_id_pk"].ToString();
                         curriculumrow["required"] = chkRequired.Checked;
                         curriculumrow["DueDate"] = TryParse(txtTargetDueDate.Text);
                         dtCurriculum.Rows.Add(curriculumrow);

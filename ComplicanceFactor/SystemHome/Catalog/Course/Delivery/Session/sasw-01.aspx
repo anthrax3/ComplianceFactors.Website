@@ -460,8 +460,22 @@
 
         });
     </script>
+     <script type="text/javascript">
+         function DateCheck(sender, args) {
+             var StartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
+             var EndDate = document.getElementById('<%=txtEndDate.ClientID %>').value;
+             var eDate = new Date(EndDate);
+             var sDate = new Date(StartDate);
+             if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                 args.IsValid = false;
+             }
+         }
+    
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
+     <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+        ValidationGroup="sasw" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
         ValidationGroup="sasw"></asp:ValidationSummary>
     <div class="div_header_940">
