@@ -9,6 +9,28 @@
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+                $(navigationSelectedValue).addClass('selected');
+                // toggles the slickbox on clicking the noted link  
+                $('.main_menu li a').hover(function () {
+
+                    $('.main_menu li a').removeClass('selected');
+                    $(this).addClass('active');
+
+                    return false;
+                });
+                $('.main_menu li a').mouseleave(function () {
+
+                    $(navigationSelectedValue).addClass('selected');
+                    return false;
+                });
+            });
+
+    </script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -196,6 +218,7 @@
     <div class="content_area_long">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
+        <asp:HiddenField ID="hdNav_selected" runat="server" />
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samep" runat="server"
@@ -285,7 +308,7 @@
             </asp:GridView>
             <br />
             <br />
-            <input type="button" class="addemployee cursor_hand" value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_employees_button_text %>" />' />
+            <input type="button" class="addemployee cursor_hand" value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_add_employee_button_text %>" />' />
             <br />
             <br />
         </div>

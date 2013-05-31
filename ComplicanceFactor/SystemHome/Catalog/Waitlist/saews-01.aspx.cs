@@ -11,6 +11,7 @@ using System.Data;
 using System.Text;
 using System.Configuration;
 using System.Net.Mail;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Approvals
 {
@@ -28,7 +29,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Waitlist/samwmp-01.aspx>Manage Waitlist</a>&nbsp;" + " >&nbsp;" + "Edit Waitlist Information";            
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Waitlist/samwmp-01.aspx>" + LocalResources.GetLabel("app_manage_waitlists_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_waitlist_information_text");            
                               
                 if (!string.IsNullOrEmpty(Request.QueryString["process"]))
                 {
@@ -205,9 +206,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
 
                 if (!string.IsNullOrEmpty(attendenceName))
                 {
-                    ltlRoaster.Text = "<input id=" + encwaitlist + ',' + userId + " class='moveRoaster cursor_hand' type='button' value='Move to Roaster'/>";
+                    ltlRoaster.Text = "<input id=" + encwaitlist + ',' + userId + " class='moveRoaster cursor_hand' type='button' value=" + LocalResources.GetLabel("app_move_to_roaster_button_text") + "/>";
                     //ltlRoaster.Text = "<input id=" + + ',' + + ','+userId+ " class='moveRoaster cursor_hand' type='button' value='Move to Roaster'/>";
-                    ltlRemove.Text = "<input id=" + waitlist + ','+courseId+ ','+ deliveryId+" class='removeWaitlist cursor_hand' type='button' value='Remove' />";
+                    ltlRemove.Text = "<input id=" + waitlist + ',' + courseId + ',' + deliveryId + " class='removeWaitlist cursor_hand' type='button' value=" + LocalResources.GetLabel("app_remove_button_text") + ">";
                 }
                 else
                 {
@@ -216,7 +217,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                     ltlAdd.Visible = true;
                     btnUp.Enabled = false;
                     btnDown.Enabled = false;
-                    ltlAdd.Text = "<input id=" + courseId + ',' + deliveryId + " class='addUser cursor_hand' type='button' value='Add' />";
+                    ltlAdd.Text = "<input id=" + courseId + ',' + deliveryId + " class='addUser cursor_hand' type='button' value=" + LocalResources.GetLabel("app_add_button_text") + " />";
                     //Button btnRoaster = (Button)e.Row.FindControl("btnManageRoster");
                     //Button btnRemove = (Button)e.Row.FindControl("btnRemove");
                     //Button btnAdd = (Button)e.Row.FindControl("btnAdd");

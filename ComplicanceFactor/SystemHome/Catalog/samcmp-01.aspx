@@ -93,13 +93,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="MassEnrollment/samep-01.aspx">Mass Enrollment</a>
+                        <a href="MassEnrollment/samep-01.aspx"><%=LocalResources.GetLabel("app_mass_enrollment_text")%></a>
                     </td>
                     <td>
                        <a href="Approvals/samamp-01.aspx">Manage Approvals Queue</a>
                     </td>
                     <td>
-                       <a href="Waitlist/samwmp-01.aspx">Manage Waitlists</a>
+                       <a href="Waitlist/samwmp-01.aspx"><%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
                     </td>
                 </tr>
                 <tr>

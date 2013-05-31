@@ -246,6 +246,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
 
             txtHeaderPage.Visible = false;
             lblHeaderPage.Visible = false;
+            
+            
 
             txtFooterPage.Visible = false;
             lblFooterPage.Visible = false;

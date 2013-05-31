@@ -138,21 +138,8 @@ namespace ComplicanceFactor.BusinessComponent
             Hashtable htSearchUser = new Hashtable();
             htSearchUser.Add("@courseId", user.courseId);
             htSearchUser.Add("@deliveryId", user.deliveryId);
-            htSearchUser.Add("@u_username_enc", user.Username_enc_ash);
-            htSearchUser.Add("@u_first_name", user.Firstname);
-            htSearchUser.Add("@u_last_name", user.Lastname);
-            if (user.Active_Type == "0")
-                htSearchUser.Add("@u_active_type_fk", System.DBNull.Value);
-            else
-                htSearchUser.Add("@u_active_type_fk", user.Active_Type);
-            if (user.Usertype == "0")
-                htSearchUser.Add("@u_user_type_fk", System.DBNull.Value);
-            else
-                htSearchUser.Add("@u_user_type_fk", user.Usertype);
-            if (user.DomainId == "0")
-                htSearchUser.Add("@u_domain_id_fk", System.DBNull.Value);
-            else
-                htSearchUser.Add("@u_domain_id_fk", user.DomainId);
+            htSearchUser.Add("@employeename", user.Firstname);
+            htSearchUser.Add("@employeeid", user.Hris_employeid);
             try
             {
                 return DataProxy.FetchDataTable("s_sp_search_user_for_waitlist", htSearchUser);

@@ -33,26 +33,26 @@
         </asp:ToolkitScriptManager>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
-            Advanced Wailists Search:
+            <%=LocalResources.GetLabel("app_advanced_wailists_search_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table class="table_td_300">
                 <tr>
                     <td class="align_right">
-                        Employee ID:
+                        <%=LocalResources.GetLabel("app_employee_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeId" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td class="align_right">
-                        Employee Name:
+                        <%=LocalResources.GetLabel("app_employee_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td class="align_right">
-                        Course ID:
+                        <%=LocalResources.GetLabel("app_course_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCourseId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -65,19 +65,19 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Course Name:
+                        <%=LocalResources.GetLabel("app_course_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCourseName" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td class="align_right">
-                        Delivery ID:
+                        <%=LocalResources.GetLabel("app_delivery_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDeliveryId" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td class="align_right">
-                        Delivery Name:
+                        <%=LocalResources.GetLabel("app_delivery_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDeliveryName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -90,13 +90,13 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Coordinator:
+                        <%=LocalResources.GetLabel("app_coordinator_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCoordinator" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td class="align_right">
-                        Delivery Start Date:
+                        <%=LocalResources.GetLabel("app_delivery_start_date_text")%>:
                     </td>
                     <td>
                         <asp:CalendarExtender ID="ceDeliveryStartDate" Format="MM/dd/yyyy" TargetControlID="txtDeliveryStartDate"
@@ -105,7 +105,7 @@
                         <asp:TextBox ID="txtDeliveryStartDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td class="align_right">
-                        Delivery End Date
+                        <%=LocalResources.GetLabel("app_delivery_end_date_text")%>:
                     </td>
                     <td>
                         <asp:CalendarExtender ID="ceDeliveryEndDate" Format="MM/dd/yyyy" TargetControlID="txtDeliveryEndDate"
@@ -130,22 +130,23 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                         &nbsp;
+                        &nbsp;
                     </td>
                     <td>
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnReset" runat="server" Text="Reset" 
-                            onclick="btnReset_Click" />
+                        <asp:Button ID="btnReset" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            OnClick="btnReset_Click" />
                     </td>
                     <td>
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnGoSearch" runat="server" Text="Go Search!" OnClick="btnGoSearch_Click" />
+                        <asp:Button ID="btnGoSearch" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                            OnClick="btnGoSearch_Click" />
                     </td>
                 </tr>
             </table>

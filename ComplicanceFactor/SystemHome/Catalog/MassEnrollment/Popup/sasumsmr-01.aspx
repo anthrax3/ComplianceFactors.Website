@@ -138,7 +138,8 @@
         <div>
             <div class="div_padding_25">
                 <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="table_700 tablesorter"
-                    runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" AutoGenerateColumns="False" DataKeyNames="u_user_id_pk,u_username,EmployeeID"
+                    runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
+                    AutoGenerateColumns="False" DataKeyNames="u_user_id_pk,u_username,EmployeeID"
                     AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
                     PageSize="10" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowEditing="gvsearchDetails_RowEditing">
                     <Columns>
@@ -222,13 +223,13 @@
             <table>
                 <tr>
                     <td>
-                       <%-- <%=LocalResources.GetLabel("app_last_name_text")%>--%>Employee Name:
+                        <%=LocalResources.GetLabel("app_employee_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <%--<%=LocalResources.GetLabel("app_first_name_text")%>--%>Employee Number:
+                        <%=LocalResources.GetLabel("app_employee_number_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -240,9 +241,7 @@
                     </td>
                 </tr>
                 <tr>
-                   <td colspan="2" class="align_left">
-                        <%-- <asp:Button ID="btnAddnewuser" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_new_user_button_text %>"
-                                OnClick="btnAddnewuser_Click" />--%>
+                    <td colspan="2" class="align_left">
                     </td>
                     <td>
                         &nbsp;

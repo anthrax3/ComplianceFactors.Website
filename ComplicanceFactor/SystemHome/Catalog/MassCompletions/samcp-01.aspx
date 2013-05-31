@@ -219,12 +219,12 @@
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp" runat="server"
             ValidationGroup="samcp"></asp:ValidationSummary>
         <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
-            ValidationGroup="samcp" runat="server" ErrorMessage="Please Select a employee">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
-            ValidationGroup="samcp" runat="server" ErrorMessage="Please select a delivery.">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
-            Catalog Item(s):
+           <%=LocalResources.GetLabel("app_catalog_items_text")%>:
         </div>
         <br />
         <asp:HiddenField ID="hdnIsCatalogBind" runat="server" />
@@ -258,7 +258,7 @@
                                 CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Remove" />--%>
                             <input type="button" id='<%# Eval("c_course_system_id_pk") %>' onclick="return confirmStatus();"
-                                value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />' class="deleteCourse cursor_hand" />
+                                value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />' class="deleteCourse cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -267,12 +267,12 @@
             <br />
             <br />
             <asp:Button ID="btnAddCatalogItem" runat="server" CssClass="addCatalog cursor_hand"
-                Text="Add Catalog Item(s)" />
+                Text="<%$ LabelResourceExpression: app_add_catalog_items_button_text %>" />
             <br />
             <br />
         </div>
         <div class="div_header_long">
-            Employee(s):
+             <%=LocalResources.GetLabel("app_employees_text")%>:
         </div>
         <div>
             <br />
@@ -296,7 +296,7 @@
                                 CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Remove" />--%>
                             <input type="button" id='<%# Eval("u_user_id_pk") %>' onclick="return confirmStatus();"
-                                value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />' class="deleteEmployee cursor_hand" />
+                               value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />' class="deleteEmployee cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -304,12 +304,12 @@
             <br />
             <br />
             <asp:Button ID="btnAddEmployee" runat="server" CssClass="addEmployee cursor_hand"
-                Text="Add Employee(s)" />
+                Text="<%$ LabelResourceExpression: app_add_employee_button_text %>" />
             <br />
             <br />
         </div>
         <div class=" div_header_long">
-            Completion Information:
+            <%=LocalResources.GetLabel("app_completion_information_text")%>:
         </div>
         <br />
         <div>
@@ -318,14 +318,14 @@
                 AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
                 OnRowDataBound="gvCompletionInfo_RowDataBound">
                 <Columns>
-                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderText="Delivery Id/Name"
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderText="<%$ LabelResourceExpression: app_delivery_Id_and_name_text %>"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Left">
                         <ItemTemplate>
                             <asp:Label ID="lblDeliveryIdName" runat="server"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_4 align_center" HeaderText="Comments"
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_4 align_center" HeaderText="<%$ LabelResourceExpression: app_comments_text %>"
                         ItemStyle-CssClass="gridview_row_width_4_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Left">
                         <ItemTemplate>
@@ -333,7 +333,7 @@
                             </asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderText="Completion Date"
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -342,7 +342,7 @@
                             <asp:TextBox ID="txtCompletionDate" runat="server"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Attendance" HeaderStyle-CssClass="gridview_row_width_1 align_center"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_attendance_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -351,7 +351,7 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Passign Status" HeaderStyle-CssClass="gridview_row_width_1 align_center"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_passing_status_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -360,7 +360,7 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Grade" HeaderStyle-CssClass="gridview_row_width_1 align_center"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_grade_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -369,7 +369,7 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Score" HeaderStyle-CssClass="gridview_row_width_1 align_center"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_score_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -388,12 +388,12 @@
                 <tr>
                     <td class="align_right">
                         <asp:Button ID="btnProcessMassCompletion" runat="server" ValidationGroup="samcp"
-                            Text="Process Mass Completion" OnClick="btnProcessMassCompletion_Click" />
+                            Text="<%$ LabelResourceExpression: app_process_mass_completion_button_text %>" OnClick="btnProcessMassCompletion_Click" />
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" 
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
                             onclick="btnCancel_Click" />
                     </td>
                 </tr>
@@ -415,7 +415,7 @@
             <asp:Panel ID="pnlNotesHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_700">
-                        Enter PIN and Reasons for Mass Completion Creation:
+                        <%=LocalResources.GetLabel("app_enter_pin_reason_for_mass_completion_text")%>:
                     </div>
                     <asp:ImageButton ID="imgCloseJobTitle" CssClass="cursor_hand" Style="top: -15px;
                         right: -15px; z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -426,7 +426,7 @@
                 <table>
                     <tr>
                         <td class="text_font_normal" style="width: 100px;" align="right">
-                            Selected Courses(s)/Delivery(ies):
+                            <%=LocalResources.GetLabel("app_selected_courses_and_delivery_text")%>:
                         </td>
                         <td class="align_left">
                             <div id="SelectedCourses" style="float: left;" runat="server">
@@ -440,7 +440,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                            Selected Employee:
+                             <%=LocalResources.GetLabel("app_selected_employees_text")%>: 
                         </td>
                         <td class="align_left">
                             <div id="selectedEmployee" style="float: left;" runat="server">
@@ -454,7 +454,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                            Completion Status:
+                             <%=LocalResources.GetLabel("app_completion_statuses_text")%>: 
                         </td>
                         <td class="align_left">
                             <asp:Label ID="lblStatus" runat="server"></asp:Label>
@@ -467,7 +467,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                            Completion Date:
+                            <%=LocalResources.GetLabel("app_completion_date_text")%>:
                             <%-- <asp:RegularExpressionValidator ID="regexStartDate" runat="server" ControlToValidate="txtDueDate"
                                 ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
                                 ErrorMessage="Invalid date format">&nbsp;</asp:RegularExpressionValidator>--%>
@@ -483,7 +483,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                            Notes:
+                             <%=LocalResources.GetLabel("app_notes_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtNotes" runat="server" TextMode="MultiLine" Rows="8" Columns="50"></asp:TextBox>
@@ -496,12 +496,12 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                            PIN:
+                           <%=LocalResources.GetLabel("app_pin_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtPin" runat="server"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;
-                            <asp:Button ID="btnCreatePin" runat="server" Text="Create PIN" />
+                            <asp:Button ID="btnCreatePin" runat="server" Text="<%$ LabelResourceExpression: app_create_PIN_button_text %>" />
                         </td>
                     </tr>
                     <tr>
@@ -513,10 +513,10 @@
                         <td>
                             <%--OnClientClick="return confirmStatus();"--%>
                             <asp:Button ID="btnSaveStatus" ValidationGroup="samcp" OnClick="btnSaveStatus_Click"
-                                runat="server" Text="Create Completion(s) Record" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_create_completion_record_button_text %>" />
                         </td>
                         <td align="right">
-                            <asp:Button ID="btnCancelCompletion" runat="server" Text="Cancel" />
+                            <asp:Button ID="btnCancelCompletion" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>
@@ -527,7 +527,7 @@
             <asp:Panel ID="pnlPinHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">
-                        Create PIN:
+                        <%=LocalResources.GetLabel("app_create_PIN_text")%>:
                     </div>
                     <asp:ImageButton ID="imgClosePin" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                         z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -540,7 +540,7 @@
                 <table>
                     <tr>
                         <td align="right">
-                            User Name:
+                            <%=LocalResources.GetLabel("app_user_name_text")%>:
                         </td>
                         <td align="left">
                             <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
@@ -548,7 +548,7 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            Login Password:
+                            <%=LocalResources.GetLabel("app_login_password_text")%>:
                         </td>
                         <td align="left">
                             <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
@@ -556,12 +556,12 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            Enter PIN Number:
+                            <%=LocalResources.GetLabel("app_enter_PIN_Number_text")%>: 
                             <asp:RequiredFieldValidator ID="rfvPin" runat="server" ControlToValidate="txtPinNumber"
-                                ForeColor="Red" ErrorMessage="Please Enter PIN Number" ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
+                                ForeColor="Red" ErrorMessage="<%$ TextResourceExpression: app_pin_error_empty %>" ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvalPinnumber" ClientValidationFunction="ClientValidate"
                                 ControlToValidate="txtPinNumber" runat="server" ForeColor="Red" ValidationGroup="Pinnumber"
-                                ErrorMessage="Please Enter Valid PIN Number">&nbsp;</asp:CustomValidator>
+                                ErrorMessage="<%$ TextResourceExpression: app_pin_error_wrong %>">&nbsp;</asp:CustomValidator>
                         </td>
                         <td align="left">
                             <asp:TextBox ID="txtPinNumber" runat="server" Text=""></asp:TextBox>
@@ -574,11 +574,11 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            Validate PIN:
+                             <%=LocalResources.GetLabel("app_validate_PIN_text")%>: 
                             <asp:RequiredFieldValidator ID="rfvPinNumber" runat="server" ControlToValidate="txtValidatePin"
-                                ForeColor="Red" ErrorMessage="Please Enter PIN Number" ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
+                                ForeColor="Red" ErrorMessage="<%$ TextResourceExpression: app_pin_error_empty %>" ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
                             <asp:CompareValidator ID="cvalPassword" runat="server" ControlToCompare="txtPinNumber"
-                                ForeColor="Red" ControlToValidate="txtValidatePin" ErrorMessage="Please enter valid PIN number"
+                                ForeColor="Red" ControlToValidate="txtValidatePin" ErrorMessage="<%$ TextResourceExpression: app_pin_error_wrong %>"
                                 ValidationGroup="Pinnumber">&nbsp;</asp:CompareValidator>
                         </td>
                         <td align="left">
@@ -593,10 +593,10 @@
                     <tr>
                         <td align="right">
                             <asp:Button ID="btnSavePin" OnClick="btnSavePin_Click" runat="server" ValidationGroup="Pinnumber"
-                                Text="Save" />
+                                Text="<%$ LabelResourceExpression: app_save_button_text %>" />
                         </td>
                         <td align="left">
-                            <asp:Button ID="btnCancelPin" runat="server" Text="Cancel" />
+                            <asp:Button ID="btnCancelPin" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>

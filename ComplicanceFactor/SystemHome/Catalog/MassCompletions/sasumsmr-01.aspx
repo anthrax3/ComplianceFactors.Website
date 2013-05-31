@@ -128,10 +128,9 @@
         <br />
         <div class="div_padding_25">
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="table_700 tablesorter"
-                runat="server" EmptyDataText="No result found." AutoGenerateColumns="False"
-                DataKeyNames="u_user_id_pk,u_username,EmployeeID" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
-                PagerSettings-Visible="false" PageSize="10" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
-                OnRowEditing="gvsearchDetails_RowEditing">
+                runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" DataKeyNames="u_user_id_pk,u_username,EmployeeID"
+                AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
+                PageSize="10" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowEditing="gvsearchDetails_RowEditing">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
                         HeaderStyle-HorizontalAlign="Left" DataField="u_last_name" HeaderText="<%$ LabelResourceExpression: app_last_name_text_header %>" />
@@ -156,7 +155,7 @@
             <table cellpadding="0" cellspacing="0" class="paging_700">
                 <tr>
                     <td align="right">
-                        <asp:Button ID="btnSaveSelected" CssClass="cursor_hand" runat="server" Text="Save Selected"
+                        <asp:Button ID="btnSaveSelected" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_selected_button_text %>"
                             OnClientClick="return validateCheckBoxes();" OnClick="btnSaveSelected_Click" />
                     </td>
                 </tr>
@@ -216,13 +215,13 @@
             <table>
                 <tr>
                     <td>
-                       <%-- <%=LocalResources.GetLabel("app_last_name_text")%>--%>Employee Name:
+                        <%=LocalResources.GetLabel("app_employee_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                       <%-- <%=LocalResources.GetLabel("app_first_name_text")%>--%>Employee Number:
+                        <%=LocalResources.GetLabel("app_employee_number_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -235,15 +234,13 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="btnsave_new_user_td">
-                        <%-- <asp:Button ID="btnAddnewuser" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_new_user_button_text %>"
-                                OnClick="btnAddnewuser_Click" />--%>
                     </td>
                     <td>
-                         <asp:Button ID="btnReset" CssClass="cursor_hand" runat="server" OnClientClick="return resetall();"
+                        <asp:Button ID="btnReset" CssClass="cursor_hand" runat="server" OnClientClick="return resetall();"
                             Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
                     </td>
                     <td>
-                       &nbsp;
+                        &nbsp;
                     </td>
                     <td colspan="2">
                         <asp:Button ID="btnGosearch" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"

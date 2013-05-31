@@ -22,8 +22,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
         {
             if (!IsPostBack)
             {
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_mass_enrollment_text");
+
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_mass_enrollment_text");
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_mass_enrollment_text");
+
                 SessionWrapper.Enrollment_courses_curriculum.Clear();
                 SessionWrapper.MassEnrollment_employees.Clear();
             }

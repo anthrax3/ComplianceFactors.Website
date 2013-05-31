@@ -8,15 +8,20 @@ using ComplicanceFactor.Common;
 using System.Data;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using System.Collections;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
 {
     public partial class sasumsmr_01 : System.Web.UI.Page
     {
+        #region
         private static string courseId;
         private static string deliveryId;
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["courseId"]))
@@ -28,124 +33,207 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
                 {
                     deliveryId = SecurityCenter.DecryptText(Request.QueryString["deliveryId"].ToString());
                 }
-
-                ddlUserstatus.DataSource = UserBLL.GetUserAllStatusList(SessionWrapper.CultureName, "sasumsmr-01");
-                ddlUserstatus.DataBind();
-                ddlUserstatus.SelectedValue = "app_ddl_all_text";
-                //ListItem lstStatus = new ListItem();
-                //lstStatus.Text = "All";
-                //lstStatus.Value = "0";
-
-                //ddlUserstatus.Items.Insert(0, lstStatus);
-                //ddlUserstatus.SelectedIndex = 0;
-
-
-                try
-                {
-                    ddlUserTypes.DataSource = UserBLL.GetAllUserTypes(SessionWrapper.CultureName, "sasumsmr-01");
-                    ddlUserTypes.DataBind();
-                    ddlUserdomain.DataSource = UserBLL.GetUserDomains();
-                    ddlUserdomain.DataBind();
-
-                    //ListItem lstUserType = new ListItem();
-                    //lstUserType.Text = "All Types";
-                    //lstUserType.Value = "0";
-
-                    //ddlUserTypes.Items.Insert(0, lstUserType);
-                    //ddlUserTypes.SelectedIndex = 0;
-                    ListItem lstUserDomain = new ListItem();
-                    lstUserDomain.Text = "All";
-                    lstUserDomain.Value = "0";
-
-                    ddlUserdomain.Items.Insert(0, lstUserDomain);
-                    ddlUserdomain.SelectedIndex = 0;
-
-                    displayrecord();
-
-                    lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-                    lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-                }
-                catch (Exception ex)
-                {
-                    //TODO: Show user friendly error here
-                    //Log here
-                    if (ConfigurationWrapper.LogErrors == true)
-                    {
-                        if (ex.InnerException != null)
-                        {
-                            Logger.WriteToErrorLog("saau-01", ex.Message, ex.InnerException.Message);
-                        }
-                        else
-                        {
-                            Logger.WriteToErrorLog("saau-01", ex.Message);
-                        }
-                    }
-
-                }
+                SearchResult();
+                //count page of page in search result
+                lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+                lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             }
-
         }
 
-        public void displayrecord()
+        protected void btnGosearch_Click(object sender, EventArgs e)
+        {
+            //search
+            ViewState["SearchResult"] = "true";
+            gvsearchDetails.PageIndex = 0;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            ddlFooterResultPerPage.SelectedIndex = 0;
+            ddlHeaderResultPerPage.SelectedIndex = 0;
+        }
+        protected void btnHeaderFirst_Click(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = 0;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnHeaderPrevious_Click(object sender, EventArgs e)
+        {
+            int i = gvsearchDetails.PageCount;
+            if (gvsearchDetails.PageIndex > 0)
+                gvsearchDetails.PageIndex = gvsearchDetails.PageIndex - 1;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnHeaderNext_Click(object sender, EventArgs e)
+        {
+            int i = gvsearchDetails.PageIndex + 1;
+            if (i <= gvsearchDetails.PageCount)
+                gvsearchDetails.PageIndex = i;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnHeaderLast_Click(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = gvsearchDetails.PageCount;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+
+        }
+        protected void ddlHeaderResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlHeaderResultPerPage.SelectedValue == "Show All")
+            {
+                gvsearchDetails.PageSize = Convert.ToInt32(gvsearchDetails.PageCount * gvsearchDetails.PageSize);
+            }
+            else
+            {
+                int selectedValue;
+                selectedValue = Convert.ToInt16(ddlHeaderResultPerPage.Text);
+                gvsearchDetails.PageSize = selectedValue;
+            }
+            ddlFooterResultPerPage.SelectedValue = ddlHeaderResultPerPage.SelectedValue;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+
+        }
+        protected void btnHeaderGoto_Click(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = Int32.Parse(txtHeaderPage.Text) - 1;
+            SearchResult();
+            txtFooterPage.Text = txtHeaderPage.Text;
+        }
+        protected void btnFooterFirst_Click(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = 0;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnFooterPrevious_Click(object sender, EventArgs e)
+        {
+            int i = gvsearchDetails.PageCount;
+            if (gvsearchDetails.PageIndex > 0)
+                gvsearchDetails.PageIndex = gvsearchDetails.PageIndex - 1;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnFooterNext_Click(object sender, EventArgs e)
+        {
+            int i = gvsearchDetails.PageIndex + 1;
+            if (i <= gvsearchDetails.PageCount)
+                gvsearchDetails.PageIndex = i;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnFooterLast_Click(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = gvsearchDetails.PageCount;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+
+        }
+        protected void ddlFooterResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlFooterResultPerPage.SelectedValue == "Show All")
+            {
+                gvsearchDetails.PageSize = Convert.ToInt32(gvsearchDetails.PageCount * gvsearchDetails.PageSize);
+            }
+            else
+            {
+                int selectedValue;
+                selectedValue = Convert.ToInt16(ddlFooterResultPerPage.Text);
+                gvsearchDetails.PageSize = selectedValue;
+            }
+
+            ddlHeaderResultPerPage.SelectedValue = ddlFooterResultPerPage.SelectedValue;
+            SearchResult();
+            txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
+            lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+        }
+        protected void btnFooterGoto_Click(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = Int32.Parse(txtFooterPage.Text) - 1;
+            SearchResult();
+            txtHeaderPage.Text = txtFooterPage.Text;
+        }
+        private void SearchResult()
         {
             User userSearch = new User();
-            //if (!string.IsNullOrEmpty(Request.QueryString["userdomain"]))
-            //{
-            userSearch.courseId = SecurityCenter.DecryptText(Request.QueryString["courseId"]);
-            userSearch.deliveryId = SecurityCenter.DecryptText(Request.QueryString["deliveryId"]);
-            userSearch.Firstname = SecurityCenter.DecryptText(Request.QueryString["firstname"]);
-            userSearch.Lastname = SecurityCenter.DecryptText(Request.QueryString["lastname"]);
-            HashEncryption encHash = new HashEncryption();
-            if (!string.IsNullOrEmpty(SecurityCenter.DecryptText(Request.QueryString["username"])))
+            if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
             {
-                userSearch.Username_enc_ash = encHash.GenerateHashvalue(SecurityCenter.DecryptText(Request.QueryString["username"]), true);
-            }
-            else
-            {
-                userSearch.Username_enc_ash = "";
-            }
-            if (SecurityCenter.DecryptText(Request.QueryString["usertype"]) == "app_ddl_all_text")
-            {
-                userSearch.Usertype = "0";
-            }
-            else
-            {
-                userSearch.Usertype = SecurityCenter.DecryptText(Request.QueryString["usertype"]);
-            }
-            userSearch.DomainId = SecurityCenter.DecryptText(Request.QueryString["userdomain"]);
-            if (SecurityCenter.DecryptText(Request.QueryString["userstatus"]) == "app_ddl_all_text")
-            {
-                userSearch.Active_Type = "0";
-            }
-            else
-            {
-                userSearch.Active_Type = SecurityCenter.DecryptText(Request.QueryString["userstatus"]);
-            }
+                userSearch.Firstname = txtEmployeeName.Text;
+                userSearch.Hris_employeid = txtEmployeeId.Text;
+                userSearch.courseId = SecurityCenter.DecryptText(Request.QueryString["courseId"]);
+                userSearch.deliveryId = SecurityCenter.DecryptText(Request.QueryString["deliveryId"]);
 
-            DataTable dtgetvalue = new DataTable();
-
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["employeeName"]))
+                {
+                    userSearch.Firstname = SecurityCenter.DecryptText(Request.QueryString["employeeName"]);
+                }
+                if (!string.IsNullOrEmpty(Request.QueryString["employeeId"]))
+                {
+                    userSearch.Hris_employeid = SecurityCenter.DecryptText(Request.QueryString["employeeId"]);
+                }
+                userSearch.courseId = courseId;
+                userSearch.deliveryId = deliveryId;
+            }
             try
             {
-                dtgetvalue = SystemWaitListBLL.SearchUser(userSearch);
+                gvsearchDetails.DataSource = SystemWaitListBLL.SearchUser(userSearch);
+                gvsearchDetails.DataBind();
             }
+
             catch (Exception ex)
             {
+                //TODO: Show user friendly error here
+                //Log here
                 if (ConfigurationWrapper.LogErrors == true)
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sasumsmr-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sasumsmr-01 (waitlist)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sasumsmr-01r", ex.Message);
+                        Logger.WriteToErrorLog("sasumsmr-01 (waitlist)", ex.Message);
                     }
                 }
             }
-            gvsearchDetails.DataSource = dtgetvalue;
-            gvsearchDetails.DataBind();
-
-            if (dtgetvalue.Rows.Count == 0)
+            if (gvsearchDetails.Rows.Count == 0)
             {
 
                 disable();
@@ -155,7 +243,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
             {
                 enable();
             }
-            if (dtgetvalue.Rows.Count > 0)
+            if (gvsearchDetails.Rows.Count > 0)
             {
                 gvsearchDetails.UseAccessibleHeader = true;
                 if (gvsearchDetails.HeaderRow != null)
@@ -166,310 +254,159 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
                 }
             }
 
-        }
 
-         //top FirstButton
-        protected void btnFirst_Click(object sender, EventArgs e)
+        }
+        private void disable()
         {
+            btnHeaderFirst.Visible = false;
+            btnHeaderPrevious.Visible = false;
+            btnHeaderNext.Visible = false;
+            btnHeaderLast.Visible = false;
 
-            gvsearchDetails.PageIndex = 0;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
+            btnFooterFirst.Visible = false;
+            btnFooterPrevious.Visible = false;
+            btnFooterNext.Visible = false;
+            btnFooterLast.Visible = false;
 
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            ddlHeaderResultPerPage.Visible = false;
+            ddlFooterResultPerPage.Visible = false;
+
+            txtHeaderPage.Visible = false;
+            lblHeaderPage.Visible = false;
+
+            txtFooterPage.Visible = false;
+            lblFooterPage.Visible = false;
+
+            btnHeaderGoto.Visible = false;
+            btnFooterGoto.Visible = false;
 
 
+            lblHeaderResultPerPage.Visible = false;
+            lblFooterResultPerPage.Visible = false;
 
+            lblFooterPageOf.Visible = false;
+            lblHeaderPageOf.Visible = false;
 
         }
-
-        //Top Last Button
-        protected void btnLast_Click(object sender, EventArgs e)
+        private void enable()
         {
-            gvsearchDetails.PageIndex = gvsearchDetails.PageCount;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
+            btnHeaderFirst.Visible = true;
+            btnHeaderPrevious.Visible = true;
+            btnHeaderNext.Visible = true;
+            btnHeaderLast.Visible = true;
 
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            btnFooterFirst.Visible = true;
+            btnFooterPrevious.Visible = true;
+            btnFooterNext.Visible = true;
+            btnFooterLast.Visible = true;
+
+            ddlHeaderResultPerPage.Visible = true;
+            ddlFooterResultPerPage.Visible = true;
+
+            txtHeaderPage.Visible = true;
+            lblHeaderPage.Visible = true;
+
+            txtFooterPage.Visible = true;
+            lblFooterPage.Visible = true;
+
+            btnHeaderGoto.Visible = true;
+            btnFooterGoto.Visible = true;
 
 
-        }
+            lblHeaderResultPerPage.Visible = true;
+            lblFooterResultPerPage.Visible = true;
 
-        //Top Next Button
-
-        protected void btnNext_Click(object sender, EventArgs e)
-        {
-            int i = gvsearchDetails.PageIndex + 1;
-            if (i <= gvsearchDetails.PageCount)
-                gvsearchDetails.PageIndex = i;
-
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
+            lblFooterPageOf.Visible = true;
+            lblHeaderPageOf.Visible = true;
 
         }
-
-        //Top Previous Button
-        protected void btnPrevious_Click(object sender, EventArgs e)
-        {
-
-            int i = gvsearchDetails.PageCount;
-            if (gvsearchDetails.PageIndex > 0)
-                gvsearchDetails.PageIndex = gvsearchDetails.PageIndex - 1;
-
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-        }
-        //Top Result Per Page DropdownList
-        protected void ddresultperpage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddresultperpage.SelectedValue == "Show All")
-            {
-                gvsearchDetails.PageSize = Convert.ToInt32(gvsearchDetails.PageCount * gvsearchDetails.PageSize);
-            }
-            else
-            {
-                int selectedValue;
-                selectedValue = Convert.ToInt16(ddresultperpage.Text);
-                gvsearchDetails.PageSize = selectedValue;
-            }
-
-
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-            dddownresultperpage.SelectedValue = ddresultperpage.SelectedValue;
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-
-        }
-        //Top Goto Button
-        protected void btnGoto_Click(object sender, EventArgs e)
-        {
-
-            gvsearchDetails.PageIndex = Int32.Parse(txtPage.Text) - 1;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-            txtdownpage.Text = txtPage.Text;
-        }
-
-        //Down First Button
-        protected void btndownFirst_Click(object sender, EventArgs e)
-        {
-            gvsearchDetails.PageIndex = 0;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-        }
-
-        //Down Previous Button
-        protected void btndownPrevious_Click(object sender, EventArgs e)
-        {
-            int i = gvsearchDetails.PageCount;
-            if (gvsearchDetails.PageIndex > 0)
-                gvsearchDetails.PageIndex = gvsearchDetails.PageIndex - 1;
-
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-        }
-
-        //Down Next Button
-        protected void btndownNext_Click(object sender, EventArgs e)
-        {
-            int i = gvsearchDetails.PageIndex + 1;
-            if (i <= gvsearchDetails.PageCount)
-                gvsearchDetails.PageIndex = i;
-
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-        }
-
-
-        //Down Last Button
-        protected void btndownLast_Click(object sender, EventArgs e)
-        {
-            gvsearchDetails.PageIndex = gvsearchDetails.PageCount;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-        }
-
-        //down Result Per Page DropDownList
-        protected void dddownresultperpage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (dddownresultperpage.SelectedValue == "Show All")
-            {
-                gvsearchDetails.PageSize = Convert.ToInt32(gvsearchDetails.PageCount * gvsearchDetails.PageSize);
-            }
-            else
-            {
-                int selectedValue;
-                selectedValue = Convert.ToInt16(dddownresultperpage.Text);
-                gvsearchDetails.PageSize = selectedValue;
-            }
-
-
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-
-
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-
-            ddresultperpage.SelectedValue = dddownresultperpage.SelectedValue;
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-        }
-
-
-        //Down Goto Button
-        protected void btndownGoto_Click(object sender, EventArgs e)
-        {
-            gvsearchDetails.PageIndex = Int32.Parse(txtdownpage.Text) - 1;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
-            txtPage.Text = txtdownpage.Text;
-        }
-
         protected void gvsearchDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvsearchDetails.PageIndex = e.NewPageIndex;
-            if (!string.IsNullOrEmpty((string)ViewState["searchresult"]))
-            {
-                SearchResult();
-            }
-            else
-            {
-                displayrecord();
-            }
 
+            SearchResult();
+        }
+        protected void gvsearchDetails_RowEditing(object sender, GridViewEditEventArgs e)
+        {
 
         }
-
-        protected void gvsearchDetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            //DataTable dtInstructorCourse = new DataTable();
+            SessionWrapper.MassEnrollment_employees = TempDataTables.TempCompletionEmployee();
+            foreach (GridViewRow grdResourceRow in gvsearchDetails.Rows)
             {
-                string username = gvsearchDetails.DataKeys[e.Row.RowIndex]["u_username_enc"].ToString();
-
-                //Label lblUsername = (Label)e.Row.FindControl("lblUsername");
-                /// <summary>
-                /// decrypt hash  username
-                /// </summary>
-                HashEncryption encHash = new HashEncryption();
-                e.Row.Cells[3].Text = encHash.Decrypt(username, true);
-
-
+                CheckBox chkSelect = (CheckBox)(grdResourceRow.Cells[1].FindControl("chkSelect"));
+                if (chkSelect.Checked == true)
+                {
+                    AddDataToCompletionEmployee(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[2].ToString(), SessionWrapper.MassEnrollment_employees);
+                }
             }
+            //SystemInstructorBLL.InsertInstructorCourse(ConvertDataTableToXml(dtInstructorCourse));
+
+            //Close fancybox
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+            //Remove duplicate resource
+            //dtInstructorCourse = RemoveDuplicateRows(dtInstructorCourse, "s_resource_system_id_pk");
+
+        }
+        /// This method is used to convert the DataTable into string XML format.
+        ///
+        /// DataTable to be converted./// (string) XML form of the DataTable.
+        /// </summary>
+        public string ConvertDataTableToXml(DataTable dtBuildSql)
+        {
+            DataSet dsBuildSql = new DataSet("DataSet");
+
+            dsBuildSql.Tables.Add(dtBuildSql.Copy());
+            dsBuildSql.Tables[0].TableName = "Table";
+
+            foreach (DataColumn col in dsBuildSql.Tables[0].Columns)
+            {
+                col.ColumnMapping = MappingType.Attribute;
+            }
+            return dsBuildSql.GetXml().ToString();
+        }
+        /// <summary>
+        /// Remove duplicate rows
+        /// </summary>
+        /// <param name="dTable"></param>
+        /// <param name="colName"></param>
+        /// <returns></returns>
+        public DataTable RemoveDuplicateRows(DataTable dTable, string colName)
+        {
+            Hashtable hTable = new Hashtable();
+            ArrayList duplicateList = new ArrayList();
+
+            foreach (DataRow drow in dTable.Rows)
+            {
+                if (hTable.Contains(drow[colName]))
+                    duplicateList.Add(drow);
+                else
+                    hTable.Add(drow[colName], string.Empty);
+            }
+
+            foreach (DataRow dRow in duplicateList)
+                dTable.Rows.Remove(dRow);
+
+            return dTable;
+        }
+        /// <summary>
+        /// Add data to instructor course
+        /// </summary>
+        /// <param name="c_instructor_id_fk"></param>
+        /// <param name="c_course_id_fk"></param>
+        /// <param name="dtTempInstructor"></param>
+        private void AddDataToCompletionEmployee(string u_user_id_pk, string u_username, string u_hris_employee_id, DataTable dtTempEmployee)
+        {
+            DataRow row;
+            row = dtTempEmployee.NewRow();
+            //row["c_instructor_id_fk"] = c_instructor_id_fk;
+            row["u_user_id_pk"] = u_user_id_pk;
+            row["u_username"] = u_username;
+            row["u_hris_employee_id"] = u_hris_employee_id;
+            //row["c_delivery_system_id_pk"] = c_delivery_type_name;
+            dtTempEmployee.Rows.Add(row);
 
         }
 
@@ -488,7 +425,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
                     waitlist.e_enroll_waitlist_course_id_fk = courseId;
                     waitlist.e_enroll_waitlist_course_delivery_id_fk = deliveryId;
                     waitlist.e_enroll_waitlist_user_id_fk = user_id_pk;
-                    int result =  EnrollmentBLL.InsertWaitList(waitlist);
+                    int result = EnrollmentBLL.InsertWaitList(waitlist);
                     if (result == 0)
                     {
                         SessionWrapper.isWaitlistAdded = true;
@@ -514,189 +451,5 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
 
-        protected void gvsearchDetails_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-
-        }
-
-
-        protected void btnGosearch_Click(object sender, EventArgs e)
-        {
-            ViewState["courseId"] = courseId;
-            ViewState["deliveryId"] = deliveryId;
-            ViewState["lastname"] = txtLastName.Text;
-            ViewState["firstname"] = txtFirstName.Text;
-            ViewState["lastname"] = txtLastName.Text;
-            ViewState["username"] = txtUsername.Text;
-            ViewState["usertypes"] = ddlUserTypes.SelectedValue;
-            ViewState["domainid"] = ddlUserdomain.SelectedValue;
-            ViewState["activestatus"] = ddlUserstatus.SelectedValue;
-
-            SearchResult();
-
-            txtdownpage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
-            lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            dddownresultperpage.SelectedIndex = 0;
-            ddresultperpage.SelectedIndex = 0;
-
-
-
-            ViewState["searchresult"] = "1";
-        }
-        public void SearchResult()
-        {
-
-
-            User userResult = new User();
-            userResult.courseId = ViewState["courseId"].ToString();
-            userResult.deliveryId = ViewState["deliveryId"].ToString();  
-
-            userResult.Firstname = ViewState["firstname"].ToString();
-            userResult.Lastname = ViewState["lastname"].ToString();
-            HashEncryption encHash = new HashEncryption();
-            if (!string.IsNullOrEmpty((string)ViewState["username"]))
-            {
-                userResult.Username_enc_ash = encHash.GenerateHashvalue(ViewState["username"].ToString(), true);
-            }
-            else
-            {
-                userResult.Username_enc_ash = "";
-            }
-
-
-            //userResult.Usertype = ViewState["usertypes"].ToString();
-            userResult.DomainId = ViewState["domainid"].ToString();
-            //userResult.Active_Type = ViewState["activestatus"].ToString();
-
-            if (ViewState["usertypes"].ToString() == "app_ddl_all_text")
-            {
-                userResult.Usertype = "0";
-            }
-            else
-            {
-                userResult.Usertype = ddlUserTypes.SelectedValue;
-            }
-
-            if (ViewState["activestatus"].ToString() == "app_ddl_all_text")
-            {
-                userResult.Active_Type = "0";
-            }
-            else
-            {
-                userResult.Active_Type = ddlUserstatus.SelectedValue;
-            }
-
-            DataTable dtgetvalue = new DataTable();
-
-            try
-            {
-                dtgetvalue = SystemWaitListBLL.SearchUser(userResult);
-            }
-            catch (Exception ex)
-            {
-                if (ConfigurationWrapper.LogErrors == true)
-                {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("sasumsmr-01", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("sasumsmr-01", ex.Message);
-                    }
-                }
-            }
-            gvsearchDetails.DataSource = dtgetvalue;
-            gvsearchDetails.DataBind();
-
-            gvsearchDetails.UseAccessibleHeader = true;
-            if (gvsearchDetails.HeaderRow != null)
-            {
-                //This will tell ASP.NET to render the <thead> for the header row
-                //using instead of the simple <tr>
-                gvsearchDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
-            }
-            if (dtgetvalue.Rows.Count == 0)
-            {
-
-                disable();
-
-            }
-            else
-            {
-                enable();
-            }
-
-
-        }
-        private void disable()
-        {
-            btnFirst.Visible = false;
-            btnPrevious.Visible = false;
-            btnNext.Visible = false;
-            btnLast.Visible = false;
-
-            btndownFirst.Visible = false;
-            btndownNext.Visible = false;
-            btndownPrevious.Visible = false;
-            btndownLast.Visible = false;
-
-            dddownresultperpage.Visible = false;
-            ddresultperpage.Visible = false;
-
-            txtPage.Visible = false;
-            lblPage.Visible = false;
-
-            txtdownpage.Visible = false;
-            lbldownPage.Visible = false;
-
-            btndownGoto.Visible = false;
-            btnGoto.Visible = false;
-
-
-            lblHeaderPage.Visible = false;
-            lblFooterPage.Visible = false;
-            lblHeaderResultPerPage.Visible = false;
-            lblFooterResultPerPage.Visible = false;
-        }
-
-
-        private void enable()
-        {
-            btnFirst.Visible = true;
-            btnPrevious.Visible = true;
-            btnNext.Visible = true;
-            btnLast.Visible = true;
-
-            btndownFirst.Visible = true;
-            btndownNext.Visible = true;
-            btndownPrevious.Visible = true;
-            btndownLast.Visible = true;
-
-            dddownresultperpage.Visible = true;
-            ddresultperpage.Visible = true;
-
-            txtPage.Visible = true;
-            lblPage.Visible = true;
-
-            txtdownpage.Visible = true;
-            lbldownPage.Visible = true;
-
-            btndownGoto.Visible = true;
-            btnGoto.Visible = true;
-
-
-            lblHeaderPage.Visible = true;
-            lblFooterPage.Visible = true;
-            lblHeaderResultPerPage.Visible = true;
-            lblFooterResultPerPage.Visible = true;
-        }
-
-        protected void gvsearchDetails_Sorting(object sender, GridViewSortEventArgs e)
-        {
-
-        }
     }
 }

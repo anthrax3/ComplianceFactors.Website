@@ -89,7 +89,7 @@
                     'autoScale': false,
                     'autoDimensions': false,
                     'helpers': { overlay: { closeClick: false} },
-                    'width': 980,
+                    'width': 733,
                     'height': 200,
                     'margin': 0,
                     'padding': 0,
@@ -121,7 +121,7 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnHeaderSave" runat="server" Text="Save Waitlist" 
+                        <asp:Button ID="btnHeaderSave" runat="server" Text="<%$ LabelResourceExpression: app_save_waitlist_button_text %>"
                             onclick="btnHeaderSave_Click" />
                     </td>
                     <td>
@@ -132,7 +132,7 @@
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnHeaderCancel" runat="server" Text="Cancel" 
+                        <asp:Button ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             onclick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
@@ -140,14 +140,14 @@
         </div>        
         <br />
         <div class="div_header_long">
-            Wailist Information:
+            <%=LocalResources.GetLabel("app_wailist_information_text")%>:
         </div>
         <br />
         <div>
             <table class="div_controls font_1">
                 <tr>
                     <td class="align_right">
-                        Course Name / Id:
+                        <%=LocalResources.GetLabel("app_course_name_and_id_text")%>:
                     </td>
                     <td colspan="2" class="align_left">
                         <asp:Label ID="lblCourseName" runat="server"></asp:Label>
@@ -168,7 +168,7 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Delivery Id:
+                        <%=LocalResources.GetLabel("app_delivery_id_text")%>: 
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblDeliveryId" runat="server"></asp:Label>
@@ -180,7 +180,7 @@
                         &nbsp;
                     </td>
                     <td class="align_right">
-                        Delivery Name:
+                        <%=LocalResources.GetLabel("app_delivery_id_text")%>: 
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblDeliveryName" runat="server"></asp:Label>
@@ -192,7 +192,7 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Delivery Start:
+                         <%=LocalResources.GetLabel("app_delivery_start_text")%>: 
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblDeliveryStart" runat="server"></asp:Label>
@@ -204,7 +204,7 @@
                         &nbsp;
                     </td>
                     <td class="align_right">
-                        Delivery End:
+                        <%=LocalResources.GetLabel("app_delivery_end_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblDeliveryEnd" runat="server"></asp:Label>
@@ -216,7 +216,7 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Min Enroll:
+                        <%=LocalResources.GetLabel("app_min_enroll_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblMinEnroll" runat="server"></asp:Label>
@@ -228,7 +228,7 @@
                         &nbsp;
                     </td>
                     <td class="align_right">
-                        Max Enroll:
+                         <%=LocalResources.GetLabel("app_max_enroll_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblMaxEnroll" runat="server"></asp:Label>
@@ -238,7 +238,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Wailist Details:
+            <%=LocalResources.GetLabel("app_wailist_details_text")%>:
         </div>
         <br />
         <table>
@@ -256,12 +256,12 @@
                 OnRowCommand="gvWaitlistDetails_RowCommand" OnRowDataBound="gvWaitlistDetails_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
-                        HeaderText="Employee ID" HeaderStyle-HorizontalAlign="Center" DataField="u_hris_employee_id"
+                        HeaderText="<%$ LabelResourceExpression: app_employee_id_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_hris_employee_id"
                         ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Employee Name" HeaderStyle-HorizontalAlign="Center" DataField="employee_Name"
+                        HeaderText="<%$ LabelResourceExpression: app_employee_name_text %>" HeaderStyle-HorizontalAlign="Center" DataField="employee_Name"
                         ItemStyle-HorizontalAlign="Left" />
-                    <asp:TemplateField HeaderText="Priority" HeaderStyle-CssClass="gridview_row_width_1"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_priority_text %>" HeaderStyle-CssClass="gridview_row_width_1"
                         ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -275,15 +275,15 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                        HeaderText="Rank" HeaderStyle-HorizontalAlign="Center" DataField="e_enroll_waitlist_user_sequence"
+                        HeaderText="<%$ LabelResourceExpression: app_rank_text %>" HeaderStyle-HorizontalAlign="Center" DataField="e_enroll_waitlist_user_sequence"
                         ItemStyle-HorizontalAlign="Center" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnUp" CssClass="cursor_hand" CommandName="Up" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                runat="server" Text="Up" />&nbsp;
+                                runat="server" Text="<%$ LabelResourceExpression: app_up_button_text %>" />&nbsp;
                             <asp:Button ID="btnDown" CssClass="cursor_hand" CommandName="Down" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                runat="server" Text="Down" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_down_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
@@ -314,7 +314,7 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnFooterSave" runat="server" Text="Save Waitlist" OnClick="btnFooterSave_Click" />
+                        <asp:Button ID="btnFooterSave" runat="server" Text="<%$ LabelResourceExpression: app_save_waitlist_button_text %>" OnClick="btnFooterSave_Click" />
                     </td>
                     <td>
                     </td>
@@ -324,7 +324,7 @@
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnFooterCancel" runat="server" Text="Cancel" 
+                        <asp:Button ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             onclick="btnFooterCancel_Click" />
                     </td>
                 </tr>

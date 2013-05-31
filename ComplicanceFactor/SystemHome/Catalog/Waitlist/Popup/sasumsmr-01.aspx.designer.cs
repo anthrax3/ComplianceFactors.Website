@@ -22,40 +22,40 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
-        /// btnFirst control.
+        /// btnHeaderFirst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFirst;
+        protected global::System.Web.UI.WebControls.Button btnHeaderFirst;
         
         /// <summary>
-        /// btnPrevious control.
+        /// btnHeaderPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrevious;
+        protected global::System.Web.UI.WebControls.Button btnHeaderPrevious;
         
         /// <summary>
-        /// btnNext control.
+        /// btnHeaderNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.Button btnHeaderNext;
         
         /// <summary>
-        /// btnLast control.
+        /// btnHeaderLast control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLast;
+        protected global::System.Web.UI.WebControls.Button btnHeaderLast;
         
         /// <summary>
         /// lblHeaderResultPerPage control.
@@ -67,13 +67,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.Label lblHeaderResultPerPage;
         
         /// <summary>
-        /// ddresultperpage control.
+        /// ddlHeaderResultPerPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddresultperpage;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHeaderResultPerPage;
         
         /// <summary>
         /// lblHeaderPage control.
@@ -85,31 +85,31 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.Label lblHeaderPage;
         
         /// <summary>
-        /// txtPage control.
+        /// txtHeaderPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPage;
+        protected global::System.Web.UI.WebControls.TextBox txtHeaderPage;
         
         /// <summary>
-        /// lblPage control.
+        /// lblHeaderPageOf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPage;
+        protected global::System.Web.UI.WebControls.Label lblHeaderPageOf;
         
         /// <summary>
-        /// btnGoto control.
+        /// btnHeaderGoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGoto;
+        protected global::System.Web.UI.WebControls.Button btnHeaderGoto;
         
         /// <summary>
         /// gvsearchDetails control.
@@ -121,40 +121,49 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
         
         /// <summary>
-        /// btndownFirst control.
+        /// btnSaveSelected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndownFirst;
+        protected global::System.Web.UI.WebControls.Button btnSaveSelected;
         
         /// <summary>
-        /// btndownPrevious control.
+        /// btnFooterFirst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndownPrevious;
+        protected global::System.Web.UI.WebControls.Button btnFooterFirst;
         
         /// <summary>
-        /// btndownNext control.
+        /// btnFooterPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndownNext;
+        protected global::System.Web.UI.WebControls.Button btnFooterPrevious;
         
         /// <summary>
-        /// btndownLast control.
+        /// btnFooterNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndownLast;
+        protected global::System.Web.UI.WebControls.Button btnFooterNext;
+        
+        /// <summary>
+        /// btnFooterLast control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFooterLast;
         
         /// <summary>
         /// lblFooterResultPerPage control.
@@ -166,13 +175,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.Label lblFooterResultPerPage;
         
         /// <summary>
-        /// dddownresultperpage control.
+        /// ddlFooterResultPerPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dddownresultperpage;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFooterResultPerPage;
         
         /// <summary>
         /// lblFooterPage control.
@@ -184,85 +193,49 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.Label lblFooterPage;
         
         /// <summary>
-        /// txtdownpage control.
+        /// txtFooterPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdownpage;
+        protected global::System.Web.UI.WebControls.TextBox txtFooterPage;
         
         /// <summary>
-        /// lbldownPage control.
+        /// lblFooterPageOf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbldownPage;
+        protected global::System.Web.UI.WebControls.Label lblFooterPageOf;
         
         /// <summary>
-        /// btndownGoto control.
+        /// btnFooterGoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndownGoto;
+        protected global::System.Web.UI.WebControls.Button btnFooterGoto;
         
         /// <summary>
-        /// txtLastName control.
+        /// txtEmployeeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastName;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeName;
         
         /// <summary>
-        /// txtFirstName control.
+        /// txtEmployeeId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFirstName;
-        
-        /// <summary>
-        /// txtUsername control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
-        
-        /// <summary>
-        /// ddlUserstatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUserstatus;
-        
-        /// <summary>
-        /// ddlUserTypes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUserTypes;
-        
-        /// <summary>
-        /// ddlUserdomain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUserdomain;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeId;
         
         /// <summary>
         /// btnReset control.

@@ -9,117 +9,63 @@
     <style type="text/css">
         body
         {
-            /*width: 960px;*/
-            width: 960px !important;
-            margin: 0px 0 0 0;
+            width: 700px !important;
+            margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 200px;
-            overflow: hidden;
+            height: 150px;
         }
     </style>
     <script type="text/javascript">
-        function resetsearchpopup() {
-
-            document.getElementById('<%=txtSearchUserName.ClientID %>').value = '';
-            document.getElementById('<%=txtSearchFirstName.ClientID %>').value = '';
-            document.getElementById('<%=txtSearchLastName.ClientID %>').value = '';
-            document.getElementById('<%=ddlSearchUserDomain.ClientID %>').selectedIndex = '0';
-            document.getElementById('<%=ddlSearchUserTypes.ClientID %>').selectedIndex = '0';
-            document.getElementById('<%=ddlSearchUserStatus.ClientID %>').selectedIndex = '0';
-
-
-
+        function resetall() {
+            document.getElementById('<%=txtEmployeeName.ClientID %>').value = '';
+            document.getElementById('<%=txtEmployeeId.ClientID %>').value = '';
             return false;
         }
     </script>
-    <div>
-        <div class="manage_user_header">
-            User Advanced Search
+    <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
+        <div class=" div_header_700">
+            <%=LocalResources.GetLabel("app_users_advanced_search_text")%>:
         </div>
         <br />
-        <div class="add_edit_user_tab">
+        <div class="div_controls font_1">
             <table>
                 <tr>
                     <td>
-                        Last Name
+                        <%=LocalResources.GetLabel("app_employee_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtSearchLastName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <%-- <%=LocalResources.GetLabel("app_first_name_text")%>--%>
-                        First Name
+                        <%=LocalResources.GetLabel("app_employee_number_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtSearchFirstName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
-                    </td>
-                    <td>
-                        User Name
-                        <%--<%=LocalResources.GetLabel("app_username_text")%>--%>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtSearchUserName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtEmployeeId" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="6">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Status
-                        <%-- <%=LocalResources.GetLabel("app_user_status_text")%>--%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlSearchUserStatus" DataValueField="u_status_id_pk" DataTextField="u_status_name"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                            <%-- <asp:ListItem Text="Active" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Reitred" Value="0"></asp:ListItem>--%>
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        Types
-                        <%-- <%=LocalResources.GetLabel("app_user_types_text")%>--%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlSearchUserTypes" DataTextField="u_user_type_name" DataValueField="u_user_type_id_pk"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        Domain
-                        <%-- <%=LocalResources.GetLabel("app_user_domain_text")%>--%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlSearchUserDomain" DataTextField="u_domain_name" DataValueField="u_domain_system_id_pk"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6">
-                        <br />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="btnsave_new_user_td">
-                        <%-- <asp:Button ID="btnAddnewuser" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_new_user_button_text %>"
-                            OnClick="btnAddnewuser_Click" />--%>
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td class="btnreset_td">
-                        <asp:Button ID="btnReset" CssClass="cursor_hand" OnClientClick="return resetsearchpopup();"
-                            runat="server" Text="Reset" />
-                    </td>
-                    <td colspan="2" class="btncancel_td">
-                        <asp:Button ID="btnGosearch" CssClass="cursor_hand" runat="server" 
-                            Text="Go Search" onclick="btnGosearch_Click" />
+                    <td colspan="4">
                     </td>
                 </tr>
             </table>
         </div>
-    </div>
+        <div>
+            <table class="table_td_300">
+                <tr>
+                    <td>
+                        <asp:Button ID="btnGoSearch" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                            OnClick="btnGoSearch_Click" />
+                    </td>
+                    <td>
+                        <asp:Button ID="btnReset" OnClientClick="return resetall();" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
+                    </td>
+                    <td>
+                        <asp:Button ID="btnCancel" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                            runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </asp:Panel>
 </asp:Content>

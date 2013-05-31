@@ -13,58 +13,40 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
     public partial class sasumsm_01 {
         
         /// <summary>
-        /// txtSearchLastName control.
+        /// pnlDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchLastName;
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
-        /// txtSearchFirstName control.
+        /// txtEmployeeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchFirstName;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeName;
         
         /// <summary>
-        /// txtSearchUserName control.
+        /// txtEmployeeId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchUserName;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployeeId;
         
         /// <summary>
-        /// ddlSearchUserStatus control.
+        /// btnGoSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchUserStatus;
-        
-        /// <summary>
-        /// ddlSearchUserTypes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchUserTypes;
-        
-        /// <summary>
-        /// ddlSearchUserDomain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchUserDomain;
+        protected global::System.Web.UI.WebControls.Button btnGoSearch;
         
         /// <summary>
         /// btnReset control.
@@ -76,12 +58,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Waitlist.Popup {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// btnGosearch control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGosearch;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }
