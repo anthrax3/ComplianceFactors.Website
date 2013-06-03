@@ -656,6 +656,7 @@
     <Content Include="SystemHome\Catalog\MassCompletions\samcp-01.aspx" />
     <Content Include="SystemHome\Catalog\MassCompletions\sasumsm-01.aspx" />
     <Content Include="SystemHome\Catalog\MassCompletions\sasumsmr-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassEnrollment\Popup\lvcure-01.aspx" />
     <Content Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsc-01.aspx" />
     <Content Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsr-01.aspx" />
     <Content Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsm-01.aspx" />
@@ -2579,6 +2580,13 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\MassCompletions\sasumsmr-01.aspx.designer.cs">
       <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\lvcure-01.aspx.cs">
+      <DependentUpon>lvcure-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\lvcure-01.aspx.designer.cs">
+      <DependentUpon>lvcure-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\MassEnrollment\Popup\p-mcsc-01.aspx.cs">
       <DependentUpon>p-mcsc-01.aspx</DependentUpon>

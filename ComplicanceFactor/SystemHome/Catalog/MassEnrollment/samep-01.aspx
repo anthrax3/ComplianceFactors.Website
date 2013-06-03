@@ -35,7 +35,7 @@
 
         $(document).ready(function () {
 
-            //Get the Id 
+            //Get  course Popup
             $(".addcourse").click(function () {
                 $.fancybox({
                     'type': 'iframe',
@@ -70,7 +70,7 @@
             });
 
 
-
+            // Get Employee Popup
 
             $(".addemployee").click(function () {
                 $.fancybox({
@@ -105,6 +105,51 @@
                 });
             });
 
+            // View Details Popup
+
+
+            $(".viewdetails").click(function () {
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                $.fancybox({
+
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 733,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '/SystemHome/Catalog/MassEnrollment/Popup/lvcure-01.aspx?id=' + record_id,
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+            });
+
+
+            //Remove Course or curriculum
             $(".deletecoursecurriculum").click(function () {
 
                 //Get the Id of the record to delete
@@ -137,6 +182,7 @@
             });
 
 
+            // Remove Employee
             $(".deleteemployee").click(function () {
 
                 //Get the Id of the record to delete

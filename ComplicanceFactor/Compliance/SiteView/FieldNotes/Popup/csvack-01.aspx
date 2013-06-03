@@ -12,7 +12,7 @@
             margin: 0px 0 0 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 240px;
+            height: 300px;
         }
     </style>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
@@ -33,6 +33,15 @@
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblFieldNote" runat="server" Text="Label"></asp:Label>
                     </td>
+                      <td>
+                        &nbsp;
+                    </td>
+                     <td class="text_font_normal">
+                        Field Note Title
+                    </td>
+                    <td class="lable_td_width_1">
+                        <asp:Label ID="lblFielNoteTitle" runat="server" Text="Label"></asp:Label>
+                    </td>
                 </tr>
                 <tr>
                     <td class="text_font_normal">
@@ -49,6 +58,22 @@
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblSendBy" runat="server" Text="Label"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                 <td class="text_font_normal">
+                        Location:
+                    </td>
+                    <td class="lable_td_width_1">
+                        <asp:Label ID="lblLocation" runat="server" Text="Label"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text_font_normal">
+                        Description:
+                    </td>
+                    <td class="lable_td_width_1">
+                        <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label>
                     </td>
                 </tr>
                 <tr>

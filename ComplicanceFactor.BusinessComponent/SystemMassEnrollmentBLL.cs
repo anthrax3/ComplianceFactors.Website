@@ -54,6 +54,23 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-       
+
+
+
+        public static DataTable GetSingleCurriculaPathCourse(string c_curricula_id_fk, string c_curricula_path_id_fk)
+        {
+            Hashtable htEnrollGetSingleCurriculaPathCourse = new Hashtable();
+            htEnrollGetSingleCurriculaPathCourse.Add("@c_curricula_path_id_fk", c_curricula_path_id_fk);
+            htEnrollGetSingleCurriculaPathCourse.Add("@c_curricula_id_fk", c_curricula_id_fk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_single_curricula_path_course_for_mass_enrollment", htEnrollGetSingleCurriculaPathCourse);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

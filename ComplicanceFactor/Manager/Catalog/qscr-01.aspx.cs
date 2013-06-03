@@ -11,13 +11,15 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Globalization;
 using ComplicanceFactor.Common.Languages;
 using System.Web.UI.HtmlControls;
+using System.IO;
 namespace ComplicanceFactor.Manager.Catalog
 {
     public partial class qscr_01 : System.Web.UI.Page
     {
+        private string _filePath = "~/SystemHome/Catalog/Documents/Upload/";
         protected void Page_Load(object sender, EventArgs e)
         {
-            //go button
+             //go button
             Button btnGo = (Button)Master.FindControl("btnGo");
             btnGo.Click += new EventHandler(btnGo_Click);
             //advanced search
@@ -209,6 +211,7 @@ namespace ComplicanceFactor.Manager.Catalog
                     string approvalCourse = gvsearchDetails.DataKeys[e.Row.RowIndex].Values[2].ToString();
                     ////find controls
                     //Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
+                    Button btnDocument = (Button)e.Row.FindControl("btnDocument");
                     Literal ltlAssign = (Literal)e.Row.FindControl("ltlAssign");
                     //Literal ltlEnrollOLT = (Literal)e.Row.FindControl("ltlEnrollOLT");
                     ////Button btnAssign = (Button)e.Row.FindControl("btnAssign");
@@ -220,7 +223,7 @@ namespace ComplicanceFactor.Manager.Catalog
                     bool approvDelivery = EmployeeCatalogBLL.GetApprovalDelivery(system_id, dsDelivery.Tables[1]);
 
                     //check if the type is course or curriculum or program
-                    if (type == "course")
+                    if (type == "Course")
                     {
                       
                         Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
@@ -272,7 +275,7 @@ namespace ComplicanceFactor.Manager.Catalog
                         //    lblAlreadyEnrollMessage.Text = string.Empty;
                         //}
                     }
-                    else if (type == "curriculum")
+                    else if (type == "Curriculum")
                     {
                         //Button btnAssign = (Button)e.Row.FindControl("btnAssign");
                         //btnAssign.Style.Add("display", "inline");
@@ -292,6 +295,10 @@ namespace ComplicanceFactor.Manager.Catalog
                         ltlAssign.Text = "<input type=button id=" + system_id + "," + type + "," + approvDelivery + "," + approvalCourse + "," + 0 + " class='assign' value= " + LocalResources.GetLabel("app_assign_button_text") + " />";
                         //btnAssign.Style.Add("display", "inline");
                         //}
+                    }
+                    else if (type == "Document")
+                    {
+                        btnDocument.Style.Add("display", "inline");
                     }
                 }
                 catch (Exception ex)
@@ -370,7 +377,39 @@ namespace ComplicanceFactor.Manager.Catalog
                     enrollOLT.e_enroll_status_name = "Enrolled";
                     EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
 
+               }
+                else if (e.CommandName.Equals("Document"))
+               {
+                   //string downloadId = e.CommandArgument.ToString();
+                   //string filePath = Server.MapPath(_filePath + s_documnet_attachment_file_guid);
 
+                   //if (System.IO.File.Exists(filePath))
+                   //{
+                   //    string strRequest = filePath;
+                   //    if (!string.IsNullOrEmpty(strRequest))
+                   //    {
+                   //        FileInfo file = new System.IO.FileInfo(strRequest);
+                   //        if (file.Exists)
+                   //        {
+                   //            Response.Clear();
+                   //            Response.AddHeader("Content-Disposition", "attachment;filename=\"" + SessionWrapper.Attachment_file_name + "\"");
+                   //            Response.AddHeader("Content-Length", file.Length.ToString());
+                   //            Response.ContentType = ReturnExtension(file.Extension.ToLower());
+                   //            Response.WriteFile(file.FullName);
+                   //            Response.End();
+                   //            //if file does not exist
+                   //        }
+                   //        else
+                   //        {
+                   //            Response.Write("This file does not exist.");
+                   //        }
+                   //        //nothing in the URL as HTTP GET
+                   //    }
+                   //    else
+                   //    {
+                   //        Response.Write("Please provide a file to download.");
+                   //    }
+                   //}
 
                 }
             }
@@ -390,6 +429,71 @@ namespace ComplicanceFactor.Manager.Catalog
                 }
             }
 
+        }
+        private string ReturnExtension(string fileExtension)
+        {
+            switch (fileExtension)
+            {
+                case ".htm":
+                case ".html":
+                case ".log":
+                    return "text/HTML";
+                case ".txt":
+                    return "text/plain";
+                case ".doc":
+                    return "application/ms-word";
+                case ".tiff":
+                case ".tif":
+                    return "image/tiff";
+                case ".png":
+
+                    return "image/png";
+                case ".asf":
+                    return "video/x-ms-asf";
+                case ".avi":
+                    return "video/avi";
+                case ".zip":
+                    return "application/zip";
+                case ".xls":
+                case ".csv":
+                    return "application/vnd.ms-excel";
+                case ".gif":
+                    return "image/gif";
+                case ".jpg":
+                case ".JPG":
+                case "jpeg":
+                    return "image/jpeg";
+                case ".bmp":
+                    return "image/bmp";
+                case ".wav":
+                    return "audio/wav";
+                case ".mp3":
+                    return "audio/mpeg3";
+                case ".mpg":
+                case "mpeg":
+                    return "video/mpeg";
+                case ".rtf":
+                    return "application/rtf";
+                case ".asp":
+                    return "text/asp";
+                case ".pdf":
+                    return "application/pdf";
+                case ".fdf":
+                    return "application/vnd.fdf";
+                case ".ppt":
+                    return "application/mspowerpoint";
+                case ".dwg":
+                    return "image/vnd.dwg";
+                case ".msg":
+                    return "application/msoutlook";
+                case ".xml":
+                case ".sdxl":
+                    return "application/xml";
+                case ".xdp":
+                    return "application/vnd.adobe.xdp+xml";
+                default:
+                    return "application/octet-stream";
+            }
         }
         protected void gvsearchDetails_RowEditing(object sender, GridViewEditEventArgs e)
         {

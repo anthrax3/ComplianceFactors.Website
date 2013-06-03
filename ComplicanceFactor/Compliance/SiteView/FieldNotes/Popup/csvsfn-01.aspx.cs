@@ -25,8 +25,37 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                         fielsnotesId = Request.QueryString["id"].ToString();
                     }
                 }
+                PopulateFieldNoteHeader();
                 SessionWrapper.AddUserForSendFieldNotes = null;
                 SessionWrapper.AddUserForSendFieldNotes = tempUser();
+            }
+        }
+        /// <summary>
+        /// Populate Header
+        /// </summary>
+        /// <param name="fieldnoteId"></param>
+        private void PopulateFieldNoteHeader()
+        {
+            SiteViewFieldNotes fieldnotes = new SiteViewFieldNotes();
+            try
+            {
+                SiteViewFieldNotes fieldNotesId = new SiteViewFieldNotes();
+                fieldNotesId = SiteViewFieldNotesBLL.GetFieldNoteId();
+                lblFieldNoteHeader.Text = "FieldNote [" + fieldNotesId.sv_fieldnote_id + "]";
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("csvsfn-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("csvsfn-01.aspx", ex.Message);
+                    }
+                }
             }
         }
         /// <summary>

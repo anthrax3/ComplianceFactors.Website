@@ -64,7 +64,7 @@
         <div id="divError" runat="server" class="msgarea_error" style="display: none;">
         </div>
         <div class="div_header_700">
-            <%=LocalResources.GetLabel("app_inspection_details_text")%>:
+            <asp:Label ID="lblFieldNoteHeader" runat="server" Text="Field Note"></asp:Label> 
         </div>
         <br />
         <div class="div_controls font_1">

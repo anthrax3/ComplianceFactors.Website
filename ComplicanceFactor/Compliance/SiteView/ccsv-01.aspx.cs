@@ -654,7 +654,7 @@ namespace ComplicanceFactor.Compliance.SiteView
                 string acknowledgement = DataBinder.Eval(e.Row.DataItem, "sv_fieldnote_is_acknowledge").ToString();
 
                 Literal ltlAcknowledge = (Literal)e.Row.FindControl("ltlAcknowledge");
-                if (acknowledgement == "Sent to you – No acknowledged")
+                if (acknowledgement == "Sent to you – No Acknowledged")
                 {
                     ltlAcknowledge.Text = "<input id=" + fieldnote_id_pk + " class='editacknowledge cursor_hand' type='button' value='Acknowledge'/>";
                 }

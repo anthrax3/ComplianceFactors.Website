@@ -40,6 +40,15 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup {
         protected global::System.Web.UI.WebControls.Label lblFieldNote;
         
         /// <summary>
+        /// lblFielNoteTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFielNoteTitle;
+        
+        /// <summary>
         /// lblDateTime control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,24 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSendBy;
+        
+        /// <summary>
+        /// lblLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLocation;
+        
+        /// <summary>
+        /// lblDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDescription;
         
         /// <summary>
         /// btnAcknowledge control.

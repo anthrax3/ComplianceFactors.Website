@@ -38,7 +38,7 @@
     <script type="text/javascript">
         $(function () {
             $('#<%=gvFieldNoteDetails.ClientID %>')
-			.tablesorter({ headers: { 7: { sorter: false}} });
+			.tablesorter({ headers: { 6: { sorter: false}} });
 
         });
     </script>
@@ -199,7 +199,7 @@
                     'autoDimensions': false,
                     'helpers': { overlay: { closeClick: false} },
                     'width': 740,
-                    'height': 150,
+                    'height': 300,
                     'margin': 0,
                     'padding': 0,
                     'overlayColor': '#000',
@@ -412,10 +412,10 @@
                         </asp:TemplateField>
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_fieldnote_location" HeaderText="<%$ LabelResourceExpression: app_location_text %>" />
-                        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                            HeaderStyle-HorizontalAlign="Left" DataField="attachmentCount" HeaderText="<%$ LabelResourceExpression: app_attachment_text %>" />
+                       <%-- <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                            HeaderStyle-HorizontalAlign="Left" DataField="attachmentCount" HeaderText="<%$ LabelResourceExpression: app_attachment_text %>" />--%>
                         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="<%$ LabelResourceExpression: app_actions_text %>">
+                            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Acknowledgements">
                             <ItemTemplate>
                              <asp:Literal ID="ltlAcknowledge" runat="server"></asp:Literal>
                             </ItemTemplate>
@@ -424,9 +424,9 @@
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_fieldnote_is_acknowledge" HeaderText="Acknowledgement" />--%>
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_fieldnote_creation_date" HeaderText="<%$ LabelResourceExpression: app_created_text %>" />
-                        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
+                        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_1"
                             HeaderStyle-HorizontalAlign="Left" DataField="CreatedBy" HeaderText="<%$ LabelResourceExpression: app_created_by_text %>" />
-                        <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_7"
+                        <asp:TemplateField HeaderStyle-CssClass="width_180" ItemStyle-CssClass="width_180"
                             HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="<%$ LabelResourceExpression: app_actions_text %>">
                             <ItemTemplate>
                                 <input type="button" id='<%# Eval("sv_fieldnote_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" />'

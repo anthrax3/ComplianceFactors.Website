@@ -1185,14 +1185,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateCourseDelivery.Add("@c_delivery_max_waitlist", DBNull.Value);
             }
-            if (updateCourseDelivery.c_survey_scoring_scheme_id_fk == "app_ddl_all_text")
-            {
-                htUpdateCourseDelivery.Add("@c_delivery_grading_scheme_id_fk", DBNull.Value);
-            }
-            else
-            {
+            //if (updateCourseDelivery.c_survey_scoring_scheme_id_fk == "app_ddl_all_text")
+            //{
+                //htUpdateCourseDelivery.Add("@c_delivery_grading_scheme_id_fk", DBNull.Value);
+            //}
+            //else
+            //{
                 htUpdateCourseDelivery.Add("@c_delivery_grading_scheme_id_fk", updateCourseDelivery.c_survey_scoring_scheme_id_fk);
-            }
+            //}
             
 
             htUpdateCourseDelivery.Add("@c_vlt_launch_url", updateCourseDelivery.c_vlt_launch_url);

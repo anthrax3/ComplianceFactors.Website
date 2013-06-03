@@ -90,6 +90,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
         {
             SystemApprovalWorkflow createApprovalWorkFlow = new SystemApprovalWorkflow();
             createApprovalWorkFlow.s_approval_workflow_system_id_pk = Guid.NewGuid().ToString();
+
+            //ComplianceDAO miris = new ComplianceDAO();
+            //miris = ComplianceBLL.GetTimeZoneDateTime(Convert.ToInt32(SessionWrapper.u_timezone));
+            //IncidentTime.Date = DateTime.Now;
+            //WorkStartTime.Date = Convert.ToDateTime(miris.c_osha_301_work_start_time);
+           // SessionWrapper.casedate = miris.c_temp_case_date;
+            //lblCaseDate.Text = SessionWrapper.casedate.ToString("MM/dd/yyyy hh:mm tt");
             createApprovalWorkFlow.s_approval_workflow_id = txtApprovalWorkflowId.Text;
             createApprovalWorkFlow.s_approval_workflow_status_id_fk = ddlStatus.SelectedValue;
             createApprovalWorkFlow.s_first_level_status = chkFirstLevelApprover.Checked;

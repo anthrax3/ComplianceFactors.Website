@@ -101,11 +101,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("saantc-01 (Binding Dropdown)", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("saantc-01", ex.Message);
+                            Logger.WriteToErrorLog("saantc-01 (Binding Dropdown)", ex.Message);
                         }
                     }
                 }
@@ -163,11 +163,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Binding Gridview)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Binding Gridview)", ex.Message);
                     }
                 }
             }
@@ -299,11 +299,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saetc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Icon)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saetc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Icon)", ex.Message);
                     }
                 }
             }
@@ -329,13 +329,21 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
 
             }
-            catch
+            catch (Exception ex)
             {
-                //Handle Error
-            }
-            finally
-            {
-
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Remove Prerequisite)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Remove Prerequisite)", ex.Message);
+                    }
+                }
             }
 
         }
@@ -368,11 +376,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Equivalencies)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Equivalencies)", ex.Message);
                     }
                 }
             }
@@ -408,11 +416,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Fulfillments)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Fulfillments)", ex.Message);
                     }
                 }
             }
@@ -486,11 +494,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc.aspx (Remove Delivery)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc.aspx", ex.Message);
+                        Logger.WriteToErrorLog("saantc.aspx (Remove Delivery)", ex.Message);
                     }
                 }
             }
@@ -522,11 +530,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Domain)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Domain)", ex.Message);
                     }
                 }
             }
@@ -558,11 +566,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Category)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Remove Category)", ex.Message);
                     }
                 }
             }
@@ -760,11 +768,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Save Course)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (Save Course)", ex.Message);
                     }
                 }
             }
@@ -799,11 +807,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("saantc-01 (CreateCourseDelivery)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("saantc-01", ex.Message);
+                        Logger.WriteToErrorLog("saantc-01 (CreateCourseDelivery)", ex.Message);
                     }
                 }
 

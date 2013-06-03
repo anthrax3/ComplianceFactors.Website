@@ -70,7 +70,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                     chkSelectDelivery.Style.Add("display", "none");
                     ddlDelivery.Style.Add("display", "none");
                     //btnViewDetails.Style.Add("display", "inline"); Style='float:left;margin-left:70px;'
-                    ltlViewDetails.Text = "<input type= 'button' id =" + sysId + " value='" + LocalResources.GetGlobalLabel("app_view_details_button_text") + "' class='cursor_hand'  align='center'/> ";
+                    ltlViewDetails.Text = "<input type= 'button' id =" + sysId + " value='" + LocalResources.GetGlobalLabel("app_view_details_button_text") + "' class='viewdetails cursor_hand'  align='center'/> ";
                 }
 
 

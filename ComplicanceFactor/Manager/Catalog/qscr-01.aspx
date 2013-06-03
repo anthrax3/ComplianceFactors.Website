@@ -261,6 +261,8 @@
                                                 
                                                 <asp:Literal ID="ltlAssign" runat="server"></asp:Literal>
                                                 <asp:Literal ID="ltlEnrollOLT" runat="server"></asp:Literal>
+                                                <asp:Button ID="btnDocument" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
+                                                    CommandName="Document" runat="server" Text="Download" Style="display: none;" />
                                             </td>
                                         </tr>
                                         <tr>

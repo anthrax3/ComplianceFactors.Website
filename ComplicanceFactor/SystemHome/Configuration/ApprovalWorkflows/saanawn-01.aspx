@@ -178,6 +178,7 @@
                             ControlToValidate="txtApprovalWorkflowId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtApprovalWorkflowId" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        <%--<asp:Label ID="lblApprovalWorkflowId" CssClass="textbox_long" runat="server"></asp:Label>--%>
                     </td>
                     <td>
                         &nbsp;

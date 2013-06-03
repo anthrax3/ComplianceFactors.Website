@@ -32,6 +32,9 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 fieldnotes = SiteViewFieldNotesBLL.GetSingleFieldNotes(fieldNote);
 
                 lblFieldNote.Text = fieldnotes.sv_fieldnote_id;
+                lblFielNoteTitle.Text = fieldnotes.sv_fieldnote_title;
+                lblLocation.Text = fieldnotes.sv_fieldnote_location;
+                lblDescription.Text = fieldnotes.sv_fieldnote_description;
                 lblDateTime.Text = fieldnotes.sv_fieldnote_creation_date;
                 lblSendBy.Text = fieldnotes.sv_fieldnote_location;
                  
