@@ -294,14 +294,14 @@
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server">
     </asp:ToolkitScriptManager>
-    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
-        ValidationGroup="saes" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
-    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
-        ValidationGroup="saes"></asp:ValidationSummary>
     <div class="div_header_940">
         <%=LocalResources.GetLabel("app_session_text")%>:
     </div>
     <div class="div_controls font_1">
+        <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+            ValidationGroup="saes" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
+        <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
+            ValidationGroup="saes"></asp:ValidationSummary>
         <br />
         <table>
             <tr>
@@ -479,25 +479,33 @@
         <div>
             <asp:GridView ID="gvInstructor" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
-                AutoGenerateColumns="False">
+                AutoGenerateColumns="False" onrowdatabound="gvInstructor_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <table cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td class="horizontal_line" colspan="2">
+                                    <td class="horizontal_line" colspan="4">
                                         <hr>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="gridview_row_width_600">
+                                <td class="gridview_row_width_300">
                                         <%#Eval("c_instructor_name")%>
+                                    </td>
+                                    <%--<td class="gridview_row_width_1" align="center">
+                                        <input type="button" id='<%# Eval("c_instructor_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
+                                            class="editinstructor cursor_hand" />
+                                    </td>--%>
+                                    <td class="align_left">
+                                        <asp:DropDownList ID="ddlInstrcdtorType" runat="server" DataTextField="s_instructor_type_name"
+                                            DataValueField="s_instructor_type_system_id_pk" />
+                                    </td>
+                                    <td class="gridview_row_width_3">
                                     </td>
                                     <td class="gridview_row_width_1" align="center">
                                         <input type="button" id='<%# Eval("c_instructor_system_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                             class="deleteinstructor cursor_hand" />
                                     </td>
-                                </tr>
                             </table>
                         </ItemTemplate>
                     </asp:TemplateField>

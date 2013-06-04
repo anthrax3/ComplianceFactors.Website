@@ -119,6 +119,7 @@ namespace ComplicanceFactor.BusinessComponent
                     getAssignCourse.e_curriculum_assign_percent_complete = Convert.ToInt32(dtGetAssignCourse.Rows[0]["e_curriculum_assign_percent_complete"]);
                     getAssignCourse.e_curriculum_assign_status_id_fk = dtGetAssignCourse.Rows[0]["e_curriculum_assign_status_id_fk"].ToString();
                     getAssignCourse.e_curriculum_assign_active_flag = Convert.ToBoolean(dtGetAssignCourse.Rows[0]["e_curriculum_assign_active_flag"].ToString());
+                    getAssignCourse.e_curriculum_assign_status = dtGetAssignCourse.Rows[0]["e_curriculum_assign_status"].ToString(); 
                 }
                 return getAssignCourse;
             }

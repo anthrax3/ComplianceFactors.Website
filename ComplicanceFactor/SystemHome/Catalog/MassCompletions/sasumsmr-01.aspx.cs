@@ -321,7 +321,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 CheckBox chkSelect = (CheckBox)(grdResourceRow.Cells[1].FindControl("chkSelect"));
                 if (chkSelect.Checked == true)
                 {
-                    AddDataToCompletionEmployee(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[2].ToString(), SessionWrapper.Compltion_employees);
+                    bool result = CheckCourseCompleted(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString());
+                    AddDataToCompletionEmployee(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[1].ToString(), gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[2].ToString(),result, SessionWrapper.Compltion_employees);
                 }
             }
             //SystemInstructorBLL.InsertInstructorCourse(ConvertDataTableToXml(dtInstructorCourse));
@@ -379,7 +380,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
         /// <param name="c_instructor_id_fk"></param>
         /// <param name="c_course_id_fk"></param>
         /// <param name="dtTempInstructor"></param>
-        private void AddDataToCompletionEmployee(string u_user_id_pk, string u_username, string u_hris_employee_id, DataTable dtTempEmployee)
+        private void AddDataToCompletionEmployee(string u_user_id_pk, string u_username, string u_hris_employee_id,bool result, DataTable dtTempEmployee)
         {
             DataRow row;
             row = dtTempEmployee.NewRow();
@@ -387,9 +388,31 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             row["u_user_id_pk"] = u_user_id_pk;
             row["u_username"] = u_username;
             row["u_hris_employee_id"] = u_hris_employee_id;
+            row["is_completed"] = result;
             //row["c_delivery_system_id_pk"] = c_delivery_type_name;
             dtTempEmployee.Rows.Add(row);
 
+        }
+
+        private bool CheckCourseCompleted(string u_user_id_pk)
+        {
+            DataTable dtSelectedCourse = SessionWrapper.Compltion_courses;
+            bool isCourseCompleted = false;
+            for (int i = 0; i < dtSelectedCourse.Rows.Count; i++)
+            {
+                bool result = SystemMassCompletionBLL.CheckCourseCompleted(u_user_id_pk, dtSelectedCourse.Rows[i]["c_course_system_id_pk"].ToString());
+                if (result == false)
+                {
+                    isCourseCompleted = false;
+                    break;
+                }
+                else
+                {
+                    isCourseCompleted = result;
+                }
+                 
+            }
+            return isCourseCompleted;
         }
 
     }

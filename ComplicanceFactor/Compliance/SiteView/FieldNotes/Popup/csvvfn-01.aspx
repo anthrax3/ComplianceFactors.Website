@@ -70,14 +70,30 @@
             <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
         <br />
-        <div class="div_padding_40 align_center">
+        <div class="div_padding_40">
             <asp:GridView ID="gvAttachment" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
-                AutoGenerateColumns="False">
+                AutoGenerateColumns="False" onrowcommand="gvAttachment_RowCommand" DataKeyNames="sv_file_path,sv_file_name,sv_fieldnotes_attachments_id_pk">
                 <RowStyle CssClass="record"></RowStyle>
                 <Columns>
-                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_7"
-                        HeaderStyle-HorizontalAlign="Left" DataField="sv_file_name" HeaderText="Acknowledgements" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="gridview_row_width_5">
+                                        <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                            runat="server" Text='<%#Eval("sv_file_name") %>' ForeColor="Black" CssClass="cursor_hand"></asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <%-- <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_7"
+                        HeaderStyle-HorizontalAlign="Left" DataField="sv_file_name" HeaderText="Acknowledgements" />--%>
                 </Columns>
             </asp:GridView>
         </div>

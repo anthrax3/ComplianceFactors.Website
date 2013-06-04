@@ -6,6 +6,7 @@ using System.Globalization;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Collections;
+using System.Web.UI.WebControls;
 
 namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
 {
@@ -33,20 +34,20 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 //Get instructor
                 DataTable dtTempInstructor = SessionWrapper.TempDeliveryInstructor;
                 DataTable dtInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
-                if (dtInstructor.Rows.Count > 0 && dtTempInstructor.Rows.Count > 0)
+                if (dtInstructor.Rows.Count > 0 && SessionWrapper.TempDeliveryInstructor.Rows.Count > 0)
                 {
-                    dtInstructor.Merge(dtTempInstructor, true, MissingSchemaAction.Ignore);
+                    SessionWrapper.TempDeliveryInstructor.Merge(dtInstructor, true, MissingSchemaAction.Ignore);
                 }
-                else if (dtInstructor.Rows.Count == 0 && dtTempInstructor.Rows.Count > 0)
+                else if (dtInstructor.Rows.Count == 0 && SessionWrapper.TempDeliveryInstructor.Rows.Count > 0)
                 {
-                    dtInstructor = SessionWrapper.TempDeliveryInstructor;
+                    //SessionWrapper.TempDeliveryInstructor;
                 }
                 else
                 {
-                    dtInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
+                    SessionWrapper.TempDeliveryInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
                 }
                 dtInstructor = RemoveDuplicateRows(dtInstructor, "c_user_id_fk");
-                gvInstructor.DataSource = dtInstructor;
+                gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
                 gvInstructor.DataBind();
                 //Set id for c_session_system_id_pk
                 SessionWrapper.c_session_system_id_pk = editSession;
@@ -178,6 +179,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         }
         protected void btnSaveSessionInformation_Click(object sender, EventArgs e)
         {
+
+            //SessionWrapper.TempDeliveryInstructor.ToString();
+            //foreach (GridViewRow row in gvInstructor.Rows)
+            //{
+            //    DropDownList ddlInstrcdtorType = (DropDownList)row.FindControl("ddlInstrcdtorType");
+            //    string c_user_id_fk = gvInstructor.DataKeys[row.RowIndex].Value.ToString();
+            //    var rows = SessionWrapper.TempDeliveryInstructor.Select("c_user_id_fk='" + c_user_id_fk + "'");
+            //    var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
+            //    SessionWrapper.TempDeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
+            //    SessionWrapper.TempDeliveryInstructor.AcceptChanges();
+            //}
+
             CultureInfo culture = new CultureInfo("en-US");
             //string[] formats = { "M/d/yyyy", "MM/dd/yyyy", "M/dd/yyyy","M-d-yyyy","MM-d-yyyy","MM-dd-yyyy" };
 
@@ -335,6 +348,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         {
             SessionWrapper.Reset_Edit_DeliveryInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
 
+        }
+
+        protected void gvInstructor_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string c_instructor_type_id_fk = (DataBinder.Eval(e.Row.DataItem, "c_instructor_type_id_fk")).ToString();
+                DropDownList ddlInstrcdtorType = (DropDownList)e.Row.FindControl("ddlInstrcdtorType");
+                ddlInstrcdtorType.DataSource = SystemCatalogBLL.GetInstructorType(SessionWrapper.CultureName);
+                ddlInstrcdtorType.DataBind();
+                ddlInstrcdtorType.SelectedValue = c_instructor_type_id_fk;
+            }
         }
     }
 }

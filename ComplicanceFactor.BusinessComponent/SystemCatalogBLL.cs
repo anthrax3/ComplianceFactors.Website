@@ -2348,6 +2348,31 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        /// <summary>
+        /// Get instructor Type
+        /// </summary>
+        /// <param name="s_locale"></param>
+        /// <returns></returns>
+        public static DataTable GetInstructorType(string s_locale)
+        {
+
+            try
+            {
+                Hashtable htGetCourseDetails = new Hashtable();
+                htGetCourseDetails.Add("@s_locale", s_locale);
+                return DataProxy.FetchDataTable("c_sp_get_instructor_type", htGetCourseDetails);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+        }
+
+
     }
 }
 

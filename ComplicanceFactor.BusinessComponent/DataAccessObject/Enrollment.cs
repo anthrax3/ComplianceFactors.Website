@@ -102,5 +102,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         //Waitlist - for move roaster
         public string e_course_waitlist_system_id_pk { get; set; }
 
+
+
+        public string e_curriculum_assign_status { get; set; }
     }
 }

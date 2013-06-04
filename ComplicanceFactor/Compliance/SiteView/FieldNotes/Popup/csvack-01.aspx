@@ -21,7 +21,7 @@
     </div>
     <div>
         <div class="div_header_700">
-            Change Acknowledgement:
+            Acknowledgement:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -93,13 +93,13 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        <asp:Button ID="btnAcknowledge" runat="server" Text="Yes" OnClick="btnAcknowledge_Click" />
+                        <asp:Button ID="btnAcknowledge" runat="server" class="cursor_hand" Text="Yes" OnClick="btnAcknowledge_Click" />
                     </td>
-                    <td colspan="2">
-                        &nbsp;
+                    <td class="align_right">
+                        <asp:Button ID="btnNoAcknowledge" runat="server" class="cursor_hand" Text="No" OnClick="btnNoAcknowledge_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="btnNoAcknowledge" runat="server" Text="No" OnClick="btnNoAcknowledge_Click" />
+                       &nbsp;
                     </td>
                 </tr>
             </table>

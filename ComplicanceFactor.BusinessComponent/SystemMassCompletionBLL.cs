@@ -109,5 +109,22 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static bool CheckCourseCompleted(string u_user_id_pk, string c_course_system_id_pk)
+        {
+            Hashtable htCourseCompleted = new Hashtable();
+            htCourseCompleted.Add("@u_user_id_pk",u_user_id_pk);
+            htCourseCompleted.Add("@c_course_system_id_pk", c_course_system_id_pk);
+            try
+            {
+                DataTable dt = new DataTable();
+                int res = DataProxy.FetchSPOutput("s_sp_get_course_completed",htCourseCompleted);
+                return res == 1 ? true : false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

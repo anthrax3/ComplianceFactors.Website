@@ -326,6 +326,12 @@ namespace ComplicanceFactor.Common
             dtTempDeliveryInstructorsColumn.ColumnName = "c_instructor_confirm";
             dtTempDeliveryInstructors.Columns.Add(dtTempDeliveryInstructorsColumn);
 
+            //
+            dtTempDeliveryInstructorsColumn = new DataColumn();
+            dtTempDeliveryInstructorsColumn.DataType = Type.GetType("System.String");
+            dtTempDeliveryInstructorsColumn.ColumnName = "c_instructor_type_id_fk";
+            dtTempDeliveryInstructors.Columns.Add(dtTempDeliveryInstructorsColumn);
+
             return dtTempDeliveryInstructors;
 
         }
@@ -1524,8 +1530,11 @@ namespace ComplicanceFactor.Common
             dtTempCompletionEmployeeColumn.DataType = Type.GetType("System.String");
             dtTempCompletionEmployeeColumn.ColumnName = "u_hris_employee_id";
             dtTempCompletionEmployee.Columns.Add(dtTempCompletionEmployeeColumn);
-
-
+            //c_course_title
+            dtTempCompletionEmployeeColumn = new DataColumn();
+            dtTempCompletionEmployeeColumn.DataType = Type.GetType("System.Boolean");
+            dtTempCompletionEmployeeColumn.ColumnName = "is_completed";
+            dtTempCompletionEmployee.Columns.Add(dtTempCompletionEmployeeColumn);
             return dtTempCompletionEmployee;
 
         }

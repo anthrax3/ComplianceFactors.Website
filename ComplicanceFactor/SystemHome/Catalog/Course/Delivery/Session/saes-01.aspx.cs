@@ -5,6 +5,7 @@ using System.Data;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Globalization;
+using System.Web.UI.WebControls;
 
 namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
 {
@@ -247,6 +248,17 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         {
             //Close fancybox
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+        }
+
+        protected void gvInstructor_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlInstrcdtorType = (DropDownList)e.Row.FindControl("ddlInstrcdtorType");
+                ddlInstrcdtorType.DataSource = SystemCatalogBLL.GetInstructorType(SessionWrapper.CultureName);
+                ddlInstrcdtorType.DataBind();
+                ddlInstrcdtorType.SelectedValue = (DataBinder.Eval(e.Row.DataItem, "c_instructor_type_id_fk")).ToString();
+            }
         }
 
     }

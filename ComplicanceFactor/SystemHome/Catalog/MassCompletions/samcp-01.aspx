@@ -31,9 +31,9 @@
 
     </script>
     <script type="text/javascript" language="javascript">
-        function validateCheckBoxes(sender, args) {           
+        function validateCheckBoxes(sender, args) {
             var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
-            if (gvRows == 0) {                 
+            if (gvRows == 0) {
                 args.IsValid = false;
             }
             else {
@@ -47,6 +47,14 @@
                 }
             }
         }        
+    </script>
+     <script type="text/javascript" language="javascript">
+         function validateCourse(sender, args) {
+             var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+             if (gvRows == 0) {
+                 args.IsValid = false;                 
+             }           
+         }        
     </script>
     <script type="text/javascript" language="javascript">
         function confirmStatus() {
@@ -97,40 +105,6 @@
                         })
                     });
 
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".addEmployee").fancybox({
-                'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
-                'showCloseButton': true,
-                'scrolling': 'yes',
-                'autoScale': false,
-                'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false} },
-                'width': 733,
-                'height': 200,
-                'margin': 0,
-                'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': 'sasumsm-01.aspx',
-                'onComplete': function () {
-                    $.fancybox.showActivity();
-                    $('#fancybox-frame').load(function () {
-                        $.fancybox.hideActivity();
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
-
-                        })
-                    });
                 }
             });
         });
@@ -201,6 +175,54 @@
         });
 
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".addEmployee").click(function () {
+            var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+             if (gvRows == 0) {
+                 args.IsValid = false;                 
+             }           
+             else
+             {
+                 $(".addEmployee").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 733,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': 'sasumsm-01.aspx',
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+                    $('#fancybox-frame').load(function () {
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        
+                            })
+                        });
+
+                    }
+
+                });          
+
+        }
+
+        });
+});
+    </script>
     <script type="text/javascript" language="javascript">
         function getEmployeeCount(sender, args) {
             var gvRows = $("#<%=gvEmployee.ClientID %> tr").length;
@@ -218,13 +240,17 @@
         </asp:ToolkitScriptManager>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp" runat="server"
             ValidationGroup="samcp"></asp:ValidationSummary>
+        <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_employee" runat="server"
+            ValidationGroup="samcp_employee"></asp:ValidationSummary>
         <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
             ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
             ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
+            ValidationGroup="samcp_employee" runat="server" ErrorMessage="Please select course and delivery">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_catalog_items_text")%>:
+            <%=LocalResources.GetLabel("app_catalog_items_text")%>:
         </div>
         <br />
         <asp:HiddenField ID="hdnIsCatalogBind" runat="server" />
@@ -258,7 +284,8 @@
                                 CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Remove" />--%>
                             <input type="button" id='<%# Eval("c_course_system_id_pk") %>' onclick="return confirmStatus();"
-                                value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />' class="deleteCourse cursor_hand" />
+                                value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                class="deleteCourse cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -272,17 +299,18 @@
             <br />
         </div>
         <div class="div_header_long">
-             <%=LocalResources.GetLabel("app_employees_text")%>:
+            <%=LocalResources.GetLabel("app_employees_text")%>:
         </div>
         <div>
             <br />
             <asp:GridView ID="gvEmployee" AutoGenerateColumns="false" RowStyle-CssClass="record"
                 CssClass="grid_870" ShowHeader="false" ShowFooter="false" GridLines="None" DataKeyNames="u_user_id_pk"
-                runat="server">
+                runat="server" OnRowDataBound="gvEmployee_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Label ID="lblEmployeeName" runat="server" Text='<%#Eval("u_username")  + "(" + Eval("u_hris_employee_id") +")"%>'></asp:Label>
+                            <%--  + "(" + Eval("u_hris_employee_id") +")"--%>
+                            <asp:Label ID="lblEmployeeName" runat="server" Text='<%#Eval("u_username")%>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_7">
@@ -296,14 +324,15 @@
                                 CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Remove" />--%>
                             <input type="button" id='<%# Eval("u_user_id_pk") %>' onclick="return confirmStatus();"
-                               value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />' class="deleteEmployee cursor_hand" />
+                                value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                class="deleteEmployee cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
             <br />
             <br />
-            <asp:Button ID="btnAddEmployee" runat="server" CssClass="addEmployee cursor_hand"
+            <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
                 Text="<%$ LabelResourceExpression: app_add_employee_button_text %>" />
             <br />
             <br />
@@ -342,18 +371,18 @@
                             <asp:TextBox ID="txtCompletionDate" runat="server"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_attendance_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
-                        ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
-                        ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_attendance_text %>"
+                        HeaderStyle-CssClass="gridview_row_width_1 align_center" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:DropDownList ID="ddlAttendanceStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
                                 runat="server">
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_passing_status_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
-                        ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
-                        ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_passing_status_text %>"
+                        HeaderStyle-CssClass="gridview_row_width_1 align_center" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:DropDownList ID="ddlPassignStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
                                 runat="server">
@@ -388,13 +417,14 @@
                 <tr>
                     <td class="align_right">
                         <asp:Button ID="btnProcessMassCompletion" runat="server" ValidationGroup="samcp"
-                            Text="<%$ LabelResourceExpression: app_process_mass_completion_button_text %>" OnClick="btnProcessMassCompletion_Click" />
+                            Text="<%$ LabelResourceExpression: app_process_mass_completion_button_text %>"
+                            OnClick="btnProcessMassCompletion_Click" />
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
-                            onclick="btnCancel_Click" />
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            OnClick="btnCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -440,7 +470,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                             <%=LocalResources.GetLabel("app_selected_employees_text")%>: 
+                            <%=LocalResources.GetLabel("app_selected_employees_text")%>:
                         </td>
                         <td class="align_left">
                             <div id="selectedEmployee" style="float: left;" runat="server">
@@ -454,7 +484,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                             <%=LocalResources.GetLabel("app_completion_statuses_text")%>: 
+                            <%=LocalResources.GetLabel("app_completion_statuses_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:Label ID="lblStatus" runat="server"></asp:Label>
@@ -483,7 +513,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                             <%=LocalResources.GetLabel("app_notes_text")%>:
+                            <%=LocalResources.GetLabel("app_notes_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtNotes" runat="server" TextMode="MultiLine" Rows="8" Columns="50"></asp:TextBox>
@@ -496,7 +526,7 @@
                     </tr>
                     <tr>
                         <td class="text_font_normal" align="right">
-                           <%=LocalResources.GetLabel("app_pin_text")%>:
+                            <%=LocalResources.GetLabel("app_pin_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtPin" runat="server"></asp:TextBox>
@@ -556,9 +586,10 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            <%=LocalResources.GetLabel("app_enter_PIN_Number_text")%>: 
+                            <%=LocalResources.GetLabel("app_enter_PIN_Number_text")%>:
                             <asp:RequiredFieldValidator ID="rfvPin" runat="server" ControlToValidate="txtPinNumber"
-                                ForeColor="Red" ErrorMessage="<%$ TextResourceExpression: app_pin_error_empty %>" ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
+                                ForeColor="Red" ErrorMessage="<%$ TextResourceExpression: app_pin_error_empty %>"
+                                ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
                             <asp:CustomValidator ID="cvalPinnumber" ClientValidationFunction="ClientValidate"
                                 ControlToValidate="txtPinNumber" runat="server" ForeColor="Red" ValidationGroup="Pinnumber"
                                 ErrorMessage="<%$ TextResourceExpression: app_pin_error_wrong %>">&nbsp;</asp:CustomValidator>
@@ -574,9 +605,10 @@
                     </tr>
                     <tr>
                         <td align="right">
-                             <%=LocalResources.GetLabel("app_validate_PIN_text")%>: 
+                            <%=LocalResources.GetLabel("app_validate_PIN_text")%>:
                             <asp:RequiredFieldValidator ID="rfvPinNumber" runat="server" ControlToValidate="txtValidatePin"
-                                ForeColor="Red" ErrorMessage="<%$ TextResourceExpression: app_pin_error_empty %>" ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
+                                ForeColor="Red" ErrorMessage="<%$ TextResourceExpression: app_pin_error_empty %>"
+                                ValidationGroup="Pinnumber">&nbsp;</asp:RequiredFieldValidator>
                             <asp:CompareValidator ID="cvalPassword" runat="server" ControlToCompare="txtPinNumber"
                                 ForeColor="Red" ControlToValidate="txtValidatePin" ErrorMessage="<%$ TextResourceExpression: app_pin_error_wrong %>"
                                 ValidationGroup="Pinnumber">&nbsp;</asp:CompareValidator>

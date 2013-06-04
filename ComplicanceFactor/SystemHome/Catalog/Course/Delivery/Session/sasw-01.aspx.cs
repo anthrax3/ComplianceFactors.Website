@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Data;
 using System.Collections;
 using ComplicanceFactor.BusinessComponent;
+using System.Web.UI.WebControls;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {
@@ -32,8 +33,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                     //Respect Weekdays Schedule
                     ddlRespectWeekDays.DataSource = SystemCatalogBLL.GetAllWeekdaySchedule();
                     ddlRespectWeekDays.DataBind();
-
-
                 }
                 //Get location
                 lblLocation.Text = SessionWrapper.c_location_name;
@@ -42,8 +41,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 //Get room
                 lblRoom.Text = SessionWrapper.c_room_name;
                 //Bind instructor
-                gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
-                gvInstructor.DataBind();
+                if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+                {
+                    gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
+                    gvInstructor.DataBind();
+                }
 
             }
             catch (Exception ex)
@@ -129,10 +131,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
         /// <param name="e"></param>
         protected void btnGenerateSession_Click(object sender, EventArgs e)
         {
+            //Instructor ----->Instructor type ---->c_instructor_type_id_fk
+            //SessionWrapper.TempDeliveryInstructor
+            foreach (GridViewRow row in  gvInstructor.Rows)
+            {
+                
+                DropDownList ddlInstrcdtorType = (DropDownList)row.FindControl("ddlInstrcdtorType");
+                string c_user_id_fk = gvInstructor.DataKeys[row.RowIndex].Value.ToString();
+                var rows = SessionWrapper.TempDeliveryInstructor.Select("c_user_id_fk='" + c_user_id_fk + "'");
+                var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
+                SessionWrapper.TempDeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
+                SessionWrapper.TempDeliveryInstructor.AcceptChanges();
+            }
+
             CultureInfo culture = new CultureInfo("en-US");
             //Create session without recurrance parameter
             CreateSession(txtStartDate.Text, txtEndDate.Text);
-
+            
             //Close fancybox
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
@@ -281,7 +296,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
         /// <param name="c_instructor_name"></param>
         /// <param name="c_delivery_id_fk"></param>
         /// <param name="dtTempDeliveryInstructor"></param>
-        private void AddDataToDeliveryInstructor(string c_user_id_fk, string c_instructor_name, string c_session_id_fk, string c_delivery_id_fk, DataTable dtTempDeliveryInstructor)
+        private void AddDataToDeliveryInstructor(string c_user_id_fk, string c_instructor_name, string c_session_id_fk, string c_delivery_id_fk, string c_instructor_type_id_fk, DataTable dtTempDeliveryInstructor)
         {
             // Add Instructor function
             DataRow row;
@@ -292,6 +307,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             row["c_session_id_fk"] = c_session_id_fk;
             row["c_delivery_id_fk"] = c_delivery_id_fk;
             row["c_instructor_confirm"] = true;
+            row["c_instructor_type_id_fk"] = c_instructor_type_id_fk;
             dtTempDeliveryInstructor.Rows.Add(row);
         }
         /// <summary>
@@ -344,7 +360,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             {
                 foreach (DataRow drInstructor in SessionWrapper.TempAddDeliveryInstructor.Rows)
                 {
-                    AddDataToDeliveryInstructor(drInstructor["c_user_id_fk"].ToString(), drInstructor["c_instructor_name"].ToString(), row["c_session_system_id_pk"].ToString(), row["c_delivery_id_fk"].ToString(), SessionWrapper.TempDeliveryInstructor);
+                    AddDataToDeliveryInstructor(drInstructor["c_user_id_fk"].ToString(), drInstructor["c_instructor_name"].ToString(), row["c_session_system_id_pk"].ToString(), row["c_delivery_id_fk"].ToString(), drInstructor["c_instructor_type_id_fk"].ToString(), SessionWrapper.TempDeliveryInstructor);
 
                 }
             }
@@ -403,6 +419,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 dTable.Rows.Remove(dRow);
 
             return dTable;
+        }
+
+        protected void gvInstructor_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlInstrcdtorType = (DropDownList)e.Row.FindControl("ddlInstrcdtorType");
+                ddlInstrcdtorType.DataSource = SystemCatalogBLL.GetInstructorType(SessionWrapper.CultureName);
+                ddlInstrcdtorType.DataBind();
+            }
         }
         //public DataTable CheckHoliday(DateTime dtDate)
         //{

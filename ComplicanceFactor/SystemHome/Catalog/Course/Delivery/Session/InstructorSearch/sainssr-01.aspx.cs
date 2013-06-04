@@ -362,6 +362,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             row["c_session_id_fk"] = c_session_id_fk;
             row["c_delivery_id_fk"] = c_delivery_id_fk;
             row["c_instructor_confirm"] = false;
+            row["c_instructor_type_id_fk"] = string.Empty;
             dtTempDeliveryInstructor.Rows.Add(row);
         }
         /// <summary>
@@ -416,8 +417,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     foreach (var dvRow in insRows)
                         dvRow.Delete();
                     SessionWrapper.DeliveryInstructor.Merge(dtInstructors);
-
-
                 }
                 else if (!string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saed-02" && !string.IsNullOrEmpty(Request.QueryString["editsession"]))
                 {

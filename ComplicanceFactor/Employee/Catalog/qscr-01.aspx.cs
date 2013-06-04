@@ -11,6 +11,7 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Globalization;
 using ComplicanceFactor.Common.Languages;
 using System.Web.UI.HtmlControls;
+
 namespace ComplicanceFactor.Employee.Catalog
 {
     public partial class qscr_01 : BasePage
@@ -249,7 +250,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
                         }
                         // Because this course is alredy enrolled and not completed.
-                       
+
                         if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
                         {
 
@@ -278,7 +279,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnDrop.Style.Add("display", "none");
                             btnEnroll.Style.Add("display", "none");
                         }
-                     
+
                         else if (string.IsNullOrEmpty(strEnrollType))
                         {
                             btnDrop.Style.Add("display", "none");
@@ -291,15 +292,35 @@ namespace ComplicanceFactor.Employee.Catalog
                         getAssignCurriculum = EnrollmentBLL.GetAssignCourse(system_id, SessionWrapper.u_userid);
                         btnDrop.Style.Add("display", "none");
                         btnEnroll.Style.Add("display", "none");
-                        if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_curriculum_id_fk))
+
+                        //if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_curriculum_id_fk))
+                        //{
+                        //    lblAlreadyEnrollMessage.Text = "***Assigned***";
+                        //}
+                        //else
+                        //{
+                        //    lblAlreadyEnrollMessage.Text = string.Empty;
+                        //    btnAssign.Style.Add("display", "inline");
+                        //}
+                        if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_status) && getAssignCurriculum.e_curriculum_assign_status == "Assigned")
                         {
                             lblAlreadyEnrollMessage.Text = "***Assigned***";
+                           
+                        }
+                        else if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_status) && getAssignCurriculum.e_curriculum_assign_status == "In Progress")
+                        {
+                            lblAlreadyEnrollMessage.Text = "***In Progress (" + getAssignCurriculum.e_curriculum_assign_percent_complete+ ")***";
+                        }
+                        else if (!string.IsNullOrEmpty(getAssignCurriculum.e_curriculum_assign_status) && getAssignCurriculum.e_curriculum_assign_status == "Acquired")
+                        {
+                            lblAlreadyEnrollMessage.Text = "***Completed***";
                         }
                         else
                         {
                             lblAlreadyEnrollMessage.Text = string.Empty;
                             btnAssign.Style.Add("display", "inline");
                         }
+
                     }
                     else if (type == "Document")
                     {
@@ -666,5 +687,6 @@ namespace ComplicanceFactor.Employee.Catalog
             lblPageOfPageFooter.Visible = true;
             lblPageOfPageHeader.Visible = true;
         }
+
     }
 }

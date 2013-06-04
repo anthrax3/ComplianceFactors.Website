@@ -648,5 +648,46 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
         {
             Response.Redirect("~/SystemHome/Catalog/samcmp-01.aspx");
         }
+
+        protected void gvEmployee_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            GridView GridView1 = (GridView)sender;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string u_user_id_pk = GridView1.DataKeys[e.Row.RowIndex][0].ToString();
+
+                try
+                {
+
+                    DataRowView drIssaved = (DataRowView)e.Row.DataItem;
+                    bool issaved = Convert.ToBoolean(drIssaved["is_completed"]);
+                    if (issaved)
+                    {
+                        Label lblEmployeeName = (Label)e.Row.FindControl("lblEmployeeName");
+                        lblEmployeeName.ForeColor = System.Drawing.Color.Red;
+
+                        Label lblEmployeeId = (Label)e.Row.FindControl("lblEmployeeId");
+                        lblEmployeeName.ForeColor = System.Drawing.Color.Red;                 
+                        
+                        //e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
+                    }
+                        
+                }
+                catch (Exception ex)
+                {
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("samcp-01", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("samcp-01", ex.Message);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

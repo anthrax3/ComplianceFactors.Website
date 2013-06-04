@@ -6,7 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
-    
     <link href="../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <%-- <script src="../../../Scripts/JQuery.Zoom.js" type="text/javascript"></script>--%>
@@ -460,28 +459,40 @@
 
         });
     </script>
-     <script type="text/javascript">
-         function DateCheck(sender, args) {
-             var StartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
-             var EndDate = document.getElementById('<%=txtEndDate.ClientID %>').value;
-             var eDate = new Date(EndDate);
-             var sDate = new Date(StartDate);
-             if (StartDate != '' && StartDate != '' && sDate > eDate) {
-                 args.IsValid = false;
-             }
-         }
+    <script type="text/javascript">
+        function DateCheck(sender, args) {
+            var StartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
+            var EndDate = document.getElementById('<%=txtEndDate.ClientID %>').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                args.IsValid = false;
+            }
+        }
     
+    </script>
+    <script type="text/javascript">
+        function stop_rebind_for_instructor(id) {
+            alert(id);
+            if (id == "btnGenerateSession") {
+                document.getElementById('<%=hdValue.ClientID %>').value = "0";
+            }
+            else {
+                document.getElementById('<%=hdValue.ClientID %>').value = "1";
+            }
+        }
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-     <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
-        ValidationGroup="sasw" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
-    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
-        ValidationGroup="sasw"></asp:ValidationSummary>
     <div class="div_header_940">
         <%=LocalResources.GetLabel("app_session_text")%>:
     </div>
     <div class="div_controls font_1">
+        <asp:HiddenField ID="hdValue" runat="server" />
+        <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+            ValidationGroup="sasw" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
+        <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
+            ValidationGroup="sasw"></asp:ValidationSummary>
         <br />
         <table>
             <tr>
@@ -659,24 +670,30 @@
         <div>
             <asp:GridView ID="gvInstructor" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
-                AutoGenerateColumns="False">
+                AutoGenerateColumns="False" OnRowDataBound="gvInstructor_RowDataBound" DataKeyNames="c_user_id_fk">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <table cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td class="horizontal_line" colspan="2">
+                                    <td class="horizontal_line" colspan="4">
                                         <hr>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="gridview_row_width_600">
+                                    <td class="gridview_row_width_300">
                                         <%#Eval("c_instructor_name")%>
                                     </td>
                                     <%--<td class="gridview_row_width_1" align="center">
                                         <input type="button" id='<%# Eval("c_instructor_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
                                             class="editinstructor cursor_hand" />
                                     </td>--%>
+                                    <td class="align_left">
+                                        <asp:DropDownList ID="ddlInstrcdtorType" runat="server" DataTextField="s_instructor_type_name"
+                                            DataValueField="s_instructor_type_system_id_pk" />
+                                    </td>
+                                    <td class="gridview_row_width_3">
+                                    </td>
                                     <td class="gridview_row_width_1" align="center">
                                         <input type="button" id='<%# Eval("c_instructor_system_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                             class="deleteinstructor cursor_hand" />
@@ -735,9 +752,9 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlRespectWeekDays" runat="server"
-                         CssClass="ddl_user_advanced_search" DataTextField="s_weekday_schedule_name" DataValueField="s_weekday_schedule_system_id_pk"></asp:DropDownList>
-
+                        <asp:DropDownList ID="ddlRespectWeekDays" runat="server" CssClass="ddl_user_advanced_search"
+                            DataTextField="s_weekday_schedule_name" DataValueField="s_weekday_schedule_system_id_pk">
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -751,9 +768,9 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlRespectHolidays" runat="server"
-                         CssClass="ddl_user_advanced_search" DataTextField="u_holiday_schedule_name" DataValueField="u_holiday_schedule_system_id_pk"></asp:DropDownList>
-
+                        <asp:DropDownList ID="ddlRespectHolidays" runat="server" CssClass="ddl_user_advanced_search"
+                            DataTextField="u_holiday_schedule_name" DataValueField="u_holiday_schedule_system_id_pk">
+                        </asp:DropDownList>
                     </td>
                 </tr>
             </table>
@@ -912,7 +929,7 @@
                 <td align="left">
                     <asp:Button ID="btnGenerateSession" ValidationGroup="sasw" CssClass="cursor_hand"
                         runat="server" Text="<%$ LabelResourceExpression: app_generatr_session_button_text %>"
-                        OnClick="btnGenerateSession_Click" />
+                        OnClick="btnGenerateSession_Click" OnClientClick="javascript:stop_rebind_for_instructor(this.id)" />
                 </td>
                 <td class="textbox_long">
                     &nbsp;
