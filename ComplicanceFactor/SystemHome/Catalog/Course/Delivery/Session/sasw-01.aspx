@@ -473,7 +473,6 @@
     </script>
     <script type="text/javascript">
         function stop_rebind_for_instructor(id) {
-            alert(id);
             if (id == "btnGenerateSession") {
                 document.getElementById('<%=hdValue.ClientID %>').value = "0";
             }

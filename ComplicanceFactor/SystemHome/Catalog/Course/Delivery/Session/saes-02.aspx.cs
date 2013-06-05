@@ -32,23 +32,36 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     RevertBack();
                 }
                 //Get instructor
-                DataTable dtTempInstructor = SessionWrapper.TempDeliveryInstructor;
-                DataTable dtInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
-                if (dtInstructor.Rows.Count > 0 && SessionWrapper.TempDeliveryInstructor.Rows.Count > 0)
+
+
+                if (SessionWrapper.TempDeliveryInstructor.Rows.Count > 0)
                 {
-                    SessionWrapper.TempDeliveryInstructor.Merge(dtInstructor, true, MissingSchemaAction.Ignore);
+                    SessionWrapper.TempAddDeliveryInstructor = SessionWrapper.TempDeliveryInstructor;
+                    SessionWrapper.TempDeliveryInstructor = null;
+                    SessionWrapper.TempDeliveryInstructor = TempDataTables.TempDeliveryInstructors();
                 }
-                else if (dtInstructor.Rows.Count == 0 && SessionWrapper.TempDeliveryInstructor.Rows.Count > 0)
+
+
+                //DataTable dtTempInstructor = SessionWrapper.TempDeliveryInstructor;
+                DataTable dtInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
+                if (dtInstructor.Rows.Count > 0 && SessionWrapper.TempAddDeliveryInstructor.Rows.Count > 0)
                 {
-                    //SessionWrapper.TempDeliveryInstructor;
+                    SessionWrapper.TempAddDeliveryInstructor.Merge(dtInstructor, true, MissingSchemaAction.Ignore);
+                }
+                else if (dtInstructor.Rows.Count == 0 && SessionWrapper.TempAddDeliveryInstructor.Rows.Count > 0)
+                {
+                   //SessionWrapper.TempAddDeliveryInstructor;
                 }
                 else
                 {
-                    SessionWrapper.TempDeliveryInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
+                    SessionWrapper.TempAddDeliveryInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
                 }
-                dtInstructor = RemoveDuplicateRows(dtInstructor, "c_user_id_fk");
-                gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
-                gvInstructor.DataBind();
+                SessionWrapper.TempAddDeliveryInstructor = RemoveDuplicateRows(SessionWrapper.TempAddDeliveryInstructor, "c_user_id_fk");
+                if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+                {
+                    gvInstructor.DataSource = SessionWrapper.TempAddDeliveryInstructor;
+                    gvInstructor.DataBind();
+                }
                 //Set id for c_session_system_id_pk
                 SessionWrapper.c_session_system_id_pk = editSession;
                 //Get location
@@ -140,10 +153,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             txtId.Text = getSession.c_session_id_pk;
             txtTitle.Text = getSession.c_session_title;
             txtDescription.InnerText = getSession.c_sessions_desc;
-            txtStartDate.Text = Convert.ToDateTime(getSession.c_session_start_date, culture).ToString("MM/dd/yyyy",culture);
-            txtEndDate.Text = Convert.ToDateTime(getSession.c_session_end_date, culture).ToString("MM/dd/yyyy",culture);
-            txtStartTime.Text = Convert.ToDateTime(getSession.c_session_start_time, culture).ToString("h:mm tt",culture);
-            txtEndTime.Text = Convert.ToDateTime(getSession.c_sessions_end_time, culture).ToString("h:mm tt",culture);
+            txtStartDate.Text = Convert.ToDateTime(getSession.c_session_start_date, culture).ToString("MM/dd/yyyy", culture);
+            txtEndDate.Text = Convert.ToDateTime(getSession.c_session_end_date, culture).ToString("MM/dd/yyyy", culture);
+            txtStartTime.Text = Convert.ToDateTime(getSession.c_session_start_time, culture).ToString("h:mm tt", culture);
+            txtEndTime.Text = Convert.ToDateTime(getSession.c_sessions_end_time, culture).ToString("h:mm tt", culture);
             txtDuration.Text = Convert.ToDateTime(getSession.c_session_duration, culture).ToString("h:mm", culture);
             SessionWrapper.c_location_name = getSession.c_session_location_name;
             SessionWrapper.c_facility_name = getSession.c_session_facility_name;
@@ -162,14 +175,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         /// <returns></returns>
         private string ConvertStringToTimeFormat(string strHoursMinutes)
         {
-            
+
 
             CultureInfo culture = new CultureInfo("en-US");
             if (!string.IsNullOrEmpty(strHoursMinutes))
             {
                 String timeText = strHoursMinutes;
 
-                string time = Convert.ToDateTime(timeText,culture).ToString("MM/dd/yyyy h:mm:ss",culture); // Converts only the time
+                string time = Convert.ToDateTime(timeText, culture).ToString("MM/dd/yyyy h:mm:ss", culture); // Converts only the time
                 return time;
             }
             else
@@ -179,20 +192,20 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         }
         protected void btnSaveSessionInformation_Click(object sender, EventArgs e)
         {
-
-            //SessionWrapper.TempDeliveryInstructor.ToString();
-            //foreach (GridViewRow row in gvInstructor.Rows)
-            //{
-            //    DropDownList ddlInstrcdtorType = (DropDownList)row.FindControl("ddlInstrcdtorType");
-            //    string c_user_id_fk = gvInstructor.DataKeys[row.RowIndex].Value.ToString();
-            //    var rows = SessionWrapper.TempDeliveryInstructor.Select("c_user_id_fk='" + c_user_id_fk + "'");
-            //    var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
-            //    SessionWrapper.TempDeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
-            //    SessionWrapper.TempDeliveryInstructor.AcceptChanges();
-            //}
-
             CultureInfo culture = new CultureInfo("en-US");
             //string[] formats = { "M/d/yyyy", "MM/dd/yyyy", "M/dd/yyyy","M-d-yyyy","MM-d-yyyy","MM-dd-yyyy" };
+
+
+            foreach (GridViewRow row in gvInstructor.Rows)
+            {
+
+                DropDownList ddlInstrcdtorType = (DropDownList)row.FindControl("ddlInstrcdtorType");
+                string c_user_id_fk = gvInstructor.DataKeys[row.RowIndex].Value.ToString();
+                var rows = SessionWrapper.TempAddDeliveryInstructor.Select("c_user_id_fk='" + c_user_id_fk + "'");
+                var indexOfRow = SessionWrapper.TempAddDeliveryInstructor.Rows.IndexOf(rows[0]);
+                SessionWrapper.TempAddDeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
+                SessionWrapper.TempAddDeliveryInstructor.AcceptChanges();
+            }
 
             string strStartDate = Convert.ToDateTime(txtStartDate.Text, culture).ToString("MM/dd/yyyy", culture);
             txtStartDate.Text = strStartDate;
@@ -207,7 +220,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             DateTime tempStartDate;
             if (DateTime.TryParseExact(txtStartDate.Text, "MM/dd/yyyy", culture, DateTimeStyles.None, out tempStartDate))
             {
-                startDate = DateTime.Parse(strStartDate,culture);
+                startDate = DateTime.Parse(strStartDate, culture);
 
             }
 
@@ -247,12 +260,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             updateSession.c_session_location_id_fk = SessionWrapper.c_session_location_id_fk;
             updateSession.c_session_facility_id_fk = SessionWrapper.c_session_facility_id_fk;
             updateSession.c_session_room_id_fk = SessionWrapper.c_session_room_id_fk;
-            updateSession.c_session_instructor = ConvertDataTableToXml(SessionWrapper.TempDeliveryInstructor);
+            updateSession.c_session_instructor = ConvertDataTableToXml(SessionWrapper.TempAddDeliveryInstructor);
             updateSession.c_course_id_fk = Request.QueryString["editcourseid"];
             try
             {
                 //update session
                 SystemCatalogBLL.UpdateDeliverySession(updateSession);
+                SessionWrapper.TempAddDeliveryInstructor = null;
             }
             catch (Exception ex)
             {
@@ -318,7 +332,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         }
         protected void btnReset_Click(object sender, EventArgs e)
         {
-           
+
             try
             {
                 SystemCatalogBLL.InsertSessionInstructors("", ConvertDataTableToXml(SessionWrapper.Reset_Edit_DeliveryInstructor), Request.QueryString["editcourseid"], true);

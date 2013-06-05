@@ -1163,6 +1163,21 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 SessionWrapper.TempDeliverySessions.Rows.Add(row);
                 SessionWrapper.TempDeliverySessions.AcceptChanges();
 
+                var rows = SessionWrapper.TempDeliveryInstructor.Select("c_session_id_fk='" + c_session_system_id_pk + "'");
+                var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
+
+                DataRow rowInstrctor;
+                rowInstrctor = SessionWrapper.DeliveryInstructor.NewRow();
+                rowInstrctor["c_instructor_system_id_pk"] = Guid.NewGuid().ToString();
+                rowInstrctor["c_user_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_user_id_fk"];
+                rowInstrctor["c_instructor_name"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_instructor_name"];
+                rowInstrctor["c_session_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_session_id_fk"];
+                rowInstrctor["c_delivery_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_delivery_id_fk"];
+                rowInstrctor["c_instructor_confirm"] = false;
+                rowInstrctor["c_instructor_type_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"];
+                SessionWrapper.DeliveryInstructor.Rows.Add(rowInstrctor);
+                SessionWrapper.DeliveryInstructor.AcceptChanges();
+
                 ConvertDataTables removeDuplicaterow = new ConvertDataTables();
                 if (SessionWrapper.TempDeliverySessions.Rows.Count > 0)
                 {

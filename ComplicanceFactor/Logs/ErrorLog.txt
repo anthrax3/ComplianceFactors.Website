@@ -1,1 +1,7 @@
 ﻿
+
+
+06/05/2013 07:50 PM : sasw-01.aspx : Object reference not set to an instance of an object.
+
+06/05/2013 08:33 PM : sand-01.aspx : Cannot find column [c_session_system_id_pk].
+

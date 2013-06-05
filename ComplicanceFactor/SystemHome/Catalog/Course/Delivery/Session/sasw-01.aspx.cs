@@ -25,6 +25,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                     //Add column in SessionWrapper.TempDeliveryInstructor datatable
                     SessionWrapper.TempDeliveryInstructor = TempDataTables.TempDeliveryInstructors();
                     SessionWrapper.TempAddDeliveryInstructor = TempDataTables.TempDeliveryInstructors();
+                    SessionWrapper.TempDeliverySessions = TempDataTables.TempDeliverySessions();
                     //Set unique id for c_session_system_id_pk
                     SessionWrapper.c_session_system_id_pk = Guid.NewGuid().ToString();
                     //Respect Hoilidays Schedule
@@ -41,10 +42,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 //Get room
                 lblRoom.Text = SessionWrapper.c_room_name;
                 //Bind instructor
-                if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+                if (Request.QueryString["page"].ToString() == "sasw")
                 {
-                    gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
-                    gvInstructor.DataBind();
+                    if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+                    {
+                        gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
+                        gvInstructor.DataBind();
+                        hdValue.Value = null;
+                    }
+                }
+                else
+                {
+                    if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value) && !string.IsNullOrEmpty(Request.QueryString["editcourseid"].ToString()))
+                    {
+                        gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
+                        gvInstructor.DataBind();
+                        hdValue.Value = null;
+                    }
                 }
 
             }
@@ -122,6 +136,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             SessionWrapper.c_session_system_id_pk = "";
             SessionWrapper.TempDeliveryInstructor = null;
             SessionWrapper.TempAddDeliveryInstructor = null;
+            SessionWrapper.TempDeliverySessions = null;
             // SessionWrapper.TempDeliverySessions = null;
         }
         /// <summary>
@@ -237,6 +252,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 try
                 {
                     SystemCatalogBLL.InsertSessionInstructors(ConvertDataTableToXml(SessionWrapper.TempDeliverySessions), ConvertDataTableToXml(SessionWrapper.TempDeliveryInstructor), Request.QueryString["editcourseid"], false);
+
                 }
                 catch (Exception ex)
                 {
