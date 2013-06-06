@@ -12,7 +12,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
 {
     public partial class saes_02 : BasePage
     {
+        
+        #region
+        private static bool result;
         private string editSession;
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -207,86 +211,96 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 SessionWrapper.TempAddDeliveryInstructor.AcceptChanges();
             }
 
-            string strStartDate = Convert.ToDateTime(txtStartDate.Text, culture).ToString("MM/dd/yyyy", culture);
-            txtStartDate.Text = strStartDate;
-            string strEndDate = Convert.ToDateTime(txtEndDate.Text, culture).ToString("MM/dd/yyyy", culture);
-            txtEndDate.Text = strEndDate;
-            SystemCatalog updateSession = new SystemCatalog();
-            updateSession.c_session_system_id_pk = editSession;
-            updateSession.c_session_id_pk = txtId.Text;
-            updateSession.c_session_title = txtTitle.Text;
-            updateSession.c_sessions_desc = txtDescription.Value;
-            DateTime? startDate = null;
-            DateTime tempStartDate;
-            if (DateTime.TryParseExact(txtStartDate.Text, "MM/dd/yyyy", culture, DateTimeStyles.None, out tempStartDate))
+            result = SystemCatalogBLL.checkMaximumOnePrimaryInstructors(ConvertDataTableToXml(SessionWrapper.TempAddDeliveryInstructor));
+            if (!result)
             {
-                startDate = DateTime.Parse(strStartDate, culture);
-
+                divError.Style.Add("display", "inline");
+                divError.InnerHtml = "Error:Please select maximum one primary instructor per session";
             }
+            else
+            {
 
-            updateSession.c_session_start_date = startDate;
-            DateTime? EndDate = null;
-            DateTime tempEndDate;
-            if (DateTime.TryParseExact(txtEndDate.Text, "MM/dd/yyyy", culture, DateTimeStyles.None, out tempEndDate))
-            {
-                EndDate = tempEndDate;
-
-            }
-            updateSession.c_session_end_date = EndDate;
-
-            DateTime? startTime = null;
-            DateTime tempStartTime;
-            if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtStartTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempStartTime))
-            {
-                startTime = tempStartTime;
-
-            }
-            updateSession.c_session_start_time = startTime;
-            DateTime? endTime = null;
-            DateTime tempEndTime;
-            if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtEndTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempEndTime))
-            {
-                endTime = tempEndTime;
-            }
-
-            updateSession.c_sessions_end_time = endTime;
-            DateTime? duration = null;
-            DateTime tempduration;
-            if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtDuration.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempduration))
-            {
-                duration = tempduration;
-            }
-            updateSession.c_session_duration = duration;
-            updateSession.c_session_location_id_fk = SessionWrapper.c_session_location_id_fk;
-            updateSession.c_session_facility_id_fk = SessionWrapper.c_session_facility_id_fk;
-            updateSession.c_session_room_id_fk = SessionWrapper.c_session_room_id_fk;
-            updateSession.c_session_instructor = ConvertDataTableToXml(SessionWrapper.TempAddDeliveryInstructor);
-            updateSession.c_course_id_fk = Request.QueryString["editcourseid"];
-            try
-            {
-                //update session
-                SystemCatalogBLL.UpdateDeliverySession(updateSession);
-                SessionWrapper.TempAddDeliveryInstructor = null;
-            }
-            catch (Exception ex)
-            {
-                //TODO: Show user friendly error here
-                //Log here
-                if (ConfigurationWrapper.LogErrors == true)
+                string strStartDate = Convert.ToDateTime(txtStartDate.Text, culture).ToString("MM/dd/yyyy", culture);
+                txtStartDate.Text = strStartDate;
+                string strEndDate = Convert.ToDateTime(txtEndDate.Text, culture).ToString("MM/dd/yyyy", culture);
+                txtEndDate.Text = strEndDate;
+                SystemCatalog updateSession = new SystemCatalog();
+                updateSession.c_session_system_id_pk = editSession;
+                updateSession.c_session_id_pk = txtId.Text;
+                updateSession.c_session_title = txtTitle.Text;
+                updateSession.c_sessions_desc = txtDescription.Value;
+                DateTime? startDate = null;
+                DateTime tempStartDate;
+                if (DateTime.TryParseExact(txtStartDate.Text, "MM/dd/yyyy", culture, DateTimeStyles.None, out tempStartDate))
                 {
-                    if (ex.InnerException != null)
+                    startDate = DateTime.Parse(strStartDate, culture);
+
+                }
+
+                updateSession.c_session_start_date = startDate;
+                DateTime? EndDate = null;
+                DateTime tempEndDate;
+                if (DateTime.TryParseExact(txtEndDate.Text, "MM/dd/yyyy", culture, DateTimeStyles.None, out tempEndDate))
+                {
+                    EndDate = tempEndDate;
+
+                }
+                updateSession.c_session_end_date = EndDate;
+
+                DateTime? startTime = null;
+                DateTime tempStartTime;
+                if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtStartTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempStartTime))
+                {
+                    startTime = tempStartTime;
+
+                }
+                updateSession.c_session_start_time = startTime;
+                DateTime? endTime = null;
+                DateTime tempEndTime;
+                if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtEndTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempEndTime))
+                {
+                    endTime = tempEndTime;
+                }
+
+                updateSession.c_sessions_end_time = endTime;
+                DateTime? duration = null;
+                DateTime tempduration;
+                if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtDuration.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempduration))
+                {
+                    duration = tempduration;
+                }
+                updateSession.c_session_duration = duration;
+                updateSession.c_session_location_id_fk = SessionWrapper.c_session_location_id_fk;
+                updateSession.c_session_facility_id_fk = SessionWrapper.c_session_facility_id_fk;
+                updateSession.c_session_room_id_fk = SessionWrapper.c_session_room_id_fk;
+                updateSession.c_session_instructor = ConvertDataTableToXml(SessionWrapper.TempAddDeliveryInstructor);
+                updateSession.c_course_id_fk = Request.QueryString["editcourseid"];
+                try
+                {
+                    //update session
+                    SystemCatalogBLL.UpdateDeliverySession(updateSession);
+                    SessionWrapper.TempAddDeliveryInstructor = null;
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Show user friendly error here
+                    //Log here
+                    if (ConfigurationWrapper.LogErrors == true)
                     {
-                        Logger.WriteToErrorLog("saes-02.aspx", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("saes-02.aspx", ex.Message);
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("saes-02.aspx", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("saes-02.aspx", ex.Message);
+                        }
                     }
                 }
-            }
 
-            //Close fancybox
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+                //Close fancybox
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+            }
         }
         ///<summary>
         /// This method is used to convert the DataTable into string XML format.

@@ -11,7 +11,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
 {
     public partial class saes_01 : BasePage
     {
-        private  string editSession;
+        #region
+        private string editSession;
+        private static bool result;
+        #endregion
+       
        
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -88,8 +92,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         {
             DataView dvInstructors = new DataView(dtInstructor);
             dvInstructors.RowFilter = "c_session_id_fk= '" + editSession + "'";
-            gvInstructor.DataSource = dvInstructors.ToTable();
-            gvInstructor.DataBind();
+            if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+            {
+                gvInstructor.DataSource = dvInstructors.ToTable();
+                gvInstructor.DataBind();
+                hdValue.Value = null;
+            }
         }
         /// <summary>
         /// GetTempSessions
@@ -168,21 +176,59 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         }
         protected void btnSaveSessionInformation_Click(object sender, EventArgs e)
         {
-            //Check the edit session come from create(sand) or edit(saes) mode 
-            if (Request.QueryString["page"] == "sand")
+            DataTable dtTemp = TempDataTables.TempDeliveryInstructors();
+            foreach (GridViewRow row in gvInstructor.Rows)
             {
-                UpdateSession(SessionWrapper.TempDeliverySessions);
+                string c_user_id_fk = gvInstructor.DataKeys[row.RowIndex].Value.ToString();
+                DropDownList ddlInstrcdtorType = (DropDownList)row.FindControl("ddlInstrcdtorType");
+                DataView dvDeliveryInstructor = new DataView(SessionWrapper.DeliveryInstructor);
+
+                dvDeliveryInstructor.RowFilter = "c_session_id_fk='" + editSession + "'";
+                dtTemp = dvDeliveryInstructor.ToTable();
+                var rows = dtTemp.Select("c_user_id_fk='" + c_user_id_fk + "'");
+                var indexOfRow = dtTemp.Rows.IndexOf(rows[0]);
+                dtTemp.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
+                dtTemp.AcceptChanges();
+                //SessionWrapper.TempAddDeliveryInstructor.Merge(dtInstructor, true, MissingSchemaAction.Ignore);
             }
-            else if (Request.QueryString["page"] == "saes")
+
+            var instructorRows = SessionWrapper.DeliveryInstructor.Select("c_session_id_fk='" + editSession + "'");
+            foreach (var item in instructorRows)
             {
-                UpdateSession(SessionWrapper.DeliverySessions);
+                item.Delete();
             }
-            DataRow[] results = SessionWrapper.DeliveryInstructor.Select("c_session_id_fk= '" + editSession + "' and c_instructor_confirm=false");
-            //populate new destination table
-            foreach (DataRow row in results)
+            SessionWrapper.DeliveryInstructor.AcceptChanges();
+
+            SessionWrapper.DeliveryInstructor.Merge(dtTemp);
+            SessionWrapper.DeliveryInstructor.AcceptChanges();
+
+            SessionWrapper.TempDeliveryInstructor = SessionWrapper.DeliveryInstructor;
+
+            ConvertDataTables convertToXml = new ConvertDataTables();
+            result = SystemCatalogBLL.checkMaximumOnePrimaryInstructors(convertToXml.ConvertDataTableToXml((dtTemp)));
+            if (!result)
             {
-                row["c_instructor_confirm"] = true;
-                SessionWrapper.DeliveryInstructor.AcceptChanges();
+                divError.Style.Add("display", "inline");
+                divError.InnerHtml = "Error:Please select maximum one primary instructor per session";
+            }
+            else
+            {
+                //Check the edit session come from create(sand) or edit(saes) mode 
+                if (Request.QueryString["page"] == "sand")
+                {
+                    UpdateSession(SessionWrapper.TempDeliverySessions);
+                }
+                else if (Request.QueryString["page"] == "saes")
+                {
+                    UpdateSession(SessionWrapper.DeliverySessions);
+                }
+                DataRow[] results = SessionWrapper.DeliveryInstructor.Select("c_session_id_fk= '" + editSession + "' and c_instructor_confirm=false");
+                //populate new destination table
+                foreach (DataRow row in results)
+                {
+                    row["c_instructor_confirm"] = true;
+                    SessionWrapper.DeliveryInstructor.AcceptChanges();
+                }
             }
         }
         /// <summary>

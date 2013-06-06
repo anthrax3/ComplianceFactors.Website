@@ -23,7 +23,10 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 }
             }
         }
-
+        /// <summary>
+        /// Populate Fieldnotes
+        /// </summary>
+        /// <param name="fieldNote"></param>
         private void PopulateFieldNotes(string fieldNote)
         {
             try
@@ -37,7 +40,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 lblDescription.Text = fieldnotes.sv_fieldnote_description;
                 lblDateTime.Text = fieldnotes.sv_fieldnote_creation_date;
                 lblSendBy.Text = fieldnotes.sv_fieldnote_location;
-                 
+
             }
             catch (Exception ex)
             {
@@ -62,6 +65,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 int result = SiteViewFieldNotesBLL.UpdateAcknowledgement(SessionWrapper.u_userid, Request.QueryString["id"].ToString());
                 if (result == 0)
                 {
+                    SessionWrapper.isFieldNoteLoad = true;
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
                     divSuccess.InnerText = "Acknowledgement updated Successfully";
@@ -87,7 +91,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                     }
                 }
             }
-
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
 
         protected void btnNoAcknowledge_Click(object sender, EventArgs e)

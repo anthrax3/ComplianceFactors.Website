@@ -20,7 +20,8 @@ namespace ComplicanceFactor.Compliance.SiteView
             SessionWrapper.navigationText = "app_nav_compliance";
             if (!IsPostBack)
             {
-                
+
+                SessionWrapper.isFieldNoteLoad = false;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" +" >&nbsp;"+ LocalResources.GetGlobalLabel("app_siteview_text");
                 BindFieldNotes();
@@ -30,6 +31,11 @@ namespace ComplicanceFactor.Compliance.SiteView
                 BindJobTraining();
                 lblTrainingPageOf.Text = "of " + (gvJobTrainingDetails.PageCount).ToString();
                 
+            }
+            if (SessionWrapper.isFieldNoteLoad == true)
+            {
+                BindFieldNotes();
+                SessionWrapper.isFieldNoteLoad = false;
             }
            
         }

@@ -93,9 +93,9 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                 {
                     dtUserInfo.Rows[i]["sv_fieldnote_is_need_acknowledged"] = false;
                 }
-                i = i+1;
+                i = i + 1;
                 dtUserInfo.AcceptChanges();
-            }          
+            }
             if (dtUserInfo.Rows.Count > 0)
             {
                 //if (Request.QueryString["CreatedBy"] == SessionWrapper.u_userid)
@@ -158,6 +158,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                     int result = SiteViewFieldNotesBLL.CreateFieldNotesSent(createField);
                     if (result == 0)
                     {
+                        SessionWrapper.isFieldNoteLoad = true;
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
                         divSuccess.InnerText = "Send Successfully";
@@ -177,6 +178,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                         }
                     }
                 }
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
                 //}
             }
         }

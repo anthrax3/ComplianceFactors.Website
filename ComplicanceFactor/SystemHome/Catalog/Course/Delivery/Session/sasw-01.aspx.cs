@@ -11,13 +11,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {
     public partial class sasw_01 : BasePage
     {
+        #region
+        private static bool result;
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
 
             try
             {
                 //Hide validation summary on other popup appear
-                vs_sand.Style.Add("display", "none");
+                //vs_sand.Style.Add("display", "none");
                 if (!IsPostBack)
                 {
                     //clear session 
@@ -156,15 +159,25 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 var rows = SessionWrapper.TempDeliveryInstructor.Select("c_user_id_fk='" + c_user_id_fk + "'");
                 var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
                 SessionWrapper.TempDeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
-                SessionWrapper.TempDeliveryInstructor.AcceptChanges();
             }
 
-            CultureInfo culture = new CultureInfo("en-US");
-            //Create session without recurrance parameter
-            CreateSession(txtStartDate.Text, txtEndDate.Text);
-            
-            //Close fancybox
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+            result = SystemCatalogBLL.checkMaximumOnePrimaryInstructors(ConvertDataTableToXml(SessionWrapper.TempDeliveryInstructor));
+            if (!result)
+            {
+                divError.Style.Add("display", "inline");
+                divError.InnerHtml = "Error:Please select maximum one primary instructor per session";
+            }
+            else
+            {
+                //var row1 = SessionWrapper.TempDeliveryInstructor.Select("c_instructor_type_id_fk);
+                //var getrow = SessionWrapper.TempDeliveryInstructor.Select("c_instructor_type_id_fk='" + nnn + "'");
+                CultureInfo culture = new CultureInfo("en-US");
+                //Create session without recurrance parameter
+                CreateSession(txtStartDate.Text, txtEndDate.Text);
+
+                //Close fancybox
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+            }
         }
         /// <summary>
         /// CreateSession

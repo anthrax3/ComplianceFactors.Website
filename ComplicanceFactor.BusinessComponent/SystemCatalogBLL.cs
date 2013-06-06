@@ -2372,6 +2372,26 @@ namespace ComplicanceFactor.BusinessComponent
 
         }
 
+      /// <summary>
+      /// check maximum one primary instructor per session
+      /// </summary>
+      /// <param name="c_session_instructor"></param>
+      /// <returns></returns>
+        public static bool checkMaximumOnePrimaryInstructors(string c_session_instructor)
+        {
+            Hashtable htInsertSessionInstructor = new Hashtable();
+            htInsertSessionInstructor.Add("@c_session_instructor", c_session_instructor);
+            try
+            {
+                int res = DataProxy.FetchSPOutput("c_course_check_max_one_primary_instructor", htInsertSessionInstructor);
+                return res == 1 ? true : false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
 
     }
 }

@@ -6384,6 +6384,25 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["Selected_delivery"] = value;
             }
         }
+        public static bool  isFieldNoteLoad
+        {
+            get
+            {
+                if (HttpContext.Current.Session["isFieldNoteLoad"] != null)
+                {
+                    return Convert.ToBoolean(HttpContext.Current.Session["isFieldNoteLoad"]);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["isFieldNoteLoad"] = value;
+            }
+        }
+
 
         public static void clearsession()
         {

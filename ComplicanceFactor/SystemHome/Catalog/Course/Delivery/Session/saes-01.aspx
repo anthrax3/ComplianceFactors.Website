@@ -292,12 +292,25 @@
             }
         }    
     </script>
+    <script type="text/javascript">
+        function stop_rebind_for_instructor(id) {
+            alert(id);
+            if (id == "ContentPlaceHolder1_btnSaveSessionInformation") {
+                document.getElementById('<%=hdValue.ClientID %>').value = "0";
+            }
+            else {
+                document.getElementById('<%=hdValue.ClientID %>').value = "1";
+            }
+        }
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server">
     </asp:ToolkitScriptManager>
     <div class="div_header_940">
         <%=LocalResources.GetLabel("app_session_text")%>:
     </div>
     <div class="div_controls font_1">
+        <asp:HiddenField ID="hdValue" runat="server" />
+        <div id="divError" runat="server" class="msgarea_error" style="display: none;"></div>
         <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
             ValidationGroup="saes" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
         <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
@@ -479,7 +492,7 @@
         <div>
             <asp:GridView ID="gvInstructor" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
-                AutoGenerateColumns="False" onrowdatabound="gvInstructor_RowDataBound">
+                AutoGenerateColumns="False" onrowdatabound="gvInstructor_RowDataBound" DataKeyNames="c_user_id_fk">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -529,7 +542,7 @@
                 <td align="left">
                     <asp:Button ID="btnSaveSessionInformation" ValidationGroup="saes" CssClass="cursor_hand"
                         runat="server" Text="<%$ LabelResourceExpression: app_save_session_information_text %>"
-                        OnClick="btnSaveSessionInformation_Click" />
+                        OnClick="btnSaveSessionInformation_Click" OnClientClick="javascript:stop_rebind_for_instructor(this.id)" />
                 </td>
                 <td class="textbox_long">
                     &nbsp;

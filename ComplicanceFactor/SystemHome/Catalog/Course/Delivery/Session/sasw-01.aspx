@@ -483,15 +483,17 @@
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
+    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
+        ValidationGroup="sasw"></asp:ValidationSummary>
+    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+        ValidationGroup="sasw" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
+    <asp:HiddenField ID="hdValue" runat="server" />
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    </div>
     <div class="div_header_940">
         <%=LocalResources.GetLabel("app_session_text")%>:
     </div>
     <div class="div_controls font_1">
-        <asp:HiddenField ID="hdValue" runat="server" />
-        <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
-            ValidationGroup="sasw" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
-        <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
-            ValidationGroup="sasw"></asp:ValidationSummary>
         <br />
         <table>
             <tr>

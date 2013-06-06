@@ -185,7 +185,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             SessionWrapper.TempDeliveryResource = null;
             SessionWrapper.TempDeliveryMaterial = null;
             SessionWrapper.TempDeliveryInstructor = null;
-
+            //SessionWrapper.DeliveryInstructor = null;
 
         }
         /// <summary>
@@ -1134,7 +1134,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 DataTable dtCopySession = dvcopySession.ToTable();
                 DataRow row;
                 row = SessionWrapper.TempDeliverySessions.NewRow();
-                row["c_session_system_id_pk"] = Guid.NewGuid().ToString();
+                string c_session_new_id = Guid.NewGuid().ToString();
+                row["c_session_system_id_pk"] = c_session_new_id;
                 row["c_session_id_pk"] = dtCopySession.Rows[0]["c_session_id_pk"].ToString()+"_copy";
                 row["c_delivery_id_fk"] = dtCopySession.Rows[0]["c_delivery_id_fk"].ToString();
                 row["c_session_title"] = dtCopySession.Rows[0]["c_session_title"].ToString();
@@ -1163,20 +1164,31 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 SessionWrapper.TempDeliverySessions.Rows.Add(row);
                 SessionWrapper.TempDeliverySessions.AcceptChanges();
 
-                var rows = SessionWrapper.TempDeliveryInstructor.Select("c_session_id_fk='" + c_session_system_id_pk + "'");
-                var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
+                //var rows = SessionWrapper.TempDeliveryInstructor.Select("c_session_id_fk='" + c_session_system_id_pk + "'");
+                //var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
 
-                DataRow rowInstrctor;
-                rowInstrctor = SessionWrapper.DeliveryInstructor.NewRow();
-                rowInstrctor["c_instructor_system_id_pk"] = Guid.NewGuid().ToString();
-                rowInstrctor["c_user_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_user_id_fk"];
-                rowInstrctor["c_instructor_name"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_instructor_name"];
-                rowInstrctor["c_session_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_session_id_fk"];
-                rowInstrctor["c_delivery_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_delivery_id_fk"];
-                rowInstrctor["c_instructor_confirm"] = false;
-                rowInstrctor["c_instructor_type_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"];
-                SessionWrapper.DeliveryInstructor.Rows.Add(rowInstrctor);
-                SessionWrapper.DeliveryInstructor.AcceptChanges();
+                var rows = SessionWrapper.DeliveryInstructor.Select("c_session_id_fk='" + c_session_system_id_pk + "'");
+              
+                for( int i=0;i<rows.Length;i++)
+                {
+
+                    var indexOfRow = SessionWrapper.DeliveryInstructor.Rows.IndexOf(rows[i]);
+                    DataRow rowInstrctor;
+                    rowInstrctor = SessionWrapper.DeliveryInstructor.NewRow();
+                    rowInstrctor["c_instructor_system_id_pk"] = Guid.NewGuid().ToString();
+                    rowInstrctor["c_user_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_user_id_fk"];
+                    rowInstrctor["c_instructor_name"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_instructor_name"];
+                    rowInstrctor["c_session_id_fk"] = c_session_new_id;
+                    rowInstrctor["c_delivery_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_delivery_id_fk"];
+                    rowInstrctor["c_instructor_confirm"] = true;
+                    rowInstrctor["c_instructor_type_id_fk"] = SessionWrapper.DeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"];
+                    SessionWrapper.DeliveryInstructor.Rows.Add(rowInstrctor);
+                    SessionWrapper.DeliveryInstructor.AcceptChanges();
+                }
+                
+                
+
+
 
                 ConvertDataTables removeDuplicaterow = new ConvertDataTables();
                 if (SessionWrapper.TempDeliverySessions.Rows.Count > 0)

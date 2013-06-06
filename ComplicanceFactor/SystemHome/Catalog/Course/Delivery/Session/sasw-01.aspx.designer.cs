@@ -40,13 +40,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// hdValue control.
+        /// vs_sand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdValue;
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_sand;
         
         /// <summary>
         /// cvValidateDate control.
@@ -58,13 +58,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup {
         protected global::System.Web.UI.WebControls.CustomValidator cvValidateDate;
         
         /// <summary>
-        /// vs_sand control.
+        /// hdValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_sand;
+        protected global::System.Web.UI.WebControls.HiddenField hdValue;
+        
+        /// <summary>
+        /// divError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
         /// rfvSessionId control.
