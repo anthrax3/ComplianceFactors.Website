@@ -26,6 +26,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
 
                 try
                 {
+                    lblApprovalWorkflowId.Text = GetsequenceId();
                     //Bind Status
                     ddlStatus.DataSource = SystemApprovalWorkflowBLL.GetApprovalWorkflowstatus(SessionWrapper.CultureName, "saanawn-01");
                     ddlStatus.DataBind();
@@ -97,7 +98,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
             //WorkStartTime.Date = Convert.ToDateTime(miris.c_osha_301_work_start_time);
            // SessionWrapper.casedate = miris.c_temp_case_date;
             //lblCaseDate.Text = SessionWrapper.casedate.ToString("MM/dd/yyyy hh:mm tt");
-            createApprovalWorkFlow.s_approval_workflow_id = txtApprovalWorkflowId.Text;
+            lblApprovalWorkflowId.Text = GetsequenceId();
+            createApprovalWorkFlow.s_approval_workflow_id = lblApprovalWorkflowId.Text;
             createApprovalWorkFlow.s_approval_workflow_status_id_fk = ddlStatus.SelectedValue;
             createApprovalWorkFlow.s_first_level_status = chkFirstLevelApprover.Checked;
             createApprovalWorkFlow.s_second_level_status = chkSecondLevelApprover.Checked;
@@ -232,7 +234,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
 
             SystemApprovalWorkflow approvalWorkFlow = new SystemApprovalWorkflow();
             approvalWorkFlow = SystemApprovalWorkflowBLL.GetApprovalWorkflow(approvalWorkflowId);
-            txtApprovalWorkflowId.Text = approvalWorkFlow.s_approval_workflow_id + "_Copy";
+            lblApprovalWorkflowId.Text = GetsequenceId();
+            //txtApprovalWorkflowId.Text = approvalWorkFlow.s_approval_workflow_id + "_Copy";
             ddlStatus.SelectedValue = approvalWorkFlow.s_approval_workflow_status_id_fk;
             ddlFirstLevelApprover.SelectedValue = approvalWorkFlow.s_first_level_approver_id_fk;
             ddlSecondLevelApprover.SelectedValue = approvalWorkFlow.s_second_level_approver_id_fk;
@@ -366,6 +369,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
             SessionWrapper.s_specific_user_for_second_level_text = "";
             SessionWrapper.s_specific_user_for_third_level_id_fk = "";
             SessionWrapper.s_specific_user_for_third_level_text = "";
+        }
+
+        private static string GetsequenceId()
+        {
+            SystemApprovalWorkflow approval= new SystemApprovalWorkflow();
+            approval = SystemApprovalWorkflowBLL.GetApprovalWorkflowId();
+            return approval.s_approval_workflow_id;
         }
     }
 }

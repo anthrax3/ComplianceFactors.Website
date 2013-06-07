@@ -121,7 +121,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
         {
             SystemApprovalWorkflow approvalWorkFlow = new SystemApprovalWorkflow();
             approvalWorkFlow = SystemApprovalWorkflowBLL.GetApprovalWorkflow(editApprovalWorkflow);
-            txtApprovalWorkflowId.Text = approvalWorkFlow.s_approval_workflow_id;
+            lblApprovalWorkflowId.Text = approvalWorkFlow.s_approval_workflow_id;
             ddlStatus.SelectedValue = approvalWorkFlow.s_approval_workflow_status_id_fk;
             ddlFirstLevelApprover.SelectedValue = approvalWorkFlow.s_first_level_approver_id_fk;
             ddlSecondLevelApprover.SelectedValue = approvalWorkFlow.s_second_level_approver_id_fk;
@@ -222,7 +222,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
         {
             SystemApprovalWorkflow updateApprovalWorkFlow = new SystemApprovalWorkflow();
             updateApprovalWorkFlow.s_approval_workflow_system_id_pk = editApprovalWorkflow;
-            updateApprovalWorkFlow.s_approval_workflow_id = txtApprovalWorkflowId.Text;
+            updateApprovalWorkFlow.s_approval_workflow_id = lblApprovalWorkflowId.Text;
             updateApprovalWorkFlow.s_approval_workflow_status_id_fk = ddlStatus.SelectedValue;
             updateApprovalWorkFlow.s_first_level_status = chkFirstLevelApprover.Checked;
             updateApprovalWorkFlow.s_second_level_status = chkSecondLevelApprover.Checked;

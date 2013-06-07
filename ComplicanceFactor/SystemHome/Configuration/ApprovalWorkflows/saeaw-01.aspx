@@ -176,11 +176,12 @@
                     <td>
                        * <%=LocalResources.GetLabel("app_approval_workflow_id_text")%>:
                     </td>
-                    <td>
-                         <asp:RequiredFieldValidator ID="rfvApprovalWorkflowId" runat="server" ValidationGroup="saeaw"
+                    <td class="align_left">
+                        <%-- <asp:RequiredFieldValidator ID="rfvApprovalWorkflowId" runat="server" ValidationGroup="saeaw"
                             ControlToValidate="txtApprovalWorkflowId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        <asp:TextBox ID="txtApprovalWorkflowId" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </asp:RequiredFieldValidator>--%>
+                       <%-- <asp:TextBox ID="txtApprovalWorkflowId" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
+                        <asp:Label ID="lblApprovalWorkflowId" CssClass="textbox_long" runat="server"></asp:Label>
                     </td>
                     <td>
                         &nbsp;

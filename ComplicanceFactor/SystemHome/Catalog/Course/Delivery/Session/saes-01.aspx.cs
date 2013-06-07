@@ -48,10 +48,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     }
 
                     //Delete if confirm instructor is false
-                    var rows = SessionWrapper.DeliveryInstructor.Select("c_instructor_confirm= '" + false + "'");
-                    foreach (var row in rows)
-                        row.Delete();
-                    SessionWrapper.DeliveryInstructor.AcceptChanges();
+                    //var rows = SessionWrapper.DeliveryInstructor.Select("c_instructor_confirm= '" + false + "'");
+                    //foreach (var row in rows)
+                    //    row.Delete();
+                    //SessionWrapper.DeliveryInstructor.AcceptChanges();
 
                 }
                 //Set id for c_session_system_id_pk

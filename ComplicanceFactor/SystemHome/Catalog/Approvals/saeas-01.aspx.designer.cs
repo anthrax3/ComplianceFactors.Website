@@ -121,13 +121,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.GridView gvApprovalWorkflowDetails;
         
         /// <summary>
-        /// btnFooterSave control.
+        /// btnSave Approval WorkFlow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterSave;
+        protected global::System.Web.UI.WebControls.Button btnSaveApprovalWorkFlow;
         
         /// <summary>
         /// btnFooterReset control.

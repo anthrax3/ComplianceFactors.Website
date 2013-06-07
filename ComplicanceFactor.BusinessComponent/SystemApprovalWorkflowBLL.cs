@@ -551,5 +551,28 @@ namespace ComplicanceFactor.BusinessComponent
         }
 
 
+
+        /// <summary>
+        /// Get approval sequence Id usind Date
+        /// </summary>
+        /// <returns></returns>
+        public static SystemApprovalWorkflow GetApprovalWorkflowId()
+        {
+            Hashtable htUpdateApprovalWorkflowStatus = new Hashtable();
+            SystemApprovalWorkflow approval = new SystemApprovalWorkflow();
+           
+            try
+            {
+              DataTable dtApproval=  DataProxy.FetchDataTable("s_sp_create_approval_workflow_id");
+              approval.s_approval_workflow_id = dtApproval.Rows[0]["approvalworkflowId"].ToString();
+              return approval;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
     }
 }

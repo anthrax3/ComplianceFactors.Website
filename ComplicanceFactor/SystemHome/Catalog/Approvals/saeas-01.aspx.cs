@@ -18,6 +18,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
         private static string s_todo_system_id_pk;
         private static string e_enroll_delivery_id_fk;
         private static string e_enroll_user_id_fk;
+        private static string deliveryID;
+        private static string userId;
         #endregion
         DataSet dsApprovalsQueue = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
@@ -46,6 +48,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
             lblTrainingName.Text = dsApprovalsQueue.Tables[0].Rows[0]["TrainingTitle"].ToString();
             lblRequestDate.Text = dsApprovalsQueue.Tables[0].Rows[0]["RequestDate"].ToString();
             lblRequestType.Text = dsApprovalsQueue.Tables[0].Rows[0]["RequiredType"].ToString();
+            deliveryID = dsApprovalsQueue.Tables[0].Rows[0]["e_enroll_delivery_id_fk"].ToString();
+            userId = dsApprovalsQueue.Tables[0].Rows[0]["e_enroll_user_id_fk"].ToString();
 
             gvApprovalWorkflowDetails.DataSource = dsApprovalsQueue.Tables[1];
             gvApprovalWorkflowDetails.DataBind();
@@ -92,7 +96,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 e_enroll_user_id_fk = gvApprovalWorkflowDetails.DataKeys[index].Values[3].ToString();
                 ////send Enrollment Approve Email and Sms 
                 int result = EnrollmentBLL.UpdateApprovalsTodos(e_enroll_approval_system_id_pk, s_todo_system_id_pk);
-                ApproveEmailConfirmation(e_enroll_delivery_id_fk, e_enroll_user_id_fk);
+               
             }
             else if (e.CommandName.Equals("Deny"))
             {
@@ -249,5 +253,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 }
             }
         }
+
+        protected void btnSaveApprovalWorkFlow_Click(object sender, EventArgs e)
+        {
+           dsApprovalsQueue = SystemApprovalBLL.GetApprovalsQueue(e_enroll_approval_system_id_pk);
+           DataTable dtApprovalsQueue = dsApprovalsQueue.Tables[2];
+           if (dtApprovalsQueue.Rows.Count > 0)
+           {
+               ApproveEmailConfirmation(deliveryID, userId);
+           }
+            
+        }
+
+        
     }
 }

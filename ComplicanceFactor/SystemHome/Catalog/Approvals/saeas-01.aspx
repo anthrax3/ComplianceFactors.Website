@@ -134,11 +134,11 @@
                                     </td>
                                     <td class="align_right">
                                         <asp:Button ID="btnDeny" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                            CommandName="Deny" runat="server" Text="Deny" />
+                                            CommandName="Deny"  Text="Deny" />
                                     </td>
                                     <td class="align_right">
                                         <asp:Button ID="btnApprove" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                            CommandName="Approve" runat="server" Text="Approve" />
+                                            CommandName="Approve"  Text="Approve" />
                                     </td>
                                 </tr>
                             </table>
@@ -156,7 +156,8 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnFooterSave" runat="server" Text="Save Approval WorkFlow" />
+                        <asp:Button ID="btnSaveApprovalWorkFlow" runat="server" 
+                            Text="Save Approval WorkFlow" onclick="btnSaveApprovalWorkFlow_Click"/>
                     </td>
                     <td>
                     </td>
