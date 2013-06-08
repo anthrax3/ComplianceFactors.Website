@@ -6,6 +6,7 @@ using System.Data;
 using System.Collections;
 using ComplicanceFactor.BusinessComponent;
 using System.Web.UI.WebControls;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {
@@ -164,8 +165,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             result = SystemCatalogBLL.checkMaximumOnePrimaryInstructors(ConvertDataTableToXml(SessionWrapper.TempDeliveryInstructor));
             if (!result)
             {
-                divError.Style.Add("display", "inline");
-                divError.InnerHtml = "Error:Please select maximum one primary instructor per session";
+                divError.Style.Add("display", "Block");
+                divError.InnerHtml = LocalResources.GetText("app_instructor_type_in_session_error_wrong");
             }
             else
             {

@@ -5,6 +5,26 @@
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#app_nav_system').addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
+
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
+
+                $('#app_nav_system').addClass('selected');
+                return false;
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
         $(function () {
             $('#<%=gvDocumentSearchResults.ClientID %>')
 			.tablesorter({ headers: { 4: { sorter: false }, 5: { sorter: false }, 6: { sorter: false}} });

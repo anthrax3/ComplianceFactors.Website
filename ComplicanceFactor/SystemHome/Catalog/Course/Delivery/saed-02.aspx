@@ -823,7 +823,7 @@
                                         </td>
                                        <td class="gridview_row_width_1" align="center">
                                             <asp:Button ID="btnCopy" runat="server" CommandName='Copy' CommandArgument='<%#DataBinder.Eval(Container,"RowIndex") %>'
-                                                OnClientClick='javascript:checkCopy();' Text="Copy" />
+                                                OnClientClick='javascript:checkCopy();' Text="<%$ LabelResourceExpression:app_copy_button_text %>" />
                                         </td>
                                         <td class="gridview_row_width_1" align="center">
                                             <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'

@@ -4,6 +4,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
+
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
+
+                $(navigationSelectedValue).addClass('selected');
+                return false;
+            });
+        });
+
+    </script>
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div>
             <table class="table_td_300">
@@ -14,7 +39,7 @@
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnHeaderReset" runat="server" Text="Reset" />
+                        &nbsp;
                     </td>
                     <td>
                     </td>
@@ -114,31 +139,33 @@
             Approval Workflow Details:
         </div>
         <br />
-        <div>
+        <div class="div_controls_from_left font_1">
             <asp:GridView ID="gvApprovalWorkflowDetails" AutoGenerateColumns="false" GridLines="None"
-                ShowHeader="false" ShowFooter="false" runat="server" DataKeyNames="e_enroll_approval_system_id_pk,s_todo_system_id_pk,e_enroll_delivery_id_fk,e_enroll_user_id_fk"
+                CssClass="gridview_width_9" ShowHeader="false" ShowFooter="false" runat="server"
+                DataKeyNames="e_enroll_approval_system_id_pk,s_todo_system_id_pk,e_enroll_delivery_id_fk,e_enroll_user_id_fk"
                 OnRowDataBound="gvApprovalWorkflowDetails_RowDataBound" OnRowCommand="gvApprovalWorkflowDetails_RowCommand">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <table class=" table_td_300 div_controls font_1">
+                            <%--class=" table_td_300 div_controls font_1"--%>
+                            <table width="100%">
                                 <tr>
-                                    <td style="text-align: left;">
+                                    <td style="width: 20%">
                                         <%# Eval("ApproverRole")%>:
                                     </td>
-                                    <td style="text-align: left;">
+                                    <td style="width: 30%">
                                         <%# Eval("ApproverName")%>
                                     </td>
-                                    <td class="gridview_row_width_1">
+                                    <td>
                                         <%# Eval("ApprovalStatus")%>
                                     </td>
                                     <td class="align_right">
                                         <asp:Button ID="btnDeny" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                            CommandName="Deny"  Text="Deny" />
+                                            CommandName="Deny" Text="Deny" />
                                     </td>
-                                    <td class="align_right">
+                                    <td width="20%" class="align_right">
                                         <asp:Button ID="btnApprove" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                            CommandName="Approve"  Text="Approve" />
+                                            CommandName="Approve" Text="Approve" />
                                     </td>
                                 </tr>
                             </table>
@@ -156,13 +183,13 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnSaveApprovalWorkFlow" runat="server" 
-                            Text="Save Approval WorkFlow" onclick="btnSaveApprovalWorkFlow_Click"/>
+                        <asp:Button ID="btnSaveApprovalWorkFlow" runat="server" Text="Save Approval WorkFlow"
+                            OnClick="btnSaveApprovalWorkFlow_Click" />
                     </td>
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnFooterReset" runat="server" Text="Reset" />
+                        &nbsp;
                     </td>
                     <td>
                     </td>

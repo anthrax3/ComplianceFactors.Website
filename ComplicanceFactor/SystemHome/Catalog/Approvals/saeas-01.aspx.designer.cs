@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
     public partial class saeas_01 {
         
         /// <summary>
+        /// hdNav_selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        
+        /// <summary>
         /// btnHeaderSave control.
         /// </summary>
         /// <remarks>
@@ -20,15 +29,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnHeaderSave;
-        
-        /// <summary>
-        /// btnHeaderReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderReset;
         
         /// <summary>
         /// btnHeaderCancel control.
@@ -121,22 +121,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals {
         protected global::System.Web.UI.WebControls.GridView gvApprovalWorkflowDetails;
         
         /// <summary>
-        /// btnSave Approval WorkFlow control.
+        /// btnSaveApprovalWorkFlow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveApprovalWorkFlow;
-        
-        /// <summary>
-        /// btnFooterReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterReset;
         
         /// <summary>
         /// btnFooterCancel control.

@@ -48,13 +48,13 @@
             }
         }        
     </script>
-     <script type="text/javascript" language="javascript">
-         function validateCourse(sender, args) {
-             var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
-             if (gvRows == 0) {
-                 args.IsValid = false;                 
-             }           
-         }        
+    <script type="text/javascript" language="javascript">
+        function validateCourse(sender, args) {
+            var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+            if (gvRows == 0) {
+                args.IsValid = false;
+            }
+        }        
     </script>
     <script type="text/javascript" language="javascript">
         function confirmStatus() {
@@ -178,55 +178,76 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".addEmployee").click(function () {
-            var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
-             if (gvRows == 0) {
-                 args.IsValid = false;                 
-             }           
-             else
-             {
-                 $(".addEmployee").fancybox({
-                'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
-                'showCloseButton': true,
-                'scrolling': 'yes',
-                'autoScale': false,
-                'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false} },
-                'width': 733,
-                'height': 200,
-                'margin': 0,
-                'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': 'sasumsm-01.aspx',
-                'onComplete': function () {
-                    $.fancybox.showActivity();
-                    $('#fancybox-frame').load(function () {
-                        $.fancybox.hideActivity();
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
+                var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+                if (gvRows == 0) {
+                    args.IsValid = false;
+                }
+                else {
+                    $(".addEmployee").fancybox({
+                        'type': 'iframe',
+                        'titlePosition': 'over',
+                        'titleShow': true,
+                        'showCloseButton': true,
+                        'scrolling': 'yes',
+                        'autoScale': false,
+                        'autoDimensions': false,
+                        'helpers': { overlay: { closeClick: false} },
+                        'width': 733,
+                        'height': 200,
+                        'margin': 0,
+                        'padding': 0,
+                        'overlayColor': '#000',
+                        'overlayOpacity': 0.7,
+                        'hideOnOverlayClick': false,
+                        'href': 'sasumsm-01.aspx',
+                        'onComplete': function () {
+                            $.fancybox.showActivity();
+                            $('#fancybox-frame').load(function () {
+                                $.fancybox.hideActivity();
+                                $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                var heightPane = $(this).contents().find('#content').height();
+                                $(this).contents().find('#fancybox-frame').css({
+                                    'height': heightPane + 'px'
 
-                        
-                            })
-                        });
 
-                    }
+                                })
+                            });
 
-                });          
+                        }
 
-        }
+                    });
 
+                }
+
+            });
         });
-});
     </script>
     <script type="text/javascript" language="javascript">
         function getEmployeeCount(sender, args) {
             var gvRows = $("#<%=gvEmployee.ClientID %> tr").length;
             if (gvRows == 0) {
+                args.IsValid = false;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function validateCompletion(sender, args) {
+            var gridCompletion = document.getElementById('<%= gvCompletionInfo.ClientID %>');
+            if (gridCompletion.rows.length > 0) {
+                for (var i = 1; i < gridCompletion.rows.length; i++) {
+                    var inputs = gridCompletion.rows[i].getElementsByTagName('input');
+
+                    if (inputs[0].type == "text") {
+                        if (inputs[0].value == '') {
+
+                            args.IsValid = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            else {
+
                 args.IsValid = false;
             }
         }
@@ -240,6 +261,8 @@
         </asp:ToolkitScriptManager>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp" runat="server"
             ValidationGroup="samcp"></asp:ValidationSummary>
+        <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"
+            ValidationGroup="samcp_completion"></asp:ValidationSummary>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_employee" runat="server"
             ValidationGroup="samcp_employee"></asp:ValidationSummary>
         <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
@@ -248,6 +271,8 @@
             ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
             ValidationGroup="samcp_employee" runat="server" ErrorMessage="Please select course and delivery">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateCompletion" EnableClientScript="true" ClientValidationFunction="validateCompletion"
+            ValidationGroup="samcp_completion" runat="server" ErrorMessage="Please select completion date.">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_catalog_items_text")%>:
@@ -416,7 +441,7 @@
             <table class="table_td_300">
                 <tr>
                     <td class="align_right">
-                        <asp:Button ID="btnProcessMassCompletion" runat="server" ValidationGroup="samcp"
+                        <asp:Button ID="btnProcessMassCompletion" runat="server" ValidationGroup="samcp_completion"
                             Text="<%$ LabelResourceExpression: app_process_mass_completion_button_text %>"
                             OnClick="btnProcessMassCompletion_Click" />
                     </td>

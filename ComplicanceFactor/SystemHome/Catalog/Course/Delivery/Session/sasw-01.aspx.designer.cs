@@ -49,15 +49,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup {
         protected global::System.Web.UI.WebControls.ValidationSummary vs_sand;
         
         /// <summary>
-        /// cvValidateDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvValidateDate;
-        
-        /// <summary>
         /// hdValue control.
         /// </summary>
         /// <remarks>
@@ -128,6 +119,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
+        
+        /// <summary>
+        /// cvValidateDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateDate;
         
         /// <summary>
         /// rfvSessionStartDate control.

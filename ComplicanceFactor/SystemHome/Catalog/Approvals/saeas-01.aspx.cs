@@ -27,9 +27,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
             if (!IsPostBack)
             {
 
+                //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //lblBreadCrumb.Text = "System" + "&nbsp;>&nbsp;" + "Manage Approval Workflow" + "&nbsp;>&nbsp;" + "Edit Approval Workflow Information";
+                //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "Edit Approval Workflow Information"; 
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "System" + "&nbsp;>&nbsp;" + "Manage Approval Workflow" + "&nbsp;>&nbsp;" + "Edit Approval Workflow Information";
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "Edit Approval Workflow Information"; 
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "Edit Approval Workflow Information";
+
                 e_enroll_approval_system_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"].ToString());
                 //Popualte approvals
                 PopulateApprovals(e_enroll_approval_system_id_pk);

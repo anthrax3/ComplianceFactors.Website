@@ -46,7 +46,7 @@
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td>
-                        <%=LocalResources.GetLabel("app_document_type_id_text")%>:
+                        * <%=LocalResources.GetLabel("app_document_type_id_text")%>:
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvDocumentTypeId" runat="server" ValidationGroup="saandoctn"
@@ -57,7 +57,7 @@
                     <td colspan="2">
                     </td>
                     <td>
-                        <%=LocalResources.GetLabel("app_document_type_name_text")%>:
+                        * <%=LocalResources.GetLabel("app_document_type_name_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:RequiredFieldValidator ID="rfvDocumentTypeName" runat="server" ValidationGroup="saandoctn"
@@ -69,7 +69,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLabel("app_description_text")%>:
+                       * <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:RequiredFieldValidator ID="rfvDocumentDescription" runat="server" ValidationGroup="saandoctn"

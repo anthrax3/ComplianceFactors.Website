@@ -22,6 +22,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager2;
         
         /// <summary>
+        /// vs_sand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_sand;
+        
+        /// <summary>
         /// hdValue control.
         /// </summary>
         /// <remarks>
@@ -38,24 +47,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
-        
-        /// <summary>
-        /// cvValidateDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvValidateDate;
-        
-        /// <summary>
-        /// vs_sand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_sand;
         
         /// <summary>
         /// rfvSessionId control.
@@ -110,6 +101,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
+        
+        /// <summary>
+        /// cvValidateDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateDate;
         
         /// <summary>
         /// rfvSessionStartDate control.
