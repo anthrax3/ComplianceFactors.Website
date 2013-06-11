@@ -24,7 +24,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
             {
                 //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_mass_enrollment_text");
-
+                SessionWrapper.Enrollment_courses_curriculum = TempDataTables.TempEnrollmentCourseCurriculum(); 
                 string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
@@ -39,6 +39,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
             {
                 gvCatalog.DataSource = SessionWrapper.Enrollment_courses_curriculum;
                 gvCatalog.DataBind();
+                hdCheckdelivery.Value = "1";
             }
             if (SessionWrapper.MassEnrollment_employees.Rows.Count > 0)
             {

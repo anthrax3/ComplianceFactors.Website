@@ -54,11 +54,12 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="e_enroll_approval_system_id_pk"></param>
         /// <returns></returns>
-        public static DataSet  GetApprovalsQueue(string e_enroll_approval_system_id_pk)
+        public static DataSet  GetApprovalsQueue(string e_enroll_approval_system_id_pk,string e_enroll_user_id_fk)
         {
             Hashtable htGetApprovalsQueue = new Hashtable();
             SystemApproval approval = new SystemApproval();
             htGetApprovalsQueue.Add("@e_enroll_approval_system_id_pk", e_enroll_approval_system_id_pk);
+            htGetApprovalsQueue.Add("@e_enroll_user_id_fk", e_enroll_user_id_fk);
             return DataProxy.FetchDataSet("s_sp_get_approval_queue_info", htGetApprovalsQueue);
             //approval.ApprovalID = dtApprovalQueueInfo.Rows[0]["ApprovalId"].ToString();
             //approval.ApprovalWorkflowName = dtApprovalQueueInfo.Rows[0]["ApprovalWorkflowName"].ToString();

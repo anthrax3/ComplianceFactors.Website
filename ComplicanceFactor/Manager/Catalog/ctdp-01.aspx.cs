@@ -69,7 +69,7 @@ namespace ComplicanceFactor.Manager.Catalog
                         //Get delivery(ies)
                         DataSet dsGetCourseDelivery = new DataSet();
                         dsGetCourseDelivery = SystemCatalogBLL.GetCourseDelivery(SecurityCenter.DecryptText(Request.QueryString["id"]));
-                        gvDeliveries.DataSource = dsGetCourseDelivery.Tables[0];
+                        gvDeliveries.DataSource = dsGetCourseDelivery.Tables[1];
                         gvDeliveries.DataBind();
                     }
                 }

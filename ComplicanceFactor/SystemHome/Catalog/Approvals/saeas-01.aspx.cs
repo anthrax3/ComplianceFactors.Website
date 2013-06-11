@@ -35,17 +35,17 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "Edit Approval Workflow Information";
-
                 e_enroll_approval_system_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"].ToString());
+                e_enroll_user_id_fk = SecurityCenter.DecryptText(Request.QueryString["uid"].ToString());
                 //Popualte approvals
-                PopulateApprovals(e_enroll_approval_system_id_pk);
+                PopulateApprovals(e_enroll_approval_system_id_pk, e_enroll_user_id_fk);
             }
         }
         //Populate Approvals Queue
-        private void PopulateApprovals(string e_enroll_approval_system_id_pk)
+        private void PopulateApprovals(string e_enroll_approval_system_id_pk,string e_enroll_user_id_fk)
         {
-           
-            dsApprovalsQueue = SystemApprovalBLL.GetApprovalsQueue(e_enroll_approval_system_id_pk);
+
+            dsApprovalsQueue = SystemApprovalBLL.GetApprovalsQueue(e_enroll_approval_system_id_pk, e_enroll_user_id_fk);
             lblApprovalID.Text = dsApprovalsQueue.Tables[0].Rows[0]["ApprovalID"].ToString();
             lblApprovalWorkFlowName.Text = dsApprovalsQueue.Tables[0].Rows[0]["ApprovalWorkflowName"].ToString();
             lblEmployeeId.Text = dsApprovalsQueue.Tables[0].Rows[0]["EmployeeId"].ToString();
@@ -118,7 +118,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
 
             }
 
-            PopulateApprovals(e_enroll_approval_system_id_pk);
+            PopulateApprovals(e_enroll_approval_system_id_pk, e_enroll_user_id_fk);
         }
 
 
@@ -262,7 +262,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
 
         protected void btnSaveApprovalWorkFlow_Click(object sender, EventArgs e)
         {
-           dsApprovalsQueue = SystemApprovalBLL.GetApprovalsQueue(e_enroll_approval_system_id_pk);
+            dsApprovalsQueue = SystemApprovalBLL.GetApprovalsQueue(e_enroll_approval_system_id_pk, e_enroll_user_id_fk);
            DataTable dtApprovalsQueue = dsApprovalsQueue.Tables[2];
            if (dtApprovalsQueue.Rows.Count > 0)
            {

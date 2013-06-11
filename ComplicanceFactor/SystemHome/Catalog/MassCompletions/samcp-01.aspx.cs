@@ -24,6 +24,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 SessionWrapper.Compltion_employees = null;
                 SessionWrapper.Selected_delivery = null;
 
+                SessionWrapper.Compltion_courses = TempDataTables.TempCompletionCourse();
                 SessionWrapper.Selected_delivery = TempSelectedDelivery();
 
                 string navigationText;
@@ -85,61 +86,71 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
 
         protected void btnProcessMassCompletion_Click(object sender, EventArgs e)
         {
-            string attendanceStatus = string.Empty;
-            string PassingStatus = string.Empty;
-            string grade = string.Empty;    
-       
-            StringBuilder sbSelectedCourse = new StringBuilder();
-            StringBuilder sbSelectedEmployee = new StringBuilder();
-            StringBuilder sbSelectedCompletion = new StringBuilder();
-            StringBuilder sbSelectedCompletionDate = new StringBuilder();
-            //set the seleceted delivery 
-            foreach (GridViewRow row in gvCatalog.Rows)
+
+            if (gvCatalog.Rows.Count < 0 || gvCompletionInfo.Rows.Count < 0 || gvEmployee.Rows.Count < 0)
             {
-                string c_course_system_id_pk = gvCatalog.DataKeys[row.RowIndex][0].ToString();
-                DropDownList ddlDelivery = (DropDownList)row.FindControl("ddlDelivery");
-                var rows = SessionWrapper.Compltion_courses.Select("c_course_system_id_pk = '" + c_course_system_id_pk + "'");
-                foreach (var r in rows)
-                {
-                    r["c_delivery_system_id_pk"] = ddlDelivery.SelectedValue;
-                    sbSelectedCourse.Append(r["c_course_title"].ToString() + " (" + r["c_course_id_pk"].ToString() + ")<br/>");
-                    SessionWrapper.Compltion_courses.AcceptChanges();
-                }
+                divError.Style.Add("display", "block");
+                divError.InnerText = "Please select the course and delivery and employee";
             }
-            //get the selected employee
-            foreach (GridViewRow row in gvEmployee.Rows)
+            else
             {
-                string u_user_id_pk = gvEmployee.DataKeys[row.RowIndex][0].ToString();
-                var rows = SessionWrapper.Compltion_employees.Select("u_user_id_pk ='" + u_user_id_pk + "'");
-                foreach (var r in rows)
+
+                string attendanceStatus = string.Empty;
+                string PassingStatus = string.Empty;
+                string grade = string.Empty;
+
+                StringBuilder sbSelectedCourse = new StringBuilder();
+                StringBuilder sbSelectedEmployee = new StringBuilder();
+                StringBuilder sbSelectedCompletion = new StringBuilder();
+                StringBuilder sbSelectedCompletionDate = new StringBuilder();
+                //set the seleceted delivery 
+                foreach (GridViewRow row in gvCatalog.Rows)
                 {
-                    sbSelectedEmployee.Append(r["u_username"].ToString() + r["u_hris_employee_id"].ToString() + "<br/>");
+                    string c_course_system_id_pk = gvCatalog.DataKeys[row.RowIndex][0].ToString();
+                    DropDownList ddlDelivery = (DropDownList)row.FindControl("ddlDelivery");
+                    var rows = SessionWrapper.Compltion_courses.Select("c_course_system_id_pk = '" + c_course_system_id_pk + "'");
+                    foreach (var r in rows)
+                    {
+                        r["c_delivery_system_id_pk"] = ddlDelivery.SelectedValue;
+                        sbSelectedCourse.Append(r["c_course_title"].ToString() + " (" + r["c_course_id_pk"].ToString() + ")<br/>");
+                        SessionWrapper.Compltion_courses.AcceptChanges();
+                    }
                 }
-            }
-            //To get the completion status for show in popup
-            foreach (GridViewRow row in gvCompletionInfo.Rows)
-            {
-                DropDownList ddlAttendanceStatus = (DropDownList)row.FindControl("ddlAttendanceStatus");
-                DropDownList ddlPassignStatus = (DropDownList)row.FindControl("ddlPassignStatus");
-                DropDownList ddlGrade = (DropDownList)row.FindControl("ddlGrade");
-                TextBox txtCompletionDate = (TextBox)row.FindControl("txtCompletionDate");
-                Label lblDelivery = (Label)row.FindControl("lblDeliveryIdName");
-                attendanceStatus = ddlAttendanceStatus.SelectedItem.Text;
-                PassingStatus = ddlPassignStatus.SelectedItem.Text;
-                if (!string.IsNullOrEmpty(ddlGrade.SelectedValue))
+                //get the selected employee
+                foreach (GridViewRow row in gvEmployee.Rows)
                 {
-                    grade = ddlGrade.SelectedItem.Text;
+                    string u_user_id_pk = gvEmployee.DataKeys[row.RowIndex][0].ToString();
+                    var rows = SessionWrapper.Compltion_employees.Select("u_user_id_pk ='" + u_user_id_pk + "'");
+                    foreach (var r in rows)
+                    {
+                        sbSelectedEmployee.Append(r["u_username"].ToString() + r["u_hris_employee_id"].ToString() + "<br/>");
+                    }
                 }
-                sbSelectedCompletionDate.Append(lblDelivery.Text + " : " + txtCompletionDate.Text + "<br/>");
-                sbSelectedCompletion.Append(lblDelivery.Text + " : " + attendanceStatus + " - " + PassingStatus + " - " + grade + "<br/>");
+                //To get the completion status for show in popup
+                foreach (GridViewRow row in gvCompletionInfo.Rows)
+                {
+                    DropDownList ddlAttendanceStatus = (DropDownList)row.FindControl("ddlAttendanceStatus");
+                    DropDownList ddlPassignStatus = (DropDownList)row.FindControl("ddlPassignStatus");
+                    DropDownList ddlGrade = (DropDownList)row.FindControl("ddlGrade");
+                    TextBox txtCompletionDate = (TextBox)row.FindControl("txtCompletionDate");
+                    Label lblDelivery = (Label)row.FindControl("lblDeliveryIdName");
+                    attendanceStatus = ddlAttendanceStatus.SelectedItem.Text;
+                    PassingStatus = ddlPassignStatus.SelectedItem.Text;
+                    if (!string.IsNullOrEmpty(ddlGrade.SelectedValue))
+                    {
+                        grade = ddlGrade.SelectedItem.Text;
+                    }
+                    sbSelectedCompletionDate.Append(lblDelivery.Text + " : " + txtCompletionDate.Text + "<br/>");
+                    sbSelectedCompletion.Append(lblDelivery.Text + " : " + attendanceStatus + " - " + PassingStatus + " - " + grade + "<br/>");
+                }
+                string pinNumber = UserBLL.GetUserPIN(SessionWrapper.u_userid);
+                txtPin.Text = pinNumber;
+                SelectedCourses.InnerHtml = sbSelectedCourse.ToString();
+                selectedEmployee.InnerHtml = sbSelectedEmployee.ToString();
+                lblStatus.Text = sbSelectedCompletion.ToString();
+                lblCompletionDate.Text = sbSelectedCompletionDate.ToString();
+                mpeCurriculumNotes.Show();
             }
-            string pinNumber = UserBLL.GetUserPIN(SessionWrapper.u_userid);
-            txtPin.Text = pinNumber;
-            SelectedCourses.InnerHtml = sbSelectedCourse.ToString();
-            selectedEmployee.InnerHtml = sbSelectedEmployee.ToString();
-            lblStatus.Text = sbSelectedCompletion.ToString();
-            lblCompletionDate.Text = sbSelectedCompletionDate.ToString();
-            mpeCurriculumNotes.Show();
         }
 
         protected void gvCompletionInfo_RowDataBound(object sender, GridViewRowEventArgs e)

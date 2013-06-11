@@ -401,6 +401,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                                 }
                             }
                         }
+                        UpdateCurriculumPercentage(courseId, u_user_id_pk);
                     }
                     else
                     {
@@ -461,6 +462,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                                 //insert the t_tb_session_transcripts table
                                 InsertSessionTranscripts(u_user_id_pk, ddlAttendance.SelectedValue, passingStatus, grade, txtscore.Text);
                             }
+                            UpdateCurriculumPercentage(courseId, u_user_id_pk);
                         }
                         else
                         {
@@ -664,33 +666,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             // The Number of Completed Courses divided by
                             //Number of Required Courses (for each path if there are more than 1 and then take
                             //the lowest %).
-                            DataTable IsCuuriculum = CheckCourseInCurriculum(courseId, u_user_id_pk);
-
-                            if (IsCuuriculum.Rows.Count > 0)
-                            {
-                                for (int i = 0; i < IsCuuriculum.Rows.Count; i++)
-                                {
-                                    string curriculumId = IsCuuriculum.Rows[i]["c_curricula_id_fk"].ToString();
-                                    try
-                                    {
-                                        int result = ManageCompletionBLL.UpdateCurriculumPercentage(curriculumId, u_user_id_pk);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        if (ConfigurationWrapper.LogErrors == true)
-                                        {
-                                            if (ex.InnerException != null)
-                                            {
-                                                Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message, ex.InnerException.Message);
-                                            }
-                                            else
-                                            {
-                                                Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message);
-                                            }
-                                        }
-                                    }
-                                }
-                            }                           
+                            
+                            //
+                            //Update Curriculum Percentage
+                            UpdateCurriculumPercentage(courseId, u_user_id_pk);                        
                         }                     
                     }
                     string employeeNumber;
@@ -923,6 +902,37 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 }
             }
 
+        }
+
+        private void UpdateCurriculumPercentage(string courseId, string UserId)
+        {
+            DataTable IsCuuriculum = CheckCourseInCurriculum(courseId, UserId);
+
+            if (IsCuuriculum.Rows.Count > 0)
+            {
+                for (int i = 0; i < IsCuuriculum.Rows.Count; i++)
+                {
+                    string curriculumId = IsCuuriculum.Rows[i]["c_curricula_id_fk"].ToString();
+                    try
+                    {
+                        int result = ManageCompletionBLL.UpdateCurriculumPercentage(curriculumId, UserId);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("samcmcp-01.aspx", ex.Message);
+                            }
+                        }
+                    }
+                }
+            } 
         }
 
         //protected void gvsearchDetails_RowCommand(object sender, GridViewCommandEventArgs e)

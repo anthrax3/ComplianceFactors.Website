@@ -50,7 +50,7 @@
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
                 runat="server" EmptyDataText="No Result Found" AutoGenerateColumns="False" AllowPaging="true"
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" 
-                PageSize="10" DataKeyNames="e_enroll_approval_system_id_pk" 
+                PageSize="10" DataKeyNames="e_enroll_approval_system_id_pk,e_enroll_user_id_fk" 
                 onrowcommand="gvsearchDetails_RowCommand">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"

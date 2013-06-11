@@ -307,7 +307,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
         protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
             //DataTable dtInstructorCourse = new DataTable();
-            SessionWrapper.Enrollment_courses_curriculum = TempDataTables.TempEnrollmentCourseCurriculum();            
+                       
             foreach (GridViewRow grdResourceRow in gvsearchDetails.Rows)
             {
                 CheckBox chkSelect = (CheckBox)(grdResourceRow.Cells[1].FindControl("chkSelect"));

@@ -329,7 +329,7 @@ namespace ComplicanceFactor.Manager.Catalog
                     string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
                     string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
                     string type = gvsearchDetails.DataKeys[index].Values[1].ToString();
-                    if (type == "course")
+                    if (type == "Course")
                     {
                         Response.Redirect("~/Manager/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(system_id) + "&ca=" + SecurityCenter.EncryptText(c_course_approve_req), false);
                     }

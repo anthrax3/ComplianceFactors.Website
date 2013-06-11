@@ -308,7 +308,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
         protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
             //DataTable dtInstructorCourse = new DataTable();
-            SessionWrapper.Compltion_courses = TempDataTables.TempCompletionCourse();            
+                       
             foreach (GridViewRow grdResourceRow in gvsearchDetails.Rows)
             {
                 CheckBox chkSelect = (CheckBox)(grdResourceRow.Cells[1].FindControl("chkSelect"));

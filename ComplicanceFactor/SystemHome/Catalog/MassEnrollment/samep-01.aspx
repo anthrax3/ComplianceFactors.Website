@@ -8,8 +8,9 @@
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript">
+    <script type="text/javascript">
 
             $(document).ready(function () {
                 var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
@@ -73,6 +74,8 @@
             // Get Employee Popup
 
             $(".addemployee").click(function () {
+                var hdCheckdelivery = document.getElementById('<%= hdCheckdelivery.ClientID %>');
+                hdCheckdelivery.value = 1;
                 $.fancybox({
                     'type': 'iframe',
                     'titlePosition': 'over',
@@ -152,6 +155,9 @@
             //Remove Course or curriculum
             $(".deletecoursecurriculum").click(function () {
 
+                var hdCheckdelivery = document.getElementById('<%= hdCheckdelivery.ClientID %>');
+                hdCheckdelivery.value = 0;
+
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
                 //Get the GridView Row reference
@@ -218,10 +224,17 @@
     </script>
     <script type="text/javascript">
         function check_hdCheckDelivery(id) {
-            if (id == "ContentPlaceHolder1_btnProcessMassEnrollment") {
-                document.getElementById('<%=hdCheckdelivery.ClientID %>').value = "1";
+            var test = CheckRequired();
+            if (test == "0") {
+                return false;
             }
-            //confirmremove();
+            else {
+                confirmremove();
+                if (id == "ContentPlaceHolder1_btnProcessMassEnrollment") {
+                    document.getElementById('<%=hdCheckdelivery.ClientID %>').value = "1";
+                }
+                return true;
+            }
         }
     </script>
     <script type="text/javascript" language="javascript">
@@ -236,6 +249,7 @@
                             if (dropdowns.item(i).value == 'Select a Delivery') {
                                 args.IsValid = false;
                                 break; //break the loop as there is no need to check further.
+                                return args.IsValid;
                             }
                         }
                     }
@@ -246,9 +260,11 @@
     </script>
     <script type="text/javascript" language="javascript">
         function getEmployeeCount(sender, args) {
+
             var gvRows = $("#<%=gvEmployee.ClientID %> tr").length;
             if (gvRows == 0) {
                 args.IsValid = false;
+                return args.IsValid;
             }
         }
     </script>
@@ -258,9 +274,23 @@
                 return true;
             else
                 return false;
-
-        }
+       }
     </script>
+        <script type="text/javascript">
+            function CheckRequired() {
+                var isChecked = $('#<%= chkRequired.ClientID %>').attr('checked') ? true : false;
+                if (isChecked) {
+                    var TargetDueDate = $('#<%= txtTargetDueDate.ClientID %>').val();
+                    if (TargetDueDate == "" || TargetDueDate == null) {
+                        alert('Please select TargetDueDate')
+                        return 0;
+                    }
+                    else {
+                        return 1;
+                    }
+                }
+            }
+     </script>
     <div class="content_area_long">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
@@ -361,24 +391,26 @@
         <div class="div_header_long">
             <br />
         </div>
+        <div class="clear">
+        </div>
         <br />
-        <div class="div_controls font_1">
-            <table class="">
+        <div>
+            <table>
                 <tr>
                     <td colspan="2">
                         &nbsp;
                     </td>
-                    <td>
+                    <td style="font-size:10pt; font-weight:bold;">
                         <%=LocalResources.GetLabel("app_required_text")%>&nbsp;<asp:CheckBox ID="chkRequired" runat="server" />
                     </td>
-                    <td>
+                    <td style="padding: 3px 400px 3px 8px;">
                         &nbsp;
                     </td>
-                    <td>
+                    <td style="font-size:10pt; font-weight:bold;">
                         <%=LocalResources.GetLabel("app_target_due_text")%>:
                     </td>
-                    <td>
-                        <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    <td class="clear" >
+                        <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" style="font-weight:700;" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceTargetDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtTargetDueDate">
                         </asp:CalendarExtender>
                     </td>
@@ -389,7 +421,7 @@
                     <td colspan="3">
                        
                         <asp:Button ID="btnProcessMassEnrollment" runat="server" Text="<%$ LabelResourceExpression: app_process_mass_enrollment_button_text %>"
-                            OnClientClick="javascript:check_hdCheckDelivery(this.id)" OnClick="btnProcessMassEnrollment_Click"
+                            OnClientClick="check_hdCheckDelivery(this.id)" OnClick="btnProcessMassEnrollment_Click"
                             ValidationGroup="samep" />
                     </td>
                     <td colspan="4">

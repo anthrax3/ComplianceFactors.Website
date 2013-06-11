@@ -259,7 +259,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
         {
             if (e.CommandName.Equals("select"))
             {
-                Response.Redirect("/SystemHome/Catalog/Approvals/saeas-01.aspx?id="+ SecurityCenter.EncryptText(e.CommandArgument.ToString()));
+                Response.Redirect("/SystemHome/Catalog/Approvals/saeas-01.aspx?id="+ SecurityCenter.EncryptText(gvsearchDetails.DataKeys[0][0].ToString())+"&uid="+ SecurityCenter.EncryptText(gvsearchDetails.DataKeys[0][1].ToString()));
             }
         }
     }

@@ -112,6 +112,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".deleteCourse").click(function () {
+                var hdnValue = document.getElementById('<%= hdnIsCatalogBind.ClientID %>');
+                hdnValue.value = 0;
 
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
@@ -164,7 +166,6 @@
                             tr_id.fadeOut(500, function () {
                                 //Remove GridView row
                                 tr_id.remove();
-
                             });
                         }
                     });
@@ -178,11 +179,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".addEmployee").click(function () {
+
                 var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
                 if (gvRows == 0) {
                     args.IsValid = false;
                 }
                 else {
+                    var hdnValue = document.getElementById('<%= hdnIsCatalogBind.ClientID %>');
+                    hdnValue.value = 1;
                     $(".addEmployee").fancybox({
                         'type': 'iframe',
                         'titlePosition': 'over',
@@ -252,6 +256,19 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function validateAll() {
+            var isValid = false;
+            isValid = Page_ClientValidate('samcp');
+            if (isValid) {
+                isValid = Page_ClientValidate('samcp_employee');
+            }
+            if (isValid) {
+                isValid = Page_ClientValidate('samcp_completion');
+            }
+            return isValid;
+        }
+    </script>
     <div class="content_area_long">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
@@ -308,8 +325,7 @@
                             <%--<asp:Button ID="btnRemoveCatalogItem" OnClientClick="return confirmStatus();" CommandName="Remove"
                                 CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Remove" />--%>
-                            <input type="button" id='<%# Eval("c_course_system_id_pk") %>' onclick="return confirmStatus();"
-                                value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                            <input type="button" id='<%# Eval("c_course_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                 class="deleteCourse cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -366,56 +382,61 @@
             <%=LocalResources.GetLabel("app_completion_information_text")%>:
         </div>
         <br />
+        <div class="clear">
+        </div>
         <div>
-            <asp:GridView ID="gvCompletionInfo" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter font_1"
-                runat="server" EmptyDataText="No Result Found" GridLines="None" DataKeyNames="c_delivery_id_pk"
+       <%-- CssClass="gridview_long tablesorter font_1"--%>
+            <asp:GridView ID="gvCompletionInfo" CellPadding="0" CellSpacing="0" 
+                runat="server" EmptyDataText="No Result Found" GridLines="Both"  DataKeyNames="c_delivery_id_pk"
                 AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false"
                 OnRowDataBound="gvCompletionInfo_RowDataBound">
                 <Columns>
-                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderText="<%$ LabelResourceExpression: app_delivery_Id_and_name_text %>"
-                        ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_4 align_center" HeaderStyle-BackColor="LightGray" HeaderText="<%$ LabelResourceExpression: app_delivery_Id_and_name_text %>"
+                        ItemStyle-CssClass="gridview_row_width_4" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Left">
                         <ItemTemplate>
+                             
                             <asp:Label ID="lblDeliveryIdName" runat="server"></asp:Label>
+                           
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_4 align_center" HeaderText="<%$ LabelResourceExpression: app_comments_text %>"
-                        ItemStyle-CssClass="gridview_row_width_4_1" HeaderStyle-HorizontalAlign="Center"
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_3 align_center" HeaderStyle-BackColor="LightGray" HeaderText="<%$ LabelResourceExpression: app_comments_text %>"
+                        ItemStyle-CssClass="gridview_row_width_3" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Left">
                         <ItemTemplate>
-                            <asp:TextBox runat="server" ID="txtComments" TextMode="MultiLine">
+                            <asp:TextBox runat="server" ID="txtComments" Columns="20" TextMode="MultiLine">
                             </asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>"
-                        ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1 align_center" HeaderStyle-BackColor="LightGray" HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>"
+                        ItemStyle-CssClass="gridview_row_width_1" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:CalendarExtender ID="ceDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtCompletionDate">
-                            </asp:CalendarExtender>
-                            <asp:TextBox ID="txtCompletionDate" runat="server"></asp:TextBox>
+                            </asp:CalendarExtender>                            
+                            <asp:TextBox ID="txtCompletionDate" class="CompletionDate" runat="server"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_attendance_text %>"
+                    <asp:TemplateField HeaderStyle-BackColor="LightGray"  HeaderText="<%$ LabelResourceExpression: app_attendance_text %>"
                         HeaderStyle-CssClass="gridview_row_width_1 align_center" ItemStyle-CssClass="gridview_row_width_1"
-                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:DropDownList ID="ddlAttendanceStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
                                 runat="server">
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_passing_status_text %>"
+                    <asp:TemplateField HeaderStyle-BackColor="LightGray" HeaderText="<%$ LabelResourceExpression: app_passing_status_text %>"
                         HeaderStyle-CssClass="gridview_row_width_1 align_center" ItemStyle-CssClass="gridview_row_width_1"
-                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:DropDownList ID="ddlPassignStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
                                 runat="server">
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_grade_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
-                        ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_grade_text %>" HeaderStyle-BackColor="LightGray" HeaderStyle-CssClass="gridview_row_width_1 align_center"
+                        ItemStyle-CssClass="gridview_row_width_1" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:DropDownList ID="ddlGrade" DataValueField="s_grading_scheme_system_value_id_pk"
@@ -423,8 +444,8 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_score_text %>" HeaderStyle-CssClass="gridview_row_width_1 align_center"
-                        ItemStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
+                    <asp:TemplateField HeaderText="<%$ LabelResourceExpression: app_score_text %>" HeaderStyle-BackColor="LightGray" HeaderStyle-CssClass="gridview_row_width_1 align_center"
+                        ItemStyle-CssClass="gridview_row_width_1" ItemStyle-BorderStyle="Solid" ItemStyle-BorderColor="LightGray" ItemStyle-BorderWidth="1px" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:TextBox ID="txtScore" CssClass="textbox_50" runat="server"></asp:TextBox>
@@ -440,8 +461,9 @@
         <div class="font_1">
             <table class="table_td_300">
                 <tr>
+                    <%-- ValidationGroup="samcp_completion"--%>
                     <td class="align_right">
-                        <asp:Button ID="btnProcessMassCompletion" runat="server" ValidationGroup="samcp_completion"
+                        <asp:Button ID="btnProcessMassCompletion" runat="server" OnClientClick="return validateAll()"
                             Text="<%$ LabelResourceExpression: app_process_mass_completion_button_text %>"
                             OnClick="btnProcessMassCompletion_Click" />
                     </td>
