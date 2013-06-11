@@ -9,6 +9,7 @@ using System.Data;
 using System.Text;
 using System.Net.Mail;
 using System.Configuration;
+using ComplicanceFactor.Common.Languages;
 namespace ComplicanceFactor.SystemHome.Catalog.Approvals
 {
     public partial class saeas_01 : System.Web.UI.Page
@@ -34,10 +35,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "Edit Approval Workflow Information";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_approval_workflow_information_text");
                 e_enroll_approval_system_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"].ToString());
                 e_enroll_user_id_fk = SecurityCenter.DecryptText(Request.QueryString["uid"].ToString());
-                //Popualte approvals
                 PopulateApprovals(e_enroll_approval_system_id_pk, e_enroll_user_id_fk);
             }
         }
@@ -269,6 +269,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                ApproveEmailConfirmation(deliveryID, userId);
            }
             
+        }
+
+        protected void btnHeaderCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SystemHome/Catalog/Approvals/samamp-01.aspx");
+        }
+
+        protected void btnFooterCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SystemHome/Catalog/Approvals/samamp-01.aspx");
         }
 
         

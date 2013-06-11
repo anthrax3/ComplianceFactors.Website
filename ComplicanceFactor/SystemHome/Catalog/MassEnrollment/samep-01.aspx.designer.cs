@@ -49,6 +49,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
         protected global::System.Web.UI.WebControls.ValidationSummary vs_samep;
         
         /// <summary>
+        /// vs_samcp_course control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samcp_course;
+        
+        /// <summary>
+        /// vs_samcp_required control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samcp_required;
+        
+        /// <summary>
         /// cvValidateCheckboxes control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvValidateEmployee;
+        
+        /// <summary>
+        /// cvValidateCourse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateCourse;
+        
+        /// <summary>
+        /// cvValidateEnrollment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateEnrollment;
         
         /// <summary>
         /// hdCheckdelivery control.
@@ -92,6 +128,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvEmployee;
+        
+        /// <summary>
+        /// btnAddEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddEmployee;
         
         /// <summary>
         /// chkRequired control.

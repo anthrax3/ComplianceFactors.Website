@@ -8,28 +8,26 @@
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
-    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
-            $(document).ready(function () {
-                var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+        $(document).ready(function () {
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
+
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
 
                 $(navigationSelectedValue).addClass('selected');
-                // toggles the slickbox on clicking the noted link  
-                $('.main_menu li a').hover(function () {
-
-                    $('.main_menu li a').removeClass('selected');
-                    $(this).addClass('active');
-
-                    return false;
-                });
-                $('.main_menu li a').mouseleave(function () {
-
-                    $(navigationSelectedValue).addClass('selected');
-                    return false;
-                });
+                return false;
             });
+        });
 
     </script>
     <script type="text/javascript">
@@ -71,12 +69,12 @@
             });
 
 
-            // Get Employee Popup
+            // Get Employee Popup  
 
-            $(".addemployee").click(function () {
+            $(".addEmployee").click(function () {
                 var hdCheckdelivery = document.getElementById('<%= hdCheckdelivery.ClientID %>');
                 hdCheckdelivery.value = 1;
-                $.fancybox({
+                $(".addEmployee").fancybox({
                     'type': 'iframe',
                     'titlePosition': 'over',
                     'titleShow': true,
@@ -222,42 +220,33 @@
         });
 
     </script>
-    <script type="text/javascript">
-        function check_hdCheckDelivery(id) {
-            var test = CheckRequired();
-            if (test == "0") {
-                return false;
-            }
-            else {
-                confirmremove();
-                if (id == "ContentPlaceHolder1_btnProcessMassEnrollment") {
-                    document.getElementById('<%=hdCheckdelivery.ClientID %>').value = "1";
-                }
-                return true;
-            }
-        }
-    </script>
     <script type="text/javascript" language="javascript">
         function validateCheckBoxes(sender, args) {
-            var gridView = document.getElementById('<%= gvCatalog.ClientID %>');
-            for (var i = 0; i < gridView.rows.length; i++) {
-                var inputs = gridView.rows[i].getElementsByTagName('input');
-                var dropdowns = gridView.getElementsByTagName('select');
-                if (inputs != null) {
-                    if (inputs[0].type == "checkbox") {
-                        if (inputs[0].checked) {
-                            if (dropdowns.item(i).value == 'Select a Delivery') {
-                                args.IsValid = false;
-                                break; //break the loop as there is no need to check further.
-                                return args.IsValid;
+            var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+            if (gvRows == 0) {
+                args.IsValid = false;
+            }
+            else {
+                var gridView = document.getElementById('<%= gvCatalog.ClientID %>');
+                for (var i = 0; i < gridView.rows.length; i++) {
+                    var inputs = gridView.rows[i].getElementsByTagName('input');
+                    var dropdowns = gridView.getElementsByTagName('select');
+                    if (inputs != null) {
+                        if (inputs[0].type == "checkbox") {
+                            if (inputs[0].checked) {
+                                if (dropdowns.item(i).value == 'Select a Delivery') {
+                                    args.IsValid = false;
+                                    break; //break the loop as there is no need to check further.
+                                }
                             }
                         }
                     }
                 }
             }
-
-        }
+        }        
     </script>
+    
+
     <script type="text/javascript" language="javascript">
         function getEmployeeCount(sender, args) {
 
@@ -274,35 +263,73 @@
                 return true;
             else
                 return false;
-       }
+            
+        }
     </script>
-        <script type="text/javascript">
-            function CheckRequired() {
-                var isChecked = $('#<%= chkRequired.ClientID %>').attr('checked') ? true : false;
-                if (isChecked) {
-                    var TargetDueDate = $('#<%= txtTargetDueDate.ClientID %>').val();
-                    if (TargetDueDate == "" || TargetDueDate == null) {
-                        alert('Please select TargetDueDate')
-                        return 0;
-                    }
-                    else {
-                        return 1;
-                    }
+    <script type="text/javascript">
+        function validateRequired(sender, args) {
+            var isChecked = $('#<%= chkRequired.ClientID %>').attr('checked') ? true : false;
+            if (isChecked) {
+                var TargetDueDate = $('#<%= txtTargetDueDate.ClientID %>').val();
+                if (TargetDueDate == "" || TargetDueDate == null) {
+                    args.IsValid = false;
+                }
+                else {
+                    args.IsValid = true;
                 }
             }
-     </script>
+        }
+    </script>
+    <script type="text/javascript" language="javascript">
+        function validateCourse(sender, args) {
+            var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+            if (gvRows == 0) {
+                args.IsValid = false;
+            }
+        }        
+    </script>
+    <script type="text/javascript">
+        function validateAll() {
+            var isValid = false;
+            isValid = Page_ClientValidate('samep');   
+            if (isValid) {
+                isValid = Page_ClientValidate('samep_course');
+            }            
+            if (isValid) {
+                isValid = Page_ClientValidate('samep_required');
+            }           
+            if (isValid) {
+                confirmremove();
+            }
+            
+            
+        }
+    </script>
+
+    
     <div class="content_area_long">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
+
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samep" runat="server"
             ValidationGroup="samep"></asp:ValidationSummary>
-        <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
+        <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_course" runat="server"
+            ValidationGroup="samep_course"></asp:ValidationSummary>
+        <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_required" runat="server"
+            ValidationGroup="samep_required"></asp:ValidationSummary>
+        
+
+        <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes" ValidateEmptyText="true"
             ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
-        <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
+        <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount" ValidateEmptyText="true"
             ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse" ValidateEmptyText="true"
+            ValidationGroup="samep_course" runat="server" ErrorMessage="Please select course.">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired" ValidateEmptyText="true"
+            ValidationGroup="samep_required" runat="server" ErrorMessage="Please select target due date.">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdCheckdelivery" runat="server" />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_catalog_items_text")%>:
@@ -384,7 +411,8 @@
             </asp:GridView>
             <br />
             <br />
-            <input type="button" class="addemployee cursor_hand" value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_add_employee_button_text %>" />' />
+            <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samep_course" CssClass="addEmployee cursor_hand"
+                Text="<%$ LabelResourceExpression: app_add_employee_button_text %>" />
             <br />
             <br />
         </div>
@@ -395,22 +423,24 @@
         </div>
         <br />
         <div>
-            <table>
+              <table>
                 <tr>
                     <td colspan="2">
                         &nbsp;
                     </td>
-                    <td style="font-size:10pt; font-weight:bold;">
-                        <%=LocalResources.GetLabel("app_required_text")%>&nbsp;<asp:CheckBox ID="chkRequired" runat="server" />
+                    <td style="font-size: 10pt; font-weight: bold;">
+                        <%=LocalResources.GetLabel("app_required_text")%>&nbsp;<asp:CheckBox ID="chkRequired"
+                            runat="server" />
                     </td>
                     <td style="padding: 3px 400px 3px 8px;">
                         &nbsp;
                     </td>
-                    <td style="font-size:10pt; font-weight:bold;">
+                    <td style="font-size: 10pt; font-weight: bold;">
                         <%=LocalResources.GetLabel("app_target_due_text")%>:
                     </td>
-                    <td class="clear" >
-                        <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" style="font-weight:700;" runat="server"></asp:TextBox>
+                    <td class="clear">
+                        <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" Style="font-weight: 700;"
+                            runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceTargetDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtTargetDueDate">
                         </asp:CalendarExtender>
                     </td>
@@ -419,15 +449,14 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                       
                         <asp:Button ID="btnProcessMassEnrollment" runat="server" Text="<%$ LabelResourceExpression: app_process_mass_enrollment_button_text %>"
-                            OnClientClick="check_hdCheckDelivery(this.id)" OnClick="btnProcessMassEnrollment_Click"
-                            ValidationGroup="samep" />
+                           OnClick="btnProcessMassEnrollment_Click" Onclientclick="return validateAll()" />
                     </td>
                     <td colspan="4">
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" OnClick="btnCancel_Click" />
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            OnClick="btnCancel_Click" />
                     </td>
                 </tr>
             </table>

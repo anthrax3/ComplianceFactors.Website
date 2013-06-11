@@ -95,11 +95,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        //Logger.WriteToErrorLog("p-lvcurd-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("lvcure-01.aspx (Mass Enrollment)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        //Logger.WriteToErrorLog("p-lvcurd-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("lvcure-01.aspx (Mass Enrollment)", ex.Message);
                     }
                 }
             }
@@ -141,11 +141,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("p-lvcurd-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("lvcure-01.aspx (Mass Enrollment)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("p-lvcurd-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("lvcure-01.aspx (Mass Enrollment)", ex.Message);
                     }
                 }
             }

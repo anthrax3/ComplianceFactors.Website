@@ -34,7 +34,7 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnHeaderSave" runat="server" Text="Save Approval WorkFlow" />
+                        <asp:Button ID="btnHeaderSave" runat="server" Text="<%$ LabelResourceExpression: app_save_approval_workflow_button_text %>"/>
                     </td>
                     <td>
                     </td>
@@ -44,21 +44,23 @@
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnHeaderCancel" runat="server" Text="Cancel" />
+                        <asp:Button ID="btnHeaderCancel" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
+                            onclick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
         </div>
         <br />
         <div class="div_header_long">
-            Approval WorkFlow Information:
+             <%=LocalResources.GetLabel("app_approval_workflow_information_text")%>:
         </div>
         <br />
         <div>
             <table class="table_td_300 div_controls font_1">
                 <tr>
                     <td class="align_right">
-                        Approval ID:
+                        <%=LocalResources.GetLabel("app_approval_id_text")%>: 
                     </td>
                     <td>
                         <asp:Label ID="lblApprovalID" runat="server"></asp:Label>
@@ -66,7 +68,7 @@
                     <td>
                     </td>
                     <td class="align_right">
-                        Approval WorkFlow:
+                        <%=LocalResources.GetLabel("app_approval_workflow_text")%>:
                     </td>
                     <td>
                         <asp:Label ID="lblApprovalWorkFlowName" runat="server"></asp:Label>
@@ -78,7 +80,7 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Employee ID:
+                         <%=LocalResources.GetLabel("app_employee_id_text")%>: 
                     </td>
                     <td>
                         <asp:Label ID="lblEmployeeId" runat="server"></asp:Label>
@@ -86,7 +88,7 @@
                     <td>
                     </td>
                     <td class="align_right">
-                        Employee Name:
+                         <%=LocalResources.GetLabel("app_employee_name_text")%>:
                     </td>
                     <td>
                         <asp:Label ID="lblEmployeeName" runat="server"></asp:Label>
@@ -98,7 +100,7 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Training ID / Training Type:
+                        <%=LocalResources.GetLabel("app_training_id_and_training_type_text")%>:
                     </td>
                     <td>
                         <asp:Label ID="lblTrainingId" runat="server"></asp:Label>
@@ -106,7 +108,7 @@
                     <td>
                     </td>
                     <td class="align_right">
-                        Training Name:
+                        <%=LocalResources.GetLabel("app_training_name_text")%>: 
                     </td>
                     <td>
                         <asp:Label ID="lblTrainingName" runat="server"></asp:Label>
@@ -118,7 +120,7 @@
                 </tr>
                 <tr>
                     <td class="align_right">
-                        Request Date:
+                       <%=LocalResources.GetLabel("app_request_date_text")%>:
                     </td>
                     <td>
                         <asp:Label ID="lblRequestDate" runat="server"></asp:Label>
@@ -126,7 +128,7 @@
                     <td>
                     </td>
                     <td class="align_right">
-                        Request Type:
+                        <%=LocalResources.GetLabel("app_request_type_text")%>:
                     </td>
                     <td>
                         <asp:Label ID="lblRequestType" runat="server"></asp:Label>
@@ -136,7 +138,7 @@
         </div>
         <br />
         <div class="div_header_long">
-            Approval Workflow Details:
+           <%=LocalResources.GetLabel("app_approval_workflow_details_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left font_1">
@@ -154,18 +156,17 @@
                                         <%# Eval("ApproverRole")%>:
                                     </td>
                                     <td style="width: 30%">
-                                        <%# Eval("ApproverName")%>
+                                         <%# Eval("ApproverName")%>
                                     </td>
                                     <td>
-                                        <%# Eval("ApprovalStatus")%>
-                                    </td>
+                                        <%=LocalResources.GetLabel("app_status_text")%>:<%# Eval("ApprovalStatus")%></td>
                                     <td class="align_right">
                                         <asp:Button ID="btnDeny" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                            CommandName="Deny" Text="Deny" />
+                                            CommandName="Deny" Text="<%$ LabelResourceExpression: app_deny_button_text %>" />
                                     </td>
                                     <td width="20%" class="align_right">
                                         <asp:Button ID="btnApprove" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                            CommandName="Approve" Text="Approve" />
+                                            CommandName="Approve" Text="<%$ LabelResourceExpression: app_approve_button_text %>" />
                                     </td>
                                 </tr>
                             </table>
@@ -183,7 +184,7 @@
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnSaveApprovalWorkFlow" runat="server" Text="Save Approval WorkFlow"
+                        <asp:Button ID="btnSaveApprovalWorkFlow" runat="server" Text="<%$ LabelResourceExpression: app_save_approval_workflow_button_text %>"
                             OnClick="btnSaveApprovalWorkFlow_Click" />
                     </td>
                     <td>
@@ -194,7 +195,9 @@
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnFooterCancel" runat="server" Text="Cancel" />
+                        <asp:Button ID="btnFooterCancel" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
+                            onclick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>
