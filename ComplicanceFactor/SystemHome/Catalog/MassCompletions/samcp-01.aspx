@@ -186,7 +186,7 @@
                 }
                 else {
                     var hdnValue = document.getElementById('<%= hdnIsCatalogBind.ClientID %>');
-                    hdnValue.value = 1;
+                    hdnValue.value = 0;
                     $(".addEmployee").fancybox({
                         'type': 'iframe',
                         'titlePosition': 'over',
@@ -364,7 +364,7 @@
                             <%--  <asp:Button ID="btnRemoveEmployee" OnClientClick="return confirmStatus();" CommandName="Remove"
                                 CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
                                 Text="Remove" />--%>
-                            <input type="button" id='<%# Eval("u_user_id_pk") %>' onclick="return confirmStatus();"
+                            <input type="button" id='<%# Eval("u_user_id_pk") %>' 
                                 value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
                                 class="deleteEmployee cursor_hand" />
                         </ItemTemplate>

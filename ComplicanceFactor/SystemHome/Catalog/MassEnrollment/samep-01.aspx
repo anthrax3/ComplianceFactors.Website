@@ -73,7 +73,7 @@
 
             $(".addEmployee").click(function () {
                 var hdCheckdelivery = document.getElementById('<%= hdCheckdelivery.ClientID %>');
-                hdCheckdelivery.value = 1;
+                hdCheckdelivery.value = 0;
                 $(".addEmployee").fancybox({
                     'type': 'iframe',
                     'titlePosition': 'over',
@@ -258,12 +258,14 @@
         }
     </script>
     <script type="text/javascript">
-        function confirmremove() {
-            if (confirm('Are you sure') == true)
-                return true;
-            else
-                return false;
-            
+        function confirmremove(sender,args) {
+            var isValid = validateAll();
+            if (isValid == true) {
+                if (confirm('Are you sure') == true)
+                    return isv;
+                else
+                    return false;
+            }            
         }
     </script>
     <script type="text/javascript">
@@ -297,11 +299,9 @@
             }            
             if (isValid) {
                 isValid = Page_ClientValidate('samep_required');
-            }           
-            if (isValid) {
-                confirmremove();
             }
-            
+
+            return isValid;
             
         }
     </script>
@@ -331,7 +331,7 @@
         <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired" ValidateEmptyText="true"
             ValidationGroup="samep_required" runat="server" ErrorMessage="Please select target due date.">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdCheckdelivery" runat="server" />
-        <div class="div_header_long">
+        <div class="div_header_long" runat="server" id="h1">
             <%=LocalResources.GetLabel("app_catalog_items_text")%>:
         </div>
         <br />
@@ -450,13 +450,13 @@
                 <tr>
                     <td colspan="3">
                         <asp:Button ID="btnProcessMassEnrollment" runat="server" Text="<%$ LabelResourceExpression: app_process_mass_enrollment_button_text %>"
-                           OnClick="btnProcessMassEnrollment_Click" Onclientclick="return validateAll()" />
+                           OnClick="btnProcessMassEnrollment_Click" Onclientclick="return confirmremove()"  CssClass="cursor_hand" />
                     </td>
                     <td colspan="4">
                     </td>
                     <td class="align_right">
                         <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
-                            OnClick="btnCancel_Click" />
+                            OnClick="btnCancel_Click" CssClass="cursor_hand" />
                     </td>
                 </tr>
             </table>

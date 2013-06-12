@@ -33,6 +33,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
 
                 SessionWrapper.Enrollment_courses_curriculum.Clear();
                 SessionWrapper.MassEnrollment_employees.Clear();
+                h1.Style.Add("background-color", "red !important");
             }
 
             if (SessionWrapper.Enrollment_courses_curriculum.Rows.Count > 0 && (hdCheckdelivery.Value != "1" || string.IsNullOrEmpty(hdCheckdelivery.Value)))
