@@ -7,6 +7,7 @@ using System.Data;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.IO;
+using System.Web.UI.HtmlControls;
 
 
 namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
@@ -25,6 +26,17 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         {
             try
             {
+                User usercss = new User();
+                usercss = UserBLL.GetCss(SessionWrapper.u_userid);
+                HtmlGenericControl style = new HtmlGenericControl();
+                style.TagName = "style";
+                style.Attributes.Add("type", "text/css");
+                style.InnerHtml = usercss.css;
+                Page.Header.Controls.Add(style);
+
+
+
+
                 //Get edit delivery id
                 editDelivery = Request.QueryString["editdelivery"];
                 SessionWrapper.Edit_delivery_id_fk = editDelivery;

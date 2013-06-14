@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Globalization;
+using System.Web.UI.HtmlControls;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {
@@ -24,6 +25,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
         {
             try
             {
+                User usercss = new User();
+                usercss = UserBLL.GetCss(SessionWrapper.u_userid);
+                HtmlGenericControl style = new HtmlGenericControl();
+                style.TagName = "style";
+                style.Attributes.Add("type", "text/css");
+                style.InnerHtml = usercss.css;
+                Page.Header.Controls.Add(style);
+
                 //Show and hide validation summary
                 vs_sand.Style.Add("display", "none");
 

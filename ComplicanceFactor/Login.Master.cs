@@ -16,6 +16,7 @@ using System.Web.Security;
 
 
 
+
 namespace ComplicanceFactor
 {
     public partial class Main : System.Web.UI.MasterPage
@@ -31,6 +32,7 @@ namespace ComplicanceFactor
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
 
             if (!Page.IsPostBack)
             {

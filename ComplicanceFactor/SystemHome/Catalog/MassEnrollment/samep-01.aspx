@@ -331,7 +331,7 @@
         <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired" ValidateEmptyText="true"
             ValidationGroup="samep_required" runat="server" ErrorMessage="Please select target due date.">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdCheckdelivery" runat="server" />
-        <div class="div_header_long" runat="server" id="h1">
+        <div class="div_header_long">
             <%=LocalResources.GetLabel("app_catalog_items_text")%>:
         </div>
         <br />

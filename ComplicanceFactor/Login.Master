@@ -38,6 +38,19 @@
 
         function noBack() { window.history.forward(); }
     </script>
+    <style type="text/css">
+        #login
+        {
+            width: 400px;
+            float: right;
+            height: 75px;
+            background-color: #000;
+            border: 1px solid #A9A9A9;
+            color: #FFF;
+            margin: 16px 0 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body onload="noBack();" onunload="">
     <form id="form1" runat="server" defaultbutton="btnGo">

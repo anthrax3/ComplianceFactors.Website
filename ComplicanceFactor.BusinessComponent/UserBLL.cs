@@ -1519,5 +1519,25 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static User GetCss(string user_id)
+        {
+            User usercss = new User();
+
+            try
+            {
+                Hashtable htGetCss = new Hashtable();
+                htGetCss.Add("@user_id", user_id);
+                DataTable dt = DataProxy.FetchDataTable("app_sp_get_css",htGetCss);
+                usercss.css = dt.Rows[0]["css"].ToString();
+                return usercss;
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

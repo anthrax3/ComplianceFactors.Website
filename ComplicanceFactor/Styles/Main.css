@@ -1,4 +1,4 @@
-﻿body
+body
 {
     width: 1040px;
     font-family: Arial, Sans-Serif;
@@ -6,15 +6,15 @@
     margin: 5px auto 0;
 }
 
-#content
+/*#content
 {
     float: left;
     width: 1040px;
     background-color: #FFF;
     color: #000;
-}
+}*/
 
-.content_button
+/*.content_button
 {
     background-color: #96CD19;
     border: #96CD19;
@@ -22,7 +22,7 @@
     font-weight: 700;
     height: 25px;
     cursor: pointer;
-}
+}*/
 
 .clear
 {
@@ -48,7 +48,7 @@ p
     padding: 10px;
 }
 
-.footer
+/*.footer
 {
     color: #000;
     border-top: 2px solid #96CD19;
@@ -56,7 +56,7 @@ p
     height: 15px;
     font-size: 12px;
     font-weight: 700;
-}
+}*/
 
 div.right
 {
@@ -71,7 +71,7 @@ div.right
     padding: 0;
 }
 
-#login
+/*#login
 {
     width: 400px;
     float: right;
@@ -81,7 +81,7 @@ div.right
     color: #FFF;
     margin: 16px 0 0;
     padding: 0;
-}
+}*/
 
 #menu
 {
@@ -91,7 +91,7 @@ div.right
     padding: 10px 0 0;
 }
 
-.main_menu
+/*.main_menu
 {
     background-color: #333333;
     border-bottom-color: #96CD19;
@@ -111,9 +111,9 @@ div.right
     padding-left: 40px;
     position: relative;
     width: 76%;
-}
+}*/
 
-.main_memu_last_column
+/*.main_memu_last_column
 {
     height: 30px;
     line-height: 30px;
@@ -126,21 +126,21 @@ div.right
     border-top: 3px solid #333;
     float: left;
     width: 19%;
-}
+}*/
 
-.main_menu a:link
+/*.main_menu a:link
 {
     line-height: 30px;
     color: #FFF;
     text-decoration: none;
     border: 0;
-}
+}*/
 
-.main_menu a:visited
+/*.main_menu a:visited
 {
     text-decoration: none;
     color: #FFF;
-}
+}*/
 
 .main_menu ul
 {
@@ -230,14 +230,14 @@ div.right
     padding: 0;
 }
 
-.main_menu ul li:hover li
+/*.main_menu ul li:hover li
 {
     float: none;
     list-style: none;
     background: #96CD19;
     margin: 0;
     padding: 0;
-}
+}*/
 
 .main_menu ul li:hover li a
 {
@@ -265,7 +265,7 @@ div.right
     border-top: 3px solid #333;
 }
 
-.btngo
+/*.btngo
 {
     background-color: #96CD19;
     border: #96CD19;
@@ -276,7 +276,7 @@ div.right
     width: 55px;
     margin: 0;
     padding: 0;
-}
+}*/
 
 .txtlogindiv
 {
@@ -414,12 +414,12 @@ div.right
     padding: 18px 0 0 12px;
 }
 
-a
+/*a
 {
     color: #96CD19;
     text-decoration: none;
     list-style: none;
-}
+}*/
 
 a.image_link
 {
@@ -432,7 +432,7 @@ img.logo_image
     padding: 0;
 }
 
-.btngo_language
+/*.btngo_language
 {
     width: 50px;
     background-color: #96CD19;
@@ -440,7 +440,7 @@ img.logo_image
     border: 0;
     height: 24px;
     cursor: pointer;
-}
+}*/
 
 .cursor_hand
 {
@@ -659,7 +659,7 @@ img.logo_image
     height: auto;
 }
 
-.gv_name_header
+/*.gv_name_header
 {
     width: 100px;
     background-color: silver;
@@ -667,7 +667,7 @@ img.logo_image
     font-weight: 700;
     cursor: pointer;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .gv_name_item
 {
@@ -677,7 +677,7 @@ img.logo_image
     padding: 3px 7px 0 10px;
 }
 
-.gv_middle_name_header
+/*.gv_middle_name_header
 {
     width: 75px;
     background-color: silver;
@@ -685,7 +685,7 @@ img.logo_image
     font-weight: 700;
     cursor: pointer;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .gv_middle_name_item
 {
@@ -695,7 +695,7 @@ img.logo_image
     padding: 3px 7px 0 10px;
 }
 
-.gv_default_header
+/*.gv_default_header
 {
     width: 50px;
     background-color: silver;
@@ -703,7 +703,7 @@ img.logo_image
     font-weight: 700;
     cursor: pointer;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .gv_default_item
 {
@@ -713,14 +713,14 @@ img.logo_image
     padding: 3px 7px 0 10px;
 }
 
-table.GridView td, th
+/*table.GridView td, th
 {
     color: #333;
     border: solid 1px silver;
     font-weight: 700;
     font-size: 11px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 table.GridView
 {
@@ -777,7 +777,7 @@ table.GridView
     padding: 0 0 0 20px;
 }
 
-table.gridview_format
+/*table.gridview_format
 {
     font-weight: 700;
     font-size: 11px;
@@ -786,7 +786,7 @@ table.gridview_format
     width: 940px;
     border-spacing: 2px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .gridview_row_width_2
 {
@@ -824,14 +824,14 @@ table.gridview_format
     padding: 0;
 }
 
-.div_header_long
+/*.div_header_long
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 1020px;
     padding: 3px 0 3px 8px;
-}
+}*/
 
 .div_controls td
 {
@@ -1060,10 +1060,10 @@ div.popup_send_button
     padding: 0 0 0 30px;
 }
 
-fieldset
+/*fieldset
 {
     border: 1px solid silver;
-}
+}*/
 
 fieldset legend
 {
@@ -1085,7 +1085,7 @@ fieldset legend
     font-weight: 400 !important;
 }
 
-table.gridview_hazard_control_summary td
+/*table.gridview_hazard_control_summary td
 {
     color: #333;
     font-weight: 700;
@@ -1093,7 +1093,7 @@ table.gridview_hazard_control_summary td
     width: 100px;
     border: 0;
     padding: 3px 7px 0 0;
-}
+}*/
 
 table.gridview_hazard_control_summary
 {
@@ -1209,14 +1209,14 @@ table.search_view td a
     padding: 0;
 }
 
-table.gvsearchresult_style th
+/*table.gvsearchresult_style th
 {
     background-color: silver;
     border: 1px solid #000;
     font-weight: 700;
     font-size: 11px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 table.gvsearchresult_style td
 {
@@ -1235,7 +1235,7 @@ table.gvsearchresult_style
     padding: 0;
 }
 
-table.gridview_long
+/*table.gridview_long
 {
     font-weight: 700;
     font-size: 11px;
@@ -1244,7 +1244,7 @@ table.gridview_long
     width: 1020px;
     border-spacing: 2px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .txtInput_long
 {
@@ -1277,7 +1277,7 @@ table.paging_popup_1
     border: 0;
 }
 
-table.gridview_popup_1
+/*table.gridview_popup_1
 {
     font-weight: 700;
     font-size: 11px;
@@ -1286,16 +1286,16 @@ table.gridview_popup_1
     width: 900px;
     border-spacing: 2px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
-.div_header_popup_1
+/*.div_header_popup_1
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 885px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
 .red_color
 {
@@ -1343,14 +1343,14 @@ table.gridview_popup_1
     opacity: 0.7;
 }
 
-.div_header_popup_2
+/*.div_header_popup_2
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 617px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
 .textarea_long_2
 {
@@ -1395,39 +1395,39 @@ table.gridview_popup_1
     width: 380px !important;
 }
 
-.div_header_1005
+/*.div_header_1005
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 1005px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
 .textbox_75
 {
     width: 95px;
 }
 
-.div_header_800
+/*.div_header_800
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 787px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
-.div_header_870
+/*.div_header_870
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 867px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
-table.gridview_800
+/*table.gridview_800
 {
     font-weight: 700;
     font-size: 11px;
@@ -1436,7 +1436,7 @@ table.gridview_800
     width: 800px;
     border-spacing: 2px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 table.paging_800
 {
@@ -1513,41 +1513,41 @@ div.multiple_button
     padding: 0 0 0 135px;
 }
 
-.div_header_700
+/*.div_header_700
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 700px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
-.div_header_750
+/*.div_header_750
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 750px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
-.div_header_600
+/*.div_header_600
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 600px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
-.div_header_650
+/*.div_header_650
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 650px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
 .modalPopup_width_620
 {
@@ -1565,14 +1565,14 @@ div.multiple_button
     height: auto;
 }
 
-.div_header_620
+/*.div_header_620
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 605px;
     padding: 8px 7px 8px 8px;
-}
+}*/
 
 table.button_600
 {
@@ -1692,7 +1692,7 @@ table.gridview_width_900
     width: 300px;
 }
 
-table.table_700
+/*table.table_700
 {
     font-weight: 700;
     font-size: 11px;
@@ -1701,7 +1701,7 @@ table.table_700
     width: 650px;
     border-spacing: 2px;
     padding: 3px 7px 0 0;
-}
+}*/
 
 table.gridview_normal_700
 {
@@ -1914,14 +1914,14 @@ table.width_auto td
     height: 600px;
 }
 
-.div_header_900
+/*.div_header_900
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 900px;
     padding: 3px 0;
-}
+}*/
 
 .grid_870
 {
@@ -2002,12 +2002,12 @@ table.width_auto td
     padding: 3px 7px 0 10px;
 }
 
-.gridview_long_no_border th
+/*.gridview_long_no_border th
 {
     background-color: silver;
     border-collapse: collapse;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .gridview_long_no_border .th_width_700
 {
@@ -2033,21 +2033,29 @@ div.left, .navwrap li
     float: left;
 }
 
-.main_menu a#lnkhome, .main_menu ul li a:hover, .main_menu ul li a.selected
+/*selected tab*/
+/*.main_menu a#lnkhome, .main_menu ul li a:hover, .main_menu ul li a.selected 
 {
-    background-color: #96CD19;
-}
+    background-color: orange;
+}*/
 
-.main_menu ul li:hover a, .main_menu ul li.hover a, .navwrap .activated, .navwrap .activated li, .navwrap li:hover a, /* hovered text */ .navwrap li:hover span, .navwrap li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover span, .navwrap li:hover li:hover a, .navwrap li:hover li:hover span, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover span, .navwrap li:hover li:hover li:hover a, .navwrap li:hover li:hover li:hover span, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover li.AspNet-Menu-Hover span
-{
-    background: #96CD19;
-    color: #fff;
-}
 
-.main_menu ul li li a:hover, .roundedcorner_heading a, .navwrap li:hover, /* list items being hovered over */ .navwrap a, /* all anchors and spans (nodes with no link) */ .navwrap span
+
+/* hovered text */
+/*.main_menu ul li:hover a, .main_menu ul li.hover a, .navwrap .activated, .navwrap .activated li, .navwrap li:hover a,  .navwrap li:hover span, .navwrap li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover span, .navwrap li:hover li:hover a, .navwrap li:hover li:hover span, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover span, .navwrap li:hover li:hover li:hover a, .navwrap li:hover li:hover li:hover span, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover li.AspNet-Menu-Hover span
 {
-    color: #000;
-}
+    background: red;
+    color: black; 
+}*/
+
+
+
+/*mouse hover color text with link  // all anchors and spans (nodes with no link // list items being hovered over)  */
+
+/*.main_menu ul li li a:hover, .roundedcorner_heading a, .navwrap li:hover, .navwrap a,  .navwrap span
+{
+    color: yellow; 
+}*/
 
 .txtlogin, .gridview_row_width_3
 {
@@ -2071,14 +2079,14 @@ div.left, .navwrap li
     display: none;
 }
 
-.manage_user_header, .div_header, .div_header_940
+/*.manage_user_header, .div_header, .div_header_940
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 940px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
 .textbox_manage_user, .textbox_long, .textbox_width
 {
@@ -2183,7 +2191,7 @@ div.left, .navwrap li
     width: 940px;
 }
 
-table.gridview_format td, table.gridview_long td, table.gridview_popup_1 td, table.gridview_800 td, table.table_700 td
+/*table.gridview_format td, table.gridview_long td, table.gridview_popup_1 td, table.gridview_800 td, table.table_700 td
 {
     color: #333;
     border: solid 1px silver;
@@ -2191,13 +2199,13 @@ table.gridview_format td, table.gridview_long td, table.gridview_popup_1 td, tab
     font-size: 11px;
     border-spacing: 2px;
     padding: 3px 7px 0 10px;
-}
+}*/
 
-table.gridview_format th, table.gridview_long th, table.gridview_popup_1 th, table.gridview_800 th, table.table_700 th
+/*table.gridview_format th, table.gridview_long th, table.gridview_popup_1 th, table.gridview_800 th, table.table_700 th
 {
     background-color: silver;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 .gridview_row_width_1, .upload_btn_td, .textbox_50
 {
@@ -2465,23 +2473,24 @@ table.paging_700 td, table.search_700 td
     padding: 3px 7px 0 10px;
 }
 
-.gridview_small_no_border th
+/*.gridview_small_no_border th
 {
     background-color: Silver;
     border-collapse: collapse;
     padding: 3px 7px 0 10px;
-}
+}*/
 
 
 /*for Training manage Training*/
-.div_header_1060
+
+/*.div_header_1060
 {
     font-size: 12px;
     font-weight: 700;
     background-color: #96CD19;
     width: 1060px;
     padding: 3px 7px 3px 8px;
-}
+}*/
 
 
 .div_padding_120

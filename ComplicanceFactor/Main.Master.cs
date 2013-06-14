@@ -11,12 +11,30 @@ using System.Globalization;
 using System.IO;
 using ComplicanceFactor.Common.Languages;
 using System.Net;
+using System.Web.UI.HtmlControls;
 namespace ComplicanceFactor
 {
     public partial class EmployeeHome : System.Web.UI.MasterPage
     {
+        #region
+        //private string path = "~/Styles/Main.css";
+        #endregion
         protected void Page_Init(object sender, EventArgs e)
         {
+
+            
+            //string sourcepath = Server.MapPath(path);
+            //if (System.IO.File.Exists(sourcepath))
+            //{
+
+            //    // Create a file to write to. 
+            //    //File.WriteAllText(sourcepath, usercss.css);
+            //}
+            
+            //style.InnerHtml = usercss.css;
+
+            //Page.Header.Controls.Add(style);
+
             if ((!string.IsNullOrEmpty(SessionWrapper.u_userid)) && (!string.IsNullOrEmpty(SessionWrapper.sessionid)))
             {
                 bool isAccess = SessioninfoBLL.ManageSession(SessionWrapper.u_userid, SessionWrapper.sessionid);
@@ -33,6 +51,13 @@ namespace ComplicanceFactor
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            User usercss = new User();
+            usercss = UserBLL.GetCss(SessionWrapper.u_userid);
+            HtmlGenericControl style = new HtmlGenericControl();
+            style.TagName = "style";
+            style.Attributes.Add("type", "text/css");
+            style.InnerHtml = usercss.css;
+            Page.Header.Controls.Add(style);
 
             ///<summary>
             ///Store the last visited tab in database
