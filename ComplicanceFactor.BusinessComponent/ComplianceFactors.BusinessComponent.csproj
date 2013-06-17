@@ -66,6 +66,7 @@
     <Compile Include="DataAccessObject\SystemMassEnrollment.cs" />
     <Compile Include="DataAccessObject\SystemNotification.cs" />
     <Compile Include="DataAccessObject\SystemSplashPage.cs" />
+    <Compile Include="DataAccessObject\SystemThemes.cs" />
     <Compile Include="DataAccessObject\SystemTranscripts.cs" />
     <Compile Include="DataAccessObject\SystemUI_Texts_Labels_Dropdown.cs" />
     <Compile Include="DataAccessObject\SystemWeekdaySchedules.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="SystemRoomBLL.cs" />
     <Compile Include="SystemRoomTypeBLL.cs" />
     <Compile Include="SystemSplashPageBLL.cs" />
+    <Compile Include="SystemThemeBLL.cs" />
     <Compile Include="SystemUI_Texts_Labels_DropdownBLL.cs" />
     <Compile Include="SystemWaitListBLL.cs" />
     <Compile Include="SystemWeekdaySchedulesBLL.cs" />

@@ -601,6 +601,20 @@ namespace ComplicanceFactor.SystemHome
                     }
                 }
 
+                else if (!string.IsNullOrEmpty(SecurityCenter.DecryptText(Request.QueryString["page"])) && SecurityCenter.DecryptText(Request.QueryString["page"]) == "saantp" || SecurityCenter.DecryptText(Request.QueryString["page"]) == "saetp")
+                {
+                    if (!string.IsNullOrEmpty(Request.QueryString["themeowner"]) && SecurityCenter.DecryptText(Request.QueryString["themeowner"]) == "true")
+                    {
+                        SessionWrapper.s_theme_owner_name = row.Cells[0].Text + ", " + row.Cells[1].Text;
+                        SessionWrapper.s_theme_owner_id_fk = gvsearchDetails.DataKeys[index]["u_user_id_pk"].ToString();
+                    }
+                    else if (!string.IsNullOrEmpty(Request.QueryString["themeCoordinator"]) && SecurityCenter.DecryptText(Request.QueryString["themeCoordinator"]) == "true")
+                    {
+                        SessionWrapper.s_theme_coordinator_name = row.Cells[0].Text + ", " + row.Cells[1].Text;
+                        SessionWrapper.s_theme_coordinator_id_fk = gvsearchDetails.DataKeys[index]["u_user_id_pk"].ToString();
+                    }
+                }
+
 
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
             }

@@ -6403,6 +6403,155 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static DataTable defaults_theme_logo
+        {
+            get
+            {
+                if (HttpContext.Current.Session["defaults_theme_logo"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["defaults_theme_logo"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["defaults_theme_logo"] = value;
+            }
+        }
+
+        public static DataTable defaults_theme_color
+        {
+            get
+            {
+                if (HttpContext.Current.Session["defaults_theme_color"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["defaults_theme_color"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["defaults_theme_color"] = value;
+            }
+        }
+
+        public static DataTable s_theme_edit_color
+        {
+            get
+            {
+                if (HttpContext.Current.Session["s_theme_edit_color"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["s_theme_edit_color"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["s_theme_edit_color"] = value;
+            }
+        }
+
+        public static string s_theme_owner_id_fk
+        {
+            get
+            {
+                if (HttpContext.Current.Session["s_theme_owner_id_fk"] != null)
+                {
+                    return HttpContext.Current.Session["s_theme_owner_id_fk"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["s_theme_owner_id_fk"] = value;
+            }
+        }
+        /// <summary>
+        /// Splash coordinator id
+        /// </summary>
+        public static string s_theme_coordinator_id_fk
+        {
+            get
+            {
+                if (HttpContext.Current.Session["s_theme_coordinator_id_fk"] != null)
+                {
+                    return HttpContext.Current.Session["s_theme_coordinator_id_fk"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["s_theme_coordinator_id_fk"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Splash Coordinator name
+        /// </summary>
+        public static string s_theme_coordinator_name
+        {
+            get
+            {
+                if (HttpContext.Current.Session["s_theme_coordinator_name"] != null)
+                {
+                    return HttpContext.Current.Session["s_theme_coordinator_name"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["s_theme_coordinator_name"] = value;
+            }
+        }
+        /// <summary>
+        /// Splash owner name
+        /// </summary>
+        public static string s_theme_owner_name
+        {
+            get
+            {
+                if (HttpContext.Current.Session["s_theme_owner_name"] != null)
+                {
+                    return HttpContext.Current.Session["s_theme_owner_name"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["s_theme_owner_name"] = value;
+            }
+        }
 
         public static void clearsession()
         {

@@ -190,7 +190,7 @@
                     </td>
                     <td colspan="3" class="align_right">
                         <%=LocalResources.GetLabel("app_theme_text")%>:&nbsp;
-                        <asp:DropDownList ID="ddlTheme" DataTextField="s_theme_name" DataValueField="s_theme_system_id_pk"
+                        <asp:DropDownList ID="ddlTheme" DataTextField="s_theme_id_pk" DataValueField="s_theme_system_id_pk"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>

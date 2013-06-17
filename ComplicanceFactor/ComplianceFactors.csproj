@@ -773,6 +773,10 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx" />
+    <Content Include="SystemHome\Configuration\Themes\saantp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Themes\saetp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Themes\samtmp-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\p-satl-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\p-seud-01.aspx" />
     <Content Include="SystemHome\Configuration\UI Texts and Labels\p-seul-01.aspx" />
@@ -3393,6 +3397,34 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx.designer.cs">
       <DependentUpon>samspmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx.cs">
+      <DependentUpon>p-satim-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx.designer.cs">
+      <DependentUpon>p-satim-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\saantp-01.aspx.cs">
+      <DependentUpon>saantp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\saantp-01.aspx.designer.cs">
+      <DependentUpon>saantp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\saetp-01.aspx.cs">
+      <DependentUpon>saetp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\saetp-01.aspx.designer.cs">
+      <DependentUpon>saetp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\samtmp-01.aspx.cs">
+      <DependentUpon>samtmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\samtmp-01.aspx.designer.cs">
+      <DependentUpon>samtmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\UI Texts and Labels\p-satl-01.aspx.cs">
       <DependentUpon>p-satl-01.aspx</DependentUpon>

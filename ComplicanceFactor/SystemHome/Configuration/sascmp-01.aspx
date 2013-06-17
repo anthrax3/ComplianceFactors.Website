@@ -58,7 +58,7 @@
                             <%=LocalResources.GetLabel("app_manage_splash_pages_text")%></a>
                     </td>
                     <td>
-                        <a href="#">
+                        <a href="Themes/samtmp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_themes_text")%></a>
                     </td>
                 </tr>
@@ -88,7 +88,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a>Manage Digital Media Files</a>
+                        <a href="DigitalMediaFiles/samdmmp-01.aspx">Manage Digital Media Files</a>
                     </td>
                 </tr>
                 <tr>
@@ -208,8 +208,8 @@
                             <%=LocalResources.GetLabel("app_manage_delivery_types_text")%></a>
                     </td>
                     <td>
-                        <a href="DocumentTypes/samdoctmp-01.aspx"><%=LocalResources.GetLabel("app_manage_document_types")%></a>
-                        
+                        <a href="DocumentTypes/samdoctmp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_document_types")%></a>
                     </td>
                     <td>
                         <a href="CurriculumTypes/samctmp-01.aspx">

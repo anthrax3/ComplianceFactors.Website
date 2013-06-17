@@ -281,8 +281,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CatagorySearch
                 {
                     categories.s_category_id = txtCategoryId.Text;
                     categories.s_category_name_us_english = txtCategoryName.Text;
-                    categories.s_category_status_id_fk = null;
-                    categories.s_parent_category_id = null;
+                    categories.s_category_status_id_fk = "0";
+                    categories.s_parent_category_id = "0";
                     
 
                 }

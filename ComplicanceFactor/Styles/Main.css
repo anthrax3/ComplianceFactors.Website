@@ -152,16 +152,7 @@ div.right
     padding: 0;
 }
 
-.main_menu ul li
-{
-    float: left;
-    position: relative;
-    left: 50%;
-    display: block;
-    background: #333;
-    margin: 0;
-    padding: 0;
-}
+
 
 .main_menu ul ul
 {
@@ -722,12 +713,12 @@ img.logo_image
     padding: 3px 7px 0 10px;
 }*/
 
-table.GridView
+table.GridView   /*Test*/
 {
     font-weight: 700;
     font-size: 11px;
     color: #333;
-    border: solid 1px silver;
+    border: solid 1px red;
     padding: 3px 7px 0 10px;
 }
 

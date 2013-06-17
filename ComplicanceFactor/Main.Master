@@ -80,10 +80,10 @@
                         <tr>
                             <td colspan="2">
                                 <div class="left " style="padding: 4px 7px 0 10px; font-weight: bold;">
-                                    <asp:HyperLink ID="hplHelp" NavigateUrl="#" runat="server" Text="<%$ GlobalResourceExpression: app_welcome_text_help %>"></asp:HyperLink>
+                                    <asp:HyperLink ID="hplHelp" NavigateUrl="#" runat="server" class="login_link" Text="<%$ GlobalResourceExpression: app_welcome_text_help %>"></asp:HyperLink>
                                 </div>
                                 <div class="right" style="padding: 4px 0px 0 10px; font-weight: bold;">
-                                    <a href="mailto:admin@compliancefactors.com">
+                                    <a href="mailto:admin@compliancefactors.com" class="login_link">
                                         <%=LocalResources.GetGlobalLabel("app_welcome_email")%>
                                     </a>
                                     <%-- <asp:HyperLink ID="hplEmailId" runat="server" NavigateUrl="mailto:admin@compliancefactors.com" Text="<%$ Resources:lang, app_welcome_email%>"></asp:HyperLink>--%>

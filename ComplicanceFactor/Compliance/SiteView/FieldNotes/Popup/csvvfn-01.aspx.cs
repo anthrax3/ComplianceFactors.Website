@@ -102,6 +102,11 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                         Response.Write("Please provide a file to download.");
                     }
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),"err_msg",
+                     "alert('This file was not synchronised by mobile,please wait some time');", true);
+                }
             }
         }
         /// <summary>
@@ -173,8 +178,5 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
                     return "application/octet-stream";
             }
         }
-
-
-
     }
 }

@@ -169,6 +169,18 @@ namespace ComplicanceFactor.SystemHome
                 }
             }
 
+            else if (!string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saantp" || !string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saetp")
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["themeowner"]))
+                {
+                    Response.Redirect("~/SystemHome/sasumsmr-01.aspx?lastname=" + SecurityCenter.EncryptText(txtSearchLastName.Text) + "&firstname=" + SecurityCenter.EncryptText(txtSearchFirstName.Text) + "&username=" + SecurityCenter.EncryptText(txtSearchUserName.Text) + "&userstatus=" + SecurityCenter.EncryptText(ddlSearchUserStatus.SelectedValue) + "&usertype=" + SecurityCenter.EncryptText(ddlSearchUserTypes.SelectedValue) + "&userdomain=" + SecurityCenter.EncryptText(ddlSearchUserDomain.SelectedValue) + "&page=" + SecurityCenter.EncryptText(Request.QueryString["page"]) + "&themeowner=" + SecurityCenter.EncryptText("true"));
+                }
+                else if (!string.IsNullOrEmpty(Request.QueryString["themeCoordinator"]))
+                {
+                    Response.Redirect("~/SystemHome/sasumsmr-01.aspx?lastname=" + SecurityCenter.EncryptText(txtSearchLastName.Text) + "&firstname=" + SecurityCenter.EncryptText(txtSearchFirstName.Text) + "&username=" + SecurityCenter.EncryptText(txtSearchUserName.Text) + "&userstatus=" + SecurityCenter.EncryptText(ddlSearchUserStatus.SelectedValue) + "&usertype=" + SecurityCenter.EncryptText(ddlSearchUserTypes.SelectedValue) + "&userdomain=" + SecurityCenter.EncryptText(ddlSearchUserDomain.SelectedValue) + "&page=" + SecurityCenter.EncryptText(Request.QueryString["page"]) + "&themeCoordinator=" + SecurityCenter.EncryptText("true"));
+                }
+            }
+
 
 
         }
