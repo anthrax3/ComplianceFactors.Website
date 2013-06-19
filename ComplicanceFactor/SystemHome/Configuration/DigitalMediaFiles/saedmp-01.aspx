@@ -71,26 +71,32 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
+        <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
+        </div>
+        <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+        </div>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderUpdateeDigitalMedia" ValidationGroup="saedmp" CssClass="cursor_hand"
-                            runat="server" Text="Update Digital Media File Information" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" OnClick="btnHeaderUpdateeDigitalMedia_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="Reset" />
+                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            OnClick="btnHeaderReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="Cancel" />
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
         </div>
         <br />
         <div class="div_header_long">
-            Digital Media File Information:
+           <%=LocalResources.GetLabel("app_digital_media_file_information_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
@@ -98,9 +104,9 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvDigitalMediaId" runat="server" ValidationGroup="saedmp"
-                            ControlToValidate="txtDigitalMediaId" ErrorMessage="Please enter the digital media file id">&nbsp;
+                            ControlToValidate="txtDigitalMediaId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Digital Media File Id:
+                        * <%=LocalResources.GetLabel("app_digital_media_file_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDigitalMediaId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -116,9 +122,9 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvDigitalMediaTitle" runat="server" ValidationGroup="saedmp"
-                            ControlToValidate="txtDigitalMediaTitle" ErrorMessage="Please enter the digital media file title">&nbsp;
+                            ControlToValidate="txtDigitalMediaTitle" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Digital Media File Title:
+                        * <%=LocalResources.GetLabel("app_digital_media_file_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDigitalMediaTitle" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -127,9 +133,9 @@
                 <tr>
                     <td valign="top">
                         <asp:RequiredFieldValidator ID="rfvDigitalMediaDescription" runat="server" ValidationGroup="saedmp"
-                            ControlToValidate="txtDigitalMediaDescription" ErrorMessage="Please enter the description">&nbsp;
+                            ControlToValidate="txtDigitalMediaDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * Description:
+                        * <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtDigitalMediaDescription" runat="server" class="txtInput_long" rows="3"
@@ -138,24 +144,25 @@
                 </tr>
                 <tr>
                     <td>
-                        Type:
+                       <%=LocalResources.GetLabel("app_type_text")%>: 
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlFileType" CssClass="ddl_user_advanced_search" runat="server">
+                        <asp:DropDownList ID="ddlFileType" DataValueField="s_file_id_pk" DataTextField="s_file_name"
+                            CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Upload Digital Media File:
+                        <%=LocalResources.GetLabel("app_upload_digital_media_file_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
-                        <asp:Button ID="btnAttachment" runat="server" CssClass="cursor_hand" Text="Upload Digital Media File" />
-                        <asp:LinkButton ID="lnkFileName" runat="server" CssClass="cursor_hand"></asp:LinkButton>
-                        <asp:Button ID="btnView" runat="server" Text="View" CssClass="cursor_hand" />
-                        <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="cursor_hand" />
+                        <asp:Button ID="btnAttachment" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_upload_digital_media_file_button_text %>" />
+                        <asp:LinkButton ID="lnkFileName" runat="server" CssClass="cursor_hand" OnClick="lnkFileName_Click"></asp:LinkButton>
+                        <asp:Button ID="btnView" runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" OnClick="btnView_Click" />
+                        <asp:Button ID="btnEdit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
                         <asp:Button ID="btnRemove" OnClientClick="return confirmremove();" runat="server"
-                            Text="Remove" CssClass="cursor_hand" />
+                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" OnClick="btnRemove_Click" />
                     </td>
                 </tr>
             </table>
@@ -171,13 +178,15 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterUpdateDigitalMedia" ValidationGroup="saedmp" CssClass="cursor_hand"
-                            runat="server" Text="Update Digital Media File Information" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" OnClick="btnFooterUpdateDigitalMedia_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="Reset" />
+                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" 
+                            Text="<%$ LabelResourceExpression: app_reset_button_text %>" onclick="btnFooterReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="Cancel" />
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -199,7 +208,7 @@
             <div>
                 <div class="uploadpopup_header">
                     <div class="left">
-                        <asp:Label ID="lblHeading" Text="Add Digital Media File" runat="server"></asp:Label>
+                         <%=LocalResources.GetLabel("app_add_digital_media_file_text")%>:
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
@@ -217,12 +226,12 @@
                 <asp:ValidationSummary class="validation_summary_error_popup" ID="vsFileUpload" runat="server"
                     ValidationGroup="digitalmediaupload" />
                 <asp:CustomValidator ValidationGroup="digitalmediaupload" ID="cvFileUpload" runat="server"
-                    EnableClientScript="true" ErrorMessage="please upload valid files" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
+                    EnableClientScript="true" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty%>" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
                 <div class="div_controls">
                     <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td valign="top">
-                                Select File:
+                               <%=LocalResources.GetLabel("app_select_file_text")%>:
                             </td>
                             <td>
                                 <asp:FileUpload ID="fupFiles" runat="server" Width="460" size="60" />
@@ -235,9 +244,9 @@
                 <br />
                 <div class="multiple_button">
                     <asp:Button ID="btnUploadAttachment" ValidationGroup="digitalmediaupload" runat="server"
-                        Text="Upload" CssClass="cursor_hand" />
+                        Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" OnClick="btnUploadAttachment_Click" />
                 </div>
-                <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="Cancel" />
+                <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
             </div>
             <br />
         </div>

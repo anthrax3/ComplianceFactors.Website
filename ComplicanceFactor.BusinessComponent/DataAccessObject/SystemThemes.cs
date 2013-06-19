@@ -14,6 +14,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_theme_status_id_fk { get; set; }
         public string s_theme_owner_id_fk { get; set; }
         public string s_theme_coordinator_id_fk { get; set; }
+        public string s_theme_domain_id_fk { get; set; }
         public string s_theme_head_logo_file_name { get; set; }
         public string s_theme_report_logo_file_name { get; set; }
         public string s_theme_notification_logo_file_name { get; set; }
@@ -40,6 +41,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_theme_css_tag_bread_text_hex_value { get; set; }
         public string s_theme_css_tag_body_text_hex_value { get; set; }
         public string s_theme_css_tag_body_link_hex_value { get; set; }
+
 
         public string s_theme_owner_name { get; set; }
         public string s_theme_coordinator_name { get; set; }

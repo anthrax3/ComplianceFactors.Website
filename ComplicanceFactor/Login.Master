@@ -50,6 +50,32 @@
             margin: 16px 0 0;
             padding: 0;
         }
+        .btngo
+        {
+            background-color: #96CD19;
+            border: #96CD19;
+            color: #fff;
+            cursor: pointer;
+            height: 24px;
+            font-weight: 700;
+            width: 55px;
+            margin: 0;
+            padding: 0;
+        }
+        .btngo_language
+        {
+            width: 50px;
+            background-color: #96CD19;
+            color: #FFF;
+            border: 0;
+            height: 24px;
+            cursor: pointer;
+        }
+        .main_menu ul li:hover a, .main_menu ul li.hover a, .navwrap .activated, .navwrap .activated li, .navwrap li:hover a, /* hovered text */ .navwrap li:hover span, .navwrap li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover span, .navwrap li:hover li:hover a, .navwrap li:hover li:hover span, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover span, .navwrap li:hover li:hover li:hover a, .navwrap li:hover li:hover li:hover span, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover li.AspNet-Menu-Hover a, .navwrap li.AspNet-Menu-Hover li.AspNet-Menu-Hover li.AspNet-Menu-Hover span
+        {
+            background: #96CD19;
+            color: #fff;
+        }
     </style>
 </head>
 <body onload="noBack();" onunload="">

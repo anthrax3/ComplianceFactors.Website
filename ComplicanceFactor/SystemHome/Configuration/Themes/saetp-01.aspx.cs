@@ -9,6 +9,7 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Configuration.Themes
 {
@@ -19,9 +20,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         {
             if (!IsPostBack)
             {
+                
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Themes/samtmp-01.aspx>" + "Manage Themes" + "</a>" + " >&nbsp;" + "Edit Theme";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                //hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;"  + "<a href=/SystemHome/Configuration/Themes/samtmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_themes_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_theme_text");
 
+                SessionWrapper.Reset_theme_logo = null;
                 SessionWrapper.s_theme_edit_color = null;
 
                 //ddlDomain                 
@@ -36,7 +42,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = "Theme was successfully insered";
+                    divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
                 }
 
                 if (!string.IsNullOrEmpty(Request.QueryString["themeid"]))
@@ -52,6 +58,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                     hdThemeId.Value = themeId;
                     PopulateTheme();                    
                 }
+                RevertBack();
             }
 
             lblCoordinator.Text = SessionWrapper.s_theme_coordinator_name;
@@ -62,6 +69,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
 
             gvLogos.DataSource = dsLogoandColor.Tables[0];
             gvLogos.DataBind();
+        }
+
+        private void RevertBack()
+        {
+            DataSet dsLogoandColor = new DataSet();
+            dsLogoandColor = SystemThemeBLL.GetLogoandColors(themeId);
+            SessionWrapper.Reset_theme_logo = dsLogoandColor.Tables[0];
         }
         /// <summary>
         /// Populate Theme
@@ -179,13 +193,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 {
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
-                    divSuccess.InnerHtml = "Theme was updated successfully";
+                    divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
                 }
                 else
                 {
                     divSuccess.Style.Add("display", "none");
                     divError.Style.Add("display", "block");
-                    divError.InnerHtml = "Theme was inserted successfully";
+                    divError.InnerText = LocalResources.GetText("app_emp_type_id_already_exists_error_text");
                 }
             }
             catch (Exception ex)
@@ -208,11 +222,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             GridView GridView1 = (GridView)sender;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                Literal ltlPreviewColor = (Literal)e.Row.FindControl("ltlPreviewColor");
                 DataRowView drv = (DataRowView)e.Row.DataItem;
-                string colorValue = Convert.ToString(drv["Colorvalue"]);
-                colorValue = "#" + colorValue;
-                HtmlGenericControl msgDiv = (HtmlGenericControl)e.Row.FindControl("ColorDiv");
-                msgDiv.Style.Add("background-color", colorValue);
+                string Colorvalue = Convert.ToString(drv["Colorvalue"]);
+                Colorvalue = "#" + Colorvalue;
+                ltlPreviewColor.Text = "<input  type='text' readonly='readonly' style='border: 1px solid black; width: 25px; height: 25px; background:" + Colorvalue + "'/>";
+                //HtmlGenericControl msgDiv = (HtmlGenericControl)e.Row.FindControl("ColorDiv");
+                //msgDiv.Style.Add("background-color", colorValue);
 
             }
         }
@@ -238,10 +254,70 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                     GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
 
                     TextBox textBox = (TextBox)row.FindControl("txtHex");
+                    Literal ltlPreviewColor = (Literal)row.FindControl("ltlPreviewColor");
                     textBox.Text = color;
+                    ltlPreviewColor.Text = "<input  type='text' readonly='readonly' style='border: 1px solid black; width: 25px; height: 25px; background:#" + color + "'/>";
+                    //HtmlGenericControl msgDiv = (HtmlGenericControl)row.FindControl("ColorDiv");
+                    //msgDiv.Style.Add("background-color", "#" + color);
+                }
+            }
+        }
 
-                    HtmlGenericControl msgDiv = (HtmlGenericControl)row.FindControl("ColorDiv");
-                    msgDiv.Style.Add("background-color", "#" + color);
+        protected void btnHeaderReset_Click(object sender, EventArgs e)
+        {
+           try
+            {
+
+                SystemThemes themes = new SystemThemes();
+                themes.s_theme_head_logo_file_name = (SessionWrapper.Reset_theme_logo.Rows[0][2].ToString());
+                themes.s_theme_report_logo_file_name = (SessionWrapper.Reset_theme_logo.Rows[1][2].ToString());
+                themes.s_theme_notification_logo_file_name = (SessionWrapper.Reset_theme_logo.Rows[2][2].ToString());
+                themes.s_theme_system_id_pk = themeId;
+                SystemThemeBLL.UpdateLogo(themes);
+                PopulateTheme();
+                Response.Redirect(Request.RawUrl);
+            }
+           catch (Exception ex)
+           {
+               if (ConfigurationWrapper.LogErrors == true)
+               {
+                   if (ex.InnerException != null)
+                   {
+                       Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message, ex.InnerException.Message);
+                   }
+                   else
+                   {
+                       Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message);
+                   }
+               }
+           }
+        }
+
+        protected void btnFooterReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SystemThemes themes = new SystemThemes();
+                themes.s_theme_head_logo_file_name = (SessionWrapper.Reset_theme_logo.Rows[0][2].ToString());
+                themes.s_theme_report_logo_file_name = (SessionWrapper.Reset_theme_logo.Rows[1][2].ToString());
+                themes.s_theme_notification_logo_file_name = (SessionWrapper.Reset_theme_logo.Rows[2][2].ToString());
+                themes.s_theme_system_id_pk = themeId;
+                SystemThemeBLL.UpdateLogo(themes);
+                PopulateTheme();
+                Response.Redirect(Request.RawUrl);
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message);
+                    }
                 }
             }
         }

@@ -89,6 +89,22 @@ namespace ComplicanceFactor.BusinessComponent
             Hashtable htSearchTheme = new Hashtable();
             htSearchTheme.Add("@s_theme_id_pk", theme.s_theme_id_pk);
             htSearchTheme.Add("@s_theme_name", theme.s_theme_name);
+            if (theme.s_theme_status_id_fk == "app_ddl_all_text")
+            {
+                htSearchTheme.Add("@s_theme_status_id_fk", DBNull.Value);
+            }
+            else
+            {
+                htSearchTheme.Add("@s_theme_status_id_fk", theme.s_theme_status_id_fk);
+            }
+            if (theme.s_theme_domain_id_fk == "app_ddl_all_text")
+            {
+                htSearchTheme.Add("@s_theme_domain_id_fk", DBNull.Value);
+            }
+            else
+            {
+                htSearchTheme.Add("@s_theme_domain_id_fk", theme.s_theme_domain_id_fk);
+            }
             htSearchTheme.Add("@s_theme_owner_name", theme.s_theme_owner_name);
             htSearchTheme.Add("@s_theme_coordinator_name", theme.s_theme_coordinator_name);
 
@@ -292,5 +308,63 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+
+        public static DataTable GetAllDomain(string s_locale,string s_ui_page_name)
+        {
+            try
+            {
+                Hashtable htAllGetDomain = new Hashtable();
+                htAllGetDomain.Add("@s_ui_page_name", s_ui_page_name);
+                htAllGetDomain.Add("@s_locale", s_locale);
+                return DataProxy.FetchDataTable("s_sp_get_all_domain", htAllGetDomain);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// Update logo for reset
+        /// </summary>
+        /// <param name="themes"></param>
+        /// <returns></returns>
+        public static int UpdateLogo(SystemThemes themes)
+        {
+            try
+            {
+                Hashtable htUpdateLogo = new Hashtable();
+                htUpdateLogo.Add("@s_theme_head_logo_file_name", themes.s_theme_head_logo_file_name);
+                htUpdateLogo.Add("@s_theme_report_logo_file_name", themes.s_theme_report_logo_file_name);
+                htUpdateLogo.Add("@s_theme_notification_logo_file_name", themes.s_theme_notification_logo_file_name);
+                htUpdateLogo.Add("@s_theme_system_id_pk", themes.s_theme_system_id_pk);
+                return DataProxy.FetchSPOutput("s_sp_update_logos", htUpdateLogo);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Update theme Status
+        /// </summary>
+        /// <param name="s_theme_system_id_pk"></param>
+        /// <returns></returns>
+        public static int UpdateThemeStatus(string s_theme_system_id_pk)
+        {
+            Hashtable htUpdateThemeStatus = new Hashtable();
+            htUpdateThemeStatus.Add("@s_theme_system_id_pk", s_theme_system_id_pk);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_theme_status", htUpdateThemeStatus);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        
     }
 }

@@ -13,7 +13,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes.Popup
     public partial class p_satim_01 : System.Web.UI.Page
     {
         public static string logoUpload;
-        public static string _path = "~/Images/";
+        public static string _path = "~/SystemHome/Configuration/Themes/Logo/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.QueryString["uploadedImage"]))

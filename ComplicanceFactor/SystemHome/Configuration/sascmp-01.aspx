@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
+<%--    <style type="text/css">
         .div_header_grey_950
         {
             font-size: 14px;
@@ -15,7 +15,7 @@
             width: 950px;
             padding: 3px 0 3px 8px;
         }
-    </style>
+    </style>--%>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -88,7 +88,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="DigitalMediaFiles/samdmmp-01.aspx">Manage Digital Media Files</a>
+                        <a href="DigitalMediaFiles/samdmmp-01.aspx"><%=LocalResources.GetLabel("app_manage_digital_media_files_text")%></a>
                     </td>
                 </tr>
                 <tr>

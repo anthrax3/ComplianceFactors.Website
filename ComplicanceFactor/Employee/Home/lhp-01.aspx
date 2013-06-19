@@ -290,7 +290,7 @@
         </asp:GridView>
         <b>
             <asp:LinkButton ID="lnkViewAllCourses" runat="server" Text="<%$LabelResourceExpression: app_view_all_my_course_button_text%>"
-                OnClick="lnkViewAllCourses_Click"></asp:LinkButton></b>
+                OnClick="lnkViewAllCourses_Click" CssClass="body_link"></asp:LinkButton></b>
     </div>
     <br />
     <div class="div_header_long">
@@ -340,7 +340,7 @@
         </asp:GridView>
         <b>
             <asp:LinkButton ID="lnkViewAllCurriculum" runat="server" Text="<%$LabelResourceExpression: app_view_all_my_curricula_button_text%>"
-                OnClick="lnkViewAllCurriculum_Click"></asp:LinkButton></b>
+                OnClick="lnkViewAllCurriculum_Click" CssClass="body_link"></asp:LinkButton></b>
     </div>
     <br />
    <div class="div_header_long">
@@ -395,7 +395,7 @@
             </Columns>
         </asp:GridView>
           <b>
-            <asp:LinkButton ID="lnkViewAllLearningHistory" runat="server" 
+            <asp:LinkButton ID="lnkViewAllLearningHistory" runat="server"  CssClass="body_link"
                Text="<%$LabelResourceExpression: app_view_all_my_learning_history_button_text %>" 
                onclick="lnkViewAllLearningHistory_Click"></asp:LinkButton></b>
     </div>

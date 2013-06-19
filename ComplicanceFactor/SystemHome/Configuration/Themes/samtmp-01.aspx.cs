@@ -8,6 +8,7 @@ using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Configuration.Themes
 {
@@ -17,12 +18,21 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         {
             if (!IsPostBack)
             {
+                
+
                 string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "Manage Theme";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_themes_text");
+                
+                ddlStatus.DataSource = SystemDomainBLL.GetAllDomainStatus(SessionWrapper.CultureName, "samdmp-01");
+                ddlStatus.DataBind();
+                ddlStatus.SelectedValue = "app_ddl_all_text";
 
+                ddlDomain.DataSource = SystemThemeBLL.GetAllDomain(SessionWrapper.CultureName,"samtmp-01");
+                ddlDomain.DataBind();
+                ddlDomain.SelectedValue = "app_ddl_all_text";
                 SearchResult();
             }
         }
@@ -34,6 +44,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             SystemThemes theme = new SystemThemes();
             theme.s_theme_id_pk = txtThemeId.Text;
             theme.s_theme_name = txtThemeName.Text;
+            theme.s_theme_status_id_fk = ddlStatus.SelectedValue;
+            theme.s_theme_domain_id_fk = ddlDomain.SelectedValue;
             theme.s_theme_owner_name = txtOwner.Text;
             theme.s_theme_coordinator_name = txtCoordinator.Text;
 
@@ -44,7 +56,19 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             }
             catch (Exception ex)
             {
-
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samtmp-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samtmp-01", ex.Message);
+                    }
+                }
             }
 
             if (gvsearchDetails.Rows.Count == 0)
@@ -394,11 +418,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                         {
                             if (ex.InnerException != null)
                             {
-                                Logger.WriteToErrorLog("samtmp-01.aspx", ex.Message, ex.InnerException.Message);
+                                Logger.WriteToErrorLog("samtmp-01.aspx (Copy)", ex.Message, ex.InnerException.Message);
                             }
                             else
                             {
-                                Logger.WriteToErrorLog("samtmp-01.aspx", ex.Message);
+                                Logger.WriteToErrorLog("samtmp-01.aspx (Copy)", ex.Message);
                             }
                         }
                     }
@@ -406,9 +430,27 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 }
 
             }
-            else
+            else if (e.CommandName.Equals("Archive"))
             {
-
+                try
+                {
+                    SystemThemeBLL.UpdateThemeStatus(gvsearchDetails.DataKeys[rowIndex].Values[0].ToString());
+                }
+                catch (Exception ex)
+                {
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("samtmp-01.aspx (Archive)", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("samtmp-01.aspx (Archive)", ex.Message);
+                        }
+                    }
+                }
+                SearchResult();
             }
         }
 

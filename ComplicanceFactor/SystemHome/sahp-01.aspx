@@ -169,7 +169,7 @@
         </asp:GridView>
         <b>
             <asp:LinkButton ID="lnkManageSplashPage" Text="<%$ LabelResourceExpression: app_all_manage_splash_pages_button_text %>"
-                runat="server" OnClick="lnkManageSplashPage_Click"></asp:LinkButton></b>
+                runat="server" OnClick="lnkManageSplashPage_Click" CssClass="body_link"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -207,7 +207,7 @@
         </asp:GridView>
         <b>
             <asp:LinkButton ID="lnkManageThemes" Text="<%$ LabelResourceExpression: app_all_manage_themes_button_text %>"
-                runat="server"></asp:LinkButton></b>
+                runat="server" CssClass="body_link"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -256,7 +256,7 @@
         </asp:GridView>
         <b>
             <asp:LinkButton ID="btnViewAllReports" Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>"
-                runat="server" OnClick="btnViewAllReports_Click"></asp:LinkButton></b>
+                runat="server" OnClick="btnViewAllReports_Click" CssClass="body_link"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>

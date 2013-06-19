@@ -318,7 +318,7 @@
         </table>
     </div>
     <b>
-        <asp:LinkButton ID="lnkViewAllToDo" runat="server" Text="<%$ LabelResourceExpression: app_view_all_my_todos_button_text %>" OnClick="lnkViewAllToDo_Click"></asp:LinkButton></b>
+        <asp:LinkButton ID="lnkViewAllToDo" runat="server" Text="<%$ LabelResourceExpression: app_view_all_my_todos_button_text %>" OnClick="lnkViewAllToDo_Click" CssClass="body_link"></asp:LinkButton></b>
     <br />
     <br />
     <br />
@@ -424,7 +424,7 @@
             </Columns>
         </asp:GridView>--%>
         <b>
-            <asp:LinkButton ID="lnkViewAllTeam" runat="server" Text="<%$ LabelResourceExpression: app_view_all_my_team_button_text %>" OnClick="lnkViewAllTeam_Click"></asp:LinkButton></b>
+            <asp:LinkButton ID="lnkViewAllTeam" runat="server" Text="<%$ LabelResourceExpression: app_view_all_my_team_button_text %>" OnClick="lnkViewAllTeam_Click" CssClass="body_link"></asp:LinkButton></b>
     </div>
     <br />
     <div class="div_header_long">
@@ -473,7 +473,7 @@
         </asp:GridView>
         <b>
             <asp:LinkButton ID="lnkViewAllReport" runat="server" Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>"
-                OnClick="lnkViewAllReport_Click"></asp:LinkButton></b>
+                OnClick="lnkViewAllReport_Click" CssClass="body_link"></asp:LinkButton></b>
     </div>
     <br />
     <div class="content_area">

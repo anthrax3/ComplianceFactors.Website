@@ -47,9 +47,9 @@
             <div class="content_align ">
                 <!---logo   --->
                 <div id="logo">
-                    <%-- <a href="/Employee/lhp-01.aspx" class="image_link">--%>
-                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
-                        AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />
+                    <%-- <a href="/Employee/lhp-01.aspx" class="image_link">  AlternateText="Logo" --%>
+                    <asp:Image ID="imgLogo" runat="server" 
+                         ImageAlign="Left" CssClass="logo_image" />
                     <%-- </a>--%>
                 </div>
                 <!---End logo   --->

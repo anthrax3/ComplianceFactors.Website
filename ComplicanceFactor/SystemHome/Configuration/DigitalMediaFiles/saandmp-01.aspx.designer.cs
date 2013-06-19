@@ -31,6 +31,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
+        /// divError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        
+        /// <summary>
         /// hdNav_selected control.
         /// </summary>
         /// <remarks>
@@ -236,15 +245,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlUploadFileHeading;
-        
-        /// <summary>
-        /// lblHeading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeading;
         
         /// <summary>
         /// imgClose control.

@@ -417,11 +417,13 @@ a.image_link
     border: none;
 }
 
-img.logo_image
+/*img.logo_image
 {
     border: none;
     padding: 0;
-}
+}*/
+
+
 
 /*.btngo_language
 {

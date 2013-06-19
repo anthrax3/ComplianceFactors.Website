@@ -6553,6 +6553,68 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static DataTable Reset_theme_logo
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_theme_logo"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["Reset_theme_logo"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_theme_logo"] = value;
+            }
+        }
+        public static string s_digital_media_source_file_name
+        {
+            get
+            {
+                if (HttpContext.Current.Session["s_digital_media_source_file_name"] != null)
+                {
+                    return HttpContext.Current.Session["s_digital_media_source_file_name"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["s_digital_media_source_file_name"] = value;
+            }
+        }
+
+        public static DataTable session_reset_DigitalMediaFiles
+        {
+            get
+            {
+                if (HttpContext.Current.Session["session_reset_DigitalMediaFiles"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["session_reset_DigitalMediaFiles"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["session_reset_DigitalMediaFiles"] = value;
+            }
+        }
+
+
         public static void clearsession()
         {
             sessionid = "";

@@ -167,7 +167,7 @@
         <b>
             <asp:LinkButton ID="lnkViewAllToDos" runat="server" 
             Text="<%$ LabelResourceExpression: app_view_all_my_todos_button_text %>" 
-            onclick="lnkViewAllToDos_Click"></asp:LinkButton></b>
+            onclick="lnkViewAllToDos_Click" CssClass="body_link"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -213,7 +213,7 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkViewAllMyRosters" runat="server" 
+            <asp:LinkButton ID="lnkViewAllMyRosters" runat="server" CssClass="body_link"
             Text="<%$ LabelResourceExpression: app_view_all_my_rosters_button_text %>" 
             onclick="lnkViewAllMyRosters_Click"></asp:LinkButton></b>
         <div class="clear">
@@ -261,7 +261,7 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkViewAllMyReports" runat="server" 
+            <asp:LinkButton ID="lnkViewAllMyReports" runat="server" CssClass="body_link"
             Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>" 
             onclick="lnkViewAllMyReports_Click"></asp:LinkButton></b>
         <div class="clear">

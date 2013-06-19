@@ -10,13 +10,14 @@ using ComplicanceFactor.Common;
 using System.Web.UI.HtmlControls;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.IO;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Configuration.Themes
 {
     public partial class saantp_01 : System.Web.UI.Page
     {
         public static string logoUpload;
-        public static string _path = "~/Images/";
+        public static string _path = "~/SystemHome/Configuration/Themes/Logo/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -47,8 +48,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 SessionWrapper.s_theme_coordinator_name = string.Empty;
                 SessionWrapper.s_theme_owner_name = string.Empty;
 
+                string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + "System" + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Themes/samtmp-01.aspx>" + "Manage Themes" + "</a>" + " >&nbsp;" + "Create New Theme";
+                navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
+                //hdNav_selected.Value = "#" + SessionWrapper.navigationText;
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Themes/samtmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_themes_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_create_new_theme_text");
                 
             }
 
@@ -162,14 +166,37 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             {
                 //Insertion
                 int result = SystemThemeBLL.InsertTheme(theme);
-                if (result == 0)
+                if (result != -2)
                 {
                     Response.Redirect("~/SystemHome/Configuration/Themes/saetp-01.aspx?copythemeid=" + SecurityCenter.EncryptText(theme.s_theme_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true"), false);
+                }
+                else
+                {
+                    divError.Style.Add("display", "block");
+                    divError.InnerText = LocalResources.GetText("app_approval_theme_id_already_exist_error_wrong");
                 }
             }
             catch (Exception ex)
             {
 
+                ///<summary>
+                ///Show error message
+                divError.Style.Add("display", "block");
+                ///</summary>
+
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Save Course)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Save Course)", ex.Message);
+                    }
+                }
             }
 
 
@@ -182,7 +209,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             {
                 logoUpload = gvLogos.DataKeys[rowIndex].Values[0].ToString();
             }
-            mpeAddAttachment.Show();
         }
 
         protected void btnUploadAttachment_Click(object sender, EventArgs e)

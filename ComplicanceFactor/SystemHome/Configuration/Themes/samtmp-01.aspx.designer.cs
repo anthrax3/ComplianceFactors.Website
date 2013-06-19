@@ -238,13 +238,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes {
         protected global::System.Web.UI.WebControls.TextBox txtThemeName;
         
         /// <summary>
-        /// ddldomain control.
+        /// ddlDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddldomain;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDomain;
         
         /// <summary>
         /// ddlStatus control.
