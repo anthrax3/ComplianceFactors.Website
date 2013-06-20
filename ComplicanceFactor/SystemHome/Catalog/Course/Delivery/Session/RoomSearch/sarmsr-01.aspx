@@ -1,12 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sarmsr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.sarmsr_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sarmsr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.sarmsr_01"
+    MaintainScrollPositionOnPostback="true" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>ComplianceFactors - Room Search Results</title>
-    <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+   <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+   </asp:Content>
+   <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="../../../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+     <script src="../../../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <style type="text/css">
         body
         {
@@ -26,9 +27,6 @@
             return false;
         }
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
     <script type="text/javascript">
 
         $(function () {
@@ -188,7 +186,4 @@
             </asp:Panel>
         </div>
     </div>
-    <%-- close Room search--%>
-    </form>
-</body>
-</html>
+ </asp:Content>

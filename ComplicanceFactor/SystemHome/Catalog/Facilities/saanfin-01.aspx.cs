@@ -26,7 +26,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Facilities
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Facilities/samfimp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_facilities_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_create_new_facility_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Facilities/samfimp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_facilities_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_facility_text") + "</a>";
 
                     //temp locale column
                     SessionWrapper.Locale = TempDataTables.TempLocale();

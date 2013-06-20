@@ -38,7 +38,7 @@ namespace ComplicanceFactor.Training
                 gvMyDeliveries.PageSize = 5;
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_training") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_home_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_training") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 if (SessionWrapper.u_profile_my_train_todos_collapse_pref == "app_ddl_collapsed")
                 {
                     div_MyToDo.Style.Add("display", "none");

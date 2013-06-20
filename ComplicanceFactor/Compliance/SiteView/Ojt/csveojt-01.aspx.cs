@@ -10,6 +10,7 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
 using System.Globalization;
+using ComplicanceFactor.Common.Languages;
 
 
 namespace ComplicanceFactor.Compliance.SiteView.Ojt
@@ -24,7 +25,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
         {
             //Label Bread Crumb
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + "Compliance" + "</a>&nbsp;" + " >&nbsp;" + "<a href=../ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + "Edit OJT";
+            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../ccsv-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_ojt_text") + "</a>";
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))

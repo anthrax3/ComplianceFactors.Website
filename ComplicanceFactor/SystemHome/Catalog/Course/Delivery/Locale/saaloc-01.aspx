@@ -4,8 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
+    <link href="../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />    <style type="text/css">
         body
         {
             width: 650px !important;

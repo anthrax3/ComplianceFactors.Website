@@ -27,7 +27,7 @@ namespace ComplicanceFactor.Compliance
             {
                 SessionWrapper.navigationText = "app_nav_compliance";
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetLocaleResourceString("app_nav_compliance") + "</a>" + " > " + LocalResources.GetGlobalLabel("app_home_text");
+                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>" + " > " + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 gvharmDetails.AllowPaging = true;
                 gvMyGiris.AllowPaging = true;
                 gvMyToDo.AllowPaging = true;

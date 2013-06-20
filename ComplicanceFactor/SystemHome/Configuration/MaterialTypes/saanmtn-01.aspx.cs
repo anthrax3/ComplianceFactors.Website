@@ -28,7 +28,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.MaterialTypes
                 }
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/MaterialTypes/sammtmp-01.aspx>" + LocalResources.GetLabel("app_manage_Material_type_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_create_new_Material_type_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/MaterialTypes/sammtmp-01.aspx>" + LocalResources.GetLabel("app_manage_Material_type_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_Material_type_text") + "</a>";
             }
         }
 

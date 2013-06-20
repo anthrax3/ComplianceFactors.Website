@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Resources
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_resources_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_resources_text") + "</a>";
 
 
                     //bind the status

@@ -28,7 +28,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_search_result_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_course_details_page_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_search_result_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_course_details_page_text") + "</a>";
 
                 btnSaveCompletion.Attributes.Add("OnClick", "return IsCheckBoxSelected(gvsearchSession)");
                 SessionWrapper.TempEmployeelist_delivery = null;

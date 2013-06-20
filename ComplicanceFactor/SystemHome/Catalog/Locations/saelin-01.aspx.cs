@@ -31,7 +31,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Locations
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Locations/samlimp-01.aspx>" + LocalResources.GetLabel("app_manage_locations_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_location_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Locations/samlimp-01.aspx>" + LocalResources.GetLabel("app_manage_locations_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_location_text") + "</a>";
 
                     // bind the status
                     ddlStatus.DataSource = SystemLocationBLL.GetStatus(SessionWrapper.CultureName,"saelin-01");

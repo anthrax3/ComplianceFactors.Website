@@ -20,7 +20,7 @@ namespace ComplicanceFactor.Compliance
         {
             SessionWrapper.navigationText = "app_nav_compliance";
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_harm_text");
+            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_harm_text") + "</a>";
             //Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
             if (!IsPostBack)

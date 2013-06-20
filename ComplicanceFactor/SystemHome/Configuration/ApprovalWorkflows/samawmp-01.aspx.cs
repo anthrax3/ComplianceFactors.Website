@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.ApprovalWorkflows
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_approval_workflow_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_approval_workflow_text") + "</a>";
                 //Bind Approval Workflow Status
                 ddlStatus.DataSource = SystemApprovalWorkflowBLL.GetApprovalWorkflowAllstatus(SessionWrapper.CultureName,"samawmp-01");
                 ddlStatus.DataBind();

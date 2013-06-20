@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="safacsr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.safacsr_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="safacsr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.safacsr_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>ComplianceFactors - Facility Search Results</title>
-    <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <style type="text/css">
         body
@@ -18,9 +18,6 @@
             height: 300px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
     <script type="text/javascript">
         function resetall() {
             document.getElementById('<%=txtFacilityName.ClientID %>').value = '';
@@ -89,11 +86,11 @@
                 OnRowCommand="gvsearchDetails_RowCommand" OnRowEditing="gvsearchDetails_RowEditing">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="<%$ LabelResourceExpression: app_facility_name_text %>" DataField='c_facility_name' HeaderStyle-HorizontalAlign="Center"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_facility_name_text %>" DataField='c_facility_name'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="<%$ LabelResourceExpression: app_facility_id_text %>" DataField='c_facility_id_pk' HeaderStyle-HorizontalAlign="Center"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_facility_id_text %>" DataField='c_facility_id_pk'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
@@ -146,14 +143,14 @@
         <div>
             <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
                 <div class="div_header_800">
-                   <%=LocalResources.GetLabel("app_facility_search_text")%>:
+                    <%=LocalResources.GetLabel("app_facility_search_text")%>:
                 </div>
                 <br />
                 <div class="div_controls font_1">
                     <table>
                         <tr>
                             <td>
-                               <%=LocalResources.GetLabel("app_facility_name_text")%>:
+                                <%=LocalResources.GetLabel("app_facility_name_text")%>:
                             </td>
                             <td>
                                 <asp:TextBox ID="txtFacilityName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -171,12 +168,12 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="align_left">
-                                <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" runat="server"
-                                    OnClick="btnGosearch_Click" />
+                                <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                                    runat="server" OnClick="btnGosearch_Click" />
                             </td>
                             <td class="align_left">
-                                <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" OnClientClick="return resetall();"
-                                    runat="server" />
+                                <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                                    OnClientClick="return resetall();" runat="server" />
                             </td>
                             <td class="align_right">
                                 <asp:Button ID="btnCancel" CssClass="cursor_hand" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
@@ -188,7 +185,4 @@
             </asp:Panel>
         </div>
     </div>
-    <%-- close Facility search--%>
-    </form>
-</body>
-</html>
+</asp:Content>

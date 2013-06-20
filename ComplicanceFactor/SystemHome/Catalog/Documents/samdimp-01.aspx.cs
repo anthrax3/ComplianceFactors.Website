@@ -14,7 +14,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>" + "&nbsp;>&nbsp;" + LocalResources.GetGlobalLabel("app_manage_documents_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>" + "&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_documents_text") + "</a>";
 
                 // bind the status
                 ddlStatus.DataSource = SystemDocumentsBLL.GetAllStatus(SessionWrapper.CultureName, "samdimp-01");

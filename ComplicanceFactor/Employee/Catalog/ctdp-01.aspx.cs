@@ -21,7 +21,7 @@ namespace ComplicanceFactor.Employee.Catalog
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
             string brdCrumb = "<a href=/Employee/Catalog/qscr-01.aspx?keyword=" + SecurityCenter.EncryptText("") + ">" + " { " + LocalResources.GetGlobalLabel("app_quick_search_text") + "</a>" + " <a href=# > or </a>" + "<a href=/Employee/Catalog/ascp-01.aspx>" + LocalResources.GetGlobalLabel("app_advanced_search_text") + "</a>" + " <a href=# > or </a> " + "<a href=/Employee/Catalog/bchp-01.aspx>" + LocalResources.GetGlobalLabel("app_browse_text") + " } " + LocalResources.GetGlobalLabel("app_catalog_text") + "</a>";
-            lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + brdCrumb + " > " + LocalResources.GetGlobalLabel("app_course_details_page_text");
+            lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + brdCrumb + " > " + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_course_details_page_text") + "</a>";
             //go button
             Button btnGo = (Button)Master.FindControl("btnGo");
             btnGo.Click += new EventHandler(btnGo_Click);

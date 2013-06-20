@@ -20,7 +20,7 @@ namespace ComplicanceFactor.Manager.Catalog
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
             string brdCrumb = "<a href=/Manager/Catalog/qscr-01.aspx?keyword=" + SecurityCenter.EncryptText("") + ">" + " { " + LocalResources.GetGlobalLabel("app_quick_search_text") + "</a>" + " <a href=# > or </a>" + "<a href=/Manager/Catalog/ascp-01.aspx>" + LocalResources.GetGlobalLabel("app_advanced_search_text") + "</a>" + " <a href=# > or </a> " + "<a href=/Manager/Catalog/bchp-01.aspx>" + LocalResources.GetGlobalLabel("app_browse_text") + " } " + LocalResources.GetGlobalLabel("app_catalog_text") + "</a>";
-            lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>" + " > " + brdCrumb + " > " + LocalResources.GetGlobalLabel("app_course_details_page_text");
+            lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>" + " > " + brdCrumb + " > " + "<a class=bread_text>" + LocalResources.GetLabel("app_course_details_page_text") + "</a>";
             //go button
             Button btnGo = (Button)Master.FindControl("btnGo");
             btnGo.Click += new EventHandler(btnGo_Click);

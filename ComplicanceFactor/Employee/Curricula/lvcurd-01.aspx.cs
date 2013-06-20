@@ -30,7 +30,7 @@ namespace ComplicanceFactor.Employee.Curricula
                 divsearch.Style.Add("display", "block");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_employee") + " > ...";
-                lblBreadCrumb.Text ="<a href=/Employee/Home/lhp-01.aspx>"+ LocalResources.GetGlobalLabel("app_nav_employee")+"</a>" + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + "<a href=/Employee/Curricula/lmcurp-01.aspx>" + LocalResources.GetGlobalLabel("app_my_curricula_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_view_curriculum_details_text");
+                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " >&nbsp;" + "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + "<a href=/Employee/Curricula/lmcurp-01.aspx>" + LocalResources.GetLabel("app_my_curricula_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_view_curriculum_details_text") + "</a>";
 
                 ///<summary>
                 //Get Curriculum id

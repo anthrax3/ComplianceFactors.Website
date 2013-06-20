@@ -1,13 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasrdn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DomainPopup.sasrdn_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasrdn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DomainPopup.sasrdn_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <style type="text/css">
         body
         {
@@ -55,7 +53,6 @@
 
         }
     </script>
-   
     <script type="text/javascript" language="javascript">
         function validateCheckBoxes() {
             var isValid = false;
@@ -75,25 +72,17 @@
             return false;
         }
     </script>
+    <script type="text/javascript">
+        function resetall() {
+            document.getElementById('<%=txtDomainName.ClientID %>').value = '';
+            document.getElementById('<%=txtDomainId.ClientID %>').value = '';
 
-     <script type="text/javascript">
-         function resetall() {
-             document.getElementById('<%=txtDomainName.ClientID %>').value = '';
-             document.getElementById('<%=txtDomainId.ClientID %>').value = '';
-
-             return false;
-         }
+            return false;
+        }
     </script>
-
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
-        
-       
         <div class="div_header_popup_1">
-          <%=LocalResources.GetLabel("app_domains_search_results_text")%>:
-         
+            <%=LocalResources.GetLabel("app_domains_search_results_text")%>:
         </div>
         <br />
         <div>
@@ -126,8 +115,8 @@
                         <asp:Label ID="lblHeaderPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtHeaderPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblHeaderPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" 
-                            onclick="btnHeaderGoto_Click1"/>
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>"
+                            OnClick="btnHeaderGoto_Click1" />
                     </td>
                 </tr>
             </table>
@@ -136,8 +125,8 @@
         <div>
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_popup_1 tablesorter"
                 runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" AllowPaging="true"
-                EmptyDataRowStyle-CssClass="empty_row" DataKeyNames="u_domain_system_id_pk"
-                PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
+                EmptyDataRowStyle-CssClass="empty_row" DataKeyNames="u_domain_system_id_pk" PagerSettings-Visible="false"
+                PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_domain_name_text %>" DataField='u_domain_name'
@@ -152,7 +141,7 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <asp:CheckBox ID="chkSelect" onclick="clearSelection();" runat="server" />
-                           <%-- <asp:HiddenField Visible="false" ID="hdnDescription" runat="server" Value='<%# Eval("u_domain_desc") %>' />--%>
+                            <%-- <asp:HiddenField Visible="false" ID="hdnDescription" runat="server" Value='<%# Eval("u_domain_desc") %>' />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -196,8 +185,8 @@
                         <asp:Label ID="lblFooterPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtFooterPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblFooterPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" 
-                            onclick="btnFooterGoto_Click1"/>
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>"
+                            OnClick="btnFooterGoto_Click1" />
                     </td>
                 </tr>
             </table>
@@ -208,9 +197,7 @@
         <br />
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
-   
                 <%=LocalResources.GetLabel("app_domain_search_text")%>:
-           
             </div>
             <br />
             <div class="div_controls font_1">
@@ -218,14 +205,12 @@
                     <tr>
                         <td>
                             <%=LocalResources.GetLabel("app_domain_name_text")%>:
-                          
                         </td>
                         <td>
                             <asp:TextBox ID="txtDomainName" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
                             <%=LocalResources.GetLabel("app_domain_id_text")%>:
-                          
                         </td>
                         <td>
                             <asp:TextBox ID="txtDomainId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -246,13 +231,11 @@
                         </td>
                         <td class="align_right">
                             <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                                Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>
             </div>
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

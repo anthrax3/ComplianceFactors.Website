@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
-    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" /> 
     <script src="../../../Scripts/querystring-0.9.0-min.js" type="text/javascript"></script>
     <script src="../../../Scripts/querystring-0.9.0.js" type="text/javascript"></script>
    <script type="text/javascript">

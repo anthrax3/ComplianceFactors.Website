@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Locations
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_locations_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_locations_text") + "</a>";
 
                     //Status Bind
                     ddlStatus.DataSource = SystemLocationBLL.GetAllStatus(SessionWrapper.CultureName, "samlimp-01"); ;

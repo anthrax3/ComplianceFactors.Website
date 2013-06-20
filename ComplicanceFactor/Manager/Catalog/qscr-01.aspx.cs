@@ -35,7 +35,7 @@ namespace ComplicanceFactor.Manager.Catalog
                 TempDataTables dtEmployee = new TempDataTables();
                 SessionWrapper.Employee = dtEmployee.TempEmployee();
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>" + " > " + LocalResources.GetGlobalLabel("app_quicksearch_catalog_text");
+                lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>" + " > " + "<a class=bread_text>" + LocalResources.GetLabel("app_quicksearch_catalog_text") + "</a>";
                 if (!string.IsNullOrEmpty(Request.QueryString["Keyword"]))
                 {
 

@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Facilities
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_facilities_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_facilities_text") + "</a>";
 
                     //Status Bind
                     ddlStatus.DataSource = SystemFacilityBLL.GetAllStatus(SessionWrapper.CultureName, "samfimp-01");

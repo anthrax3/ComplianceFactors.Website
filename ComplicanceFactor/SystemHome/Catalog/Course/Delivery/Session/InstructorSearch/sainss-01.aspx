@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sainss-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.sainss_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sainss-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.sainss_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body
         {
@@ -17,9 +17,6 @@
             height: 150px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
     <script type="text/javascript">
         function resetall() {
             document.getElementById('<%=txtLastName.ClientID %>').value = '';
@@ -73,6 +70,4 @@
             </asp:Panel>
         </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

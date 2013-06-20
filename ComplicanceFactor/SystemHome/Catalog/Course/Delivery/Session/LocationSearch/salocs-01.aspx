@@ -1,12 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="salocs-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.salocs_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="salocs-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.DeliveryPopup.salocs_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <title>ComplianceFactors - Location Search</title>
     <style type="text/css">
         body
         {
@@ -18,17 +17,12 @@
             height: 150px;
         }
     </style>
-   
-</head>
-<body>
-    <form id="form1" runat="server">
-     <script type="text/javascript">
-         function resetall() {
-             document.getElementById('<%=txtLocationName.ClientID %>').value = '';
-             document.getElementById('<%=txtLocationId.ClientID %>').value = '';
-
-             return false;
-         }
+    <script type="text/javascript">
+        function resetall() {
+            document.getElementById('<%=txtLocationName.ClientID %>').value = '';
+            document.getElementById('<%=txtLocationId.ClientID %>').value = '';
+            return false;
+        }
     </script>
     <div>
         <div>
@@ -60,7 +54,7 @@
                         <tr>
                             <td colspan="2" class="align_left">
                                 <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
-                                    runat="server" onclick="btnGosearch_Click" />
+                                    runat="server" OnClick="btnGosearch_Click" />
                             </td>
                             <td class="align_left">
                                 <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
@@ -76,6 +70,4 @@
             </asp:Panel>
         </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

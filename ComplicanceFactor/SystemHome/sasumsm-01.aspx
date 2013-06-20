@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasumsm-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sasumsm_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasumsm-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sasumsm_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link href="../Styles/Main.css" rel="stylesheet" type="text/css" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         body
         {
@@ -32,9 +31,6 @@
             return false;
         }
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div>
             <div class="manage_user_header">
@@ -121,6 +117,4 @@
             </div>
         </div>
     </asp:Panel>
-    </form>
-</body>
-</html>
+</asp:Content>

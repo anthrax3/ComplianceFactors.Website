@@ -22,7 +22,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_search_results_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_search_results_text") + "</a>";
 
 
 

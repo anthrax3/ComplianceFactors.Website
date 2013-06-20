@@ -50,7 +50,7 @@ namespace ComplicanceFactor.SystemHome
 
                 gvSplashPages.AllowPaging = true;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_home_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 if (SessionWrapper.u_profile_my_system_splashes_records_display_pref == 0)
                 {
                     gvSplashPages.AllowPaging = false;

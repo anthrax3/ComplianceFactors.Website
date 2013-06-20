@@ -37,7 +37,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Rooms
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Rooms/samroimp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_rooms_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_room_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Rooms/samroimp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_rooms_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_room_text") + "</a>";
 
 
                     //clear room session

@@ -45,7 +45,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Resources
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Resources/samrimp-01.aspx>" + LocalResources.GetLabel("app_manage_resource_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_resource_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Resources/samrimp-01.aspx>" + LocalResources.GetLabel("app_manage_resource_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_resource_text") + "</a>";
 
 
                     //success message after insert

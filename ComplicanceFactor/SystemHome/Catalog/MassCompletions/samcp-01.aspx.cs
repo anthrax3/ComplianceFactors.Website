@@ -31,7 +31,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_mass_completions_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_mass_completions_text") + "</a>";
 
             }
             if (SessionWrapper.Compltion_courses.Rows.Count > 0 && hdnIsCatalogBind.Value != "1")

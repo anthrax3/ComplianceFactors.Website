@@ -5,8 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>  <script type="text/javascript">
 
         $(document).ready(function () {
             var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value

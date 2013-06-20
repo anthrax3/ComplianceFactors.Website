@@ -1,17 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sand-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sand_01"
-    MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sand-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sand_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <%--<script src="../../../Scripts/JQuery.Zoom.js" type="text/javascript"></script>--%>
-    <%--<link href="../../../Scripts/JQuery.Zoom.Style.css" rel="stylesheet" type="text/css" />--%>
     <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
+   <style type="text/css">
         body
         {
             width: 1010px !important;
@@ -21,10 +19,6 @@
             height: 550px;
         }
     </style>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -97,6 +91,7 @@
             //open session wizard
 
             $("#<%=btnOpenSessionWizard.ClientID %>").fancybox({
+
                 'type': 'iframe',
                 'titlePosition': 'over',
                 'titleShow': true,
@@ -422,7 +417,7 @@
     <script type="text/javascript">
         function checkCopy() {
             document.getElementById('<%=hdCheckCopy.ClientID %>').value = "1";
-     }
+        }
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
@@ -1005,7 +1000,7 @@
     <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload" Style="display: none;
         padding-left: 0px; background-color: White; padding-right: 0px;">
         <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
-            <div>
+            <div class="clear">
                 <div class="uploadpopup_header">
                     <div class="left">
                         <%=LocalResources.GetLabel("app_upload_file_text")%>:
@@ -1037,6 +1032,4 @@
             <br />
         </div>
     </asp:Panel>
-    </form>
-</body>
-</html>
+</asp:Content>

@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Splash_Pages
                 {
                     //Label Bread                     
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Splash%20Pages/samspmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_splash_pages_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_splash_pages");
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Splash%20Pages/samspmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_splash_pages_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_splash_pages") + "</a>";
                     //Bind Status
                     ddlStatus.DataSource = SystemSplashPageBLL.GetStatus(SessionWrapper.CultureName,"saespn-01");
                     ddlStatus.DataBind();

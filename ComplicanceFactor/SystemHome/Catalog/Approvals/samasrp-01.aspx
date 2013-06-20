@@ -6,41 +6,41 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(function () {
-        $('#<%=gvsearchDetails.ClientID %>')
-		
+        $(function () {
+            $('#<%=gvsearchDetails.ClientID %>')
+
             .tablesorter({ headers: { 5: { sorter: false}} });
 
-    });
- </script>
- <script type="text/javascript">
+        });
+    </script>
+    <script type="text/javascript">
 
-     $(document).ready(function () {
-         var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+        $(document).ready(function () {
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-         $(navigationSelectedValue).addClass('selected');
-         // toggles the slickbox on clicking the noted link  
-         $('.main_menu li a').hover(function () {
+            $(navigationSelectedValue).addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
 
-             $('.main_menu li a').removeClass('selected');
-             $(this).addClass('active');
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
 
-             return false;
-         });
-         $('.main_menu li a').mouseleave(function () {
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
 
-             $(navigationSelectedValue).addClass('selected');
-             return false;
-         });
-     });
+                $(navigationSelectedValue).addClass('selected');
+                return false;
+            });
+        });
 
     </script>
     <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_advanced_approvals_queue_search_results_text")%>:
+            <%=LocalResources.GetLabel("app_advanced_approvals_queue_search_results_text")%>:
         </div>
         <br />
         <div>
@@ -82,26 +82,29 @@
         <div>
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
                 runat="server" EmptyDataText="No Result Found" AutoGenerateColumns="False" AllowPaging="true"
-                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" 
-                PageSize="10" DataKeyNames="e_enroll_approval_system_id_pk,e_enroll_user_id_fk" 
-                onrowcommand="gvsearchDetails_RowCommand">
+                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" PageSize="10"
+                DataKeyNames="e_enroll_approval_system_id_pk,e_enroll_user_id_fk" OnRowCommand="gvsearchDetails_RowCommand">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="<%$ LabelResourceExpression:app_employee_id_text%>" DataField="employee_id" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression:app_employee_id_text%>" DataField="employee_id"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="<%$ LabelResourceExpression:app_employee_name_text%>" DataField="employeeName" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression:app_employee_name_text%>" DataField="employeeName"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                        HeaderText="<%$ LabelResourceExpression:app_status_text%>" DataField="status" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                        HeaderText="<%$ LabelResourceExpression:app_status_text%>" DataField="status"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="<%$ LabelResourceExpression:app_approver_ids_text%>"  DataField="approverID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                        HeaderText="<%$ LabelResourceExpression:app_approver_ids_text%>" DataField="approverID"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="<%$ LabelResourceExpression:app_approver_names_text%>" DataField="approverName" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                        HeaderText="<%$ LabelResourceExpression:app_approver_names_text%>" DataField="approverName"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnSelect" CssClass="cursor_hand" CommandArgument='<%#Eval("e_enroll_approval_system_id_pk")%>'
-                             CommandName="select" runat="server"
-                                Text="<%$ LabelResourceExpression: app_select_button_text %>" />
+                                CommandName="select" runat="server" Text="<%$ LabelResourceExpression: app_select_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -117,11 +120,11 @@
                             OnClick="btnFooterPrevious_Click" />
                         <asp:Button ID="btnFooterNext" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_next_button_text %>"
                             OnClick="btnFooterNext_Click" />
-                        <asp:Button ID="btnFooterLast" CssClass="cursor_hand" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_last_button_text %>" onclick="btnFooterLast_Click" />
+                        <asp:Button ID="btnFooterLast" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_last_button_text %>"
+                            OnClick="btnFooterLast_Click" />
                     </td>
                     <td align="center">
-                       <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
+                        <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
                         <asp:DropDownList ID="ddlFooterResultPerPage" runat="server" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlFooterResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>10</asp:ListItem>
@@ -150,23 +153,23 @@
         <table class="table_td_300 div_controls">
             <tr>
                 <td>
-                     <%=LocalResources.GetLabel("app_employee_id_text")%>:
+                    <%=LocalResources.GetLabel("app_employee_id_text")%>:
                 </td>
                 <td>
                     <asp:TextBox ID="txtEmployeeId" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                   <%=LocalResources.GetLabel("app_employee_name_text")%>: 
+                    <%=LocalResources.GetLabel("app_employee_name_text")%>:
                 </td>
                 <td>
                     <asp:TextBox ID="txtEmployeeName" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                   <%=LocalResources.GetLabel("app_status_text")%>: 
+                    <%=LocalResources.GetLabel("app_status_text")%>:
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlStatus" CssClass="width_75" runat="server" 
-                    DataValueField="e_enroll_approval_status_system_id_pk" DataTextField="e_enroll_approval_status_name">
+                    <asp:DropDownList ID="ddlStatus" CssClass="width_75" runat="server" DataValueField="e_enroll_approval_status_system_id_pk"
+                        DataTextField="e_enroll_approval_status_name">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -182,13 +185,13 @@
                     <asp:TextBox ID="txtApproverId" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                     <%=LocalResources.GetLabel("app_approver_name_text")%>: 
+                    <%=LocalResources.GetLabel("app_approver_name_text")%>:
                 </td>
                 <td>
                     <asp:TextBox ID="txtApproverName" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                   <%=LocalResources.GetLabel("app_approval_id_text")%>:
+                    <%=LocalResources.GetLabel("app_approval_id_text")%>:
                 </td>
                 <td>
                     <asp:TextBox ID="txtApprovalId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -217,7 +220,7 @@
                 </td>
                 <td class="align_right">
                     <asp:Button ID="btnGoSearch" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
-                        onclick="btnGoSearch_Click" />
+                        OnClick="btnGoSearch_Click" />
                 </td>
             </tr>
         </table>

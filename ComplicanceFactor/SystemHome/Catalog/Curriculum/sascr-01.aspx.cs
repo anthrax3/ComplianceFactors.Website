@@ -21,7 +21,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + LocalResources.GetLabel("app_manage_curriculam_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_curricula_search_result_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Curriculum/sascp-01.aspx>" + LocalResources.GetLabel("app_manage_curriculam_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_curricula_search_result_text") + "</a>";
 
 
                 //Bind curriculum status

@@ -1,11 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasstcp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sasstcp_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasstcp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sasstcp_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         body
         {
@@ -36,9 +34,6 @@
 
 
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
@@ -83,6 +78,4 @@
 
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

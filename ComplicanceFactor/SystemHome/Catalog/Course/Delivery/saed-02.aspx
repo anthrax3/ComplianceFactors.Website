@@ -10,8 +10,6 @@
     <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../Scripts/querystring-0.9.0-min.js" type="text/javascript"></script>
-    <script src="../../../../Scripts/querystring-0.9.0.js" type="text/javascript"></script>
     <style type="text/css">
         body
         {

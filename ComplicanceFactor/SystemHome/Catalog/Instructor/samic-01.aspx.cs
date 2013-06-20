@@ -25,7 +25,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Instructor/samir-01.aspx>" + LocalResources.GetLabel("app_manage_instructors_text") + "</a>&nbsp;>&nbsp;" + LocalResources.GetLabel("app_manage_instructors_courses_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Instructor/samir-01.aspx>" + LocalResources.GetLabel("app_manage_instructors_text") + "</a>&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_instructors_courses_text") + "</a>";
 
 
                 try

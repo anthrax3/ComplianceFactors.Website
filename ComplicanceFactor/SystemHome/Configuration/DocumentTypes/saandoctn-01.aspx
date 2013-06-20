@@ -4,6 +4,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#app_nav_system').addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
+
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
+
+                $('#app_nav_system').addClass('selected');
+                return false;
+            });
+        });
+
+    </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saandoctn" runat="server"
         ValidationGroup="saandoctn"></asp:ValidationSummary>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">

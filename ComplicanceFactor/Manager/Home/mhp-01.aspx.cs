@@ -39,7 +39,7 @@ namespace ComplicanceFactor.Manager
                 HtmlGenericControl divsearch = (HtmlGenericControl)Master.FindControl("divsearch");
                 divsearch.Style.Add("display", "block");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_manager") + " > ...";
+                lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>" + "&nbsp>&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 // GetAllCourse();
                 //set todo recored display pref
                 if (SessionWrapper.u_profile_my_todos_records_display_pref != 0)

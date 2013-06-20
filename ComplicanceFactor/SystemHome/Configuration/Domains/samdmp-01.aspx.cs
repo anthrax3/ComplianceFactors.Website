@@ -20,7 +20,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                 if (!IsPostBack)
                 {
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" +  LocalResources.GetLabel("app_manage_domain_text") ;
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_domain_text") + "</a>";
 
                     //Bind domain status
                     ddlStatus.DataSource = SystemDomainBLL.GetAllDomainStatus(SessionWrapper.CultureName, "samdmp-01");

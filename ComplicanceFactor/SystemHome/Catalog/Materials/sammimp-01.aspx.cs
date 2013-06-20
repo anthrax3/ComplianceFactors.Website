@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Materials
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_materials_text");
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_materials_text") + "</a>";
 
                     // bind the status
                     ddlStatus.DataSource = SystemMaterialBLL.GetAllStatus(SessionWrapper.CultureName, "sammimp-01");

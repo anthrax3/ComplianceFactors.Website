@@ -35,7 +35,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_approval_workflow_information_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_approval_workflow_information_text") + "</a>";
                 e_enroll_approval_system_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"].ToString());
                 e_enroll_user_id_fk = SecurityCenter.DecryptText(Request.QueryString["uid"].ToString());
                 PopulateApprovals(e_enroll_approval_system_id_pk, e_enroll_user_id_fk);

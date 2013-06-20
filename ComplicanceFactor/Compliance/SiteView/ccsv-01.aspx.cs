@@ -23,7 +23,7 @@ namespace ComplicanceFactor.Compliance.SiteView
 
                 SessionWrapper.isFieldNoteLoad = false;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" +" >&nbsp;"+ LocalResources.GetGlobalLabel("app_siteview_text");
+                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_siteview_text") + "</a>";
                 BindFieldNotes();
                 lblHeaderPageOf.Text = "of " + (gvFieldNoteDetails.PageCount).ToString();
                 BindInspection();

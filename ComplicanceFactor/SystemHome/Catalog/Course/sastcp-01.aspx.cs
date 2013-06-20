@@ -20,7 +20,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_training_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_training_text") + "</a>";
                 try
                 {
                     ddlStatus.DataSource = SystemCatalogBLL.GetCourseAllStatus(SessionWrapper.CultureName,"sastcp-01");

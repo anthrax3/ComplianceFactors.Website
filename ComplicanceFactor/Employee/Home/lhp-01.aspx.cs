@@ -27,7 +27,7 @@ namespace ComplicanceFactor
                 HtmlGenericControl divsearch = (HtmlGenericControl)Master.FindControl("divsearch");
                 divsearch.Style.Add("display", "block");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + ">" + LocalResources.GetGlobalLabel("app_home_text");
+                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + "&nbsp>&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 // GetAllCourse();
                 //set courses recored display pref
                 if (SessionWrapper.u_profile_my_courses_records_display_pref != 0)

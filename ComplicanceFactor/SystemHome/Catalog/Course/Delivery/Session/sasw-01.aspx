@@ -1,15 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasw-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sasw_01"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasw-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sasw_01"
     MaintainScrollPositionOnPostback="true" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <%-- <script src="../../../Scripts/JQuery.Zoom.js" type="text/javascript"></script>--%>
-    <%--<link href="../../../Scripts/JQuery.Zoom.Style.css" rel="stylesheet" type="text/css" />--%>
     <script src="../../../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script src="../../../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
@@ -24,12 +22,10 @@
             font-size: 14px;
             height: 400px;
         }
+
     </style>
     <%--    Hide/Show Div Tag based on recurrance selected value--%>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <script type="text/javascript">
+ <script type="text/javascript">
         (function ($) {
             $(function () {
                 $('#<%=txtStartTime.ClientID %>').timepicker({ dropdown: false, timeFormat: 'h:mm p' });
@@ -305,6 +301,7 @@
                         var heightPane = $(this).contents().find('#content').height();
                         $(this).contents().find('#fancybox-frame').css({
                             'height': heightPane + 'px'
+                           
 
                         })
                     });
@@ -957,6 +954,4 @@
             </table>
         </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

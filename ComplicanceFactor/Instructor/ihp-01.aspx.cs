@@ -20,7 +20,7 @@ namespace ComplicanceFactor.Instructor
            
 
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = LocalResources.GetGlobalLabel("app_nav_instructor") + " > ...";
+            lblBreadCrumb.Text = "<a class=bread_text>" + LocalResources.GetLabel("app_nav_instructor") + "</a>" + " > ...";
 
 
         }

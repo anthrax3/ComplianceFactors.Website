@@ -27,7 +27,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Notification
             {               
                 //Label BreadCrumb
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Notifications/samntmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_notifications_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_notification_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Notifications/samntmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_notifications_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_notification_text") + "</a>";
 
                 //bind locale
                 ddlLocale.DataSource = SystemLocaleBLL.GetLocaleListExceptEnglish();

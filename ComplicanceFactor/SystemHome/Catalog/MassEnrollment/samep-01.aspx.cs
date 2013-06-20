@@ -29,7 +29,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_mass_enrollment_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_mass_enrollment_text") + "</a>";
 
                 SessionWrapper.Enrollment_courses_curriculum.Clear();
                 SessionWrapper.MassEnrollment_employees.Clear();

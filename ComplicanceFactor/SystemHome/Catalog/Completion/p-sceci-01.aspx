@@ -2,7 +2,6 @@
     CodeBehind="p-sceci-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Completion.p_sceci_01" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">

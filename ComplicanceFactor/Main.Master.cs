@@ -50,7 +50,7 @@ namespace ComplicanceFactor
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Get dyanamic css color
             User usercss = new User();
             usercss = UserBLL.GetCss(SessionWrapper.u_userid);
             HtmlGenericControl style = new HtmlGenericControl();
@@ -58,6 +58,7 @@ namespace ComplicanceFactor
             style.Attributes.Add("type", "text/css");
             style.InnerHtml = usercss.css;
             Page.Header.Controls.Add(style);
+
             //imgLogo.ImageUrl=usercss.head_logo;
             ///<summary>
             ///Store the last visited tab in database

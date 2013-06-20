@@ -20,7 +20,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Weekday_Schedules
             {
                 //Label Bread                 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Weekday%20Schedules/samwdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_weekday_schedules_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_weekly_schedules_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Weekday%20Schedules/samwdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_weekday_schedules_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_weekly_schedules_text") + "</a>";
 
                 //ddlstatus
                 ddlStatus.DataSource = SystemWeekdaySchedulesBLL.GetStatus(SessionWrapper.CultureName, "saewdn-01");

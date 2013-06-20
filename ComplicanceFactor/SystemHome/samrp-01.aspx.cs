@@ -11,7 +11,7 @@ namespace ComplicanceFactor.SystemHome
         {
             SessionWrapper.navigationText = "app_nav_system";
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;<a href=/SystemHome/sahp-01.aspx>" +"Home"+"</a>&nbsp;" + " >&nbsp;My Reports";
+            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;"+ LocalResources.GetLabel("app_my_reports_text");
         }
     }
 }

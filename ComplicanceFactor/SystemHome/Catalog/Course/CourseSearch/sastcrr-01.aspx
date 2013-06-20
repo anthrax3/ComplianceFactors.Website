@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sastcrr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sastcrr_01" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sastcrr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Popup.sastcrr_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+  <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+  </asp:Content>
+  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <style type="text/css">
@@ -87,10 +88,6 @@
              return false;
          }
     </script>
-
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
         <div id="courseselected" runat="server" style="display: none;">
             <div class="div_header_popup_1">
@@ -277,6 +274,4 @@
             </div>
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

@@ -33,7 +33,7 @@ namespace ComplicanceFactor.Employee.Catalog
 
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + LocalResources.GetGlobalLabel("app_quicksearch_catalog_text");
+                lblBreadCrumb.Text = "<a href=/Employee/Home/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_quicksearch_catalog_text") + "</a>";
 
                 if (!string.IsNullOrEmpty(Request.QueryString["Keyword"]))
                 {

@@ -19,7 +19,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.ResourceTypes
             {
                 //resource type bread crumbS
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_resource_type_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_resource_type_text") + "</a>";
 
                 //Bind resource type status
                 ddlStatus.DataSource = SystemResourceTypeBLL.GetAllStatus(SessionWrapper.CultureName, "samrtmp-01");

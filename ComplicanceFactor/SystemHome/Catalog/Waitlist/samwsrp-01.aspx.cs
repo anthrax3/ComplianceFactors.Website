@@ -22,7 +22,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Approvals
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Waitlist/samwmp-01.aspx>" + LocalResources.GetLabel("app_manage_waitlists_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_waitlist_search_results_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Waitlist/samwmp-01.aspx>" + LocalResources.GetLabel("app_manage_waitlists_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_waitlist_search_results_text") + "</a>";
                 SearchResult();
             }
 

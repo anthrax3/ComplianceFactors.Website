@@ -21,7 +21,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_manage_digital_media_files_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_digital_media_files_text") + "</a>";
 
                 ddlFileType.DataSource = SystemDigitalMediaFilesBLL.GetFileType(SessionWrapper.CultureName, "samdmmp-01");             
                 ddlFileType.DataBind();

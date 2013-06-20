@@ -19,7 +19,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.CurriculumTypes
             {
                 //Label BreadCrumb
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/CurriculumTypes/samctmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_curriculum_type_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_create_new_curriculum_type_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/CurriculumTypes/samctmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_curriculum_type_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_create_new_curriculum_type_text") + "</a>";
 
                 //Status Bind
                 ddlStatus.DataSource = SystemCurriculumTypeBLL.GetStatus(SessionWrapper.CultureName, "saanctn-01");

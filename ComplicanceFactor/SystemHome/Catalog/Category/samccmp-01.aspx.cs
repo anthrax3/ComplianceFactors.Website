@@ -13,7 +13,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Category
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_manage_categories_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_categories_text") + "</a>";
 
                 //Bind Status
                 ddlStatus.DataSource = SystemCategoriesBLL.GetAllStatus(SessionWrapper.CultureName, "samccmp-01");

@@ -219,9 +219,9 @@
             Inputs[n].checked)
                     return true;
 
-        alert('Select at least one checkbox in session and roster!');
-        return false;
-    }
+            alert('Select at least one checkbox in session and roster!');
+            return false;
+        }
     </script>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>

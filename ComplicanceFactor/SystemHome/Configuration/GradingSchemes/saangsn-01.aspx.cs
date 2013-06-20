@@ -26,7 +26,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                 ///</summary>
                 vs_saangsn.Style.Add("display", "none");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/GradingSchemes/samgsmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_grading_schemes_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_create_new_grading_scheme_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/GradingSchemes/samgsmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_grading_schemes_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_grading_scheme_text") + "</a>";
                 // Add grading schemes Table structure
                 SessionWrapper.GradingSchemeValues = TempDataTables.GradingSchemeValues();
                 //Bind Status

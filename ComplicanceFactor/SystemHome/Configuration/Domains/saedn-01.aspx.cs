@@ -29,7 +29,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                     ClearSession();
                     //set breadcrumb
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Domains/samdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_domain_text") + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_domain_text");
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Domains/samdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_domain_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_domain_text") + "</a>";
                     //Bind domain status
                     ddlStatus.DataSource = SystemDomainBLL.GetDomainStatus(SessionWrapper.CultureName, "saedn-01");
                     ddlStatus.DataBind();                   

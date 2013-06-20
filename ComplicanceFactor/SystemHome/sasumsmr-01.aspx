@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasumsmr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sasumsmr_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasumsmr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sasumsmr_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+   <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+   </asp:Content>
+    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
@@ -49,14 +49,11 @@
             height:400px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
 
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
-            <div class="manage_user_header  fancybox-title">
-                <%=LocalResources.GetLabel("app_users_search_details_text")%>
+            <div class="manage_user_header">
+                <%=LocalResources.GetLabel("app_users_search_details_text")%>:
             </div>
             <br />
             <div class="page_text">
@@ -129,7 +126,7 @@
             <br />
             <div>
                 <div id="container">
-                    <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="GridView gv_sasur_width tablesorter"
+                    <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" class="gridview_long tablesorter"
                         Width="954px" runat="server" EmptyDataText="No result found." AutoGenerateColumns="False"
                         DataKeyNames="u_username_enc,u_user_id_pk" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
                         PagerSettings-Visible="false" PageSize="10" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
@@ -318,8 +315,4 @@
             </div>
         </asp:Panel>
     </div>
-    <br />
-    <br />
-    </form>
-</body>
-</html>
+</asp:Content>

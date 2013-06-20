@@ -40,6 +40,7 @@ p
     background: #FFF;
     margin: 0;
     padding: 0;
+  
 }
 
 .content_align
@@ -353,6 +354,7 @@ div.right
 {
     margin: 10px 5px 0;
     padding: 0 0 10px;
+     min-height:500px;
 }
 
 .home_content
@@ -887,7 +889,7 @@ table.tablesorter thead tr .header
     cursor: pointer;
 }
 
-table.tablesorter tbody td
+table.tablesorter tbody td /*test*/
 {
     background-color: #FFF;
     vertical-align: top;
@@ -935,7 +937,8 @@ div.uploadbutton
     padding-bottom: 0;
 }
 
-.uploadpopup_header
+/*For modal popup*/
+/*.uploadpopup_header
 {
     font-size: 12px;
     font-weight: 700;
@@ -943,7 +946,7 @@ div.uploadbutton
     width: 695px;
     cursor: move;
     padding: 3px;
-}
+}*/
 
 .div_controls_from_left
 {
@@ -1300,7 +1303,8 @@ table.paging_popup_1
     width: 950px !important;
 }
 
-.fancy-popup-header
+/*Popup header for icon popup */
+/*.fancy-popup-header
 {
     font-size: 12px;
     height: 25px;
@@ -1309,7 +1313,7 @@ table.paging_popup_1
     width: 520px !important;
     cursor: move;
     padding: 7px 0 0 3px;
-}
+}*/
 
 .div_upload_file
 {

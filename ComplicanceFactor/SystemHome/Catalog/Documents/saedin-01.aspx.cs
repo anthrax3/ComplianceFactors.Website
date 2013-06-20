@@ -28,7 +28,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 {
                     vssaedin.Style.Add("display", "none");
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>" + "&nbsp;>&nbsp;" + "<a href=/SystemHome/Catalog/Documents/samdimp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_documents_text") + "</a>" + "&nbsp;>&nbsp;" + LocalResources.GetGlobalLabel("app_edit_document_text");
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>" + "&nbsp;>&nbsp;" + "<a href=/SystemHome/Catalog/Documents/samdimp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_documents_text") + "</a>" + "&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_document_text") + "</a>";
                     //clear attachment session
                     SessionWrapper.Attachment_file_name = string.Empty;
                     SessionWrapper.Attachment_guid = string.Empty;

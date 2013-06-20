@@ -53,7 +53,7 @@ namespace ComplicanceFactor.Administrator
                 }
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_administrator_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_home_text");
+                lblBreadCrumb.Text = "<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_administrator_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 if (SessionWrapper.u_profile_my_admin_todos_collapse_pref == "app_ddl_collapsed")
                 {
                     div_MyToDo.Style.Add("display", "none");

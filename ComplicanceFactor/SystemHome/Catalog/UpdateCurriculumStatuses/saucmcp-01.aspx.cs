@@ -27,7 +27,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/UpdateCurriculumStatuses/saucsp-01.aspx>" + LocalResources.GetGlobalLabel("app_update_curriculum_statuses_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_curricula_details_page_text");
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/UpdateCurriculumStatuse/saucsp-01.aspx>" + LocalResources.GetGlobalLabel("app_update_curriculum_statuses_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_curricula_details_page_text") + "</a>";
 
 
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]) && !string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")

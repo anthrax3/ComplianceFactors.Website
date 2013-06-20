@@ -40,7 +40,7 @@ namespace ComplicanceFactor.Compliance
         {
 
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/HARM/ccasharm-01.aspx>" + LocalResources.GetLabel("app_harm_text") + "</a>&nbsp;> " + LocalResources.GetLabel("app_create_new_harm_text");
+            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/HARM/ccasharm-01.aspx>" + LocalResources.GetLabel("app_harm_text") + "</a>&nbsp;> " + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_harm_text") + "</a>";
            // txtEditJobTitle.Text = SessionWrapper.h_job_title;
             if (!IsPostBack)
             {

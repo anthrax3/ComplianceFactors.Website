@@ -19,7 +19,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Category
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Category/samccmp-01.aspx>" + LocalResources.GetLabel("app_manage_category_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLabel("app_edit_category_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Category/samccmp-01.aspx>" + LocalResources.GetLabel("app_manage_category_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_category_text") + "</a>";
 
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {

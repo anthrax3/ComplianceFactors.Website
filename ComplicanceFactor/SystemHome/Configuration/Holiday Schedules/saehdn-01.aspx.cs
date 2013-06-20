@@ -21,7 +21,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Holiday_Schedules
             {
                 //Label Bread Crumb
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Holiday%20Schedules/samhdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_holiday_schedules_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_edit_holiday_schedule_text");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Holiday%20Schedules/samhdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_holiday_schedules_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_holiday_schedule_text") + "</a>";
             
 
                 //to bind status

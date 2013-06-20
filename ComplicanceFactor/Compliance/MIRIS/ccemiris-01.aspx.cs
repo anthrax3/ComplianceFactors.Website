@@ -38,7 +38,7 @@ namespace ComplicanceFactor.Compliance
             try
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;<a href=/Compliance/MIRIS/cccmiris-01.aspx>" + LocalResources.GetLabel("app_miris_text") + "</a>&nbsp;" + ">&nbsp;" + LocalResources.GetLabel("app_edit_case_text");
+                lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;<a href=/Compliance/MIRIS/cccmiris-01.aspx>" + LocalResources.GetLabel("app_miris_text") + "</a>&nbsp;" + ">&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_case_text") + "</a>";
                 if (!string.IsNullOrEmpty(SecurityCenter.DecryptText(Request.QueryString["Edit"])))
                 {
                     edit = SecurityCenter.DecryptText(Request.QueryString["Edit"]);

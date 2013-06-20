@@ -16,7 +16,7 @@ namespace ComplicanceFactor.Employee
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Employee/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + LocalResources.GetGlobalLabel("app_emp_pod_mcompliance_title");
+            lblBreadCrumb.Text = "<a href=/Employee/lhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_employee") + "</a>" + " > " + "<a class=bread_text>" + LocalResources.GetLabel("app_emp_pod_mcompliance_title") + "</a>";
 
 
         }

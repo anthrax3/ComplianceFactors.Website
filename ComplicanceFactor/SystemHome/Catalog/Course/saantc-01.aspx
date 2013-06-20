@@ -7,9 +7,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <%--   <script src="../../Scripts/JQuery.Zoom.js" type="text/javascript"></script>
-    <link href="../../Scripts/JQuery.Zoom.Style.css" rel="stylesheet" type="text/css" />
-    --%>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">

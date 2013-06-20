@@ -20,7 +20,7 @@ namespace ComplicanceFactor.Compliance.SiteView
             {
                 //Label Bread Crumb
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../SiteView/ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../SiteView/ccsv-01.aspx>" + "SiteView" + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title") + "</a>";
 
                 SessionWrapper.session_Add_Questions = TempQuestions();
                 //ddlStatus Bind
