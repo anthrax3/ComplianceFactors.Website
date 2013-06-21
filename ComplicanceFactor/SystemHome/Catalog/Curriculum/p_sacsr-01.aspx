@@ -31,21 +31,21 @@
     </script>
     <script type="text/javascript" language="javascript">
         function toggleSelection(source) {
-            $("#gvsearchDetails input[name$='chkSelect']").each(function (index) {
+            $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").each(function (index) {
                 $(this).attr('checked', source.checked);
             });
 
 
         }
         function clearSelection() {
-            if ($("#gvsearchDetails input[name$='chkSelect']").length == $("#gvsearchDetails input[name$='chkSelect']:checked").length) {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', true);
+            if ($("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").length == $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']:checked").length) {
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', true);
 
             }
             else {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', false);
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', false);
             }
-        }           
+        }          
     </script>
     <script type="text/javascript" language="javascript">
         function confirmremove() {

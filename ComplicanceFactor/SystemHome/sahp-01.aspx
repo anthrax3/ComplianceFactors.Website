@@ -168,7 +168,7 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkManageSplashPage" Text="<%$ LabelResourceExpression: app_all_manage_splash_pages_button_text %>"
+            <asp:LinkButton ID="lnkManageSplashPage" Text="<%$ LabelResourceExpression: app_view_all_manage_splash_pages_button_text %>"
                 runat="server" OnClick="lnkManageSplashPage_Click" CssClass="body_link"></asp:LinkButton></b>
         <div class="clear">
         </div>
@@ -206,7 +206,7 @@
             </Columns>
         </asp:GridView>
         <b>
-            <asp:LinkButton ID="lnkManageThemes" Text="<%$ LabelResourceExpression: app_all_manage_themes_button_text %>"
+            <asp:LinkButton ID="lnkManageThemes" Text="<%$ LabelResourceExpression: app_view_all_manage_themes_button_text %>"
                 runat="server" CssClass="body_link"></asp:LinkButton></b>
         <div class="clear">
         </div>

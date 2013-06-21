@@ -305,9 +305,9 @@
                         <div class="clear ">
                         </div>
                         <div>
-                            <asp:LinkButton ID="lnkAdvancedSearch" runat="server" Text="<%$ GlobalResourceExpression: app_adv_search_link_text %>"></asp:LinkButton>
+                            <asp:LinkButton ID="lnkAdvancedSearch" CssClass="body_link" runat="server" Text="<%$ GlobalResourceExpression: app_adv_search_link_text %>"></asp:LinkButton>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
-                            <asp:LinkButton ID="lnkBrowse" runat="server" Text="<%$ GlobalResourceExpression: app_browse_link_text %>"></asp:LinkButton>
+                            <asp:LinkButton ID="lnkBrowse" CssClass="body_link" runat="server" Text="<%$ GlobalResourceExpression: app_browse_link_text %>"></asp:LinkButton>
                         </div>
                     </asp:Panel>
                 </div>
@@ -317,7 +317,7 @@
             <div class="msgarea_success msg_display" id="success_login" runat="server">
                 <%= LocalResources.GetGlobalText("app_login_success")%>
             </div>
-            <div class="content_area_long">
+            <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
             </div>
@@ -339,7 +339,7 @@
         </div>
         <div id="dialog" class="web_dialog">
             <div class="div_header_900">
-                Splash Preview:
+               <%=LocalResources.GetGlobalLabel("app_splash_preview_text")%>:
                 <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                     z-index: 1103; position: absolute; width: 40px; height: 40px;" runat="server"
                     ImageUrl="~/Images/Zoom/fancy_close.png" OnClientClick="return HideDialog();" />

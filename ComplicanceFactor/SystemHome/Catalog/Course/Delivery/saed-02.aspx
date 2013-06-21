@@ -7,9 +7,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+
     <style type="text/css">
         body
         {
@@ -20,17 +21,17 @@
             height: 550px;
         }
     </style>
+    
     <script type="text/javascript">
         $(document).ready(function () {
-
-            var message = $.QueryString("editdelivery"),
-            message = (!message) ? "null" : message; // Passing the value null to string
-
-
-            var editcourseid = $.QueryString("editcourseid"),
-            editcourseid = (!editcourseid) ? "null" : editcourseid; // Passing the value null to string
+            //            var message = $.QueryString("editdelivery"),
+            //            message = (!message) ? "null" : message; // Passing the value null to string
 
 
+            //            var editcourseid = $.QueryString("editcourseid"),
+            //            editcourseid = (!editcourseid) ? "null" : editcourseid; // Passing the value null to string
+            var message = document.getElementById("<%=hdEditdelivery.ClientID %>").value;
+            var editcourseid = document.getElementById("<%=hdEditcourseid.ClientID %>").value;
             //delivery owner
             $("#<%=btnOwner.ClientID %>").fancybox({
                 'type': 'iframe',
@@ -381,12 +382,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var editdelivery = $.QueryString("editdelivery"),
-            editdelivery = (!editdelivery) ? "null" : editdelivery; // Passing the value null to string
+//            var editdelivery = $.QueryString("editdelivery"),
+//            editdelivery = (!editdelivery) ? "null" : editdelivery; // Passing the value null to string
 
 
-            var editcourseid = $.QueryString("editcourseid"),
-            editcourseid = (!editcourseid) ? "null" : editcourseid; // Passing the value null to string
+//            var editcourseid = $.QueryString("editcourseid"),
+            //            editcourseid = (!editcourseid) ? "null" : editcourseid; // Passing the value null to string
+            var editdelivery = document.getElementById("<%=hdEditdelivery.ClientID %>").value;
+            var editcourseid = document.getElementById("<%=hdEditcourseid.ClientID %>").value;
 
             $(".editsession").click(function () {
 
@@ -491,9 +494,11 @@
         // Add locale
         $(document).ready(function () {
 
-            var editdeliveryId = $.QueryString("editdelivery"),
-            message = (!message) ? "null" : message; // Passing the value null to string
-            $("#btnCreateNewLocale").click(function (e) {
+//            var editdeliveryId = $.QueryString("editdelivery"),
+            //            message = (!message) ? "null" : message; // Passing the value null to string
+
+            var editdeliveryId = document.getElementById("<%=hdEditdelivery.ClientID %>").value;
+             $("#btnCreateNewLocale").click(function (e) {
 
                 var localeid = $("#<%=ddlLocale.ClientID %>").val();
                 var localeText = $("#<%=ddlLocale.ClientID %> option:selected").text();
@@ -619,6 +624,8 @@
             }
     </script>
      <asp:HiddenField ID="hdCheckCopy" runat="server" />
+     <asp:HiddenField ID="hdEditdelivery" runat="server" />
+     <asp:HiddenField ID="hdEditcourseid" runat="server" />
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
         ValidationGroup="sand"></asp:ValidationSummary>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptLocalization="true"

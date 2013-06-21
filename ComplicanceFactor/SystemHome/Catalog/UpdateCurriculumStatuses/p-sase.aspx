@@ -8,13 +8,11 @@
     <style type="text/css">
         body
         {
-            /*width: 960px;*/
-            width: 900px !important;
-            margin: 0px 0 0 0;
+            width: 700px !important;
+            margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 200px;
-            overflow: hidden;
+            height: 150px;
         }
     </style>
     <div>

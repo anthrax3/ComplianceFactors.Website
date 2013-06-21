@@ -710,6 +710,10 @@
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\saanawn-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\saeaw-01.aspx" />
     <Content Include="SystemHome\Configuration\ApprovalWorkflows\samawmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\BackgroundJobs\Popup\samdexpmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\BackgroundJobs\Popup\samdimpmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\BackgroundJobs\Popup\samhrismp-01.aspx" />
+    <Content Include="SystemHome\Configuration\BackgroundJobs\sambjmp-01.aspx" />
     <Content Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\saecs-01.aspx" />
@@ -729,6 +733,7 @@
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\1919b655-81f7-4840-b3e3-85acf64ecf82.jpg" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\7972cbec-f5f7-4a20-8262-a59339a11a88.jpg" />
+    <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\Chrysanthemum.jpg" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Popup\p-samdp-01.aspx" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Popup\p-samdpv-01.aspx" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\saandmp-01.aspx" />
@@ -2968,6 +2973,34 @@
     <Compile Include="SystemHome\Configuration\ApprovalWorkflows\samawmp-01.aspx.designer.cs">
       <DependentUpon>samawmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\Popup\samdexpmp-01.aspx.cs">
+      <DependentUpon>samdexpmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\Popup\samdexpmp-01.aspx.designer.cs">
+      <DependentUpon>samdexpmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\Popup\samdimpmp-01.aspx.cs">
+      <DependentUpon>samdimpmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\Popup\samdimpmp-01.aspx.designer.cs">
+      <DependentUpon>samdimpmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\Popup\samhrismp-01.aspx.cs">
+      <DependentUpon>samhrismp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\Popup\samhrismp-01.aspx.designer.cs">
+      <DependentUpon>samhrismp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\sambjmp-01.aspx.cs">
+      <DependentUpon>sambjmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\sambjmp-01.aspx.designer.cs">
+      <DependentUpon>sambjmp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx.cs">
       <DependentUpon>samcsmp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3975,6 +4008,7 @@
     </None>
     <Content Include="Instructor\Web.config" />
     <Content Include="SystemHome\Catalog\Web.config" />
+    <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\MyCalendar%281%29.pdf" />
     <None Include="SystemHome\Configuration\HRIS Integration\Sample\HRIS_import_csv_example.xlsx" />
     <None Include="SystemHome\Configuration\HRIS Integration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
     <Content Include="SystemHome\Users\Web.config" />

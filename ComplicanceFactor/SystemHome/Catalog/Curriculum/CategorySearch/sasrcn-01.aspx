@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasrcn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Curriculum.CatagorySearch.sasrcn_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasrcn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Curriculum.CatagorySearch.sasrcn_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
@@ -30,19 +29,19 @@
     </script>
     <script type="text/javascript" language="javascript">
         function toggleSelection(source) {
-            $("#gvsearchDetails input[name$='chkSelect']").each(function (index) {
+            $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").each(function (index) {
                 $(this).attr('checked', source.checked);
             });
 
 
         }
         function clearSelection() {
-            if ($("#gvsearchDetails input[name$='chkSelect']").length == $("#gvsearchDetails input[name$='chkSelect']:checked").length) {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', true);
+            if ($("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").length == $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']:checked").length) {
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', true);
 
             }
             else {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', false);
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', false);
             }
         }           
     </script>
@@ -55,7 +54,6 @@
 
         }
     </script>
-   
     <script type="text/javascript" language="javascript">
         function validateCheckBoxes() {
             var isValid = false;
@@ -75,25 +73,18 @@
             return false;
         }
     </script>
+    <script type="text/javascript">
+        function resetall() {
+            document.getElementById('<%=txtCategoryName.ClientID %>').value = '';
+            document.getElementById('<%=txtCategoryId.ClientID %>').value = '';
 
-     <script type="text/javascript">
-         function resetall() {
-             document.getElementById('<%=txtCategoryName.ClientID %>').value = '';
-             document.getElementById('<%=txtCategoryId.ClientID %>').value = '';
-
-             return false;
-         }
+            return false;
+        }
     </script>
-
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
-        
-       
         <div class="div_header_popup_1">
-          <%=LocalResources.GetLabel("app_categories_search_results_text")%>:
-         </div>
+            <%=LocalResources.GetLabel("app_categories_search_results_text")%>:
+        </div>
         <br />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging_popup_1">
@@ -110,9 +101,8 @@
                     </td>
                     <td align="center">
                         <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
-                        <asp:DropDownList ID="ddlHeaderResultPerPage" runat="server" 
-                            AutoPostBack="true" 
-                            onselectedindexchanged="ddlHeaderResultPerPage_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlHeaderResultPerPage" runat="server" AutoPostBack="true"
+                            OnSelectedIndexChanged="ddlHeaderResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>20</asp:ListItem>
@@ -126,8 +116,8 @@
                         <asp:Label ID="lblHeaderPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtHeaderPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblHeaderPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" 
-                            onclick="btnHeaderGoto_Click1"/>
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>"
+                            OnClick="btnHeaderGoto_Click1" />
                     </td>
                 </tr>
             </table>
@@ -151,7 +141,7 @@
                             <asp:CheckBox ID="chkSelectAll" onclick="toggleSelection(this);" runat="server" />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <asp:CheckBox ID="chkSelect" onclick="clearSelection();" runat="server" />   
+                            <asp:CheckBox ID="chkSelect" onclick="clearSelection();" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -180,9 +170,8 @@
                     </td>
                     <td align="center">
                         <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
-                        <asp:DropDownList ID="ddlFooterResultPerPage" runat="server" 
-                            AutoPostBack="true" 
-                            onselectedindexchanged="ddlFooterResultPerPage_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlFooterResultPerPage" runat="server" AutoPostBack="true"
+                            OnSelectedIndexChanged="ddlFooterResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>20</asp:ListItem>
@@ -196,8 +185,8 @@
                         <asp:Label ID="lblFooterPage" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                         <asp:TextBox ID="txtFooterPage" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                         <asp:Label ID="lblFooterPageOf" runat="server" />
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>" 
-                            onclick="btnFooterGoto_Click1"/>
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterGoto" runat="server" Text="<%$ LabelResourceExpression: app_go_to_button_text %>"
+                            OnClick="btnFooterGoto_Click1" />
                     </td>
                 </tr>
             </table>
@@ -208,9 +197,7 @@
         <br />
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
-   
                 <%=LocalResources.GetLabel("app_category_search_text")%>:
-           
             </div>
             <br />
             <div class="div_controls font_1">
@@ -218,14 +205,12 @@
                     <tr>
                         <td>
                             <%=LocalResources.GetLabel("app_category_name_text")%>:
-                          
                         </td>
                         <td>
                             <asp:TextBox ID="txtCategoryName" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
                             <%=LocalResources.GetLabel("app_category_id_text")%>:
-                          
                         </td>
                         <td>
                             <asp:TextBox ID="txtCategoryId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -242,17 +227,15 @@
                         </td>
                         <td class="align_left">
                             <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
-                                OnClientClick="return resetall();" runat="server"/>
+                                OnClientClick="return resetall();" runat="server" />
                         </td>
                         <td class="align_right">
                             <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                                Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>
             </div>
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content> 

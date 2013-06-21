@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Pixel Soft Solutions Pvt Ltd")]
 [assembly: AssemblyProduct("ComplicanceFactor.BusinessComponent")]
-[assembly: AssemblyCopyright("Copyright © Pixel Soft Solutions Pvt Ltd 2012")]
+[assembly: AssemblyCopyright("Copyright © Pixel Soft Solutions Pvt Ltd 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

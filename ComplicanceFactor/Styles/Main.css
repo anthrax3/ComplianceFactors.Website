@@ -354,7 +354,7 @@ div.right
 {
     margin: 10px 5px 0;
     padding: 0 0 10px;
-     min-height:500px;
+     /*min-height:500px;*/
 }
 
 .home_content

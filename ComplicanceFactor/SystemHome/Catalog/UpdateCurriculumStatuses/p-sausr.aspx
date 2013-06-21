@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="p-sausr.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses.p_sausr" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="p-sausr.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses.p_sausr" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+
+ <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
@@ -12,11 +13,11 @@
         body
         {
             /*width: 960px;*/
-            width: 900px !important;
-            margin: 0px 0 0 0;
+            width: 700px !important;
+            margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 400px;
+            height: 320px;
         }
     </style>
     <script type="text/javascript">
@@ -30,21 +31,21 @@
     </script>
     <script type="text/javascript" language="javascript">
         function toggleSelection(source) {
-            $("#gvsearchDetails input[name$='chkSelect']").each(function (index) {
+            $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").each(function (index) {
                 $(this).attr('checked', source.checked);
             });
 
 
         }
         function clearSelection() {
-            if ($("#gvsearchDetails input[name$='chkSelect']").length == $("#gvsearchDetails input[name$='chkSelect']:checked").length) {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', true);
+            if ($("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").length == $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']:checked").length) {
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', true);
 
             }
             else {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', false);
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', false);
             }
-        }           
+        }         
     </script>
     <script type="text/javascript" language="javascript">
         function validateCheckBoxes() {
@@ -73,15 +74,12 @@
             return false;
         }
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
-        <div class="div_header_popup_1">
+        <div class=" div_header_870">
             <%=LocalResources.GetLabel("app_employee_search_results_text")%>:
         </div>
         <div>
-            <table cellpadding="0" cellspacing="0" class="paging_popup_1">
+            <table cellpadding="0" cellspacing="0" class="paging_700">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderFirst" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_first_button_text %>" runat="server"
@@ -116,8 +114,8 @@
             </table>
         </div>
         <br />
-        <div>
-            <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_popup_1 tablesorter"
+       <div class="div_padding_25">
+            <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="table_700 tablesorter"
                 runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>" AutoGenerateColumns="False" AllowPaging="true"
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="u_user_id_pk,s_curr_status_name_us_english,e_curriculum_assign_percent_complete"
                 OnRowCommand="gvsearchDetails_RowCommand" OnRowEditing="gvsearchDetails_RowEditing"
@@ -152,7 +150,7 @@
         </div>
         <br />
         <div>
-            <table cellpadding="0" cellspacing="0" class="paging_popup_1">
+            <table cellpadding="0" cellspacing="0" class="paging_700">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterFirst" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_first_button_text %>" runat="server"
@@ -188,7 +186,7 @@
         </div>
         <br />
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
-            <div class="div_header_popup_1">
+             <div class="div_header_870">
                 <%=LocalResources.GetLabel("app_employee_advanced_search_text")%>:
             </div>
             <br />
@@ -229,6 +227,4 @@
             </div>
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

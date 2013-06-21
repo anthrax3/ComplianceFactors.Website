@@ -26,6 +26,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             {
                 //Get delivery id
                 editDelivery = Request.QueryString["editdelivery"];
+                hdEditdelivery.Value = editDelivery;
+                hdEditcourseid.Value = Request.QueryString["editcourseid"];
                 //create object for delivery dataset
                 DataSet dsDeliveries = new DataSet();
                 if (!IsPostBack)

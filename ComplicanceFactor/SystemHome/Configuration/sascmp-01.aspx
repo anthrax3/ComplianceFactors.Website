@@ -283,7 +283,7 @@
                         <a href="../Catalog/Category/samccmp-01.aspx">Manage Catalog Categories</a>
                     </td>
                     <td>
-                        <a href="#">
+                        <a href="BackgroundJobs/sambjmp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_background_jobs_text")%></a>
                     </td>
                     <td>

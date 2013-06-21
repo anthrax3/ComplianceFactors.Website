@@ -15,7 +15,9 @@
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -26,7 +28,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -130,6 +132,7 @@
 <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
 </asp:ToolkitScriptManager>
     <asp:HiddenField ID="hdDocumentId" runat="server" />
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saandin" runat="server"
         ValidationGroup="saandin"></asp:ValidationSummary>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">

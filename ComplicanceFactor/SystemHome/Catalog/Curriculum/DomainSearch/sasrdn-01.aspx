@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sasrdn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Curriculum.DomainSearch.sasrdn_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="sasrdn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Curriculum.DomainSearch.sasrdn_01" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
     <link href="../../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
@@ -30,21 +29,21 @@
     </script>
     <script type="text/javascript" language="javascript">
         function toggleSelection(source) {
-            $("#gvsearchDetails input[name$='chkSelect']").each(function (index) {
+            $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").each(function (index) {
                 $(this).attr('checked', source.checked);
             });
 
 
         }
         function clearSelection() {
-            if ($("#gvsearchDetails input[name$='chkSelect']").length == $("#gvsearchDetails input[name$='chkSelect']:checked").length) {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', true);
+            if ($("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").length == $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']:checked").length) {
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', true);
 
             }
             else {
-                $("#gvsearchDetails input[name$='chkSelectAll']").first().attr('checked', false);
+                $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', false);
             }
-        }           
+        }          
     </script>
     <script type="text/javascript" language="javascript">
         function confirmremove() {
@@ -86,11 +85,7 @@
     </script>
 
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        
-       
+
         <div class="div_header_popup_1">
           <%=LocalResources.GetLabel("app_domains_search_results_text")%>:
          
@@ -253,6 +248,4 @@
             </div>
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

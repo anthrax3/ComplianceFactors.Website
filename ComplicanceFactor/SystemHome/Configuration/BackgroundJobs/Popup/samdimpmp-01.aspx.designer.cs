@@ -7,244 +7,244 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CatagorySearch {
+namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
     
     
-    public partial class sasrcn_01 {
+    public partial class samdimpmp_01 {
         
         /// <summary>
-        /// btnHeaderFirst control.
+        /// btnSelectFacilitiesCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderFirst;
+        protected global::System.Web.UI.WebControls.Button btnSelectFacilitiesCsvFile;
         
         /// <summary>
-        /// btnHeaderPrevious control.
+        /// btnSampleFacilitiesFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderPrevious;
+        protected global::System.Web.UI.WebControls.Button btnSampleFacilitiesFile;
         
         /// <summary>
-        /// btnHeaderNext control.
+        /// btnSelectRoomCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderNext;
+        protected global::System.Web.UI.WebControls.Button btnSelectRoomCsvFile;
         
         /// <summary>
-        /// btnHeaderLast control.
+        /// btnSampleRoomFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderLast;
+        protected global::System.Web.UI.WebControls.Button btnSampleRoomFile;
         
         /// <summary>
-        /// lblHeaderResultPerPage control.
+        /// btnSelectCoursesCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeaderResultPerPage;
+        protected global::System.Web.UI.WebControls.Button btnSelectCoursesCsvFile;
         
         /// <summary>
-        /// ddlHeaderResultPerPage control.
+        /// btnSampleCoursesFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHeaderResultPerPage;
+        protected global::System.Web.UI.WebControls.Button btnSampleCoursesFile;
         
         /// <summary>
-        /// lblHeaderPage control.
+        /// btnSelectBaseCurriculamCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeaderPage;
+        protected global::System.Web.UI.WebControls.Button btnSelectBaseCurriculamCsvFile;
         
         /// <summary>
-        /// txtHeaderPage control.
+        /// btnSampleBaseCurriculamFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHeaderPage;
+        protected global::System.Web.UI.WebControls.Button btnSampleBaseCurriculamFile;
         
         /// <summary>
-        /// lblHeaderPageOf control.
+        /// btnSelectEnrollmentsCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeaderPageOf;
+        protected global::System.Web.UI.WebControls.Button btnSelectEnrollmentsCsvFile;
         
         /// <summary>
-        /// btnHeaderGoto control.
+        /// btnSampleEnrollmentsCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderGoto;
+        protected global::System.Web.UI.WebControls.Button btnSampleEnrollmentsCsvFile;
         
         /// <summary>
-        /// gvsearchDetails control.
+        /// btnSelectLearningHistoryCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
+        protected global::System.Web.UI.WebControls.Button btnSelectLearningHistoryCsvFile;
         
         /// <summary>
-        /// btnSaveSelected control.
+        /// btnSampleLearningHistoryCsvFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveSelected;
+        protected global::System.Web.UI.WebControls.Button btnSampleLearningHistoryCsvFile;
         
         /// <summary>
-        /// btnFooterFirst control.
+        /// txtSftpServerUri control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterFirst;
+        protected global::System.Web.UI.WebControls.TextBox txtSftpServerUri;
         
         /// <summary>
-        /// btnFooterPrevious control.
+        /// txtSftpServerPort control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterPrevious;
+        protected global::System.Web.UI.WebControls.TextBox txtSftpServerPort;
         
         /// <summary>
-        /// btnFooterNext control.
+        /// txtUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterNext;
+        protected global::System.Web.UI.WebControls.TextBox txtUserName;
         
         /// <summary>
-        /// btnFooterLast control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterLast;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// lblFooterResultPerPage control.
+        /// txtEnrollments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFooterResultPerPage;
+        protected global::System.Web.UI.WebControls.TextBox txtEnrollments;
         
         /// <summary>
-        /// ddlFooterResultPerPage control.
+        /// chkEnrollments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFooterResultPerPage;
+        protected global::System.Web.UI.WebControls.CheckBox chkEnrollments;
         
         /// <summary>
-        /// lblFooterPage control.
+        /// txtLearningHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFooterPage;
+        protected global::System.Web.UI.WebControls.TextBox txtLearningHistory;
         
         /// <summary>
-        /// txtFooterPage control.
+        /// chkLearningHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFooterPage;
+        protected global::System.Web.UI.WebControls.CheckBox chkLearningHistory;
         
         /// <summary>
-        /// lblFooterPageOf control.
+        /// txtOccursEvery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFooterPageOf;
+        protected global::System.Web.UI.WebControls.TextBox txtOccursEvery;
         
         /// <summary>
-        /// btnFooterGoto control.
+        /// txtHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterGoto;
+        protected global::System.Web.UI.WebControls.TextBox txtHours;
         
         /// <summary>
-        /// pnlDefault control.
+        /// ddlHour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDefault;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHour;
         
         /// <summary>
-        /// txtCategoryName control.
+        /// txtBegining control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategoryName;
+        protected global::System.Web.UI.WebControls.TextBox txtBegining;
         
         /// <summary>
-        /// txtCategoryId control.
+        /// btnDisplayImportLogs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategoryId;
+        protected global::System.Web.UI.WebControls.Button btnDisplayImportLogs;
         
         /// <summary>
-        /// btnGosearch control.
+        /// btnSaveDataImportSftpInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGosearch;
+        protected global::System.Web.UI.WebControls.Button btnSaveDataImportSftpInformation;
         
         /// <summary>
         /// btnReset control.

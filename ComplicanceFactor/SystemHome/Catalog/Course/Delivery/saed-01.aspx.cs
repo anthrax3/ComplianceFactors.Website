@@ -740,7 +740,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_vlt_launch_url"] = txtVlsUrl.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_olt_launch_url"] = txtScormUrl.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_olt_launch_param"] = txtScromLaunchParameters.Text;
-            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_grading_scheme_id_fk"] = ddlScoringScheme.SelectedValue;
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_survey_scoring_scheme_id_fk"] = ddlScoringScheme.SelectedValue;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_01"] = txtCustom01.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_02"] = txtCustom02.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_03"] = txtCustom03.Text;

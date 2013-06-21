@@ -130,11 +130,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         protected void btnFooterUpdateTheme_Click(object sender, EventArgs e)
         {
             UpdateTheme();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void btnHeaderUpdateTheme_Click(object sender, EventArgs e)
         {
             UpdateTheme();
+            Response.Redirect(Request.RawUrl);
         }
         /// <summary>
         /// Update Theme

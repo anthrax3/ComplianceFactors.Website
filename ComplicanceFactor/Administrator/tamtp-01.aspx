@@ -36,7 +36,7 @@
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
-                        <a href="#"><%=LocalResources.GetLabel("app_manage_documents_text")%></a>
+                        <a href="../SystemHome/Catalog/Documents/samdimp-01.aspx"><%=LocalResources.GetLabel("app_manage_documents_text")%></a>
                     </td>
                     <td>
                         <a href="../SystemHome/Catalog/Instructor/samip-01.aspx"><%=LocalResources.GetLabel("app_manage_instructors_text")%></a>

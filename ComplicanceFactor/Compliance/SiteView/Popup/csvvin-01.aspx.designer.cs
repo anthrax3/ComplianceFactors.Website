@@ -13,15 +13,6 @@ namespace ComplicanceFactor.Compliance.SiteView.Popup {
     public partial class csvvin_01 {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// lblInspectionId control.
         /// </summary>
         /// <remarks>

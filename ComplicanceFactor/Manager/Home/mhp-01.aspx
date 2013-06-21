@@ -336,7 +336,7 @@
         <asp:ListView ID="lvMyteam" runat="server" OnItemDataBound="lvMyteam_ItemDataBound"
             OnItemCommand="lvMyteam_ItemCommand">
             <LayoutTemplate>
-                <table>
+                <table class="gridview_long_no_border">
                     <tr style="background-color:#C0C0C0">
                         <th style="width: 400px;">
                              Employee Name(ID)

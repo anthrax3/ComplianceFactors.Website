@@ -33,107 +33,110 @@
     <script type="text/javascript">
 
 
-            // Add and view  locale
-            $(document).ready(function () {
+        // Add and view  locale
+        $(document).ready(function () {
+            $("#btnManageLocale").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 783,
+                'height': 250,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': '../Rooms/Locale/savloc-01.aspx?mode=create',
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
 
-                $("#btnManageLocale").fancybox({
-                    'type': 'iframe',
-                    'titlePosition': 'over',
-                    'titleShow': true,
-                    'showCloseButton': true,
-                    'scrolling': 'yes',
-                    'autoScale': false,
-                    'autoDimensions': false,
-                    'helpers': { overlay: { closeClick: false} },
-                    'width': 783,
-                    'height': 250,
-                    'margin': 0,
-                    'padding': 0,
-                    'overlayColor': '#000',
-                    'overlayOpacity': 0.7,
-                    'hideOnOverlayClick': false,
-                    'href': '../Rooms/Locale/savloc-01.aspx?mode=create',
-                    'onComplete': function () {
-                        $('#fancybox-frame').load(function () {
-                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                            var heightPane = $(this).contents().find('#content').height();
-                            $(this).contents().find('#fancybox-frame').css({
-                                'height': heightPane + 'px'
+                        })
+                    });
 
-                            })
-                        });
+                }
 
-                    }
+            });
+        });
 
+        //Resource popup
+        $("#btnAddResource").fancybox({
+            'type': 'iframe',
+            'titlePosition': 'over',
+            'titleShow': true,
+            'showCloseButton': true,
+            'scrolling': 'yes',
+            'autoScale': false,
+            'autoDimensions': false,
+            'helpers': { overlay: { closeClick: false} },
+            'width': 720,
+            'height': 200,
+            'margin': 0,
+            'padding': 0,
+            'overlayColor': '#000',
+            'overlayOpacity': 0.7,
+            'hideOnOverlayClick': false,
+            'href': '../Rooms/Resource/sars-01.aspx?mode=create',
+            'onComplete': function () {
+                $.fancybox.showActivity();
+                $('#fancybox-frame').load(function () {
+                    $.fancybox.hideActivity();
+                    $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                    var heightPane = $(this).contents().find('#content').height();
+                    $(this).contents().find('#fancybox-frame').css({
+                        'height': heightPane + 'px'
+
+                    })
                 });
-            });
 
-            //Resource popup
-            $("#btnAddResource").fancybox({
-                'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
-                'showCloseButton': true,
-                'scrolling': 'yes',
-                'autoScale': false,
-                'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false} },
-                'width': 720,
-                'height': 200,
-                'margin': 0,
-                'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': '../Rooms/Resource/sars-01.aspx?mode=create',
-                'onComplete': function () {
-                    $.fancybox.showActivity();
-                    $('#fancybox-frame').load(function () {
-                        $.fancybox.hideActivity();
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
+            }
 
-                        })
-                    });
+        });
 
-                }
+        $("#<%=btnFacility.ClientID %>").fancybox({
+            'type': 'iframe',
+            'titlePosition': 'over',
+            'titleShow': true,
+            'showCloseButton': true,
+            'scrolling': 'yes',
+            'autoScale': false,
+            'autoDimensions': false,
+            'helpers': { overlay: { closeClick: false} },
+            'width': 732,
+            'height': 200,
+            'margin': 0,
+            'padding': 0,
+            'overlayColor': '#000',
+            'overlayOpacity': 0.7,
+            'hideOnOverlayClick': false,
+            'href': '../Rooms/Facility/safs-01.aspx',
+            'onComplete': function () {
+                $.fancybox.showActivity();
+                $('#fancybox-frame').load(function () {
+                    $.fancybox.hideActivity();
+                    $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                    var heightPane = $(this).contents().find('#content').height();
+                    $(this).contents().find('#fancybox-frame').css({
+                        'height': heightPane + 'px'
 
-            });
+                    })
+                });
 
-            $("#<%=btnFacility.ClientID %>").fancybox({
-                'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
-                'showCloseButton': true,
-                'scrolling': 'yes',
-                'autoScale': false,
-                'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false} },
-                'width': 732,
-                'height': 200,
-                'margin': 0,
-                'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': '../Rooms/Facility/safs-01.aspx',
-                'onComplete': function () {
-                    $.fancybox.showActivity();
-                    $('#fancybox-frame').load(function () {
-                        $.fancybox.hideActivity();
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
+            }
 
-                        })
-                    });
+        });
 
-                }
-
-            });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
             $(".deleteresource").click(function () {
 
                 //Get the Id of the record to delete
@@ -172,8 +175,7 @@
             });
 
         });
-
-       
+            
     </script>
     <br />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanroin" runat="server"
@@ -287,7 +289,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        <input type="button" id="btnManageLocale" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_manage_locales_button_text%>" />' />
+                        <input type="button" id="btnManageLocale" class="cursor_hand" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_manage_locales_button_text%>" />' />
                     </td>
                 </tr>
             </table>
@@ -324,7 +326,7 @@
         </div>
         <div class="div_controls font_1">
             <br />
-            <input type="button" id="btnAddResource" value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_add_resources_button_text %>" />' />
+            <input type="button" class="cursor_hand" id="btnAddResource" value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_add_resources_button_text %>" />' />
         </div>
         <br />
         <div class="div_padding_10">

@@ -19,7 +19,7 @@ namespace ComplicanceFactor.Manager.Catalog
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Manager/Catalog/ascr-01.aspx>" + LocalResources.GetGlobalLabel("app_advanced_search_catalog_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_catalog_search_result_text") + "</a>";
+            lblBreadCrumb.Text = "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_manager") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Manager/Home/mhp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Manager/Catalog/ascr-01.aspx>" + LocalResources.GetGlobalLabel("app_advanced_search_catalog_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_catalog_search_result_text") + "</a>";
             //go button
             Button btnGo = (Button)Master.FindControl("btnGo");
             btnGo.Click += new EventHandler(btnGo_Click);

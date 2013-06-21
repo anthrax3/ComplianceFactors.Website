@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="csvvin-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.SiteView.Popup.csvvin_01" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true" CodeBehind="csvvin-01.aspx.cs"
+    Inherits="ComplicanceFactor.Compliance.SiteView.Popup.csvvin_01" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -17,9 +17,6 @@
             height: 300px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
         <div class="div_header_popup_1">
             <%=LocalResources.GetLabel("app_inspection_details_text")%>:
@@ -122,6 +119,4 @@
             </center>
         </div>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

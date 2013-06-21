@@ -22,6 +22,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup {
         protected global::System.Web.UI.WebControls.HiddenField hdCheckCopy;
         
         /// <summary>
+        /// hdEditdelivery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdEditdelivery;
+        
+        /// <summary>
+        /// hdEditcourseid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdEditcourseid;
+        
+        /// <summary>
         /// vs_sand control.
         /// </summary>
         /// <remarks>

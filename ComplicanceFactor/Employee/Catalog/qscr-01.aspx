@@ -147,8 +147,8 @@
                                             <td colspan="2">
                                                 <asp:LinkButton ID="lnkCourseDetailId" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                                                     CommandName="Detail" runat="server" Text='<%#Bind("title_and_id")%>'></asp:LinkButton><br />
-                                                <asp:LinkButton ID="lnkViewDetails" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                                    CommandName="Detail" runat="server" Text="View Details..."></asp:LinkButton>
+                                                <asp:LinkButton ID="lnkViewDetails" CssClass="body_link" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                                    CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_view_details_text %>"></asp:LinkButton>
                                             </td>
                                           
                                             <td>

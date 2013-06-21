@@ -47,7 +47,7 @@
                 'autoScale': false,
                 'autoDimensions': false,
                 'helpers': { overlay: { closeClick: false} },
-                'width': 920,
+                'width': 733,
                 'height': 200,
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,

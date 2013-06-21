@@ -6,25 +6,28 @@
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
+        <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
-            // toggles the slickbox on clicking the noted link  
-            $('.main_menu li a').hover(function () {
+            $(document).ready(function () {
+                var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-                $('.main_menu li a').removeClass('selected');
-                $(this).addClass('active');
+                $(navigationSelectedValue).addClass('selected');
+                // toggles the slickbox on clicking the noted link  
+                $('.main_menu li a').hover(function () {
 
-                return false;
+                    $('.main_menu li a').removeClass('selected');
+                    $(this).addClass('active');
+
+                    return false;
+                });
+                $('.main_menu li a').mouseleave(function () {
+
+                    $(navigationSelectedValue).addClass('selected');
+                    return false;
+                });
             });
-            $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
-                return false;
-            });
-        });
-    </script>
+    </script> 
     <script type="text/javascript" language="javascript">
         function confirmStatus() {
             if (confirm('Are you sure?') == true)
@@ -48,6 +51,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_advanced_document_search_results_text")%>:

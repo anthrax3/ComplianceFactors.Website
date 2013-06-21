@@ -25,7 +25,6 @@
                 return false;
             });
             $(".rstpwd").click(function () {
-                alert(1);
 
                 $.fancybox({
                     'type': 'iframe',

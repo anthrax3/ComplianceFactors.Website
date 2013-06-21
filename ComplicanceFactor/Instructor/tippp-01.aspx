@@ -3,26 +3,65 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <script type="text/javascript">
-         $(document).ready(function () {
-             $('#app_nav_instructor').addClass('selected');
-             // toggles the slickbox on clicking the noted link  
-             $('.main_menu li a').hover(function () {
+        <script type="text/javascript">
 
-                 $('.main_menu li a').removeClass('selected');
-                 $(this).addClass('active');
+            $(document).ready(function () {
+                $('#app_nav_instructor').addClass('selected');
+                // toggles the slickbox on clicking the noted link  
+                $('.main_menu li a').hover(function () {
 
-                 return false;
-             });
-             $('.main_menu li a').mouseleave(function () {
+                    $('.main_menu li a').removeClass('selected');
+                    $(this).addClass('active');
 
-                 $('#app_nav_instructor').addClass('selected');
-                 return false;
-             });
-         });        
+                    return false;
+                });
+                $('.main_menu li a').mouseleave(function () {
+
+                    $('#app_nav_instructor').addClass('selected');
+                    return false;
+                });
+                $(".rstpwd").click(function () {
+
+
+                    $.fancybox({
+                        'type': 'iframe',
+                        'titlePosition': 'over',
+                        'titleShow': true,
+                        'showCloseButton': true,
+                        'scrolling': 'yes',
+                        'autoScale': false,
+                        'autoDimensions': false,
+                        'helpers': { overlay: { closeClick: false} },
+                        'width': 632,
+                        'height': 200,
+                        'margin': 0,
+                        'padding': 0,
+                        'overlayColor': '#000',
+                        'overlayOpacity': 0.7,
+                        'hideOnOverlayClick': false,
+                        'href': '/SystemHome/Users/ChangePassword/sacpu-01.aspx',
+                        'onComplete': function () {
+                            $('#fancybox-frame').load(function () {
+                                $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                var heightPane = $(this).contents().find('#content').height();
+                                $(this).contents().find('#fancybox-frame').css({
+                                    'height': heightPane + 'px'
+
+                                })
+                            });
+
+                        }
+
+                    });
+                });
+            });
+       
     </script>
     <div id="success_msg" runat="server" class="msgarea_success" style="display: none;">
     </div>
