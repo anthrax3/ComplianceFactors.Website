@@ -287,9 +287,9 @@
         <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
             ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
-            ValidationGroup="samcp_employee" runat="server" ErrorMessage="Please select course and delivery">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samcp_employee" runat="server" ErrorMessage="<%$ TextResourceExpression: app_course_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCompletion" EnableClientScript="true" ClientValidationFunction="validateCompletion"
-            ValidationGroup="samcp_completion" runat="server" ErrorMessage="Please select completion date.">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samcp_completion" runat="server" ErrorMessage="<%$ TextResourceExpression: app_date_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_catalog_items_text")%>:
@@ -384,7 +384,7 @@
         <br />
         <div class="clear">
         </div>
-        <div>
+       <div class="div_controls font_1">
        <%-- CssClass="gridview_long tablesorter font_1"--%>
             <asp:GridView ID="gvCompletionInfo" CellPadding="0" CellSpacing="0" 
                 runat="server" EmptyDataText="No Result Found" GridLines="Both"  DataKeyNames="c_delivery_id_pk"

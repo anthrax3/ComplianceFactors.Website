@@ -26,6 +26,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/DigitalMediaFiles/samdmmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_digital_media_files_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_create_new_media_files_text") + "</a>";
                 ddlFileType.DataSource = SystemDigitalMediaFilesBLL.GetFileType(SessionWrapper.CultureName, "saandmp-01");
                 ddlFileType.DataBind();
+                SessionWrapper.s_digital_media_source_file_name = string.Empty;
             }
 
 

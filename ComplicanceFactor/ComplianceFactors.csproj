@@ -733,7 +733,6 @@
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\1919b655-81f7-4840-b3e3-85acf64ecf82.jpg" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\7972cbec-f5f7-4a20-8262-a59339a11a88.jpg" />
-    <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\Chrysanthemum.jpg" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Popup\p-samdp-01.aspx" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Popup\p-samdpv-01.aspx" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\saandmp-01.aspx" />
@@ -787,10 +786,10 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
     <Content Include="SystemHome\Configuration\Themes\Logo\ComplianceFactorsLogo.jpg" />
-    <Content Include="SystemHome\Configuration\Themes\Logo\Hydrangeas.jpg" />
-    <Content Include="SystemHome\Configuration\Themes\Logo\Koala.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Logo\rainbow_background-t2.jpg" />
+    <Content Include="SystemHome\Configuration\Themes\Popup\p-preview.aspx" />
     <Content Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx" />
+    <Content Include="SystemHome\Configuration\Themes\Popup\saantp-01.aspx" />
     <Content Include="SystemHome\Configuration\Themes\saantp-01.aspx" />
     <Content Include="SystemHome\Configuration\Themes\saetp-01.aspx" />
     <Content Include="SystemHome\Configuration\Themes\samtmp-01.aspx" />
@@ -3478,12 +3477,26 @@
     <Compile Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx.designer.cs">
       <DependentUpon>samspmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\Popup\p-preview.aspx.cs">
+      <DependentUpon>p-preview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\Popup\p-preview.aspx.designer.cs">
+      <DependentUpon>p-preview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx.cs">
       <DependentUpon>p-satim-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx.designer.cs">
       <DependentUpon>p-satim-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\Popup\saantp-01.aspx.cs">
+      <DependentUpon>saantp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Themes\Popup\saantp-01.aspx.designer.cs">
+      <DependentUpon>saantp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\Themes\saantp-01.aspx.cs">
       <DependentUpon>saantp-01.aspx</DependentUpon>
@@ -4008,7 +4021,6 @@
     </None>
     <Content Include="Instructor\Web.config" />
     <Content Include="SystemHome\Catalog\Web.config" />
-    <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\MyCalendar%281%29.pdf" />
     <None Include="SystemHome\Configuration\HRIS Integration\Sample\HRIS_import_csv_example.xlsx" />
     <None Include="SystemHome\Configuration\HRIS Integration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
     <Content Include="SystemHome\Users\Web.config" />

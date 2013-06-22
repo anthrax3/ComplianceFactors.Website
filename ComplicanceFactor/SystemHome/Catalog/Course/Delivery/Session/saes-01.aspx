@@ -358,48 +358,56 @@
                     <td colspan="6">
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
-                            ValidationGroup="saes" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
-                        <asp:RequiredFieldValidator ID="rfvSessionStartDate" runat="server" ValidationGroup="saes"
-                            ControlToValidate="txtStartDate" ErrorMessage="<%$ TextResourceExpression: app_start_date_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="regexStartDate" runat="server" ControlToValidate="txtStartDate"
-                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="<%$ TextResourceExpression: app_invalid_start_date_error_wrong%>"
-                            Display="Dynamic" ValidationGroup="saes">&nbsp;</asp:RegularExpressionValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_start_date_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtStartDate" runat="server" CssClass="textbox_long"></asp:TextBox>
-                        <asp:CalendarExtender ID="ceStartDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtStartDate">
-                        </asp:CalendarExtender>
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvSessionEndDate" runat="server" ValidationGroup="saes"
-                            ControlToValidate="txtEndDate" ErrorMessage="<%$ TextResourceExpression: app_end_date_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="regexEndDate" runat="server" ControlToValidate="txtEndDate"
-                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="<%$ TextResourceExpression: app_invalid_end_date_error_wrong%>"
-                            Display="Dynamic" ValidationGroup="saes">&nbsp;</asp:RegularExpressionValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_end_date_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtEndDate" runat="server" CssClass="textbox_long"></asp:TextBox>
-                        <asp:CalendarExtender ID="ceEndDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtEndDate">
-                        </asp:CalendarExtender>
-                    </td>
-                </tr>
+            </table>
+        </div>
+        <div class="div_control_normal font_1">
+        <table>
+            <tr>
+                <td class="align_right" style="width: 110px;">
+                    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+                        ValidationGroup="sasw" runat="server" ErrorMessage="Please select the end date as greater than start date">&nbsp;</asp:CustomValidator>
+                    <asp:RequiredFieldValidator ID="rfvSessionStartDate" runat="server" ValidationGroup="sasw"
+                        ControlToValidate="txtStartDate" ErrorMessage="<%$ TextResourceExpression: app_start_date_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_start_date_text")%>:
+                </td>
+                <td style="width: 110px;">
+                    <asp:RegularExpressionValidator ID="regexStartDate" runat="server" ControlToValidate="txtStartDate"
+                        ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                        ErrorMessage="<%$ TextResourceExpression: app_invalid_start_date_error_wrong%>"
+                        Display="Dynamic" ValidationGroup="sasw">&nbsp;</asp:RegularExpressionValidator>
+                    <asp:TextBox ID="txtStartDate" runat="server" CssClass="textbox_long"></asp:TextBox>
+                    <asp:CalendarExtender ID="ceStartDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtStartDate">
+                    </asp:CalendarExtender>
+                </td>
+                <td style="width: 110px;">
+                    &nbsp;
+                </td>
+                <td style="width: 110px;">
+                    &nbsp;
+                </td>
+                <td class="align_right" style="width: 110px;">
+                    <asp:RequiredFieldValidator ID="rfvSessionEndDate" runat="server" ValidationGroup="sasw"
+                        ControlToValidate="txtEndDate" ErrorMessage="<%$ TextResourceExpression: app_end_date_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_end_date_text")%>:
+                </td>
+                <td style="width: 110px;">
+                    <asp:RegularExpressionValidator ID="regexEndDate" runat="server" ControlToValidate="txtEndDate"
+                        ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                        ErrorMessage="<%$ TextResourceExpression: app_invalid_end_date_error_wrong%>"
+                        Display="Dynamic" ValidationGroup="sasw">&nbsp;</asp:RegularExpressionValidator>
+                    <asp:TextBox ID="txtEndDate" runat="server" CssClass="textbox_long"></asp:TextBox>
+                    <asp:CalendarExtender ID="ceEndDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtEndDate">
+                    </asp:CalendarExtender>
+                </td>
+            </tr>
+        </table>
+    </div>
+        <div class="div_controls font_1">
+            <table>
                 <tr>
                     <td colspan="6">
                     </td>

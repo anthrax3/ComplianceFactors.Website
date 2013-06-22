@@ -245,8 +245,6 @@
             }
         }        
     </script>
-    
-
     <script type="text/javascript" language="javascript">
         function getEmployeeCount(sender, args) {
 
@@ -258,14 +256,14 @@
         }
     </script>
     <script type="text/javascript">
-        function confirmremove(sender,args) {
+        function confirmremove(sender, args) {
             var isValid = validateAll();
             if (isValid == true) {
                 if (confirm('Are you sure') == true)
                     return isv;
                 else
                     return false;
-            }            
+            }
         }
     </script>
     <script type="text/javascript">
@@ -293,43 +291,38 @@
     <script type="text/javascript">
         function validateAll() {
             var isValid = false;
-            isValid = Page_ClientValidate('samep');   
+            isValid = Page_ClientValidate('samep');
             if (isValid) {
                 isValid = Page_ClientValidate('samep_course');
-            }            
+            }
             if (isValid) {
                 isValid = Page_ClientValidate('samep_required');
             }
 
             return isValid;
-            
+
         }
     </script>
-
-    
     <div class="content_area_long">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
-
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samep" runat="server"
             ValidationGroup="samep"></asp:ValidationSummary>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_course" runat="server"
             ValidationGroup="samep_course"></asp:ValidationSummary>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_required" runat="server"
             ValidationGroup="samep_required"></asp:ValidationSummary>
-        
-
-        <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes" ValidateEmptyText="true"
-            ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
-        <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount" ValidateEmptyText="true"
-            ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
-        <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse" ValidateEmptyText="true"
-            ValidationGroup="samep_course" runat="server" ErrorMessage="Please select course.">&nbsp;</asp:CustomValidator>
-        <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired" ValidateEmptyText="true"
-            ValidationGroup="samep_required" runat="server" ErrorMessage="Please select target due date.">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
+            ValidateEmptyText="true" ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
+            ValidateEmptyText="true" ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
+            ValidateEmptyText="true" ValidationGroup="samep_course" runat="server" ErrorMessage="<%$ TextResourceExpression: app_course_error_empty %>">&nbsp;</asp:CustomValidator>
+        <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired"
+            ValidateEmptyText="true" ValidationGroup="samep_required" runat="server" ErrorMessage="<%$ TextResourceExpression: app_date_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:HiddenField ID="hdCheckdelivery" runat="server" />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_catalog_items_text")%>:
@@ -422,25 +415,24 @@
         <div class="clear">
         </div>
         <br />
-        <div>
-              <table>
+        <div class="div_controls font_1">
+            <table>
                 <tr>
                     <td colspan="2">
                         &nbsp;
                     </td>
-                    <td style="font-size: 10pt; font-weight: bold;">
+                    <td>
                         <%=LocalResources.GetLabel("app_required_text")%>&nbsp;<asp:CheckBox ID="chkRequired"
                             runat="server" />
                     </td>
-                    <td style="padding: 3px 400px 3px 8px;">
+                    <td>
                         &nbsp;
                     </td>
-                    <td style="font-size: 10pt; font-weight: bold;">
+                    <td>
                         <%=LocalResources.GetLabel("app_target_due_text")%>:
                     </td>
                     <td class="clear">
-                        <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" Style="font-weight: 700;"
-                            runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtTargetDueDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceTargetDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtTargetDueDate">
                         </asp:CalendarExtender>
                     </td>
@@ -450,7 +442,8 @@
                 <tr>
                     <td colspan="3">
                         <asp:Button ID="btnProcessMassEnrollment" runat="server" Text="<%$ LabelResourceExpression: app_process_mass_enrollment_button_text %>"
-                           OnClick="btnProcessMassEnrollment_Click" Onclientclick="return confirmremove()"  CssClass="cursor_hand" />
+                            OnClick="btnProcessMassEnrollment_Click" OnClientClick="return confirmremove()"
+                            CssClass="cursor_hand" />
                     </td>
                     <td colspan="4">
                     </td>

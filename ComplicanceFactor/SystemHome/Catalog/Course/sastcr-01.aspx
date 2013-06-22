@@ -4,7 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -127,21 +128,21 @@
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnEdit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                            <asp:Button ID="btnEdit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' CssClass="cursor_hand"
                                 CommandName="Edit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnCopy" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                            <asp:Button ID="btnCopy" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' CssClass="cursor_hand"
                                 CommandName="Copy" runat="server" Text="<%$ LabelResourceExpression: app_copy_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnArchive" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                            <asp:Button ID="btnArchive" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' CssClass="cursor_hand"
                                 CommandName="Archive" runat="server" Text="<%$ LabelResourceExpression: app_archive_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>

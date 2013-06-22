@@ -235,6 +235,49 @@
                  return isValid;
              }
     </script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                    $(".preview").click(function () {
+                        //Get the Id of the record to delete
+                        var record_id = $(this).attr("id");
+
+                        //Get the GridView Row reference
+                        var tr_id = $(this).parents("#.record");
+                        $.fancybox({
+                            'type': 'iframe',
+                            'titlePosition': 'over',
+                            'titleShow': true,
+                            'showCloseButton': true,
+                            'scrolling': 'yes',
+                            'autoScale': false,
+                            'autoDimensions': false,
+                            'helpers': { overlay: { closeClick: false} },
+                            'width': 740,
+                            'height': 500,
+                            'margin': 0,
+                            'padding': 0,
+                            'overlayColor': '#000',
+                            'overlayOpacity': 0.7,
+                            'hideOnOverlayClick': false,
+                            'href': 'Popup/p-preview.aspx?imgId=' + record_id,
+                            'onComplete': function () {
+                                $('#fancybox-frame').load(function () {
+                                    $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                    var heightPane = $(this).contents().find('#content').height();
+                                    $(this).contents().find('#fancybox-frame').css({
+                                        'height': heightPane + 'px'
+
+                                    })
+                                });
+
+                            }
+
+                        });
+                    });
+
+                });
+    </script>
     <br />
     <br />
      <asp:HiddenField ID="hdNav_selected" runat="server" />
@@ -383,8 +426,10 @@
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnPreview" CommandName="Preview" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                runat="server" Text="<%$ LabelResourceExpression: app_preview_button_text %>" />
+                            <%--<asp:Button ID="btnPreview" CommandName="Preview" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                runat="server" Text="<%$ LabelResourceExpression: app_preview_button_text %>" />--%>
+                            <input type="button" id='<%# Eval("FileName") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_preview_button_text %>" />'
+                                class="preview cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -277,5 +277,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         {
             Response.Redirect("~/SystemHome/Configuration/Themes/samtmp-01.aspx");
         }
+
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            DataTable dt = SessionWrapper.defaults_theme_color;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace ComplicanceFactor.AboutUs
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
             lblBreadCrumb.Text = "<a href=/glp-01.aspx>" + LocalResources.GetGlobalLabel("wp_nav_home") + "</a>" + " > " + LocalResources.GetGlobalLabel("wp_nav_about_us");
+
         }
     }
 }

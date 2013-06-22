@@ -34,7 +34,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                     navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                     hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_archive_course") + "</a>";
+                    lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + LocalResources.GetLabel("app_manage_training_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_archive_course") + "</a>";
 
                     ///<summary>
                     //Get course id
