@@ -22,6 +22,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         {
             if (!IsPostBack)
             {
+                //Clear session
+                SessionWrapper.defaults_theme_color.Clear();
+                SessionWrapper.defaults_theme_logo.Clear();
+                
                 DataSet dsDefaultTheme = new DataSet();
 
                 dsDefaultTheme = SystemThemeBLL.GetDefaultTheme();
@@ -53,7 +57,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 //hdNav_selected.Value = "#" + SessionWrapper.navigationText;
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Themes/samtmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_themes_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_theme_text") + "</a>";
-                
+
             }
 
             gvLogos.DataSource = SessionWrapper.defaults_theme_logo;
@@ -115,7 +119,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             //Colors
             foreach (GridViewRow row in gvColors.Rows)
             {
-            
+
                 string columnName = gvColors.DataKeys[row.RowIndex][0].ToString();
                 TextBox txtHex = (TextBox)row.FindControl("txtHex");
                 var rows = SessionWrapper.defaults_theme_color.Select("keyvalue= '" + columnName + "'");
@@ -254,7 +258,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                     //msgDiv.Style.Add("background-color", "#" + color);
 
                     ltlPreviewColor.Text = "<input  type='text' readonly='readonly' style='border: 1px solid black; width: 25px; height: 25px; background:#" + color + "'/>";
-                }                 
+                }
             }
         }
 
@@ -280,7 +284,30 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
 
         protected void btnPreview_Click(object sender, EventArgs e)
         {
-            DataTable dt = SessionWrapper.defaults_theme_color;
+            //Logo
+            foreach (GridViewRow logoRow in gvLogos.Rows)
+            {
+                string logocolumnName = gvLogos.DataKeys[logoRow.RowIndex][0].ToString();
+                var rows = SessionWrapper.defaults_theme_logo.Select("keyvalue= '" + logocolumnName + "'");
+                foreach (var currentrow in rows)
+                    currentrow["FileName"] = logoRow.Cells[1].Text;
+                SessionWrapper.defaults_theme_logo.AcceptChanges();
+            }
+
+            //Colors
+            foreach (GridViewRow row in gvColors.Rows)
+            {
+
+                string columnName = gvColors.DataKeys[row.RowIndex][0].ToString();
+                TextBox txtHex = (TextBox)row.FindControl("txtHex");
+                var rows = SessionWrapper.defaults_theme_color.Select("keyvalue= '" + columnName + "'");
+                foreach (var currentrow in rows)
+                    currentrow["Colorvalue"] = txtHex.Text;
+                SessionWrapper.defaults_theme_color.AcceptChanges();
+            }
+            //Open Popyp
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Preview", "ShowPreviewTheme();", true);
+
         }
     }
 }

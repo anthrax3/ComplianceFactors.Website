@@ -733,6 +733,8 @@
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\1919b655-81f7-4840-b3e3-85acf64ecf82.jpg" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\7972cbec-f5f7-4a20-8262-a59339a11a88.jpg" />
+    <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\Hydrangeas.jpg" />
+    <Content Include="SystemHome\Configuration\DigitalMediaFiles\Images\Jellyfish.jpg" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Popup\p-samdp-01.aspx" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\Popup\p-samdpv-01.aspx" />
     <Content Include="SystemHome\Configuration\DigitalMediaFiles\saandmp-01.aspx" />

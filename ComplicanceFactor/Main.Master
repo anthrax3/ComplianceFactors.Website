@@ -292,6 +292,7 @@
             </div>
             <div class="breadcrumb">
                 <asp:Label ID="lblBreadCrumb" runat="server"></asp:Label>
+                <asp:Label ID="lblPreviewTheme" runat="server" Visible="false"></asp:Label> <%--For Theme --%>
                 <%--<asp:SiteMapPath ID="SiteMapPath1" SiteMapProvider ="XmlSiteMapProvider2" runat="server">
         </asp:SiteMapPath>--%>
                 <div class="right" id="divsearch" runat="server" style="display: none;">

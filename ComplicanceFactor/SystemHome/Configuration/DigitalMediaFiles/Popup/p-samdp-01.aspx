@@ -18,21 +18,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
-          <object id="showfiles" width="720" height="500" data="../Images/MyCalendar(1).pdf">        
-        </object>
-       <%-- <object id="objPlayer" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" width="720"
-            height="500" standby="Loading Windows Media Player components…" type="application/x-oleobject">
-            <embed type="application/x-mplayer2" src="../Images/MyCalendar(1).pdf" name="MediaPlayer" autostart="1"
-                showstatusbar="1" showdisplay="1" showcontrols="1" loop="0" videoborder3d="0"
-                pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" width="720"
-            height="500">
-                        </embed>
-        </object>--%>
-     <%--   <object width="425" height="344"> 
-<embed src="http://www.youtube.com/watch?v=SVAoDqP65Yo&list=PL2900t3sPCl2XP6qMg94IjtQYYlgjIe3x&index=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
-</object>--%>
-
-
+   <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" width="500" height="280">
+     <param name="quality" value="high" />
+    <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" autoplay="yes" lop="no" width="700" height="480" runat="server"  ID="Video1"
+    src="../Images/08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" value="../Images/08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" />
+    </object>
     </div>
     </form>
 </body>

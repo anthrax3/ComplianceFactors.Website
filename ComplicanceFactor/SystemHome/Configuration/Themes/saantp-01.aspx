@@ -139,8 +139,7 @@
         });
     </script>
     <script type="text/javascript">
-        function validateColorCode() {
-            alert(hai);            
+        function validateColorCode() {         
             var gridView = document.getElementById('<%= gvColors.ClientID %>');
             for (var i = 0; i < gridView.rows.length; i++) {
                 alert(test);
@@ -254,6 +253,40 @@
                 });
 
             });
+    </script>
+    <script type="text/javascript">
+        function ShowPreviewTheme() {
+            $.fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 1050,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': 'Popup/saantp-01.aspx?',
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+        }
     </script>
     <br />
     <br />

@@ -20,15 +20,16 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         {
             if (!IsPostBack)
             {
-                
+
                 string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 //hdNav_selected.Value = "#" + SessionWrapper.navigationText;
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Themes/samtmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_themes_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_theme_text") + "</a>";
 
-                SessionWrapper.Reset_theme_logo = null;
-                SessionWrapper.s_theme_edit_color = null;
+                //Clear session
+                SessionWrapper.defaults_theme_color.Clear();
+                SessionWrapper.defaults_theme_logo.Clear();
 
                 //ddlDomain                 
                 ddlDomain.DataSource = SystemSplashPageBLL.GetNotCreatedDomain();
@@ -56,7 +57,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 {
                     themeId = SecurityCenter.DecryptText(Request.QueryString["copythemeid"].ToString());
                     hdThemeId.Value = themeId;
-                    PopulateTheme();                    
+                    PopulateTheme();
                 }
                 RevertBack();
             }
@@ -64,11 +65,21 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             lblCoordinator.Text = SessionWrapper.s_theme_coordinator_name;
             lblOwner.Text = SessionWrapper.s_theme_owner_name;
 
+
             DataSet dsLogoandColor = new DataSet();
             dsLogoandColor = SystemThemeBLL.GetLogoandColors(themeId);
 
-            gvLogos.DataSource = dsLogoandColor.Tables[0];
-            gvLogos.DataBind();
+            if (SessionWrapper.defaults_theme_logo.Rows.Count > 0)
+            {
+                gvLogos.DataSource = SessionWrapper.defaults_theme_logo;
+                gvLogos.DataBind();
+            }
+            else
+            {
+                SessionWrapper.defaults_theme_logo = dsLogoandColor.Tables[0];
+                gvLogos.DataSource = SessionWrapper.defaults_theme_logo;
+                gvLogos.DataBind();
+            }
         }
 
         private void RevertBack()
@@ -100,17 +111,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 SessionWrapper.s_theme_coordinator_name = theme.s_theme_coordinator_name;
                 SessionWrapper.s_theme_owner_name = theme.s_theme_owner_name;
 
-
                 DataSet dsLogoandColor = new DataSet();
                 dsLogoandColor = SystemThemeBLL.GetLogoandColors(themeId);
-
-                gvLogos.DataSource = dsLogoandColor.Tables[0];
-                gvLogos.DataBind();
 
                 gvColors.DataSource = dsLogoandColor.Tables[1];
                 gvColors.DataBind();
 
-                SessionWrapper.s_theme_edit_color = dsLogoandColor.Tables[1];
+                SessionWrapper.defaults_theme_color = dsLogoandColor.Tables[1];
+
+
             }
             catch (Exception ex)
             {
@@ -130,13 +139,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         protected void btnFooterUpdateTheme_Click(object sender, EventArgs e)
         {
             UpdateTheme();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void btnHeaderUpdateTheme_Click(object sender, EventArgs e)
         {
             UpdateTheme();
-            Response.Redirect(Request.RawUrl);
         }
         /// <summary>
         /// Update Theme
@@ -149,10 +156,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 string columnName = gvColors.DataKeys[row.RowIndex][0].ToString();
                 TextBox txtscore = (TextBox)row.FindControl("txtHex");
 
-                var rows = SessionWrapper.s_theme_edit_color.Select("keyvalue= '" + columnName + "'");
+                var rows = SessionWrapper.defaults_theme_color.Select("keyvalue= '" + columnName + "'");
                 foreach (var currentrow in rows)
                     currentrow["Colorvalue"] = txtscore.Text;
-                SessionWrapper.s_theme_edit_color.AcceptChanges();
+                SessionWrapper.defaults_theme_color.AcceptChanges();
             }
 
             SystemThemes theme = new SystemThemes();
@@ -163,29 +170,34 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             theme.s_theme_status_id_fk = ddlStatus.SelectedValue;
             theme.s_theme_owner_id_fk = SessionWrapper.s_theme_owner_id_fk;
             theme.s_theme_coordinator_id_fk = SessionWrapper.s_theme_coordinator_id_fk;
-            theme.s_theme_css_tag_main_background_hex_value = SessionWrapper.s_theme_edit_color.Rows[0]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_login_background_hex_value = SessionWrapper.s_theme_edit_color.Rows[1]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_login_button_hex_value = SessionWrapper.s_theme_edit_color.Rows[2]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_login_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[3]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_login_link_hex_value = SessionWrapper.s_theme_edit_color.Rows[4]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_nav_top_line_hex_value = SessionWrapper.s_theme_edit_color.Rows[5]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_nav_bar_hex_value = SessionWrapper.s_theme_edit_color.Rows[6]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_nav_bar_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[7]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_nav_bot_line_hex_value = SessionWrapper.s_theme_edit_color.Rows[8]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_nav_active_hex_value = SessionWrapper.s_theme_edit_color.Rows[9]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_nav_active_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[10]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_foot_top_line_hex_value = SessionWrapper.s_theme_edit_color.Rows[11]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_foot_bot_line_hex_value = SessionWrapper.s_theme_edit_color.Rows[12]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_section_head_hex_value = SessionWrapper.s_theme_edit_color.Rows[13]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_section_head_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[14]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_section_head_border_hex_value = SessionWrapper.s_theme_edit_color.Rows[15]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_table_head_hex_value = SessionWrapper.s_theme_edit_color.Rows[16]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_table_head_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[17]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_table_border_hex_value = SessionWrapper.s_theme_edit_color.Rows[18]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_bread_link_hex_value = SessionWrapper.s_theme_edit_color.Rows[19]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_bread_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[20]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_body_text_hex_value = SessionWrapper.s_theme_edit_color.Rows[21]["Colorvalue"].ToString();
-            theme.s_theme_css_tag_body_link_hex_value = SessionWrapper.s_theme_edit_color.Rows[22]["Colorvalue"].ToString();
+
+            theme.s_theme_head_logo_file_name = SessionWrapper.defaults_theme_logo.Rows[0]["FileName"].ToString();
+            theme.s_theme_report_logo_file_name = SessionWrapper.defaults_theme_logo.Rows[1]["FileName"].ToString();
+            theme.s_theme_notification_logo_file_name = SessionWrapper.defaults_theme_logo.Rows[2]["FileName"].ToString();
+
+            theme.s_theme_css_tag_main_background_hex_value = SessionWrapper.defaults_theme_color.Rows[0]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_login_background_hex_value = SessionWrapper.defaults_theme_color.Rows[1]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_login_button_hex_value = SessionWrapper.defaults_theme_color.Rows[2]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_login_text_hex_value = SessionWrapper.defaults_theme_color.Rows[3]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_login_link_hex_value = SessionWrapper.defaults_theme_color.Rows[4]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_nav_top_line_hex_value = SessionWrapper.defaults_theme_color.Rows[5]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_nav_bar_hex_value = SessionWrapper.defaults_theme_color.Rows[6]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_nav_bar_text_hex_value = SessionWrapper.defaults_theme_color.Rows[7]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_nav_bot_line_hex_value = SessionWrapper.defaults_theme_color.Rows[8]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_nav_active_hex_value = SessionWrapper.defaults_theme_color.Rows[9]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_nav_active_text_hex_value = SessionWrapper.defaults_theme_color.Rows[10]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_foot_top_line_hex_value = SessionWrapper.defaults_theme_color.Rows[11]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_foot_bot_line_hex_value = SessionWrapper.defaults_theme_color.Rows[12]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_section_head_hex_value = SessionWrapper.defaults_theme_color.Rows[13]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_section_head_text_hex_value = SessionWrapper.defaults_theme_color.Rows[14]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_section_head_border_hex_value = SessionWrapper.defaults_theme_color.Rows[15]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_table_head_hex_value = SessionWrapper.defaults_theme_color.Rows[16]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_table_head_text_hex_value = SessionWrapper.defaults_theme_color.Rows[17]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_table_border_hex_value = SessionWrapper.defaults_theme_color.Rows[18]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_bread_link_hex_value = SessionWrapper.defaults_theme_color.Rows[19]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_bread_text_hex_value = SessionWrapper.defaults_theme_color.Rows[20]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_body_text_hex_value = SessionWrapper.defaults_theme_color.Rows[21]["Colorvalue"].ToString();
+            theme.s_theme_css_tag_body_link_hex_value = SessionWrapper.defaults_theme_color.Rows[22]["Colorvalue"].ToString();
 
             try
             {
@@ -250,7 +262,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
             int rowIndex = int.Parse(e.CommandArgument.ToString());
             if (e.CommandName.Equals("Reset"))
             {
-                string color = SystemThemeBLL.GetColorNameById(gvColors.DataKeys[rowIndex].Values[0].ToString(),themeId);
+                string color = SystemThemeBLL.GetColorNameById(gvColors.DataKeys[rowIndex].Values[0].ToString(), themeId);
                 if (!string.IsNullOrEmpty(color))
                 {
                     GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
@@ -267,7 +279,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
 
         protected void btnHeaderReset_Click(object sender, EventArgs e)
         {
-           try
+            try
             {
 
                 SystemThemes themes = new SystemThemes();
@@ -279,20 +291,20 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 PopulateTheme();
                 Response.Redirect(Request.RawUrl);
             }
-           catch (Exception ex)
-           {
-               if (ConfigurationWrapper.LogErrors == true)
-               {
-                   if (ex.InnerException != null)
-                   {
-                       Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message, ex.InnerException.Message);
-                   }
-                   else
-                   {
-                       Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message);
-                   }
-               }
-           }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saetp-01.aspx (Reset)", ex.Message);
+                    }
+                }
+            }
         }
 
         protected void btnFooterReset_Click(object sender, EventArgs e)
@@ -322,6 +334,33 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                     }
                 }
             }
+        }
+
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            //Logo
+            foreach (GridViewRow logoRow in gvLogos.Rows)
+            {
+                string logocolumnName = gvLogos.DataKeys[logoRow.RowIndex][0].ToString();
+                var rows = SessionWrapper.defaults_theme_logo.Select("keyvalue= '" + logocolumnName + "'");
+                foreach (var currentrow in rows)
+                    currentrow["FileName"] = logoRow.Cells[1].Text;
+                SessionWrapper.defaults_theme_logo.AcceptChanges();
+            }
+
+            //Colors
+            foreach (GridViewRow row in gvColors.Rows)
+            {
+
+                string columnName = gvColors.DataKeys[row.RowIndex][0].ToString();
+                TextBox txtHex = (TextBox)row.FindControl("txtHex");
+                var rows = SessionWrapper.defaults_theme_color.Select("keyvalue= '" + columnName + "'");
+                foreach (var currentrow in rows)
+                    currentrow["Colorvalue"] = txtHex.Text;
+                SessionWrapper.defaults_theme_color.AcceptChanges();
+            }
+            //Open Popup
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Preview", "ShowPreviewTheme();", true);
         }
     }
 }

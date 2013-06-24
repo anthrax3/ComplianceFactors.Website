@@ -36,20 +36,29 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes.Popup
                     c_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_path + c_file_name));
 
-                    if (!string.IsNullOrEmpty(Request.QueryString["editThemeId"]))
-                    {
-                        //Update
-                        string themeId = Request.QueryString["editThemeId"].ToString();
-                        int result = SystemThemeBLL.UpdateLogo(logoUpload, themeId, c_file_name);
+                    var rows = SessionWrapper.defaults_theme_logo.Select("keyvalue= '" + logoUpload + "'");
+                    foreach (var currentrow in rows)
+                        currentrow["FileName"] = c_file_name;
+                    SessionWrapper.defaults_theme_logo.AcceptChanges();
 
-                    }
-                    else
-                    {
-                        var rows = SessionWrapper.defaults_theme_logo.Select("keyvalue= '" + logoUpload + "'");
-                        foreach (var currentrow in rows)
-                            currentrow["FileName"] = c_file_name;
-                        SessionWrapper.defaults_theme_logo.AcceptChanges();
-                    }
+
+                    //if (!string.IsNullOrEmpty(Request.QueryString["editThemeId"]))
+                    //{
+                    //    //Update
+                    //    //string themeId = Request.QueryString["editThemeId"].ToString();
+                    //    //int result = SystemThemeBLL.UpdateLogo(logoUpload, themeId, c_file_name);
+                    //    var rows = SessionWrapper.defaults_theme_logo.Select("keyvalue= '" + logoUpload + "'");
+                    //    foreach (var currentrow in rows)
+                    //        currentrow["FileName"] = c_file_name;
+                    //    SessionWrapper.defaults_theme_logo.AcceptChanges();
+                    //}
+                    //else
+                    //{
+                    //    var rows = SessionWrapper.defaults_theme_logo.Select("keyvalue= '" + logoUpload + "'");
+                    //    foreach (var currentrow in rows)
+                    //        currentrow["FileName"] = c_file_name;
+                    //    SessionWrapper.defaults_theme_logo.AcceptChanges();
+                    //}
                 }
             }
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);

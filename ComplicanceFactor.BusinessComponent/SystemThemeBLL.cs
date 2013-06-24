@@ -254,6 +254,11 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateTheme.Add("@s_theme_css_tag_body_text_hex_value", theme.s_theme_css_tag_body_text_hex_value);
             htUpdateTheme.Add("@s_theme_css_tag_body_link_hex_value", theme.s_theme_css_tag_body_link_hex_value);
 
+            htUpdateTheme.Add("@s_theme_head_logo_file_name", theme.s_theme_head_logo_file_name);
+            htUpdateTheme.Add("@s_theme_report_logo_file_name", theme.s_theme_report_logo_file_name);
+            htUpdateTheme.Add("@s_theme_notification_logo_file_name", theme.s_theme_notification_logo_file_name);
+
+
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_update_theme", htUpdateTheme);

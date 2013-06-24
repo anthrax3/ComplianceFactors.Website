@@ -278,6 +278,40 @@
 
                 });
     </script>
+        <script type="text/javascript">
+            function ShowPreviewTheme() {
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1050,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'Popup/saantp-01.aspx?',
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+            }
+    </script>
     <br />
     <br />
      <asp:HiddenField ID="hdNav_selected" runat="server" />
@@ -357,7 +391,9 @@
                         * <%=LocalResources.GetLabel("app_description_text")%>:<br />
                         <br />
                         <br />
-                        <asp:Button ID="btnPreview" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_preview_button_text %>" />  
+                        <asp:Button ID="btnPreview" CssClass="cursor_hand" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_preview_button_text %>" 
+                            onclick="btnPreview_Click" />  
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtContent" runat="server" class="txtInput_long" rows="10" cols="100"></textarea>
