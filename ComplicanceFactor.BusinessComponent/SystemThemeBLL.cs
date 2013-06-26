@@ -428,7 +428,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public static SystemThemes GetThemeForEmailPdf(string user_id)
+        public static SystemThemes GetThemeForEmail(string user_id)
         {
             SystemThemes usertheme = new SystemThemes();
 
@@ -436,7 +436,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 Hashtable htGetCss = new Hashtable();
                 htGetCss.Add("@user_id", user_id);
-                DataTable dt = DataProxy.FetchDataTable("app_sp_get_theme_for_email_pdf", htGetCss);
+                DataTable dt = DataProxy.FetchDataTable("app_sp_get_theme_for_email", htGetCss);
                 usertheme.s_theme_head_logo_file_name = dt.Rows[0]["s_theme_head_logo_file_name"].ToString();
                 usertheme.s_theme_report_logo_file_name = dt.Rows[0]["s_theme_report_logo_file_name"].ToString();
                 usertheme.s_theme_notification_logo_file_name = dt.Rows[0]["s_theme_notification_logo_file_name"].ToString();

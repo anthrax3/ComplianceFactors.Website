@@ -21,7 +21,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.EmployeeTypes
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_employee_types_text") + "</a>"; 
 
                 //Bind Employee Type Status
-                ddlStatus.DataSource = SystemThemeBLL.GetThemellStatus(SessionWrapper.CultureName, "saanetn-01");
+                ddlStatus.DataSource = SystemEmployeeTypesBLL.GetEmployeeAllStatus(SessionWrapper.CultureName, "sametmp-01");
                 ddlStatus.DataBind();
                 ddlStatus.SelectedValue = "app_ddl_all_text";
                 //course status default selected item

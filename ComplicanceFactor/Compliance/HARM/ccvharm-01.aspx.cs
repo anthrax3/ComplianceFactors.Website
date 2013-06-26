@@ -37,14 +37,6 @@ namespace ComplicanceFactor.Compliance.HARM
         int controlMeasureCount = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            User usercss = new User();
-            usercss = UserBLL.GetCss(SessionWrapper.u_userid);
-            HtmlGenericControl style = new HtmlGenericControl();
-            style.TagName = "style";
-            style.Attributes.Add("type", "text/css");
-            style.InnerHtml = usercss.css;
-            Page.Header.Controls.Add(style);
-
             //Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
             view = SecurityCenter.DecryptText(Request.QueryString["View"]);
@@ -964,27 +956,28 @@ namespace ComplicanceFactor.Compliance.HARM
 
             try
             {
-                
 
+                // for email theme
                 SystemThemes userTheme = new SystemThemes();
-                userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+                userTheme = SystemThemeBLL.GetThemeForEmail(SessionWrapper.u_userid);
 
                 //Daily Report
                 string filepath = string.Empty;
                 filepath = System.Web.Hosting.HostingEnvironment.MapPath("~/Compliance/HARM/EmailTemplate/ccvharm.htm");
                 StringBuilder sbHarmDetails = new StringBuilder(Utility.GetHtmlTemplate(filepath));
+                sbHarmDetails.Replace("@s_theme_head_logo_file_name", userTheme.s_theme_head_logo_file_name);
+                sbHarmDetails.Replace("@s_theme_report_logo_file_name", userTheme.s_theme_report_logo_file_name);
 
-                //sbHarmDetails.Replace("themes", userTheme.s_theme_css_tag_section_head_hex_value);
-                //sbHarmDetails.Replace("@s_theme_css_tag_section_head_text_hex_value", userTheme.s_theme_css_tag_section_head_text_hex_value);
-                //sbHarmDetails.Replace("@s_theme_css_tag_section_head_border_hex_value", userTheme.s_theme_css_tag_section_head_border_hex_value);
-                //sbHarmDetails.Replace("@s_theme_css_tag_body_text_hex_value", userTheme.s_theme_css_tag_body_text_hex_value);
-                //sbHarmDetails.Replace("@s_theme_css_tag_main_background_hex_value", userTheme.s_theme_css_tag_main_background_hex_value);
-                //sbHarmDetails.Replace("@s_theme_head_logo_file_name", userTheme.s_theme_head_logo_file_name);
-                //sbHarmDetails.Replace("@s_theme_report_logo_file_name", userTheme.s_theme_report_logo_file_name);
-                //sbHarmDetails.Replace("@s_theme_notification_logo_file_name", userTheme.s_theme_notification_logo_file_name);
-                sbHarmDetails.Replace("@EmailCss", ".div_header_940{font-size: 12px;font-weight: 700;background-color: #"+userTheme.s_theme_css_tag_section_head_hex_value+";width: 940px;padding: 3px 0 3px 8px;color:#"+userTheme.s_theme_css_tag_section_head_text_hex_value+";}#content{float: left;width: 1040px;background-color: #"+userTheme.s_theme_css_tag_main_background_hex_value+";color: #"+userTheme.s_theme_css_tag_section_head_text_hex_value+";}");
-                sbHarmDetails.Replace("@Logo", "#logo {background-image: url('/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_head_logo_file_name + "');background-repeat: no-repeat;background-size: 600px 100px;float: left;height: 100px;margin-bottom: 0;margin-left: 0;margin-right: 0;margin-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;padding-top: 0;width: 600px;}");
-                //sbHarmDetails.Replace("@app_harm_information_text:", " <div style=\"font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #" + userTheme.s_theme_css_tag_section_head_hex_value + "; color:#" + userTheme.s_theme_css_tag_section_head_text_hex_value+ ";width: 940px;\">" + LocalResources.GetLabel("app_harm_information_text") + lblHarmNumber.Text + " </div>");
+                sbHarmDetails.Replace("@s_theme_notification_logo_file_name", Request.Url.Host.ToLower()+"/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name);
+                //ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", @"alert('" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name + "')", true);
+                sbHarmDetails.Replace("@s_theme_css_tag_section_head_hex_value", userTheme.s_theme_css_tag_section_head_hex_value);
+                sbHarmDetails.Replace("@s_theme_css_tag_section_head_text_hex_value", userTheme.s_theme_css_tag_section_head_text_hex_value);
+                sbHarmDetails.Replace("@s_theme_css_tag_section_head_border_hex_value", userTheme.s_theme_css_tag_section_head_border_hex_value);
+                sbHarmDetails.Replace("@s_theme_css_tag_body_text_hex_value", userTheme.s_theme_css_tag_body_text_hex_value);
+                sbHarmDetails.Replace("@s_theme_css_tag_main_background_hex_value", userTheme.s_theme_css_tag_main_background_hex_value);
+                sbHarmDetails.Replace("@s_theme_css_tag_foot_top_line_hex_value", userTheme.s_theme_css_tag_foot_top_line_hex_value);
+                sbHarmDetails.Replace("@s_theme_css_tag_foot_bot_line_hex_value", userTheme.s_theme_css_tag_foot_bot_line_hex_value);
+                sbHarmDetails.Replace("@app_harm_information_text:", LocalResources.GetLabel("app_harm_information_text") + lblHarmNumber.Text);
                 sbHarmDetails.Replace("@app_harm_number_text", LocalResources.GetLabel("app_harm_number_text"));
                 sbHarmDetails.Replace("@lblHarmNumber", lblHarmNumber.Text);
                 sbHarmDetails.Replace("@app_harm_case_title_text", LocalResources.GetLabel("app_analysis_title_text"));
@@ -1240,7 +1233,7 @@ namespace ComplicanceFactor.Compliance.HARM
                                 strControlMeasureName = title;
                                 sbHazard.Append("<tr>");
                                 sbHazard.Append("<td>");
-                                sbHazard.Append("<b>"+strControlMeasureName +"</b>");
+                                sbHazard.Append("<b>" + strControlMeasureName + "</b>");
                                 sbHazard.Append("</td>");
                                 sbHazard.Append("</tr>");
                             }
@@ -1260,15 +1253,10 @@ namespace ComplicanceFactor.Compliance.HARM
 
                 }
                 sbHarmDetails.Replace("@lblHazardControlSummary", LocalResources.GetLabel("app_no_hazard_and_control_measure_text"));
-
-                //Response.Redirect("~/Compliance/HARM/EmailTemplate/ccvharm.htm");
-
-                sbHarmDetails.ToString();
-
-                //Utility.SendEMailMessage(mailAddresses, "ComplianceFactors - HARM Details", sbHarmDetails.ToString());
-                //success_msg.Style.Add("display", "block");
-                //error_msg.Style.Add("display", "none");
-                //success_msg.InnerHtml = LocalResources.GetText("app_case_send_succ_text") + " " + toEmailAddress;
+                Utility.SendEMailMessage(mailAddresses, "ComplianceFactors - HARM Details", sbHarmDetails.ToString());
+                success_msg.Style.Add("display", "block");
+                error_msg.Style.Add("display", "none");
+                success_msg.InnerHtml = LocalResources.GetText("app_case_send_succ_text") + " " + toEmailAddress;
             }
             catch (Exception ex)
             {

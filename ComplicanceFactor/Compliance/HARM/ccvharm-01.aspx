@@ -1,22 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ccvharm-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.HARM.ccvharm_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="ccvharm-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.HARM.ccvharm_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
-<%--    <script language="javascript" type="text/javascript">
+    <script language="javascript" type="text/javascript">
         /* On cancel of the Signin dialog, clear the fields */
         function cleartext() {
             document.getElementById('<%=txtMultipe.ClientID %>').value = '';
             HideValidationErrors();
         }
-    </script>--%>
-<%--    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
         function HideValidationErrors() {
             //Hide all validation errors
             if (window.Page_Validators)
@@ -33,20 +35,18 @@
                 }
             }
         }
-    </script>--%>
-<%--    <script language="javascript" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript">
 
         //Function to Show ModalPopUp
         function Showpopup(clicked_id) {
-            alert(clicked_id);
-            if (clicked_id == "btnSendtoOtherEmail") {
-
+            if (clicked_id == "ContentPlaceHolder1_btnSendtoOtherEmail") {
                 document.getElementById('<%=btnSendMultipleMobile.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnSendMutipleEmail.ClientID%>').style.display = "inline";
                 document.getElementById('<%=lblHeading.ClientID%>').innerHTML = "Send Other Email(s):";
                 document.getElementById('<%=lblTextHeading.ClientID%>').innerHTML = "Enter Email Address:";
             }
-            else if (clicked_id == "btnSendtoOtherMobile") {
+            else if (clicked_id == "ContentPlaceHolder1_btnSendtoOtherMobile") {
                 document.getElementById('<%=btnSendMultipleMobile.ClientID%>').style.display = "inline";
                 document.getElementById('<%=btnSendMutipleEmail.ClientID%>').style.display = "none";
                 document.getElementById('<%=lblHeading.ClientID%>').innerHTML = "Send Other Mobile(s):";
@@ -54,15 +54,12 @@
             }
         }
 
-        reset scroll position popup
+        //reset scroll position popup
         function ResetScroll() {
             window.scrollTo = function () { }
         }
 
-    </script>--%>
-</head>
-<body>
-    <form id="form1" runat="server">
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div>
@@ -72,8 +69,8 @@
                 <div class="content_align">
                     <!-- Logo-->
                     <div id="logo">
-                        <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
-                            AlternateText="Logo" CssClass="logo_image" ImageAlign="Left" />
+                        <asp:Image ID="imgLogo" runat="server" AlternateText=""
+                         ImageAlign="Left" CssClass="logo_image" />
                     </div>
                 </div>
             </div>
@@ -587,6 +584,4 @@
     <rsweb:ReportViewer ID="rvHARM" runat="server" Style="display: none;" DocumentMapCollapsed="true"
         ShowDocumentMapButton="false">
     </rsweb:ReportViewer>
-    </form>
-</body>
-</html>
+</asp:Content>

@@ -67,8 +67,10 @@
                     <!---logo   --->
                     <div id="logo">
                         <%--  <img alt="Logo" src="../Images/ComplianceFactorsLogo.jpg" />--%>
-                        <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
-                            AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />
+                        <%--<asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
+                            AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />--%>
+                            <asp:Image ID="imgLogo" runat="server" AlternateText=""
+                         ImageAlign="Left" CssClass="logo_image" />
                     </div>
                 </div>
             </div>

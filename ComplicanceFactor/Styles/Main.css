@@ -595,7 +595,7 @@ a.image_link
     height: 200px;
 }
 
-.manage_user_header_popup
+/*.manage_user_header_popup
 {
     font-size: 12px;
     font-weight: 700;
@@ -603,7 +603,7 @@ a.image_link
     width: 895px;
     cursor: move;
     padding: 3px;
-}
+}*/
 
 .modalPopupInner_gridview
 {
@@ -613,7 +613,7 @@ a.image_link
     height: 550px;
 }
 
-.manage_user_header_popup_gridview
+/*.manage_user_header_popup_gridview
 {
     font-size: 12px;
     font-weight: 700;
@@ -621,7 +621,7 @@ a.image_link
     width: 935px;
     cursor: move;
     padding: 3px;
-}
+}*/
 
 .drag
 {

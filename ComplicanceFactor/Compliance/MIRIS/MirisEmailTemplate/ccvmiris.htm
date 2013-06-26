@@ -13,16 +13,18 @@
                 <div style="margin: 0;">
                     <!---logo   --->
                     <div style="width: 600px; float: left; margin: 0 0 0 30px; padding: 0;">
-                        <img alt="Logo" src="http://compliancefactors.com.lavender.arvixe.com/Images/ComplianceFactorsLogo.jpg" />
+                        <!--<img alt="Logo" src="http://compliancefactors.com.lavender.arvixe.com/Images/ComplianceFactorsLogo.jpg" />-->
+                        <img alt="Logo" src="@s_theme_notification_logo_file_name" width="600px;" height="100px;" />
                     </div>
                 </div>
             </div>
             <div style="clear: both;">
             </div>
-            <div style="margin: 10px 10px 0px 35px; padding: 0px 0 10px 0;">
+            <div style="margin: 10px 10px 0px 35px; padding: 0px 0 10px 0; background-color: #@s_theme_css_tag_main_background_hex_value;
+                color: #@s_theme_css_tag_body_text_hex_value;">
                 <div style="font-size: 18px; font-weight: bold;">
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         <!--<%=LocalResources.GetLocaleResourceString("app_user_case_page_01-0512-0001_text")%>-->
                         @app_case_page_title:
                     </div>
@@ -94,8 +96,8 @@
                             </tr>
                         </table>
                     </div>
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         <!--       <%=LocalResources.GetLocaleResourceString("app_case_description_text")%>-->
                         @app_case_description_text
                     </div>
@@ -224,9 +226,9 @@
                                 </td>
                             </tr>
                         </table>
-                    </div>                    
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    </div>
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         <!--<%=LocalResources.GetLocaleResourceString("app_additional_Information_text")%>-->
                         @app_additional_Information_text
                     </div>
@@ -237,7 +239,7 @@
                                 <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
                                     padding: 5px 5px 5px 0;">
                                     <!-- <%=LocalResources.GetLocaleResourceString("app_user_witness(es)_text")%>-->
-                                    @app_witness(es)_text
+                                    @app_witness_text
                                 </td>
                                 <td>
                                     @gvAddWitness
@@ -247,7 +249,7 @@
                                 <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
                                     padding: 5px 5px 5px 0;">
                                     <!--<%=LocalResources.GetLocaleResourceString("app_user_police_reports(s)_text")%>-->
-                                    @app_police_reports(s)_text
+                                    @app_police_reports_text
                                 </td>
                                 <td>
                                     @gvPoliceReport
@@ -257,7 +259,7 @@
                                 <td valign="top" style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
                                     padding: 5px 5px 5px 0;">
                                     <!--<%=LocalResources.GetLocaleResourceString("app_user_photo(s)_text")%>-->
-                                    @app_photo(s)_text
+                                    @app_photo_text
                                 </td>
                                 <td>
                                     @gvPhoto
@@ -301,8 +303,8 @@
                         </table>
                     </div>
                     <br />
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         <!-- <%=LocalResources.GetLocaleResourceString("app_root_cause_analysis_infornation_text")%>-->
                         @app_root_cause_analysis_infornation_text
                     </div>
@@ -318,8 +320,8 @@
                         @lblRootCauseAnalysisDetails
                     </div>
                     <br />
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         <!-- <%=LocalResources.GetLocaleResourceString("app_corrective_action_information_text")%>-->
                         @app_corrective_action_information_text
                     </div>
@@ -336,8 +338,8 @@
                     </div>
                     <br />
                     <br />
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         @app_custom_fields_text
                     </div>
                     <br />
@@ -478,8 +480,8 @@
                             </tr>
                         </table>
                     </div>
-                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; background-color: #96CD19;
-                        width: 940px;">
+                    <div style="font-size: 12px; padding: 3px 7px 3px 8px; font-weight: bold; color: #@s_theme_css_tag_section_head_text_hex_value;
+                        background-color: #@s_theme_css_tag_section_head_hex_value; width: 940px;">
                         <br />
                     </div>
                     <br />
@@ -492,8 +494,9 @@
             </div>
             <div style="clear: both;">
             </div>
-            <div style="color: #000000; border-top: 2px solid #96CD19; border-bottom: 2px solid #000000;
-                height: 15px; font-size: 12px; font-weight: bold;">
+            <div style="color: #000000; border-top: 2px solid #@s_theme_css_tag_foot_top_line_hex_value;
+                border-bottom: 2px solid #@s_theme_css_tag_foot_bot_line_hex_value; height: 15px;
+                font-size: 12px; font-weight: bold;">
                 <div style="float: left;">
                     @wp_app_release_number
                 </div>

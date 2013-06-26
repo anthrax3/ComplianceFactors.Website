@@ -1,12 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ccvmiris-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.ccvmiris_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="ccvmiris-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.ccvmiris_01" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript">
         /* On cancel of the Signin dialog, clear the fields */
@@ -39,14 +40,14 @@
         //Function to Show ModalPopUp
         function Showpopup(clicked_id) {
 
-            if (clicked_id == "btnSendtoOtherEmail_header" || clicked_id == "btnSendtoOtherEmail_foooter") {
+            if (clicked_id == "ContentPlaceHolder1_btnSendtoOtherEmail_header" || clicked_id == "ContentPlaceHolder1_btnSendtoOtherEmail_foooter") {
 
                 document.getElementById('<%=btnSendMultipleMobile.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnSendMutiple.ClientID%>').style.display = "inline";
                 document.getElementById('<%=lblHeading.ClientID%>').innerHTML = "Send Other Email(s):";
                 document.getElementById('<%=lblTextHeading.ClientID%>').innerHTML = "Enter Email Address:";
             }
-            else if (clicked_id == "btnSendtoOtherMobile_header" || clicked_id == "btnSendtoOtherMobile_footer") {
+            else if (clicked_id == "ContentPlaceHolder1_btnSendtoOtherMobile_header" || clicked_id == "ContentPlaceHolder1_btnSendtoOtherMobile_footer") {
                 document.getElementById('<%=btnSendMultipleMobile.ClientID%>').style.display = "inline";
                 document.getElementById('<%=btnSendMutiple.ClientID%>').style.display = "none";
                 document.getElementById('<%=lblHeading.ClientID%>').innerHTML = "Send Other Mobile(s):";
@@ -58,9 +59,6 @@
             window.scrollTo = function () { }
         }
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ToolkitScriptManager>
     <div>
@@ -71,8 +69,10 @@
                     <!---logo   --->
                     <div id="logo">
                         <%--  <img alt="Logo" src="../Images/ComplianceFactorsLogo.jpg" />--%>
-                        <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
-                            AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />
+                        <%--<asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
+                            AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />--%>
+                            <asp:Image ID="imgLogo" runat="server" AlternateText=""
+                         ImageAlign="Left" CssClass="logo_image" />
                     </div>
                 </div>
             </div>
@@ -911,7 +911,4 @@
     </rsweb:ReportViewer>
     <div class="clear">
     </div>
-   
-    </form>
-</body>
-</html>
+</asp:Content>

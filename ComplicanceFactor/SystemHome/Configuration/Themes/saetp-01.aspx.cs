@@ -36,7 +36,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 //ddlDomain.DataBind();
 
                 //Bind status
-                ddlStatus.DataSource = SystemDomainBLL.GetDomainStatus(SessionWrapper.CultureName, "saandn-01");
+                ddlStatus.DataSource = SystemThemeBLL.GetThemeStatus(SessionWrapper.CultureName, "saanetn-01");
                 ddlStatus.DataBind();
                 ddlStatus.SelectedValue = "app_ddl_all_text";
 

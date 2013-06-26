@@ -556,10 +556,25 @@ namespace ComplicanceFactor.Compliance
             }
             try
             {
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = SystemThemeBLL.GetThemeForEmail(SessionWrapper.u_userid);
+
                 //Daily Email Report
                 string filePath = string.Empty;
                 filePath = System.Web.Hosting.HostingEnvironment.MapPath("~/Compliance/MIRIS/MirisEmailTemplate/ccvmiris.htm");
                 StringBuilder sbCaseDetails = new StringBuilder(Utility.GetHtmlTemplate(filePath));
+
+                sbCaseDetails.Replace("@s_theme_head_logo_file_name", userTheme.s_theme_head_logo_file_name);
+                sbCaseDetails.Replace("@s_theme_report_logo_file_name", userTheme.s_theme_report_logo_file_name);
+                sbCaseDetails.Replace("@s_theme_notification_logo_file_name", Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name);
+                sbCaseDetails.Replace("@s_theme_css_tag_section_head_hex_value", userTheme.s_theme_css_tag_section_head_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_section_head_text_hex_value", userTheme.s_theme_css_tag_section_head_text_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_section_head_border_hex_value", userTheme.s_theme_css_tag_section_head_border_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_body_text_hex_value", userTheme.s_theme_css_tag_body_text_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_main_background_hex_value", userTheme.s_theme_css_tag_main_background_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_foot_top_line_hex_value", userTheme.s_theme_css_tag_foot_top_line_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_foot_bot_line_hex_value", userTheme.s_theme_css_tag_foot_bot_line_hex_value);
+
                 sbCaseDetails.Replace("@app_case_page_title", LocalResources.GetLabel("app_case_details_page_text") + lblCaseNumber.Text);
                 sbCaseDetails.Replace("@app_case_number_text", LocalResources.GetLabel("app_case_number_text"));
                 sbCaseDetails.Replace("@lblCaseNumber", lblCaseNumber.Text);
@@ -599,9 +614,9 @@ namespace ComplicanceFactor.Compliance
                 sbCaseDetails.Replace("@app_note_text", LocalResources.GetLabel("app_note_text"));
                 sbCaseDetails.Replace("@lblNote", lblNote.Text);
                 sbCaseDetails.Replace("@app_additional_Information_text", LocalResources.GetLabel("app_additional_Information_text"));
-                sbCaseDetails.Replace("@app_user_witness(es)_text", LocalResources.GetLabel("app_witness(es)_text"));
-                sbCaseDetails.Replace("@app_user_police_reports(s)_text", LocalResources.GetLabel("app_police_reports(s)_text"));
-                sbCaseDetails.Replace("@app_user_photo(s)_text", LocalResources.GetLabel("app_photo(s)_text"));
+                sbCaseDetails.Replace("@app_witness_text", LocalResources.GetLabel("app_witness(es)_text"));
+                sbCaseDetails.Replace("@app_police_reports_text", LocalResources.GetLabel("app_police_reports(s)_text"));
+                sbCaseDetails.Replace("@app_photo_text", LocalResources.GetLabel("app_photo(s)_text"));
                 sbCaseDetails.Replace("@app_scene_sketch(es)_text", LocalResources.GetLabel("app_scene_sketch(es)_text"));
                 sbCaseDetails.Replace("@app_extenuating_condition(s)_text", LocalResources.GetLabel("app_extenuating_condition(s)_text"));
                 sbCaseDetails.Replace("@app_employee_interview(s)_text", LocalResources.GetLabel("app_employee_interview(s)_text"));

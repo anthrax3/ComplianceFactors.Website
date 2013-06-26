@@ -884,10 +884,26 @@ namespace ComplicanceFactor.Compliance.MIRIS
             }
             try
             {
+                // for email theme
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = SystemThemeBLL.GetThemeForEmail(SessionWrapper.u_userid);
+
                 //Daily Email Report
                 string filePath = string.Empty;
                 filePath = System.Web.Hosting.HostingEnvironment.MapPath("~/Compliance/MIRIS/MirisEmailTemplate/coi.htm");
                 StringBuilder sbCaseDetails = new StringBuilder(Utility.GetHtmlTemplate(filePath));
+
+                sbCaseDetails.Replace("@s_theme_head_logo_file_name", userTheme.s_theme_head_logo_file_name);
+                sbCaseDetails.Replace("@s_theme_report_logo_file_name", userTheme.s_theme_report_logo_file_name);
+                sbCaseDetails.Replace("@s_theme_notification_logo_file_name", Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name);
+                sbCaseDetails.Replace("@s_theme_css_tag_section_head_hex_value", userTheme.s_theme_css_tag_section_head_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_section_head_text_hex_value", userTheme.s_theme_css_tag_section_head_text_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_section_head_border_hex_value", userTheme.s_theme_css_tag_section_head_border_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_body_text_hex_value", userTheme.s_theme_css_tag_body_text_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_main_background_hex_value", userTheme.s_theme_css_tag_main_background_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_foot_top_line_hex_value", userTheme.s_theme_css_tag_foot_top_line_hex_value);
+                sbCaseDetails.Replace("@s_theme_css_tag_foot_bot_line_hex_value", userTheme.s_theme_css_tag_foot_bot_line_hex_value);
+
                 sbCaseDetails.Replace("@app_case_page_title", LocalResources.GetLabel("app_case_details_text") + lblCaseNumber.Text);
                 sbCaseDetails.Replace("@app_case_number_text", LocalResources.GetLabel("app_case_number_text"));
                 sbCaseDetails.Replace("@lblCaseNumber", lblCaseNumber.Text);

@@ -42,7 +42,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.EmployeeTypes
 
                 }
                 //Bind status
-                ddlStatus.DataSource = SystemThemeBLL.GetThemeStatus(SessionWrapper.CultureName, "saanetn-01");
+                ddlStatus.DataSource = SystemEmployeeTypesBLL.GetEmployeeStatus(SessionWrapper.CultureName, "saeetn-01");
                 ddlStatus.DataBind();
                  
                 //Populate EmployeeTypes
