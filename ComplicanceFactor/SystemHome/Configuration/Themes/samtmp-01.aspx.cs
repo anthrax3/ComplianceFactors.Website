@@ -25,8 +25,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_themes_text") + "</a>";
-                
-                ddlStatus.DataSource = SystemDomainBLL.GetAllDomainStatus(SessionWrapper.CultureName, "samdmp-01");
+
+                ddlStatus.DataSource = SystemThemeBLL.GetThemellStatus(SessionWrapper.CultureName, "saanetn-01");
                 ddlStatus.DataBind();
                 ddlStatus.SelectedValue = "app_ddl_all_text";
 

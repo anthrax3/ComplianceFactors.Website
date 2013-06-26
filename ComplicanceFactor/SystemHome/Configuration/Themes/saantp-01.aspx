@@ -377,7 +377,7 @@
                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlStatus" DataTextField="u_status_name" DataValueField="u_status_id_pk"
+                        <asp:DropDownList ID="ddlStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>

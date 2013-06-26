@@ -52,7 +52,7 @@
                 <!---logo   --->
                 <div id="logo">
                     <%-- <a href="/Employee/lhp-01.aspx" class="image_link">  AlternateText="Logo" --%>
-                    <asp:Image ID="imgLogo" runat="server" 
+                    <asp:Image ID="imgLogo" runat="server" AlternateText=""
                          ImageAlign="Left" CssClass="logo_image" />
                     <%-- </a>--%>
                 </div>

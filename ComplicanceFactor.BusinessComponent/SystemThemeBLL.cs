@@ -164,6 +164,7 @@ namespace ComplicanceFactor.BusinessComponent
                     theme.s_theme_css_tag_bread_text_hex_value = dtTheme.Rows[0]["s_theme_css_tag_bread_text_hex_value"].ToString();
                     theme.s_theme_css_tag_body_text_hex_value = dtTheme.Rows[0]["s_theme_css_tag_body_text_hex_value"].ToString();
                     theme.s_theme_css_tag_body_link_hex_value = dtTheme.Rows[0]["s_theme_css_tag_body_link_hex_value"].ToString();
+                    theme.s_theme_domain_name = dtTheme.Rows[0]["s_theme_domain_name"].ToString();
                 }
                 return theme;
             }
@@ -315,7 +316,7 @@ namespace ComplicanceFactor.BusinessComponent
         }
 
 
-        public static DataTable GetAllDomain(string s_locale,string s_ui_page_name)
+        public static DataTable GetAllDomain(string s_locale, string s_ui_page_name)
         {
             try
             {
@@ -370,6 +371,108 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        
+        /// <summary>
+        /// Get Theme status
+        /// </summary>
+        /// <param name="s_ui_locale_name"></param>
+        /// <param name="s_ui_page_name"></param>
+        /// <returns></returns>
+        public static DataTable GetThemeStatus(string s_ui_locale_name, string s_ui_page_name)
+        {
+
+
+            try
+            {
+                Hashtable htGetStatus = new Hashtable();
+                htGetStatus.Add("@s_ui_locale_name", s_ui_locale_name);
+                htGetStatus.Add("@s_ui_page_name", s_ui_page_name);
+                return DataProxy.FetchDataTable("s_sp_get_status", htGetStatus);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+        }
+        /// <summary>
+        /// Get theme all status
+        /// </summary>
+        /// <param name="s_ui_locale_name"></param>
+        /// <param name="s_ui_page_name"></param>
+        /// <returns></returns>
+        public static DataTable GetThemellStatus(string s_ui_locale_name, string s_ui_page_name)
+        {
+
+
+            try
+            {
+                Hashtable htGetAllStatus = new Hashtable();
+                htGetAllStatus.Add("@s_ui_locale_name", s_ui_locale_name);
+                htGetAllStatus.Add("@s_ui_page_name", s_ui_page_name);
+                return DataProxy.FetchDataTable("s_sp_get_all_status", htGetAllStatus);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+        }
+
+
+        /// <summary>
+        /// Get Theme for email and pdf
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public static SystemThemes GetThemeForEmailPdf(string user_id)
+        {
+            SystemThemes usertheme = new SystemThemes();
+
+            try
+            {
+                Hashtable htGetCss = new Hashtable();
+                htGetCss.Add("@user_id", user_id);
+                DataTable dt = DataProxy.FetchDataTable("app_sp_get_theme_for_email_pdf", htGetCss);
+                usertheme.s_theme_head_logo_file_name = dt.Rows[0]["s_theme_head_logo_file_name"].ToString();
+                usertheme.s_theme_report_logo_file_name = dt.Rows[0]["s_theme_report_logo_file_name"].ToString();
+                usertheme.s_theme_notification_logo_file_name = dt.Rows[0]["s_theme_notification_logo_file_name"].ToString();
+                usertheme.s_theme_css_tag_main_background_hex_value = dt.Rows[0]["s_theme_css_tag_main_background_hex_value"].ToString();
+                usertheme.s_theme_css_tag_login_background_hex_value = dt.Rows[0]["s_theme_css_tag_login_background_hex_value"].ToString();
+                usertheme.s_theme_css_tag_login_button_hex_value = dt.Rows[0]["s_theme_css_tag_login_button_hex_value"].ToString();
+                usertheme.s_theme_css_tag_login_text_hex_value = dt.Rows[0]["s_theme_css_tag_login_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_login_link_hex_value = dt.Rows[0]["s_theme_css_tag_login_link_hex_value"].ToString();
+                usertheme.s_theme_css_tag_nav_top_line_hex_value = dt.Rows[0]["s_theme_css_tag_nav_top_line_hex_value"].ToString();
+                usertheme.s_theme_css_tag_nav_bar_hex_value = dt.Rows[0]["s_theme_css_tag_nav_bar_hex_value"].ToString();
+                usertheme.s_theme_css_tag_nav_bar_text_hex_value = dt.Rows[0]["s_theme_css_tag_nav_bar_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_nav_bot_line_hex_value = dt.Rows[0]["s_theme_css_tag_nav_bot_line_hex_value"].ToString();
+                usertheme.s_theme_css_tag_nav_active_hex_value = dt.Rows[0]["s_theme_css_tag_nav_active_hex_value"].ToString();
+                usertheme.s_theme_css_tag_nav_active_text_hex_value = dt.Rows[0]["s_theme_css_tag_nav_active_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_foot_top_line_hex_value = dt.Rows[0]["s_theme_css_tag_foot_top_line_hex_value"].ToString();
+                usertheme.s_theme_css_tag_foot_bot_line_hex_value = dt.Rows[0]["s_theme_css_tag_foot_bot_line_hex_value"].ToString();
+                usertheme.s_theme_css_tag_section_head_hex_value = dt.Rows[0]["s_theme_css_tag_section_head_hex_value"].ToString();
+                usertheme.s_theme_css_tag_section_head_text_hex_value = dt.Rows[0]["s_theme_css_tag_section_head_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_section_head_border_hex_value = dt.Rows[0]["s_theme_css_tag_section_head_border_hex_value"].ToString();
+                usertheme.s_theme_css_tag_table_head_hex_value = dt.Rows[0]["s_theme_css_tag_table_head_hex_value"].ToString();
+                usertheme.s_theme_css_tag_table_head_text_hex_value = dt.Rows[0]["s_theme_css_tag_table_head_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_table_border_hex_value = dt.Rows[0]["s_theme_css_tag_table_border_hex_value"].ToString();
+                usertheme.s_theme_css_tag_bread_link_hex_value = dt.Rows[0]["s_theme_css_tag_bread_link_hex_value"].ToString();
+                usertheme.s_theme_css_tag_bread_text_hex_value = dt.Rows[0]["s_theme_css_tag_bread_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_body_text_hex_value = dt.Rows[0]["s_theme_css_tag_body_text_hex_value"].ToString();
+                usertheme.s_theme_css_tag_body_link_hex_value = dt.Rows[0]["s_theme_css_tag_body_link_hex_value"].ToString();
+
+                return usertheme;
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
     }
 }

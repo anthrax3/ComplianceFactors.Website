@@ -32,11 +32,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 SessionWrapper.defaults_theme_logo.Clear();
 
                 //ddlDomain                 
-                ddlDomain.DataSource = SystemSplashPageBLL.GetNotCreatedDomain();
-                ddlDomain.DataBind();
+                //ddlDomain.DataSource = SystemSplashPageBLL.GetNotCreatedDomain();
+                //ddlDomain.DataBind();
 
                 //Bind status
-                ddlStatus.DataSource = SystemDomainBLL.GetAllDomainStatus(SessionWrapper.CultureName, "samdmp-01");
+                ddlStatus.DataSource = SystemDomainBLL.GetDomainStatus(SessionWrapper.CultureName, "saandn-01");
                 ddlStatus.DataBind();
                 ddlStatus.SelectedValue = "app_ddl_all_text";
 
@@ -101,7 +101,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 txtThemeId.Text = theme.s_theme_id_pk;
                 txtThemeName.Text = theme.s_theme_name;
                 txtContent.InnerText = theme.s_theme_description;
-                //ddlDomain.SelectedValue = 
+                lblDomain.Text = theme.s_theme_domain_name;
                 ddlStatus.SelectedValue = theme.s_theme_status_id_fk;
                 lblOwner.Text = theme.s_theme_owner_name;
                 lblCoordinator.Text = theme.s_theme_coordinator_name;

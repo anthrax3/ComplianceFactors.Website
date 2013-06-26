@@ -7,15 +7,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" type="text/javascript">
+<%--    <script language="javascript" type="text/javascript">
         /* On cancel of the Signin dialog, clear the fields */
         function cleartext() {
             document.getElementById('<%=txtMultipe.ClientID %>').value = '';
             HideValidationErrors();
         }
-    </script>
-    <script type="text/javascript">
+    </script>--%>
+<%--    <script type="text/javascript">
         function HideValidationErrors() {
             //Hide all validation errors
             if (window.Page_Validators)
@@ -32,12 +33,12 @@
                 }
             }
         }
-    </script>
-    <script language="javascript" type="text/javascript">
+    </script>--%>
+<%--    <script language="javascript" type="text/javascript">
 
         //Function to Show ModalPopUp
         function Showpopup(clicked_id) {
-
+            alert(clicked_id);
             if (clicked_id == "btnSendtoOtherEmail") {
 
                 document.getElementById('<%=btnSendMultipleMobile.ClientID%>').style.display = "none";
@@ -53,12 +54,12 @@
             }
         }
 
-        //reset scroll position popup
+        reset scroll position popup
         function ResetScroll() {
             window.scrollTo = function () { }
         }
 
-    </script>
+    </script>--%>
 </head>
 <body>
     <form id="form1" runat="server">

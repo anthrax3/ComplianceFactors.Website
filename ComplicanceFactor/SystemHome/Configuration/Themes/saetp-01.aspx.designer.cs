@@ -220,13 +220,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes {
         protected global::System.Web.UI.WebControls.Button btnCoordinator;
         
         /// <summary>
-        /// ddlDomain control.
+        /// lblDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDomain;
+        protected global::System.Web.UI.WebControls.Label lblDomain;
         
         /// <summary>
         /// gvLogos control.

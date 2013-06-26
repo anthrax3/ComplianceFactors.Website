@@ -16,13 +16,18 @@
     </style>
 </head>
 <body>
+    
     <form id="form1" runat="server">
+    
+        
     <div>
-   <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" width="500" height="280">
+   <%--<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" width="500" height="280">
      <param name="quality" value="high" />
     <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" autoplay="yes" lop="no" width="700" height="480" runat="server"  ID="Video1"
-    src="../Images/08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" value="../Images/08b39814-01c9-4e20-9934-594c7e0d4c7b.wmv" />
-    </object>
+    src="../Images/Jellyfish.jpg" value="../Images/Jellyfish.jpg" />
+    </object>--%>
+    <iframe id="documentLoader" src="https://docs.google.com/viewer?url=http://compliancefactors.com.lavender.arvixe.com/Compliance/MIRIS/Upload/Photo/df876a79-dc6a-4b65-b156-9f1bac58d73c.pdf&embedded=true" style="width: 70%; height: 400px;">
+   </iframe>
     </div>
     </form>
 </body>

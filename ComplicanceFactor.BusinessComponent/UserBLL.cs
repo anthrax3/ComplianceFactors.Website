@@ -1519,7 +1519,11 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-
+        /// <summary>
+        /// Get Dynamic css 
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
         public static User GetCss(string user_id)
         {
             User usercss = new User();
@@ -1538,6 +1542,8 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+       
 
     }
 }

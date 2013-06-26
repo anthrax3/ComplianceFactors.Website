@@ -27,6 +27,6 @@
             });
      </script>
      <div class="align_center">
-            <img id="imgLogo"  class="align_center"  alt="Logo"/>
+            <img id="imgLogo"  class="align_center"  alt=""/>
      </div>
 </asp:Content>
