@@ -534,7 +534,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -549,7 +549,7 @@
                           <Color>White</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -591,7 +591,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -626,7 +626,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -658,7 +658,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -693,7 +693,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -726,7 +726,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -760,7 +760,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -787,6 +787,7 @@
                               <Value>=Fields!Harm_Number_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -797,7 +798,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -820,6 +821,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -832,7 +834,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -854,6 +856,7 @@
                               <Value>=Fields!Harm_Title_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -864,7 +867,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -887,6 +890,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -899,7 +903,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -922,6 +926,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -932,7 +937,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -955,6 +960,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -967,7 +973,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -994,6 +1000,7 @@
                               <Value>=Fields!Harm_category_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1004,7 +1011,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1027,6 +1034,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1039,7 +1047,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1061,6 +1069,7 @@
                               <Value>=Fields!Harm_status_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1071,7 +1080,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1094,6 +1103,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1106,7 +1116,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1129,6 +1139,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1139,7 +1150,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1162,6 +1173,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1174,7 +1186,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1265,7 +1277,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1280,7 +1292,7 @@
                           <Color>White</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1374,7 +1386,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1389,7 +1401,7 @@
                           <Color>White</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1431,7 +1443,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1466,7 +1478,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1498,7 +1510,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1533,7 +1545,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1566,7 +1578,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1600,7 +1612,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1768,7 +1780,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1783,7 +1795,7 @@
                           <Color>White</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1825,7 +1837,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1860,7 +1872,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1892,7 +1904,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1927,7 +1939,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1960,7 +1972,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1994,7 +2006,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2021,6 +2033,7 @@
                               <Value>=Fields!Harm_custom_01_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2031,7 +2044,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2054,6 +2067,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2066,7 +2080,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2088,6 +2102,7 @@
                               <Value>=Fields!Harm_custom_02_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2098,7 +2113,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2123,7 +2138,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2136,7 +2151,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2159,6 +2174,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2169,7 +2185,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2194,7 +2210,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2207,7 +2223,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2234,6 +2250,7 @@
                               <Value>=Fields!Harm_custom_04_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2244,7 +2261,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2269,7 +2286,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2282,7 +2299,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2304,6 +2321,7 @@
                               <Value>=Fields!Harm_custom_05_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2314,7 +2332,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2339,7 +2357,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2352,7 +2370,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2375,6 +2393,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2385,7 +2404,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2410,7 +2429,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2423,7 +2442,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2450,6 +2469,7 @@
                               <Value>=Fields!Harm_custom_07_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2460,7 +2480,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2485,7 +2505,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2498,7 +2518,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2520,6 +2540,7 @@
                               <Value>=Fields!Harm_custom_08_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2530,7 +2551,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2555,7 +2576,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2568,7 +2589,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2591,6 +2612,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2601,7 +2623,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2626,7 +2648,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2639,7 +2661,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2666,6 +2688,7 @@
                               <Value>=Fields!Harm_custom_10_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2676,7 +2699,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2701,7 +2724,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2714,7 +2737,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2736,6 +2759,7 @@
                               <Value>=Fields!Harm_custom_11_text_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2746,7 +2770,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2771,7 +2795,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2784,7 +2808,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2807,6 +2831,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2817,7 +2842,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2842,7 +2867,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2855,7 +2880,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2885,7 +2910,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2896,7 +2921,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2921,7 +2946,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2934,7 +2959,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2956,6 +2981,7 @@
                               <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2966,7 +2992,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2991,7 +3017,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3004,7 +3030,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3027,6 +3053,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3037,7 +3064,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3062,7 +3089,7 @@
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3075,7 +3102,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3185,7 +3212,7 @@
                           <Color>White</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -3218,6 +3245,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3228,7 +3256,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3266,7 +3294,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3299,7 +3327,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3333,7 +3361,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -3414,6 +3442,7 @@
                               <Value>=Fields!Hazard_label.Value &amp; ": " &amp; runningvalue(Fields!h_hazard_id_pk.Value,countdistinct,"Tablix8")</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3426,7 +3455,7 @@
                           <Color>White</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -3497,6 +3526,7 @@
                               <Value>=Fields!Program_Compliance_label.Value &amp; ": "</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3530,6 +3560,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3560,7 +3591,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -3590,7 +3623,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -3627,6 +3662,7 @@
                               <Value>=Fields!Permit_Compliance_label.Value &amp; ": "</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3660,6 +3696,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3690,7 +3727,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -3720,7 +3759,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -3800,6 +3841,7 @@
                           <Color>White</Color>
                           <Style>None</Style>
                         </Border>
+                        <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                       </Style>
                     </Subreport>
                     <ColSpan>4</ColSpan>
@@ -3886,7 +3928,7 @@
         </TablixRowHierarchy>
         <DataSetName>HARM_Hazard_Control_Measure</DataSetName>
         <Top>2.1425in</Top>
-        <Left>0.11281in</Left>
+        <Left>0.10594in</Left>
         <Height>1.61458in</Height>
         <Width>10.75in</Width>
         <ZIndex>7</ZIndex>
@@ -3954,6 +3996,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3964,7 +4007,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4030,6 +4073,7 @@
                               <Value>=Fields!Harm_extenuating_cond_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4040,7 +4084,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -4109,6 +4153,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4119,7 +4164,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4189,6 +4234,7 @@
                               <Value>=Fields!Harm_scene_sketch_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4199,7 +4245,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -4268,6 +4314,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4278,7 +4325,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4344,6 +4391,7 @@
                               <Value>=Fields!Harm_photo_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4354,7 +4402,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -4422,6 +4470,7 @@
                               <Value>=Fields!Harm_custom_customer_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4432,7 +4481,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -4500,6 +4549,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4512,7 +4562,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4578,6 +4628,7 @@
                               <Value>=Fields!Harm_employee_interview_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4588,7 +4639,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -4668,6 +4719,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4680,7 +4732,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4702,6 +4754,7 @@
                               <Value>=Fields!employee_name_label.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4712,7 +4765,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4735,6 +4788,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4747,7 +4801,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4770,6 +4824,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Normal</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4780,7 +4835,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4803,6 +4858,7 @@
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4815,7 +4871,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>10pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -4891,6 +4947,7 @@
                               <Value>=Fields!Job_Title_label.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4921,7 +4978,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!h_job_title.Value</Value>
-                              <Style />
+                              <Style>
+                                <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -5012,7 +5071,7 @@
         <Top>1.75708in</Top>
         <Left>0.13719in</Left>
         <Height>0.21875in</Height>
-        <Width>10.61629in</Width>
+        <Width>10.6163in</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -5021,10 +5080,75 @@
           </Border>
         </Style>
       </Tablix>
+      <Image Name="Image2">
+        <Source>External</Source>
+        <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
+        <MIMEType>image/jpeg</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <Top>10.94805in</Top>
+        <Left>3.78833in</Left>
+        <Height>0.5in</Height>
+        <Width>0.5in</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
     </ReportItems>
-    <Height>10.27513in</Height>
-    <Style />
+    <Height>11.44805in</Height>
+    <Style>
+      <Border />
+      <BackgroundColor>=Parameters!s_theme_css_tag_main_background_hex_value.Value</BackgroundColor>
+    </Style>
   </Body>
+  <ReportParameters>
+    <ReportParameter Name="s_theme_report_logo_file_name">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_main_background_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_foot_top_line_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_foot_bot_line_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_section_head_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_section_head_text_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_section_head_border_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_table_head_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_table_head_text_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_table_border_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_body_text_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <Code>Public Shared Dim MyVar as String
 Public Shared Dim MyVarr as String
 
@@ -5054,16 +5178,15 @@ End Function
   <Width>11in</Width>
   <Page>
     <PageHeader>
-      <Height>1.04167in</Height>
+      <Height>1.06945in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Image Name="Image3">
-          <Source>Embedded</Source>
-          <Value>ComplianceFactorsLogo</Value>
+          <Source>External</Source>
+          <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
           <Height>1.04167in</Height>
           <Width>6.25in</Width>
-          <ToolTip>Logo</ToolTip>
           <Style>
             <Border>
               <Style>None</Style>
@@ -5078,7 +5201,7 @@ End Function
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.44977in</Height>
+      <Height>1.57477in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -5089,7 +5212,7 @@ End Function
           <Width>10.75in</Width>
           <Style>
             <Border>
-              <Color>#96cd19</Color>
+              <Color>=Parameters!s_theme_css_tag_foot_top_line_hex_value.Value</Color>
               <Style>Solid</Style>
               <Width>1.5pt</Width>
             </Border>
@@ -5103,7 +5226,9 @@ End Function
               <TextRuns>
                 <TextRun>
                   <Value>=code.MyVar</Value>
-                  <Style />
+                  <Style>
+                    <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
@@ -5133,6 +5258,7 @@ End Function
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
+              <Color>=Parameters!s_theme_css_tag_foot_bot_line_hex_value.Value</Color>
               <Style>Solid</Style>
               <Width>1.5pt</Width>
             </Border>
@@ -5152,7 +5278,7 @@ End Function
                     <FontSize>12pt</FontSize>
                     <FontWeight>Normal</FontWeight>
                     <TextDecoration>None</TextDecoration>
-                    <Color>#000000</Color>
+                    <Color>=Parameters!s_theme_css_tag_body_text_hex_value.Value</Color>
                   </Style>
                 </TextRun>
               </TextRuns>

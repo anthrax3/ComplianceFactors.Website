@@ -486,7 +486,7 @@ namespace ComplicanceFactor.Compliance.HARM
         }
         private void PrintPdf()
         {
-
+            rvHARM.LocalReport.EnableExternalImages = true;
             rvHARM.LocalReport.DataSources.Clear();
             DataSet dsPdf = new DataSet();
             ComplianceDAO harm = new ComplianceDAO();
@@ -578,8 +578,26 @@ namespace ComplicanceFactor.Compliance.HARM
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Extenuating_Condition", dsExtenuatingCondition.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Employee_Interview", dsEmployeeInterview.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Hazard_Control_Measure", dsHazardControlMeasure.Tables[0]));
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = GetthemeforEmailandPdf();
+            ReportParameter rp_s_theme_report_logo_file_name = new ReportParameter("s_theme_report_logo_file_name", "D:/Staff/Balaji.S/Project/ComplianceFactors/CF_GitHub_May22/ComplianceFactors.Website/ComplicanceFactor/SystemHome/Configuration/Themes/Logo/rainbow_background-t2.jpg");
+            //ReportParameter rp_s_theme_report_logo_file_name = new ReportParameter("s_theme_report_logo_file_name","/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name);
+            ReportParameter rp_s_theme_css_tag_main_background_hex_value = new ReportParameter("s_theme_css_tag_main_background_hex_value", "#"+userTheme.s_theme_css_tag_main_background_hex_value);
+            ReportParameter rp_s_theme_css_tag_foot_top_line_hex_value = new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#"+userTheme.s_theme_css_tag_foot_top_line_hex_value);
+            ReportParameter rp_s_theme_css_tag_foot_bot_line_hex_value = new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#"+userTheme.s_theme_css_tag_foot_bot_line_hex_value);
+            ReportParameter rp_s_theme_css_tag_section_head_hex_value = new ReportParameter("s_theme_css_tag_section_head_hex_value", "#"+userTheme.s_theme_css_tag_section_head_hex_value);
+            ReportParameter rp_s_theme_css_tag_section_head_text_hex_value = new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#"+userTheme.s_theme_css_tag_section_head_text_hex_value);
+            ReportParameter rp_s_theme_css_tag_section_head_border_hex_value = new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#"+userTheme.s_theme_css_tag_section_head_border_hex_value);
+            ReportParameter rp_s_theme_css_tag_table_head_hex_value = new ReportParameter("s_theme_css_tag_table_head_hex_value", "#"+userTheme.s_theme_css_tag_table_head_hex_value);
+            ReportParameter rp_s_theme_css_tag_table_head_text_hex_value = new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#"+userTheme.s_theme_css_tag_table_head_text_hex_value);
+            ReportParameter rp_s_theme_css_tag_table_border_hex_value = new ReportParameter("s_theme_css_tag_table_border_hex_value", "#"+userTheme.s_theme_css_tag_table_border_hex_value);
+            ReportParameter rp_s_theme_css_tag_body_text_hex_value = new ReportParameter("s_theme_css_tag_body_text_hex_value", "#"+userTheme.s_theme_css_tag_body_text_hex_value);
 
-
+            this.rvHARM.LocalReport.SetParameters(new ReportParameter[] { rp_s_theme_report_logo_file_name,rp_s_theme_css_tag_main_background_hex_value,rp_s_theme_css_tag_foot_top_line_hex_value,rp_s_theme_css_tag_foot_bot_line_hex_value,rp_s_theme_css_tag_section_head_hex_value,
+            rp_s_theme_css_tag_section_head_text_hex_value,rp_s_theme_css_tag_section_head_border_hex_value,rp_s_theme_css_tag_table_head_hex_value,rp_s_theme_css_tag_table_head_text_hex_value,
+            rp_s_theme_css_tag_table_border_hex_value,rp_s_theme_css_tag_body_text_hex_value});
+            //string test = Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name;
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Test", @"alert('" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name + "')", true);
 
             byte[] bytes = rvHARM.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
             Response.Buffer = true;
@@ -959,16 +977,14 @@ namespace ComplicanceFactor.Compliance.HARM
 
                 // for email theme
                 SystemThemes userTheme = new SystemThemes();
-                userTheme = SystemThemeBLL.GetThemeForEmail(SessionWrapper.u_userid);
-
+                userTheme = GetthemeforEmailandPdf();
                 //Daily Report
                 string filepath = string.Empty;
                 filepath = System.Web.Hosting.HostingEnvironment.MapPath("~/Compliance/HARM/EmailTemplate/ccvharm.htm");
                 StringBuilder sbHarmDetails = new StringBuilder(Utility.GetHtmlTemplate(filepath));
                 sbHarmDetails.Replace("@s_theme_head_logo_file_name", userTheme.s_theme_head_logo_file_name);
                 sbHarmDetails.Replace("@s_theme_report_logo_file_name", userTheme.s_theme_report_logo_file_name);
-
-                sbHarmDetails.Replace("@s_theme_notification_logo_file_name", Request.Url.Host.ToLower()+"/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name);
+                sbHarmDetails.Replace("@s_theme_notification_logo_file_name", Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name);
                 //ScriptManager.RegisterClientScriptBlock(this, GetType(), "alertMessage", @"alert('" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_notification_logo_file_name + "')", true);
                 sbHarmDetails.Replace("@s_theme_css_tag_section_head_hex_value", userTheme.s_theme_css_tag_section_head_hex_value);
                 sbHarmDetails.Replace("@s_theme_css_tag_section_head_text_hex_value", userTheme.s_theme_css_tag_section_head_text_hex_value);
@@ -1388,6 +1404,14 @@ namespace ComplicanceFactor.Compliance.HARM
                     }
                 }
             }
+        }
+        
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+             SystemThemes userTheme = new SystemThemes();
+             userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+             return userTheme;
         }
     }
 }

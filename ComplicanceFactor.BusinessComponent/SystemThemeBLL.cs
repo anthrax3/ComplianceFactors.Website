@@ -428,7 +428,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="user_id"></param>
         /// <returns></returns>
-        public static SystemThemes GetThemeForEmail(string user_id)
+        public static SystemThemes GetThemeForEmailPdf(string user_id)
         {
             SystemThemes usertheme = new SystemThemes();
 

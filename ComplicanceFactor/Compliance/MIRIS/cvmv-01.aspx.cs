@@ -986,7 +986,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
 
                 // for email theme
                 SystemThemes userTheme = new SystemThemes();
-                userTheme = SystemThemeBLL.GetThemeForEmail(SessionWrapper.u_userid);
+                userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
 
                 //Daily Email Report
                 string filePath = string.Empty;

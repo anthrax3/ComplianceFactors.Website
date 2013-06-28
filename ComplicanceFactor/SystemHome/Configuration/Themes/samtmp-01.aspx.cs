@@ -34,6 +34,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
                 ddlDomain.DataBind();
                 ddlDomain.SelectedValue = "app_ddl_all_text";
                 SearchResult();
+
+                //count page of page in search result
+                lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+                lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             }
         }
         /// <summary>

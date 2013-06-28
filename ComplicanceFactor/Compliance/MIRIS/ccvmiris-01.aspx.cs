@@ -557,7 +557,7 @@ namespace ComplicanceFactor.Compliance
             try
             {
                 SystemThemes userTheme = new SystemThemes();
-                userTheme = SystemThemeBLL.GetThemeForEmail(SessionWrapper.u_userid);
+                userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
 
                 //Daily Email Report
                 string filePath = string.Empty;
