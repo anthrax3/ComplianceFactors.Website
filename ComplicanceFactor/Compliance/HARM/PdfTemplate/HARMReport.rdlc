@@ -5080,24 +5080,39 @@
           </Border>
         </Style>
       </Tablix>
-      <Image Name="Image2">
-        <Source>External</Source>
-        <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
-        <MIMEType>image/jpeg</MIMEType>
-        <Sizing>FitProportional</Sizing>
-        <Top>10.94805in</Top>
-        <Left>3.78833in</Left>
-        <Height>0.5in</Height>
-        <Width>0.5in</Width>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>10.51055in</Top>
+        <Left>0.46354in</Left>
+        <Height>0.25in</Height>
+        <Width>3.29341in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
+          <BackgroundColor>LightSteelBlue</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
         </Style>
-      </Image>
+      </Textbox>
     </ReportItems>
-    <Height>11.44805in</Height>
+    <Height>11.09389in</Height>
     <Style>
       <Border />
       <BackgroundColor>=Parameters!s_theme_css_tag_main_background_hex_value.Value</BackgroundColor>
@@ -5174,6 +5189,11 @@ End Function
  Function CoDePowered(ByVal cField As String) As String
    MyVarrPowered =cField
    End Function
+
+
+Public Function GetImage(ByRef url As String) As String
+   Return url
+End Function
 </Code>
   <Width>11in</Width>
   <Page>
@@ -5183,8 +5203,9 @@ End Function
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Image Name="Image3">
-          <Source>External</Source>
+          <Source>Embedded</Source>
           <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
+          <MIMEType>image/jpeg</MIMEType>
           <Height>1.04167in</Height>
           <Width>6.25in</Width>
           <Style>
@@ -5201,7 +5222,7 @@ End Function
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.57477in</Height>
+      <Height>1.66852in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

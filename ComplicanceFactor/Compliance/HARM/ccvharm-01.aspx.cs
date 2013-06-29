@@ -45,7 +45,22 @@ namespace ComplicanceFactor.Compliance.HARM
             if (!IsPostBack)
             {
                 BindHazardControlSummary();
+
+                //ReportViewer1.LocalReport.EnableExternalImages = true; http://compliancefactors.com.lavender.arvixe.com/Images/ComplianceFactorsLogo.jpg
+                //ReportParameter test1 = new ReportParameter("logo", "http://localhost:59207/SystemHome/Configuration/Themes/Logo/Penguins.jpg");
+                //this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { test1 });
+
+                ReportViewer1.LocalReport.EnableExternalImages = true;
+                List<ReportParameter> param1 = new List<ReportParameter>();
+                string test = Request.Url.AbsoluteUri;
+                int len = test.IndexOf('?');
+                test = test.Substring(0, len);
+                string url = test.Replace("Compliance/HARM/ccvharm-01.aspx", "SystemHome/Configuration/Themes/Logo/ComplianceFactorsLogo.jpg");
+
+                param1.Add(new ReportParameter("logo", "http://"+"compliancefactors.com.lavender.arvixe.com"+"/Images/"+"ComplianceFactorsLogo.jpg"));
+                ReportViewer1.LocalReport.SetParameters(param1);
             }
+            
         }
         private void populateHarm(string harmid)
         {
@@ -98,6 +113,7 @@ namespace ComplicanceFactor.Compliance.HARM
                 dtControlMeasureSummary = ComplianceBLL.GetAllHazard(harm);
                 this.dlHazardSummary.DataSource = dtControlMeasureSummary;
                 this.dlHazardSummary.DataBind();
+               
 
             }
             catch (Exception ex)
@@ -566,11 +582,21 @@ namespace ComplicanceFactor.Compliance.HARM
             string extension = string.Empty;
 
             rvHARM.ProcessingMode = ProcessingMode.Local;
-            rvHARM.LocalReport.EnableExternalImages = true;
-
-
-
             rvHARM.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Compliance.HARM.PdfTemplate.HARMReport.rdlc";
+
+
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = GetthemeforEmailandPdf();
+
+            
+            string test = Request.Url.AbsoluteUri;
+            int len = test.IndexOf('?');
+            test = test.Substring(0, len);
+            string url = test.Replace("Compliance/HARM/ccvharm-01.aspx", "SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name);
+            //List<ReportParameter> param1 = new List<ReportParameter>();
+            //param1.Add(new ReportParameter("s_theme_report_logo_file_name", url));
+            //this.rvHARM.LocalReport.SetParameters(param1);
+
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARMView", dsPdf.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Custom_Customer", dsCustomCustomer.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Photo", dsPhoto.Tables[0]));
@@ -578,26 +604,27 @@ namespace ComplicanceFactor.Compliance.HARM
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Extenuating_Condition", dsExtenuatingCondition.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Employee_Interview", dsEmployeeInterview.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Hazard_Control_Measure", dsHazardControlMeasure.Tables[0]));
-            SystemThemes userTheme = new SystemThemes();
-            userTheme = GetthemeforEmailandPdf();
-            ReportParameter rp_s_theme_report_logo_file_name = new ReportParameter("s_theme_report_logo_file_name", "D:/Staff/Balaji.S/Project/ComplianceFactors/CF_GitHub_May22/ComplianceFactors.Website/ComplicanceFactor/SystemHome/Configuration/Themes/Logo/rainbow_background-t2.jpg");
-            //ReportParameter rp_s_theme_report_logo_file_name = new ReportParameter("s_theme_report_logo_file_name","/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name);
-            ReportParameter rp_s_theme_css_tag_main_background_hex_value = new ReportParameter("s_theme_css_tag_main_background_hex_value", "#"+userTheme.s_theme_css_tag_main_background_hex_value);
-            ReportParameter rp_s_theme_css_tag_foot_top_line_hex_value = new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#"+userTheme.s_theme_css_tag_foot_top_line_hex_value);
-            ReportParameter rp_s_theme_css_tag_foot_bot_line_hex_value = new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#"+userTheme.s_theme_css_tag_foot_bot_line_hex_value);
-            ReportParameter rp_s_theme_css_tag_section_head_hex_value = new ReportParameter("s_theme_css_tag_section_head_hex_value", "#"+userTheme.s_theme_css_tag_section_head_hex_value);
-            ReportParameter rp_s_theme_css_tag_section_head_text_hex_value = new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#"+userTheme.s_theme_css_tag_section_head_text_hex_value);
-            ReportParameter rp_s_theme_css_tag_section_head_border_hex_value = new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#"+userTheme.s_theme_css_tag_section_head_border_hex_value);
-            ReportParameter rp_s_theme_css_tag_table_head_hex_value = new ReportParameter("s_theme_css_tag_table_head_hex_value", "#"+userTheme.s_theme_css_tag_table_head_hex_value);
-            ReportParameter rp_s_theme_css_tag_table_head_text_hex_value = new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#"+userTheme.s_theme_css_tag_table_head_text_hex_value);
-            ReportParameter rp_s_theme_css_tag_table_border_hex_value = new ReportParameter("s_theme_css_tag_table_border_hex_value", "#"+userTheme.s_theme_css_tag_table_border_hex_value);
-            ReportParameter rp_s_theme_css_tag_body_text_hex_value = new ReportParameter("s_theme_css_tag_body_text_hex_value", "#"+userTheme.s_theme_css_tag_body_text_hex_value);
+
+            ReportParameter rp_s_theme_report_logo_file_name = new ReportParameter("s_theme_report_logo_file_name", "http://" + "compliancefactors.com.lavender.arvixe.com" + "/Images/" + userTheme.s_theme_report_logo_file_name);
+            ReportParameter rp_s_theme_css_tag_main_background_hex_value = new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value);
+            ReportParameter rp_s_theme_css_tag_foot_top_line_hex_value = new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value);
+            ReportParameter rp_s_theme_css_tag_foot_bot_line_hex_value = new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value);
+            ReportParameter rp_s_theme_css_tag_section_head_hex_value = new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value);
+            ReportParameter rp_s_theme_css_tag_section_head_text_hex_value = new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value);
+            ReportParameter rp_s_theme_css_tag_section_head_border_hex_value = new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value);
+            ReportParameter rp_s_theme_css_tag_table_head_hex_value = new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value);
+            ReportParameter rp_s_theme_css_tag_table_head_text_hex_value = new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value);
+            ReportParameter rp_s_theme_css_tag_table_border_hex_value = new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value);
+            ReportParameter rp_s_theme_css_tag_body_text_hex_value = new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value);
 
             this.rvHARM.LocalReport.SetParameters(new ReportParameter[] { rp_s_theme_report_logo_file_name,rp_s_theme_css_tag_main_background_hex_value,rp_s_theme_css_tag_foot_top_line_hex_value,rp_s_theme_css_tag_foot_bot_line_hex_value,rp_s_theme_css_tag_section_head_hex_value,
             rp_s_theme_css_tag_section_head_text_hex_value,rp_s_theme_css_tag_section_head_border_hex_value,rp_s_theme_css_tag_table_head_hex_value,rp_s_theme_css_tag_table_head_text_hex_value,
             rp_s_theme_css_tag_table_border_hex_value,rp_s_theme_css_tag_body_text_hex_value});
-            //string test = Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name;
-            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Test", @"alert('" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name + "')", true);
+
+
+            //ReportParameter test1 = new ReportParameter("logo", "http://localhost:59207/SystemHome/Configuration/Themes/Logo/Penguins.jpg");
+            //this.ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { test1 });
+
 
             byte[] bytes = rvHARM.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
             Response.Buffer = true;

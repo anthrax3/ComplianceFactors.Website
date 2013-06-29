@@ -4,3 +4,39 @@
 
 06/27/2013 04:10 PM : cceharm-01(insert hazard and control measure) : Conversion failed when converting from a character string to uniqueidentifier.
 
+06/28/2013 12:12 PM : ccvharm-01.aspx : Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_text_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+Invalid column name 's_ui_label_'.
+
+06/28/2013 12:12 PM : ccvharm-01(populateHarm) : Cannot find table 0.
+

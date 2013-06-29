@@ -113,6 +113,7 @@
     <Content Include="Compliance\ccmrp-01.aspx" />
     <Content Include="Compliance\ccppp.aspx" />
     <Content Include="Compliance\HARM\ccasharm-01.aspx" />
+    <Content Include="Compliance\HARM\Images\1.jpg" />
     <Content Include="Compliance\IRIS\ccasip-01.aspx" />
     <Content Include="Compliance\HARM\cccharm-01.aspx" />
     <Content Include="Compliance\MIRIS\cccmiris-01.aspx" />
@@ -787,7 +788,7 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\Themes\Logo\ComplianceFactorsLogo.jpg" />
+    <None Include="SystemHome\Configuration\Themes\Logo\ComplianceFactorsLogo.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Logo\rainbow_background-t2.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Popup\p-preview.aspx" />
     <Content Include="SystemHome\Configuration\Themes\Popup\p-satim-01.aspx" />
@@ -4054,6 +4055,7 @@
     <EmbeddedResource Include="Administrator\PdfTemplate\MyCourse_Admin.rdlc" />
     <EmbeddedResource Include="Compliance\HARM\PdfTemplate\HARMControlMeasure.rdlc" />
     <EmbeddedResource Include="Compliance\HARM\PdfTemplate\HARMReport.rdlc" />
+    <EmbeddedResource Include="Compliance\HARM\PdfTemplate\Report.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISReport.rdlc" />

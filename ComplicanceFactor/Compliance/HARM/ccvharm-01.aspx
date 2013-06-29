@@ -140,6 +140,28 @@
                         </tr>
                     </table>
                 </div>
+                <div>
+     <rsweb:ReportViewer ID="rvHARM" runat="server"  DocumentMapCollapsed="false" Height="344px" 
+                        Width="966px">
+    </rsweb:ReportViewer>
+<%--         <rsweb:ReportViewer ID="ReportViewer1" runat="server"  DocumentMapCollapsed="True" Height="344px" 
+                        Width="966px" Font-Names="Verdana" Font-Size="8pt" 
+                        InteractiveDeviceInfos="(Collection)" WaitMessageFont-Names="Verdana" 
+                        WaitMessageFont-Size="14pt">
+             <LocalReport ReportPath="Compliance\HARM\PdfTemplate\Report1.rdlc">
+             </LocalReport>
+    </rsweb:ReportViewer>--%>
+
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server"  DocumentMapCollapsed="false"
+        ShowDocumentMapButton="False" Font-Names="Verdana" Font-Size="8pt" 
+            InteractiveDeviceInfos="(Collection)" WaitMessageFont-Names="Verdana" 
+            WaitMessageFont-Size="14pt">
+        <LocalReport ReportPath="Compliance\HARM\PdfTemplate\Report.rdlc">
+        </LocalReport>
+    </rsweb:ReportViewer>
+
+        </div>
+        
                 <br />
                 <div class="div_header_long">
                     <%=LocalResources.GetLabel("app_hazard_and_control_measure_summary_text")%>
@@ -506,6 +528,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="clear">
         </div>
         <div class="footer">
@@ -581,7 +604,5 @@
             OnCancelScript="cleartext();" CancelControlID="btnCancel">
         </asp:ModalPopupExtender>
     </div>
-    <rsweb:ReportViewer ID="rvHARM" runat="server" Style="display: none;" DocumentMapCollapsed="true"
-        ShowDocumentMapButton="false">
-    </rsweb:ReportViewer>
+   <%-- Style="display: none;"  ShowDocumentMapButton="false"--%>
 </asp:Content>

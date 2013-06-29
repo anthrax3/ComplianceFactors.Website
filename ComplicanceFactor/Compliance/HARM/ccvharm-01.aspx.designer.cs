@@ -103,6 +103,26 @@ namespace ComplicanceFactor.Compliance.HARM {
         protected global::System.Web.UI.WebControls.Label lblHarmStatus;
         
         /// <summary>
+        /// rvHARM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rvHARM;
+        
+        /// <summary>
+        /// ReportViewer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        
+
+        
+        /// <summary>
         /// emptyrow control.
         /// </summary>
         /// <remarks>
@@ -506,14 +526,5 @@ namespace ComplicanceFactor.Compliance.HARM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpeMultipelMobileheader;
-        
-        /// <summary>
-        /// rvHARM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer rvHARM;
     }
 }
