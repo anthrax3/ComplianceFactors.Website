@@ -58,7 +58,7 @@
             return false;
         }
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         $(document).ready(function () {
 
             $(".preview").click(function () {
@@ -101,6 +101,42 @@
             });
 
         });
+    </script>--%>
+    <script type="text/javascript">
+        function ShowPreviewTheme() {
+            var s_digital_media_source_file_name = $('input#<%=hds_digital_media_source_file_name.ClientID %>').val();
+            var Type = $('input#<%=hdType.ClientID %>').val();
+            $.fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 740,
+                'height': 500,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': 'Popup/p-samdp-01.aspx?fname=' + s_digital_media_source_file_name + '&ftype=' + Type,
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+        }
     </script>
     <br />
     <div class="content_area_long">
@@ -111,6 +147,8 @@
         </div>
         <br />
         <asp:HiddenField ID="hdNav_selected" runat="server" />
+        <asp:HiddenField ID="hds_digital_media_source_file_name" runat="server" />
+        <asp:HiddenField ID="hdType" runat="server" />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
@@ -150,7 +188,7 @@
         <div>
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
                 runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" AllowPaging="true"
-                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="s_digital_media_file_system_id_pk"
+                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="s_digital_media_file_system_id_pk,s_digital_media_source_file_name,Type"
                 PageSize="10" OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowCommand="gvsearchDetails_RowCommand"
                 OnRowEditing="gvsearchDetails_RowEditing">
                 <Columns>
@@ -183,10 +221,10 @@
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                         <input type="button" id='<%# Eval("s_digital_media_file_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_preview_button_text %>" />'
-                                class="preview cursor_hand" />
-                            <%--<asp:Button ID="btnPreview" CommandName="Preview" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                runat="server" Text="Preview" CssClass ="preview cursor_hand" />--%>
+<%--                         <input type="button" id='<%# Eval("s_digital_media_file_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_preview_button_text %>" />'
+                                class="preview cursor_hand" />--%>
+                            <asp:Button ID="btnPreview" CommandName="Preview" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                runat="server" Text="Preview" CssClass ="preview cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

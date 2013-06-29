@@ -33,7 +33,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '../BackgroundJobs/Popup/samhrismp-01.aspx',
+                    'href': '../BackgroundJobs/Popup/samhrismp-01.aspx?Id=' + record_id,
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -57,30 +57,41 @@
         </div>
         <div class="page_text" align="center">
             <asp:GridView ID="gvBackgroundJobs" CellPadding="0" CellSpacing="0" runat="server"
-                AutoGenerateColumns="false" GridLines="none" EmptyDataText="No Result found."
+                AutoGenerateColumns="false" GridLines="None" EmptyDataText="No Result found."
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" CssClass="gridview_long tablesorter"
-                DataKeyNames="">
+                DataKeyNames="u_sftp_id_pk" OnRowDataBound="gvBackgroundJobs_RowDataBound">
                 <Columns>
-                    <asp:BoundField HeaderStyle-HorizontalAlign="Left" HeaderStyle-CssClass="gridview_row_width_3"
-                        ItemStyle-CssClass="gridview_row_width_3" DataField="BackgroundJobName" HeaderText="Background Job Name" />
-                    <asp:BoundField HeaderStyle-HorizontalAlign="Left" HeaderStyle-CssClass="gridview_row_width_3"
-                        ItemStyle-CssClass="gridview_row_width_3" DataField="Frequency" HeaderText="Frequency" />
-                    <asp:BoundField HeaderStyle-HorizontalAlign="Left" HeaderStyle-CssClass="gridview_row_width_3"
-                        ItemStyle-CssClass="gridview_row_width_3" DataField="Time" HeaderText="Time" />
+                    <asp:BoundField HeaderStyle-HorizontalAlign="Left" HeaderStyle-CssClass="gridview_row_width_7"
+                        ItemStyle-CssClass="gridview_row_width_4" DataField="BackgroundJobName" HeaderText="Background Job Name" />
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_7"
+                        HeaderStyle-CssClass="gridview_row_width_7" HeaderText="Frequency">
+                        <ItemTemplate>
+                            Occurs Every:
+                            <asp:TextBox ID="txtOccursEvery" runat="server" CssClass="textbox_50" Text='<%#Eval("u_sftp_occurs_every") %>'></asp:TextBox>
+                            Day(s)
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_7"
+                        HeaderStyle-CssClass="gridview_row_width_7" HeaderText="Time">
+                        <ItemTemplate>
+                            at:
+                            <asp:TextBox ID="txtTime" CssClass="textbox_75" runat="server"></asp:TextBox>
+                            <asp:DropDownList ID="ddlTime" runat="server">
+                                <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
+                                <asp:ListItem Text="PM" Value="PM"></asp:ListItem>
+                            </asp:DropDownList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField HeaderStyle-HorizontalAlign="Left" HeaderStyle-CssClass="gridview_row_width_2"
-                        ItemStyle-CssClass="gridview_row_width_2" DataField="Status" HeaderText="Status " />
+                        ItemStyle-CssClass="gridview_row_width_2" DataField="" HeaderText="Status " />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="gridview_row_width_2">
                         <ItemTemplate>
-                            <%--<asp:Button ID="btnManage" runat="server" CssClass="cursor_hand" CommandName="Manage"
-                                Text="Manage" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />--%>
-                            <input type="button" id="btnManage" class="manage" value="Manage" />
+                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="manage" value="Manage" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="gridview_row_width_2">
                         <ItemTemplate>
-                            <%--<asp:Button ID="btnViewLogs" runat="server" CssClass="cursor_hand" CommandName="view"
-                                Text="View Logs" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />--%>
-                            <input type="button" id="btnManage" class="viewLogs" value="View Logs" />
+                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="viewLogs" value="View Logs" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

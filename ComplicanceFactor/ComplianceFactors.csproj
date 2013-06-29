@@ -4055,7 +4055,6 @@
     <EmbeddedResource Include="Administrator\PdfTemplate\MyCourse_Admin.rdlc" />
     <EmbeddedResource Include="Compliance\HARM\PdfTemplate\HARMControlMeasure.rdlc" />
     <EmbeddedResource Include="Compliance\HARM\PdfTemplate\HARMReport.rdlc" />
-    <EmbeddedResource Include="Compliance\HARM\PdfTemplate\Report.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISReport.rdlc" />

@@ -31,6 +31,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles {
         protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
         
         /// <summary>
+        /// hds_digital_media_source_file_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hds_digital_media_source_file_name;
+        
+        /// <summary>
+        /// hdType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdType;
+        
+        /// <summary>
         /// btnHeaderFirst control.
         /// </summary>
         /// <remarks>

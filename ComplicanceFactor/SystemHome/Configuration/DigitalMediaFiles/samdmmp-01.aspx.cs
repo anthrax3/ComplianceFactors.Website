@@ -260,8 +260,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles
             {
                 Response.Redirect("~/SystemHome/Configuration/DigitalMediaFiles/saedmp-01.aspx?mediaId=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex].Values[0].ToString()), false);              
             }
-
-            if (e.CommandName.Equals("Remove"))
+            else if (e.CommandName.Equals("Remove"))
             {
                 try
                 {
@@ -283,6 +282,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles
                 }                 
             }
             SearchResult();
+
+            if (e.CommandName.Equals("Preview"))
+            {
+                hds_digital_media_source_file_name.Value =gvsearchDetails.DataKeys[rowIndex].Values[1].ToString();
+                hdType.Value = gvsearchDetails.DataKeys[rowIndex].Values[2].ToString();
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Preview", "ShowPreviewTheme();", true);
+            } 
         }
 
         protected void gvsearchDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)

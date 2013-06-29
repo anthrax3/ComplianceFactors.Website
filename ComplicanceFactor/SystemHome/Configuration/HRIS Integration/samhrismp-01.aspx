@@ -6,6 +6,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -45,6 +49,51 @@
         }
 
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".displayHris").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 740,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': 'Popup/p-samdhrislo-01.aspx',
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+                    $('#fancybox-frame').load(function () {
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=txtHours.ClientID %>").watermark("HH:MM");
+            $("#<%=txtHours.ClientID %>").click(
+			function () {
+			    $("#<%=txtHours.ClientID %>")[0].focus();
+			}
+		);
+        });
+    </script>     
     <br />
     <br />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhris" runat="server"
@@ -53,14 +102,14 @@
     </div>
     <div class="content_area_long">
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_single_file_manual_upload_text")%>:
+            <%=LocalResources.GetLabel("app_single_file_manual_upload_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="5" cellspacing="5">
                 <tr>
                     <td colspan="2" style="padding-left: 75px;">
-                       <%=LocalResources.GetLabel("app_upload_file_text")%>:
+                        <%=LocalResources.GetLabel("app_upload_file_text")%>:
                     </td>
                     <td>
                         <asp:Button ID="btnSelectHrisCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_select_hris_csv_file_button_text %>" />
@@ -72,7 +121,7 @@
                         &nbsp;
                     </td>
                     <td class="align_right">
-                       <%=LocalResources.GetLabel("app_sample_hris_file_text")%>:
+                        <%=LocalResources.GetLabel("app_sample_hris_file_text")%>:
                     </td>
                     <td class="align_right">
                         <asp:Button ID="btnDownloadSampleHrisCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_sample_hris_csv_file_button_text %>"
@@ -97,7 +146,8 @@
                         <asp:RequiredFieldValidator ID="rfvServerUrl" runat="server" ValidationGroup="samhrismp"
                             ControlToValidate="txtSftpServerUrl" ErrorMessage="<%$ TextResourceExpression: app_uri_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_sftp_server_uri_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_sftp_server_uri_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtSftpServerUrl" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -112,7 +162,8 @@
                         <asp:RequiredFieldValidator ID="rfvSftpSeverPort" runat="server" ValidationGroup="samhrismp"
                             ControlToValidate="txtSftpServerPort" ErrorMessage="<%$ TextResourceExpression: app_port_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_sftp_server_port_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_sftp_server_port_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtSftpServerPort" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -123,7 +174,8 @@
                         <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ValidationGroup="samhrismp"
                             ControlToValidate="txtUserName" ErrorMessage="<%$ TextResourceExpression: app_user_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_username_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_username_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtUserName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -138,7 +190,8 @@
                         <asp:RequiredFieldValidator ID="rfvpassword" runat="server" ValidationGroup="samhrismp"
                             ControlToValidate="txtPassword" ErrorMessage="<%$ TextResourceExpression: app_password_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        *  <%=LocalResources.GetLabel("app_password_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_password_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtPassword" TextMode="Password" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -149,7 +202,8 @@
                         <asp:RequiredFieldValidator ID="rfvcsvFilename" runat="server" ValidationGroup="samhrismp"
                             ControlToValidate="txtHrisCsvFileName" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_hris_csv_file_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_hris_csv_file_name_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtHrisCsvFileName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -165,22 +219,24 @@
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="rfvEvery" runat="server" ErrorMessage="<%$ TextResourceExpression: app_every_error_wrong%>"
                             ControlToValidate="txtOccursEvery" ValidationGroup="samhrismp" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                        * <%=LocalResources.GetLabel("app_occurs_every_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_occurs_every_text")%>:
                     </td>
                     <td class="align_left" colspan="2">
                         <asp:TextBox ID="txtOccursEvery" CssClass="textbox_50" runat="server"></asp:TextBox>&nbsp;&nbsp;Day(s)
-                        &nbsp;<%=LocalResources.GetLabel("app_at_text")%>
-                        <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>
+                        &nbsp;<%=LocalResources.GetLabel("app_at_text")%>                                             
+                        <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>                      
                         <asp:DropDownList ID="ddlTimeConversion" CssClass="textbox_50" runat="server">
                             <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
                             <asp:ListItem Text="PM" Value="PM"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td class="align_left" colspan="2">
-                       <%=LocalResources.GetLabel("app_beginning_text")%>:&nbsp;&nbsp;
+                        <%=LocalResources.GetLabel("app_beginning_text")%>:&nbsp;&nbsp;
                         <asp:RegularExpressionValidator ID="regexDate" runat="server" ControlToValidate="txtBegining"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong %>" Display="Dynamic" ValidationGroup="samhrismp">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong %>" Display="Dynamic"
+                            ValidationGroup="samhrismp">&nbsp;</asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="rfvBegining" runat="server" ValidationGroup="samhrismp"
                             ControlToValidate="txtBegining" ErrorMessage="<%$ TextResourceExpression: app_date_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
@@ -190,7 +246,8 @@
                         </asp:CalendarExtender>
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDisplayHrisLogs" runat="server" Text="<%$ LabelResourceExpression: app_display_hris_logs_button_text %>" />
+                        <asp:Button ID="btnDisplayHrisLogs" runat="server" Text="<%$ LabelResourceExpression: app_display_hris_logs_button_text %>"
+                            CssClass="displayHris cursor_hand" />
                     </td>
                 </tr>
                 <tr>
@@ -201,7 +258,8 @@
                 <tr>
                     <td class="align_left">
                         <asp:Button ID="btnSaveHrisSftpInformation" runat="server" ValidationGroup="samhrismp"
-                            Text="<%$ LabelResourceExpression: app_save_hris_sftp_information_button_text %>" OnClick="btnSaveHrisSftpInformation_Click" />
+                            Text="<%$ LabelResourceExpression: app_save_hris_sftp_information_button_text %>"
+                            OnClick="btnSaveHrisSftpInformation_Click" />
                     </td>
                     <td>
                         &nbsp;
@@ -243,8 +301,9 @@
                     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhrismp" runat="server"
                         ValidationGroup="vsFileupload"></asp:ValidationSummary>
                     <div class="uploadpopup_header">
-                    <asp:CustomValidator ID="cvFileupload" runat="server" ValidationGroup="vsFileupload"
-                        ErrorMessage="<%$ TextResourceExpression: app_select_csv_file_error_empty %>" ClientValidationFunction="vali_type">&nbsp;</asp:CustomValidator>
+                        <asp:CustomValidator ID="cvFileupload" runat="server" ValidationGroup="vsFileupload"
+                            ErrorMessage="<%$ TextResourceExpression: app_select_csv_file_error_empty %>"
+                            ClientValidationFunction="vali_type">&nbsp;</asp:CustomValidator>
                         <div class="left">
                             <%=LocalResources.GetLabel("app_upload_file_text")%>:
                             <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
@@ -259,7 +318,7 @@
             <div>
                 <br />
                 <div class="uploadpanel">
-                     <%=LocalResources.GetLabel("app_select_file_text")%>:
+                    <%=LocalResources.GetLabel("app_select_file_text")%>:
                     <br />
                     <br />
                     <asp:FileUpload ID="FileUpload1" runat="server" Width="525" size="70" />
@@ -267,8 +326,8 @@
                     <br />
                     <br />
                     <div class="uploadbutton">
-                        <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand"
-                            OnClick="btnUploadAttachements_Click" ValidationGroup="vsFileupload" />
+                        <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text %>"
+                            CssClass="cursor_hand" OnClick="btnUploadAttachements_Click" ValidationGroup="vsFileupload" />
                     </div>
                     <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                 </div>

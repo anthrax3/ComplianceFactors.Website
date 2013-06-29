@@ -1,0 +1,24 @@
+************************************
+CF HRIS Upload Job: 
+************************************
+
+Started on:6/26/2013 at 11:42 AM
+Ended on:6/26/2013 at 11:42 AM
+
+Initiated Job: Passed
+Connected to SFTP: Passed
+Downloaded HRIS CSV File: Passed
+
+Read (4)records
+Loaded (3)records
+Rejected (1)records
+
+************************************
+Rejected Records Details: 
+************************************
+Record #3:The UPDATE statement conflicted with the FOREIGN KEY constraint "FK__u_tb_user__u_dom__0F382DC6". The conflict occurred in database "ComplianceFactors", table "dbo.s_tb_domains", column 'u_domain_system_id_pk'.
+The statement has been terminated.
+
+************************************
+End of Report
+************************************

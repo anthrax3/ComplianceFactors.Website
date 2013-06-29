@@ -1,0 +1,18 @@
+************************************
+CF HRIS Upload Job: 
+************************************
+
+Started on:6/26/2013 at 8:05 PM
+Ended on:6/26/2013 at 8:05 PM
+
+Initiated Job: Passed
+Connected to SFTP: Passed
+Downloaded HRIS CSV File: Passed
+
+Read (4)records
+Loaded (4)records
+Rejected (0)records
+
+************************************
+End of Report
+************************************

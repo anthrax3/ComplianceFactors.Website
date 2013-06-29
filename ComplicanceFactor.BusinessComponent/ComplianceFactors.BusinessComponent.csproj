@@ -107,6 +107,7 @@
     <Compile Include="SysemDeliveryTypesBLL.cs" />
     <Compile Include="SystemApprovalBLL.cs" />
     <Compile Include="SystemApprovalWorkflowBLL.cs" />
+    <Compile Include="SystemBackgroundJobsBLL.cs" />
     <Compile Include="SystemCategoriesBLL.cs" />
     <Compile Include="SystemCompletionStatusesBLL.cs" />
     <Compile Include="SystemCurriculumBLL.cs" />

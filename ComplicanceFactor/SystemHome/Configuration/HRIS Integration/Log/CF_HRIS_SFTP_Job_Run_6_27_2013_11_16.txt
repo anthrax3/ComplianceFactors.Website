@@ -1,0 +1,27 @@
+************************************
+CF HRIS Upload Job: 
+************************************
+
+Started on:1/1/0001 at 12:00 AM
+Ended on:6/27/2013 at 11:16 AM
+
+Initiated Job: Passed
+Connected to SFTP: Passed
+Downloaded HRIS CSV File: Passed
+
+Read (4)records
+Loaded (0)records
+Rejected (4)records
+
+************************************
+Rejected Records Details: 
+************************************
+
+Record #1:Required Field not present
+Record #2:Required Field not present
+Record #3:Required Field not present
+Record #4:Required Field not present
+
+************************************
+End of Report
+************************************

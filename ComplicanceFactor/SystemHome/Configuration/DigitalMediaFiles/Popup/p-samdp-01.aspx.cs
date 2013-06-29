@@ -11,16 +11,22 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles.Popup
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //this.paramMediaPath.Attributes.Add("value", "");
-            //string VideoPath = "";
-            //this.paramMediaPath.Attributes.Add("value", VideoPath);
+            string filename = Request.QueryString["fname"].ToString();
+            string type = Request.QueryString["ftype"].ToString(); //&embedded=true
 
-            EmbedSrc = "../Images/1919b655-81f7-4840-b3e3-85acf64ecf82.jpg";
-
+            if ((type == "JPEG") || (type == "GIF") || (type == "PNG"))
+            {
+                ltlPreview.Text = "<object data=../Images/" + filename + " width='722' height='500'/>";
+            }
+            else if ((type == "PDF") || (type == "DOC") || (type == "XLS") || (type == "PPT") || (type == "Other"))
+            {
+                ltlPreview.Text = "<iframe id='documentLoader' src=https://docs.google.com/viewer?url=" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "&embedded=true width='722' height='500';/>";
+            }
+            else if ((type == "SWF") || (type == "MPEG") || (type == "MOV") || (type == "AVI") || (type == "WMA") || (type == "MP3"))
+            {
+                ltlPreview.Text = "<object classid='clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921' codebase='http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab' width='722' height='500'> <param name='quality' value='high' /> <embed type='application/x-vlc-plugin' pluginspage='http://www.videolan.org' autoplay='yes' lop='no' width='722' height='500'   ID='Video1' src='../Images/ " + filename + "' value='../Images/ " + filename + "' /></object>";
+            }
         }
 
-        public string EmbedSrc{get;set;}
-
-        
     }
 }

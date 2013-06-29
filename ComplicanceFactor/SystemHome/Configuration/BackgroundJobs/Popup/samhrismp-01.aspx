@@ -6,11 +6,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        body
+        body 
         {
             /*width: 960px;*/
-            width: 730px !important;
+            width: 900px !important;
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
@@ -56,6 +58,41 @@
         }
 
     </script>
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $(".displayHris").fancybox({
+                  'type': 'iframe',
+                  'titlePosition': 'over',
+                  'titleShow': true,
+                  'showCloseButton': true,
+                  'scrolling': 'yes',
+                  'autoScale': false,
+                  'autoDimensions': false,
+                  'helpers': { overlay: { closeClick: false} },
+                  'width': 740,
+                  'height': 200,
+                  'margin': 0,
+                  'padding': 0,
+                  'overlayColor': '#000',
+                  'overlayOpacity': 0.7,
+                  'hideOnOverlayClick': false,
+                  'href': 'Popup/p-samdhrislo-01.aspx',
+                  'onComplete': function () {
+                      $.fancybox.showActivity();
+                      $('#fancybox-frame').load(function () {
+                          $.fancybox.hideActivity();
+                          $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                          var heightPane = $(this).contents().find('#content').height();
+                          $(this).contents().find('#fancybox-frame').css({
+                              'height': heightPane + 'px'
+
+                          })
+                      });
+
+                  }
+              });
+          });
+    </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhris" runat="server"
         ValidationGroup="samhrismp"></asp:ValidationSummary>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
@@ -83,7 +120,9 @@
                     <%=LocalResources.GetLabel("app_sample_hris_file_text")%>:
                 </td>
                 <td class="align_right">
-                    <asp:Button ID="btnDownloadSampleHrisCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_sample_hris_csv_file_button_text %>"/>
+                    <asp:Button ID="btnDownloadSampleHrisCsvFile" runat="server" 
+                        Text="<%$ LabelResourceExpression: app_download_sample_hris_csv_file_button_text %>" 
+                        onclick="btnDownloadSampleHrisCsvFile_Click" />
                 </td>
             </tr>
             <tr>
@@ -98,16 +137,15 @@
     </div>
     <br />
     <div class="div_controls font_1">
-        <table cellpadding="5" cellspacing="5">
+        <table cellpadding="0" cellspacing="0">
             <tr>
+                <td>
+                    *<%=LocalResources.GetLabel("app_sftp_server_uri_text")%>:
+                </td>
                 <td>
                     <asp:RequiredFieldValidator ID="rfvServerUrl" runat="server" ValidationGroup="samhrismp"
                         ControlToValidate="txtSftpServerUrl" ErrorMessage="<%$ TextResourceExpression: app_uri_error_empty %>">&nbsp;
                     </asp:RequiredFieldValidator>
-                    *
-                    <%=LocalResources.GetLabel("app_sftp_server_uri_text")%>:
-                </td>
-                <td>
                     <asp:TextBox ID="txtSftpServerUrl" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td>
@@ -129,13 +167,12 @@
             </tr>
             <tr>
                 <td>
+                    *<%=LocalResources.GetLabel("app_username_text")%>:
+                </td>
+                <td>
                     <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ValidationGroup="samhrismp"
                         ControlToValidate="txtUserName" ErrorMessage="<%$ TextResourceExpression: app_user_name_error_empty %>">&nbsp;
                     </asp:RequiredFieldValidator>
-                    *
-                    <%=LocalResources.GetLabel("app_username_text")%>:
-                </td>
-                <td>
                     <asp:TextBox ID="txtUserName" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td>
@@ -151,19 +188,19 @@
                     *
                     <%=LocalResources.GetLabel("app_password_text")%>:
                 </td>
-                <td>
-                    <asp:TextBox ID="txtPassword" TextMode="Password" CssClass="textbox_long" runat="server"></asp:TextBox>
+                <td class="align_left">
+                    <input id="txtPassword" name="password" runat="server" />
+                    <%--<asp:TextBox ID="txtPassword" TextMode="Password" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
                 </td>
             </tr>
             <tr>
                 <td>
+                    *<%=LocalResources.GetLabel("app_hris_csv_file_name_text")%>:
+                </td>
+                <td>
                     <asp:RequiredFieldValidator ID="rfvcsvFilename" runat="server" ValidationGroup="samhrismp"
                         ControlToValidate="txtHrisCsvFileName" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>">&nbsp;
                     </asp:RequiredFieldValidator>
-                    *
-                    <%=LocalResources.GetLabel("app_hris_csv_file_name_text")%>:
-                </td>
-                <td>
                     <asp:TextBox ID="txtHrisCsvFileName" CssClass="textbox_long" runat="server"></asp:TextBox>
                 </td>
                 <td colspan="4">
@@ -215,13 +252,17 @@
             <tr>
                 <td class="align_left">
                     <asp:Button ID="btnSaveHrisSftpInformation" runat="server" ValidationGroup="samhrismp"
-                        Text="<%$ LabelResourceExpression: app_save_hris_sftp_information_button_text %>"/>
+                        
+                        Text="<%$ LabelResourceExpression: app_save_hris_sftp_information_button_text %>" 
+                        onclick="btnSaveHrisSftpInformation_Click" />
                 </td>
                 <td>
                     &nbsp;
                 </td>
                 <td>
-                    <asp:Button ID="btnReset" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
+                    <asp:Button ID="btnReset" runat="server" 
+                        Text="<%$ LabelResourceExpression: app_reset_button_text %>" 
+                        onclick="btnReset_Click" />
                 </td>
                 <td>
                     &nbsp;
@@ -230,7 +271,9 @@
                     &nbsp;
                 </td>
                 <td class="align_right">
-                    <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                    <asp:Button ID="btnCancel" runat="server" 
+                        Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
+                        onclick="btnCancel_Click" />
                 </td>
             </tr>
         </table>
@@ -240,10 +283,9 @@
         <br />
     </div>
     <br />
-    </div>
+     
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-    </asp:ToolkitScriptManager>
-    <div>
+    </asp:ToolkitScriptManager>    
         <asp:ModalPopupExtender ID="mpeAttachment" runat="server" TargetControlID="btnSelectHrisCsvFile"
             PopupControlID="pnlUploadFile" BackgroundCssClass="transparent_class" DropShadow="false"
             PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
@@ -283,7 +325,7 @@
                     <br />
                     <div class="uploadbutton">
                         <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text %>"
-                            CssClass="cursor_hand"  ValidationGroup="vsFileupload" />
+                            CssClass="cursor_hand" OnClick="btnUploadAttachements_Click" ValidationGroup="vsFileupload" />
                     </div>
                     <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                 </div>

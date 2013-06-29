@@ -5,52 +5,59 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using ComplicanceFactor.BusinessComponent;
+using ComplicanceFactor.Common.Languages;
+using ComplicanceFactor.Common;
 namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
 {
     public partial class sambjmp_01 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataTable dtBackgroundjobs = new DataTable();
-            DataColumn dccolon;
-
-            //Background Job Name 
-            dccolon = new DataColumn();
-            dccolon.DataType = Type.GetType("System.String");
-            dccolon.ColumnName = "BackgroundJobName";
-            dtBackgroundjobs.Columns.Add(dccolon);
-
-            //Frequency
-            dccolon = new DataColumn();
-            dccolon.DataType = Type.GetType("System.String");
-            dccolon.ColumnName = "Frequency";
-            dtBackgroundjobs.Columns.Add(dccolon);
-
-            //Time
-            dccolon = new DataColumn();
-            dccolon.DataType = Type.GetType("System.DateTime");
-            dccolon.ColumnName = "Time";
-            dtBackgroundjobs.Columns.Add(dccolon);
-
-            //Status
-            dccolon = new DataColumn();
-            dccolon.DataType = Type.GetType("System.String");
-            dccolon.ColumnName = "Status";
-            dtBackgroundjobs.Columns.Add(dccolon);
-
-            for (int i = 0; i <= 5; i++)
+            if (!IsPostBack)
             {
-                DataRow row;
-                row = dtBackgroundjobs.NewRow();
-                row["BackgroundJobName"] = "Jobname" + i;
-                row["Frequency"] = "Frequency" + i;
-                row["Time"] = DateTime.Now.ToString();
-                row["Status"] = "Status" + i;
-                dtBackgroundjobs.Rows.Add(row);
-            }
+                // Label BreadCrumb
+                Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Manage Background Jobs" + "</a>";
 
-            gvBackgroundJobs.DataSource = dtBackgroundjobs;
-            gvBackgroundJobs.DataBind();
+
+                gvBackgroundJobs.DataSource = SystemBackgroundJobsBLL.GetBackgroundJobs();
+                gvBackgroundJobs.DataBind();
+            }
+        }
+
+        protected void gvBackgroundJobs_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                try
+                {
+                    DataRowView drheader = (DataRowView)e.Row.DataItem;
+                    string time = Convert.ToString(drheader["u_sftp_time_every"]);
+
+                    int length = time.Length;
+                    DropDownList ddlTime = (DropDownList)e.Row.FindControl("ddlTime");
+                    ddlTime.SelectedValue = time.Substring(length-2,2);
+
+
+                    TextBox txtTime = (TextBox)e.Row.FindControl("txtTime");
+                    txtTime.Text = time.Substring(0,length-2);
+                }
+                catch (Exception ex)
+                {
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("sambjmp-01.aspx", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("sambjmp-01.aspx", ex.Message);
+                        }
+                    }
+                }
+            }
         }
     }
 }

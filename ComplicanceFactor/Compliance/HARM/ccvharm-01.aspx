@@ -4,11 +4,9 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript">
@@ -69,8 +67,7 @@
                 <div class="content_align">
                     <!-- Logo-->
                     <div id="logo">
-                        <asp:Image ID="imgLogo" runat="server" AlternateText=""
-                         ImageAlign="Left" CssClass="logo_image" />
+                        <asp:Image ID="imgLogo" runat="server" AlternateText="" ImageAlign="Left" CssClass="logo_image" />
                     </div>
                 </div>
             </div>
@@ -140,28 +137,6 @@
                         </tr>
                     </table>
                 </div>
-                <div>
-     <rsweb:ReportViewer ID="rvHARM" runat="server"  DocumentMapCollapsed="false" Height="344px" 
-                        Width="966px">
-    </rsweb:ReportViewer>
-<%--         <rsweb:ReportViewer ID="ReportViewer1" runat="server"  DocumentMapCollapsed="True" Height="344px" 
-                        Width="966px" Font-Names="Verdana" Font-Size="8pt" 
-                        InteractiveDeviceInfos="(Collection)" WaitMessageFont-Names="Verdana" 
-                        WaitMessageFont-Size="14pt">
-             <LocalReport ReportPath="Compliance\HARM\PdfTemplate\Report1.rdlc">
-             </LocalReport>
-    </rsweb:ReportViewer>--%>
-
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server"  DocumentMapCollapsed="false"
-        ShowDocumentMapButton="False" Font-Names="Verdana" Font-Size="8pt" 
-            InteractiveDeviceInfos="(Collection)" WaitMessageFont-Names="Verdana" 
-            WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="Compliance\HARM\PdfTemplate\Report.rdlc">
-        </LocalReport>
-    </rsweb:ReportViewer>
-
-        </div>
-        
                 <br />
                 <div class="div_header_long">
                     <%=LocalResources.GetLabel("app_hazard_and_control_measure_summary_text")%>
@@ -515,20 +490,17 @@
                             </td>
                             <td>
                                 <asp:Button ID="btnSendtoOtherMobile" OnClientClick="Showpopup(this.id);" runat="server"
-                                    Text="<%$ LabelResourceExpression: app_send_other_mobile_button_text %>"
-                                    CssClass="cursor_hand" />
+                                    Text="<%$ LabelResourceExpression: app_send_other_mobile_button_text %>" CssClass="cursor_hand" />
                             </td>
                             <td>
                                 <asp:Button ID="btnSendtoOtherEmail" OnClientClick="Showpopup(this.id);" runat="server"
-                                    Text="<%$ LabelResourceExpression: app_send_to_other_email_button_text %>"
-                                    CssClass="cursor_hand" />
+                                    Text="<%$ LabelResourceExpression: app_send_to_other_email_button_text %>" CssClass="cursor_hand" />
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        
         <div class="clear">
         </div>
         <div class="footer">
@@ -582,11 +554,11 @@
                     <br />
                     <div class="popup_send_button">
                         <asp:Button ID="btnSendMutipleEmail" OnClientClick="ResetScroll();" ValidationGroup="email"
-                            Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSendMutipleEmail_Click"
-                            CssClass="cursor_hand" />
+                            Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>"
+                            OnClick="btnSendMutipleEmail_Click" CssClass="cursor_hand" />
                         <asp:Button ID="btnSendMultipleMobile" OnClientClick="ResetScroll();" Style="display: none;"
-                            runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSendMultipleMobile_Click" ValidationGroup="mobile"
-                            CssClass="cursor_hand" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSendMultipleMobile_Click"
+                            ValidationGroup="mobile" CssClass="cursor_hand" />
                     </div>
                     <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                 </div>
@@ -604,5 +576,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnCancel">
         </asp:ModalPopupExtender>
     </div>
-   <%-- Style="display: none;"  ShowDocumentMapButton="false"--%>
+    <div>
+     <rsweb:ReportViewer ID="rvHARM" runat="server"  DocumentMapCollapsed="false" Style="display: none;"  ShowDocumentMapButton="false">
+    </rsweb:ReportViewer>
+    </div>
 </asp:Content>

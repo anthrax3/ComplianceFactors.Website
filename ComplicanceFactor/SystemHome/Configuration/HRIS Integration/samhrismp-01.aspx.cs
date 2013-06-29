@@ -9,6 +9,11 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
+using System.Data;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Text;
+using System.Globalization;
 
 namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
 {
@@ -17,6 +22,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
         #region "Private Member Variables"
         private string _attachmentpath = "~/SystemHome/Configuration/HRIS Integration/Uploaded/";
         private string _downloadpath = "~/SystemHome/Configuration/HRIS Integration/Sample/";
+        private DateTime start;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,8 +46,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
                     s_file_name = Path.GetFileName(file.FileName);
                     s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension));
-
+                    DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
                     txtHrisCsvFileName.Text = s_file_name;
+                    InsertIntoUserMaster(dtHRIS);
                 }
             }
         }
@@ -160,8 +167,20 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
             hrisIntegration.u_sftp_username = txtUserName.Text;
             hrisIntegration.u_sftp_password = txtPassword.Text;
             hrisIntegration.u_sftp_hris_filename = txtHrisCsvFileName.Text;
-            hrisIntegration.u_sftp_occurs_every = txtOccursEvery.Text;             
-            hrisIntegration.u_sftp_time_every = txtHours.Text;          
+            hrisIntegration.u_sftp_occurs_every = txtOccursEvery.Text;
+            if (ddlTimeConversion.SelectedValue == "AM")
+            {                
+                hrisIntegration.u_sftp_time_every = txtHours.Text;
+            }
+            else
+            {
+                int hours = Convert.ToInt16(txtHours.Text.Substring(0,2));
+                int minites = Convert.ToInt16(txtHours.Text.Substring(3, 2));
+                hours = hours + 12;
+                hrisIntegration.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
+            }
+
+                     
             hrisIntegration.u_sftp_start_date = txtBegining.Text;
 
             try
@@ -173,6 +192,326 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
                     divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");             
                 }
 
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message);
+                    }
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Get Excel Data
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <param name="strSheetName"></param>
+        /// <returns></returns>
+        public static DataTable getExcelData(string FileName, string strSheetName)
+        {
+            DataTable dt = new DataTable();
+
+            using (SpreadsheetDocument spreadSheetDocument = SpreadsheetDocument.Open(FileName, false))
+            {
+
+                WorkbookPart workbookPart = spreadSheetDocument.WorkbookPart;
+
+                IEnumerable<Sheet> sheets = spreadSheetDocument.WorkbookPart.Workbook.GetFirstChild<Sheets>().Elements<Sheet>().Where(s => s.Name == strSheetName);
+                string relationshipId = sheets.First().Id.Value;
+                WorksheetPart worksheetPart = (WorksheetPart)spreadSheetDocument.WorkbookPart.GetPartById(relationshipId);
+                Worksheet workSheet = worksheetPart.Worksheet;
+                SheetData sheetData = workSheet.GetFirstChild<SheetData>();
+
+                IEnumerable<Row> rows = sheetData.Descendants<Row>();
+
+                foreach (Cell cell in rows.ElementAt(0))
+                {
+                    dt.Columns.Add(GetCellValue(spreadSheetDocument, cell));
+                }
+
+                foreach (Row row in rows) //this will also include your header row...
+                {
+                    DataRow tempRow = dt.NewRow();
+
+                    for (int i = 0; i < row.Descendants<Cell>().Count(); i++)
+                    {
+                        tempRow[i] = GetCellValue(spreadSheetDocument, row.Descendants<Cell>().ElementAt(i));
+                    }
+
+                    dt.Rows.Add(tempRow);
+                }
+
+            }
+            dt.Rows.RemoveAt(0); //...so i'm taking it out here.
+
+            return dt;
+
+        }
+        /// <summary>
+        /// Get the Cell Value of xl
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="cell"></param>
+        /// <returns></returns>
+        public static string GetCellValue(SpreadsheetDocument document, Cell cell)
+        {
+            SharedStringTablePart stringTablePart = document.WorkbookPart.SharedStringTablePart;
+            string value = cell.CellValue.InnerXml;
+
+            if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
+            {
+                return stringTablePart.SharedStringTable.ChildElements[Int32.Parse(value)].InnerText;
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        /// <summary>
+        /// Insert/Update to usermaster table
+        /// </summary>
+        /// <param name="dtHRIS"></param>
+        private void InsertIntoUserMaster(DataTable dtHRIS)
+        {
+            CultureInfo culture = new CultureInfo("en-US");
+            dtHRIS.Columns.Add("Status", typeof(String));
+            dtHRIS.Columns.Add("ErrorResult", typeof(String));
+            dtHRIS.Columns.Add("RecordCount", typeof(Int32));
+
+            for (int i = 0; i < dtHRIS.Rows.Count; i++)
+            {
+                User addnewuser = new User();
+
+                addnewuser.Userid = Guid.NewGuid().ToString();
+                /// <summary>
+                /// Hash encryption for username and password
+                /// </summary>
+                HashEncryption encHash = new HashEncryption();
+                addnewuser.Password_enc_ash = encHash.GenerateHashvalue(dtHRIS.Rows[i]["u_password_clear"].ToString(), true);
+                addnewuser.Username_enc_ash = encHash.GenerateHashvalue(dtHRIS.Rows[i]["u_username_clear"].ToString(), true);
+                /// <summary>
+                /// Salt encryption for password
+                /// </summary>
+                //RijndaelEnhanced rijndaelKey = new RijndaelEnhanced(passPhrase, initVector);
+                //addnewuser.Password_enc_salt = dtHRIS.Rows[i]["u_password_enc_ash"].ToString();
+                //End
+                addnewuser.Firstname = dtHRIS.Rows[i]["u_first_name"].ToString();
+                addnewuser.Middlename = dtHRIS.Rows[i]["u_middle_name"].ToString();
+                addnewuser.Lastname = dtHRIS.Rows[i]["u_last_name"].ToString();
+                addnewuser.EmailId = dtHRIS.Rows[i]["u_email_address"].ToString();
+                addnewuser.Mobiletype = dtHRIS.Rows[i]["u_mobile_type_fk"].ToString();
+                addnewuser.MobileCarrier = dtHRIS.Rows[i]["u_mobile_carrier_fk"].ToString();
+                addnewuser.MobileNumber = dtHRIS.Rows[i]["u_mobile_number"].ToString();
+                addnewuser.WorkPhone = dtHRIS.Rows[i]["u_work_phone"].ToString();
+                addnewuser.Workextension = dtHRIS.Rows[i]["u_work_extension"].ToString();
+                addnewuser.Address1 = dtHRIS.Rows[i]["u_address_1"].ToString();
+                addnewuser.Address2 = dtHRIS.Rows[i]["u_address_2"].ToString();
+                addnewuser.Address3 = dtHRIS.Rows[i]["u_address_3"].ToString();
+                addnewuser.City = dtHRIS.Rows[i]["u_city"].ToString();
+                addnewuser.StateProvince = dtHRIS.Rows[i]["u_state_province_ddl"].ToString();
+                addnewuser.ZipPostalcode = dtHRIS.Rows[i]["u_zip_postal_code_ddl"].ToString();
+                addnewuser.Country = dtHRIS.Rows[i]["u_country_id_fk"].ToString();
+                addnewuser.DomainId = dtHRIS.Rows[i]["u_domain_id_fk"].ToString();
+                addnewuser.LocaleId = dtHRIS.Rows[i]["u_locale_id_fk"].ToString();
+                addnewuser.TimezoneId = dtHRIS.Rows[i]["u_timezone_fk"].ToString();
+                addnewuser.Usertype = dtHRIS.Rows[i]["u_user_type_id_fk"].ToString();
+
+                //user creation type
+                addnewuser.creation_type = dtHRIS.Rows[i]["u_creation_type_fk"].ToString();
+                //End
+                addnewuser.Active_status_flag = dtHRIS.Rows[i]["u_active_status_flag"].ToString();
+                addnewuser.Active_Type = dtHRIS.Rows[i]["u_active_type_fk"].ToString();
+                addnewuser.Hris_employeid = dtHRIS.Rows[i]["u_hris_employee_id"].ToString();
+                addnewuser.Hris_employee_type = dtHRIS.Rows[i]["u_hris_employee_type_fk"].ToString();
+
+
+                DateTime? dtHireDate = null;
+                DateTime tempHiretDate;
+
+                if (DateTime.TryParseExact(dtHRIS.Rows[i]["u_hris_hire_date"].ToString(), "MM/dd/yyyy", culture, DateTimeStyles.None, out tempHiretDate))
+                {
+                    dtHireDate = tempHiretDate;
+                }
+
+                addnewuser.Hris_hire_date = dtHireDate;
+                //}
+
+                DateTime? txtLastrehiredate = null;
+                DateTime tempEndDate;
+
+                if (DateTime.TryParseExact(dtHRIS.Rows[i]["u_hris_last_rehire_date"].ToString(), "MM/dd/yyyy", culture, DateTimeStyles.None, out tempEndDate))
+                {
+                    txtLastrehiredate = tempEndDate;
+                }
+
+                addnewuser.Hris_last_rehire_date = txtLastrehiredate;
+
+                addnewuser.Hris_company = dtHRIS.Rows[i]["u_hris_company_fk"].ToString();
+                addnewuser.Hris_region = dtHRIS.Rows[i]["u_hris_region_fk"].ToString();
+                addnewuser.Hris_division = dtHRIS.Rows[i]["u_hris_division_fk"].ToString();
+                addnewuser.Hris_department = dtHRIS.Rows[i]["u_hris_department_fk"].ToString();
+                addnewuser.Hris_cost_center = dtHRIS.Rows[i]["u_hris_cost_center_fk"].ToString();
+                addnewuser.Hris_job_group = dtHRIS.Rows[i]["u_hris_job_group_fk"].ToString();
+                addnewuser.Hris_job_code = dtHRIS.Rows[i]["u_hris_job_code_fk"].ToString();
+                addnewuser.Hris_job_title = dtHRIS.Rows[i]["u_hris_job_title_fk"].ToString();
+                addnewuser.Hris_job_position = dtHRIS.Rows[i]["u_hris_job_position_fk"].ToString();
+                addnewuser.Hris_pay_grade = dtHRIS.Rows[i]["u_hris_pay_grade_fk"].ToString();
+                //questions
+                addnewuser.Hris_manager_id = dtHRIS.Rows[i]["u_hris_manager_id_fk"].ToString();
+                addnewuser.Hris_supervisor_id = dtHRIS.Rows[i]["u_hris_supervisor_id_fk"].ToString();
+                addnewuser.Hris_Alternate_manager_id = dtHRIS.Rows[i]["u_hris_alternate_manager_id_fk"].ToString();
+                addnewuser.Hris_alternate_supervisor_id = dtHRIS.Rows[i]["u_hris_alternate_supervisor_id_fk"].ToString();
+                addnewuser.Hris_mentor_id = dtHRIS.Rows[i]["u_hris_mentor_id_fk"].ToString();
+                addnewuser.Alternate_mentor_id = dtHRIS.Rows[i]["u_hris_alternate_mentor_id_fk"].ToString();
+                //End
+
+                addnewuser.sr_is_employee = Convert.ToBoolean(Convert.ToInt16(dtHRIS.Rows[i]["u_sr_is_employee"]));
+                addnewuser.sr_is_manager = Convert.ToBoolean(Convert.ToInt16(dtHRIS.Rows[i]["u_sr_is_manager"]));
+                addnewuser.sr_is_compliance = Convert.ToBoolean(Convert.ToInt16(dtHRIS.Rows[i]["u_sr_is_compliance"]));
+                addnewuser.sr_is_instructor = Convert.ToBoolean(Convert.ToInt16(dtHRIS.Rows[i]["u_sr_is_instructor"]));
+                addnewuser.sr_is_training = Convert.ToBoolean(Convert.ToInt16(dtHRIS.Rows[i]["u_sr_is_training"]));
+                addnewuser.sr_is_administrator = Convert.ToBoolean(Convert.ToInt16(dtHRIS.Rows[i]["u_sr_is_administrator"]));
+                //addnewuser.sr_is_system_admin = Convert.ToBoolean(dtHRIS.Rows[i][""]);
+                //addnewuser.sr_is_compliance_approver = Convert.ToBoolean(dtHRIS.Rows[i][""]);
+
+
+                addnewuser.Custom_01 = dtHRIS.Rows[i]["u_custom_01"].ToString();
+                addnewuser.Custom_02 = dtHRIS.Rows[i]["u_custom_02"].ToString();
+                addnewuser.Custom_03 = dtHRIS.Rows[i]["u_custom_03"].ToString();
+                addnewuser.Custom_04 = dtHRIS.Rows[i]["u_custom_04"].ToString();
+                addnewuser.Custom_05 = dtHRIS.Rows[i]["u_custom_05"].ToString();
+                addnewuser.Custom_06 = dtHRIS.Rows[i]["u_custom_06"].ToString();
+                addnewuser.Custom_07 = dtHRIS.Rows[i]["u_custom_07"].ToString();
+                addnewuser.Custom_08 = dtHRIS.Rows[i]["u_custom_08"].ToString();
+                addnewuser.Custom_09 = dtHRIS.Rows[i]["u_custom_09"].ToString();
+                addnewuser.Custom_10 = dtHRIS.Rows[i]["u_custom_10"].ToString();
+                addnewuser.Custom_11 = dtHRIS.Rows[i]["u_custom_11"].ToString();
+                addnewuser.Custom_12 = dtHRIS.Rows[i]["u_custom_12"].ToString();
+                addnewuser.Custom_13 = dtHRIS.Rows[i]["u_custom_13"].ToString();
+
+                try
+                {
+                    //Insert into usermaster table
+                    start = DateTime.Now;
+                    int result = SystemHRISIntegrationBLL.insert_update_user(addnewuser);
+                    if (result == 0)
+                    {
+                        dtHRIS.Rows[i]["Status"] = "Passed";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            dtHRIS.Rows[i]["Status"] = "Failed";
+                            dtHRIS.Rows[i]["RecordCount"] = i + 1;
+                            dtHRIS.Rows[i]["ErrorResult"] = ex.Message;
+                            continue;
+                        }
+                        else
+                        {
+                            dtHRIS.Rows[i]["Status"] = "Failed";
+                            dtHRIS.Rows[i]["RecordCount"] = i + 1;
+                            dtHRIS.Rows[i]["ErrorResult"] = ex.Message;
+                            continue;
+                        }
+                    }
+                }
+
+            }
+            CreateLogFile(dtHRIS);
+
+        }
+        /// <summary>
+        /// Create Log File
+        /// </summary>
+        /// <param name="dtHris"></param>
+        private void CreateLogFile(DataTable dtHris)
+        {
+            var loadedrows = dtHris.Select("Status='Passed'");
+            var rejectedRows = dtHris.Select("Status='Failed'");
+            DateTime endDate;
+            string _logpath = "~/SystemHome/Configuration/HRIS Integration/Log/";
+            string filename = "CF_HRIS_SFTP_Job_Run_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString().Substring(0, 5) + ".txt";
+            filename = filename.Replace("/", "_");
+            filename = filename.Replace(":", "_");
+            string path = Server.MapPath(_logpath);
+            string filePath = Path.Combine(path, filename);
+            FileStream fs1 = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(fs1);
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("************************************");
+            sb.AppendLine("CF HRIS Upload Job: ");
+            sb.AppendLine("************************************");
+            sb.AppendLine();
+            sb.AppendLine("Started on:" + start.ToShortDateString() + " at " + start.ToShortTimeString());
+            endDate = DateTime.Now;
+            sb.AppendLine("Ended on:" + endDate.ToShortDateString() + " at " + endDate.ToShortTimeString());
+            sb.AppendLine();
+            sb.AppendLine("Initiated Job: Passed");
+            sb.AppendLine("Connected to SFTP: Passed");
+            sb.AppendLine("Downloaded HRIS CSV File: Passed");
+            sb.AppendLine();
+            sb.AppendLine("Read (" + dtHris.Rows.Count + ")records");
+            sb.AppendLine("Loaded (" + loadedrows.Length + ")records");
+            sb.AppendLine("Rejected (" + rejectedRows.Length + ")records");
+            sb.AppendLine();
+            if (rejectedRows.Length > 0)
+            {
+                sb.AppendLine("************************************");
+                sb.AppendLine("Rejected Records Details: ");
+                sb.AppendLine("************************************");
+                foreach (var r in rejectedRows)
+                {
+                    sb.AppendLine("Record #" + r["RecordCount"].ToString() + ":" + r["ErrorResult"].ToString());
+                }
+                sb.AppendLine();
+            }
+            sb.AppendLine("************************************");
+            sb.AppendLine("End of Report");
+            sb.AppendLine("************************************");
+
+            writer.Write(sb.ToString());
+            writer.Close();
+
+            //Insert sftp_run_log table
+
+            SystemHRISIntegration hrisRunlog = new SystemHRISIntegration();
+            hrisRunlog.u_sftp_run_date_time_start = start.ToString();
+            hrisRunlog.u_sftp_run_date_time_end = endDate.ToString();
+            if (rejectedRows.Length > 0)
+            {
+                hrisRunlog.u_sftp_run_result = "Errors";
+            }
+            else
+            {
+                hrisRunlog.u_sftp_run_result = "Success";
+            }
+            hrisRunlog.u_sftp_run_log_file_transfer = "Success";
+            hrisRunlog.u_sftp_run_errors_details_filename = filename;
+            string errorLog = sb.ToString();
+            errorLog = errorLog.Replace("\r\n", "<br/>");
+            hrisRunlog.u_sftp_run_errors_log = errorLog;
+            hrisRunlog.u_sftp_run_records_processes = dtHris.Rows.Count;
+            hrisRunlog.u_sftp_run_records_loaded = loadedrows.Length;
+            hrisRunlog.u_sftp_run_records_rejected = rejectedRows.Length;
+
+            try
+            {
+                //Insert Hris Run log
+                int result = SystemHRISIntegrationBLL.InsertHRISRunLog(hrisRunlog);
             }
             catch (Exception ex)
             {
