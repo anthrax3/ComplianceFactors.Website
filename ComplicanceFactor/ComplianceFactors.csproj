@@ -761,7 +761,24 @@
     <Content Include="SystemHome\Configuration\Holiday Schedules\saehdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Holiday Schedules\samhdmp-01.aspx" />
     <Content Include="SystemHome\Configuration\HRIS Integration\Display_Hris_Log1.aspx" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_38.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_41.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_42.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_44.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_6_30 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_6_46 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_01 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_04 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_05 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_08 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_27_2013_11_16.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_27_2013_11_19.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_11_11.txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_3_55 .txt" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx" />
     <Content Include="SystemHome\Configuration\HRIS Integration\samhrismp-01.aspx" />
+    <Content Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx" />
     <Content Include="SystemHome\Configuration\HRIS Integration\View_HRIS_log_Details.aspx" />
     <Content Include="SystemHome\Configuration\InstructorTypes\saanitn-01.aspx" />
     <Content Include="SystemHome\Configuration\InstructorTypes\saeitn-01.aspx" />
@@ -3290,12 +3307,30 @@
     <Compile Include="SystemHome\Configuration\HRIS Integration\Display_Hris_Log1.aspx.designer.cs">
       <DependentUpon>Display_Hris_Log1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx.cs">
+      <DependentUpon>p-samdhrislo-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx.designer.cs">
+      <DependentUpon>p-samdhrislo-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx.cs">
+      <DependentUpon>p-samvhrislo-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx.designer.cs">
+      <DependentUpon>p-samvhrislo-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\samhrismp-01.aspx.cs">
       <DependentUpon>samhrismp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\samhrismp-01.aspx.designer.cs">
       <DependentUpon>samhrismp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx.cs">
+      <DependentUpon>Test_hris.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx.designer.cs">
+      <DependentUpon>Test_hris.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\View_HRIS_log_Details.aspx.cs">
       <DependentUpon>View_HRIS_log_Details.aspx</DependentUpon>

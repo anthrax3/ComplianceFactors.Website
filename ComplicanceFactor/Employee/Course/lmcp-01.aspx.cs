@@ -12,6 +12,7 @@ using System.Data;
 using Microsoft.Reporting.WebForms;
 using System.IO;
 using System.Text;
+using ComplicanceFactor.BusinessComponent.DataAccessObject;
 namespace ComplicanceFactor.Employee.Course
 {
     public partial class lmcp_01 : System.Web.UI.Page
@@ -107,8 +108,32 @@ namespace ComplicanceFactor.Employee.Course
                 rvCourses.ProcessingMode = ProcessingMode.Local;
                 rvCourses.LocalReport.EnableExternalImages = true;
                 rvCourses.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.Course.PdfTemplate.MyCourses.rdlc";
+
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = GetthemeforEmailandPdf();
+
+
+                string protocol = Request.Url.AbsoluteUri;
+                int len = protocol.IndexOf(':');
+                protocol = protocol.Substring(0, len);
+
                 rvCourses.LocalReport.DataSources.Add(new ReportDataSource("MyCourses", dsEmployee.Tables[0]));
                 rvCourses.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsEmployee.Tables[1]));
+
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("s_theme_report_logo_file_name",protocol+"://"+ Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+                param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                this.rvCourses.LocalReport.SetParameters(param);
+
                 byte[] bytes = rvCourses.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();
@@ -259,6 +284,14 @@ namespace ComplicanceFactor.Employee.Course
                 EnrollmentBLL.UpdateEnrollmentStatus(UpdateEnrollmentStatus);
                 Response.Redirect("~/Employee/Course/lmcp-01.aspx", false);
             }
+        }
+
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+            return userTheme;
         }
     }
 }

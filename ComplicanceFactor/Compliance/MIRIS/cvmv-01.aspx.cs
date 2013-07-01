@@ -1722,6 +1722,15 @@ namespace ComplicanceFactor.Compliance.MIRIS
             rvMIRIS.ProcessingMode = ProcessingMode.Local;
             rvMIRIS.LocalReport.EnableExternalImages = true;
             rvMIRIS.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Compliance.MIRIS.MirisPdfTemplate.MIRISMVReport.rdlc";
+
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = GetthemeforEmailandPdf();
+
+
+            string protocol = Request.Url.AbsoluteUri;
+            int len = protocol.IndexOf(':');
+            protocol = protocol.Substring(0, len);
+
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MVDataset", dsPdf.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISWitness", dsWitness.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISPoliceReport", dsPoliceReport.Tables[0]));
@@ -1731,6 +1740,19 @@ namespace ComplicanceFactor.Compliance.MIRIS
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISEmployeeInterview", dsEmployeeInterview.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISVehicle", dsVehicle.Tables[0]));
 
+            List<ReportParameter> param = new List<ReportParameter>();
+            param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+            param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+            this.rvMIRIS.LocalReport.SetParameters(param);
 
             byte[] bytes = rvMIRIS.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
             Response.Buffer = true;
@@ -1816,6 +1838,15 @@ namespace ComplicanceFactor.Compliance.MIRIS
             rvMIRIS.ProcessingMode = ProcessingMode.Local;
             rvMIRIS.LocalReport.EnableExternalImages = true;
             rvMIRIS.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Compliance.MIRIS.MirisPdfTemplate.MIRISMVReport.rdlc";
+
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = GetthemeforEmailandPdf();
+
+
+            string protocol = Request.Url.AbsoluteUri;
+            int len = protocol.IndexOf(':');
+            protocol = protocol.Substring(0, len);
+
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MVDataset", dsPdf.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISWitness", dsWitness.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISPoliceReport", dsPoliceReport.Tables[0]));
@@ -1824,6 +1855,20 @@ namespace ComplicanceFactor.Compliance.MIRIS
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISExtenuatingCondition", dsExtenuatingCondition.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISEmployeeInterview", dsEmployeeInterview.Tables[0]));
             rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("MIRISVehicle", dsVehicle.Tables[0]));
+
+            List<ReportParameter> param = new List<ReportParameter>();
+            param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+            param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+            this.rvMIRIS.LocalReport.SetParameters(param);
 
             byte[] bytes = rvMIRIS.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
             using (FileStream fs = File.Create(filepath + lblCaseNumber.Text + ".pdf"))
@@ -1905,272 +1950,272 @@ namespace ComplicanceFactor.Compliance.MIRIS
             txtMultipeEmailAddress.Text = "";
         }
 
-        public string CreateCaseDetailPdf()
-        {
-            string strCaseDetails = string.Empty;
-            try
-            {
-                //Daily Email Report
-                string filePath = string.Empty;
-                filePath = System.Web.Hosting.HostingEnvironment.MapPath("~/Compliance/MIRIS/MirisPdfTemplate/ccvmiris.htm");
-                StringBuilder sbCaseDetails = new StringBuilder(Utility.GetHtmlTemplate(filePath));
-                sbCaseDetails.Replace("@app_case_page_title", LocalResources.GetLabel("app_case_page_title") + lblCaseNumber.Text);
-                sbCaseDetails.Replace("@app_case_number_text", LocalResources.GetLabel("app_case_number_text"));
-                sbCaseDetails.Replace("@lblCaseNumber", lblCaseNumber.Text);
-                sbCaseDetails.Replace("@app_case_title_text", LocalResources.GetLabel("app_case_title_text"));
-                sbCaseDetails.Replace("@lblCaseTitle", lblCaseTitle.Text);
-                sbCaseDetails.Replace("@app_case_date_text", LocalResources.GetLabel("app_case_date_text"));
-                sbCaseDetails.Replace("@lblCaseDate", lblCaseDate.Text);
-                sbCaseDetails.Replace("@app_case_category_text", LocalResources.GetLabel("app_case_category_text"));
-                sbCaseDetails.Replace("@lblCaseCategory", lblCaseCategory.Text);
-                sbCaseDetails.Replace("@app_case_types_text", LocalResources.GetLabel("app_case_types_text"));
-                sbCaseDetails.Replace("@lblCaseTypes", lblCaseTypes.Text);
-                sbCaseDetails.Replace("@app_case_status_text", LocalResources.GetLabel("app_case_status_text"));
-                sbCaseDetails.Replace("@lblCaseStatus", lblCaseStatus.Text);
-                sbCaseDetails.Replace("@app_case_description_text", LocalResources.GetLabel("app_case_description_text"));
-                sbCaseDetails.Replace("@app_employee_name_text", LocalResources.GetLabel("app_employee_name_text"));
-                sbCaseDetails.Replace("@lblEmployeeName", lblEmployeeName.Text);
-                sbCaseDetails.Replace("@app_date_of_birth_text", LocalResources.GetLabel("app_date_of_birth_text"));
-                sbCaseDetails.Replace("@lblDateOfBirth", lblDateOfBirth.Text);
-                sbCaseDetails.Replace("@app_employee_hire_date_text", LocalResources.GetLabel("app_employee_hire_date_text"));
-                sbCaseDetails.Replace("@lblEmployeeHireDate", lblEmployeeHireDate.Text);
-                sbCaseDetails.Replace("@app_employee_id_text", LocalResources.GetLabel("app_employee_id_text"));
-                sbCaseDetails.Replace("@lblEmployeeId", lblEmployeeId.Text);
-                sbCaseDetails.Replace("@app_last_digit_of_ssn", LocalResources.GetLabel("app_last_digit_of_ssn#_text"));
-                sbCaseDetails.Replace("@lblLastFourDigitOfSSN", lblLastFourDigitOfSSN.Text);
-                sbCaseDetails.Replace("@app_supervisor_text", LocalResources.GetLabel("app_supervisor_text"));
-                sbCaseDetails.Replace("@lblSupervisor", lblSupervisor.Text);
-                sbCaseDetails.Replace("@app_incident_location_text", LocalResources.GetLabel("app_incident_location_text"));
-                sbCaseDetails.Replace("@lblIncidentLocation", lblIncidentLocation.Text);
-                sbCaseDetails.Replace("@app_incident_date_text", LocalResources.GetLabel("app_incident_date_text"));
-                sbCaseDetails.Replace("@lblIncidentDate", lblIncidentDate.Text);
-                sbCaseDetails.Replace("@app_incident_time_text", LocalResources.GetLabel("app_incident_time_text"));
-                sbCaseDetails.Replace("@lblIncidentTime", lblIncidentTime.Text);
-                sbCaseDetails.Replace("@app_employee_report_location_text", LocalResources.GetLabel("app_employee_report_location_text"));
-                sbCaseDetails.Replace("@lblEmployeeReportLocation", lblEmployeeReportLocation.Text);
-                sbCaseDetails.Replace("@app_timezone_text", LocalResources.GetLabel("app_timezone_text"));
-                sbCaseDetails.Replace("@lblTimeZone", lblTimeZone.Text);
-                sbCaseDetails.Replace("@app_note_text", LocalResources.GetLabel("app_note_text"));
-                sbCaseDetails.Replace("@lblNote", lblNote.Text);
-                sbCaseDetails.Replace("@app_additional_Information_text", LocalResources.GetLabel("app_additional_Information_text"));
-                sbCaseDetails.Replace("@app_witness(es)_text", LocalResources.GetLabel("app_witness(es)_text"));
-                sbCaseDetails.Replace("@app_police_reports(s)_text", LocalResources.GetLabel("app_police_reports(s)_text"));
-                sbCaseDetails.Replace("@app_photo(s)_text", LocalResources.GetLabel("app_photo(s)_text"));
-                sbCaseDetails.Replace("@app_scene_sketch(es)_text", LocalResources.GetLabel("app_scene_sketch(es)_text"));
-                sbCaseDetails.Replace("@app_extenuating_condition(s)_text", LocalResources.GetLabel("app_extenuating_condition(s)_text"));
-                sbCaseDetails.Replace("@app_employee_interview(s)_text", LocalResources.GetLabel("app_employee_interview(s)_text"));
-                sbCaseDetails.Replace("@app_root_cause_analysis_infornation_text", LocalResources.GetLabel("app_root_cause_analysis_infornation_text"));
-                sbCaseDetails.Replace("@app_root_cause_analysis_details_text", LocalResources.GetLabel("app_root_cause_analysis_details_text"));
-                sbCaseDetails.Replace("@lblRootCauseAnalysisDetails", lblRootCauseAnalysisDetails.Text);
-                sbCaseDetails.Replace("@app_corrective_action_information_text", LocalResources.GetLabel("app_corrective_action_information_text"));
-                sbCaseDetails.Replace("@app_corrective_action_details_text", LocalResources.GetLabel("app_corrective_action_details_text"));
-                sbCaseDetails.Replace("@lblCorrectiveActionDetails", lblCorrectiveActionDetails.Text);
-                //sbCaseDetails.Replace("@app_user_osha_300_information_text", LocalResources.GetLabel("app_user_osha_300_information_text"));
-                //sbCaseDetails.Replace("@app_user_case_outcome_text", LocalResources.GetLabel("app_user_case_outcome_text"));
-                //sbCaseDetails.Replace("@lblCaseOutCome", lblCaseOutCome.Text);
-                //sbCaseDetails.Replace("@app_user_days_away_from_work_text", LocalResources.GetLabel("app_user_days_away_from_work_text"));
-                //sbCaseDetails.Replace("@lblDaysAwayFromWork", lblDaysAwayFromWork.Text);
-                //sbCaseDetails.Replace("@app_user_days_of_restrictions_text", LocalResources.GetLabel("app_user_days_of_restrictions_text"));
-                //sbCaseDetails.Replace("@lblDaysOfRestrictions", lblDaysOfRestrictions.Text);
-                //sbCaseDetails.Replace("@app_user_data_of_death_text", LocalResources.GetLabel("app_user_data_of_death_text"));
-                //sbCaseDetails.Replace("@lblDateOfDeath", lblDateOfDeath.Text);
-                //sbCaseDetails.Replace("@app_user_type_of_illness_text", LocalResources.GetLabel("app_user_type_of_illness_text"));
-                //sbCaseDetails.Replace("@lblTypeofIllness", lblTypeofIllness.Text);
-                //sbCaseDetails.Replace("@app_user_describe_injury_or_illness_text", LocalResources.GetLabel("app_user_describe_injury_or_illness_text"));
-                //sbCaseDetails.Replace("@lblOSHA300info", lblOSHA300info.Text);
-                //sbCaseDetails.Replace("@app_user_oosha_301_information_text", LocalResources.GetLabel("app_user_oosha_301_information_text"));
-                //sbCaseDetails.Replace("@app_user_worker_gender_text", LocalResources.GetLabel("app_user_worker_gender_text"));
-                //sbCaseDetails.Replace("@lblWorkerGender", lblWorkerGender.Text);
-                //sbCaseDetails.Replace("@app_user_works_start_time_text", LocalResources.GetLabel("app_user_works_start_time_text"));
-                //sbCaseDetails.Replace("@lblWorkStartTime", lblWorkStartTime.Text);
-                //sbCaseDetails.Replace("@app_user_physician_text", LocalResources.GetLabel("app_user_physician_text"));
-                //sbCaseDetails.Replace("@lblPhysician", lblPhysician.Text);
-                //sbCaseDetails.Replace("@app_user_treatment_facility_text", LocalResources.GetLabel("app_user_treatment_facility_text"));
-                //sbCaseDetails.Replace("@lblTreatmentFacility", lblTreatmentFacility.Text);
-                //sbCaseDetails.Replace("@app_user_emergency_room_text", LocalResources.GetLabel("app_user_emergency_room_text"));
-                //sbCaseDetails.Replace("@lblEmergencyRoom", lblEmergencyRoom.Text);
-                //sbCaseDetails.Replace("@app_user_hospitalized_text", LocalResources.GetLabel("app_user_hospitalized_text"));
-                //sbCaseDetails.Replace("@lblHospitalized", lblHospitalized.Text);
-                //sbCaseDetails.Replace("@app_user_address_1_text", LocalResources.GetLabel("app_user_address_1_text"));
-                //sbCaseDetails.Replace("@lblAddress1", lblAddress1.Text);
-                //sbCaseDetails.Replace("@app_user_address_2_text", LocalResources.GetLabel("app_user_address_2_text"));
-                //sbCaseDetails.Replace("@lblAddress2", lblAddress2.Text);
-                //sbCaseDetails.Replace("@app_user_address_3_text", LocalResources.GetLabel("app_user_address_3_text"));
-                //sbCaseDetails.Replace("@lblAddress3", lblAddress3.Text);
-                //sbCaseDetails.Replace("@app_city_text", LocalResources.GetLabel("app_city_text"));
-                //sbCaseDetails.Replace("@lblCity", lblCity.Text);
-                //sbCaseDetails.Replace("@app_state_text", LocalResources.GetLabel("app_state_text"));
-                //sbCaseDetails.Replace("@lblState", lblState.Text);
-                //sbCaseDetails.Replace("@app_user_zip_text", LocalResources.GetLabel("app_user_zip_text"));
-                //sbCaseDetails.Replace("@lblZipCode", lblZipCode.Text);
-                //sbCaseDetails.Replace("@app_user_what_was_the_employee_text", LocalResources.GetLabel("app_user_what_was_the_employee_text"));
-                //sbCaseDetails.Replace("@lblOSHA301Info1", lblOSHA301Info1.Text);
-                //sbCaseDetails.Replace("@app_user_what_happened_tell_text", LocalResources.GetLabel("app_user_what_happened_tell_text"));
-                //sbCaseDetails.Replace("@lblOSHA301Info2", lblOSHA301Info2.Text);
-                //sbCaseDetails.Replace("@app_user_what_was_the_injury_text", LocalResources.GetLabel("app_user_what_was_the_injury_text"));
-                //sbCaseDetails.Replace("@lblOSHA301Info3", lblOSHA301Info3.Text);
-                //sbCaseDetails.Replace("@app_user_object_or_substance_text", LocalResources.GetLabel("app_user_object_or_substance_text"));
-                //sbCaseDetails.Replace("@lblOSHA301Info4", lblOSHA301Info4.Text);
-                sbCaseDetails.Replace("@app_custom_fields_text", LocalResources.GetLabel("app_custom_fields_text"));
-                sbCaseDetails.Replace("@app_custom_01_text", LocalResources.GetLabel("app_custom_01_text"));
-                sbCaseDetails.Replace("@app_custom_02_text", LocalResources.GetLabel("app_custom_02_text"));
-                sbCaseDetails.Replace("@app_custom_03_text", LocalResources.GetLabel("app_custom_03_text"));
-                sbCaseDetails.Replace("@app_custom_04_text", LocalResources.GetLabel("app_custom_04_text"));
-                sbCaseDetails.Replace("@app_custom_05_text", LocalResources.GetLabel("app_custom_05_text"));
-                sbCaseDetails.Replace("@app_custom_06_text", LocalResources.GetLabel("app_custom_06_text"));
-                sbCaseDetails.Replace("@app_custom_07_text", LocalResources.GetLabel("app_custom_07_text"));
-                sbCaseDetails.Replace("@app_custom_08_text", LocalResources.GetLabel("app_custom_08_text"));
-                sbCaseDetails.Replace("@app_custom_09_text", LocalResources.GetLabel("app_custom_09_text"));
-                sbCaseDetails.Replace("@app_custom_10_text", LocalResources.GetLabel("app_custom_10_text"));
-                sbCaseDetails.Replace("@app_custom_11_text", LocalResources.GetLabel("app_custom_11_text"));
-                sbCaseDetails.Replace("@app_custom_12_text", LocalResources.GetLabel("app_custom_12_text"));
-                sbCaseDetails.Replace("@app_custom_13_text", LocalResources.GetLabel("app_custom_13_text"));
-                sbCaseDetails.Replace("@wp_app_release_number", LocalResources.GetLabel("wp_app_release_number"));
-                sbCaseDetails.Replace("@lblCustom01", lblCustom01.Text);
-                sbCaseDetails.Replace("@lblCustom02", lblCustom02.Text);
-                sbCaseDetails.Replace("@lblCustom03", lblCustom03.Text);
-                sbCaseDetails.Replace("@lblCustom04", lblCustom04.Text);
-                sbCaseDetails.Replace("@lblCustom05", lblCustom05.Text);
-                sbCaseDetails.Replace("@lblCustom06", lblCustom06.Text);
-                sbCaseDetails.Replace("@lblCustom07", lblCustom07.Text);
-                sbCaseDetails.Replace("@lblCustom08", lblCustom08.Text);
-                sbCaseDetails.Replace("@lblCustom09", lblCustom09.Text);
-                sbCaseDetails.Replace("@lblCustom10", lblCustom10.Text);
-                sbCaseDetails.Replace("@lblCustom11", lblCustom11.Text);
-                sbCaseDetails.Replace("@lblCustom12", lblCustom12.Text);
-                sbCaseDetails.Replace("@lblCustom13", lblCustom13.Text);
-                sbCaseDetails.Replace("@app_required_fields_text", LocalResources.GetLabel("app_required_fields_text"));
+        //public string CreateCaseDetailPdf()
+        //{
+        //    string strCaseDetails = string.Empty;
+        //    try
+        //    {
+        //        //Daily Email Report
+        //        string filePath = string.Empty;
+        //        filePath = System.Web.Hosting.HostingEnvironment.MapPath("~/Compliance/MIRIS/MirisPdfTemplate/ccvmiris.htm");
+        //        StringBuilder sbCaseDetails = new StringBuilder(Utility.GetHtmlTemplate(filePath));
+        //        sbCaseDetails.Replace("@app_case_page_title", LocalResources.GetLabel("app_case_page_title") + lblCaseNumber.Text);
+        //        sbCaseDetails.Replace("@app_case_number_text", LocalResources.GetLabel("app_case_number_text"));
+        //        sbCaseDetails.Replace("@lblCaseNumber", lblCaseNumber.Text);
+        //        sbCaseDetails.Replace("@app_case_title_text", LocalResources.GetLabel("app_case_title_text"));
+        //        sbCaseDetails.Replace("@lblCaseTitle", lblCaseTitle.Text);
+        //        sbCaseDetails.Replace("@app_case_date_text", LocalResources.GetLabel("app_case_date_text"));
+        //        sbCaseDetails.Replace("@lblCaseDate", lblCaseDate.Text);
+        //        sbCaseDetails.Replace("@app_case_category_text", LocalResources.GetLabel("app_case_category_text"));
+        //        sbCaseDetails.Replace("@lblCaseCategory", lblCaseCategory.Text);
+        //        sbCaseDetails.Replace("@app_case_types_text", LocalResources.GetLabel("app_case_types_text"));
+        //        sbCaseDetails.Replace("@lblCaseTypes", lblCaseTypes.Text);
+        //        sbCaseDetails.Replace("@app_case_status_text", LocalResources.GetLabel("app_case_status_text"));
+        //        sbCaseDetails.Replace("@lblCaseStatus", lblCaseStatus.Text);
+        //        sbCaseDetails.Replace("@app_case_description_text", LocalResources.GetLabel("app_case_description_text"));
+        //        sbCaseDetails.Replace("@app_employee_name_text", LocalResources.GetLabel("app_employee_name_text"));
+        //        sbCaseDetails.Replace("@lblEmployeeName", lblEmployeeName.Text);
+        //        sbCaseDetails.Replace("@app_date_of_birth_text", LocalResources.GetLabel("app_date_of_birth_text"));
+        //        sbCaseDetails.Replace("@lblDateOfBirth", lblDateOfBirth.Text);
+        //        sbCaseDetails.Replace("@app_employee_hire_date_text", LocalResources.GetLabel("app_employee_hire_date_text"));
+        //        sbCaseDetails.Replace("@lblEmployeeHireDate", lblEmployeeHireDate.Text);
+        //        sbCaseDetails.Replace("@app_employee_id_text", LocalResources.GetLabel("app_employee_id_text"));
+        //        sbCaseDetails.Replace("@lblEmployeeId", lblEmployeeId.Text);
+        //        sbCaseDetails.Replace("@app_last_digit_of_ssn", LocalResources.GetLabel("app_last_digit_of_ssn#_text"));
+        //        sbCaseDetails.Replace("@lblLastFourDigitOfSSN", lblLastFourDigitOfSSN.Text);
+        //        sbCaseDetails.Replace("@app_supervisor_text", LocalResources.GetLabel("app_supervisor_text"));
+        //        sbCaseDetails.Replace("@lblSupervisor", lblSupervisor.Text);
+        //        sbCaseDetails.Replace("@app_incident_location_text", LocalResources.GetLabel("app_incident_location_text"));
+        //        sbCaseDetails.Replace("@lblIncidentLocation", lblIncidentLocation.Text);
+        //        sbCaseDetails.Replace("@app_incident_date_text", LocalResources.GetLabel("app_incident_date_text"));
+        //        sbCaseDetails.Replace("@lblIncidentDate", lblIncidentDate.Text);
+        //        sbCaseDetails.Replace("@app_incident_time_text", LocalResources.GetLabel("app_incident_time_text"));
+        //        sbCaseDetails.Replace("@lblIncidentTime", lblIncidentTime.Text);
+        //        sbCaseDetails.Replace("@app_employee_report_location_text", LocalResources.GetLabel("app_employee_report_location_text"));
+        //        sbCaseDetails.Replace("@lblEmployeeReportLocation", lblEmployeeReportLocation.Text);
+        //        sbCaseDetails.Replace("@app_timezone_text", LocalResources.GetLabel("app_timezone_text"));
+        //        sbCaseDetails.Replace("@lblTimeZone", lblTimeZone.Text);
+        //        sbCaseDetails.Replace("@app_note_text", LocalResources.GetLabel("app_note_text"));
+        //        sbCaseDetails.Replace("@lblNote", lblNote.Text);
+        //        sbCaseDetails.Replace("@app_additional_Information_text", LocalResources.GetLabel("app_additional_Information_text"));
+        //        sbCaseDetails.Replace("@app_witness(es)_text", LocalResources.GetLabel("app_witness(es)_text"));
+        //        sbCaseDetails.Replace("@app_police_reports(s)_text", LocalResources.GetLabel("app_police_reports(s)_text"));
+        //        sbCaseDetails.Replace("@app_photo(s)_text", LocalResources.GetLabel("app_photo(s)_text"));
+        //        sbCaseDetails.Replace("@app_scene_sketch(es)_text", LocalResources.GetLabel("app_scene_sketch(es)_text"));
+        //        sbCaseDetails.Replace("@app_extenuating_condition(s)_text", LocalResources.GetLabel("app_extenuating_condition(s)_text"));
+        //        sbCaseDetails.Replace("@app_employee_interview(s)_text", LocalResources.GetLabel("app_employee_interview(s)_text"));
+        //        sbCaseDetails.Replace("@app_root_cause_analysis_infornation_text", LocalResources.GetLabel("app_root_cause_analysis_infornation_text"));
+        //        sbCaseDetails.Replace("@app_root_cause_analysis_details_text", LocalResources.GetLabel("app_root_cause_analysis_details_text"));
+        //        sbCaseDetails.Replace("@lblRootCauseAnalysisDetails", lblRootCauseAnalysisDetails.Text);
+        //        sbCaseDetails.Replace("@app_corrective_action_information_text", LocalResources.GetLabel("app_corrective_action_information_text"));
+        //        sbCaseDetails.Replace("@app_corrective_action_details_text", LocalResources.GetLabel("app_corrective_action_details_text"));
+        //        sbCaseDetails.Replace("@lblCorrectiveActionDetails", lblCorrectiveActionDetails.Text);
+        //        //sbCaseDetails.Replace("@app_user_osha_300_information_text", LocalResources.GetLabel("app_user_osha_300_information_text"));
+        //        //sbCaseDetails.Replace("@app_user_case_outcome_text", LocalResources.GetLabel("app_user_case_outcome_text"));
+        //        //sbCaseDetails.Replace("@lblCaseOutCome", lblCaseOutCome.Text);
+        //        //sbCaseDetails.Replace("@app_user_days_away_from_work_text", LocalResources.GetLabel("app_user_days_away_from_work_text"));
+        //        //sbCaseDetails.Replace("@lblDaysAwayFromWork", lblDaysAwayFromWork.Text);
+        //        //sbCaseDetails.Replace("@app_user_days_of_restrictions_text", LocalResources.GetLabel("app_user_days_of_restrictions_text"));
+        //        //sbCaseDetails.Replace("@lblDaysOfRestrictions", lblDaysOfRestrictions.Text);
+        //        //sbCaseDetails.Replace("@app_user_data_of_death_text", LocalResources.GetLabel("app_user_data_of_death_text"));
+        //        //sbCaseDetails.Replace("@lblDateOfDeath", lblDateOfDeath.Text);
+        //        //sbCaseDetails.Replace("@app_user_type_of_illness_text", LocalResources.GetLabel("app_user_type_of_illness_text"));
+        //        //sbCaseDetails.Replace("@lblTypeofIllness", lblTypeofIllness.Text);
+        //        //sbCaseDetails.Replace("@app_user_describe_injury_or_illness_text", LocalResources.GetLabel("app_user_describe_injury_or_illness_text"));
+        //        //sbCaseDetails.Replace("@lblOSHA300info", lblOSHA300info.Text);
+        //        //sbCaseDetails.Replace("@app_user_oosha_301_information_text", LocalResources.GetLabel("app_user_oosha_301_information_text"));
+        //        //sbCaseDetails.Replace("@app_user_worker_gender_text", LocalResources.GetLabel("app_user_worker_gender_text"));
+        //        //sbCaseDetails.Replace("@lblWorkerGender", lblWorkerGender.Text);
+        //        //sbCaseDetails.Replace("@app_user_works_start_time_text", LocalResources.GetLabel("app_user_works_start_time_text"));
+        //        //sbCaseDetails.Replace("@lblWorkStartTime", lblWorkStartTime.Text);
+        //        //sbCaseDetails.Replace("@app_user_physician_text", LocalResources.GetLabel("app_user_physician_text"));
+        //        //sbCaseDetails.Replace("@lblPhysician", lblPhysician.Text);
+        //        //sbCaseDetails.Replace("@app_user_treatment_facility_text", LocalResources.GetLabel("app_user_treatment_facility_text"));
+        //        //sbCaseDetails.Replace("@lblTreatmentFacility", lblTreatmentFacility.Text);
+        //        //sbCaseDetails.Replace("@app_user_emergency_room_text", LocalResources.GetLabel("app_user_emergency_room_text"));
+        //        //sbCaseDetails.Replace("@lblEmergencyRoom", lblEmergencyRoom.Text);
+        //        //sbCaseDetails.Replace("@app_user_hospitalized_text", LocalResources.GetLabel("app_user_hospitalized_text"));
+        //        //sbCaseDetails.Replace("@lblHospitalized", lblHospitalized.Text);
+        //        //sbCaseDetails.Replace("@app_user_address_1_text", LocalResources.GetLabel("app_user_address_1_text"));
+        //        //sbCaseDetails.Replace("@lblAddress1", lblAddress1.Text);
+        //        //sbCaseDetails.Replace("@app_user_address_2_text", LocalResources.GetLabel("app_user_address_2_text"));
+        //        //sbCaseDetails.Replace("@lblAddress2", lblAddress2.Text);
+        //        //sbCaseDetails.Replace("@app_user_address_3_text", LocalResources.GetLabel("app_user_address_3_text"));
+        //        //sbCaseDetails.Replace("@lblAddress3", lblAddress3.Text);
+        //        //sbCaseDetails.Replace("@app_city_text", LocalResources.GetLabel("app_city_text"));
+        //        //sbCaseDetails.Replace("@lblCity", lblCity.Text);
+        //        //sbCaseDetails.Replace("@app_state_text", LocalResources.GetLabel("app_state_text"));
+        //        //sbCaseDetails.Replace("@lblState", lblState.Text);
+        //        //sbCaseDetails.Replace("@app_user_zip_text", LocalResources.GetLabel("app_user_zip_text"));
+        //        //sbCaseDetails.Replace("@lblZipCode", lblZipCode.Text);
+        //        //sbCaseDetails.Replace("@app_user_what_was_the_employee_text", LocalResources.GetLabel("app_user_what_was_the_employee_text"));
+        //        //sbCaseDetails.Replace("@lblOSHA301Info1", lblOSHA301Info1.Text);
+        //        //sbCaseDetails.Replace("@app_user_what_happened_tell_text", LocalResources.GetLabel("app_user_what_happened_tell_text"));
+        //        //sbCaseDetails.Replace("@lblOSHA301Info2", lblOSHA301Info2.Text);
+        //        //sbCaseDetails.Replace("@app_user_what_was_the_injury_text", LocalResources.GetLabel("app_user_what_was_the_injury_text"));
+        //        //sbCaseDetails.Replace("@lblOSHA301Info3", lblOSHA301Info3.Text);
+        //        //sbCaseDetails.Replace("@app_user_object_or_substance_text", LocalResources.GetLabel("app_user_object_or_substance_text"));
+        //        //sbCaseDetails.Replace("@lblOSHA301Info4", lblOSHA301Info4.Text);
+        //        sbCaseDetails.Replace("@app_custom_fields_text", LocalResources.GetLabel("app_custom_fields_text"));
+        //        sbCaseDetails.Replace("@app_custom_01_text", LocalResources.GetLabel("app_custom_01_text"));
+        //        sbCaseDetails.Replace("@app_custom_02_text", LocalResources.GetLabel("app_custom_02_text"));
+        //        sbCaseDetails.Replace("@app_custom_03_text", LocalResources.GetLabel("app_custom_03_text"));
+        //        sbCaseDetails.Replace("@app_custom_04_text", LocalResources.GetLabel("app_custom_04_text"));
+        //        sbCaseDetails.Replace("@app_custom_05_text", LocalResources.GetLabel("app_custom_05_text"));
+        //        sbCaseDetails.Replace("@app_custom_06_text", LocalResources.GetLabel("app_custom_06_text"));
+        //        sbCaseDetails.Replace("@app_custom_07_text", LocalResources.GetLabel("app_custom_07_text"));
+        //        sbCaseDetails.Replace("@app_custom_08_text", LocalResources.GetLabel("app_custom_08_text"));
+        //        sbCaseDetails.Replace("@app_custom_09_text", LocalResources.GetLabel("app_custom_09_text"));
+        //        sbCaseDetails.Replace("@app_custom_10_text", LocalResources.GetLabel("app_custom_10_text"));
+        //        sbCaseDetails.Replace("@app_custom_11_text", LocalResources.GetLabel("app_custom_11_text"));
+        //        sbCaseDetails.Replace("@app_custom_12_text", LocalResources.GetLabel("app_custom_12_text"));
+        //        sbCaseDetails.Replace("@app_custom_13_text", LocalResources.GetLabel("app_custom_13_text"));
+        //        sbCaseDetails.Replace("@wp_app_release_number", LocalResources.GetLabel("wp_app_release_number"));
+        //        sbCaseDetails.Replace("@lblCustom01", lblCustom01.Text);
+        //        sbCaseDetails.Replace("@lblCustom02", lblCustom02.Text);
+        //        sbCaseDetails.Replace("@lblCustom03", lblCustom03.Text);
+        //        sbCaseDetails.Replace("@lblCustom04", lblCustom04.Text);
+        //        sbCaseDetails.Replace("@lblCustom05", lblCustom05.Text);
+        //        sbCaseDetails.Replace("@lblCustom06", lblCustom06.Text);
+        //        sbCaseDetails.Replace("@lblCustom07", lblCustom07.Text);
+        //        sbCaseDetails.Replace("@lblCustom08", lblCustom08.Text);
+        //        sbCaseDetails.Replace("@lblCustom09", lblCustom09.Text);
+        //        sbCaseDetails.Replace("@lblCustom10", lblCustom10.Text);
+        //        sbCaseDetails.Replace("@lblCustom11", lblCustom11.Text);
+        //        sbCaseDetails.Replace("@lblCustom12", lblCustom12.Text);
+        //        sbCaseDetails.Replace("@lblCustom13", lblCustom13.Text);
+        //        sbCaseDetails.Replace("@app_required_fields_text", LocalResources.GetLabel("app_required_fields_text"));
 
-                ComplianceDAO miris = new ComplianceDAO();
-                miris.c_case_id_pk = view;
-                //witness
-                DataTable dtGetWitness = new DataTable();
-                dtGetWitness = ComplianceBLL.GetWitness(miris);
-                StringBuilder sbWitness = new StringBuilder();
-                if (dtGetWitness.Rows.Count > 0)
-                {
-                    sbWitness.Append("<table>");
-                    for (int i = 0; i <= dtGetWitness.Rows.Count - 1; i++)
-                    {
-                        sbWitness.Append("<tr>");
-                        sbWitness.Append("<td>");
-                        sbWitness.Append(dtGetWitness.Rows[i]["c_file_name"].ToString());
-                        sbWitness.Append("</td>");
-                        sbWitness.Append("</tr>");
-                    }
-                    sbWitness.Append("</table>");
-                }
-                sbCaseDetails.Replace("@gvAddWitness", sbWitness.ToString());
-                //photo
-                DataTable dtGetPhoto = new DataTable();
-                dtGetPhoto = ComplianceBLL.Getphoto(miris);
-                StringBuilder sbPhoto = new StringBuilder();
-                if (dtGetPhoto.Rows.Count > 0)
-                {
-                    sbPhoto.Append("<table>");
-                    for (int i = 0; i <= dtGetPhoto.Rows.Count - 1; i++)
-                    {
-                        sbPhoto.Append("<tr>");
-                        sbPhoto.Append("<td>");
-                        sbPhoto.Append(dtGetPhoto.Rows[i]["c_file_name"].ToString());
-                        sbPhoto.Append("</td>");
-                        sbPhoto.Append("</tr>");
-                    }
-                    sbPhoto.Append("</table>");
-                }
-                sbCaseDetails.Replace("@gvPhoto", sbPhoto.ToString());
-                //police report
-                DataTable dtGetPoliceReport = new DataTable();
-                dtGetPoliceReport = ComplianceBLL.GetPoliceReport(miris);
-                StringBuilder sbPoliceReport = new StringBuilder();
-                if (dtGetPoliceReport.Rows.Count > 0)
-                {
-                    sbPoliceReport.Append("<table>");
-                    for (int i = 0; i <= dtGetPoliceReport.Rows.Count - 1; i++)
-                    {
-                        sbPoliceReport.Append("<tr>");
-                        sbPoliceReport.Append("<td>");
-                        sbPoliceReport.Append(dtGetPoliceReport.Rows[i]["c_file_name"].ToString());
-                        sbPoliceReport.Append("</td>");
-                        sbPoliceReport.Append("</tr>");
-                    }
-                    sbPoliceReport.Append("</table>");
-                }
-                sbCaseDetails.Replace("@gvPoliceReport", sbPoliceReport.ToString());
-                //SceneSketch
-                DataTable dtGetSceneSketch = new DataTable();
-                dtGetSceneSketch = ComplianceBLL.GetSceneSketch(miris);
-                StringBuilder sbSceneSketch = new StringBuilder();
-                if (dtGetSceneSketch.Rows.Count > 0)
-                {
-                    sbSceneSketch.Append("<table>");
-                    for (int i = 0; i <= dtGetSceneSketch.Rows.Count - 1; i++)
-                    {
-                        sbSceneSketch.Append("<tr>");
-                        sbSceneSketch.Append("<td>");
-                        sbSceneSketch.Append(dtGetSceneSketch.Rows[i]["c_file_name"].ToString());
-                        sbSceneSketch.Append("</td>");
-                        sbSceneSketch.Append("</tr>");
-                    }
-                    sbSceneSketch.Append("</table>");
-                }
-                sbCaseDetails.Replace("@gvSceneSketch", sbSceneSketch.ToString());
-                //Extenautingcondition
-                DataTable dtGetExtenautingCondition = new DataTable();
-                dtGetExtenautingCondition = ComplianceBLL.GetExtenuatingCondition(miris);
-                StringBuilder sbExtenautingCondition = new StringBuilder();
-                if (dtGetExtenautingCondition.Rows.Count > 0)
-                {
-                    sbExtenautingCondition.Append("<table>");
-                    for (int i = 0; i <= dtGetExtenautingCondition.Rows.Count - 1; i++)
-                    {
-                        sbExtenautingCondition.Append("<tr>");
-                        sbExtenautingCondition.Append("<td>");
-                        sbExtenautingCondition.Append(dtGetExtenautingCondition.Rows[i]["c_file_name"].ToString());
-                        sbExtenautingCondition.Append("</td>");
-                        sbExtenautingCondition.Append("</tr>");
-                    }
-                    sbExtenautingCondition.Append("</table>");
-                }
-                sbCaseDetails.Replace("@gvExtenuatingcondition", sbExtenautingCondition.ToString());
-                //EmployeeInterview
-                DataTable dtGetEmployeeInterview = new DataTable();
-                dtGetEmployeeInterview = ComplianceBLL.GetEmployeeInterview(miris);
-                StringBuilder sbEmployeeInterview = new StringBuilder();
-                if (dtGetEmployeeInterview.Rows.Count > 0)
-                {
-                    sbEmployeeInterview.Append("<table>");
-                    for (int i = 0; i <= dtGetEmployeeInterview.Rows.Count - 1; i++)
-                    {
-                        sbEmployeeInterview.Append("<tr>");
-                        sbEmployeeInterview.Append("<td>");
-                        sbEmployeeInterview.Append(dtGetEmployeeInterview.Rows[i]["c_file_name"].ToString());
-                        sbEmployeeInterview.Append("</td>");
-                        sbEmployeeInterview.Append("</tr>");
-                    }
-                    sbEmployeeInterview.Append("</table>");
-                }
-                sbCaseDetails.Replace("@gvEmployeeInterview", sbEmployeeInterview.ToString());
-                strCaseDetails = sbCaseDetails.ToString();
-            }
-            catch (Exception ex)
-            {
-                //TODO: Show user friendly error here
-                //Log here
-                if (ConfigurationWrapper.LogErrors == true)
-                {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("ccvmiris-01.htm", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("ccvmiris-01.htm", ex.Message);
-                    }
-                }
-            }
-            return strCaseDetails;
-        }
+        //        ComplianceDAO miris = new ComplianceDAO();
+        //        miris.c_case_id_pk = view;
+        //        //witness
+        //        DataTable dtGetWitness = new DataTable();
+        //        dtGetWitness = ComplianceBLL.GetWitness(miris);
+        //        StringBuilder sbWitness = new StringBuilder();
+        //        if (dtGetWitness.Rows.Count > 0)
+        //        {
+        //            sbWitness.Append("<table>");
+        //            for (int i = 0; i <= dtGetWitness.Rows.Count - 1; i++)
+        //            {
+        //                sbWitness.Append("<tr>");
+        //                sbWitness.Append("<td>");
+        //                sbWitness.Append(dtGetWitness.Rows[i]["c_file_name"].ToString());
+        //                sbWitness.Append("</td>");
+        //                sbWitness.Append("</tr>");
+        //            }
+        //            sbWitness.Append("</table>");
+        //        }
+        //        sbCaseDetails.Replace("@gvAddWitness", sbWitness.ToString());
+        //        //photo
+        //        DataTable dtGetPhoto = new DataTable();
+        //        dtGetPhoto = ComplianceBLL.Getphoto(miris);
+        //        StringBuilder sbPhoto = new StringBuilder();
+        //        if (dtGetPhoto.Rows.Count > 0)
+        //        {
+        //            sbPhoto.Append("<table>");
+        //            for (int i = 0; i <= dtGetPhoto.Rows.Count - 1; i++)
+        //            {
+        //                sbPhoto.Append("<tr>");
+        //                sbPhoto.Append("<td>");
+        //                sbPhoto.Append(dtGetPhoto.Rows[i]["c_file_name"].ToString());
+        //                sbPhoto.Append("</td>");
+        //                sbPhoto.Append("</tr>");
+        //            }
+        //            sbPhoto.Append("</table>");
+        //        }
+        //        sbCaseDetails.Replace("@gvPhoto", sbPhoto.ToString());
+        //        //police report
+        //        DataTable dtGetPoliceReport = new DataTable();
+        //        dtGetPoliceReport = ComplianceBLL.GetPoliceReport(miris);
+        //        StringBuilder sbPoliceReport = new StringBuilder();
+        //        if (dtGetPoliceReport.Rows.Count > 0)
+        //        {
+        //            sbPoliceReport.Append("<table>");
+        //            for (int i = 0; i <= dtGetPoliceReport.Rows.Count - 1; i++)
+        //            {
+        //                sbPoliceReport.Append("<tr>");
+        //                sbPoliceReport.Append("<td>");
+        //                sbPoliceReport.Append(dtGetPoliceReport.Rows[i]["c_file_name"].ToString());
+        //                sbPoliceReport.Append("</td>");
+        //                sbPoliceReport.Append("</tr>");
+        //            }
+        //            sbPoliceReport.Append("</table>");
+        //        }
+        //        sbCaseDetails.Replace("@gvPoliceReport", sbPoliceReport.ToString());
+        //        //SceneSketch
+        //        DataTable dtGetSceneSketch = new DataTable();
+        //        dtGetSceneSketch = ComplianceBLL.GetSceneSketch(miris);
+        //        StringBuilder sbSceneSketch = new StringBuilder();
+        //        if (dtGetSceneSketch.Rows.Count > 0)
+        //        {
+        //            sbSceneSketch.Append("<table>");
+        //            for (int i = 0; i <= dtGetSceneSketch.Rows.Count - 1; i++)
+        //            {
+        //                sbSceneSketch.Append("<tr>");
+        //                sbSceneSketch.Append("<td>");
+        //                sbSceneSketch.Append(dtGetSceneSketch.Rows[i]["c_file_name"].ToString());
+        //                sbSceneSketch.Append("</td>");
+        //                sbSceneSketch.Append("</tr>");
+        //            }
+        //            sbSceneSketch.Append("</table>");
+        //        }
+        //        sbCaseDetails.Replace("@gvSceneSketch", sbSceneSketch.ToString());
+        //        //Extenautingcondition
+        //        DataTable dtGetExtenautingCondition = new DataTable();
+        //        dtGetExtenautingCondition = ComplianceBLL.GetExtenuatingCondition(miris);
+        //        StringBuilder sbExtenautingCondition = new StringBuilder();
+        //        if (dtGetExtenautingCondition.Rows.Count > 0)
+        //        {
+        //            sbExtenautingCondition.Append("<table>");
+        //            for (int i = 0; i <= dtGetExtenautingCondition.Rows.Count - 1; i++)
+        //            {
+        //                sbExtenautingCondition.Append("<tr>");
+        //                sbExtenautingCondition.Append("<td>");
+        //                sbExtenautingCondition.Append(dtGetExtenautingCondition.Rows[i]["c_file_name"].ToString());
+        //                sbExtenautingCondition.Append("</td>");
+        //                sbExtenautingCondition.Append("</tr>");
+        //            }
+        //            sbExtenautingCondition.Append("</table>");
+        //        }
+        //        sbCaseDetails.Replace("@gvExtenuatingcondition", sbExtenautingCondition.ToString());
+        //        //EmployeeInterview
+        //        DataTable dtGetEmployeeInterview = new DataTable();
+        //        dtGetEmployeeInterview = ComplianceBLL.GetEmployeeInterview(miris);
+        //        StringBuilder sbEmployeeInterview = new StringBuilder();
+        //        if (dtGetEmployeeInterview.Rows.Count > 0)
+        //        {
+        //            sbEmployeeInterview.Append("<table>");
+        //            for (int i = 0; i <= dtGetEmployeeInterview.Rows.Count - 1; i++)
+        //            {
+        //                sbEmployeeInterview.Append("<tr>");
+        //                sbEmployeeInterview.Append("<td>");
+        //                sbEmployeeInterview.Append(dtGetEmployeeInterview.Rows[i]["c_file_name"].ToString());
+        //                sbEmployeeInterview.Append("</td>");
+        //                sbEmployeeInterview.Append("</tr>");
+        //            }
+        //            sbEmployeeInterview.Append("</table>");
+        //        }
+        //        sbCaseDetails.Replace("@gvEmployeeInterview", sbEmployeeInterview.ToString());
+        //        strCaseDetails = sbCaseDetails.ToString();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //TODO: Show user friendly error here
+        //        //Log here
+        //        if (ConfigurationWrapper.LogErrors == true)
+        //        {
+        //            if (ex.InnerException != null)
+        //            {
+        //                Logger.WriteToErrorLog("ccvmiris-01.htm", ex.Message, ex.InnerException.Message);
+        //            }
+        //            else
+        //            {
+        //                Logger.WriteToErrorLog("ccvmiris-01.htm", ex.Message);
+        //            }
+        //        }
+        //    }
+        //    return strCaseDetails;
+        //}
 
         protected void btnDownloadZip_header_Click(object sender, EventArgs e)
         {
@@ -2306,6 +2351,14 @@ namespace ComplicanceFactor.Compliance.MIRIS
             }
             //DirectoryInfo deleteDirectory = new DirectoryInfo(filePath);
             Directory.Delete(filePath, true);
+        }
+
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+            return userTheme;
         }
 
         

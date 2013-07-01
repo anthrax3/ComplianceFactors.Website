@@ -5169,8 +5169,10 @@ End Function
         <Image Name="Image3">
           <Source>External</Source>
           <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
+          <Sizing>Fit</Sizing>
           <Height>1.04167in</Height>
           <Width>6.25in</Width>
+          <ToolTip>Logo</ToolTip>
           <Style>
             <Border>
               <Style>None</Style>

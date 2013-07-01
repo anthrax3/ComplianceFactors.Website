@@ -67,7 +67,31 @@ namespace ComplicanceFactor.Manager.Popup
                 rvLearningHistory.ProcessingMode = ProcessingMode.Local;
                 rvLearningHistory.LocalReport.EnableExternalImages = true;
                 rvLearningHistory.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Employee.LearningHistory.PdfTemplate.MyLearningHistory.rdlc";
+
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = GetthemeforEmailandPdf();
+
+
+                string protocol = Request.Url.AbsoluteUri;
+                int len = protocol.IndexOf(':');
+                protocol = protocol.Substring(0, len);
+
                 rvLearningHistory.LocalReport.DataSources.Add(new ReportDataSource("MyLearningHistory", dsLearningHistory.Tables[0]));
+
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+                param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                this.rvLearningHistory.LocalReport.SetParameters(param);
+
                 byte[] bytes = rvLearningHistory.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();
@@ -227,6 +251,15 @@ namespace ComplicanceFactor.Manager.Popup
                     Response.Close();
                 }
             }
+        }
+
+
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+            return userTheme;
         }
     }
 

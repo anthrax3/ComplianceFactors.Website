@@ -84,7 +84,7 @@
         </div>
     </div>
     <div class="div_padding_10" id="div_course" runat="server">
-        <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
+        <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter" 
             runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>" GridLines="None" DataKeyNames="e_enroll_course_id_fk"
             AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
             <Columns>

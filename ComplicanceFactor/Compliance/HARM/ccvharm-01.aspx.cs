@@ -615,10 +615,11 @@ namespace ComplicanceFactor.Compliance.HARM
         {
 
             rvHARM.LocalReport.DataSources.Clear();
+            rvHARM.LocalReport.EnableExternalImages = true;
             DataSet dsPdf = new DataSet();
             ComplianceDAO harm = new ComplianceDAO();
             harm.h_harm_id_pk = view;
-            harm.s_locale_culture = LanguageManager.CurrentCulture.Name;
+            harm.s_locale_culture = SessionWrapper.CultureName;
 
             //witness
             DataSet dsCustomCustomer = new DataSet();
@@ -658,6 +659,7 @@ namespace ComplicanceFactor.Compliance.HARM
 
             //control measure
 
+
             try
             {
                 dsPdf = ComplianceBLL.createHARMPDF(harm);
@@ -680,10 +682,9 @@ namespace ComplicanceFactor.Compliance.HARM
 
             }
 
-            rvHARM.Reset(); //important
-
             // Add the handler for the subreport
-            rvHARM.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SubreportProcessingEvent);
+            rvHARM.LocalReport.SubreportProcessing += SubreportProcessingEvent;
+
 
             string s = LanguageManager.CurrentCulture.Name;
             Warning[] warnings;
@@ -693,18 +694,38 @@ namespace ComplicanceFactor.Compliance.HARM
             string extension = string.Empty;
 
             rvHARM.ProcessingMode = ProcessingMode.Local;
-            rvHARM.LocalReport.EnableExternalImages = true;
-
-
             rvHARM.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Compliance.HARM.PdfTemplate.HARMReport.rdlc";
+
+
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = GetthemeforEmailandPdf();
+
+
+            string protocol = Request.Url.AbsoluteUri;
+            int len = protocol.IndexOf(':');
+            protocol = protocol.Substring(0, len);
+
+
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARMView", dsPdf.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Custom_Customer", dsCustomCustomer.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Photo", dsPhoto.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_SceneSketch", dsSceneSketch.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Extenuating_Condition", dsExtenuatingCondition.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Employee_Interview", dsEmployeeInterview.Tables[0]));
-
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Hazard_Control_Measure", dsHazardControlMeasure.Tables[0]));
+            List<ReportParameter> param = new List<ReportParameter>();
+            param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+            param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+            param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+            this.rvHARM.LocalReport.SetParameters(param);
 
 
             byte[] bytes = rvHARM.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);

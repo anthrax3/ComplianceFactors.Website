@@ -140,16 +140,15 @@
             <br />
             <div id="div_calendar">
                 <div class="div_padding_40">
-                    <ECalendar:EventCalendar ID="Calendar1" runat="server" BackColor="White" BorderColor="Silver"
-                        BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="550px"
-                        Width="850px" FirstDayOfWeek="Sunday" NextMonthText="" PrevMonthText="" SelectionMode="None"
+                    <ECalendar:EventCalendar ID="Calendar1" runat="server" BorderWidth="1px" Font-Names="Verdana"
+                        Font-Size="9pt" Height="550px" Class="gridview_long_no_border" Width="850px"
+                        FirstDayOfWeek="Sunday" NextMonthText="" PrevMonthText="" SelectionMode="None"
                         ShowGridLines="True" ShowTitle="False" NextPrevFormat="CustomText" DayNameFormat="Full"
                         ShowDescriptionAsToolTip="True" BorderStyle="Solid" EventDateColumnName="" EventHeaderColumnName=""
                         EventDescriptionColumnName="" OnDayRender="Calendar1_DayRender">
                         <DayStyle HorizontalAlign="Left" VerticalAlign="Top" Wrap="True" />
-                        <NextPrevStyle Font-Size="8pt" ForeColor="#333333" Font-Bold="True" VerticalAlign="Bottom" />
-                        <DayHeaderStyle BorderWidth="1px" Height="15px" BackColor="Gray" Font-Bold="True"
-                            Font-Size="8pt" />
+                        <NextPrevStyle Font-Size="8pt" Font-Bold="True" VerticalAlign="Bottom" />
+                        <DayHeaderStyle BorderWidth="1px" Height="15px" Font-Bold="True" Font-Size="8pt" />
                     </ECalendar:EventCalendar>
                     <%--  --%>
                 </div>
@@ -203,7 +202,7 @@
     <div class="div_header_long">
         &nbsp;
     </div>
-     <rsweb:ReportViewer ID="rvMyCalendar" runat="server" Style="display: none;" DocumentMapCollapsed="true"
+    <rsweb:ReportViewer ID="rvMyCalendar" runat="server" Style="display: none;" DocumentMapCollapsed="true"
         ShowDocumentMapButton="false">
     </rsweb:ReportViewer>
     <br />

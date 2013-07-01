@@ -484,7 +484,31 @@ namespace ComplicanceFactor.Training
                 rvMyDelivery.ProcessingMode = ProcessingMode.Local;
                 rvMyDelivery.LocalReport.EnableExternalImages = true;
                 rvMyDelivery.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Training.PdfTemplate.MyCourse.rdlc";
+
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = GetthemeforEmailandPdf();
+
+
+                string protocol = Request.Url.AbsoluteUri;
+                int len = protocol.IndexOf(':');
+                protocol = protocol.Substring(0, len);
+
                 rvMyDelivery.LocalReport.DataSources.Add(new ReportDataSource("dsMyCourses", dsMycourses.Tables[0]));
+
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+                param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                this.rvMyDelivery.LocalReport.SetParameters(param);
+
                 byte[] bytes = rvMyDelivery.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
                 Response.Clear();
@@ -550,9 +574,34 @@ namespace ComplicanceFactor.Training
                     rvMySignUpSheet.ProcessingMode = ProcessingMode.Local;
                     rvMySignUpSheet.LocalReport.EnableExternalImages = true;
                     rvMySignUpSheet.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Instructor.PdfTemplate.SignUpSheet.rdlc";
+
+                    SystemThemes userTheme = new SystemThemes();
+                    userTheme = GetthemeforEmailandPdf();
+
+
+                    string protocol = Request.Url.AbsoluteUri;
+                    int len = protocol.IndexOf(':');
+                    protocol = protocol.Substring(0, len);
+
                     rvMySignUpSheet.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(MySubreportEventHandler);
                     rvMySignUpSheet.LocalReport.DataSources.Add(new ReportDataSource("dsSessionDetails", dtMySession));
                     //rvMySignUpSheet.LocalReport.DataSources.Add(new ReportDataSource("dsEmployeeList", dtEnrolledUser));
+
+                    List<ReportParameter> param = new List<ReportParameter>();
+                    param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+                    param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+                    param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                    this.rvMySignUpSheet.LocalReport.SetParameters(param);
+
+
                     byte[] bytes = rvMySignUpSheet.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                     Response.Buffer = true;
                     Response.Clear();
@@ -631,6 +680,14 @@ namespace ComplicanceFactor.Training
             course.s_locale_culture = SessionWrapper.CultureName;
             course.c_course_coordinator_id_fk = SessionWrapper.u_userid;
             return course;
+        }
+
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+            return userTheme;
         }
 
 

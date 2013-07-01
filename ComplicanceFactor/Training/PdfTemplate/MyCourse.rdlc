@@ -66,8 +66,9 @@
   <Body>
     <ReportItems>
       <Image Name="Image3">
-        <Source>Embedded</Source>
-        <Value>ComplianceFactorsLogo</Value>
+        <Source>External</Source>
+        <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
+        <Sizing>Fit</Sizing>
         <Height>1.04167in</Height>
         <Width>6.25in</Width>
         <ToolTip>Logo</ToolTip>
@@ -101,7 +102,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <BackgroundColor>#96cd19</BackgroundColor>
+          <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -141,7 +142,7 @@
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -152,9 +153,9 @@
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -179,7 +180,7 @@
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -190,9 +191,9 @@
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -217,7 +218,7 @@
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <TextDecoration>None</TextDecoration>
-                                <Color>#000000</Color>
+                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -228,9 +229,9 @@
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
-                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -264,7 +265,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -294,7 +295,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -324,7 +325,7 @@
                       <Style>
                         <Border>
                           <Color>White</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -462,6 +463,7 @@
                               <Value>=Fields!my_courses_label.Value &amp;":"</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -474,7 +476,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>#96cd19</BackgroundColor>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -516,8 +518,57 @@
       </Tablix>
     </ReportItems>
     <Height>3.46541in</Height>
-    <Style />
+    <Style>
+      <Border />
+      <BackgroundColor>=Parameters!s_theme_css_tag_main_background_hex_value.Value</BackgroundColor>
+    </Style>
   </Body>
+  <ReportParameters>
+    <ReportParameter Name="s_theme_report_logo_file_name">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_main_background_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_foot_top_line_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_foot_bot_line_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_section_head_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_section_head_text_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_section_head_border_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_table_head_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_table_head_text_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_table_border_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="s_theme_css_tag_body_text_hex_value">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <Code>Public Shared Dim MyVar as String
 Public Shared Dim MyVarr as String
 
@@ -620,6 +671,7 @@ End Function
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
+              <Color>=Parameters!s_theme_css_tag_foot_bot_line_hex_value.Value</Color>
               <Style>Solid</Style>
               <Width>1.5pt</Width>
             </Border>
@@ -633,7 +685,7 @@ End Function
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
-              <Color>#96cd19</Color>
+              <Color>=Parameters!s_theme_css_tag_foot_top_line_hex_value.Value</Color>
               <Style>Solid</Style>
               <Width>1.5pt</Width>
             </Border>

@@ -9,6 +9,7 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
 using Microsoft.Reporting.WebForms;
+using ComplicanceFactor.BusinessComponent.DataAccessObject;
 
 
 namespace ComplicanceFactor.Instructor
@@ -274,10 +275,35 @@ namespace ComplicanceFactor.Instructor
                 rvMyCalendar.ProcessingMode = ProcessingMode.Local;
                 rvMyCalendar.LocalReport.EnableExternalImages = true;
                 rvMyCalendar.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Instructor.PdfTemplate.MyCalendar.rdlc";
+
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = GetthemeforEmailandPdf();
+
+
+                string protocol = Request.Url.AbsoluteUri;
+                int len = protocol.IndexOf(':');
+                protocol = protocol.Substring(0, len);
+
                 rvMyCalendar.LocalReport.DataSources.Add(new ReportDataSource("dsMyCalendar", dtCalendarDetails));
                 ReportParameter[] myparams = new ReportParameter[1];
                 myparams[0] = new ReportParameter("monthName", monthName, false);
                 rvMyCalendar.LocalReport.SetParameters(myparams);
+
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+                param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_body_link_hex_value", "#" + userTheme.s_theme_css_tag_body_link_hex_value));
+                this.rvMyCalendar.LocalReport.SetParameters(param);
+
                 //rvMySignUpSheet.LocalReport.DataSources.Add(new ReportDataSource("dsEmployeeList", dtEnrolledUser));
                 byte[] bytes = rvMyCalendar.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 Response.Buffer = true;
@@ -290,6 +316,14 @@ namespace ComplicanceFactor.Instructor
                 Response.End();
                 Response.Close();
             }
+        }
+
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+            return userTheme;
         }
     }
 }

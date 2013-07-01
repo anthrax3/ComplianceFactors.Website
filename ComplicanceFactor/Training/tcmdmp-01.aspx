@@ -7,6 +7,25 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#app_nav_training').addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
+
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
+
+                $('#app_nav_training').addClass('selected');
+                return false;
+            });
+        });
+</script>
+<script type="text/javascript">
     function resetall() {
         document.getElementById('<%=txtCourseId.ClientID %>').value = '';
         document.getElementById('<%=txtTitle.ClientID %>').value = '';
