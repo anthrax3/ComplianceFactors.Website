@@ -281,6 +281,7 @@
     <Content Include="Employee\Catalog\ascp-01.aspx" />
     <Content Include="Employee\Catalog\ascr-01.aspx" />
     <Content Include="Employee\Catalog\ctdocp-01.aspx" />
+    <Content Include="Employee\Catalog\ctdocv-01.aspx" />
     <Content Include="Employee\Catalog\ctdp-01.aspx" />
     <Content Include="Employee\Catalog\qscr-01.aspx" />
     <Content Include="Employee\Course\lmcp-01.aspx" />
@@ -1362,6 +1363,13 @@
     </Compile>
     <Compile Include="Employee\Catalog\ctdocp-01.aspx.designer.cs">
       <DependentUpon>ctdocp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\Catalog\ctdocv-01.aspx.cs">
+      <DependentUpon>ctdocv-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\Catalog\ctdocv-01.aspx.designer.cs">
+      <DependentUpon>ctdocv-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee\Course\lmcp-01.aspx.cs">
       <DependentUpon>lmcp-01.aspx</DependentUpon>
@@ -3309,12 +3317,14 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx.cs">
       <DependentUpon>p-samdhrislo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx.designer.cs">
       <DependentUpon>p-samdhrislo-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx.cs">
       <DependentUpon>p-samvhrislo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx.designer.cs">
       <DependentUpon>p-samvhrislo-01.aspx</DependentUpon>
@@ -3328,6 +3338,7 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx.cs">
       <DependentUpon>Test_hris.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx.designer.cs">
       <DependentUpon>Test_hris.aspx</DependentUpon>

@@ -264,7 +264,7 @@ namespace ComplicanceFactor.Employee.Catalog
                     Button btnDrop = (Button)e.Row.FindControl("btnDrop");
                     Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                     Button btnAssign = (Button)e.Row.FindControl("btnAssign");
-                    Button btnDocument = (Button)e.Row.FindControl("btnDocument");
+                    Button btnDownload = (Button)e.Row.FindControl("btnDownload");
                     Label lblAlreadyEnrollMessage = (Label)e.Row.FindControl("lblAlreadyEnrollMessage");
                     //check if the type is course or curriculum or program
                     if (type == "Course")
@@ -335,10 +335,12 @@ namespace ComplicanceFactor.Employee.Catalog
                     else if (type == "Document")
                     {
 
-                        btnDocument.Style.Add("display", "inline");
+                        btnDownload.Style.Add("display", "inline");
                         btnDrop.Style.Add("display", "none");
                         btnEnroll.Style.Add("display", "none");
                     }
+                    string harmId = gvsearchDetails.DataKeys[e.Row.RowIndex][0].ToString();
+                    btnDownload.OnClientClick = "window.open('ctdocv-01.aspx?View=" + SecurityCenter.EncryptText(system_id) + "','',''); return true;";
                 }
                 catch (Exception ex)
                 {

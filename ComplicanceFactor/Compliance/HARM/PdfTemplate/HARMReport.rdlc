@@ -3845,6 +3845,7 @@
                       </Style>
                     </Subreport>
                     <ColSpan>4</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />

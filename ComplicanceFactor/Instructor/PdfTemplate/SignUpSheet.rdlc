@@ -336,7 +336,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!locationName.Value &amp; " , " &amp; Fields!facilityName.Value &amp; " , " &amp; Fields!roomName.Value</Value>
+                              <Value>=IIF((Fields!locationName.Value="Not Specified") AND (Fields!facilityName.Value="Not Specified") AND (Fields!roomName.Value="Not Specified"),"Not Specified",Fields!locationName.Value &amp; "," &amp; Fields!facilityName.Value &amp; "," &amp; Fields!roomName.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1302,7 +1302,7 @@
         <PageBreak>
           <BreakLocation>End</BreakLocation>
         </PageBreak>
-        <Top>1.41333in</Top>
+        <Top>0.33in</Top>
         <Left>0.25708in</Left>
         <Height>5.16143in</Height>
         <Width>9.91665in</Width>
@@ -1312,106 +1312,8 @@
           </Border>
         </Style>
       </Tablix>
-      <Image Name="Image3">
-        <Source>External</Source>
-        <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
-        <Sizing>Fit</Sizing>
-        <Top>0.07292in</Top>
-        <Left>0.14583in</Left>
-        <Height>1.04167in</Height>
-        <Width>6.75347in</Width>
-        <ZIndex>1</ZIndex>
-        <ToolTip>Logo</ToolTip>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Image>
-      <Tablix Name="Tablix2">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>1.02778in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.02778in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.02778in</Width>
-            </TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.34375in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox2">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!training_sign_up_sheet_label.Value</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>16pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox2</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                    <ColSpan>3</ColSpan>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell />
-                <TablixCell />
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember />
-          </TablixMembers>
-        </TablixRowHierarchy>
-        <DataSetName>dsSessionDetails</DataSetName>
-        <Top>0.54875in</Top>
-        <Left>5.30082in</Left>
-        <Height>0.34375in</Height>
-        <Width>3.08334in</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
     </ReportItems>
-    <Height>6.92895in</Height>
+    <Height>5.50184in</Height>
     <Style />
   </Body>
   <ReportParameters>
@@ -1460,10 +1362,68 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <Width>11.63208in</Width>
+  <Width>10.28125in</Width>
   <Page>
+    <PageHeader>
+      <Height>1.06945in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Image Name="Image3">
+          <Source>External</Source>
+          <Value>=Parameters!s_theme_report_logo_file_name.Value</Value>
+          <Sizing>Fit</Sizing>
+          <Height>1.04167in</Height>
+          <Width>6.75347in</Width>
+          <ToolTip>Logo</ToolTip>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox6">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Fields!training_sign_up_sheet_label.Value</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox6</rd:DefaultName>
+          <Top>0.3925in</Top>
+          <Left>5.30082in</Left>
+          <Height>0.30208in</Height>
+          <Width>4.23959in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
     <PageFooter>
-      <Height>0.47397in</Height>
+      <Height>0.42189in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

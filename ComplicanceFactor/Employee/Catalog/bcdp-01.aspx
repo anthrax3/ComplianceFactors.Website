@@ -192,8 +192,8 @@
                                                     CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                                                 <asp:Button ID="btnAssign" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
                                                     CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>" Style="display: none;" />
-                                                <asp:Button ID="btnDocument" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
-                                                    CommandName="Document" runat="server" Text="Download" Style="display: none;" />
+                                                <asp:Button ID="btnDownload" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
+                                                    CommandName="Download" runat="server" Text="Download" Style="display: none;" />
                                             </td>
                                         </tr>
                                         <tr>

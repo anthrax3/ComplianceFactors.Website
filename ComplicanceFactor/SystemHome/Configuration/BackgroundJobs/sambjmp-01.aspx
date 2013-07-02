@@ -53,28 +53,28 @@
     </script>
     <div>
         <div class="div_header_long">
-            Background Jobs:
+            <%=LocalResources.GetLabel("app_background_jobs_name_text")%>:
         </div>
         <div class="page_text" align="center">
             <asp:GridView ID="gvBackgroundJobs" CellPadding="0" CellSpacing="0" runat="server"
-                AutoGenerateColumns="false" GridLines="None" EmptyDataText="No Result found."
+                AutoGenerateColumns="false" GridLines="None" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" CssClass="gridview_long tablesorter"
                 DataKeyNames="u_sftp_id_pk" OnRowDataBound="gvBackgroundJobs_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderStyle-HorizontalAlign="Left" HeaderStyle-CssClass="gridview_row_width_7"
-                        ItemStyle-CssClass="gridview_row_width_4" DataField="BackgroundJobName" HeaderText="Background Job Name" />
+                        ItemStyle-CssClass="gridview_row_width_4" DataField="BackgroundJobName" HeaderText="<%$ LabelResourceExpression: app_background_jobs_name_text %>" />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_7"
-                        HeaderStyle-CssClass="gridview_row_width_7" HeaderText="Frequency">
+                        HeaderStyle-CssClass="gridview_row_width_7" HeaderText="<%$ LabelResourceExpression: app_frequency_text %>">
                         <ItemTemplate>
-                            Occurs Every:
+                            <%=LocalResources.GetLabel("app_occurs_every_text")%>:
                             <asp:TextBox ID="txtOccursEvery" runat="server" CssClass="textbox_50" Text='<%#Eval("u_sftp_occurs_every") %>'></asp:TextBox>
-                            Day(s)
+                            <%=LocalResources.GetLabel("app_days_text")%>:
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_7"
                         HeaderStyle-CssClass="gridview_row_width_7" HeaderText="Time">
                         <ItemTemplate>
-                            at:
+                            <%=LocalResources.GetLabel("app_at_text")%>:
                             <asp:TextBox ID="txtTime" CssClass="textbox_75" runat="server"></asp:TextBox>
                             <asp:DropDownList ID="ddlTime" runat="server">
                                 <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
@@ -86,12 +86,12 @@
                         ItemStyle-CssClass="gridview_row_width_2" DataField="" HeaderText="Status " />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="gridview_row_width_2">
                         <ItemTemplate>
-                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="manage" value="Manage" />
+                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="manage" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_manage_button_text %>" />' />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="gridview_row_width_2">
                         <ItemTemplate>
-                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="viewLogs" value="View Logs" />
+                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="viewLogs" value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_view_logs_button_text %>" />' />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
