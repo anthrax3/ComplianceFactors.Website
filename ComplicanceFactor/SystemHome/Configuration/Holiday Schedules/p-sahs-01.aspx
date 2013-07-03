@@ -16,10 +16,10 @@
     </style>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         <Scripts>
-            <asp:ScriptReference Path="~/SystemHome/Catalog/GenerateFile/iframe.js" />
+            <asp:ScriptReference Path="~/SystemHome/Catalog/Course/GenerateFile/iframe.js" />
         </Scripts>
     </asp:ToolkitScriptManager>
-    <div>
+   <div id="content">
         <%--Heading--%>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_addholiday" runat="server"
             ValidationGroup="addholiday"></asp:ValidationSummary>

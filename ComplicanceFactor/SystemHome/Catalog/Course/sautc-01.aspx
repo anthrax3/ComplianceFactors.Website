@@ -34,7 +34,7 @@
 
         }
     </script>
-    <div>
+    <div id="content">
         <div class="div_upload_file">
             <div id="divIcon">
                 <div class="fancy-popup-header">

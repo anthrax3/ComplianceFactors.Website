@@ -74,46 +74,52 @@
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <div class="div_header_800">
-        <%=LocalResources.GetLabel("app_my_courses_text")%>
-        <div class="right div_padding_10">
-            <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>" OnClick="btnPrintPdf_Click" />
-            <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>" OnClick="btnExportExcel_Click" />
+    <div id="content">
+        <div class="div_header_800">
+            <%=LocalResources.GetLabel("app_my_courses_text")%>
+            <div class="right div_padding_10">
+                <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>"
+                    OnClick="btnPrintPdf_Click" />
+                <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>"
+                    OnClick="btnExportExcel_Click" />
+            </div>
+            <div class="clear">
+            </div>
         </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="div_padding_10" id="div_course" runat="server">
-        <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter" 
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>" GridLines="None" DataKeyNames="e_enroll_course_id_fk"
-            AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
-            <Columns>
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_required_text %>" DataField='required' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_due_date_text %>" DataField='duedate' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$ LabelResourceExpression: app_view_details_button_text %>" />'
-                            class="viewCourse cursor_hand" />
-                        <%-- <asp:Button ID="btnViewDetail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+        <div class="div_padding_10" id="div_course" runat="server">
+            <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
+                GridLines="None" DataKeyNames="e_enroll_course_id_fk" AutoGenerateColumns="False"
+                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
+                <Columns>
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+                        HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
+                        HeaderText="<%$ LabelResourceExpression: app_required_text %>" DataField='required'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_due_date_text %>" DataField='duedate'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField='status'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$ LabelResourceExpression: app_view_details_button_text %>" />'
+                                class="viewCourse cursor_hand" />
+                            <%-- <asp:Button ID="btnViewDetail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                             CommandName="View" runat="server" Text="View Details" />--%>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-    </div>
-    <br />
-    <div class="div_header_800">
-        &nbsp;
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+        <br />
+        <div class="div_header_800">
+            &nbsp;
+        </div>
     </div>
     <%--<br />
     <div class="content_area">

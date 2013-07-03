@@ -80,7 +80,7 @@
             return false;
         }
     </script>
-    <div>
+    <div id="content">
         <div class="div_header_popup_1">
             <%=LocalResources.GetLabel("app_domains_search_results_text")%>:
         </div>

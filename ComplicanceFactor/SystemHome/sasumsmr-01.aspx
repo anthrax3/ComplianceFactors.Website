@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
     CodeBehind="sasumsmr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sasumsmr_01" %>
 
-   <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   </asp:Content>
-    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
@@ -46,11 +46,10 @@
             margin: 0px 0 0 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height:400px;
+            height: 400px;
         }
     </style>
-    <div>
-
+    <div id="content">
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="manage_user_header">
                 <%=LocalResources.GetLabel("app_users_search_details_text")%>:
@@ -157,7 +156,6 @@
                                         runat="server" Text="Select" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                          
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -296,7 +294,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="btnsave_new_user_td">
-                           <%-- <asp:Button ID="btnAddnewuser" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_new_user_button_text %>"
+                            <%-- <asp:Button ID="btnAddnewuser" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_new_user_button_text %>"
                                 OnClick="btnAddnewuser_Click" />--%>
                         </td>
                         <td>

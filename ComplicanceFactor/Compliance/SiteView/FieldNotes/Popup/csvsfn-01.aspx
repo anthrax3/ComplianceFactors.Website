@@ -58,7 +58,7 @@
     </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_csvsfn" runat="server"
         ValidationGroup="csvsfn"></asp:ValidationSummary>
-    <div>
+   <div id="content">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
         <div id="divError" runat="server" class="msgarea_error" style="display: none;">

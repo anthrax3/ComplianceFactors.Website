@@ -5,7 +5,7 @@
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <div id="content">
         <div class="div_header_650">
             Reset Your Password:
         </div>

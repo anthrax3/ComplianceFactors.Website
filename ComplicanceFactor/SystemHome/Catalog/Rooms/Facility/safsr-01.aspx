@@ -34,7 +34,7 @@
 
         });
     </script>
-    <div>
+    <div id="content">
         <%-- Facility search result--%>
         <div>
             <div class="div_header_700">

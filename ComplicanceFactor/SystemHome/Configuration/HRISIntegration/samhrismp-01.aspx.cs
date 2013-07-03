@@ -14,22 +14,70 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Text;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
 {
     public partial class samhrismp_01 : System.Web.UI.Page
     {
         #region "Private Member Variables"
-        private string _attachmentpath = "~/SystemHome/Configuration/HRIS Integration/Uploaded/";
-        private string _downloadpath = "~/SystemHome/Configuration/HRIS Integration/Sample/";
+        private string _attachmentpath = "~/SystemHome/Configuration/HRISIntegration/Uploaded/";
+        private string _downloadpath = "~/SystemHome/Configuration/HRISIntegration/Sample/";
         private DateTime start;
+        private static string hrisId;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Label BreadCrumb
-            Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_hris_integration_text") + "</a>";
+            if (!IsPostBack)
+            {
+                // Label BreadCrumb
+                Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_hris_integration_text") + "</a>";
 
+                PopulateHRISIntegration();
+            }
+        }
+        /// <summary>
+        /// Populare HRIS Integration
+        /// </summary>
+        private void PopulateHRISIntegration()
+        {
+            SystemHRISIntegration hrisIntegration = new SystemHRISIntegration();
+
+            try
+            {
+                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS();
+                if (!string.IsNullOrEmpty(hrisIntegration.u_sftp_id_pk))
+                {
+                    hrisId = hrisIntegration.u_sftp_id_pk;
+                    txtSftpServerUrl.Text = hrisIntegration.u_sftp_URI;
+                    txtUserName.Text = hrisIntegration.u_sftp_username;
+                    txtSftpServerPort.Text = hrisIntegration.u_sftp_port;
+                    txtOccursEvery.Text = hrisIntegration.u_sftp_occurs_every;
+                    txtHrisCsvFileName.Text = hrisIntegration.u_sftp_hris_filename;
+                    txtPassword.Value = hrisIntegration.u_sftp_password;
+                    txtPassword.Attributes["type"] = "password";
+                    string time = hrisIntegration.u_sftp_time_every;
+                    int length = time.Length;
+                    ddlTimeConversion.SelectedValue = time.Substring(length - 2, 2);
+                    txtHours.Text = time.Remove(length - 2);
+                    txtBegining.Text = Convert.ToDateTime(hrisIntegration.u_sftp_start_date).ToString("d");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message);
+                    }
+                }
+            }
         }
 
         protected void btnUploadAttachements_Click(object sender, EventArgs e)
@@ -46,9 +94,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
                     s_file_name = Path.GetFileName(file.FileName);
                     s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension));
-                    DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
+                    //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
                     txtHrisCsvFileName.Text = s_file_name;
-                    InsertIntoUserMaster(dtHRIS);
+                    //InsertIntoUserMaster(dtHRIS);
                 }
             }
         }
@@ -162,10 +210,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
         {
             SystemHRISIntegration hrisIntegration = new SystemHRISIntegration();
 
+            //hrisIntegration.u_sftp_id_pk = hrisId;
             hrisIntegration.u_sftp_URI = txtSftpServerUrl.Text;
             hrisIntegration.u_sftp_port = txtSftpServerPort.Text;
             hrisIntegration.u_sftp_username = txtUserName.Text;
-            hrisIntegration.u_sftp_password = txtPassword.Text;
+            hrisIntegration.u_sftp_password = txtPassword.Value;
             hrisIntegration.u_sftp_hris_filename = txtHrisCsvFileName.Text;
             hrisIntegration.u_sftp_occurs_every = txtOccursEvery.Text;
             if (ddlTimeConversion.SelectedValue == "AM")
@@ -178,18 +227,30 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
                 int minites = Convert.ToInt16(txtHours.Text.Substring(3, 2));
                 hours = hours + 12;
                 hrisIntegration.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
-            }
-
-                     
+            }                     
             hrisIntegration.u_sftp_start_date = txtBegining.Text;
 
             try
             {
-                int result = SystemHRISIntegrationBLL.CreateHRIS(hrisIntegration);
-                if (result == 0)
+
+                if (!string.IsNullOrEmpty(hrisId))
                 {
-                    divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");             
+                    hrisIntegration.u_sftp_id_pk = hrisId;
+                    int updateresult = SystemBackgroundJobsBLL.UpdateHRIS(hrisIntegration);
+                    if (updateresult == 0)
+                    {
+                        divSuccess.Style.Add("display", "block");
+                        divSuccess.InnerHtml = "Updated Successfully";
+                    }
+                }
+                else
+                {
+                    int result = SystemHRISIntegrationBLL.CreateHRIS(hrisIntegration);
+                    if (result == 0)
+                    {
+                        divSuccess.Style.Add("display", "block");
+                        divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
+                    }
                 }
 
             }
@@ -241,12 +302,25 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
                 foreach (Row row in rows) //this will also include your header row...
                 {
                     DataRow tempRow = dt.NewRow();
-
-                    for (int i = 0; i < row.Descendants<Cell>().Count(); i++)
+                    int columnIndex = 0;
+                    foreach (Cell cell in row.Descendants<Cell>())
                     {
-                        tempRow[i] = GetCellValue(spreadSheetDocument, row.Descendants<Cell>().ElementAt(i));
-                    }
+                        // Gets the column index of the cell with data
+                        int cellColumnIndex = (int)GetColumnIndexFromName(GetColumnName(cell.CellReference));
+                        cellColumnIndex--; //zero based index
+                        if (columnIndex < cellColumnIndex)
+                        {
+                            do
+                            {
+                                tempRow[columnIndex] = ""; //Insert blank data here;
+                                columnIndex++;
+                            }
+                            while (columnIndex < cellColumnIndex);
+                        }
+                        tempRow[columnIndex] = GetCellValue(spreadSheetDocument, cell);
 
+                        columnIndex++;
+                    }
                     dt.Rows.Add(tempRow);
                 }
 
@@ -254,7 +328,41 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
             dt.Rows.RemoveAt(0); //...so i'm taking it out here.
 
             return dt;
+        }
 
+
+        /// <summary>
+        /// Given a cell name, parses the specified cell to get the column name.
+        /// </summary>
+        /// <param name="cellReference">Address of the cell (ie. B2)</param>
+        /// <returns>Column Name (ie. B)</returns>
+        public static string GetColumnName(string cellReference)
+        {
+            // Create a regular expression to match the column name portion of the cell name.
+            Regex regex = new Regex("[A-Za-z]+");
+            Match match = regex.Match(cellReference);
+            return match.Value;
+        }
+
+        /// <summary>
+        /// Given just the column name (no row index), it will return the zero based column index.
+        /// Note: This method will only handle columns with a length of up to two (ie. A to Z and AA to ZZ). 
+        /// A length of three can be implemented when needed.
+        /// </summary>
+        /// <param name="columnName">Column Name (ie. A or AB)</param>
+        /// <returns>Zero based index if the conversion was successful; otherwise null</returns>
+        public static int? GetColumnIndexFromName(string columnName)
+        {
+            //return columnIndex;
+            string name = columnName;
+            int number = 0;
+            int pow = 1;
+            for (int i = name.Length - 1; i >= 0; i--)
+            {
+                number += (name[i] - 'A' + 1) * pow;
+                pow *= 26;
+            }
+            return number;
         }
         /// <summary>
         /// Get the Cell Value of xl
@@ -443,7 +551,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
             var loadedrows = dtHris.Select("Status='Passed'");
             var rejectedRows = dtHris.Select("Status='Failed'");
             DateTime endDate;
-            string _logpath = "~/SystemHome/Configuration/HRIS Integration/Log/";
+            string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
             string filename = "CF_HRIS_SFTP_Job_Run_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString().Substring(0, 5) + ".txt";
             filename = filename.Replace("/", "_");
             filename = filename.Replace(":", "_");
@@ -527,7 +635,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
                     }
                 }
             }
-
-        }
+        } 
     }
 }

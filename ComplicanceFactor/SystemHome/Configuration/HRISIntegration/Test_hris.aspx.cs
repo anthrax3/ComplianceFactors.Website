@@ -20,7 +20,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
 {
     public partial class Test_hris : System.Web.UI.Page
     {
-        private string _attachmentpath = "~/SystemHome/Configuration/HRIS Integration/Uploaded/";
+        private string _attachmentpath = "~/SystemHome/Configuration/HRISIntegration/Uploaded/";
         private DateTime start;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,16 +29,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
 
         protected void btnClick_Click(object sender, EventArgs e)
         {
-            //string hostName = "174.121.42.195";
-            //string port = "";
-            //string username = "compfact";
-            //string password = "Factors1";
-            //string filename = "HRIS_import_csv_example.xlsx";
-            //bool result = GetFileFromFTP(hostName, port, username, password, filename);
-
             //Check the time and date
-            //pass the current time to sftp table and get the records of HRIS 
-
+            //pass the current time to sftp table and get the records of HRIS
 
             string dtTime = String.Format("{0:HH:mm}", DateTime.Now);
             dtTime = "21:50";
@@ -286,10 +278,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
             sb.AppendLine("End of Report");
             sb.AppendLine("************************************");
 
-            CreateLogFileInFTP(filename, uri, userName, password, sb.ToString());//filePath
+            writer.Write(sb.ToString());
+            writer.Close();
 
-            //writer.Write(sb.ToString());
-            //writer.Close();
+            CreateLogFileInFTP(filename, uri, userName, password, sb.ToString(), filePath);//filePath           
 
             //Insert sftp_run_log table
 
@@ -341,15 +333,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <param name="text"></param>
-        private void CreateLogFileInFTP(string filename, string uri, string userName, string password, string text)
+        private void CreateLogFileInFTP(string filename, string uri, string userName, string password, string text,string path)
         {
             FileInfo toUpload = new FileInfo(filename);
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://compfact@174.121.42.195/compliancefactors.com/wwwroot/ComplianceSystem/SystemHome/Configuration/HRIS%20Integration/Log/" + toUpload.Name);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri + toUpload.Name);
             request.Method = WebRequestMethods.Ftp.UploadFile;
             request.Credentials = new NetworkCredential(userName, password);
             Stream ftpStream = request.GetRequestStream();
 
-            string path = @"D:\Staff\GuruPraveen\Web Project\WorkingCopy2\ComplianceFactors_GitHub\ComplianceFactors.Website\ComplicanceFactor\SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_11_11.txt";
+            //string path = @"D:\Staff\GuruPraveen\Web Project\WorkingCopy2\ComplianceFactors_GitHub\ComplianceFactors.Website\ComplicanceFactor\SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_11_11.txt";
 
             FileStream file = File.OpenRead(path);
 

@@ -23,7 +23,7 @@
             return false;
         }
     </script>
-    <div>
+   <div id="content">
         <asp:Panel ID="pnlDefault" runat="server">
             <div class="div_header_popup_1">
                 <%=LocalResources.GetLabel("app_employee_search_text")%>:

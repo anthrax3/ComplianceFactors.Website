@@ -33,7 +33,7 @@
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <div>
+  <div id="content">
         <div class="div_header_650">
             UI Text:
         </div>
@@ -71,9 +71,10 @@
         </div>
         <br />
     </div>
+    <div id="content">
     <div class="font_normal">
-        <asp:Panel ID="pnlPreview" runat="server" CssClass="modalPopup_width_500" Style="display: none;
-            padding-left: 0px; background-color: White; padding-right: 0px;">
+        <asp:Panel ID="pnlPreview" runat="server" CssClass="modalPopup_width_500 modal_popup_background" Style="display: none;
+            padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlPreviewHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">

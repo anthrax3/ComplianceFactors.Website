@@ -84,6 +84,7 @@
     <asp:HiddenField ID="hdAddNewDelivery" runat="server" />
     <asp:HiddenField ID="hdUserName" runat="server" />
     <asp:HiddenField ID="hdUserID" runat="server" />
+    <div id="content">
     <div class="div_header_1060">
         <%=LocalResources.GetLabel("app_course_deliveries_text")%>:
         <div class="right div_padding_10">
@@ -146,4 +147,5 @@
     <rsweb:ReportViewer ID="rvDelivery" runat="server" Style="display: none;" DocumentMapCollapsed="true"
         ShowDocumentMapButton="false">
     </rsweb:ReportViewer>
+    </div>
 </asp:Content>

@@ -445,8 +445,8 @@
         PopupDragHandleControlID="pnlPinHeading" OkControlID="imgClosePin" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancelPin">
     </asp:ModalPopupExtender>
-    <asp:Panel ID="pnlNotes" runat="server" CssClass="modalPopup_width_700" Style="display: none;
-        padding-left: 0px; background-color: White; padding-right: 0px;">
+    <asp:Panel ID="pnlNotes" runat="server" CssClass="modalPopup_width_700 modal_popup_background" Style="display: none;
+        padding-left: 0px;  padding-right: 0px;">
         <asp:Panel ID="pnlNotesHeading" runat="server" CssClass="drag">
             <div>
                 <div class="div_header_700">
@@ -534,8 +534,8 @@
         </div>
         <br />
     </asp:Panel>
-    <asp:Panel ID="pnlCreatePin" runat="server" CssClass="modalPopup_width_500" Style="display: none;
-        padding-left: 0px; background-color: White; padding-right: 0px;">
+    <asp:Panel ID="pnlCreatePin" runat="server" CssClass="modalPopup_width_500 modal_popup_background" Style="display: none;
+        padding-left: 0px;  padding-right: 0px;">
         <asp:Panel ID="pnlPinHeading" runat="server" CssClass="drag">
             <div>
                 <div class="div_header_620">

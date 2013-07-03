@@ -57,7 +57,7 @@
             });
         });
     </script>
-    <div>
+    <div id="content">
         <%--Heading--%>
         <div class="div_header_700">
             HRIS Job Run(s):

@@ -181,58 +181,61 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="div_header_800">
-        <%=LocalResources.GetLabel("app_all_locale_text")%>:
-    </div>
-    <br />
-    <div class="div_padding_40">
-        <asp:GridView ID="gvLocale" AutoGenerateColumns="false" RowStyle-CssClass="record"
-            CssClass="grid_700" GridLines="None" ShowHeader="false" ShowFooter="false" runat="server">
-            <Columns>
-                <asp:TemplateField ItemStyle-CssClass="width_300">
-                    <ItemTemplate>
-                        <%#Eval("s_locale_text")%>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField ItemStyle-CssClass="width_35">
-                    <ItemTemplate>
-                        <input type="button" id='<%# Eval("s_locale_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
-                            class="editlocale cursor_hand" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Right">
-                    <ItemTemplate>
-                        <input type="button" id='<%# Eval("s_locale_system_id_pk").ToString() + "," +  Eval("s_locale_id_fk").ToString() + "," +  Eval("s_locale_text").ToString()%>'
-                            value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />' onclick="DoPostBack()"
-                            class="deletelocale cursor_hand" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
+  <div id="content">
+        <div class="div_header_800">
+            <%=LocalResources.GetLabel("app_all_locale_text")%>:
+        </div>
         <br />
-        <table class="grid_700" cellpadding="0" cellspacing="0">
-            <tr>
-                <td class="width_300">
-                    <asp:DropDownList ID="ddlLocale" CssClass="dropdown_width_300" runat="server" DataTextField="s_locale_description"
-                        DataValueField="s_locale_id_pk">
-                    </asp:DropDownList>
-                </td>
-                <td>
-                </td>
-                <td class="align_right">
-                    <input type="button" id="btnCreateNewLocale" value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_create_new_locale_button_text%>" />' />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <asp:Button ID="btnClosePopup" runat="server" Text="<%$ LabelResourceExpression: app_close_window_text %>" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()" />
-                </td>
-            </tr>
-        </table>
+        <div class="div_padding_40">
+            <asp:GridView ID="gvLocale" AutoGenerateColumns="false" RowStyle-CssClass="record"
+                CssClass="grid_700" GridLines="None" ShowHeader="false" ShowFooter="false" runat="server">
+                <Columns>
+                    <asp:TemplateField ItemStyle-CssClass="width_300">
+                        <ItemTemplate>
+                            <%#Eval("s_locale_text")%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="width_35">
+                        <ItemTemplate>
+                            <input type="button" id='<%# Eval("s_locale_system_id_pk") %>' value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
+                                class="editlocale cursor_hand" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Right">
+                        <ItemTemplate>
+                            <input type="button" id='<%# Eval("s_locale_system_id_pk").ToString() + "," +  Eval("s_locale_id_fk").ToString() + "," +  Eval("s_locale_text").ToString()%>'
+                                value='<asp:Literal ID="Literal6" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                onclick="DoPostBack()" class="deletelocale cursor_hand" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <br />
+            <table class="grid_700" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="width_300">
+                        <asp:DropDownList ID="ddlLocale" CssClass="dropdown_width_300" runat="server" DataTextField="s_locale_description"
+                            DataValueField="s_locale_id_pk">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                    </td>
+                    <td class="align_right">
+                        <input type="button" id="btnCreateNewLocale" value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_create_new_locale_button_text%>" />' />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:Button ID="btnClosePopup" runat="server" Text="<%$ LabelResourceExpression: app_close_window_text %>"
+                            OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </asp:Content>

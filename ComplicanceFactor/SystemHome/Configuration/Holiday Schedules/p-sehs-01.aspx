@@ -20,7 +20,7 @@
             <asp:ScriptReference Path="~/SystemHome/Catalog/GenerateFile/iframe.js" />
         </Scripts>
     </asp:ToolkitScriptManager>
-    <div>
+    <div id="content">
         <%--Heading--%>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_editholiday" runat="server"
             ValidationGroup="editholiday"></asp:ValidationSummary>

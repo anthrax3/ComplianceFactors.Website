@@ -36,6 +36,7 @@
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ToolkitScriptManager>
+    <div id="content">
     <div>
         <div class="uploadpopup_header">
             <div class="left">
@@ -75,5 +76,6 @@
             <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
         </div>
         <br />
+    </div>
     </div>
 </asp:Content>

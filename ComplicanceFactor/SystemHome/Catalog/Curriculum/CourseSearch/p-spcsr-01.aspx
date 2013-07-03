@@ -68,7 +68,7 @@
             return false;
         }
     </script>
-    <div>
+    <div id="content">
         <div class="div_header_700">
             <%=LocalResources.GetLabel("app_course_advanced_search_text")%>:
         </div>

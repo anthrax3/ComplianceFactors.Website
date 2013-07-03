@@ -15,6 +15,7 @@
             height: 500px;
         }
     </style>
+<div id="content">
     <div>
         <div class="uploadpopup_header">
             <div class="left">
@@ -28,5 +29,6 @@
         <object classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95">
             <param name="FileName" value="../Images/1919b655-81f7-4840-b3e3-85acf64ecf82.jpg"  />
         </object>       
+    </div>
     </div>
 </asp:Content>

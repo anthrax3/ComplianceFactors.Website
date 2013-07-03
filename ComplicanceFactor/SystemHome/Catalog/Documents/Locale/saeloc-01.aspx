@@ -80,7 +80,7 @@
             <asp:ScriptReference Path="~/SystemHome/Catalog/Documents/Locale/GenerateFile/iframe.js" />
         </Scripts>
     </asp:ToolkitScriptManager>
-    <div>
+    <div id="content">
         <div class=" div_header_650" id="divLocaleHeader" runat="server">
             <asp:Label ID="lblLocaleHeading" runat="server"></asp:Label>
         </div>

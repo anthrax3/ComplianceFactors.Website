@@ -30,7 +30,7 @@
             height: 550px;
         }
     </style>
-    <div>
+    <div id="content">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
         <asp:HiddenField ID="hdnCourseId" runat="server" />

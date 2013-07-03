@@ -24,47 +24,50 @@
         }
     </script>
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
-        <div class=" div_header_700">
-            <%=LocalResources.GetLabel("app_catalog_item_search_text")%>:
-        </div>
-        <br />
-        <div class="div_controls font_1">
-            <table>
-                <tr>
-                    <td>
-                        <%=LocalResources.GetLabel("app_catalog_item_name_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtCatalogName" CssClass="textbox_long" runat="server"></asp:TextBox>
-                    </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_catalog_item_id_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtCatalogId" CssClass="textbox_long" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <table class="table_td_300">
-                <tr>
-                    <td>
-                        <asp:Button ID="btnGoSearch" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" 
-                            onclick="btnGoSearch_Click" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnReset" OnClientClick="return resetall();" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
-                    </td>
-                    <td>
-                        <asp:Button ID="btnCancel"  OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
-                    </td>
-                </tr>
-            </table>
+        <div id="content">
+            <div class=" div_header_700">
+                <%=LocalResources.GetLabel("app_catalog_item_search_text")%>:
+            </div>
+            <br />
+            <div class="div_controls font_1">
+                <table>
+                    <tr>
+                        <td>
+                            <%=LocalResources.GetLabel("app_catalog_item_name_text")%>:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCatalogName" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <%=LocalResources.GetLabel("app_catalog_item_id_text")%>:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCatalogId" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="table_td_300">
+                    <tr>
+                        <td>
+                            <asp:Button ID="btnGoSearch" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                                OnClick="btnGoSearch_Click" />
+                        </td>
+                        <td>
+                            <asp:Button ID="btnReset" OnClientClick="return resetall();" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
+                        </td>
+                        <td>
+                            <asp:Button ID="btnCancel" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                                runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </asp:Panel>
 </asp:Content>

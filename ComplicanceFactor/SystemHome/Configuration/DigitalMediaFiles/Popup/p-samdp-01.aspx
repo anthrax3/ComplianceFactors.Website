@@ -16,21 +16,32 @@
     </style>
 </head>
 <body>
-    
     <form id="form1" runat="server">
-    
+    <div id="content">
+        <%--<asp:Literal ID="ltlPreview" runat="server"></asp:Literal>--%>
+        <%--<object width="480" height="385">
+<param name="movie" value="http://www.youtube.com/v/XcugLsKDmRs&hl=en_US&fs=1&rel=0"></param>
+<param name="allowFullScreen" value="true"></param>
+<param name="allowscriptaccess" value="always"></param>
+<embed src="http://www.youtube.com/v/XcugLsKDmRs&hl=en_US&fs=1&rel=0" 
+  type="application/x-shockwave-flash" allowscriptaccess="always" 
+  allowfullscreen="true" width="480" height="385"></embed>
+</object>--%>
+
         
-    
-    <div>
-   <%--<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" width="500" height="280">
-     <param name="quality" value="high" />
-    <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" autoplay="yes" lop="no" width="700" height="480" runat="server"  ID="Video1"
-    src="../Images/Jellyfish.jpg" value="../Images/Jellyfish.jpg" />
-    </object>--%>
-    <%--<iframe id="documentLoader" src="https://docs.google.com/viewer?url=http://compliancefactors.com.lavender.arvixe.com/Compliance/MIRIS/Upload/Photo/df876a79-dc6a-4b65-b156-9f1bac58d73c.pdf&embedded=true" style="width: 70%; height: 400px;">--%>
-   
-  <%-- </iframe>--%>
-   <asp:Literal ID="ltlPreview" runat="server"></asp:Literal>
+<object classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" type="application/x-oleobject" width="320" height="240">
+   <param name="URL" value="<%= file_url %>" />
+   <param name="enabled" value="True" />
+   <param name="AutoStart" value="False" />
+   <param name="PlayCount" value="3" />
+   <param name="Volume" value="50" />
+   <param name="balance" value="0" />
+   <param name="Rate" value="1.0" />
+   <param name="Mute" value="False" />
+   <param name="fullScreen" value="False" />
+   <param name="uiMode" value="full" />
+</object>
+
     </div>
     </form>
 </body>

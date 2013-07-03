@@ -70,6 +70,7 @@
             return false;
         }
     </script>
+    <div id="content">
     <div class="div_header_700">
         <%=LocalResources.GetLabel("app_catalog_item_search_results_text")%>:
     </div>
@@ -229,5 +230,6 @@
             </table>
         </div>
     </asp:Panel>
+    </div>
     <br />
 </asp:Content>

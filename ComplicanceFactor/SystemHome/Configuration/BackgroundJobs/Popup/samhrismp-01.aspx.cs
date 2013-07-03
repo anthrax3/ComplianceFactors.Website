@@ -17,8 +17,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
     {
 
         #region "Private Member Variables"
-        private string _attachmentpath = "~/SystemHome/Configuration/HRIS Integration/Uploaded/";
-        private string _downloadpath = "~/SystemHome/Configuration/HRIS Integration/Sample/";
+        private string _attachmentpath = "~/SystemHome/Configuration/HRISIntegration/Uploaded/";
+        private string _downloadpath = "~/SystemHome/Configuration/HRISIntegration/Sample/";
         private DateTime start;
         #endregion
         private static string hrisId;
@@ -55,6 +55,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
                 txtOccursEvery.Text = hrisIntegration.u_sftp_occurs_every;
                 txtHours.Text = hrisIntegration.u_sftp_time_every.Substring(0,hrisIntegration.u_sftp_time_every.Length-2);
                 txtBegining.Text = Convert.ToDateTime(hrisIntegration.u_sftp_start_date).ToString("d");
+                string time = hrisIntegration.u_sftp_time_every;
+                int length = time.Length;
+                ddlTimeConversion.SelectedValue = time.Substring(length - 2, 2);
             }
             catch (Exception ex)
             {

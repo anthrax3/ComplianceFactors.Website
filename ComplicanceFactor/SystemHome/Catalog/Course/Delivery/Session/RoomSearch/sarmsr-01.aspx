@@ -35,7 +35,7 @@
 
         });
     </script>
-    <div>
+   <div id="content">
         <%-- Room search result--%>
         <div>
             <div class="div_header_800">

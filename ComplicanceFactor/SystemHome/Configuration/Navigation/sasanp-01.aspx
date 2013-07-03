@@ -16,7 +16,7 @@
             height: 200px;
         }
     </style>
-    <div>
+   <div id="content">
         <div class="div_header_650">
             UI Page Information:
         </div>

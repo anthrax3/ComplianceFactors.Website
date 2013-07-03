@@ -166,7 +166,7 @@
             });
         });
     </script>
-    <div>
+    <div id="content">
         <%--Heading--%>
         <div class="div_header_750" id="divLocaleHeader" runat="server">
            <%=LocalResources.GetLabel("app_all_locale_text")%>:

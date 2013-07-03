@@ -307,7 +307,7 @@
     <asp:HiddenField ID="hdValue" runat="server" />
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
-    <div>
+   <div id="content">
         <div class="div_header_940">
             <%=LocalResources.GetLabel("app_session_text")%>:
         </div>

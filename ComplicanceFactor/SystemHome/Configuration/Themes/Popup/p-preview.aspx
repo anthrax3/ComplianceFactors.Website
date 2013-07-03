@@ -26,7 +26,9 @@
             $('#imgLogo').attr('src',url);
             });
      </script>
+     <div id="content">
      <div class="align_center">
             <img id="imgLogo"  class="align_center"  alt=""/>
+     </div>
      </div>
 </asp:Content>

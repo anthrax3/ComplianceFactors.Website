@@ -19,7 +19,7 @@
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
-    <div>
+   <div id="content">
         <div class="div_header_700">
             Acknowledgement:
         </div>

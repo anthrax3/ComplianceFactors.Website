@@ -39,6 +39,7 @@
     </script>
     <br />
     <br />
+   <div id="content">
     <div class="content_area_long">
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_single_file_manual_upload_text")%>:
@@ -270,5 +271,6 @@
         <div class="div_header_long">
             <br />
         </div>
+    </div>
     </div>
 </asp:Content>

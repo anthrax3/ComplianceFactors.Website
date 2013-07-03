@@ -17,7 +17,7 @@
             height: 450px;
         }
     </style>
-    <div>
+  <div id="content">
         <div class="div_header_650">
             <%=LocalResources.GetLabel("app_ui_label_text")%>:
         </div>

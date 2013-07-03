@@ -74,65 +74,67 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="margin-right: 10px;">
-        <div class=" div_header_650">
-            <asp:Label ID="lblLocaleHeading" runat="server"></asp:Label>
-        </div>
-        <div class="div_controls font_1">
-            <asp:ValidationSummary class="validation_summary_error" ID="vssaaloc" runat="server"
-                ValidationGroup="saaloc" />
-            <table class="">
-                <tr>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvName" runat="server" ValidationGroup="saaloc"
-                            ControlToValidate="txtDocumentName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *<%=LocalResources.GetLabel("app_document_name_text")%>:
-                    </td>
-                    <td style="text-align: left">
-                        <asp:TextBox ID="txtDocumentName" CssClass="textbox_long" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%=LocalResources.GetLabel("app_description_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtDescription" TextMode="MultiLine" Rows="7" Width="500px" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%=LocalResources.GetLabel("app_document_file_text")%>:
-                    </td>
-                    <td style="text-align: left; white-space: nowrap;">
-                        <asp:LinkButton ID="lnkDownload" runat="server" OnClick="lnkDownload_Click"></asp:LinkButton>
-                        <asp:Button ID="btnAttachment" CssClass="attachment cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_attachment_button_text %>" />
-                        <div id="divAttachment" runat="server">
-                            <asp:Button ID="btnAttachmentView" runat="server" Text="View" OnClick="btnAttachmentView_Click" />
-                            <asp:Button ID="btnEdit" CssClass="attachment cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>"
-                                OnClick="btnEdit_Click" />
-                            <asp:Button ID="btnRemove" runat="server" OnClientClick="return confirmRemove();"
-                                Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClick="btnRemove_Click" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <table class="table_td_300">
-                <tr>
-                    <td>
-                        <asp:Button ID="btnSaveLocale" ValidationGroup="saaloc" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
-                            OnClick="btnSaveLocale_Click" />
-                    </td>
-                    <td class="align_right">
-                        <%--                        <input id="button1" type="button" value="Cancel" onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()" />--%>
-                        <asp:Button ID="btnCancel" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()"
-                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
-                    </td>
-                </tr>
-            </table>
+   <div id="content">
+        <div style="margin-right: 10px;">
+            <div class=" div_header_650">
+                <asp:Label ID="lblLocaleHeading" runat="server"></asp:Label>
+            </div>
+            <div class="div_controls font_1">
+                <asp:ValidationSummary class="validation_summary_error" ID="vssaaloc" runat="server"
+                    ValidationGroup="saaloc" />
+                <table class="">
+                    <tr>
+                        <td>
+                            <asp:RequiredFieldValidator ID="rfvName" runat="server" ValidationGroup="saaloc"
+                                ControlToValidate="txtDocumentName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
+                            </asp:RequiredFieldValidator>
+                            *<%=LocalResources.GetLabel("app_document_name_text")%>:
+                        </td>
+                        <td style="text-align: left">
+                            <asp:TextBox ID="txtDocumentName" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%=LocalResources.GetLabel("app_description_text")%>:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtDescription" TextMode="MultiLine" Rows="7" Width="500px" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%=LocalResources.GetLabel("app_document_file_text")%>:
+                        </td>
+                        <td style="text-align: left; white-space: nowrap;">
+                            <asp:LinkButton ID="lnkDownload" runat="server" OnClick="lnkDownload_Click"></asp:LinkButton>
+                            <asp:Button ID="btnAttachment" CssClass="attachment cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_attachment_button_text %>" />
+                            <div id="divAttachment" runat="server">
+                                <asp:Button ID="btnAttachmentView" runat="server" Text="View" OnClick="btnAttachmentView_Click" />
+                                <asp:Button ID="btnEdit" CssClass="attachment cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>"
+                                    OnClick="btnEdit_Click" />
+                                <asp:Button ID="btnRemove" runat="server" OnClientClick="return confirmRemove();"
+                                    Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClick="btnRemove_Click" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table class="table_td_300">
+                    <tr>
+                        <td>
+                            <asp:Button ID="btnSaveLocale" ValidationGroup="saaloc" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>"
+                                OnClick="btnSaveLocale_Click" />
+                        </td>
+                        <td class="align_right">
+                            <%--                        <input id="button1" type="button" value="Cancel" onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()" />--%>
+                            <asp:Button ID="btnCancel" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()"
+                                Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </asp:Content>

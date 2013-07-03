@@ -71,7 +71,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div>
+<div id="content">
         <div class="div_header_popup_1">
             <%=LocalResources.GetLabel("app_employees_search_results_text")%>:
         </div>

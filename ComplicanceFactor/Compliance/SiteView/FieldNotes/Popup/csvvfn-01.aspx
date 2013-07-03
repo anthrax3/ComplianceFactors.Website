@@ -17,7 +17,7 @@
             height: 300px;
         }
     </style>
-    <div>
+  <div id="content">
         <div class="div_header_popup_1">
             <%=LocalResources.GetLabel("app_fieldnote_details_text")%>:
         </div>

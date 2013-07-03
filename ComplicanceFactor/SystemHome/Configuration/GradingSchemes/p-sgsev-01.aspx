@@ -64,7 +64,7 @@
     </div>--%>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_sgsev" runat="server"
         ValidationGroup="sgsev"></asp:ValidationSummary>
-    <div>
+  <div id="content">
         <div class="div_header_1005">
             <%=LocalResources.GetLabel("app_add_grading_value_text")%>:
         </div>

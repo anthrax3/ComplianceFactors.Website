@@ -96,45 +96,52 @@
         ValidationGroup="lmhp" />
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <div class="div_header_870">
-       <%=LocalResources.GetLabel("app_my_learning_history_text")%>:
-        <div class="right div_padding_10">
-           <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>" OnClick="btnPrintPdf_Click" />
-            <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>" OnClick="btnExportExcel_Click" />
+   <div id="content">
+        <div class="div_header_870">
+            <%=LocalResources.GetLabel("app_my_learning_history_text")%>:
+            <div class="right div_padding_10">
+                <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>"
+                    OnClick="btnPrintPdf_Click" />
+                <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>"
+                    OnClick="btnExportExcel_Click" />
+            </div>
+            <div class="clear">
+            </div>
         </div>
-        <div class="clear">
+        <br />
+        <div class="div_padding_10" id="div_course" runat="server">
+            <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
+                GridLines="None" AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row"
+                PagerSettings-Visible="false" DataKeyNames="t_transcript_user_id_fk,t_transcript_course_id_fk"
+                OnRowCommand="gvLearningHistory_RowCommand">
+                <Columns>
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+                        HeaderText="<%$ LabelResourceExpression: app_course_title_text %>" DataField='title'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
+                        HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>" DataField='date'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField='status'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_score_text %>" DataField='score'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_delivery_text %>" DataField='deliveryType'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                CommandName="Certificate" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
+                        </ItemTemplate>
+                        <%--CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'--%>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
-    </div>
-    <br />
-    <div class="div_padding_10" id="div_course" runat="server">
-         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>" GridLines="None" AutoGenerateColumns="False"
-            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="t_transcript_user_id_fk,t_transcript_course_id_fk"
-            onrowcommand="gvLearningHistory_RowCommand">
-            <Columns>
-                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_course_title_text %>" DataField='title' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>" DataField='date' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_score_text %>" DataField='score' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_delivery_text %>" DataField='deliveryType' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                      <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' 
-                         CommandName="Certificate" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
-                    </ItemTemplate>
-                    <%--CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'--%>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
     </div>
     <rsweb:ReportViewer ID="rvLearningHistory" runat="server" Style="display: none;"
         DocumentMapCollapsed="true" ShowDocumentMapButton="false">

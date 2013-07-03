@@ -291,8 +291,8 @@
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
     </asp:ModalPopupExtender>
-    <asp:Panel ID="pnlAddAttachment" Style="display: none; background-color: White; padding-left: 0px;
-        padding-right: 0px" runat="server" CssClass="modalPopup_upload">
+    <asp:Panel ID="pnlAddAttachment" Style="display: none;  padding-left: 0px;
+        padding-right: 0px" runat="server" CssClass="modalPopup_upload modal_popup_background">
         <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
             <div>
                 <div class="uploadpopup_header">
@@ -346,8 +346,8 @@
         PopupDragHandleControlID="pnlCreateNewCersionHeading" runat="server">
     </asp:ModalPopupExtender>
     <div class="font_normal">
-        <asp:Panel ID="pnlCreateNewVersion" CssClass="modalPopup_width_620" Style="display: none;
-            padding-left: 0px; background-color: White; padding-right: 0px;" runat="server">
+        <asp:Panel ID="pnlCreateNewVersion" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
+            padding-left: 0px;  padding-right: 0px;" runat="server">
             <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">
@@ -414,8 +414,8 @@
         DropShadow="false" PopupDragHandleControlID="pnlViewPreviousVersionHeading">
     </asp:ModalPopupExtender>
     <div class=" font_normal">
-        <asp:Panel ID="pnlViewPreviousVersionList" runat="server" CssClass="modalPopup_width_620"
-            Style=" display:none; padding-left: 0px; background-color: White; padding-right: 0px;">
+        <asp:Panel ID="pnlViewPreviousVersionList" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+            Style=" display:none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlViewPreviousVersionHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">

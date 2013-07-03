@@ -17,7 +17,7 @@
             height: 250px;
         }
     </style>
-    <div>
+    <div id="content">
         <div id="Message">
         </div>
         <div class="div_header_600">

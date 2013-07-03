@@ -22,7 +22,7 @@
             return false;
         }
     </script>
-    <div>
+   <div id="content">
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_700">
                 <%=LocalResources.GetLabel("app_course_search_text")%>:

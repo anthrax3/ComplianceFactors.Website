@@ -15,6 +15,7 @@ namespace ComplicanceFactor.BusinessComponent
         {
 
             Hashtable htCreateHRIS = new Hashtable();
+            //htCreateHRIS.Add("@u_sftp_id_pk", createHRIS.u_sftp_id_pk);
             htCreateHRIS.Add("@u_sftp_URI", createHRIS.u_sftp_URI);
             htCreateHRIS.Add("@u_sftp_port", createHRIS.u_sftp_port);
             htCreateHRIS.Add("@u_sftp_username", createHRIS.u_sftp_username);
@@ -40,7 +41,8 @@ namespace ComplicanceFactor.BusinessComponent
             Hashtable htInsertNewUser = new Hashtable();
             htInsertNewUser.Add("@u_user_id_pk", user.Userid);
             htInsertNewUser.Add("@u_username_enc", user.Username_enc_ash);
-            htInsertNewUser.Add("@u_password_enc_ash", user.Password_enc_ash);           
+            htInsertNewUser.Add("@u_password_enc_ash", user.Password_enc_ash);
+            htInsertNewUser.Add("@u_password_enc_salt", user.Password_enc_salt);
             htInsertNewUser.Add("@u_first_name", user.Firstname);
             htInsertNewUser.Add("@u_middle_name", user.Middlename);
             htInsertNewUser.Add("@u_last_name", user.Lastname);
@@ -285,6 +287,49 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        
+
+        public static SystemHRISIntegration GetHRIS( )
+        {           
+            SystemHRISIntegration hrisIntegration = new SystemHRISIntegration();
+            DataTable dtSingleHris = new DataTable();
+            try
+            {
+                dtSingleHris = DataProxy.FetchDataTable("s_sp_get_hris_details");
+                if (dtSingleHris.Rows.Count > 0)
+                {
+                    hrisIntegration.u_sftp_id_pk = dtSingleHris.Rows[0]["u_sftp_id_pk"].ToString();
+                    hrisIntegration.u_sftp_URI = dtSingleHris.Rows[0]["u_sftp_URI"].ToString();
+                    hrisIntegration.u_sftp_port = dtSingleHris.Rows[0]["u_sftp_port"].ToString();
+                    hrisIntegration.u_sftp_username = dtSingleHris.Rows[0]["u_sftp_username"].ToString();
+                    hrisIntegration.u_sftp_password = dtSingleHris.Rows[0]["u_sftp_password"].ToString();
+                    hrisIntegration.u_sftp_hris_filename = dtSingleHris.Rows[0]["u_sftp_hris_filename"].ToString();
+                    hrisIntegration.u_sftp_occurs_every = dtSingleHris.Rows[0]["u_sftp_occurs_every"].ToString();
+                    hrisIntegration.u_sftp_time_every = dtSingleHris.Rows[0]["u_sftp_time_every"].ToString();
+                    hrisIntegration.u_sftp_start_date = dtSingleHris.Rows[0]["u_sftp_start_date"].ToString();
+                }
+
+                return hrisIntegration;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataSet CreatePDF(string LogId,string s_locale_culture)
+        {
+            Hashtable htCreatePdf = new Hashtable();
+            htCreatePdf.Add("@u_sftp_run_id_pk",LogId);
+            htCreatePdf.Add("@s_locale_culture", s_locale_culture);
+
+            try
+            {
+                return DataProxy.FetchDataSet("s_sp_get_error_log_pdf", htCreatePdf);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

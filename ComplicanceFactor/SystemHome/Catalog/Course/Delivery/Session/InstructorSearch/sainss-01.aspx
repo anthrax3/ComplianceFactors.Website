@@ -24,7 +24,7 @@
             return false;
         }
     </script>
-    <div>
+    <div id="content">
         <div>
             <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
                 <div class="div_header_800">

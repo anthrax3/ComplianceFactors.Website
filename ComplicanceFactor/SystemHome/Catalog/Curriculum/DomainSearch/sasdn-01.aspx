@@ -37,7 +37,7 @@
 
 
     </script>
-    <div>
+   <div id="content">
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_popup_1">
                 <%=LocalResources.GetLabel("app_domains_search_text")%>:

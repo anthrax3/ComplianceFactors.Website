@@ -74,7 +74,7 @@
             return false;
         }
     </script>
-    <div>
+   <div id="content">
         <div class=" div_header_870">
             <%=LocalResources.GetLabel("app_employee_search_results_text")%>:
         </div>

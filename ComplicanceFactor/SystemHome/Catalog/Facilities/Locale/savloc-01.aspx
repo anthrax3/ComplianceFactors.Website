@@ -185,7 +185,7 @@
 
        
     </script>
-    <div>
+    <div id="content">
         <%--Heading--%>
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>

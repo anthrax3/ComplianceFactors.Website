@@ -15,7 +15,7 @@
             height: 250px;
         }
     </style>
-    <div>
+    <div id="content">
         <%--Heading--%>
         <div class="div_header_650" id="divLocaleHeader" runat="server">
             <asp:Label ID="lblLocaleHeading" runat="server"></asp:Label>

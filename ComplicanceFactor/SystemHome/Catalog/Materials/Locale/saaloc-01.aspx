@@ -72,7 +72,7 @@
             }
         }
     </script>
-    <div>
+   <div id="content">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
             <Scripts>
                 <asp:ScriptReference Path="~/SystemHome/Catalog/Materials/Locale/GenerateFile/iframe.js" />

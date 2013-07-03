@@ -90,48 +90,54 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <div class="div_header_870">
-        <%=LocalResources.GetLabel("app_my_curricula_text")%>:
-        <div class="right div_padding_10">
-            <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>" OnClick="btnPrintPdf_Click" />
-            <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>" OnClick="btnExportExcel_Click" />
+   <div id="content">
+        <div class="div_header_870">
+            <%=LocalResources.GetLabel("app_my_curricula_text")%>:
+            <div class="right div_padding_10">
+                <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>"
+                    OnClick="btnPrintPdf_Click" />
+                <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>"
+                    OnClick="btnExportExcel_Click" />
+            </div>
+            <div class="clear">
+            </div>
         </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="div_padding_10" id="div_course" runat="server">
-        <asp:GridView ID="gvCurriculum" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>" GridLines="None" DataKeyNames="e_curriculum_assign_curriculum_id_fk"
-            AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
-            <Columns>
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_curriculum_title_with_id_text %>" DataField='title' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_assignment_date_text %>" DataField='e_curriculum_assign_date_time' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_due_date_text %>" DataField='e_curriculum_assign_target_due_date' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField='status' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                       <%-- <asp:Button ID="btnViewDetail" CommandArgument='<%#Eval("e_curriculum_assign_curriculum_id_fk")%>'
+        <div class="div_padding_10" id="div_course" runat="server">
+            <asp:GridView ID="gvCurriculum" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
+                GridLines="None" DataKeyNames="e_curriculum_assign_curriculum_id_fk" AutoGenerateColumns="False"
+                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
+                <Columns>
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+                        HeaderText="<%$ LabelResourceExpression: app_curriculum_title_with_id_text %>"
+                        DataField='title' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
+                        HeaderText="<%$ LabelResourceExpression: app_assignment_date_text %>" DataField='e_curriculum_assign_date_time'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_due_date_text %>" DataField='e_curriculum_assign_target_due_date'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                        HeaderText="<%$ LabelResourceExpression: app_status_text %>" DataField='status'
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <%-- <asp:Button ID="btnViewDetail" CommandArgument='<%#Eval("e_curriculum_assign_curriculum_id_fk")%>'
                             CommandName="View" runat="server" Text="View Details" />--%>
                             <input type="button" id='<%# Eval("e_curriculum_assign_curriculum_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$ LabelResourceExpression: app_view_details_button_text %>" />'
-                            class="viewCurriculum cursor_hand" />
-                        <%--<input type="button" id='<%# Eval("e_curriculum_assign_curriculum_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="View Details" />'
+                                class="viewCurriculum cursor_hand" />
+                            <%--<input type="button" id='<%# Eval("e_curriculum_assign_curriculum_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="View Details" />'
                             class="viewdetails cursor_hand" />--%>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-    </div>
-    <br />
-    <div class="div_header_870">
-        &nbsp;
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+        <br />
+        <div class="div_header_870">
+            &nbsp;
+        </div>
     </div>
     <rsweb:ReportViewer ID="rvCurricula" runat="server" Style="display: none;" DocumentMapCollapsed="true"
         ShowDocumentMapButton="false">

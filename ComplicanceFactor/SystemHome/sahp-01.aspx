@@ -270,8 +270,8 @@
         <br />
     </div>
     <asp:Button ID="btnSplash" runat="server" Style="display: none;" />
-    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900" Style="display: none;
-        padding-left: 0px; background-color: White; padding-right: 0px;">
+    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900 modal_popup_background" Style="display: none;
+        padding-left: 0px;  padding-right: 0px;">
         <asp:Panel ID="pnlSplashPageHeading" runat="server" CssClass="drag">
             <div>
                 <div class="div_header_900">

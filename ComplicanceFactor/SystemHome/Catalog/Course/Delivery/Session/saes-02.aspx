@@ -316,7 +316,7 @@
     </div>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
         ValidationGroup="saes"></asp:ValidationSummary>
-    <div>
+   <div id="content">
         <div class="div_header_940">
             <%=LocalResources.GetLabel("app_session_text")%>:
         </div>

@@ -23,7 +23,7 @@
             return false;
         }
     </script>
-    <div>
+    <div id="content">
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_700">
                 <%=LocalResources.GetLabel("app_resource_search_text")%>:
@@ -33,7 +33,7 @@
                 <table>
                     <tr>
                         <td>
-                           <%=LocalResources.GetLabel("app_resource_name_text")%>:
+                            <%=LocalResources.GetLabel("app_resource_name_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtResourceName" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -51,12 +51,12 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="align_left">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_text %>" runat="server"
-                                OnClick="btnGosearch_Click" />
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_text %>"
+                                runat="server" OnClick="btnGosearch_Click" />
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" OnClientClick="return resetall();"
-                                runat="server" />
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                                OnClientClick="return resetall();" runat="server" />
                         </td>
                         <td class="align_right">
                             <asp:Button ID="btnCancel" CssClass="cursor_hand" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"

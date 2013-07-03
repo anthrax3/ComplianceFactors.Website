@@ -43,7 +43,7 @@
             }
         } 
     </script>
-    <div>
+ <div id="content">
         <asp:ValidationSummary class="validation_summary_error" ID="vs_csveq" runat="server"
             ValidationGroup="csveq"></asp:ValidationSummary>
         <div>

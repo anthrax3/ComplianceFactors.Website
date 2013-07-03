@@ -94,7 +94,7 @@
             });
         });
     </script>
-    <div>
+   <div id="content">
         <asp:ValidationSummary class="validation_summary_error" ID="vs_saafrm" runat="server"
             ValidationGroup="saafrm"></asp:ValidationSummary>
         <div class="div_header_800">

@@ -32,7 +32,7 @@
         }
     </script>
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
-        <div>
+        <div id="content">
             <div class="manage_user_header">
                 <%=LocalResources.GetLabel("app_users_advanced_search_text")%>
             </div>

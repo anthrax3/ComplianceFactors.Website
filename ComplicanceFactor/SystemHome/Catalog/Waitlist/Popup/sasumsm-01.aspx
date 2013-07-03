@@ -24,6 +24,7 @@
         }
     </script>
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
+   <div id="content">
         <div class=" div_header_700">
             <%=LocalResources.GetLabel("app_users_advanced_search_text")%>:
         </div>
@@ -66,6 +67,7 @@
                     </td>
                 </tr>
             </table>
+        </div>
         </div>
     </asp:Panel>
 </asp:Content>

@@ -193,8 +193,9 @@
                         *
                         <%=LocalResources.GetLabel("app_password_text")%>:
                     </td>
-                    <td>
-                        <asp:TextBox ID="txtPassword" TextMode="Password" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    <td class="align_left">
+                    <input id="txtPassword" name="password" runat="server" />
+                        <%--<asp:TextBox ID="txtPassword" TextMode="Password" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
                     </td>
                 </tr>
                 <tr>
@@ -294,8 +295,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload" Style="display: none;
-            padding-left: 0px; background-color: White; padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
+            padding-left: 0px;  padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhrismp" runat="server"

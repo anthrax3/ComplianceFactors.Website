@@ -1097,8 +1097,8 @@
     </div>
     <div>
         <asp:Button ID="btnRemove" runat="server" Style="display: none;" />
-        <asp:Panel ID="pnlRemove" runat="server" CssClass="modalPopupInner_remove" Style="display: none;
-            padding-left: 0px; background-color: White; padding-right: 0px;">
+        <asp:Panel ID="pnlRemove" runat="server" CssClass="modalPopupInner_remove modal_popup_background" Style="display: none;
+            padding-left: 0px;  padding-right: 0px;">
             <asp:Panel ID="pnlRemoveHeading" runat="server" CssClass="drag">
                 <div class="headerControl-jaha">
                     <div class="manage_user_header_popup">

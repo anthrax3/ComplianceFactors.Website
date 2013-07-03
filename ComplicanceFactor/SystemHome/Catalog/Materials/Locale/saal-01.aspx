@@ -41,7 +41,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+   <div id="content">
         <div class="div_upload_file">
             <div id="divIcon">
                 <div class="fancy-popup-header">

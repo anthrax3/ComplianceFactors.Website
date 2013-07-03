@@ -369,8 +369,8 @@
     </asp:Panel>
     <asp:Button ID="btnpnlCompleteCase" runat="server" Style="display: none;" />
     <div class="font_normal">
-        <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620" Style="display: none;
-            padding-left: 0px; background-color: White; padding-right: 0px;">
+        <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
+            padding-left: 0px;  padding-right: 0px;">
             <asp:Panel ID="pnlCompleteCasePageHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">

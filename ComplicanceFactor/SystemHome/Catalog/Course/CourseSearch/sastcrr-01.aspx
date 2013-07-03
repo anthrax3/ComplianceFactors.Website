@@ -88,7 +88,7 @@
              return false;
          }
     </script>
-    <div>
+    <div id="content">
         <div id="courseselected" runat="server" style="display: none;">
             <div class="div_header_popup_1">
                <%=LocalResources.GetLabel("app_course_selected_text")%>:

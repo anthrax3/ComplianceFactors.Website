@@ -14,7 +14,7 @@
             height: 450px;
         }
     </style>
-    <div>
+  <div id="content">
         <div class="div_header_650">
            UI Drop-down:
         </div>

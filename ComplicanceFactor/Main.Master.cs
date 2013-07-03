@@ -212,7 +212,7 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\FacilityTypes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\GradingSchemes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Holiday Schedules"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\HRIS Integration"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\HRISIntegration"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\InstructorTypes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Languages"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\MaterialTypes"

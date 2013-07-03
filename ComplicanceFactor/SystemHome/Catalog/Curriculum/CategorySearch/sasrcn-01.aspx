@@ -81,7 +81,7 @@
             return false;
         }
     </script>
-    <div>
+   <div id="content">
         <div class="div_header_popup_1">
             <%=LocalResources.GetLabel("app_categories_search_results_text")%>:
         </div>

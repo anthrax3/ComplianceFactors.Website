@@ -1918,8 +1918,8 @@
         <div class="clear">
         </div>
         <div class="font_normal">
-            <asp:Panel ID="pnlCreateNewVersion" runat="server" CssClass="modalPopup_width_620"
-                Style="display: none; padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlCreateNewVersion" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+                Style="display: none; padding-left: 0px;  padding-right: 0px;">
                 <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">
@@ -2030,8 +2030,8 @@
             </asp:Panel>
         </div>
         <div class="font_normal">
-            <asp:Panel ID="pnlViewPreviousVersionList" runat="server" CssClass="modalPopup_width_620"
-                Style="display: none; padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlViewPreviousVersionList" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+                Style="display: none; padding-left: 0px;  padding-right: 0px;">
                 <asp:Panel ID="pnlViewPreviousVersionHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">

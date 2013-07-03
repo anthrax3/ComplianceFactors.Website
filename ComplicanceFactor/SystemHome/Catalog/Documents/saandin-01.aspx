@@ -261,8 +261,8 @@
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
     </asp:ModalPopupExtender>
-    <asp:Panel ID="pnlAddAttachment" Style="display: none; background-color: White; padding-left: 0px;
-        padding-right: 0px" runat="server" CssClass="modalPopup_upload">
+    <asp:Panel ID="pnlAddAttachment" Style="display: none;  padding-left: 0px;
+        padding-right: 0px" runat="server" CssClass="modalPopup_upload modal_popup_background">
         <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
             <div>
                 <div class="uploadpopup_header">

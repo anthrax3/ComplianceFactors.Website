@@ -1300,8 +1300,8 @@
             <asp:HiddenField ID="hdExtenautingcond" runat="server" />
             <asp:HiddenField ID="hdEmployeeInterview" runat="server" />
             <asp:Button ID="btnUploadFile" runat="server" CssClass="cursor_hand" Style="display: none;" />
-            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload" Style="display: none;
-                padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
+                padding-left: 0px;  padding-right: 0px;">
                 <div id="loading">
                     <div id="loadingcontent" style="">
                         <p id="loadingspinner" style="">
@@ -1395,8 +1395,8 @@
         </div>
         <%-- edit job title popup--%>
         <div>
-            <asp:Panel ID="pnlJobTitle" runat="server" CssClass="modalPopup_width_620" Style="display: none;
-                padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlJobTitle" runat="server" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
+                padding-left: 0px;  padding-right: 0px;">
                 <asp:Panel ID="pnlJobTitleHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">
@@ -1442,8 +1442,8 @@
         <%-- Add Hazard popup--%>
         <div>
             <asp:Button ID="btnTempHazard" runat="server" Style="display: none;" />
-            <asp:Panel ID="pnlHazard" runat="server" CssClass="modalPopup_width_700" Style="display: none;
-                padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlHazard" runat="server" CssClass="modalPopup_width_700 modal_popup_background" Style="display: none;
+                padding-left: 0px;  padding-right: 0px;">
                 <asp:Panel ID="pnlHazardHEading" runat="server" CssClass="drag">
                     <div class="div_header_700">
                         <%=LocalResources.GetLabel("app_enter_potential_hazards_control_measure_text")%>:
@@ -1563,8 +1563,8 @@
         <%--   Add edit control measure--%>
         <div>
             <asp:Button ID="btnTempControlMeasure" runat="server" Style="display: none;" />
-            <asp:Panel ID="pnlControlMeasure" runat="server" CssClass="modalPopup_width_700"
-                Style="display: none; padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlControlMeasure" runat="server" CssClass="modalPopup_width_700 modal_popup_background"
+                Style="display: none; padding-left: 0px;  padding-right: 0px;">
                 <asp:Panel ID="pnlControlMeasureHeading" runat="server" CssClass="drag">
                     <div class="div_header_700">
                         <%=LocalResources.GetLabel("app_control_measure_text")%>

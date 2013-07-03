@@ -106,7 +106,7 @@
             <table>
                 <tr>
                     <td>
-                        <a href="HRIS Integration/samhrismp-01.aspx">
+                        <a href="HRISIntegration/samhrismp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_hris_integration_text")%></a>
                     </td>
                     <td>

@@ -65,7 +65,7 @@
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>--%>
-    <div>
+    <div id="content">
        <div class="div_header_1005">
             <%=LocalResources.GetLabel("app_add_grading_value_text")%>:
         </div>

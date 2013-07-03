@@ -761,26 +761,10 @@
     <Content Include="SystemHome\Configuration\Holiday Schedules\saanhdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Holiday Schedules\saehdn-01.aspx" />
     <Content Include="SystemHome\Configuration\Holiday Schedules\samhdmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Display_Hris_Log1.aspx" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_38.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_41.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_42.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_11_44.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_6_30 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_6_46 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_01 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_04 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_05 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_26_2013_8_08 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_27_2013_11_16.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_27_2013_11_19.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_11_11.txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_3_55 .txt" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\samhrismp-01.aspx" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx" />
-    <Content Include="SystemHome\Configuration\HRIS Integration\View_HRIS_log_Details.aspx" />
+    <Content Include="SystemHome\Configuration\HRISIntegration\Popup\p-samdhrislo-01.aspx" />
+    <Content Include="SystemHome\Configuration\HRISIntegration\Popup\p-samvhrislo-01.aspx" />
+    <Content Include="SystemHome\Configuration\HRISIntegration\samhrismp-01.aspx" />
+    <Content Include="SystemHome\Configuration\HRISIntegration\Test_hris.aspx" />
     <Content Include="SystemHome\Configuration\InstructorTypes\saanitn-01.aspx" />
     <Content Include="SystemHome\Configuration\InstructorTypes\saeitn-01.aspx" />
     <Content Include="SystemHome\Configuration\InstructorTypes\samitmp-01.aspx" />
@@ -806,6 +790,13 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
+    <None Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.xsc">
+      <DependentUpon>dsErrorLogDetails.xsd</DependentUpon>
+    </None>
+    <None Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.xsd" />
+    <None Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.xss">
+      <DependentUpon>dsErrorLogDetails.xsd</DependentUpon>
+    </None>
     <None Include="SystemHome\Configuration\Themes\Logo\ComplianceFactorsLogo.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Logo\rainbow_background-t2.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Popup\p-preview.aspx" />
@@ -3308,47 +3299,34 @@
     <Compile Include="SystemHome\Configuration\Holiday Schedules\samhdmp-01.aspx.designer.cs">
       <DependentUpon>samhdmp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Display_Hris_Log1.aspx.cs">
-      <DependentUpon>Display_Hris_Log1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Display_Hris_Log1.aspx.designer.cs">
-      <DependentUpon>Display_Hris_Log1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.Designer.cs" />
+    <Compile Include="SystemHome\Configuration\HRISIntegration\Popup\p-samdhrislo-01.aspx.cs">
       <DependentUpon>p-samdhrislo-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samdhrislo-01.aspx.designer.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\Popup\p-samdhrislo-01.aspx.designer.cs">
       <DependentUpon>p-samdhrislo-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\Popup\p-samvhrislo-01.aspx.cs">
       <DependentUpon>p-samvhrislo-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Popup\p-samvhrislo-01.aspx.designer.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\Popup\p-samvhrislo-01.aspx.designer.cs">
       <DependentUpon>p-samvhrislo-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\samhrismp-01.aspx.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\samhrismp-01.aspx.cs">
       <DependentUpon>samhrismp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\samhrismp-01.aspx.designer.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\samhrismp-01.aspx.designer.cs">
       <DependentUpon>samhrismp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\Test_hris.aspx.cs">
       <DependentUpon>Test_hris.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\Test_hris.aspx.designer.cs">
+    <Compile Include="SystemHome\Configuration\HRISIntegration\Test_hris.aspx.designer.cs">
       <DependentUpon>Test_hris.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\View_HRIS_log_Details.aspx.cs">
-      <DependentUpon>View_HRIS_log_Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\HRIS Integration\View_HRIS_log_Details.aspx.designer.cs">
-      <DependentUpon>View_HRIS_log_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\InstructorTypes\saanitn-01.aspx.cs">
       <DependentUpon>saanitn-01.aspx</DependentUpon>
@@ -3928,6 +3906,7 @@
     <Folder Include="SystemHome\Catalog\Course\Icons\" />
     <Folder Include="SystemHome\Catalog\Documents\Upload\" />
     <Folder Include="SystemHome\Catalog\Materials\Upload\" />
+    <Folder Include="SystemHome\Configuration\HRISIntegration\Log\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
   </ItemGroup>
@@ -4071,8 +4050,8 @@
     <Content Include="Instructor\Web.config" />
     <Content Include="SystemHome\Catalog\Web.config" />
     <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\Manage.docx" />
-    <None Include="SystemHome\Configuration\HRIS Integration\Sample\HRIS_import_csv_example.xlsx" />
-    <None Include="SystemHome\Configuration\HRIS Integration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
+    <None Include="SystemHome\Configuration\HRISIntegration\Sample\HRIS_import_csv_example.xlsx" />
+    <None Include="SystemHome\Configuration\HRISIntegration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
     <Content Include="SystemHome\Users\Web.config" />
     <None Include="Training\PdfTemplate\MyCourses.xsc">
       <DependentUpon>MyCourses.xsd</DependentUpon>
@@ -4112,6 +4091,7 @@
     <EmbeddedResource Include="Instructor\PdfTemplate\MyRoasters.rdlc" />
     <EmbeddedResource Include="Instructor\PdfTemplate\SignUpEmployeeList.rdlc" />
     <EmbeddedResource Include="Instructor\PdfTemplate\SignUpSheet.rdlc" />
+    <EmbeddedResource Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\ErrorLog.rdlc" />
     <EmbeddedResource Include="Training\PdfTemplate\MyCourse.rdlc" />
     <EmbeddedResource Include="Training\Popup\PdfTemplate\MyDeliveries.rdlc" />
   </ItemGroup>
