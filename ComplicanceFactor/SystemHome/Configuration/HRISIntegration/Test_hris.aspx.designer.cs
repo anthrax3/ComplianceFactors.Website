@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration {
+namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration {
     
     
     public partial class Test_hris {

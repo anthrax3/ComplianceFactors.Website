@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
-    CodeBehind="samhrismp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.HRIS_Integration.samhrismp_01" %>
+    CodeBehind="samhrismp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.HRISIntegration.samhrismp_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -93,11 +93,42 @@
 			}
 		);
         });
-    </script>     
+    </script>
+    <script type="text/javascript">
+        function checkTime(sender, args) {
+            var timeStr = document.getElementById('<%=txtHours.ClientID %>').value;
+            var regex = /^(\d{1,2}):(\d{2})?$/;
+            var timArr = timeStr.match(regex);
+            hour = timArr[1];
+            minute = timArr[2];
+            if (hour < 0 || hour > 12) {
+                args.IsValid = false;
+            }
+            if (minute < 0 || minute > 59) {
+                args.IsValid = false;
+            }
+
+        }
+    </script>
+    <script type="text/javascript">
+        function validateAll() {
+            var isValid = false;
+            isValid = Page_ClientValidate('samhrismp');
+            if (isValid) {
+                isValid = Page_ClientValidate('samhrismp_time');
+            }
+            return isValid;
+
+        }
+    </script>
     <br />
     <br />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhris" runat="server"
         ValidationGroup="samhrismp"></asp:ValidationSummary>
+    <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"
+        ValidationGroup="samhrismp_time"></asp:ValidationSummary>
+    <asp:CustomValidator ID="cvValidateTime" EnableClientScript="true" ClientValidationFunction="checkTime"
+        ValidationGroup="samhrismp_time" runat="server" ErrorMessage="Please select valid time">&nbsp;</asp:CustomValidator>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>
     <div class="content_area_long">
@@ -194,7 +225,7 @@
                         <%=LocalResources.GetLabel("app_password_text")%>:
                     </td>
                     <td class="align_left">
-                    <input id="txtPassword" name="password" runat="server" />
+                        <input id="txtPassword" name="password" runat="server" />
                         <%--<asp:TextBox ID="txtPassword" TextMode="Password" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
                     </td>
                 </tr>
@@ -225,8 +256,14 @@
                     </td>
                     <td class="align_left" colspan="2">
                         <asp:TextBox ID="txtOccursEvery" CssClass="textbox_50" runat="server"></asp:TextBox>&nbsp;&nbsp;Day(s)
-                        &nbsp;<%=LocalResources.GetLabel("app_at_text")%>                                             
-                        <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>                      
+                        &nbsp;<%=LocalResources.GetLabel("app_at_text")%>
+                        <asp:RequiredFieldValidator ID="rfvOccuranceTime" runat="server" ValidationGroup="samhrismp"
+                            ControlToValidate="txtHours" ErrorMessage="Please enter the time">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Please enter valid time"
+                            ValidationGroup="samhrismp" ControlToValidate="txtHours" ValidationExpression="^[0-9]:[0-9][0-9]$">&nbsp;
+                        </asp:RegularExpressionValidator>
+                        <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>
                         <asp:DropDownList ID="ddlTimeConversion" CssClass="textbox_50" runat="server">
                             <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
                             <asp:ListItem Text="PM" Value="PM"></asp:ListItem>
@@ -258,7 +295,7 @@
                 </tr>
                 <tr>
                     <td class="align_left">
-                        <asp:Button ID="btnSaveHrisSftpInformation" runat="server" ValidationGroup="samhrismp"
+                        <asp:Button ID="btnSaveHrisSftpInformation" runat="server" OnClientClick="return validateAll()"
                             Text="<%$ LabelResourceExpression: app_save_hris_sftp_information_button_text %>"
                             OnClick="btnSaveHrisSftpInformation_Click" />
                     </td>
@@ -295,8 +332,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload" Style="display: none;
+            padding-left: 0px; background-color: White; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhrismp" runat="server"

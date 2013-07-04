@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration.Popup {
+namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup {
     
     
     public partial class p_samdhrislo_01 {

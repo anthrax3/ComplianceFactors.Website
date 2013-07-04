@@ -26,7 +26,7 @@
             }
             else {
                 document.getElementById('divvalidate').style.display = "none";
-                document.getElementById('success_logout').style.display = "none";
+                document.getElementById('success_logout').style.display = "none"; 
                 document.getElementById('expire_message').style.display = "none";
                 document.getElementById('alreadyLogged').style.display = "none";
                 return true;
@@ -84,6 +84,10 @@
             height: 15px;
             font-size: 12px;
             font-weight: 700;
+        }
+        a.image_link
+        {
+            border: none;
         }
     </style>
 </head>

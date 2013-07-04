@@ -16,7 +16,7 @@ using System.Text;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
+namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration
 {
     public partial class samhrismp_01 : System.Web.UI.Page
     {
@@ -223,8 +223,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
             }
             else
             {
-                int hours = Convert.ToInt16(txtHours.Text.Substring(0,2));
-                int minites = Convert.ToInt16(txtHours.Text.Substring(3, 2));
+                DateTime time = Convert.ToDateTime(txtHours.Text);
+                string timeEvery = time.ToString("HH:mm");
+                int hours = Convert.ToInt16(timeEvery.Substring(0, 2));
+                int minites = Convert.ToInt16(timeEvery.Substring(3, 2));
                 hours = hours + 12;
                 hrisIntegration.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
             }                     
@@ -232,7 +234,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
 
             try
             {
-
                 if (!string.IsNullOrEmpty(hrisId))
                 {
                     hrisIntegration.u_sftp_id_pk = hrisId;

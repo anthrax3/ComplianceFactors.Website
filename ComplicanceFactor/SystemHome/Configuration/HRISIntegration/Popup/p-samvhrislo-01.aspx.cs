@@ -12,7 +12,7 @@ using System.Net;
 using System.Data;
 using Microsoft.Reporting.WebForms;
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration.Popup
+namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
 {
     public partial class p_samvhrislo_01 : System.Web.UI.Page
     {
@@ -84,7 +84,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration.Popup
             }
 
 
-            string localPath = @"C:\Users\Windows\Downloads\";
+            string localPath = "C:/Users/Windows/Downloads/";
+            //localPath = "~/SystemHome/Configuration/HRISIntegration/TempLogFiles/";
 
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
             request.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);

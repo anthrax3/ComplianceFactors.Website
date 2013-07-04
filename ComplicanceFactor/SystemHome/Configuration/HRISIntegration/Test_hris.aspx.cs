@@ -16,7 +16,7 @@ using System.Text;
 using ComplicanceFactor.BusinessComponent;
 using System.Text.RegularExpressions;
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration
+namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration
 {
     public partial class Test_hris : System.Web.UI.Page
     {

@@ -167,7 +167,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
 
                     ComplianceDAO miris = new ComplianceDAO();
                     miris.c_case_id_pk = caseId;
-
+                    miris.s_locale_culture = SessionWrapper.CultureName;
 
                     //witness
                     DataTable dtGetWitness = new DataTable();

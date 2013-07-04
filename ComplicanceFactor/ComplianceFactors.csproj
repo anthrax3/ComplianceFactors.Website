@@ -3907,6 +3907,7 @@
     <Folder Include="SystemHome\Catalog\Documents\Upload\" />
     <Folder Include="SystemHome\Catalog\Materials\Upload\" />
     <Folder Include="SystemHome\Configuration\HRISIntegration\Log\" />
+    <Folder Include="SystemHome\Configuration\HRISIntegration\TempLogFiles\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
   </ItemGroup>

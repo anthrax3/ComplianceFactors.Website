@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRIS_Integration.Popup
+namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
 {
     public partial class p_samdhrislo_01 : System.Web.UI.Page
     {

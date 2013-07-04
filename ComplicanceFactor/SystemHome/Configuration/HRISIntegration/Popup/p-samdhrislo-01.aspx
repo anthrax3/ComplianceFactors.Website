@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
-    CodeBehind="p-samdhrislo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.HRIS_Integration.Popup.p_samdhrislo_01" %>
+    CodeBehind="p-samdhrislo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup.p_samdhrislo_01" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

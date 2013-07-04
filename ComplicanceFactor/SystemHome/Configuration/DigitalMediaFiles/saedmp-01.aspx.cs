@@ -9,6 +9,7 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.IO;
 using ComplicanceFactor.Common.Languages;
+using System.Text.RegularExpressions;
 
 namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles
 {
@@ -282,7 +283,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles
             digitalMedia.s_digital_media_file_name = txtDigitalMediaTitle.Text;
             digitalMedia.s_digital_media_file_description = txtDigitalMediaDescription.InnerText;
             digitalMedia.s_digital_media_file_type_id_fk = ddlFileType.SelectedValue;
-            digitalMedia.s_digital_media_source_file_name = SessionWrapper.s_digital_media_source_file_name;
+            digitalMedia.s_digital_media_source_file_name = Regex.Replace(SessionWrapper.s_digital_media_source_file_name, " ", "_");
 
             try
             {

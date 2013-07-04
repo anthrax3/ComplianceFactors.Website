@@ -22,11 +22,14 @@ namespace ComplicanceFactor
 {
     public class Global : System.Web.HttpApplication
     {
-        private DateTime start;         
+        private DateTime start;
         public static string APP_PATH = HttpContext.Current.Server.MapPath("~/SystemHome/Configuration/HRISIntegration/Uploaded/");
         public static string TEMP_APP_PATH = HttpContext.Current.Server.MapPath("~/SystemHome/Configuration/HRISIntegration/TempLogFiles/");
+        public static string LOGGER_APP_PATH = HttpContext.Current.Server.MapPath("~/Logs/");
+        public static string ERROR_LOG_FILE_PATH = LOGGER_APP_PATH + "ErrorLog.txt";
+        public static string NEW_LINE = "\r\n";
         private const string DummyCacheItemKey = "HRIS";
-        private static readonly string DummyPageUrl = "http://localhost:59207/SystemHome/sahp-01.aspx";
+        private static readonly string DummyPageUrl = "http://compliancefactors.com.lavender.arvixe.com/SystemHome/sahp-01.aspx";
         private string passPhrase = "Pas5pr@ej";      // can be any string
         private string initVector = "@1B2c3D4e5F6g7H8"; // must be 16 bytes
 
@@ -34,12 +37,12 @@ namespace ComplicanceFactor
         protected void Application_Start(object sender, EventArgs e)
         {
             HRISBackground();
-             
+
             //Thread backgroundThread = new Thread(new ThreadStart(HRISBackgroundProcess));
             //backgroundThread.Name = "BackgroundHRISThread";
             //backgroundThread.IsBackground = true;
             //backgroundThread.Start();             
-        } 
+        }
 
         protected void Session_Start(object sender, EventArgs e)
         {
@@ -48,10 +51,10 @@ namespace ComplicanceFactor
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            //if (HttpContext.Current.Request.Url.ToString() == DummyPageUrl)
-            //{
+            if (HttpContext.Current.Request.Url.ToString() == DummyPageUrl)
+            {
                 HRISBackground();
-            //}
+            }
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -100,11 +103,12 @@ namespace ComplicanceFactor
             SystemHRISIntegration getDetails = new SystemHRISIntegration();
             try
             {
+
                 getDetails = SystemHRISIntegrationBLL.GetHRISDetailsForBackground(dtTime, date);
                 if (!string.IsNullOrEmpty(getDetails.u_sftp_URI))
                 {
                     string newString = APP_PATH + getDetails.u_sftp_hris_filename + ".xlsx"; //Hard coded(extension),need to change any time.
-                    //string s = HttpContext.Current.Server.MapPath(_attachmentpath + getDetails.u_sftp_hris_filename + ".xlsx");
+                    //string newString = HttpContext.Current.Server.MapPath("/SystemHome/Configuration/HRISIntegration/Uploaded/" + getDetails.u_sftp_hris_filename + ".xlsx");
                     DataTable dtHRIS = getExcelData(newString, "HRIS");
                     InsertIntoUserMaster(dtHRIS, getDetails.u_sftp_URI, getDetails.u_sftp_username, getDetails.u_sftp_password);
                 }
@@ -113,16 +117,26 @@ namespace ComplicanceFactor
             {
                 if (ConfigurationWrapper.LogErrors == true)
                 {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("global.aspx", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("global.aspx", ex.Message);
-                    }
+                    LogErrorMessage(ex.Message);
                 }
-            }            
+            }
+            // We need to register another cache item which will expire again in one
+            // minute. However, as this callback occurs without any HttpContext, we do not
+            // have access to HttpContext and thus cannot access the Cache object. The
+            // only way we can access HttpContext is when a request is being processed which
+            // means a webpage is hit. So, we need to simulate a web page hit and then 
+            // add the cache item.
+            HitPage();
+        }
+
+        private void HitPage()
+        {
+            WebClient client = new WebClient();
+            //WebProxy proxyObject = new WebProxy("http://localhost:2663", true);
+            //client.Proxy = proxyObject;
+            //var url = new Uri(Request.Url, DummyPageUrl).AbsoluteUri;
+            //client.DownloadData(VirtualPathUtility.ToAbsolute(url));
+            client.DownloadData(DummyPageUrl);
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -349,9 +363,9 @@ namespace ComplicanceFactor
             string filename = "CF_HRIS_SFTP_Job_Run_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString().Substring(0, 5) + ".txt";
             filename = filename.Replace("/", "_");
             filename = filename.Replace(":", "_");
-            //string path = Server.MapPath(_logpath);
-            string filePath = TEMP_APP_PATH + filename;
-            FileStream fs1 = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+            //string path = Server.MapPath(_logpath);TEMP_APP_PATH
+            string filePath = TEMP_APP_PATH + filename.TrimEnd();
+            FileStream fs1 = new FileStream(TEMP_APP_PATH + filename.TrimEnd(), FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(fs1);
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("************************************");
@@ -389,7 +403,9 @@ namespace ComplicanceFactor
             writer.Write(sb.ToString());
             writer.Close();
 
-            //Create Log File In FTP 
+            //Create Log File In FTP
+
+            System.Threading.Thread.Sleep(8000);
 
             CreateLogFileInFTP(filename, uri, userName, password, sb.ToString(), filePath);//filePath           
 
@@ -452,8 +468,6 @@ namespace ComplicanceFactor
             request.Credentials = new NetworkCredential(userName, password);
             Stream ftpStream = request.GetRequestStream();
 
-            //string path = @"D:\Staff\GuruPraveen\Web Project\WorkingCopy2\ComplianceFactors_GitHub\ComplianceFactors.Website\ComplicanceFactor\SystemHome\Configuration\HRIS Integration\Log\CF_HRIS_SFTP_Job_Run_6_29_2013_11_11.txt";
-
             FileStream file = File.OpenRead(path);
 
             int length = 1024;
@@ -469,7 +483,7 @@ namespace ComplicanceFactor
 
             file.Close();
             ftpStream.Close();
-        }        
+        }
 
         /// <summary>
         /// Get Excel Data
@@ -597,6 +611,16 @@ namespace ComplicanceFactor
                 pow *= 26;
             }
             return number;
+        }
+
+        public void LogErrorMessage(string errorMessage)
+        {
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(ERROR_LOG_FILE_PATH, true);
+            writer.WriteLine(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt") + " : " + "Global.asax : " + errorMessage.ToString() + NEW_LINE);
+            writer.Flush();
+            writer.Close();
+            writer.Dispose();
+            writer = null;
         }
     }
 }
