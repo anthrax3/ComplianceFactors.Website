@@ -30,8 +30,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles.Popup
             else if ((type == "SWF") || (type == "MPEG") || (type == "MOV") || (type == "AVI") || (type == "WMA") || (type == "MP3"))
             {
                 ltlPreview.Text = "<object classid='clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921' codebase='http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab' width='300' height='280'> <param name='quality' value='high' /> <embed type='application/x-vlc-plugin' pluginspage='http://www.videolan.org' autoplay='yes' lop='no' width='722' height='500'  ID='Video1' src='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "' value='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "' /></object>";
-                //string test = protocol+"://"+ Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename;
-                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Test", @"alert('" + test + "')",true);
+                string test = protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename;
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Test", @"alert('" + test + "')", true);
             }
             
         }
