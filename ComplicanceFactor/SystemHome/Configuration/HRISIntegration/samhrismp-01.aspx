@@ -35,7 +35,7 @@
             var id_value = document.getElementById('<%=FileUpload1.ClientID %>').value;
 
             if (id_value != '') {
-                var valid_extensions = /(.csv)$/i;
+                var valid_extensions = /(.csv|.xlsx)$/i;
                 if (valid_extensions.test(id_value)) {
                     args.IsValid = true;
 
@@ -261,8 +261,8 @@
                             ControlToValidate="txtHours" ErrorMessage="Please enter the time">&nbsp;
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Please enter valid time"
-                            ValidationGroup="samhrismp" ControlToValidate="txtHours" ValidationExpression="^[0-9]:[0-9][0-9]$">&nbsp;
-                        </asp:RegularExpressionValidator>
+                            ValidationGroup="samhrismp" ControlToValidate="txtHours" ValidationExpression="^[0-9]+:\d\d$">&nbsp;
+                        </asp:RegularExpressionValidator><%--^[0-9][0-9]:[0-9][0-9]$--%>
                         <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>
                         <asp:DropDownList ID="ddlTimeConversion" CssClass="textbox_50" runat="server">
                             <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
@@ -347,7 +347,7 @@
                             <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                                 z-index: 1103; position: absolute; width: 30px; height: 30px;" runat="server"
                                 ImageUrl="~/Images/Zoom/fancy_close.png" />
-                        </div>
+                        </div>   
                         <div class="clear">
                         </div>
                     </div>

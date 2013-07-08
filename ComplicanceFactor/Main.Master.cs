@@ -35,6 +35,8 @@ namespace ComplicanceFactor
 
             //Page.Header.Controls.Add(style);
 
+            //For Session Expire
+
             if ((!string.IsNullOrEmpty(SessionWrapper.u_userid)) && (!string.IsNullOrEmpty(SessionWrapper.sessionid)))
             {
                 bool isAccess = SessioninfoBLL.ManageSession(SessionWrapper.u_userid, SessionWrapper.sessionid);
@@ -43,6 +45,9 @@ namespace ComplicanceFactor
                 {
                     Session.Abandon();
                     SessionWrapper.clearsession();
+                    //Session expire. If the user opened in one browser and then open the 
+                    //another browser the first opened browser will expired and redirect to Default2.aspx
+                    Response.Redirect("~/Default2.aspx?expire=" + SecurityCenter.EncryptText("true") + "&locale=" + SecurityCenter.EncryptText(ddlLanguages.SelectedValue));
                 }
             }
         }

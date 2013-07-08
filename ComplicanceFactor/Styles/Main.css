@@ -416,14 +416,14 @@ div.right
 
 a.image_link
 {
-    border: none;
+    outline:none;
 }
 
-/*img.logo_image
+img.logo_image
 {
     border: none;
     padding: 0;
-}*/
+}
 
 
 

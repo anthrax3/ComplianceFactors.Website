@@ -7,7 +7,7 @@
     <style type="text/css">
         body
         {
-            width: 722px !important;
+            width: 740px !important;
             margin: 0px 0 0 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;

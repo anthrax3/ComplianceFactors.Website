@@ -255,7 +255,7 @@
                             ControlToValidate="txtHours" ErrorMessage="Please enter the time">&nbsp;
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Please enter valid time"
-                            ValidationGroup="samhrismp" ControlToValidate="txtHours" ValidationExpression="^[0-9]:[0-9][0-9]$">&nbsp;
+                            ValidationGroup="samhrismp" ControlToValidate="txtHours" ValidationExpression="^[0-9]+:[0-9][0-9]$">&nbsp;
                         </asp:RegularExpressionValidator>
                         <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>
                         <asp:DropDownList ID="ddlTimeConversion" CssClass="textbox_50" runat="server">

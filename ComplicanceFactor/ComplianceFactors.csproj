@@ -3907,7 +3907,9 @@
     <Folder Include="SystemHome\Catalog\Documents\Upload\" />
     <Folder Include="SystemHome\Catalog\Materials\Upload\" />
     <Folder Include="SystemHome\Configuration\HRISIntegration\Log\" />
+    <Folder Include="SystemHome\Configuration\HRISIntegration\Sample\" />
     <Folder Include="SystemHome\Configuration\HRISIntegration\TempLogFiles\" />
+    <Folder Include="SystemHome\Configuration\HRISIntegration\Uploaded\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
   </ItemGroup>
@@ -4051,8 +4053,6 @@
     <Content Include="Instructor\Web.config" />
     <Content Include="SystemHome\Catalog\Web.config" />
     <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\Manage.docx" />
-    <None Include="SystemHome\Configuration\HRISIntegration\Sample\HRIS_import_csv_example.xlsx" />
-    <None Include="SystemHome\Configuration\HRISIntegration\Uploaded\c8b150d0-548f-4f38-a381-f84f633a1825.csv" />
     <Content Include="SystemHome\Users\Web.config" />
     <None Include="Training\PdfTemplate\MyCourses.xsc">
       <DependentUpon>MyCourses.xsd</DependentUpon>

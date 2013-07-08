@@ -85,10 +85,7 @@
             font-size: 12px;
             font-weight: 700;
         }
-        a.image_link
-        {
-            border: none;
-        }
+        
     </style>
 </head>
 <body onload="noBack();" onunload="">
