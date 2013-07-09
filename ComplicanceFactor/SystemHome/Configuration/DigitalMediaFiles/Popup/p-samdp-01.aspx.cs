@@ -21,19 +21,23 @@ namespace ComplicanceFactor.SystemHome.Configuration.DigitalMediaFiles.Popup
 
             if ((type == "JPEG") || (type == "GIF") || (type == "PNG"))
             {
-                ltlPreview.Text = "<object data=../Images/" + filename + " width='740' height='510'/>";
+                ltlPreview.Text = "<object data=../Images/" + filename + " width='700' height='490'/>";
             }
             else if ((type == "PDF") || (type == "DOC") || (type == "XLS") || (type == "PPT") || (type == "Other"))
             {
-                ltlPreview.Text = "<iframe id='documentLoader' src=https://docs.google.com/viewer?url=" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "&embedded=true width='740' height='510';/>";
+                ltlPreview.Text = "<iframe id='documentLoader' src=https://docs.google.com/viewer?url=" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "&embedded=true width='700' height='490';/>";
             }
             else if ((type == "MPEG") || (type == "AVI") || (type == "MOV") || (type == "WMA") || (type == "MP3"))
             {
-                ltlPreview.Text = "<object classid='clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8' codebase='http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab' type='application/x-vlc-plugin' width='740' height='510'>  <param name='Src' value='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'  /> <embed  pluginspage='http://www.videolan.org' autoplay='yes' lop='no' width='740' height='510'  ID='Video1' src='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'  /></object>";
+                ltlPreview.Text = "<object classid='clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8' codebase='http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab' type='application/x-oleobject' width='700' height='490'>  <param name='Src' value='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'  /> <embed  pluginspage='http://www.videolan.org' autoplay='yes' lop='no' width='700' height='490'  ID='Video1' src='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "' type='application/x-vlc-plugin'  /></object>";
+                //ltlPreview.Text = "<object classid='clsid:E23FE9C6-778E-49D4-B537-38FCDE4887D8' codebase='http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab' type='application/x-oleobject' width='700' height='490'>  <param name='Src' value='http://localhost:59207/SystemHome/Configuration/DigitalMediaFiles/Images/mov.mov'  /> <embed  pluginspage='http://www.videolan.org' autoplay='yes' lop='no' width='700' height='490'  ID='Video1' src='http://localhost:59207/SystemHome/Configuration/DigitalMediaFiles/Images/mov.mov' type='application/x-vlc-plugin'  /></object>";
+
+                //ltlPreview.Text = "<object classid='clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921' codebase='http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab' type='application/x-oleobject' width='700' height='490'> <param name='Src' value='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'  /> <embed  pluginspage='http://www.videolan.org' type='application/x-vlc-plugin' progid='VideoLAN.VLCPlugin.2' name='vlc' autoplay='yes' lop='no' width='700' height='490'  ID='Video1' src='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'/></object>";
             }
             else if(type == "SWF")
             {
-                ltlPreview.Text = "<object codebase='http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7' classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000' type='application/x-oleobject' width='740' height='510'> <param name='src' value='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'> <embed src='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "' type='application/x-shockwave-flash' pluginspage='http://www.adobe.com/go/getflashplayer'></embed></object>";
+                ltlPreview.Text = "<object codebase='http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7' classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000' type='application/x-oleobject' width='700' height='490'> <param name='src' value='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "'> <embed src='" + protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/DigitalMediaFiles/Images/" + filename + "' type='application/x-shockwave-flash' pluginspage='http://www.adobe.com/go/getflashplayer' width='700' height='490'></embed></object>";
+                
             }
             //else if (type == "AVI")
             //{
