@@ -40,13 +40,13 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
-        /// btnHeaderSaveFieldNotes control.
+        /// btnHeaderSaveOJT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderSaveFieldNotes;
+        protected global::System.Web.UI.WebControls.Button btnHeaderSaveOJT;
         
         /// <summary>
         /// btnHeaderReset control.
@@ -157,13 +157,13 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// txtDuration control.
+        /// ddlType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDuration;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
         /// txtStartTime control.
@@ -184,40 +184,94 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         protected global::System.Web.UI.WebControls.TextBox txtEndTime;
         
         /// <summary>
-        /// txtType control.
+        /// ddlDuration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuration;
         
         /// <summary>
-        /// txtHarmTitle control.
+        /// chkIsSafety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHarmTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkIsSafety;
         
         /// <summary>
-        /// txtHarmNumber control.
+        /// ddlFrequency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHarmNumber;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFrequency;
         
         /// <summary>
-        /// txtFrequency control.
+        /// chkIsHarm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFrequency;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkIsHarm;
+        
+        /// <summary>
+        /// ddlHarm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlHarm;
+        
+        /// <summary>
+        /// chkIsCertification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkIsCertification;
+        
+        /// <summary>
+        /// lnkFileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkFileName;
+        
+        /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit;
+        
+        /// <summary>
+        /// btnRemove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRemove;
+        
+        /// <summary>
+        /// btnUploadCeritification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUploadCeritification;
         
         /// <summary>
         /// txtOthers control.
@@ -229,24 +283,6 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         protected global::System.Web.UI.WebControls.TextBox txtOthers;
         
         /// <summary>
-        /// chkIsSafety control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsSafety;
-        
-        /// <summary>
-        /// chkIsHarm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsHarm;
-        
-        /// <summary>
         /// txtTrainer control.
         /// </summary>
         /// <remarks>
@@ -254,15 +290,6 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTrainer;
-        
-        /// <summary>
-        /// chkIsCertification control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsCertification;
         
         /// <summary>
         /// chkIsAcknowledge control.
@@ -292,13 +319,13 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         protected global::System.Web.UI.WebControls.Button btnAddAttachment;
         
         /// <summary>
-        /// btnFooterSaveFieldNotes control.
+        /// btnFooterSaveOJT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterSaveFieldNotes;
+        protected global::System.Web.UI.WebControls.Button btnFooterSaveOJT;
         
         /// <summary>
         /// btnFooterReset control.
@@ -398,5 +425,77 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUploadCancel;
+        
+        /// <summary>
+        /// mpeUploadCertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender mpeUploadCertificate;
+        
+        /// <summary>
+        /// mpeEditUploadCertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender mpeEditUploadCertificate;
+        
+        /// <summary>
+        /// pnlUploadCertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlUploadCertificate;
+        
+        /// <summary>
+        /// pnlUploadCertificateHeading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlUploadCertificateHeading;
+        
+        /// <summary>
+        /// imgCloseCertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgCloseCertificate;
+        
+        /// <summary>
+        /// FileUpload2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
+        
+        /// <summary>
+        /// btnUploadCertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUploadCertificate;
+        
+        /// <summary>
+        /// btnCertificateClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCertificateClose;
     }
 }

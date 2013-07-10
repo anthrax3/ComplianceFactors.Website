@@ -23,7 +23,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public int? c_course_credit_units { get; set; }
         public bool c_course_cert_flag { get; set; }
         public int? c_course_cert_cycle_days { get; set; }
-        public int? c_course_recurrance_grace_days { get; set; }
+        public int? c_course_recurrence_grace_days { get; set; }
         public DateTime? c_course_cert_date { get; set; }
         public string c_course_owner_id_fk { get; set; }
         public string c_course_coordinator_id_fk { get; set; }
@@ -48,10 +48,12 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_course_Prerequistist { get; set; }
         public string c_course_Equivalencies { get; set; }
         public string c_course_Fulfillments { get; set; }
-        public int? c_cource_recurrance_every { get; set; }
-        public string c_cource_recurrance_period { get; set; }
-        public string c_cource_recurance_date_option { get; set; }
-        public DateTime? c_cource_recurance_date { get; set; }
+
+        public int? c_course_recurrence_every { get; set; }
+        public string c_course_recurrence_period { get; set; }
+        public string c_course_recurrence_date_option { get; set; }
+        public DateTime? c_course_recurrence_date { get; set; }
+
         public string c_related_course_group_id { get; set; }
         public int? c_course_cost { get; set; }
         public string cost_text { get; set; }

@@ -15,8 +15,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
 	    public string sv_ojt_location{get;set;}
 	    public string sv_ojt_Trainer{get;set;}
 	    public DateTime sv_ojt_date{get;set;}
-        public DateTime? sv_ojt_start_time { get; set; }
-	    public DateTime? sv_ojt_end_time{get;set;}
+        public string sv_ojt_start_time { get; set; }
+	    public string sv_ojt_end_time{get;set;}
 
         public int start_HH { get; set; }
         public int start_MM { get; set; }
@@ -40,9 +40,10 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
 	    public string sv_ojt_is_completed{get;set;}
         public string sv_ojt_status { get; set; }
         public bool sv_ojt_is_acknowledge { get; set; }
+        public string sv_ojt_harm_id_fk { get; set; }
+        public string sv_ojt_certify_filepath { get; set; }        
 
-        //public string sv_ojt_attachment { get; set; }
-
+        //Attachments
         public string sv_ojt_attachments_id_pk{get;set;}
 	    public string sv_ojt_id_fk{get;set;}
 	    public string sv_file_path{get;set;}
@@ -50,6 +51,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string sv_file_name { get; set; }
         public bool sv_ojt_is_save_sync { get; set; }
 
+        //Sent to user
         public string sv_ojt_sent_to_id_pk{get;set;}
 	    public string sv_ojt_sent_to_user_fk{get;set;}
 	    public string sv_ojt_is_acknowledged{get;set;}
@@ -57,6 +59,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
 	    public string sv_ojt_is_sync_mobile{get;set;}
         public string sv_ojt_is_archive { get; set; }
 
+        //For xml
         public string sv_ojt_attachment { get; set; }
         public string sv_mi_ojt_sent_to_user { get; set; }
     }

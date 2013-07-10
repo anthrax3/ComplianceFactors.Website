@@ -795,14 +795,14 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 int tempEvery;
                 if (int.TryParse(txtEvery.Text, out tempEvery))
                 {
-                    CreateCourse.c_cource_recurrance_every = tempEvery;
+                    CreateCourse.c_course_recurrence_every = tempEvery;
                 }
                 else
                 {
-                    CreateCourse.c_cource_recurrance_every = null;
+                    CreateCourse.c_course_recurrence_every = null;
                 }
-                CreateCourse.c_cource_recurrance_period = ddlEvery.SelectedValue;
-                CreateCourse.c_cource_recurance_date_option = rbtnDate.SelectedValue;
+                CreateCourse.c_course_recurrence_period = ddlEvery.SelectedValue;
+                CreateCourse.c_course_recurrence_date_option = rbtnDate.SelectedValue;
                 DateTime? recurancedate = null;
                 DateTime temprecurancedate;
                 CultureInfo culture = new CultureInfo("en-US");
@@ -810,7 +810,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 {
                     recurancedate = temprecurancedate;
                 }
-                CreateCourse.c_cource_recurance_date = recurancedate;
+                CreateCourse.c_course_recurrence_date = recurancedate;
                 //custom section
                 CreateCourse.c_course_custom_01 = txtCustom01.Text;
                 CreateCourse.c_course_custom_02 = txtCustom02.Text;
@@ -828,15 +828,15 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 //c_course_cert_flag
                 CreateCourse.c_course_cert_flag = false;
                
-                //c_course_recurrance_grace_days
+                //c_course_recurrence_grace_days
                 int tempGraceDays;
                 if (int.TryParse(txtGracePreiod.Text, out tempGraceDays))
                 {
-                    CreateCourse.c_course_recurrance_grace_days = tempGraceDays;
+                    CreateCourse.c_course_recurrence_grace_days = tempGraceDays;
                 }
                 else
                 {
-                    CreateCourse.c_course_recurrance_grace_days = null;
+                    CreateCourse.c_course_recurrence_grace_days = null;
                 }
                 //c_course_active_flag
                 if (ddlStatus.SelectedItem.Text == "Active")
@@ -954,7 +954,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
             txtcost.Text = Convert.ToString(Course.c_course_cost);
             txtCreditUnits.Text = Convert.ToString(Course.c_course_credit_units);
             txtCreditHours.Text = Convert.ToString(Course.c_course_credit_hours);
-            txtGracePreiod.Text = Convert.ToString(Course.c_course_recurrance_grace_days);
+            txtGracePreiod.Text = Convert.ToString(Course.c_course_recurrence_grace_days);
             ddlStatus.SelectedValue = Course.c_course_active_type_id_fk;
             chkVisible.Checked = Course.c_course_visible_flag;
             chkApprovalRequired.Checked = Course.c_course_approval_req;
@@ -972,11 +972,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
             }
             //recurrance
-            txtEvery.Text = Convert.ToString(Course.c_cource_recurrance_every);
-            ddlEvery.SelectedValue = Course.c_cource_recurrance_period;
-            if (Course.c_cource_recurance_date_option != "")
+            txtEvery.Text = Convert.ToString(Course.c_course_recurrence_every);
+            ddlEvery.SelectedValue = Course.c_course_recurrence_period;
+            if (Course.c_course_recurrence_date_option != "")
             {
-                rbtnDate.SelectedValue = Course.c_cource_recurance_date_option;
+                rbtnDate.SelectedValue = Course.c_course_recurrence_date_option;
             }
             DateTime? recurancedate = null;
             DateTime temprecurancedate;
@@ -985,9 +985,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
             {
                 recurancedate = temprecurancedate;
             }
-            if (!string.IsNullOrEmpty(Course.c_cource_recurance_date.ToString()))
+            if (!string.IsNullOrEmpty(Course.c_course_recurrence_date.ToString()))
             {
-                txtDate.Text = Convert.ToDateTime(Course.c_cource_recurance_date, culture).ToString("MM/dd/yyyy");
+                txtDate.Text = Convert.ToDateTime(Course.c_course_recurrence_date, culture).ToString("MM/dd/yyyy");
             }
             //icon
             if (!string.IsNullOrEmpty(Course.c_course_icon_uri))

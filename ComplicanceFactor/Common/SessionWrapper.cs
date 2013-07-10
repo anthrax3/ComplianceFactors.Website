@@ -6614,6 +6614,26 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static string ojt_upload_certification
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ojt_upload_certification"] != null)
+                {
+                    return HttpContext.Current.Session["ojt_upload_certification"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+
+            set
+            {
+                HttpContext.Current.Session["ojt_upload_certification"] = value;
+            }
+        }
+
 
         public static void clearsession()
         {

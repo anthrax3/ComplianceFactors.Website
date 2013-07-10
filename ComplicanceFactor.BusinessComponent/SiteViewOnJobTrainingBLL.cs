@@ -25,6 +25,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
         public static SiteViewOnJobTraining GetSingleOjt(string sv_ojt_id_pk)
         {
             SiteViewOnJobTraining ojt;
@@ -49,15 +50,13 @@ namespace ComplicanceFactor.BusinessComponent
 
                 if (!string.IsNullOrEmpty(dtGetOjt.Rows[0]["sv_ojt_start_time"].ToString()))
                 {
-                    ojt.sv_ojt_start_time = Convert.ToDateTime(dtGetOjt.Rows[0]["sv_ojt_start_time"], culture);
+                    ojt.sv_ojt_start_time = dtGetOjt.Rows[0]["sv_ojt_start_time"].ToString();
                 }
                 if (!string.IsNullOrEmpty(dtGetOjt.Rows[0]["sv_ojt_end_time"].ToString()))
                 {
-                    ojt.sv_ojt_end_time = Convert.ToDateTime(dtGetOjt.Rows[0]["sv_ojt_end_time"], culture);
+                    ojt.sv_ojt_end_time = dtGetOjt.Rows[0]["sv_ojt_end_time"].ToString();
                 }              
 
-                //if (!string.IsNullOrEmpty(dtGetOjt.Rows[0]["sv_ojt_end_time"].ToString()))
-              
                 ojt.sv_ojt_duration = dtGetOjt.Rows[0]["sv_ojt_duration"].ToString();
                 ojt.sv_ojt_type = dtGetOjt.Rows[0]["sv_ojt_type"].ToString();
                 if(!string.IsNullOrEmpty(dtGetOjt.Rows[0]["sv_ojt_issafty_brief"].ToString()))
@@ -70,8 +69,8 @@ namespace ComplicanceFactor.BusinessComponent
                 {
                     ojt.sv_ojt_isharm_related = Convert.ToBoolean(dtGetOjt.Rows[0]["sv_ojt_isharm_related"]);
                 }
-                ojt.sv_ojt_harm_title = dtGetOjt.Rows[0]["sv_ojt_harm_title"].ToString();
-                ojt.sv_ojt_harm_number = dtGetOjt.Rows[0]["sv_ojt_harm_number"].ToString();
+                //ojt.sv_ojt_harm_title = dtGetOjt.Rows[0]["sv_ojt_harm_title"].ToString();
+                //ojt.sv_ojt_harm_number = dtGetOjt.Rows[0]["sv_ojt_harm_number"].ToString();
                 if (!string.IsNullOrEmpty(dtGetOjt.Rows[0]["sv_ojt_iscertification_related"].ToString()))
                 {
                     ojt.sv_ojt_iscertification_related = Convert.ToBoolean(dtGetOjt.Rows[0]["sv_ojt_iscertification_related"]);
@@ -81,6 +80,13 @@ namespace ComplicanceFactor.BusinessComponent
                 {
                     ojt.sv_ojt_is_acknowledge = Convert.ToBoolean(dtGetOjt.Rows[0]["sv_ojt_is_acknowledge"]);
                 }
+                if (!string.IsNullOrEmpty(dtGetOjt.Rows[0]["sv_ojt_harm_id_fk"].ToString()))
+                {
+                    ojt.sv_ojt_harm_id_fk = dtGetOjt.Rows[0]["sv_ojt_harm_id_fk"].ToString();
+                }
+
+                ojt.sv_ojt_certify_filepath = dtGetOjt.Rows[0]["sv_ojt_certify_filepath"].ToString();
+
                 return ojt;
             }
             catch (Exception)
@@ -118,6 +124,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
             return ojt;
         }
+
         public static int InsertAttachment(SiteViewOnJobTraining ojt)
         {
             Hashtable htInsertAttachment = new Hashtable();
@@ -138,6 +145,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
         public static int UpdateOjt(SiteViewOnJobTraining newOjt)
         {
             Hashtable htNewOjt = new Hashtable();
@@ -156,12 +164,21 @@ namespace ComplicanceFactor.BusinessComponent
             htNewOjt.Add("@sv_ojt_issafty_brief", newOjt.sv_ojt_issafty_brief);
             htNewOjt.Add("@sv_ojt_frequency", newOjt.sv_ojt_frequency);
             htNewOjt.Add("@sv_ojt_isharm_related", newOjt.sv_ojt_isharm_related);
-            htNewOjt.Add("@sv_ojt_harm_title", newOjt.sv_ojt_harm_title);
-            htNewOjt.Add("@sv_ojt_harm_number", newOjt.sv_ojt_harm_number);
+            //htNewOjt.Add("@sv_ojt_harm_title", newOjt.sv_ojt_harm_title);
+            //htNewOjt.Add("@sv_ojt_harm_number", newOjt.sv_ojt_harm_number);
             htNewOjt.Add("@sv_ojt_iscertification_related", newOjt.sv_ojt_iscertification_related);
             htNewOjt.Add("@sv_ojt_other", newOjt.sv_ojt_other);
             htNewOjt.Add("@sv_ojt_is_save_sync", newOjt.sv_ojt_is_save_sync);
             htNewOjt.Add("@sv_ojt_is_acknowledge", newOjt.sv_ojt_is_acknowledge);
+            if (!string.IsNullOrEmpty(newOjt.sv_ojt_harm_id_fk))
+            {
+                htNewOjt.Add("@sv_ojt_harm_id_fk", newOjt.sv_ojt_harm_id_fk);
+            }
+            else
+            {
+                htNewOjt.Add("@sv_ojt_harm_id_fk", DBNull.Value);
+            }
+            htNewOjt.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);
             
             try
             {
@@ -172,6 +189,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
         public static void DeleteOjtAttachment(string sv_ojt_attachments_id_pk)
         {
             try
@@ -185,6 +203,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
         public static int UpdateSavedOjtStatus(string sv_ojt_user_archive_id_pk, string sv_ojt_id_pk)
         {
             Hashtable htupdateSavedfield = new Hashtable();
@@ -218,6 +237,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
         public static int CreateOjtSent(SiteViewOnJobTraining newOjt)
         {
             Hashtable htInsertOjtSent = new Hashtable();
@@ -236,12 +256,20 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertOjtSent.Add("@sv_ojt_issafty_brief", newOjt.sv_ojt_issafty_brief);
             htInsertOjtSent.Add("@sv_ojt_frequency", newOjt.sv_ojt_frequency);
             htInsertOjtSent.Add("@sv_ojt_isharm_related", newOjt.sv_ojt_isharm_related);
-            htInsertOjtSent.Add("@sv_ojt_harm_title", newOjt.sv_ojt_harm_title);
-            htInsertOjtSent.Add("@sv_ojt_harm_number", newOjt.sv_ojt_harm_number);
+            //htInsertOjtSent.Add("@sv_ojt_harm_title", newOjt.sv_ojt_harm_title);
+            //htInsertOjtSent.Add("@sv_ojt_harm_number", newOjt.sv_ojt_harm_number);
             htInsertOjtSent.Add("@sv_ojt_iscertification_related", newOjt.sv_ojt_iscertification_related);
             htInsertOjtSent.Add("@sv_ojt_other", newOjt.sv_ojt_other);
             htInsertOjtSent.Add("@sv_ojt_is_acknowledge", newOjt.sv_ojt_is_acknowledge);
-            //htInsertFieldNotesSent.Add("@sv_ojt_id", ojt.sv_ojt_id);
+            if (!string.IsNullOrEmpty(newOjt.sv_ojt_harm_id_fk))
+            {
+                htInsertOjtSent.Add("@sv_ojt_harm_id_fk", newOjt.sv_ojt_harm_id_fk);
+            }
+            else
+            {
+                htInsertOjtSent.Add("@sv_ojt_harm_id_fk", DBNull.Value);
+            }
+            htInsertOjtSent.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);            
             htInsertOjtSent.Add("@sv_ojt_attachment", newOjt.sv_ojt_attachment);
             htInsertOjtSent.Add("@sv_mi_ojt_sent_to_user", newOjt.sv_mi_ojt_sent_to_user);
 
@@ -254,6 +282,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
         public static DataTable GetUserId(string username)
         {
             Hashtable htGetId = new Hashtable();
@@ -288,12 +317,22 @@ namespace ComplicanceFactor.BusinessComponent
             htNewOjt.Add("@sv_ojt_issafty_brief", newOjt.sv_ojt_issafty_brief);
             htNewOjt.Add("@sv_ojt_frequency", newOjt.sv_ojt_frequency);
             htNewOjt.Add("@sv_ojt_isharm_related", newOjt.sv_ojt_isharm_related);
-            htNewOjt.Add("@sv_ojt_harm_title", newOjt.sv_ojt_harm_title);
-            htNewOjt.Add("@sv_ojt_harm_number", newOjt.sv_ojt_harm_number);
+            //htNewOjt.Add("@sv_ojt_harm_title", newOjt.sv_ojt_harm_title);
+            //htNewOjt.Add("@sv_ojt_harm_number", newOjt.sv_ojt_harm_number);
             htNewOjt.Add("@sv_ojt_iscertification_related", newOjt.sv_ojt_iscertification_related);
             htNewOjt.Add("@sv_ojt_is_acknowledge", newOjt.sv_ojt_is_acknowledge);
             htNewOjt.Add("@sv_ojt_other", newOjt.sv_ojt_other);
+            if (!string.IsNullOrEmpty(newOjt.sv_ojt_harm_id_fk))
+            {
+                htNewOjt.Add("@sv_ojt_harm_id_fk", newOjt.sv_ojt_harm_id_fk);
+            }
+            else
+            {
+                htNewOjt.Add("@sv_ojt_harm_id_fk", DBNull.Value);
+            }
+            htNewOjt.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);
             htNewOjt.Add("@sv_ojt_attachment",newOjt.sv_ojt_attachment);  
+
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_ojt", htNewOjt);
@@ -303,7 +342,6 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-
 
         public static DataTable GetOjtAcknowledge(string sv_ojt_id_pk)
         {
@@ -335,7 +373,16 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-
-        //s_sp_insert_ojt
+        public static DataTable GetHarmDetails()
+        {
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_harm_details_for_ojt");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }         
     }
 }

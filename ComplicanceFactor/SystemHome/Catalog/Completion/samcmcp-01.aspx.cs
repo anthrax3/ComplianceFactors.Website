@@ -796,14 +796,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
             try
             {
                 SystemCatalog course = SystemCatalogBLL.GetCourse(courseId, SessionWrapper.CultureName);
-                every = course.c_cource_recurrance_every;
-                period = course.c_cource_recurrance_period;
-                dateoption = course.c_cource_recurance_date_option;
+                every = course.c_course_recurrence_every;
+                period = course.c_course_recurrence_period;
+                dateoption = course.c_course_recurrence_date_option;
 
-                graysdays = course.c_course_recurrance_grace_days;
-                if (course.c_cource_recurance_date != null)
+                graysdays = course.c_course_recurrence_grace_days;
+                if (course.c_course_recurrence_date != null)
                 {
-                    dtrecurancedate = Convert.ToDateTime(course.c_cource_recurance_date);
+                    dtrecurancedate = Convert.ToDateTime(course.c_course_recurrence_date);
                 }
 
                 if (every > 0 && !string.IsNullOrEmpty(period) && !string.IsNullOrEmpty(dateoption) && dtrecurancedate != DateTime.MinValue)

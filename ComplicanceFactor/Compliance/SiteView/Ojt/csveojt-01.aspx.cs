@@ -19,6 +19,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
     {
         #region "Private Member Variables"
         private string _attachmentpath = "~/Compliance/SiteView/Ojt/Attachments/";
+        private string _filePath = "~/Compliance/SiteView/Ojt/CertificateAttachments/";
         private static string editOjtId;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -28,6 +29,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
             lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../ccsv-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_ojt_text") + "</a>";
             if (!IsPostBack)
             {
+                SessionWrapper.ojt_upload_certification = null;
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     editOjtId = SecurityCenter.DecryptText(Request.QueryString["id"].ToString());
@@ -35,15 +37,20 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 }
 
                 RevertBack(editOjtId);
+
                 SessionWrapper.TempAttachment = tempAttachment();
 
                 if (!string.IsNullOrEmpty(Request.QueryString["OjtId"]))
                 {
                     //isReceived = true;
                     lblOjtNumber.Text = SecurityCenter.DecryptText(Request.QueryString["OjtId"]);
-                    SessionWrapper.TempAttachment = SiteViewOnJobTrainingBLL.GetOjtAttachment(editOjtId);//.GetFieldNotesAttachment(editOjtId);
-                    //editFieldNoteId = Guid.NewGuid().ToString();
+                    SessionWrapper.TempAttachment = SiteViewOnJobTrainingBLL.GetOjtAttachment(editOjtId);//.GetFieldNotesAttachment(editOjtId);                     
                 }
+
+                Attachment();
+
+                ddlHarm.DataSource = SiteViewOnJobTrainingBLL.GetHarmDetails();
+                ddlHarm.DataBind();
             }
         }
         private void PopulateOjt(string OjtId)
@@ -57,8 +64,8 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 txtLocation.Text = ojt.sv_ojt_location;
                 txtFieldDescription.InnerText = ojt.sv_ojt_description;
                 lblOjtNumber.Text = ojt.sv_ojt_number;
-                txtDate.Text = ojt.sv_ojt_date.ToString();
-                txtDuration.Text = ojt.sv_ojt_duration;
+                txtDate.Text = ojt.sv_ojt_date.ToString("d");
+                ddlDuration.SelectedValue = ojt.sv_ojt_duration;
                 if (!string.IsNullOrEmpty(ojt.sv_ojt_start_time.ToString()))
                 {
                     txtStartTime.Text = Convert.ToDateTime(ojt.sv_ojt_start_time).ToShortTimeString();
@@ -67,32 +74,49 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 {
                     txtEndTime.Text = Convert.ToDateTime(ojt.sv_ojt_end_time).ToShortTimeString();
                 }
-                txtType.Text = ojt.sv_ojt_type;
-                txtHarmTitle.Text = ojt.sv_ojt_harm_title;
-                txtHarmNumber.Text = ojt.sv_ojt_harm_number;
-                txtFrequency.Text = ojt.sv_ojt_frequency;
+                ddlType.SelectedValue = ojt.sv_ojt_type;
+                //txtHarmTitle.Text = ojt.sv_ojt_harm_title;
+                //txtHarmNumber.Text = ojt.sv_ojt_harm_number;
+                ddlFrequency.SelectedValue = ojt.sv_ojt_frequency;
                 txtOthers.Text = ojt.sv_ojt_other;
                 txtTrainer.Text = ojt.sv_ojt_Trainer;
                 if (ojt.sv_ojt_issafty_brief == true)
                 {
                     chkIsSafety.Checked = true;
                 }
+                else
+                {
+                    ddlFrequency.Attributes.Add("disabled", "true");
+                }
                 if (ojt.sv_ojt_isharm_related == true)
                 {
                     chkIsHarm.Checked = true;
                 }
+                else
+                {
+                    ddlHarm.Attributes.Add("disabled", "true");
+                }
                 if (ojt.sv_ojt_iscertification_related == true)
                 {
                     chkIsCertification.Checked = true;
+                }
+                else
+                {
+                    btnUploadCeritification.Attributes.Add("disabled", "true");
+                    txtOthers.Attributes.Add("disabled", "true");
                 }
                 if (ojt.sv_ojt_is_acknowledge == true)
                 {
                     chkIsAcknowledge.Checked = true;
                 }
                 else
-                {
+                {                    
                     chkIsAcknowledge.Checked = false;
                 }
+
+                ddlHarm.SelectedValue = ojt.sv_ojt_harm_id_fk;
+                SessionWrapper.ojt_upload_certification = ojt.sv_ojt_certify_filepath;
+ 
                 gvOjtAttachments.DataSource = SiteViewOnJobTrainingBLL.GetOjtAttachment(OjtId);
                 gvOjtAttachments.DataBind();
 
@@ -206,6 +230,13 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 }
             }
         }
+        /// <summary>
+        /// To add the attachment
+        /// </summary>
+        /// <param name="sv_file_path"></param>
+        /// <param name="sv_file_type"></param>
+        /// <param name="sv_file_name"></param>
+        /// <param name="dtTempAttachment"></param>
         private void AddDataToTempAttachment(string sv_file_path, string sv_file_type, string sv_file_name, DataTable dtTempAttachment)
         {
             DataRow row;
@@ -286,8 +317,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                         else
                         {
                             Response.Write("This file does not exist.");
-                        }
-                        //nothing in the URL as HTTP GET
+                        }                        
                     }
                     else
                     {
@@ -296,6 +326,11 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 }
             }
         }
+        /// <summary>
+        /// Return Extension for File  
+        /// </summary>
+        /// <param name="fileExtension"></param>
+        /// <returns></returns>
         private string ReturnExtension(string fileExtension)
         {
             switch (fileExtension)
@@ -360,6 +395,11 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                     return "application/octet-stream";
             }
         }
+        /// <summary>
+        /// Convert Datatable to XML
+        /// </summary>
+        /// <param name="dtBuildSql"></param>
+        /// <returns></returns>
         public string ConvertDataTableToXml(DataTable dtBuildSql)
         {
             DataSet dsBuildSql = new DataSet("DataSet");
@@ -373,6 +413,10 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
             }
             return dsBuildSql.GetXml().ToString();
         }
+        /// <summary>
+        /// Revert Back function for Reset
+        /// </summary>
+        /// <param name="OjtId"></param>
         private void RevertBack(string OjtId)
         {
             try
@@ -394,6 +438,9 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 }
             }
         }
+        /// <summary>
+        /// Reset Functionality
+        /// </summary>
         private void ResetOjt()
         {
             if (SessionWrapper.TempAttachment.Rows.Count > 0)
@@ -437,15 +484,18 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
             ResetOjt();
         }
 
-        protected void btnHeaderSaveFieldNotes_Click(object sender, EventArgs e)
+        protected void btnHeaderSaveOJT_Click(object sender, EventArgs e)
         {
             SaveOjt();
         }
 
-        protected void btnFooterSaveFieldNotes_Click(object sender, EventArgs e)
+        protected void btnFooterSaveOJT_Click(object sender, EventArgs e)
         {
             SaveOjt();
         }
+        /// <summary>
+        /// Insert / Update OJT
+        /// </summary>
         private void SaveOjt()
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -455,52 +505,53 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
             createOjt.sv_ojt_description = txtFieldDescription.InnerText;
             createOjt.sv_ojt_number = lblOjtNumber.Text;
             createOjt.sv_ojt_date = Convert.ToDateTime(txtDate.Text);
-            createOjt.sv_ojt_duration = txtDuration.Text;
+            createOjt.sv_ojt_duration = ddlDuration.SelectedValue;
 
-            DateTime? sv_ojt_start_time = null;
-            DateTime temptimeofday;
-            if (DateTime.TryParseExact(txtStartTime.Text, "h:mm tt", culture, DateTimeStyles.None, out temptimeofday))
-            {
-                sv_ojt_start_time = temptimeofday;
-            }
+            //DateTime? sv_ojt_start_time = null;
+            //DateTime temptimeofday;
+            //if (DateTime.TryParseExact(txtStartTime.Text, "h:mm tt", culture, DateTimeStyles.None, out temptimeofday))
+            //{
+            //    sv_ojt_start_time = temptimeofday;
+            //}
 
-            createOjt.sv_ojt_start_time = sv_ojt_start_time;
-
-
-            DateTime? sv_ojt_end_time = null;
-            DateTime tempendtimeofday;
-            if (DateTime.TryParseExact(txtEndTime.Text, "h:mm tt", culture, DateTimeStyles.None, out tempendtimeofday))
-            {
-                sv_ojt_end_time = tempendtimeofday;
-            }
-
-            createOjt.sv_ojt_end_time = sv_ojt_end_time;
+            createOjt.sv_ojt_start_time = txtStartTime.Text;
 
 
-            //createOjt.sv_ojt_start_time =Convert.ToDateTime(StartTime.Date);
-            //createOjt.sv_ojt_end_time =Convert.ToDateTime(EndTime.Date);
-            createOjt.sv_ojt_type = txtType.Text;
-            createOjt.sv_ojt_harm_title = txtHarmTitle.Text;
-            createOjt.sv_ojt_harm_number = txtHarmNumber.Text;
-            createOjt.sv_ojt_frequency = txtFrequency.Text;
+            //DateTime? sv_ojt_end_time = null;
+            //DateTime tempendtimeofday;
+            //if (DateTime.TryParseExact(txtEndTime.Text, "h:mm tt", culture, DateTimeStyles.None, out tempendtimeofday))
+            //{
+            //    sv_ojt_end_time = tempendtimeofday;
+            //}
+
+            createOjt.sv_ojt_end_time = txtEndTime.Text;             
+            createOjt.sv_ojt_type = ddlType.SelectedValue;
+            //createOjt.sv_ojt_harm_title = txtHarmTitle.Text;
+            //createOjt.sv_ojt_harm_number = txtHarmNumber.Text;
+            
             createOjt.sv_ojt_other = txtOthers.Text;
             createOjt.sv_ojt_Trainer = txtTrainer.Text;
             createOjt.sv_ojt_is_save_sync = false;
+
             if (chkIsSafety.Checked == true)
             {
                 createOjt.sv_ojt_issafty_brief = true;
+                createOjt.sv_ojt_frequency = ddlFrequency.SelectedValue;
             }
             else
             {
+                createOjt.sv_ojt_frequency = string.Empty;
                 createOjt.sv_ojt_issafty_brief = false;
             }
             if (chkIsHarm.Checked == true)
             {
                 createOjt.sv_ojt_isharm_related = true;
+                createOjt.sv_ojt_harm_id_fk = ddlHarm.SelectedValue;
             }
             else
             {
                 createOjt.sv_ojt_isharm_related = false;
+                createOjt.sv_ojt_harm_id_fk = string.Empty;
             }
             if (chkIsCertification.Checked == true)
             {
@@ -519,10 +570,11 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 createOjt.sv_ojt_is_acknowledge = false;
             }
 
+            createOjt.sv_ojt_certify_filepath = SessionWrapper.ojt_upload_certification;
+
             if ((!string.IsNullOrEmpty(Request.QueryString["mode"]) && Request.QueryString["mode"].ToString() == "saved"))
             {
-               
-                createOjt.sv_ojt_id_pk = editOjtId;          
+                createOjt.sv_ojt_id_pk = editOjtId;
                 try
                 {
                     int result = SiteViewOnJobTrainingBLL.UpdateOjt(createOjt);
@@ -547,11 +599,9 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                         }
                     }
                 }
-
             }
             else if ((!string.IsNullOrEmpty(Request.QueryString["mode"]) && Request.QueryString["mode"].ToString() == "received"))
             {
-                
                 createOjt.sv_ojt_id_pk = Guid.NewGuid().ToString();
                 createOjt.sv_ojt_created_by_fk = SessionWrapper.u_userid;
                 createOjt.sv_ojt_attachment = ConvertDataTableToXml(SessionWrapper.TempAttachment);
@@ -590,6 +640,89 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
         protected void btnFooterCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("../ccsv-01.aspx");
+        }
+
+        protected void btnUploadCertificate_Click(object sender, EventArgs e)
+        {
+            HttpPostedFile file = default(HttpPostedFile);
+            foreach (string files in Request.Files)
+            {
+                file = Request.Files[files];
+                string m_file_name = null;
+                string m_file_extension = null;
+                string m_file_guid = Guid.NewGuid().ToString();
+                if (file != null && file.ContentLength > 0)
+                {
+                    m_file_name = Path.GetFileName(file.FileName);
+                    m_file_extension = Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath(_filePath + m_file_name));
+                    SessionWrapper.ojt_upload_certification = m_file_name;
+                    //SessionWrapper.ojt_upload_certification = m_file_name + m_file_extension;
+                }
+            }
+            Attachment();
+        }
+        /// <summary>
+        /// To show the Linkbutton and Edit and Remove button for certificate attachment
+        /// </summary>
+        private void Attachment()
+        {
+            if (!string.IsNullOrEmpty(SessionWrapper.ojt_upload_certification))
+            {
+                lnkFileName.Text = SessionWrapper.ojt_upload_certification;
+                btnUploadCeritification.Style.Add("display", "none");
+                btnEdit.Style.Add("display", "inline");
+                btnRemove.Style.Add("display", "inline");
+                //btnView.Style.Add("display", "inline");
+            }
+            else
+            {
+                lnkFileName.Text = string.Empty;
+                btnUploadCeritification.Style.Add("display", "inline");
+                btnEdit.Style.Add("display", "none");
+                btnRemove.Style.Add("display", "none");
+               // btnView.Style.Add("display", "none");
+            }
+        }
+
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.ojt_upload_certification = string.Empty;             
+            lnkFileName.Text = string.Empty;
+            Attachment();
+        }
+
+        protected void lnkFileName_Click(object sender, EventArgs e)
+        {
+            string filePath = Server.MapPath(_filePath + SessionWrapper.ojt_upload_certification);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                string strRequest = filePath;
+                if (!string.IsNullOrEmpty(strRequest))
+                {
+                    FileInfo file = new System.IO.FileInfo(strRequest);
+                    if (file.Exists)
+                    {
+                        Response.Clear();
+                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + SessionWrapper.ojt_upload_certification + "\"");
+                        Response.AddHeader("Content-Length", file.Length.ToString());
+                        Response.ContentType = ReturnExtension(file.Extension.ToLower());
+                        Response.WriteFile(file.FullName);
+                        Response.End();
+                        //if file does not exist
+                    }
+                    else
+                    {
+                        Response.Write("This file does not exist.");
+                    }
+                    //nothing in the URL as HTTP GET
+                }
+                else
+                {
+                    Response.Write("Please provide a file to download.");  
+                }
+            }
         }
     }
 }

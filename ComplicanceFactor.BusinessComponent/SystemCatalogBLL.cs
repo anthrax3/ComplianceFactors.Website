@@ -138,13 +138,13 @@ namespace ComplicanceFactor.BusinessComponent
             //{
             //    htNewCourse.Add("@c_course_cert_cycle_days", DBNull.Value);
             //}
-            if (course.c_course_recurrance_grace_days != null)
+            if (course.c_course_recurrence_grace_days != null)
             {
-                htNewCourse.Add("@c_course_recurrance_grace_days", course.c_course_recurrance_grace_days);
+                htNewCourse.Add("@c_course_recurrence_grace_days", course.c_course_recurrence_grace_days);
             }
             else
             {
-                htNewCourse.Add("@c_course_recurrance_grace_days", DBNull.Value);
+                htNewCourse.Add("@c_course_recurrence_grace_days", DBNull.Value);
             }
 
             if (!string.IsNullOrEmpty(course.c_course_owner_id_fk))
@@ -188,25 +188,25 @@ namespace ComplicanceFactor.BusinessComponent
             htNewCourse.Add("@c_cource_fulfillments", course.c_course_Fulfillments);
             htNewCourse.Add("@c_cource_domains", course.c_course_domains);
             htNewCourse.Add("@c_course_category", course.c_course_category);
-            if (course.c_cource_recurrance_every != null)
+            if (course.c_course_recurrence_every != null)
             {
-                htNewCourse.Add("@c_cource_recurrance_every", course.c_cource_recurrance_every);
+                htNewCourse.Add("@c_course_recurrence_every", course.c_course_recurrence_every);
             }
             else
             {
-                htNewCourse.Add("@c_cource_recurrance_every", DBNull.Value);
+                htNewCourse.Add("@c_course_recurrence_every", DBNull.Value);
             }
-            htNewCourse.Add("@c_cource_recurrance_period", course.c_cource_recurrance_period);
-            htNewCourse.Add("@c_cource_recurance_date_option", course.c_cource_recurance_date_option);
+            htNewCourse.Add("@c_course_recurrence_period", course.c_course_recurrence_period);
+            htNewCourse.Add("@c_course_recurrence_date_option", course.c_course_recurrence_date_option);
             htNewCourse.Add("@c_course_icon_uri_file_name", course.c_course_icon_uri_file_name);
 
-            if (course.c_cource_recurance_date != null)
+            if (course.c_course_recurrence_date != null)
             {
-                htNewCourse.Add("@c_cource_recurance_date", course.c_cource_recurance_date);
+                htNewCourse.Add("@c_course_recurrence_date", course.c_course_recurrence_date);
             }
             else
             {
-                htNewCourse.Add("@c_cource_recurance_date", DBNull.Value);
+                htNewCourse.Add("@c_course_recurrence_date", DBNull.Value);
             }
             if (course.c_course_cert_date != null)
             {
@@ -285,13 +285,13 @@ namespace ComplicanceFactor.BusinessComponent
             //{
             //    htUpdateCourse.Add("@c_course_cert_cycle_days", DBNull.Value);
             //}
-            if (course.c_course_recurrance_grace_days != null)
+            if (course.c_course_recurrence_grace_days != null)
             {
-                htUpdateCourse.Add("@c_course_recurrance_grace_days", course.c_course_recurrance_grace_days);
+                htUpdateCourse.Add("@c_course_recurrence_grace_days", course.c_course_recurrence_grace_days);
             }
             else
             {
-                htUpdateCourse.Add("@c_course_recurrance_grace_days", DBNull.Value);
+                htUpdateCourse.Add("@c_course_recurrence_grace_days", DBNull.Value);
             }
 
             if (!string.IsNullOrEmpty(course.c_course_owner_id_fk))
@@ -334,25 +334,25 @@ namespace ComplicanceFactor.BusinessComponent
             //htUpdateCourse.Add("@c_course_Prerequistist", course.c_course_Prerequistist);
             //htUpdateCourse.Add("@c_course_Equivalencies", course.c_course_Equivalencies);
             //htUpdateCourse.Add("@c_course_Fulfillments", course.c_course_Fulfillments);
-            if (course.c_cource_recurrance_every != null)
+            if (course.c_course_recurrence_every != null)
             {
-                htUpdateCourse.Add("@c_cource_recurrance_every", course.c_cource_recurrance_every);
+                htUpdateCourse.Add("@c_course_recurrence_every", course.c_course_recurrence_every);
             }
             else
             {
-                htUpdateCourse.Add("@c_cource_recurrance_every", DBNull.Value);
+                htUpdateCourse.Add("@c_course_recurrence_every", DBNull.Value);
             }
-            htUpdateCourse.Add("@c_cource_recurrance_period", course.c_cource_recurrance_period);
-            htUpdateCourse.Add("@c_cource_recurance_date_option", course.c_cource_recurance_date_option);
+            htUpdateCourse.Add("@c_course_recurrence_period", course.c_course_recurrence_period);
+            htUpdateCourse.Add("@c_course_recurrence_date_option", course.c_course_recurrence_date_option);
 
 
-            if (course.c_cource_recurance_date != null)
+            if (course.c_course_recurrence_date != null)
             {
-                htUpdateCourse.Add("@c_cource_recurance_date", course.c_cource_recurance_date);
+                htUpdateCourse.Add("@c_course_recurrence_date", course.c_course_recurrence_date);
             }
             else
             {
-                htUpdateCourse.Add("@c_cource_recurance_date", DBNull.Value);
+                htUpdateCourse.Add("@c_course_recurrence_date", DBNull.Value);
             }
             //if (course.c_course_cert_date != null)
             //{
@@ -523,9 +523,9 @@ namespace ComplicanceFactor.BusinessComponent
                 //{
                 //    course.c_course_cert_cycle_days = Convert.ToInt32(dtGetCourse.Rows[0]["c_course_cert_cycle_days"]);
                 //}
-                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_recurrance_grace_days"].ToString()))
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_recurrence_grace_days"].ToString()))
                 {
-                    course.c_course_recurrance_grace_days = Convert.ToInt32(dtGetCourse.Rows[0]["c_course_recurrance_grace_days"]);
+                    course.c_course_recurrence_grace_days = Convert.ToInt32(dtGetCourse.Rows[0]["c_course_recurrence_grace_days"]);
                 }
                 if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_cost"].ToString()))
                 {
@@ -555,10 +555,10 @@ namespace ComplicanceFactor.BusinessComponent
                 course.c_course_system_id_pk = dtGetCourse.Rows[0]["c_course_system_id_pk"].ToString();
                 if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_cource_recurrance_every"].ToString()))
                 {
-                    course.c_cource_recurrance_every = Convert.ToInt32(dtGetCourse.Rows[0]["c_cource_recurrance_every"]);
+                    course.c_course_recurrence_every = Convert.ToInt32(dtGetCourse.Rows[0]["c_course_recurrence_every"]);
                 }
-                course.c_cource_recurrance_period = dtGetCourse.Rows[0]["c_cource_recurrance_period"].ToString();
-                course.c_cource_recurance_date_option = dtGetCourse.Rows[0]["c_cource_recurance_date_option"].ToString();
+                course.c_course_recurrence_period = dtGetCourse.Rows[0]["c_course_recurrence_period"].ToString();
+                course.c_course_recurrence_date_option = dtGetCourse.Rows[0]["c_course_recurrence_date_option"].ToString();
                 course.c_course_owner_name = dtGetCourse.Rows[0]["ownername"].ToString();
                 course.c_course_coordinator_name = dtGetCourse.Rows[0]["coordinatorname"].ToString();
                 course.c_course_owner_id_fk = dtGetCourse.Rows[0]["c_course_owner_id_fk"].ToString();
@@ -574,9 +574,9 @@ namespace ComplicanceFactor.BusinessComponent
                 course.c_created_name = dtGetCourse.Rows[0]["c_created_name"].ToString();
                 course.c_delivery_type_id = dtGetCourse.Rows[0]["c_delivery_type"].ToString();
 
-                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_cource_recurance_date"].ToString()))
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_recurrence_date"].ToString()))
                 {
-                    course.c_cource_recurance_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_cource_recurance_date"], culture);
+                    course.c_course_recurrence_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_recurrence_date"], culture);
                 }
 
                 if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_cert_date"].ToString()))

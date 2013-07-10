@@ -139,6 +139,8 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
                 createOjt.sv_ojt_isharm_related = ojt.sv_ojt_isharm_related;
                 createOjt.sv_ojt_iscertification_related = ojt.sv_ojt_iscertification_related;
                 createOjt.sv_ojt_is_acknowledge = ojt.sv_ojt_is_acknowledge;
+                createOjt.sv_ojt_harm_id_fk = ojt.sv_ojt_harm_id_fk;
+                createOjt.sv_ojt_certify_filepath = ojt.sv_ojt_certify_filepath;
                 //createOjt.sv_ojt_is_save_sync = false;
 
                 DataTable dt = SiteViewOnJobTrainingBLL.GetOjtAttachment(strOjtId);
