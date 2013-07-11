@@ -94,17 +94,14 @@
         }
     </script>
     <script type="text/javascript">
-        function checkCertification(checkbox) {
-            alert(1);
-            if (checkbox.checked) {
-                alert(true);
+        function checkCertification(checkbox) {           
+            if (checkbox.checked) {               
                 document.getElementById('<%=btnUploadCeritification.ClientID%>').removeAttribute("disabled");
                 document.getElementById('<%=txtOthers.ClientID%>').removeAttribute("disabled");
                 document.getElementById('<%=btnUploadCeritification.ClientID%>').setAttribute('enabled', true);
                 document.getElementById('<%=txtOthers.ClientID%>').setAttribute('enabled', true);
             }
-            else {
-                alert(false);
+            else {                
                 document.getElementById('<%=btnUploadCeritification.ClientID%>').setAttribute('disabled', true);
                 document.getElementById('<%=txtOthers.ClientID%>').setAttribute('disabled', true);
             }

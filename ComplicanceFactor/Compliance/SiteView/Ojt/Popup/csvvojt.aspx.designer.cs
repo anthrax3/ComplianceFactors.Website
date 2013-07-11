@@ -130,22 +130,13 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         protected global::System.Web.UI.WebControls.CheckBox chkOjtIsHarm;
         
         /// <summary>
-        /// lblOjtHarmTitle control.
+        /// lblOjtHarmDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOjtHarmTitle;
-        
-        /// <summary>
-        /// lblOjtHarmNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOjtHarmNo;
+        protected global::System.Web.UI.WebControls.Label lblOjtHarmDetail;
         
         /// <summary>
         /// chkIsCertRelated control.
@@ -155,6 +146,15 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkIsCertRelated;
+        
+        /// <summary>
+        /// lbtnCertificationFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnCertificationFile;
         
         /// <summary>
         /// lblOthers control.

@@ -2266,8 +2266,8 @@
             <asp:HiddenField ID="hdObservation" runat="server" />
             <asp:HiddenField ID="hdIncidentHistory" runat="server" />
             <asp:Button ID="btnUploadFile" runat="server" CssClass="cursor_hand" Style="display: none;" />
-            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload" Style="display: none;
-                padding-left: 0px; background-color: White; padding-right: 0px;">
+            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
+                padding-left: 0px;  padding-right: 0px;">
                 <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                     <div>
                         <div class="uploadpopup_header">

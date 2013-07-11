@@ -86,6 +86,7 @@ namespace ComplicanceFactor.BusinessComponent
                 }
 
                 ojt.sv_ojt_certify_filepath = dtGetOjt.Rows[0]["sv_ojt_certify_filepath"].ToString();
+                ojt.harmTitle = dtGetOjt.Rows[0]["harmTitle"].ToString();
 
                 return ojt;
             }

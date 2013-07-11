@@ -553,7 +553,7 @@ namespace ComplicanceFactor.BusinessComponent
                 course.c_course_custom_13 = dtGetCourse.Rows[0]["c_course_custom_13"].ToString();
                 course.c_course_title = dtGetCourse.Rows[0]["c_course_title"].ToString();
                 course.c_course_system_id_pk = dtGetCourse.Rows[0]["c_course_system_id_pk"].ToString();
-                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_cource_recurrance_every"].ToString()))
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_recurrence_every"].ToString()))
                 {
                     course.c_course_recurrence_every = Convert.ToInt32(dtGetCourse.Rows[0]["c_course_recurrence_every"]);
                 }

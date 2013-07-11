@@ -41,8 +41,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string sv_ojt_status { get; set; }
         public bool sv_ojt_is_acknowledge { get; set; }
         public string sv_ojt_harm_id_fk { get; set; }
-        public string sv_ojt_certify_filepath { get; set; }        
-
+        public string sv_ojt_certify_filepath { get; set; }
+        public string harmTitle { get; set; }
         //Attachments
         public string sv_ojt_attachments_id_pk{get;set;}
 	    public string sv_ojt_id_fk{get;set;}

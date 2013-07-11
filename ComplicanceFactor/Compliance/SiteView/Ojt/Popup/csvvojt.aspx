@@ -106,7 +106,7 @@
                         Safety Brief:
                     </td>
                     <td class="lable_td_width_1">
-                        <asp:CheckBox ID="chkOjtIsSafety" runat="server" />
+                        <asp:CheckBox ID="chkOjtIsSafety" Enabled="false" runat="server" />
                     </td>
                     <td class="text_font_normal">
                         Frequency:
@@ -124,20 +124,14 @@
                         Harm Related:
                     </td>
                     <td class="lable_td_width_1">
-                        <asp:CheckBox ID="chkOjtIsHarm" runat="server" />
+                        <asp:CheckBox ID="chkOjtIsHarm" Enabled="false" runat="server" />
                     </td>
                     <td class="text_font_normal">
-                        Harm Title:
+                        Harm  Details:
                     </td>
                     <td class="lable_td_width_1">
-                        <asp:Label ID="lblOjtHarmTitle" runat="server" Text=""></asp:Label> 
-                    </td>
-                    <td class="text_font_normal">
-                        Harm Number:
-                    </td>
-                    <td class="lable_td_width_1">
-                        <asp:Label ID="lblOjtHarmNo" runat="server" Text=""></asp:Label> 
-                    </td>
+                        <asp:Label ID="lblOjtHarmDetail" runat="server" Text=""></asp:Label> 
+                    </td>                     
                 </tr>
                 <tr>
                     <td colspan="6"></td>
@@ -147,16 +141,19 @@
                         Certification Related:
                     </td>
                     <td class="lable_td_width_1">
-                        <asp:CheckBox ID="chkIsCertRelated" runat="server" />
+                        <asp:CheckBox ID="chkIsCertRelated" Enabled="false" runat="server" />
                     </td>
+                    <td class="text_font_normal">Cerification file</td>
+                    <td class="lable_td_width_1 align_left">
+                        <asp:LinkButton ID="lbtnCertificationFile" runat="server" 
+                            onclick="lbtnCertificationFile_Click"></asp:LinkButton></td>
                     <td class="text_font_normal">
                        Others: 
                     </td>
                     <td class="lable_td_width_1">
                        <asp:Label ID="lblOthers" runat="server" Text=""></asp:Label>  
                     </td>
-                    <td></td>
-                    <td></td>
+                    
                 </tr>
             </table>
         </div>

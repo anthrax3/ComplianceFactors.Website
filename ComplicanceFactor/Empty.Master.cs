@@ -21,7 +21,7 @@ namespace ComplicanceFactor
             HtmlGenericControl style = new HtmlGenericControl();
             style.TagName = "style";
             style.Attributes.Add("type", "text/css");
-            style.InnerHtml = usercss.css;
+            style.InnerHtml = usercss.css + usercss.popup_background; 
             Page.Header.Controls.Add(style);
         }
     }
