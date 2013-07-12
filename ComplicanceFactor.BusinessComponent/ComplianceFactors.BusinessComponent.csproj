@@ -58,6 +58,7 @@
     <Compile Include="DataAccessObject\SystemCurriculum.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumStatus.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumType.cs" />
+    <Compile Include="DataAccessObject\SystemDataImportExport.cs" />
     <Compile Include="DataAccessObject\SystemDigitalMediaFiles.cs" />
     <Compile Include="DataAccessObject\SystemDocuments.cs" />
     <Compile Include="DataAccessObject\SystemDocumentTypes.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="SystemCurriculumBLL.cs" />
     <Compile Include="SystemCurriculumStatusBLL.cs" />
     <Compile Include="SystemCurriculumTypeBLL.cs" />
+    <Compile Include="SystemDataImportExportBLL.cs" />
     <Compile Include="SystemDigitalMediaFilesBLL.cs" />
     <Compile Include="SystemDocumentsBLL.cs" />
     <Compile Include="SystemDocumentTypesBLL.cs" />

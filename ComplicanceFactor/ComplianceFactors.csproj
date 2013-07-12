@@ -725,6 +725,7 @@
     <Content Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx" />
     <Content Include="SystemHome\Configuration\Data Exports\dsiplay_data_export_logs.aspx" />
     <Content Include="SystemHome\Configuration\Data Exports\samdexpmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Data Exports\Sample.aspx" />
     <Content Include="SystemHome\Configuration\Data Exports\view_data_export_log_details.aspx" />
     <Content Include="SystemHome\Configuration\Data Imports\dsiplay_data_import_logs.aspx" />
     <Content Include="SystemHome\Configuration\Data Imports\samdimpmp-01.aspx" />
@@ -798,6 +799,13 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Courses.csv" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Curriculum.csv" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Enrollment.csv" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Facilities.csv" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Hris.csv" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Learning_History.csv" />
+    <None Include="SystemHome\Configuration\Data Exports\Download\Rooms.csv" />
     <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\EHA-20130121-001.pdf" />
     <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\Questions_10132012.docx" />
     <None Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.xsc">
@@ -3091,6 +3099,13 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\Data Exports\samdexpmp-01.aspx.designer.cs">
       <DependentUpon>samdexpmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Data Exports\Sample.aspx.cs">
+      <DependentUpon>Sample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Data Exports\Sample.aspx.designer.cs">
+      <DependentUpon>Sample.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\Data Exports\view_data_export_log_details.aspx.cs">
       <DependentUpon>view_data_export_log_details.aspx</DependentUpon>

@@ -13,6 +13,51 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
     public partial class samdexpmp_01 {
         
         /// <summary>
+        /// vs_samdexpmp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samdexpmp;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// cvValidateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateTime;
+        
+        /// <summary>
+        /// divSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        
+        /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// btnDownloadHrisCsvFile control.
         /// </summary>
         /// <remarks>
@@ -76,13 +121,31 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         protected global::System.Web.UI.WebControls.Button btnDownloadLearningHistory;
         
         /// <summary>
-        /// txtSftpServerUri control.
+        /// rfvServerUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSftpServerUri;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvServerUrl;
+        
+        /// <summary>
+        /// txtSftpServerUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSftpServerUrl;
+        
+        /// <summary>
+        /// rfvSftpSeverPort control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSftpSeverPort;
         
         /// <summary>
         /// txtSftpServerPort control.
@@ -94,6 +157,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         protected global::System.Web.UI.WebControls.TextBox txtSftpServerPort;
         
         /// <summary>
+        /// rfvUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUsername;
+        
+        /// <summary>
         /// txtUserName control.
         /// </summary>
         /// <remarks>
@@ -103,13 +175,22 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
         
         /// <summary>
+        /// rfvpassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvpassword;
+        
+        /// <summary>
         /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPassword;
         
         /// <summary>
         /// txtHris control.
@@ -166,6 +247,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         protected global::System.Web.UI.WebControls.CheckBox chkLearningHistory;
         
         /// <summary>
+        /// rfvOccuranceEvery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvOccuranceEvery;
+        
+        /// <summary>
+        /// rfvEvery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvEvery;
+        
+        /// <summary>
         /// txtOccursEvery control.
         /// </summary>
         /// <remarks>
@@ -173,6 +272,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOccursEvery;
+        
+        /// <summary>
+        /// rfvOccuranceTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvOccuranceTime;
+        
+        /// <summary>
+        /// rfvOccuranceTimeValid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvOccuranceTimeValid;
         
         /// <summary>
         /// txtHours control.
@@ -193,6 +310,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         protected global::System.Web.UI.WebControls.DropDownList ddlTimeConversion;
         
         /// <summary>
+        /// regexDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDate;
+        
+        /// <summary>
         /// txtBegining control.
         /// </summary>
         /// <remarks>
@@ -200,6 +326,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBegining;
+        
+        /// <summary>
+        /// ceDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDate;
         
         /// <summary>
         /// btnDisplayExportLogs control.

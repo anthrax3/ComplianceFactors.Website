@@ -7,6 +7,27 @@
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+
+       <script type="text/javascript">
+
+           $(document).ready(function () {
+               $('#app_nav_system').addClass('selected');
+               // toggles the slickbox on clicking the noted link  
+               $('.main_menu li a').hover(function () {
+
+                   $('.main_menu li a').removeClass('selected');
+                   $(this).addClass('active');
+
+                   return false;
+               });
+               $('.main_menu li a').mouseleave(function () {
+
+                   $('#app_nav_system').addClass('selected');
+                   return false;
+               });
+           });
+
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -15,38 +36,108 @@
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
 
-                //Get the GridView Row reference
-                var tr_id = $(this).parents("#.record");
-                $.fancybox({
-                    'type': 'iframe',
-                    'titlePosition': 'over',
-                    'titleShow': true,
-                    'showCloseButton': true,
-                    'scrolling': 'no',
-                    'autoScale': false,
-                    'autoDimensions': false,
-                    'helpers': { overlay: { closeClick: false} },
-                    'width': 920,
-                    'height': 200,
-                    'margin': 0,
-                    'padding': 0,
-                    'overlayColor': '#000',
-                    'overlayOpacity': 0.7,
-                    'hideOnOverlayClick': false,
-                    'href': '../BackgroundJobs/Popup/samhrismp-01.aspx?Id=' + record_id,
-                    'onComplete': function () {
-                        $('#fancybox-frame').load(function () {
-                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                            var heightPane = $(this).contents().find('#content').height();
-                            $(this).contents().find('#fancybox-frame').css({
-                                'height': heightPane + 'px'
 
-                            })
-                        });
+                var jobId = record_id.split('-');
+                if (jobId[0] == 'HRIS') {
+                    //Get the GridView Row reference
+                    var tr_id = $(this).parents("#.record");
+                    $.fancybox({
+                        'type': 'iframe',
+                        'titlePosition': 'over',
+                        'titleShow': true,
+                        'showCloseButton': true,
+                        'scrolling': 'yes',
+                        'autoScale': false,
+                        'autoDimensions': false,
+                        'helpers': { overlay: { closeClick: false} },
+                        'width': 920,
+                        'height': 200,
+                        'margin': 0,
+                        'padding': 0,
+                        'overlayColor': '#000',
+                        'overlayOpacity': 0.7,
+                        'hideOnOverlayClick': false,
+                        'href': '../BackgroundJobs/Popup/samhrismp-01.aspx?Id=' + record_id,
+                        'onComplete': function () {
+                            $('#fancybox-frame').load(function () {
+                                $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                var heightPane = $(this).contents().find('#content').height();
+                                $(this).contents().find('#fancybox-frame').css({
+                                    'height': heightPane + 'px'
 
-                    }
+                                })
+                            });
 
-                });
+                        }
+
+                    });
+                }
+                else if (jobId[0] == 'DIMP') {
+                    var tr_id = $(this).parents("#.record");
+                    $.fancybox({
+                        'type': 'iframe',
+                        'titlePosition': 'over',
+                        'titleShow': true,
+                        'showCloseButton': true,
+                        'scrolling': 'yes',
+                        'autoScale': false,
+                        'autoDimensions': false,
+                        'helpers': { overlay: { closeClick: false} },
+                        'width': 920,
+                        'height': 200,
+                        'margin': 0,
+                        'padding': 0,
+                        'overlayColor': '#000',
+                        'overlayOpacity': 0.7,
+                        'hideOnOverlayClick': false,
+                        'href': '../BackgroundJobs/Popup/samdimpmp-01.aspx?Id=' + record_id,
+                        'onComplete': function () {
+                            $('#fancybox-frame').load(function () {
+                                $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                var heightPane = $(this).contents().find('#content').height();
+                                $(this).contents().find('#fancybox-frame').css({
+                                    'height': heightPane + 'px'
+
+                                })
+                            });
+
+                        }
+
+                    });
+                }
+                else if (jobId[0] == 'DEXP') {
+                    var tr_id = $(this).parents("#.record");
+                    $.fancybox({
+                        'type': 'iframe',
+                        'titlePosition': 'over',
+                        'titleShow': true,
+                        'showCloseButton': true,
+                        'scrolling': 'yes',
+                        'autoScale': false,
+                        'autoDimensions': false,
+                        'helpers': { overlay: { closeClick: false} },
+                        'width': 920,
+                        'height': 200,
+                        'margin': 0,
+                        'padding': 0,
+                        'overlayColor': '#000',
+                        'overlayOpacity': 0.7,
+                        'hideOnOverlayClick': false,
+                        'href': '../BackgroundJobs/Popup/samdexpmp-01.aspx?Id=' + record_id,
+                        'onComplete': function () {
+                            $('#fancybox-frame').load(function () {
+                                $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                var heightPane = $(this).contents().find('#content').height();
+                                $(this).contents().find('#fancybox-frame').css({
+                                    'height': heightPane + 'px'
+
+                                })
+                            });
+
+                        }
+
+                    });
+                }
             });
 
         });

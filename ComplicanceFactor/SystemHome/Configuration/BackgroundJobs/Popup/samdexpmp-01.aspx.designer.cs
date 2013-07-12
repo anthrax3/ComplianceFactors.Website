@@ -13,6 +13,42 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
     public partial class samdexpmp_01 {
         
         /// <summary>
+        /// vs_samdexpmp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samdexpmp;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// cvValidateTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateTime;
+        
+        /// <summary>
+        /// divSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        
+        /// <summary>
         /// btnDownloadHrisCsvFile control.
         /// </summary>
         /// <remarks>
@@ -76,13 +112,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         protected global::System.Web.UI.WebControls.Button btnDownloadLearningHistory;
         
         /// <summary>
-        /// txtSftpServerUri control.
+        /// txtSftpServerUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSftpServerUri;
+        protected global::System.Web.UI.WebControls.TextBox txtSftpServerUrl;
         
         /// <summary>
         /// txtSftpServerPort control.
@@ -109,7 +145,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPassword;
         
         /// <summary>
         /// txtHris control.
