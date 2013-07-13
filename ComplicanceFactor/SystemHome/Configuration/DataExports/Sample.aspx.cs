@@ -15,8 +15,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports
 {
     public partial class Sample : System.Web.UI.Page
     {
-        public static string APP_PATH = HttpContext.Current.Server.MapPath("~/SystemHome/Configuration/Data Exports/Download/");
-
+        public static string APP_PATH = HttpContext.Current.Server.MapPath("~/SystemHome/Configuration/Data Exports/Export_CSV/");
         public static string FACILITIES_FILE_PATH = APP_PATH + "Facilities.csv";
         public static string HRIS_FILE_PATH = APP_PATH + "Hris.csv";
         public static string ROOMS_FILE_PATH = APP_PATH + "Rooms.csv";

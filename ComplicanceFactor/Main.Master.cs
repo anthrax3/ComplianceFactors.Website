@@ -209,7 +209,7 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\CompletionStatuses"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\CurriculumStatuses"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\CurriculumTypes"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Data Exports"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\DataExports"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Data Imports"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\DeliveryTypes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Domains"

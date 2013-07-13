@@ -6614,7 +6614,7 @@ namespace ComplicanceFactor.Common
             }
         }
 
-        public static string ojt_upload_certification
+        public static string ojt_upload_certification_file_name
         {
             get
             {
@@ -6633,6 +6633,67 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["ojt_upload_certification"] = value;
             }
         }
+
+        public static string ojt_upload_certification_file_path
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ojt_upload_certification_file_path"] != null)
+                {
+                    return HttpContext.Current.Session["ojt_upload_certification_file_path"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+
+            set
+            {
+                HttpContext.Current.Session["ojt_upload_certification_file_path"] = value;
+            }
+        }
+
+        public static string ojt_upload_certification_file_extension
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ojt_upload_certification_file_extension"] != null)
+                {
+                    return HttpContext.Current.Session["ojt_upload_certification_file_extension"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+
+            set
+            {
+                HttpContext.Current.Session["ojt_upload_certification_file_extension"] = value;
+            }
+        }
+
+        public static string ojt_upload_certification_check_file_name
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ojt_upload_certification_file_path"] != null)
+                {
+                    return HttpContext.Current.Session["ojt_upload_certification_file_path"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+
+            set
+            {
+                HttpContext.Current.Session["ojt_upload_certification_file_path"] = value;
+            }
+        }
+
 
 
         public static void clearsession()

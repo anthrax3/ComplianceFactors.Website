@@ -19,7 +19,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
         {
             if (!IsPostBack)
             {
-                SessionWrapper.ojt_upload_certification = null;
+                SessionWrapper.ojt_upload_certification_file_path = null;
                 if (!string.IsNullOrEmpty(Request.QueryString["mode"]) && Request.QueryString["mode"] == "view")
                 {
                     PopulateOjt(Request.QueryString["id"].ToString());
@@ -65,7 +65,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
             }
             lblOjtHarmDetail.Text = ojt.harmTitle;
             lbtnCertificationFile.Text = ojt.sv_ojt_certify_filepath;
-            SessionWrapper.ojt_upload_certification = ojt.sv_ojt_certify_filepath;
+            SessionWrapper.ojt_upload_certification_file_path = ojt.sv_ojt_certify_filepath;
 
             if (ojt.sv_ojt_iscertification_related == true)
             {
@@ -83,7 +83,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
 
         protected void lbtnCertificationFile_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath(_filePath + SessionWrapper.ojt_upload_certification);
+            string filePath = Server.MapPath(_filePath + SessionWrapper.ojt_upload_certification_file_path);
 
             if (System.IO.File.Exists(filePath))
             {
@@ -94,7 +94,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                     if (file.Exists)
                     {
                         Response.Clear();
-                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + SessionWrapper.ojt_upload_certification + "\"");
+                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + SessionWrapper.ojt_upload_certification_file_name + "\"");
                         Response.AddHeader("Content-Length", file.Length.ToString());
                         Response.ContentType = ReturnExtension(file.Extension.ToLower());
                         Response.WriteFile(file.FullName);

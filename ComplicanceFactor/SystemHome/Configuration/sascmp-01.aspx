@@ -114,7 +114,7 @@
                             <%=LocalResources.GetLabel("app_manage_date_imports_text")%></a>
                     </td>
                     <td>
-                        <a href="Data Exports/samdexpmp-01.aspx">
+                        <a href="DataExports/samdexpmp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_data_exports_text")%></a>
                     </td>
                 </tr>

@@ -303,6 +303,47 @@
             });
         });  
     </script>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             //edit locale
+             $(".editOjtacknowledge").click(function () {
+                 //Get the Id of the record to edit
+                 var record_id = $(this).attr("id");
+
+                 //Get the GridView Row reference
+                 var tr_id = $(this).parents("#.record");
+                 $.fancybox({
+                     'type': 'iframe',
+                     'titlePosition': 'over',
+                     'titleShow': true,
+                     'showCloseButton': true,
+                     'scrolling': 'yes',
+                     'autoScale': false,
+                     'autoDimensions': false,
+                     'helpers': { overlay: { closeClick: false} },
+                     'width': 740,
+                     'height': 300,
+                     'margin': 0,
+                     'padding': 0,
+                     'overlayColor': '#000',
+                     'overlayOpacity': 0.7,
+                     'hideOnOverlayClick': false,
+                     'href': 'Ojt/Popup/csvojtack.aspx?mode=acknowledge' + "&id=" + record_id,
+                     'onComplete': function () {
+                         $('#fancybox-frame').load(function () {
+                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                             var heightPane = $(this).contents().find('#content').height();
+                             $(this).contents().find('#fancybox-frame').css({
+                                 'height': heightPane + 'px'
+
+                             })
+                         });
+
+                     }
+                 });
+             });
+         });  
+     </script>
     <script type="text/javascript">
         $(document).ready(function () {
             //Send Inspection
@@ -392,9 +433,8 @@
                     runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                     AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
                     PagerSettings-Visible="false" PageSize="5" DataKeyNames="sv_fieldnote_id_pk,sv_fieldnote_created_by_fk"
-                    OnRowCommand="gvFieldNoteDetails_RowCommand"  
-                    OnRowEditing="gvFieldNoteDetails_RowEditing" 
-                    onrowdatabound="gvFieldNoteDetails_RowDataBound">
+                    OnRowCommand="gvFieldNoteDetails_RowCommand" OnRowEditing="gvFieldNoteDetails_RowEditing"
+                    OnRowDataBound="gvFieldNoteDetails_RowDataBound">
                     <Columns>
                         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                             HeaderStyle-HorizontalAlign="Left" HeaderText="<%$ LabelResourceExpression: app_fieldnote_id_text %>">
@@ -412,12 +452,12 @@
                         </asp:TemplateField>
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_fieldnote_location" HeaderText="<%$ LabelResourceExpression: app_location_text %>" />
-                       <%-- <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                        <%-- <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                             HeaderStyle-HorizontalAlign="Left" DataField="attachmentCount" HeaderText="<%$ LabelResourceExpression: app_attachment_text %>" />--%>
                         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                             HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Acknowledgements">
                             <ItemTemplate>
-                             <asp:Literal ID="ltlAcknowledge" runat="server"></asp:Literal>
+                                <asp:Literal ID="ltlAcknowledge" runat="server"></asp:Literal>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <%-- <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
@@ -613,16 +653,21 @@
                     runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
                     AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
                     PagerSettings-Visible="false" PageSize="5" DataKeyNames="sv_ojt_id_pk,sv_ojt_created_by_fk"
-                    OnRowCommand="gvJobTrainingDetails_RowCommand" OnRowEditing="gvJobTrainingDetails_RowEditing">
+                    OnRowCommand="gvJobTrainingDetails_RowCommand" OnRowEditing="gvJobTrainingDetails_RowEditing"
+                    OnRowDataBound="gvJobTrainingDetails_RowDataBound">
                     <Columns>
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_ojt_number" HeaderText="<%$ LabelResourceExpression: app_OJT_Number_text %>" />
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_ojt_title" HeaderText="<%$ LabelResourceExpression: app_title_text %>" />
-                        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
-                            HeaderStyle-HorizontalAlign="Left" DataField="sv_ojt_is_acknowledge" HeaderText="Acknowledgement" />
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                            HeaderStyle-HorizontalAlign="Left" DataField="attachmentCount" HeaderText="<%$ LabelResourceExpression: app_attachment_text %>" />
+                            HeaderStyle-HorizontalAlign="Left" DataField="sv_ojt_location" HeaderText="<%$ LabelResourceExpression: app_location_text %>" />
+                        <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderText="Acknowledgements">
+                            <ItemTemplate>
+                                <asp:Literal ID="ltlAcknowledge" runat="server"></asp:Literal>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                             HeaderStyle-HorizontalAlign="Left" DataField="sv_ojt_creation_date" HeaderText="<%$ LabelResourceExpression: app_created_text %>" />
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="dsiplay_data_export_logs.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.Data_Exports.dsiplay_data_export_logs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="dsiplay_data_export_logs.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.dsiplay_data_export_logs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

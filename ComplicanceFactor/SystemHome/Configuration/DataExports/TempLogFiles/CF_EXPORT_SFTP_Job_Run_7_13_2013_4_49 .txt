@@ -1,0 +1,15 @@
+************************************
+CF Data Export Upload Job:  
+************************************
+
+Started on:7/13/2013 at 4:49 PM
+Ended on:7/13/2013 at 4:49 PM
+
+Initiated Job: Pass
+Connected to SFTP: Pass
+Uploaded FacilitiesFile: Pass
+Loaded (36) records
+
+************************************
+End of Report
+************************************

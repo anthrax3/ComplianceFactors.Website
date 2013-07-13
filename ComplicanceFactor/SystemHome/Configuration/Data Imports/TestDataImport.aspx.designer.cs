@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
+namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports {
     
     
-    public partial class dsiplay_data_export_logs {
+    public partial class TestDataImport {
         
         /// <summary>
-        /// gvDataExportJobRuns control.
+        /// btnDataImport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDataExportJobRuns;
-        
-        /// <summary>
-        /// btnCloseWindow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCloseWindow;
+        protected global::System.Web.UI.WebControls.Button btnDataImport;
     }
 }

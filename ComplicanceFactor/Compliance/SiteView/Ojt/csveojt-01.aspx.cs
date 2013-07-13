@@ -19,7 +19,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
     {
         #region "Private Member Variables"
         private string _attachmentpath = "~/Compliance/SiteView/Ojt/Attachments/";
-        private string _filePath = "~/Compliance/SiteView/Ojt/CertificateAttachments/";
+        //private string _attachmentpath = "~/Compliance/SiteView/Ojt/Attachments/";
         private static string editOjtId;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,11 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
             lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=../ccsv-01.aspx>" + LocalResources.GetGlobalLabel("app_compliance_pod_site_view_title") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_ojt_text") + "</a>";
             if (!IsPostBack)
             {
-                SessionWrapper.ojt_upload_certification = null;
+                SessionWrapper.ojt_upload_certification_file_name = string.Empty;
+                SessionWrapper.ojt_upload_certification_file_path = string.Empty;
+                SessionWrapper.ojt_upload_certification_file_extension = string.Empty;
+                SessionWrapper.ojt_upload_certification_check_file_name = string.Empty;
+
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     editOjtId = SecurityCenter.DecryptText(Request.QueryString["id"].ToString());
@@ -115,7 +119,10 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 }
 
                 ddlHarm.SelectedValue = ojt.sv_ojt_harm_id_fk;
-                SessionWrapper.ojt_upload_certification = ojt.sv_ojt_certify_filepath;
+                SessionWrapper.ojt_upload_certification_check_file_name = ojt.sv_ojt_certify_filename;
+                SessionWrapper.ojt_upload_certification_file_name = ojt.sv_ojt_certify_filename;
+                SessionWrapper.ojt_upload_certification_file_path = ojt.sv_ojt_certify_filepath;
+                SessionWrapper.ojt_upload_certification_file_extension = ojt.sv_ojt_certify_fileExt;
  
                 gvOjtAttachments.DataSource = SiteViewOnJobTrainingBLL.GetOjtAttachment(OjtId);
                 gvOjtAttachments.DataBind();
@@ -570,11 +577,25 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 createOjt.sv_ojt_is_acknowledge = false;
             }
 
-            createOjt.sv_ojt_certify_filepath = SessionWrapper.ojt_upload_certification;
+            createOjt.sv_ojt_certify_filepath = SessionWrapper.ojt_upload_certification_file_path;
+            createOjt.sv_ojt_certify_filename =SessionWrapper.ojt_upload_certification_file_name;
+            createOjt.sv_ojt_certify_fileExt = SessionWrapper.ojt_upload_certification_file_extension;  
+
+
 
             if ((!string.IsNullOrEmpty(Request.QueryString["mode"]) && Request.QueryString["mode"].ToString() == "saved"))
             {
                 createOjt.sv_ojt_id_pk = editOjtId;
+                if (SessionWrapper.ojt_upload_certification_check_file_name != SessionWrapper.ojt_upload_certification_file_name)
+                {
+                    createOjt.sv_ojt_certify_file_isUpdate = true;
+                    createOjt.sv_ojt_certify_file_Update_sync = false;
+                }
+                else
+                {
+                    createOjt.sv_ojt_certify_file_isUpdate = false;
+                    createOjt.sv_ojt_certify_file_Update_sync = false;
+                }
                 try
                 {
                     int result = SiteViewOnJobTrainingBLL.UpdateOjt(createOjt);
@@ -655,8 +676,10 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                 {
                     m_file_name = Path.GetFileName(file.FileName);
                     m_file_extension = Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath(_filePath + m_file_name));
-                    SessionWrapper.ojt_upload_certification = m_file_name;
+                    file.SaveAs(Server.MapPath(_attachmentpath + m_file_guid + m_file_extension));
+                    SessionWrapper.ojt_upload_certification_file_path = m_file_guid + m_file_extension;
+                    SessionWrapper.ojt_upload_certification_file_name = m_file_name;
+                    SessionWrapper.ojt_upload_certification_file_extension = m_file_extension;
                     //SessionWrapper.ojt_upload_certification = m_file_name + m_file_extension;
                 }
             }
@@ -667,9 +690,9 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
         /// </summary>
         private void Attachment()
         {
-            if (!string.IsNullOrEmpty(SessionWrapper.ojt_upload_certification))
+            if (!string.IsNullOrEmpty(SessionWrapper.ojt_upload_certification_file_name))
             {
-                lnkFileName.Text = SessionWrapper.ojt_upload_certification;
+                lnkFileName.Text = SessionWrapper.ojt_upload_certification_file_name;
                 btnUploadCeritification.Style.Add("display", "none");
                 btnEdit.Style.Add("display", "inline");
                 btnRemove.Style.Add("display", "inline");
@@ -687,14 +710,17 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
-            SessionWrapper.ojt_upload_certification = string.Empty;             
+            SessionWrapper.ojt_upload_certification_file_name = string.Empty;
+            SessionWrapper.ojt_upload_certification_file_path = string.Empty;
+            SessionWrapper.ojt_upload_certification_file_extension = string.Empty;
+
             lnkFileName.Text = string.Empty;
             Attachment();
         }
 
         protected void lnkFileName_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath(_filePath + SessionWrapper.ojt_upload_certification);
+            string filePath = Server.MapPath(_attachmentpath + SessionWrapper.ojt_upload_certification_file_path);
 
             if (System.IO.File.Exists(filePath))
             {
@@ -705,7 +731,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                     if (file.Exists)
                     {
                         Response.Clear();
-                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + SessionWrapper.ojt_upload_certification + "\"");
+                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + SessionWrapper.ojt_upload_certification_file_name + "\"");
                         Response.AddHeader("Content-Length", file.Length.ToString());
                         Response.ContentType = ReturnExtension(file.Extension.ToLower());
                         Response.WriteFile(file.FullName);

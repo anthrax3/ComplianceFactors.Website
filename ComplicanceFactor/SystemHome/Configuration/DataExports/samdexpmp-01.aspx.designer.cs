@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Configuration.Data_Exports {
+namespace ComplicanceFactor.SystemHome.Configuration.DataExports {
     
     
     public partial class samdexpmp_01 {

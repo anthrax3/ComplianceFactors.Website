@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
-    CodeBehind="samdexpmp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.Data_Exports.samdexpmp_01" %>
+    CodeBehind="samdexpmp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.samdexpmp_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -96,7 +96,9 @@
                         <%=LocalResources.GetLabel("app_download_file_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDownloadFacilitiesCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_facilities_csv_file_button_text %>" />
+                        <asp:Button ID="btnDownloadFacilitiesCsvFile" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_download_facilities_csv_file_button_text %>" 
+                            onclick="btnDownloadFacilitiesCsvFile_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +106,9 @@
                         <%=LocalResources.GetLabel("app_download_file_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDownloadRoomsCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_rooms_csv_file_button_text %>" />
+                        <asp:Button ID="btnDownloadRoomsCsvFile" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_download_rooms_csv_file_button_text %>" 
+                            onclick="btnDownloadRoomsCsvFile_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -112,7 +116,9 @@
                         <%=LocalResources.GetLabel("app_download_file_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDownloadCoursesCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_courses_csv_file_button_text %>" />
+                        <asp:Button ID="btnDownloadCoursesCsvFile" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_download_courses_csv_file_button_text %>" 
+                            onclick="btnDownloadCoursesCsvFile_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -120,7 +126,9 @@
                         <%=LocalResources.GetLabel("app_download_file_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDownloadBaseCurriculamCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_base_curriculum_csv_file_button_text %>" />
+                        <asp:Button ID="btnDownloadBaseCurriculamCsvFile" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_download_base_curriculum_csv_file_button_text %>" 
+                            onclick="btnDownloadBaseCurriculamCsvFile_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +136,9 @@
                         <%=LocalResources.GetLabel("app_download_file_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDownloadEnrollmentsCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_enrollments_csv_file_button_text %>" />
+                        <asp:Button ID="btnDownloadEnrollmentsCsvFile" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_download_enrollments_csv_file_button_text %>" 
+                            onclick="btnDownloadEnrollmentsCsvFile_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -136,7 +146,9 @@
                         <%=LocalResources.GetLabel("app_download_file_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnDownloadLearningHistory" runat="server" Text="<%$ LabelResourceExpression: app_download_learning_history_csv_file_button_text %>" />
+                        <asp:Button ID="btnDownloadLearningHistory" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_download_learning_history_csv_file_button_text %>" 
+                            onclick="btnDownloadLearningHistory_Click" />
                     </td>
                 </tr>
                 <tr>

@@ -671,6 +671,28 @@ namespace ComplicanceFactor.Compliance.SiteView
                 }
             }
         }
+
+        protected void gvJobTrainingDetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            GridView GridView1 = (GridView)sender;
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string ojt_id_pk = GridView1.DataKeys[e.Row.RowIndex][0].ToString();
+                string created_by_id_pk = GridView1.DataKeys[e.Row.RowIndex][1].ToString();
+                string acknowledgement = DataBinder.Eval(e.Row.DataItem, "sv_ojt_is_acknowledge").ToString();
+
+                Literal ltlAcknowledge = (Literal)e.Row.FindControl("ltlAcknowledge");
+                if (acknowledgement == "Sent to you – No Acknowledged")
+                {
+                    ltlAcknowledge.Text = "<input id=" + ojt_id_pk + " class='editOjtacknowledge cursor_hand' type='button' value='Acknowledge'/>";
+                }
+                else
+                {
+                    ltlAcknowledge.Text = acknowledgement;
+                }
+            }
+        }
         
     }
 }

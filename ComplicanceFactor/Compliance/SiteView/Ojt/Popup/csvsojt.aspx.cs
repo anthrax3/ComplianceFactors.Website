@@ -94,8 +94,8 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
             row["sv_ojt_id_fk"] = strOjtId;
             row["sv_ojt_sent_to_user_fk"] = u_user_id_pk;
             row["s_user_summary"] = s_user_summary;
-            row["sv_ojt_is_need_acknowledged"] = true;
-            row["sv_ojt_acknowledged_status"] = true;
+            row["sv_ojt_is_need_acknowledged"] = false;
+            row["sv_ojt_acknowledged_status"] = false;
             row["sv_ojt_is_sync_mobile"] = true;
 
             dtTempUser.Rows.Add(row);
@@ -105,6 +105,21 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
         {
             DataTable dtUserInfo = new DataTable();
             dtUserInfo = SessionWrapper.AddUserForSendOjt;
+            int i = 0;
+            foreach (GridViewRow row in gvNewUser.Rows)
+            {
+                CheckBox chkSelect = (CheckBox)row.FindControl("chkIsAcknowledge");
+                if (chkSelect.Checked == true)
+                {
+                    dtUserInfo.Rows[i]["sv_ojt_is_need_acknowledged"] = true; //sv_fieldnote_acknowledged_status
+                }
+                else
+                {
+                    dtUserInfo.Rows[i]["sv_ojt_is_need_acknowledged"] = false;
+                }
+                i = i + 1;
+                dtUserInfo.AcceptChanges();
+            }
             if (dtUserInfo.Rows.Count > 0)
             {
                 //Get ojt and attachment      
@@ -141,6 +156,8 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
                 createOjt.sv_ojt_is_acknowledge = ojt.sv_ojt_is_acknowledge;
                 createOjt.sv_ojt_harm_id_fk = ojt.sv_ojt_harm_id_fk;
                 createOjt.sv_ojt_certify_filepath = ojt.sv_ojt_certify_filepath;
+                createOjt.sv_ojt_certify_filename = ojt.sv_ojt_certify_filename;
+                createOjt.sv_ojt_certify_fileExt = ojt.sv_ojt_certify_fileExt;
                 //createOjt.sv_ojt_is_save_sync = false;
 
                 DataTable dt = SiteViewOnJobTrainingBLL.GetOjtAttachment(strOjtId);

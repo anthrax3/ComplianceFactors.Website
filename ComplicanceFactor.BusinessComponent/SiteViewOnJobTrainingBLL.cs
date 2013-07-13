@@ -86,7 +86,12 @@ namespace ComplicanceFactor.BusinessComponent
                 }
 
                 ojt.sv_ojt_certify_filepath = dtGetOjt.Rows[0]["sv_ojt_certify_filepath"].ToString();
+                ojt.sv_ojt_certify_filename = dtGetOjt.Rows[0]["sv_ojt_certify_filename"].ToString();
+                ojt.sv_ojt_certify_fileExt = dtGetOjt.Rows[0]["sv_ojt_certify_fileExt"].ToString();
+
                 ojt.harmTitle = dtGetOjt.Rows[0]["harmTitle"].ToString();
+
+                ojt.sv_ojt_created_by = dtGetOjt.Rows[0]["CreatedBy"].ToString();
 
                 return ojt;
             }
@@ -180,6 +185,10 @@ namespace ComplicanceFactor.BusinessComponent
                 htNewOjt.Add("@sv_ojt_harm_id_fk", DBNull.Value);
             }
             htNewOjt.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);
+            htNewOjt.Add("@sv_ojt_certify_filename", newOjt.sv_ojt_certify_filename);
+            htNewOjt.Add("@sv_ojt_certify_fileExt", newOjt.sv_ojt_certify_fileExt);
+            htNewOjt.Add("@sv_ojt_certify_file_isUpdate", newOjt.sv_ojt_certify_file_isUpdate);
+            htNewOjt.Add("@sv_ojt_certify_file_Update_sync", newOjt.sv_ojt_certify_file_Update_sync);  
             
             try
             {
@@ -270,7 +279,9 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htInsertOjtSent.Add("@sv_ojt_harm_id_fk", DBNull.Value);
             }
-            htInsertOjtSent.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);            
+            htInsertOjtSent.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);
+            htInsertOjtSent.Add("@sv_ojt_certify_filename", newOjt.sv_ojt_certify_filename);
+            htInsertOjtSent.Add("@sv_ojt_certify_fileExt", newOjt.sv_ojt_certify_fileExt);
             htInsertOjtSent.Add("@sv_ojt_attachment", newOjt.sv_ojt_attachment);
             htInsertOjtSent.Add("@sv_mi_ojt_sent_to_user", newOjt.sv_mi_ojt_sent_to_user);
 
@@ -332,6 +343,8 @@ namespace ComplicanceFactor.BusinessComponent
                 htNewOjt.Add("@sv_ojt_harm_id_fk", DBNull.Value);
             }
             htNewOjt.Add("@sv_ojt_certify_filepath", newOjt.sv_ojt_certify_filepath);
+            htNewOjt.Add("@sv_ojt_certify_filename", newOjt.sv_ojt_certify_filename);
+            htNewOjt.Add("@sv_ojt_certify_fileExt", newOjt.sv_ojt_certify_fileExt);
             htNewOjt.Add("@sv_ojt_attachment",newOjt.sv_ojt_attachment);  
 
             try
@@ -384,6 +397,22 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 throw;
             }
-        }         
+        }
+
+        public static int UpdateAcknowledgement(string u_user_id_pk, string sv_ojt_id_pk)
+        {
+            Hashtable htUpdateAcknowledgement = new Hashtable();
+            htUpdateAcknowledgement.Add("@sv_ojt_id_fk", sv_ojt_id_pk);
+            htUpdateAcknowledgement.Add("@sv_ojt_sent_to_user_fk", u_user_id_pk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_ojt_acknowledgement", htUpdateAcknowledgement);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
