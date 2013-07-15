@@ -196,6 +196,7 @@ namespace ComplicanceFactor.BusinessComponent
             htRunLog.Add("@u_sftp_run_records_processes", hrisRunLog.u_sftp_run_records_processes);
             htRunLog.Add("@u_sftp_run_records_loaded", hrisRunLog.u_sftp_run_records_loaded);
             htRunLog.Add("@u_sftp_run_records_rejected", hrisRunLog.u_sftp_run_records_rejected);
+            htRunLog.Add("@u_sftp_run_log_type", hrisRunLog.u_sftp_run_log_type);
 
             try
             {
@@ -207,11 +208,13 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static DataTable GetLogDetails()
+        public static DataTable GetLogDetails(string u_sftp_run_log_type)
         {
             try
             {
-                return DataProxy.FetchDataTable("s_sp_get_hris_error_log");
+                Hashtable htGetLogDetails = new Hashtable();
+                htGetLogDetails.Add("@u_sftp_run_log_type", u_sftp_run_log_type);
+                return DataProxy.FetchDataTable("s_sp_get_hris_imp_exp_error_log", htGetLogDetails);
             }
             catch (Exception)
             {
@@ -288,13 +291,16 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static SystemHRISIntegration GetHRIS( )
+        public static SystemHRISIntegration GetHRIS_DIMP_DEXP(string u_sftp_run_log_type)
         {           
             SystemHRISIntegration hrisIntegration = new SystemHRISIntegration();
+            Hashtable hthrisIntegration = new Hashtable();
+            hthrisIntegration.Add("@u_sftp_run_log_type", u_sftp_run_log_type);
             DataTable dtSingleHris = new DataTable();
+
             try
             {
-                dtSingleHris = DataProxy.FetchDataTable("s_sp_get_hris_details");
+                dtSingleHris = DataProxy.FetchDataTable("s_sp_get_hris_dimp_dexp_details", hthrisIntegration);
                 if (dtSingleHris.Rows.Count > 0)
                 {
                     hrisIntegration.u_sftp_id_pk = dtSingleHris.Rows[0]["u_sftp_id_pk"].ToString();

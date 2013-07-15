@@ -6694,6 +6694,29 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        /// <summary>
+        /// BackgroundJobs
+        /// </summary>
+        public static DataTable BackgroundJobs
+        {
+            get
+            {
+                if (HttpContext.Current.Session["BackgroundJobs"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["BackgroundJobs"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["BackgroundJobs"] = value;
+            }
+        }
 
 
         public static void clearsession()

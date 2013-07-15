@@ -1,39 +1,38 @@
-c_room_system_id_pk,c_room_id_pk,c_room_name,c_room_desc,c_room_status_id_fk,c_room_type_id_fk,c_room_facility_id_fk,
-2ac90065-ae7d-47fe-b3fc-0554f56bbd07,Rooiu_copy,Rname,test,app_ddl_active_text,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,ba323bc3-fbd5-4ee2-9e7e-0dee72ec47f0,
-28df1d08-59af-404e-a2da-05d77913e802,21-gwd,27 John Ave.,room1,,,,
-7e139d82-c66a-4815-be99-147d3faf2cfb,CF-HQ-CONF-48601,Conference Room #48601,Conference Room #48601,239C7439-F845-4414-AB31-EA8AC9E5093F,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,5514b181-69fc-4d7c-82d4-4e6ecfcb1804,
-071b67ad-2415-47c0-baaa-253179b7a2b5,sd,sdf,fsdf,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,4a3935ba-a699-4e3d-8c5e-0e9a8ec8496d,
-303412e3-3936-4cce-a9fc-265703ac2b7b,31-gwd,31 Laine Lane.,room1,,,,
-f4329ce1-5ea8-404a-84b0-2b6c9da37c40,Test,Test,Test,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-34300029-ebc1-4481-8ea9-30187297e484,sytesr,eee333,test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-79cf2caf-1b55-4755-b6c9-32ac9c029e69,81-gwd,81 check lane,room1,,,,
-c4dc7d76-6957-41be-84f8-35e40d883bae,21-gwd_copy_copy,27 John Ave.,room1,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-4842326a-bbe6-4845-b389-35e5c6b25591,Rooiu,Rname,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,ba323bc3-fbd5-4ee2-9e7e-0dee72ec47f0,
-3b2a8a4f-9f6f-4604-818b-3999dd4eddf1,61-gwd,61 race ave,room1,,,,
-1bfa04a2-3b75-4c60-8d18-3a1c5e138148,yyyy,yyyy,yyyy,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-03cd8193-89c9-4fb5-b8a3-4efb55ac2cca,R002222_Copy,R002222,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,9eb26bad-64bd-4d74-91fc-d13f222a17c8,
-0ff0c7cb-8aa0-4efa-b26f-53f361514709,sssty,test,te,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-c46e04cc-ab8d-435b-bea8-5adbadd88b08,71-gwd,71 bama lane,room1,,,,
-cb2fc32a-390e-4d0b-a642-657ea124bb15,yyy,ttttt,yyyyyy,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-e405f737-9bbf-4972-97a1-6f11fadc5101,51-gwd,51 anne ave,room1,,,,
-668ec03b-71e5-4232-b7aa-7a5262632989,Test,Test,TEst,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-53e2d45d-3333-4157-a7f5-7a9a6c92a985,Rfac01,RfacName,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,8483f678-5bad-42d5-b5f7-239b551f2358,
-5e555d38-8526-4056-8a11-7b6ed71c82e5,CF-HQ-CONF-48601_copy,Conference Room #48601,Conference Room #48601,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,5514b181-69fc-4d7c-82d4-4e6ecfcb1804,
-ec53bf9b-bb81-47ea-930d-810336b8e33a,Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-75d1b487-4392-4b2a-84fc-8a7ec98d24d8,ll,ll,ll,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-7b7efe40-3371-4f92-8909-8ab4c334ea54,Test,Test,TEst,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-4cf9dedb-5e30-4c50-9226-95bca2d472b4,Test,Test,test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-ba0f0859-408c-4220-a03b-a64e75f81776,Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-cc7685d8-8ead-4fc5-8d52-a9449e6a6fb1,41-gwd,41 david ave,room1,,,,
-03f0cf88-3758-4897-aba2-acd9fd7893df,31-gwd_copy_copy,31 Laine Lane.,room1,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-654ac1ff-1e98-4a9b-8ff0-b051691fe200,test,te,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,5a1259e2-8012-49f2-98db-80e75c0da459,
-e6c4ac61-4806-4c7f-8900-b33da1bfb7f4,Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-e8cad42a-8781-49b7-a09f-c4ec8005fa02,91-gwd,91 ice lane,room1,,,,
-377473db-6ebf-4190-8285-cd00ecdad378,Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,9e8c5350-7674-4a8b-aca1-3b6a4c41307a,
-c27811e6-3f54-4574-955f-cdf5c8096fb4,31-gwd_copy,31 Laine Lane.,room1,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-fbbcd362-1242-42b5-9128-d4ac40ba17ec,21-gwd_copy,27 John Ave.,room1,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-ea4d6357-e718-4ad4-bd00-d583561e77c2,10-gwd,11 Murray St.,room1,,,,
-8295fa76-fe7d-45ff-a8ed-de1cac2d2d0d,Test_copy,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99,
-e6e8e6ac-ddee-4bc2-a227-eb5e609c8a98,R002222,R002222,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,9eb26bad-64bd-4d74-91fc-d13f222a17c8,
-a08cc03c-8bf3-489e-9e2a-f2bc90803b09,yyy,yyy,yyy,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c,
-
+c_room_id_pk,c_room_name,c_room_desc,c_room_status_id_fk,c_room_type_id_fk,c_room_facility_id_fk
+Rooiu_copy,Rname,test,app_ddl_active_text,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,ba323bc3-fbd5-4ee2-9e7e-0dee72ec47f0
+21-gwd,27 John Ave.,room1,,,
+CF-HQ-CONF-48601,Conference Room #48601,Conference Room #48601,239C7439-F845-4414-AB31-EA8AC9E5093F,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,5514b181-69fc-4d7c-82d4-4e6ecfcb1804
+sd,sdf,fsdf,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,4a3935ba-a699-4e3d-8c5e-0e9a8ec8496d
+31-gwd,31 Laine Lane.,room1,,,
+Test,Test,Test,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+sytesr,eee333,test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+81-gwd,81 check lane,room1,,,
+21-gwd_copy_copy,27 John Ave.,room1,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+Rooiu,Rname,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,ba323bc3-fbd5-4ee2-9e7e-0dee72ec47f0
+61-gwd,61 race ave,room1,,,
+yyyy,yyyy,yyyy,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+R002222_Copy,R002222,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,9eb26bad-64bd-4d74-91fc-d13f222a17c8
+sssty,test,te,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+71-gwd,71 bama lane,room1,,,
+yyy,ttttt,yyyyyy,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+51-gwd,51 anne ave,room1,,,
+Test,Test,TEst,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+Rfac01,RfacName,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,8483f678-5bad-42d5-b5f7-239b551f2358
+CF-HQ-CONF-48601_copy,Conference Room #48601,Conference Room #48601,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,5514b181-69fc-4d7c-82d4-4e6ecfcb1804
+Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+ll,ll,ll,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+Test,Test,TEst,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+Test,Test,test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+41-gwd,41 david ave,room1,,,
+31-gwd_copy_copy,31 Laine Lane.,room1,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+test,te,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,5a1259e2-8012-49f2-98db-80e75c0da459
+Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c
+91-gwd,91 ice lane,room1,,,
+Test,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,9e8c5350-7674-4a8b-aca1-3b6a4c41307a
+31-gwd_copy,31 Laine Lane.,room1,app_ddl_inactive_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+21-gwd_copy,27 John Ave.,room1,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+10-gwd,11 Murray St.,room1,,,
+Test_copy,Test,Test,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,10a1418b-6f72-44a0-aae7-04293c69ca99
+R002222,R002222,test,239C7439-F845-4414-AB31-EA8AC9E5093F,cbeb0d2e-02c2-45eb-8ceb-f131e5b1a0c0,9eb26bad-64bd-4d74-91fc-d13f222a17c8
+yyy,yyy,yyy,app_ddl_active_text,96df0e2e-c042-4e81-adf8-78d0d9cfaee7,78300463-8db8-40a2-9fa4-01ddaca2c66c

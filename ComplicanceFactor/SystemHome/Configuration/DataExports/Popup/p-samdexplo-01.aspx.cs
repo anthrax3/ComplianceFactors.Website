@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
+namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
 {
-    public partial class p_samdhrislo_01 : System.Web.UI.Page
+    public partial class p_samdexplo_01 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,13 +18,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
                 BindLogFiles();
             }
         }
-
+        /// <summary>
+        /// Bind Log Files
+        /// </summary>
         private void BindLogFiles()
         {
             try
             {
-                gvHrisJobRun.DataSource = SystemHRISIntegrationBLL.GetLogDetails("HRIS");
-                gvHrisJobRun.DataBind();
+                gvExportJobRun.DataSource = SystemDataExportBLL.GetLogDetails("DEXP");
+                gvExportJobRun.DataBind();
             }
             catch (Exception ex)
             {
@@ -32,19 +34,16 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("p-samdhrislo-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("p-samdexplo-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("p-samdhrislo-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("p-samdexplo-01.aspx", ex.Message);
                     }
                 }
             }
         }
 
-        protected void btnCloseWindow_Click(object sender, EventArgs e)
-        {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
-        }
+        
     }
 }

@@ -92,8 +92,8 @@ namespace ComplicanceFactor.BusinessComponent
                     dataImport.u_sftp_exp_hris_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_hris_filename"].ToString();
                     dataImport.u_sftp_exp_is_catalog_offering = Convert.ToBoolean(dtSingleDataImport.Rows[0]["u_sftp_exp_is_catalog_offering"]);
                     dataImport.u_sftp_exp_catalog_offering_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_catalog_offering_filename"].ToString();
-                    dataImport.u_sftp_exp_is_learning_history =Convert.ToBoolean(dtSingleDataImport.Rows[0]["u_sftp_exp_is_learning_history"]);
-                    dataImport.u_sftp_exp_learning_history_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_learning_history_filename"].ToString();                     
+                    dataImport.u_sftp_exp_is_learning_history = Convert.ToBoolean(dtSingleDataImport.Rows[0]["u_sftp_exp_is_learning_history"]);
+                    dataImport.u_sftp_exp_learning_history_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_learning_history_filename"].ToString();
 
                     dataImport.u_sftp_occurs_every = dtSingleDataImport.Rows[0]["u_sftp_occurs_every"].ToString();
                     dataImport.u_sftp_time_every = dtSingleDataImport.Rows[0]["u_sftp_time_every"].ToString();
@@ -115,7 +115,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// 
         public static DataTable GetFacilities()
         {
-            return DataProxy.FetchDataTable("s_sp_get_facilities");
+            return DataProxy.FetchDataTable("s_sp_get_facilities_for_csv");
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetHris()
         {
-            return DataProxy.FetchDataTable("s_sp_get_rooms");
+            return DataProxy.FetchDataTable("s_sp_get_rooms_for_csv");
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetRooms()
         {
-            return DataProxy.FetchDataTable("s_sp_get_rooms");
+            return DataProxy.FetchDataTable("s_sp_get_rooms_for_csv");
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetCourses()
         {
-            return DataProxy.FetchDataTable("s_sp_get_course");
+            return DataProxy.FetchDataTable("s_sp_get_course_for_csv");
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetCurriculum()
         {
-            return DataProxy.FetchDataTable("s_sp_get_curriculum");
+            return DataProxy.FetchDataTable("s_sp_get_curriculum_for_csv");
         }
         /// <summary>
         /// Get Enrollments DataTable
@@ -159,7 +159,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetEnrollments()
         {
-            return DataProxy.FetchDataTable("s_sp_get_enrollments");
+            return DataProxy.FetchDataTable("s_sp_get_enrollments_for_csv");
         }
         /// <summary>
         /// Get LearningHistory DataTable
@@ -167,7 +167,24 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetLearningHisory()
         {
-            return DataProxy.FetchDataTable("s_sp_get_learning_history");
+            return DataProxy.FetchDataTable("s_sp_get_learning_history_for_csv");
+        }
+        /// <summary>
+        /// Get Log Details
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetLogDetails(string u_sftp_run_log_type)
+        {
+            try
+            {
+                Hashtable htGetLogDetails = new Hashtable();
+                htGetLogDetails.Add("@u_sftp_run_log_type", u_sftp_run_log_type);
+                return DataProxy.FetchDataTable("s_sp_get_hris_imp_exp_error_log", htGetLogDetails);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

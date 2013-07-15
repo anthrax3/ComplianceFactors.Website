@@ -7,25 +7,24 @@
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
 
-       <script type="text/javascript">
+        $(document).ready(function () {
+            $('#app_nav_system').addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
 
-           $(document).ready(function () {
-               $('#app_nav_system').addClass('selected');
-               // toggles the slickbox on clicking the noted link  
-               $('.main_menu li a').hover(function () {
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
 
-                   $('.main_menu li a').removeClass('selected');
-                   $(this).addClass('active');
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
 
-                   return false;
-               });
-               $('.main_menu li a').mouseleave(function () {
-
-                   $('#app_nav_system').addClass('selected');
-                   return false;
-               });
-           });
+                $('#app_nav_system').addClass('selected');
+                return false;
+            });
+        });
 
     </script>
     <script type="text/javascript">
@@ -50,7 +49,7 @@
                         'autoScale': false,
                         'autoDimensions': false,
                         'helpers': { overlay: { closeClick: false} },
-                        'width': 920,
+                        'width': 700,
                         'height': 200,
                         'margin': 0,
                         'padding': 0,
@@ -116,7 +115,7 @@
                         'autoScale': false,
                         'autoDimensions': false,
                         'helpers': { overlay: { closeClick: false} },
-                        'width': 920,
+                        'width': 930,
                         'height': 200,
                         'margin': 0,
                         'padding': 0,
@@ -187,6 +186,11 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <br />
+            <div class="align_center">
+                <asp:Button ID="btnSave" runat="server" Text="Save" onclick="btnSave_Click" />
+            </div>
+            <br />
         </div>
     </div>
 </asp:Content>

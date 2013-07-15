@@ -337,15 +337,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports {
         protected global::AjaxControlToolkit.CalendarExtender ceDate;
         
         /// <summary>
-        /// btnDisplayExportLogs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDisplayExportLogs;
-        
-        /// <summary>
         /// btnSaveDataExportSftpInformation control.
         /// </summary>
         /// <remarks>

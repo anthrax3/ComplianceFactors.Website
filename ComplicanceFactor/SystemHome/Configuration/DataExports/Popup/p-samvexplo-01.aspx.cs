@@ -8,22 +8,18 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using System.IO;
-using System.Net;
 using System.Data;
 using Microsoft.Reporting.WebForms;
-using System.Text;
 
-namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
+namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
 {
-    public partial class p_samvhrislo_01 : System.Web.UI.Page
+    public partial class p_samvexplo_01 : System.Web.UI.Page
     {
-
         #region Private member varables
         private string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
         private static string logId;
-        private static string filename;      
+        private static string filename;
         #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -43,7 +39,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
             {
                 hrisLogDetails = SystemHRISIntegrationBLL.GetSingleErrorLog(logId);
                 LogDetails.InnerHtml = hrisLogDetails.u_sftp_run_errors_log;
-                filename = hrisLogDetails.u_sftp_run_errors_details_filename;                 
+                filename = hrisLogDetails.u_sftp_run_errors_details_filename;
             }
             catch (Exception ex)
             {
@@ -64,12 +60,12 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
         protected void btnDownloadLog_Click(object sender, EventArgs e)
         {
             SystemHRISIntegration hrisIntegration = new SystemHRISIntegration();
-            
+
             try
             {
-                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS_DIMP_DEXP("HRIS");                 
+                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS_DIMP_DEXP("DEXP");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (ConfigurationWrapper.LogErrors == true)
                 {
@@ -84,22 +80,22 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
                 }
             }
 
-            string localPath = "C:/Users/Windows/Downloads/";
-            localPath = "~/SystemHome/Configuration/HRISIntegration/TempLogFiles/" + filename;
+            //string localPath = "C:/Users/Windows/Downloads/";
+            string localPath = "~/SystemHome/Configuration/DataExports/TempLogFiles/" + filename;
+            string filePath = Server.MapPath(localPath);
+            filename = filename.Remove(filename.Length - 4, 4)+".txt";
 
-
-            if (System.IO.File.Exists(localPath))
+            if (System.IO.File.Exists(filePath))
             {
-                string strRequest = localPath;
-                if (!string.IsNullOrEmpty(strRequest))
+                if (!string.IsNullOrEmpty(filePath))
                 {
-                    FileInfo file = new System.IO.FileInfo(strRequest);
+                    FileInfo file = new System.IO.FileInfo(filePath);
                     if (file.Exists)
                     {
                         Response.Clear();
-                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename.Remove(filename.Length - 4, 4) + "\"");
+                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
                         Response.AddHeader("Content-Length", file.Length.ToString());
-                        Response.ContentType = ".txt";
+                        Response.ContentType = "text/plain";
                         Response.WriteFile(file.FullName);
                         Response.End();
                         //if file does not exist
@@ -115,84 +111,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
                     Response.Write("Please provide a file to download.");
                 }
             }
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "err_msg",
-            //     "alert('This file was missing');", true);
-            //}
-
-
-            //FtpWebRequest request = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
-            //request.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);
-            //request.Method = WebRequestMethods.Ftp.ListDirectory;
-
-            //StreamReader streamReader = new StreamReader(request.GetResponse().GetResponseStream());
-            //request = null;
-
-            //string fileName = streamReader.ReadLine();
-
-            //if (fileName != null)
-            //{
-
-            //    FtpWebRequest requestFileDownload = null;
-            //    FtpWebResponse responseFileDownload = null;
-
-            //    try
-            //    {
-            //        requestFileDownload = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
-            //        requestFileDownload.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);
-            //        requestFileDownload.Method = WebRequestMethods.Ftp.DownloadFile;
-
-            //        responseFileDownload = (FtpWebResponse)requestFileDownload.GetResponse();
-
-            //        Stream responseStream = responseFileDownload.GetResponseStream();
-
-                   
-
-            //        FileStream writeStream = new FileStream(localPath + fileName, FileMode.Create);
-
-            //        int Length = 2048;
-            //        Byte[] buffer = new Byte[Length];
-            //        int bytesRead = responseStream.Read(buffer, 0, Length);
-            //        while (bytesRead > 0)
-            //        {
-                       
-            //            Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename.Remove(filename.Length - 4, 4) + "\"");
-            //            //Response.AddHeader("Content-Length", file.Length.ToString());
-            //            Response.ContentType = ".txt";
-            //            Response.Write(chars, 0, bytesRead);
-            //            //bytesRead = responseStream.Read(buffer, 0, Length);
-
-            //            //writeStream.Write(buffer, 0, bytesRead);
-            //            //bytesRead = responseStream.Read(buffer, 0, Length);
-            //        }
-
-
-            //        writeStream.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        if (ConfigurationWrapper.LogErrors == true)
-            //        {
-            //            if (ex.InnerException != null)
-            //            {
-            //                Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message, ex.InnerException.Message);
-            //            }
-            //            else
-            //            {
-            //                Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message);
-            //            }
-            //        }
-            //    }
-            //    divSuccess.Style.Add("display", "block");
-            //    divSuccess.InnerHtml =  "File downloaded successfully , please find file in your downloads folder";   
-
-            //}          
-        }
-
-        protected void btnCloseWindow_Click(object sender, EventArgs e)
-        {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
 
         protected void btnPrint_Click(object sender, EventArgs e)
@@ -245,7 +163,5 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
             Response.End();
             Response.Close();
         }
-
-
     }
 }

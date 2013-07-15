@@ -4,17 +4,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
+    <script src="../../../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
+    <script src="../../../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body
         {
             /*width: 960px;*/
-            width: 730px !important;
+            width: 900px !important;
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 400px;
+            height: 700px;
         }
     </style>
     <script type="text/javascript">
@@ -37,15 +40,15 @@
         });
 
     </script>
-    <script type="text/javascript">
-        $(function () {
-            $("#<%=txtHours.ClientID %>").watermark("HH:MM");
-            $("#<%=txtHours.ClientID %>").click(
+        <script type="text/javascript">
+            $(function () {
+                $("#<%=txtHours.ClientID %>").watermark("HH:MM");
+                $("#<%=txtHours.ClientID %>").click(
 			function () {
 			    $("#<%=txtHours.ClientID %>")[0].focus();
 			}
 		);
-        });
+            });
     </script>
     <script type="text/javascript">
         function checkTime(sender, args) {
@@ -74,6 +77,41 @@
 
         }
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".displayHris").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 730,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': '/SystemHome/Configuration/DataExports/Popup/p-samdexplo-01.aspx',
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+                    $('#fancybox-frame').load(function () {
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+            });
+        });
+    </script>
      <asp:ValidationSummary class="validation_summary_error" ID="vs_samdexpmp" runat="server"
         ValidationGroup="samdexpmp"></asp:ValidationSummary>
     <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"
@@ -84,7 +122,7 @@
     </div>
     <div id="content">
         <div class="content_area_long">
-            <div class="div_header_700">
+            <div class="div_header_popup_1">
                 <%=LocalResources.GetLabel("app_single_file_manual_upload_text")%>:
             </div>
             <br />
@@ -95,7 +133,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadHrisCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_hris_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadHrisCsvFile" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_hris_csv_file_button_text %>" 
+                                onclick="btnDownloadHrisCsvFile_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -103,7 +143,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadFacilitiesCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_facilities_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadFacilitiesCsvFile" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_facilities_csv_file_button_text %>" 
+                                onclick="btnDownloadFacilitiesCsvFile_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -111,7 +153,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadRoomsCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_rooms_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadRoomsCsvFile" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_rooms_csv_file_button_text %>" 
+                                onclick="btnDownloadRoomsCsvFile_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -119,7 +163,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadCoursesCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_courses_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadCoursesCsvFile" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_courses_csv_file_button_text %>" 
+                                onclick="btnDownloadCoursesCsvFile_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -127,7 +173,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadBaseCurriculamCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_base_curriculum_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadBaseCurriculamCsvFile" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_base_curriculum_csv_file_button_text %>" 
+                                onclick="btnDownloadBaseCurriculamCsvFile_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -135,7 +183,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadEnrollmentsCsvFile" runat="server" Text="<%$ LabelResourceExpression: app_download_enrollments_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadEnrollmentsCsvFile" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_enrollments_csv_file_button_text %>" 
+                                onclick="btnDownloadEnrollmentsCsvFile_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -143,7 +193,9 @@
                             <%=LocalResources.GetLabel("app_download_file_text")%>:
                         </td>
                         <td class="align_left">
-                            <asp:Button ID="btnDownloadLearningHistory" runat="server" Text="<%$ LabelResourceExpression: app_download_learning_history_csv_file_button_text %>" />
+                            <asp:Button ID="btnDownloadLearningHistory" runat="server" 
+                                Text="<%$ LabelResourceExpression: app_download_learning_history_csv_file_button_text %>" 
+                                onclick="btnDownloadLearningHistory_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -153,7 +205,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="div_header_700">
+            <div class="div_header_popup_1">
                 <%=LocalResources.GetLabel("app_sftp_server_and_synchronization_info_text")%>:
             </div>
             <br />
@@ -264,7 +316,8 @@
                         <td class="align_left" colspan="3">
                             <%=LocalResources.GetLabel("app_beginning_text")%>:&nbsp;&nbsp;<asp:TextBox ID="txtBegining"
                                 CssClass="textbox_75" runat="server"></asp:TextBox>
-                            &nbsp;&nbsp;&nbsp;<asp:Button ID="btnDisplayExportLogs" runat="server" Text="<%$ LabelResourceExpression: app_display_export_logs_button_text %>" />
+                            &nbsp;&nbsp;&nbsp;<%--<asp:Button ID="btnDisplayExportLogs" runat="server" Text="<%$ LabelResourceExpression: app_display_export_logs_button_text %>" />--%>
+                            <input type="button" class="displayHris cursor_hand" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_display_export_logs_button_text %>" />' />
                         </td>
                     </tr>
                     <tr>
@@ -291,15 +344,14 @@
                             &nbsp;
                         </td>
                         <td class="align_right">
-                            <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" 
-                                Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
-                                onclick="btnCancel_Click" />
+                            <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                                Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>
             </div>
             <br />
-            <div class="div_header_long">
+            <div class="div_header_popup_1">
                 <br />
             </div>
         </div>

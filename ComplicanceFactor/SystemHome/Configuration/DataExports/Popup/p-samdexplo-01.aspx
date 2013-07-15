@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
-    CodeBehind="p-samdhrislo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup.p_samdhrislo_01" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true" CodeBehind="p-samdexplo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.Popup.p_samdexplo_01" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -39,7 +37,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': 'p-samvhrislo-01.aspx?logid=' + record_id,
+                    'href': 'p-samvexplo-01.aspx?logid=' + record_id,
                     'onComplete': function () {
                         $.fancybox.showActivity();
                         $('#fancybox-frame').load(function () {
@@ -60,7 +58,7 @@
     <div id="content">
         <%--Heading--%>
         <div class="div_header_700">
-            HRIS Job Run(s):
+           Data Export Job Run(s):
         </div>
         <div>
             <br />
@@ -68,7 +66,7 @@
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            <asp:GridView ID="gvHrisJobRun" CssClass="grid_table_600" ShowHeader="false" ShowFooter="false"
+                            <asp:GridView ID="gvExportJobRun" CssClass="grid_table_600" ShowHeader="false" ShowFooter="false"
                                 GridLines="None" AutoGenerateColumns="false" AllowPaging="false" runat="server">
                                 <Columns>
                                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_600" ItemStyle-HorizontalAlign="Left">
@@ -93,8 +91,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnCloseWindow" ValidationGroup="saaloc" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                                Text="Close Window" />
+                            <asp:Button ID="btnCloseWindow" ValidationGroup="saaloc" runat="server"  OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                                Text="Close Window"/>
                         </td>
                     </tr>
                 </table>
@@ -102,3 +100,4 @@
         </div>
     </div>
 </asp:Content>
+

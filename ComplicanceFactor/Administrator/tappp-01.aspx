@@ -28,7 +28,6 @@
        
 
         $(".rstpwd").click(function () {
-            alert("hai");
             $.fancybox({
                 'type': 'iframe',
                 'titlePosition': 'over',

@@ -46,7 +46,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration
 
             try
             {
-                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS();
+                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS_DIMP_DEXP("HRIS");
                 if (!string.IsNullOrEmpty(hrisIntegration.u_sftp_id_pk))
                 {
                     hrisId = hrisIntegration.u_sftp_id_pk;

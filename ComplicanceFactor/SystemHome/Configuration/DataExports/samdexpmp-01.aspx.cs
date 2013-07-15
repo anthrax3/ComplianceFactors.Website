@@ -323,6 +323,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports
             //Insert sftp_run_log table
 
             SystemHRISIntegration hrisRunlog = new SystemHRISIntegration();
+            hrisRunlog.u_sftp_run_log_type = "DEXP";
             hrisRunlog.u_sftp_run_date_time_start = StartDate.ToString();
             hrisRunlog.u_sftp_run_date_time_end = endDate.ToString();
             //if (rejectedRows.Length > 0)
@@ -339,7 +340,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports
             errorLog = errorLog.Replace("\r\n", "<br/>");
             hrisRunlog.u_sftp_run_errors_log = errorLog;
             hrisRunlog.u_sftp_run_records_processes = dt.Rows.Count;
-            hrisRunlog.u_sftp_run_records_loaded = 0;
+            hrisRunlog.u_sftp_run_records_loaded = dt.Rows.Count;
             hrisRunlog.u_sftp_run_records_rejected = 0;
 
             try

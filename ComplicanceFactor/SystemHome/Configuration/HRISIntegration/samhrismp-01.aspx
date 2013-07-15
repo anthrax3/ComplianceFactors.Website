@@ -60,7 +60,7 @@
                 'autoScale': false,
                 'autoDimensions': false,
                 'helpers': { overlay: { closeClick: false} },
-                'width': 740,
+                'width': 732,
                 'height': 200,
                 'margin': 0,
                 'padding': 0,

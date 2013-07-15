@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs {
+namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup {
     
     
-    public partial class sambjmp_01 {
+    public partial class p_samdexplo_01 {
         
         /// <summary>
-        /// gvBackgroundJobs control.
+        /// gvExportJobRun control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBackgroundJobs;
+        protected global::System.Web.UI.WebControls.GridView gvExportJobRun;
         
         /// <summary>
-        /// btnSave control.
+        /// btnCloseWindow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Button btnCloseWindow;
     }
 }

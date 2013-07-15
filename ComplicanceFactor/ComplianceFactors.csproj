@@ -725,6 +725,8 @@
     <Content Include="SystemHome\Configuration\CurriculumTypes\saectn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\dsiplay_data_export_logs.aspx" />
+    <Content Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx" />
+    <Content Include="SystemHome\Configuration\DataExports\Popup\p-samvexplo-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\samdexpmp-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\view_data_export_log_details.aspx" />
     <Content Include="SystemHome\Configuration\Data Imports\dsiplay_data_import_logs.aspx" />
@@ -1305,6 +1307,7 @@
     </Compile>
     <Compile Include="Compliance\SiteView\Ojt\Popup\csvojtack.aspx.cs">
       <DependentUpon>csvojtack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Compliance\SiteView\Ojt\Popup\csvojtack.aspx.designer.cs">
       <DependentUpon>csvojtack.aspx</DependentUpon>
@@ -3091,6 +3094,20 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\DataExports\dsiplay_data_export_logs.aspx.designer.cs">
       <DependentUpon>dsiplay_data_export_logs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx.cs">
+      <DependentUpon>p-samdexplo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx.designer.cs">
+      <DependentUpon>p-samdexplo-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DataExports\Popup\p-samvexplo-01.aspx.cs">
+      <DependentUpon>p-samvexplo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\DataExports\Popup\p-samvexplo-01.aspx.designer.cs">
+      <DependentUpon>p-samvexplo-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\DataExports\samdexpmp-01.aspx.cs">
       <DependentUpon>samdexpmp-01.aspx</DependentUpon>

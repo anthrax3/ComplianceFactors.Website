@@ -20,9 +20,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_background_jobs_text") + "</a>";
 
-
+                
                 gvBackgroundJobs.DataSource = SystemBackgroundJobsBLL.GetBackgroundJobs();
                 gvBackgroundJobs.DataBind();
+
+                SessionWrapper.BackgroundJobs = SystemBackgroundJobsBLL.GetBackgroundJobs();
             }
         }
 
@@ -57,6 +59,21 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
                         }
                     }
                 }
+            }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            foreach (GridViewRow row in gvBackgroundJobs.Rows)
+            {
+                //TextBox txtOccursEvery = (TextBox)row.FindControl("txtOccursEvery");
+                //TextBox txtTime = (TextBox)row.FindControl("txtTime");
+                //DropDownList ddlTime = (DropDownList)row.FindControl("ddlTime");
+                //string u_sftp_id_pk = gvBackgroundJobs.DataKeys[row.RowIndex].Value.ToString();
+                //var rows = SessionWrapper.BackgroundJobs.Select("u_sftp_id_pk='" + u_sftp_id_pk + "'");
+                //var indexOfRow = SessionWrapper.BackgroundJobs.Rows.IndexOf(rows[0]);
+                //SessionWrapper.BackgroundJobs.Rows[indexOfRow]["u_sftp_time_every"] = txtTime.Text;
+                //SessionWrapper.BackgroundJobs.Rows[indexOfRow]["u_sftp_occurs_every"] = txtOccursEvery.Text;
             }
         }
     }
