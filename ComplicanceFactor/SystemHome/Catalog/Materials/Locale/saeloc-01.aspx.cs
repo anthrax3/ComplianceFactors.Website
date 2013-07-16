@@ -33,7 +33,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Materials.Locale
                     Locale = SystemMaterialBLL.GetSingleMaterialLocale(Request.QueryString["id"]);
                     txtName.Text = Locale.s_material_locale_name;
                     txtDescriptoin.Value = Locale.s_material_locale_description;
-                    lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_material_information_text") + " (" + Locale.s_locale_text + ")";
+                    lblLocaleHeading.Text = LocalResources.GetLabel("app_material_information_text") + " (" + Locale.s_locale_text + ")";
                     SessionWrapper.file_guid = Locale.s_material_locale_file_guid;
                     SessionWrapper.file_name = Locale.s_material_locale_file_name;
                 }
@@ -104,7 +104,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Materials.Locale
             Locale = SystemMaterialBLL.TempGetOneLocale(str_s_locale_system_id_pk, dtLocale);
             txtName.Text = Locale.s_material_locale_name;
             txtDescriptoin.Value = Locale.s_material_locale_description;
-            lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_material_information_text") + " (" + Locale.s_locale_text + ")";
+            lblLocaleHeading.Text = LocalResources.GetLabel("app_material_information_text") + " (" + Locale.s_locale_text + ")";
             SessionWrapper.file_guid = Locale.s_material_locale_file_guid;
             SessionWrapper.file_name = Locale.s_material_locale_file_name;
         }

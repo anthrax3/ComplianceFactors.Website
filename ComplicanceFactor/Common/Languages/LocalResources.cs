@@ -10,29 +10,31 @@ namespace ComplicanceFactor.Common.Languages
 {
     public class LocalResources : Page
     {
-        public static string GetLocaleResourceString(string ResourceName)
-        {
-            string currentCulture = SessionWrapper.CultureName;
-            //if(ResourceControl.ToUpper()=="LABEL")
-            return LocalizationManager.GetLocaleResourceString(ResourceName, currentCulture);
-            //else
-            //return LocalizationManager.GetLocaleResourceText(ResourceName, currentCulture);
-            //return LocalizationManager.GetLocaleResourceString(ResourceName,"uk_english");
-        }
+        #region "old Localization"
+        //public static string GetLocaleResourceString(string ResourceName)
+        //{
+        //    string currentCulture = SessionWrapper.CultureName;
+        //    //if(ResourceControl.ToUpper()=="LABEL")
+        //    return LocalizationManager.GetLocaleResourceString(ResourceName, currentCulture);
+        //    //else
+        //    //return LocalizationManager.GetLocaleResourceText(ResourceName, currentCulture);
+        //    //return LocalizationManager.GetLocaleResourceString(ResourceName,"uk_english");
+        //}
 
-        public static string GetLocaleResourceText(string ResourceName)
-        {
-            string currentCulture = SessionWrapper.CultureName;
-            return LocalizationManager.GetLocaleResourceText(ResourceName, currentCulture);
-            //return LocalizationManager.GetLocaleResourceString(ResourceName,"uk_english");
-        }
-        public static string GetLocalizationResourceLabelText(string ResourceName)
-        {
-            string currentCulture = SessionWrapper.CultureName;
-            return LocalizationManager.GetLocalizationLabelText(ResourceName, currentCulture);
+        //public static string GetLocaleResourceText(string ResourceName)
+        //{
+        //    string currentCulture = SessionWrapper.CultureName;
+        //    return LocalizationManager.GetLocaleResourceText(ResourceName, currentCulture);
+        //    //return LocalizationManager.GetLocaleResourceString(ResourceName,"uk_english");
+        //}
+        //public static string GetLocalizationResourceLabelText(string ResourceName)
+        //{
+        //    string currentCulture = SessionWrapper.CultureName;
+        //    return LocalizationManager.GetLocalizationLabelText(ResourceName, currentCulture);
 
 
-        }
+        //}
+        #endregion
 
         //New locazation
         public static string GetText(string ResourceName)

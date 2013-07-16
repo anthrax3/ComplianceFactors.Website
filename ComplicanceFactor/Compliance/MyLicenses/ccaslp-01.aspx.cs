@@ -15,7 +15,7 @@ namespace ComplicanceFactor.Compliance
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetLocaleResourceText("app_cchp_pagename") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocaleResourceText("app_ccaslp_pagename");
+            lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_cchp_pagename") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_ccaslp_pagename");
         }
     }
 }

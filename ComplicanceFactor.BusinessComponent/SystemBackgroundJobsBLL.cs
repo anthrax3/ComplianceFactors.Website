@@ -499,6 +499,24 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        /// <summary>
+        /// Update Background Jobs
+        /// </summary>
+        /// <param name="backgroundJobs"></param>
+        /// <returns></returns>
+        public static int UpdateBackgroundJobs(string backgroundJobs)
+        {
+            Hashtable htUpdateBackgroundJobs = new Hashtable();
+            htUpdateBackgroundJobs.Add("@backgroundJobs", backgroundJobs);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_background_jobs", htUpdateBackgroundJobs);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

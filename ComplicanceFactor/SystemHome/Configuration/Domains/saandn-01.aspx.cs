@@ -124,7 +124,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                 if (error == -2)
                 {
                     divError.Style.Add("display", "block");
-                    divError.InnerHtml = LocalResources.GetLocalizationResourceLabelText("app_domain_id_already_exists_error_msg");
+                    divError.InnerHtml = LocalResources.GetText("app_domain_id_already_exists_error_msg");
 
                 }
                 else

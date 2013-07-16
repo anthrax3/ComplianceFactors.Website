@@ -24,7 +24,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Materials.Locale
 
                 if (!string.IsNullOrEmpty(Request.QueryString["localeText"]))
                 {
-                    lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_material_information_text") + " (" + Request.QueryString["localeText"] + ")";
+                    lblLocaleHeading.Text = LocalResources.GetGlobalLabel("app_material_information_text") + " (" + Request.QueryString["localeText"] + ")";
                 }
                 //clear attachment session
                 SessionWrapper.file_name = string.Empty;

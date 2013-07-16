@@ -12,6 +12,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
 {
     public partial class sambjmp_01 : System.Web.UI.Page
     {
+        #region "Local variables"
+        private string time;
+        private string Hour;
+        private string Minutes;
+        private int total;
+        #endregion
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,10 +28,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_background_jobs_text") + "</a>";
 
-                
+                //Clear SessionWrapper
+                SessionWrapper.BackgroundJobs.Clear();
+                //Binding data
                 gvBackgroundJobs.DataSource = SystemBackgroundJobsBLL.GetBackgroundJobs();
                 gvBackgroundJobs.DataBind();
-
                 SessionWrapper.BackgroundJobs = SystemBackgroundJobsBLL.GetBackgroundJobs();
             }
         }
@@ -39,11 +48,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
 
                     int length = time.Length;
                     DropDownList ddlTime = (DropDownList)e.Row.FindControl("ddlTime");
-                    ddlTime.SelectedValue = time.Substring(length-2,2);
+                    ddlTime.SelectedValue = time.Substring(length - 2, 2);
 
 
                     TextBox txtTime = (TextBox)e.Row.FindControl("txtTime");
-                    txtTime.Text = time.Substring(0,length-2);
+                    txtTime.Text = time.Substring(0, length - 2);
                 }
                 catch (Exception ex)
                 {
@@ -64,17 +73,39 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            //Remove Column
+            SessionWrapper.BackgroundJobs.Columns.Remove("BackgroundJobName");
+            SessionWrapper.BackgroundJobs.Columns.Remove("u_sftp_start_date");
+            SessionWrapper.BackgroundJobs.AcceptChanges();
+
             foreach (GridViewRow row in gvBackgroundJobs.Rows)
             {
-                //TextBox txtOccursEvery = (TextBox)row.FindControl("txtOccursEvery");
-                //TextBox txtTime = (TextBox)row.FindControl("txtTime");
-                //DropDownList ddlTime = (DropDownList)row.FindControl("ddlTime");
-                //string u_sftp_id_pk = gvBackgroundJobs.DataKeys[row.RowIndex].Value.ToString();
-                //var rows = SessionWrapper.BackgroundJobs.Select("u_sftp_id_pk='" + u_sftp_id_pk + "'");
-                //var indexOfRow = SessionWrapper.BackgroundJobs.Rows.IndexOf(rows[0]);
-                //SessionWrapper.BackgroundJobs.Rows[indexOfRow]["u_sftp_time_every"] = txtTime.Text;
-                //SessionWrapper.BackgroundJobs.Rows[indexOfRow]["u_sftp_occurs_every"] = txtOccursEvery.Text;
+                TextBox txtOccursEvery = (TextBox)row.FindControl("txtOccursEvery");
+                TextBox txtTime = (TextBox)row.FindControl("txtTime");
+                DropDownList ddlTime = (DropDownList)row.FindControl("ddlTime");
+                string u_sftp_id_pk = gvBackgroundJobs.DataKeys[row.RowIndex].Value.ToString();
+                var rows = SessionWrapper.BackgroundJobs.Select("u_sftp_id_pk='" + u_sftp_id_pk + "'");
+                var indexOfRow = SessionWrapper.BackgroundJobs.Rows.IndexOf(rows[0]);
+                SessionWrapper.BackgroundJobs.Rows[indexOfRow]["u_sftp_occurs_every"] = txtOccursEvery.Text;
+
+                time = txtTime.Text;
+                Hour = time.Split(":".ToCharArray())[0];
+                Minutes = time.Split(":".ToCharArray())[1];
+                if (ddlTime.SelectedValue == "PM" && Convert.ToInt32(Hour) <= 12)
+                {
+                    //Get hour without AM/PM
+                    total = 12 + Convert.ToInt32(Hour);
+                }
+                else
+                {   //Get hour without AM/PM
+                    total = Convert.ToInt32(Hour);
+                }
+                SessionWrapper.BackgroundJobs.Rows[indexOfRow]["u_sftp_time_every"] = total + ":" + Minutes+":00.0000000";//Hard Code because sql not support 23:00
+                SessionWrapper.BackgroundJobs.AcceptChanges();
             }
+            //Update Background Jobs
+            ConvertDataTables ConvertXML = new ConvertDataTables();
+            SystemBackgroundJobsBLL.UpdateBackgroundJobs(ConvertXML.ConvertDataTableToXml(SessionWrapper.BackgroundJobs));
         }
     }
 }

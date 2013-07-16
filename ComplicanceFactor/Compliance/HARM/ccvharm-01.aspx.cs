@@ -588,7 +588,7 @@ namespace ComplicanceFactor.Compliance.HARM
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Employee_Interview", dsEmployeeInterview.Tables[0]));
             rvHARM.LocalReport.DataSources.Add(new ReportDataSource("HARM_Hazard_Control_Measure", dsHazardControlMeasure.Tables[0]));
             List<ReportParameter> param = new List<ReportParameter>();
-            param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://"+Request.Url.Host.ToLower()+ "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+            param.Add(new ReportParameter("s_theme_report_logo_file_name",protocol + "://"+Request.Url.Host.ToLower()+ "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
             param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
             param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
             param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
@@ -1402,8 +1402,7 @@ namespace ComplicanceFactor.Compliance.HARM
                 PdfTemplate.HARMControlMeasureDataSetTableAdapters.c_harm_sp_report_control_measureTableAdapter da1 = new PdfTemplate.HARMControlMeasureDataSetTableAdapters.c_harm_sp_report_control_measureTableAdapter();
 
                 Guid h_hazard_id_fk = new Guid(e.Parameters["h_hazard_id_fk"].Values[0]);
-                da1.Fill(ds1.c_harm_sp_report_control_measure, h_hazard_id_fk, LanguageManager.CurrentCulture.Name, Convert.ToString(controlMeasureCount));
-
+                da1.Fill(ds1.c_harm_sp_report_control_measure, h_hazard_id_fk, SessionWrapper.CultureName, Convert.ToString(controlMeasureCount));
 
                 //DataSet dsControlMeasure = new DataSet();
                 //dsControlMeasure = ComplianceBLL.GetControlMeasureReport(e.Parameters["h_hazard_id_fk"].Values[0]);

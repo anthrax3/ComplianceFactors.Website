@@ -15,7 +15,7 @@ namespace ComplicanceFactor.AboutUs
         protected void Page_Load(object sender, EventArgs e)
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-            lblBreadCrumb.Text = "<a href=/glp-01.aspx>" + LocalResources.GetLocaleResourceString("wp_nav_home") + "</a>&nbsp; " + ">" + "&nbsp;<a href=../AboutUs/aup-01.aspx>" + LocalResources.GetLocaleResourceText("wp_aup_pagename") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetLocaleResourceText("wp_aupcv_pagename");
+            lblBreadCrumb.Text = "<a href=/glp-01.aspx>" + LocalResources.GetGlobalLabel("wp_nav_home") + "</a>&nbsp; " + ">" + "&nbsp;<a href=../AboutUs/aup-01.aspx>" + LocalResources.GetGlobalLabel("wp_aup_pagename") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("wp_aupcv_pagename");
 
         }
     }

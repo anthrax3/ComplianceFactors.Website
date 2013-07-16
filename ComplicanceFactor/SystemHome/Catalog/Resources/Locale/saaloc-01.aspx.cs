@@ -17,7 +17,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.LocalesPopup
 
                 if (!string.IsNullOrEmpty(Request.QueryString["localeText"]))
                 {
-                    lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_resource_information_text") + " (" + Request.QueryString["localeText"] + ")";
+                    lblLocaleHeading.Text = LocalResources.GetGlobalLabel("app_resource_information_text") + " (" + Request.QueryString["localeText"] + ")";
                 }
 
             }

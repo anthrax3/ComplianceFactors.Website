@@ -24,7 +24,7 @@ namespace ComplicanceFactor.Common
             }
             else if (navigation == "app_nav_compliance")
             {
-                navigationText = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetLocaleResourceString("app_nav_compliance") + "</a>";
+                navigationText = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>";
                 return navigationText;
             }
             else if (navigation == "app_nav_instructor")

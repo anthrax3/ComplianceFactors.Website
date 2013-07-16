@@ -120,14 +120,14 @@ namespace ComplicanceFactor.SystemHome.Domains
                 {
                     divSuccess.Style.Add("display", "none");
                     divError.Style.Add("display", "block");
-                    divError.InnerHtml = LocalResources.GetLocalizationResourceLabelText("app_domain_id_already_exists_error_msg");
+                    divError.InnerHtml = LocalResources.GetText("app_domain_id_already_exists_error_msg");
 
                 }
                 else
                 {
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
-                    divSuccess.InnerHtml = LocalResources.GetLocalizationResourceLabelText("app_update_msg_text");
+                    divSuccess.InnerHtml = LocalResources.GetText("app_update_msg_text");
                 }
             }
             catch (Exception ex)

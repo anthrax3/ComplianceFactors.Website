@@ -94,7 +94,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Facilities.Locale
             Locale = SystemFacilityBLL.TempGetOneLocale(str_s_locale_system_id_pk, dtLocale);
             txtName.Text = Locale.s_facility_locale_name;
             txtDescriptoin.Value = Locale.s_facility_locale_description;
-            lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_facility_information_text") + " (" + Locale.s_locale_text + ")";
+            lblLocaleHeading.Text = LocalResources.GetLabel("app_facility_information_text") + " (" + Locale.s_locale_text + ")";
         }
     }
 }

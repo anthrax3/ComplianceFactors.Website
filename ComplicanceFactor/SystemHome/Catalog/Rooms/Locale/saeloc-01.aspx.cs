@@ -30,7 +30,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Rooms.Locale
                     Locale = SystemRoomBLL.GetSingleRoomLocale(Request.QueryString["id"]);
                     txtName.Text = Locale.s_room_locale_name;
                     txtDescriptoin.Value = Locale.s_room_locale_description;
-                    lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_room_information_text") + " (" + Locale.s_locale_text + ")";
+                    lblLocaleHeading.Text = LocalResources.GetLabel("app_room_information_text") + " (" + Locale.s_locale_text + ")";
                 }
             }
 
@@ -94,7 +94,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Rooms.Locale
             Locale = SystemRoomBLL.TempGetOneLocale(str_s_locale_system_id_pk, dtLocale);
             txtName.Text = Locale.s_room_locale_name;
             txtDescriptoin.Value = Locale.s_room_locale_description;
-            lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_room_information_text") + " (" + Locale.s_locale_text + ")";
+            lblLocaleHeading.Text = LocalResources.GetLabel("app_room_information_text") + " (" + Locale.s_locale_text + ")";
         }
     }
 }

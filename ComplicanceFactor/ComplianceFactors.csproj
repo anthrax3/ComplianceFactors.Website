@@ -114,6 +114,7 @@
     <Content Include="Compliance\ccppp.aspx" />
     <Content Include="Compliance\HARM\ccasharm-01.aspx" />
     <Content Include="Compliance\HARM\Images\1.jpg" />
+    <Content Include="Compliance\HARM\Images\Penguins.jpg" />
     <Content Include="Compliance\IRIS\ccasip-01.aspx" />
     <Content Include="Compliance\HARM\cccharm-01.aspx" />
     <Content Include="Compliance\MIRIS\cccmiris-01.aspx" />

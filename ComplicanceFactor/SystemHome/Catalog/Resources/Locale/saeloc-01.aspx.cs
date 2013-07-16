@@ -30,7 +30,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.LocalesPopup
                     resLocale = SystemResourceBLL.GetSingleResourceLocale(Request.QueryString["id"]);
                     txtName.Text = resLocale.s_resource_locale_name;
                     txtDescriptoin.Value = resLocale.s_resource_locale_description;
-                    lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_resource_information_text") + " (" + resLocale.s_locale_text + ")";
+                    lblLocaleHeading.Text = LocalResources.GetLabel("app_resource_information_text") + " (" + resLocale.s_locale_text + ")";
                 }
             }
 
@@ -95,7 +95,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.LocalesPopup
             reslocale = SystemResourceBLL.TempGetOneLocale(str_s_locale_system_id_pk, dtLocale);
             txtName.Text = reslocale.s_resource_locale_name;
             txtDescriptoin.Value = reslocale.s_resource_locale_description;
-            lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_resource_information_text") + " (" + reslocale.s_locale_text + ")";
+            lblLocaleHeading.Text = LocalResources.GetLabel("app_resource_information_text") + " (" + reslocale.s_locale_text + ")";
         }
     }
 }

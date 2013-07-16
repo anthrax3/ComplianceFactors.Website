@@ -31,7 +31,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Locations.Locale
                     txtName.Text = Locale.s_location_locale_name;
                     txtDescriptoin.Value = Locale.s_location_locale_description;
                     txtAirPortCode.Text = Locale.s_location_airport_code;
-                    lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_location_information_text") + " (" + Locale.s_locale_text + ")";
+                    lblLocaleHeading.Text = LocalResources.GetLabel("app_location_information_text") + " (" + Locale.s_locale_text + ")";
                 }
             }
 
@@ -97,7 +97,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Locations.Locale
             txtName.Text = Locale.s_location_locale_name;
             txtDescriptoin.Value = Locale.s_location_locale_description;
             txtAirPortCode.Text = Locale.s_location_airport_code;
-            lblLocaleHeading.Text = LocalResources.GetLocalizationResourceLabelText("app_location_information_text") + " (" + Locale.s_locale_text + ")";
+            lblLocaleHeading.Text = LocalResources.GetLabel("app_location_information_text") + " (" + Locale.s_locale_text + ")";
         }
     }
 }

@@ -10,31 +10,33 @@ namespace ComplicanceFactor.Common.Languages
 {
     public class LocalizationManager
     {
+        #region "Old localization"
+        
 
-        public static string GetLocaleResourceString(string ResourceKey, string LanguageID)
-        {
-            return LanguageBLL.GetResourceValue(LanguageID, ResourceKey);
+        //public static string GetLocaleResourceString(string ResourceKey, string LanguageID)
+        //{
+        //    return LanguageBLL.GetResourceValue(LanguageID, ResourceKey);
 
 
-        }
+        //}
        
-        public static string GetLocaleResourceText(string ResourceKey, string LanguageID)
-        {
-            return LanguageBLL.GetResourceText(LanguageID, ResourceKey);
+        //public static string GetLocaleResourceText(string ResourceKey, string LanguageID)
+        //{
+        //    return LanguageBLL.GetResourceText(LanguageID, ResourceKey);
 
 
-        }
-        public static string GetLocalizationLabelText(string ResourceKey, string LanguageID)
-        {
-            string sPath = HttpContext.Current.Request.Url.AbsolutePath;
+        //}
+        //public static string GetLocalizationLabelText(string ResourceKey, string LanguageID)
+        //{
+        //    string sPath = HttpContext.Current.Request.Url.AbsolutePath;
 
-            FileInfo oInfo = new FileInfo(sPath);
+        //    FileInfo oInfo = new FileInfo(sPath);
 
-            string sRet = oInfo.Name;
-            sRet = sRet.Replace(".aspx", "");
-            return LanguageBLL.GetLocalizationLabel(LanguageID, ResourceKey, sRet);
-        }
-
+        //    string sRet = oInfo.Name;
+        //    sRet = sRet.Replace(".aspx", "");
+        //    return LanguageBLL.GetLocalizationLabel(LanguageID, ResourceKey, sRet);
+        //}
+        #endregion
         //New localization
         public static string GetText(string ResourceKey, string LanguageID)
         {
