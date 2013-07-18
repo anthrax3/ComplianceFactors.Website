@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace ComplicanceFactor.BusinessComponent
 {
-    public  class SystemBackgroundJobsBLL
+    public class SystemBackgroundJobsBLL
     {
         public static DataTable GetBackgroundJobs()
         {
@@ -91,7 +91,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 dtSingleDataImport = DataProxy.FetchDataTable("s_sp_get_single_data_import", htGetSingleDataImport);
                 if (dtSingleDataImport.Rows.Count > 0)
-                {                    
+                {
                     dataImport.u_sftp_URI = dtSingleDataImport.Rows[0]["u_sftp_URI"].ToString();
                     dataImport.u_sftp_port = dtSingleDataImport.Rows[0]["u_sftp_port"].ToString();
                     dataImport.u_sftp_username = dtSingleDataImport.Rows[0]["u_sftp_username"].ToString();
@@ -130,7 +130,7 @@ namespace ComplicanceFactor.BusinessComponent
                 dtSingleDataImport = DataProxy.FetchDataTable("s_sp_get_single_data_export", htGetSingleDataExport);
                 if (dtSingleDataImport.Rows.Count > 0)
                 {
-                     
+
                     dataImport.u_sftp_URI = dtSingleDataImport.Rows[0]["u_sftp_URI"].ToString();
                     dataImport.u_sftp_port = dtSingleDataImport.Rows[0]["u_sftp_port"].ToString();
                     dataImport.u_sftp_username = dtSingleDataImport.Rows[0]["u_sftp_username"].ToString();
@@ -174,7 +174,7 @@ namespace ComplicanceFactor.BusinessComponent
 
         public static int CreateNewFacility(SystemFacility createFacility)
         {
-            Hashtable htcreateFacility = new Hashtable();            
+            Hashtable htcreateFacility = new Hashtable();
             htcreateFacility.Add("@c_facility_id_pk", createFacility.s_facility_id_pk);
             htcreateFacility.Add("@c_facility_name", createFacility.s_facility_name);
             htcreateFacility.Add("@c_facility_desc", createFacility.s_facility_desc);
@@ -192,7 +192,7 @@ namespace ComplicanceFactor.BusinessComponent
             htcreateFacility.Add("@c_facility_country_id_fk", createFacility.s_facility_country_id_fk);
             htcreateFacility.Add("@c_facility_locale_id_fk", createFacility.s_facility_locale_id_fk);
             htcreateFacility.Add("@c_facility_time_zone_id_fk", createFacility.s_facility_time_zone_id_fk);
-            
+
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_facility_background", htcreateFacility);
@@ -206,13 +206,34 @@ namespace ComplicanceFactor.BusinessComponent
         public static int CreateNewRoom(SystemRoom createRoom)
         {
             Hashtable htcreateRoom = new Hashtable();
-            
+
             htcreateRoom.Add("@c_room_id_pk", createRoom.s_room_id_pk);
             htcreateRoom.Add("@c_room_name", createRoom.s_room_name);
             htcreateRoom.Add("@c_room_desc", createRoom.s_room_desc);
-            htcreateRoom.Add("@c_room_status_id_fk", createRoom.s_room_status_id_fk);
-            htcreateRoom.Add("@c_room_type_id_fk", createRoom.s_room_type_id_fk);
-            htcreateRoom.Add("@c_room_facility_id_fk", createRoom.s_room_facility_id_fk);             
+            if (!string.IsNullOrEmpty(createRoom.s_room_status_id_fk))
+            {
+                htcreateRoom.Add("@c_room_status_id_fk", createRoom.s_room_status_id_fk);
+            }
+            else
+            {
+                htcreateRoom.Add("@c_room_status_id_fk", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(createRoom.s_room_type_id_fk))
+            {
+                htcreateRoom.Add("@c_room_type_id_fk", createRoom.s_room_type_id_fk);
+            }
+            else
+            {
+                htcreateRoom.Add("@c_room_type_id_fk", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(createRoom.s_room_facility_id_fk))
+            {
+                htcreateRoom.Add("@c_room_facility_id_fk", createRoom.s_room_facility_id_fk);
+            }
+            else
+            {
+                htcreateRoom.Add("@c_room_facility_id_fk", DBNull.Value);
+            }
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_room_for_background", htcreateRoom);
@@ -460,7 +481,7 @@ namespace ComplicanceFactor.BusinessComponent
             //htNewCurriculum.Add("@c_curriculum_domain", curriculum.c_curriculum_domain);
             //htNewCurriculum.Add("@c_curriculum_category", curriculum.c_curriculum_category);
             //htNewCurriculum.Add("@c_curriculum_attachment", curriculum.c_curriculum_attachment);          
-            
+
             if (curriculum.c_curriculum_recurrance_every != null)
             {
                 htNewCurriculum.Add("@c_curriculum_recurrance_every", curriculum.c_curriculum_recurrance_every);
@@ -481,7 +502,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htNewCurriculum.Add("@c_curriculum_recurance_date", DBNull.Value);
             }
-            
+
             //if (curriculum.c_curriculum_cost != null)
             //{
             //    htNewCurriculum.Add("@c_curriculum_cost", curriculum.c_curriculum_cost);
@@ -517,6 +538,221 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static int InsertUpdateEnrollment(Enrollment enroll)
+        {
+            Hashtable htEnroll = new Hashtable();
+
+            htEnroll.Add("@e_enroll_user_id_fk", enroll.e_enroll_user_id_fk);
+            htEnroll.Add("@e_enroll_course_id_fk", enroll.e_enroll_course_id_fk);
+            htEnroll.Add("@e_enroll_delivery_id_fk", enroll.e_enroll_delivery_id_fk);
+            if (!string.IsNullOrEmpty(enroll.e_enroll_enroll_date_time_background.ToString()))
+            {
+                htEnroll.Add("@e_enroll_enroll_date_time", enroll.e_enroll_enroll_date_time_background);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_enroll_date_time", DBNull.Value);
+            }
+
+            if (!string.IsNullOrEmpty(enroll.e_enroll_expire_date_background.ToString()))
+            {
+                htEnroll.Add("@e_enroll_expire_date", enroll.e_enroll_expire_date_background);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_expire_date", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(enroll.e_enroll_enroll_type_id_fk.ToString()))
+            {
+                htEnroll.Add("@e_enroll_enroll_type_id_fk", enroll.e_enroll_enroll_type_id_fk);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_enroll_type_id_fk", DBNull.Value);
+            }
+
+            htEnroll.Add("@e_enroll_required_flag", enroll.e_enroll_required_flag);
+            htEnroll.Add("@e_enroll_approval_required_flag", enroll.e_enroll_approval_required_flag);
+            if (!string.IsNullOrEmpty(enroll.e_enroll_approval_status_id_fk.ToString()))
+            {
+                htEnroll.Add("@e_enroll_approval_status_id_fk", enroll.e_enroll_approval_status_id_fk);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_approval_status_id_fk", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(enroll.e_enroll_approval_date_background.ToString()))
+            {
+                htEnroll.Add("@e_enroll_approval_date", enroll.e_enroll_approval_date_background);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_approval_date", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(enroll.e_enroll_target_due_date.ToString()))
+            {
+                htEnroll.Add("@e_enroll_target_due_date", enroll.e_enroll_target_due_date);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_target_due_date", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(enroll.e_enroll_status_id_fk.ToString()))
+            {
+                htEnroll.Add("@e_enroll_status_id_fk", enroll.e_enroll_status_id_fk);
+            }
+            else
+            {
+                htEnroll.Add("@e_enroll_status_id_fk", DBNull.Value);
+            }
+            htEnroll.Add("@e_enroll_time_spent", enroll.e_enroll_time_spent);
+            htEnroll.Add("@e_enroll_lesson_location", enroll.e_enroll_lesson_location);
+            htEnroll.Add("@e_enroll_suspend_data", enroll.e_enroll_suspend_data);
+            htEnroll.Add("@e_enroll_score", enroll.e_enroll_score);
+            htEnroll.Add("@e_enroll_active_flag", enroll.e_enroll_active_flag);
+            //htEnroll.Add("@e_enroll_lesson_status",enroll.e_enroll_lesson_status);
+            //htEnroll.Add("@e_enroll_completion_date",enroll.e_enroll_completion_date);
+            //htEnroll.Add("@e_transcript_id_fk",enroll.e_transcript_id_fk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_insert_enrollment_for_background", htEnroll);
+            }
+            catch (Exception )
+            {
+                throw;
+            }
+        }
+
+        public static int InsertUpdateTranscripts(SystemTranscripts transcripts)
+        {
+            try
+            {
+                Hashtable htInsertTranscripts = new Hashtable();
+                //htInsertTranscripts.Add("@t_transcript_id_pk", transcripts.t_transcript_id_pk);
+                htInsertTranscripts.Add("@t_transcript_user_id_fk", transcripts.t_transcript_user_id_fk);
+                htInsertTranscripts.Add("@t_transcript_course_id_fk", transcripts.t_transcript_course_id_fk);
+                htInsertTranscripts.Add("@t_transcript_delivery_id_fk", transcripts.t_transcript_delivery_id_fk);
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_assign_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_assign_id_fk", transcripts.t_transcript_assign_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_assign_id_fk", DBNull.Value);
+                }
+                //htInsertTranscripts.Add("@t_transcript_assign_id_fk", transcripts.t_transcript_assign_id_fk);
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_enroll_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_enroll_id_fk", transcripts.t_transcript_enroll_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_enroll_id_fk", DBNull.Value);
+                }
+                //htInsertTranscripts.Add("@t_transcript_enroll_id_fk", transcripts.t_transcript_enroll_id_fk);
+                htInsertTranscripts.Add("@t_transcript_attendance_id_fk", transcripts.t_transcript_attendance_id_fk);
+                htInsertTranscripts.Add("@t_transcript_passing_status_id_fk", transcripts.t_transcript_passing_status_id_fk);
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_grade_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_grade_id_fk", transcripts.t_transcript_grade_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_grade_id_fk", DBNull.Value);
+                }
+
+                htInsertTranscripts.Add("@t_transcript_completion_score", transcripts.t_transcript_completion_score);
+
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_completion_date_time.ToString()))
+                {
+                    htInsertTranscripts.Add("@t_transcript_completion_date_time", transcripts.t_transcript_completion_date_time);
+                }
+
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_completion_date_time", DBNull.Value);
+                }
+
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_completion_type_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_completion_type_id_fk", transcripts.t_transcript_completion_type_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_completion_type_id_fk", DBNull.Value);
+                }
+
+                //htInsertTranscripts.Add("@t_transcript_completion_type_id_fk", transcripts.t_transcript_completion_type_id_fk);
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_marked_by_user_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_marked_by_user_id_fk", transcripts.t_transcript_marked_by_user_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_marked_by_user_id_fk", DBNull.Value);
+                }
+
+                htInsertTranscripts.Add("@t_transcript_required_flag", transcripts.t_transcript_required_flag);
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_target_due_date_background.ToString()))
+                {
+                    htInsertTranscripts.Add("@t_transcript_target_due_date", transcripts.t_transcript_target_due_date_background);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_target_due_date", DBNull.Value);
+                }
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_actual_date_background.ToString()))
+                {
+                    htInsertTranscripts.Add("@t_transcript_actual_date", transcripts.t_transcript_actual_date_background);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_actual_date", DBNull.Value);
+                }
+                if (!string.IsNullOrEmpty(transcripts.t_transcript_status_id_fk))
+                {
+                    htInsertTranscripts.Add("@t_transcript_status_id_fk", transcripts.t_transcript_status_id_fk);
+                }
+                else
+                {
+                    htInsertTranscripts.Add("@t_transcript_status_id_fk", DBNull.Value);
+                }
+                htInsertTranscripts.Add("@t_transcript_time_spent", transcripts.t_transcript_time_spent);
+                htInsertTranscripts.Add("@t_transcript_score", transcripts.t_transcript_score);
+                htInsertTranscripts.Add("@t_transcript_credits", transcripts.t_transcript_credits);
+                htInsertTranscripts.Add("@t_transcript_hours", transcripts.t_transcript_hours);
+                htInsertTranscripts.Add("@t_transcript_active_flag", transcripts.t_transcript_active_flag);
+
+
+                return DataProxy.FetchSPOutput("s_sp_insert_transcripts_for_background", htInsertTranscripts);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Update Background Jobs
+        /// </summary>
+        /// <param name="backgroundJobs"></param>
+        /// <returns></returns>
+        public static int UpdateBackgroundJobs(string backgroundJobs)
+        {
+            Hashtable htUpdateBackgroundJobs = new Hashtable();
+            htUpdateBackgroundJobs.Add("@backgroundJobs", backgroundJobs);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_background_jobs", htUpdateBackgroundJobs);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
     }
 }

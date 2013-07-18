@@ -10,6 +10,8 @@ using ComplicanceFactor.Common;
 using System.IO;
 using System.Data;
 using Microsoft.Reporting.WebForms;
+using System.Text;
+using System.Net;
 
 namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
 {
@@ -47,11 +49,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("p-samvexplo-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("p-samvexplo-01.aspx", ex.Message);
                     }
                 }
             }
@@ -71,11 +73,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("p-samvexplo-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("p-samvexplo-01.aspx", ex.Message);
                     }
                 }
             }
@@ -85,32 +87,74 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
             string filePath = Server.MapPath(localPath);
             filename = filename.Remove(filename.Length - 4, 4)+".txt";
 
-            if (System.IO.File.Exists(filePath))
+            //if (System.IO.File.Exists(filePath))
+            //{
+            //    if (!string.IsNullOrEmpty(filePath))
+            //    {
+            //        FileInfo file = new System.IO.FileInfo(filePath);
+            //        if (file.Exists)
+            //        {
+            //            Response.Clear();
+            //            Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
+            //            Response.AddHeader("Content-Length", file.Length.ToString());
+            //            Response.ContentType = "text/plain";
+            //            Response.WriteFile(file.FullName);
+            //            Response.End();
+            //            //if file does not exist
+            //        }
+            //        else
+            //        {
+            //            Response.Write("This file does not exist.");
+            //        }
+            //        //nothing in the URL as HTTP GET
+            //    }
+            //    else
+            //    {
+            //        Response.Write("Please provide a file to download.");
+            //    }
+            //}
+            try
             {
-                if (!string.IsNullOrEmpty(filePath))
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
+
+                // This example assumes the FTP site uses anonymous logon.
+                request.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);
+
+                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+                Stream responseStream = response.GetResponseStream();
+                //StreamReader reader = new StreamReader(responseStream);
+                StringBuilder sb = new StringBuilder();
+                using (StreamReader reader = new StreamReader(responseStream))
                 {
-                    FileInfo file = new System.IO.FileInfo(filePath);
-                    if (file.Exists)
+                    String line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        Response.Clear();
-                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
-                        Response.AddHeader("Content-Length", file.Length.ToString());
-                        Response.ContentType = "text/plain";
-                        Response.WriteFile(file.FullName);
-                        Response.End();
-                        //if file does not exist
+                        sb.AppendLine(line);
                     }
-                    else
-                    {
-                        Response.Write("This file does not exist.");
-                    }
-                    //nothing in the URL as HTTP GET
                 }
-                else
-                {
-                    Response.Write("Please provide a file to download.");
-                }
+                string allines = sb.ToString();
+
+                byte[] stringAsBytes = Encoding.UTF8.GetBytes(allines);
+
+                string mimeType = string.Empty;
+                Response.Buffer = true;
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ContentType = mimeType;
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + filename + "\"");
+                Response.BinaryWrite(stringAsBytes); // create the file     
+                Response.Flush(); // send it to the client to download  
+                Response.End();
+                Response.Close();
             }
+            catch (Exception)
+            {
+                divError.Style.Add("display", "block");
+                divError.InnerText = "File was not found";
+            }
+
         }
 
         protected void btnPrint_Click(object sender, EventArgs e)
@@ -130,11 +174,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("ccvmiris-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("p-samvexplo-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("ccvmiris-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("p-samvexplo-01.aspx", ex.Message);
                     }
                 }
             }  

@@ -42,8 +42,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
                     }
                 }
             }
-        }
-
+        }       
         
     }
 }

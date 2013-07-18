@@ -18,6 +18,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string u_sftp_start_date { get; set; }
 
 
+
         //Newly added column
 
         //Data Import
@@ -51,6 +52,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public int u_sftp_run_records_processes { get; set; }
         public int u_sftp_run_records_loaded { get; set; }
         public int u_sftp_run_records_rejected { get; set; }
+        public string u_sftp_run_log_type { get; set; }
+
         public string u_sftp_run_log_type { get; set; }
 
 

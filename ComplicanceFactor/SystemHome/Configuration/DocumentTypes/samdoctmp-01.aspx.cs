@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DocumentTypes
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>" + "&nbsp;>&nbsp" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_document_types") + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>" + "&nbsp;>&nbsp" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_document_types") + "</a>";
                 SearchResults();
                 lblHeaderPageOf.Text = "of " + (gvDocumentSearchResults.PageCount).ToString();
                 lblFooterPageOf.Text = "of " + (gvDocumentSearchResults.PageCount).ToString();

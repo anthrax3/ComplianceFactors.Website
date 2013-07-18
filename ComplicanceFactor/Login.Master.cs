@@ -111,6 +111,8 @@ namespace ComplicanceFactor
 
                 else if (Convert.ToBoolean(SessionWrapper.u_sr_is_system_admin) == true)
                     Response.Redirect("~/SystemHome/sahp-01.aspx", false);
+
+
             }
 
 
@@ -453,7 +455,8 @@ namespace ComplicanceFactor
 
                                 }
 
-                                //Response.Redirect("~/Employee/lhp-01.aspx?in="+ SecurityCenter.EncryptText ("success"));
+                                //Need to change in future
+                                //Response.Redirect("~/Employee/Home/lhp-01.aspx?in="+ SecurityCenter.EncryptText ("success"),false);
                             }
                         }
                         else

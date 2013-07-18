@@ -21,7 +21,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
         #region Private member varables
         private string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
         private static string logId;
-        private static string filename;      
+        private static string filename;
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
             {
                 hrisLogDetails = SystemHRISIntegrationBLL.GetSingleErrorLog(logId);
                 LogDetails.InnerHtml = hrisLogDetails.u_sftp_run_errors_log;
-                filename = hrisLogDetails.u_sftp_run_errors_details_filename;                 
+                filename = hrisLogDetails.u_sftp_run_errors_details_filename;
             }
             catch (Exception ex)
             {
@@ -64,12 +64,12 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
         protected void btnDownloadLog_Click(object sender, EventArgs e)
         {
             SystemHRISIntegration hrisIntegration = new SystemHRISIntegration();
-            
+
             try
             {
-                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS_DIMP_DEXP("HRIS");                 
+                hrisIntegration = SystemHRISIntegrationBLL.GetHRIS_DIMP_DEXP("HRIS");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (ConfigurationWrapper.LogErrors == true)
                 {
@@ -83,111 +83,53 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
                     }
                 }
             }
+            //Need to dowmload the log file from ftp.
+            //Now it dowmload from server but it dowmload without user name and password.     
 
-            string localPath = "C:/Users/Windows/Downloads/";
-            localPath = "~/SystemHome/Configuration/HRISIntegration/TempLogFiles/" + filename;
+            // Get the object used to communicate with the server. 
 
-
-            if (System.IO.File.Exists(localPath))
+            try
             {
-                string strRequest = localPath;
-                if (!string.IsNullOrEmpty(strRequest))
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
+
+                // This example assumes the FTP site uses anonymous logon.
+                request.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);
+
+                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+                Stream responseStream = response.GetResponseStream();
+                //StreamReader reader = new StreamReader(responseStream);
+                StringBuilder sb = new StringBuilder();
+                using (StreamReader reader = new StreamReader(responseStream))
                 {
-                    FileInfo file = new System.IO.FileInfo(strRequest);
-                    if (file.Exists)
+                    String line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        Response.Clear();
-                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename.Remove(filename.Length - 4, 4) + "\"");
-                        Response.AddHeader("Content-Length", file.Length.ToString());
-                        Response.ContentType = ".txt";
-                        Response.WriteFile(file.FullName);
-                        Response.End();
-                        //if file does not exist
+                        sb.AppendLine(line);
                     }
-                    else
-                    {
-                        Response.Write("This file does not exist.");
-                    }
-                    //nothing in the URL as HTTP GET
                 }
-                else
-                {
-                    Response.Write("Please provide a file to download.");
-                }
+                string allines = sb.ToString();
+
+                byte[] stringAsBytes = Encoding.UTF8.GetBytes(allines);
+
+                string mimeType = string.Empty;
+                Response.Buffer = true;
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ContentType = mimeType;
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + filename + "\"");
+                Response.BinaryWrite(stringAsBytes); // create the file     
+                Response.Flush(); // send it to the client to download  
+                Response.End();
+                Response.Close();
             }
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "err_msg",
-            //     "alert('This file was missing');", true);
-            //}
+            catch (Exception)
+            {
+                divError.Style.Add("display", "block");
+                divError.InnerText = "File was not found";  
+            }
 
-
-            //FtpWebRequest request = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
-            //request.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);
-            //request.Method = WebRequestMethods.Ftp.ListDirectory;
-
-            //StreamReader streamReader = new StreamReader(request.GetResponse().GetResponseStream());
-            //request = null;
-
-            //string fileName = streamReader.ReadLine();
-
-            //if (fileName != null)
-            //{
-
-            //    FtpWebRequest requestFileDownload = null;
-            //    FtpWebResponse responseFileDownload = null;
-
-            //    try
-            //    {
-            //        requestFileDownload = (FtpWebRequest)WebRequest.Create(hrisIntegration.u_sftp_URI + filename);
-            //        requestFileDownload.Credentials = new NetworkCredential(hrisIntegration.u_sftp_username, hrisIntegration.u_sftp_password);
-            //        requestFileDownload.Method = WebRequestMethods.Ftp.DownloadFile;
-
-            //        responseFileDownload = (FtpWebResponse)requestFileDownload.GetResponse();
-
-            //        Stream responseStream = responseFileDownload.GetResponseStream();
-
-                   
-
-            //        FileStream writeStream = new FileStream(localPath + fileName, FileMode.Create);
-
-            //        int Length = 2048;
-            //        Byte[] buffer = new Byte[Length];
-            //        int bytesRead = responseStream.Read(buffer, 0, Length);
-            //        while (bytesRead > 0)
-            //        {
-                       
-            //            Response.AddHeader("Content-Disposition", "attachment;filename=\"" + filename.Remove(filename.Length - 4, 4) + "\"");
-            //            //Response.AddHeader("Content-Length", file.Length.ToString());
-            //            Response.ContentType = ".txt";
-            //            Response.Write(chars, 0, bytesRead);
-            //            //bytesRead = responseStream.Read(buffer, 0, Length);
-
-            //            //writeStream.Write(buffer, 0, bytesRead);
-            //            //bytesRead = responseStream.Read(buffer, 0, Length);
-            //        }
-
-
-            //        writeStream.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        if (ConfigurationWrapper.LogErrors == true)
-            //        {
-            //            if (ex.InnerException != null)
-            //            {
-            //                Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message, ex.InnerException.Message);
-            //            }
-            //            else
-            //            {
-            //                Logger.WriteToErrorLog("p-samvhrislo-01.aspx", ex.Message);
-            //            }
-            //        }
-            //    }
-            //    divSuccess.Style.Add("display", "block");
-            //    divSuccess.InnerHtml =  "File downloaded successfully , please find file in your downloads folder";   
-
-            //}          
         }
 
         protected void btnCloseWindow_Click(object sender, EventArgs e)
@@ -202,7 +144,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
 
             try
             {
-                dsPdf = SystemHRISIntegrationBLL.CreatePDF(logId,SessionWrapper.CultureName);
+                dsPdf = SystemHRISIntegrationBLL.CreatePDF(logId, SessionWrapper.CultureName);
             }
             catch (Exception ex)
             {
@@ -219,7 +161,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
                         Logger.WriteToErrorLog("ccvmiris-01.aspx", ex.Message);
                     }
                 }
-            }  
+            }
 
 
             Warning[] warnings;
@@ -232,14 +174,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
             rvErrorLog.LocalReport.EnableExternalImages = true;
             rvErrorLog.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.SystemHome.Configuration.HRISIntegration.PdfTemplate.ErrorLog.rdlc";
             rvErrorLog.LocalReport.DataSources.Add(new ReportDataSource("dsErrorLogDetails", dsPdf.Tables[0]));
-                         
+
 
             byte[] bytes = rvErrorLog.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
             Response.Buffer = true;
             Response.Clear();
             Response.ClearHeaders();
             Response.ContentType = mimeType;
-            Response.AddHeader("content-disposition", "attachment; filename=\"" + filename.Remove(filename.Length-4,4) + ".pdf" + "\"");
+            Response.AddHeader("content-disposition", "attachment; filename=\"" + filename.Remove(filename.Length - 4, 4) + ".pdf" + "\"");
             Response.BinaryWrite(bytes); // create the file     
             Response.Flush(); // send it to the client to download  
             Response.End();

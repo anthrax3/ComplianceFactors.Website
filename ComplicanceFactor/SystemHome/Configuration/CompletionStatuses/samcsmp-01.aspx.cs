@@ -22,7 +22,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses
                 // Bind the values into the label values.
                 bindLabels();
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/Configuration/sascmp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp; " + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_completion_statuses_text") + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/Configuration/sascmp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp; " + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_completion_statuses_text") + "</a>";
                 
                
             }

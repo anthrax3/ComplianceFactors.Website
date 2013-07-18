@@ -178,7 +178,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetDocumentType.Add("@s_document_type_system_id_pk", s_document_type_system_id_pk);
                 DocumentType = new SystemDocumentTypes();
 
-                DataTable dtGetDocumentType = DataProxy.FetchDataTable("s_sp_get_document_type", htGetDocumentType);
+                DataTable dtGetDocumentType = DataProxy.FetchDataTable("s_sp_get_single_document_type", htGetDocumentType);
 
                 //DocumentType.s_grading_scheme_system_id_pk = dtGetGradingSchemes.Rows[0]["s_grading_scheme_system_id_pk"].ToString();
                 DocumentType.s_document_type_id = dtGetDocumentType.Rows[0]["s_document_type_id"].ToString();

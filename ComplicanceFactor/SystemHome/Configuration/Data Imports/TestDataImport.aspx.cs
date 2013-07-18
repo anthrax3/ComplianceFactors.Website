@@ -21,6 +21,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
     public partial class TestDataImport : System.Web.UI.Page
     {
         private string _attachmentpath = "~/SystemHome/Configuration/Data Imports/Upload/";
+        private string _logPath = "~/SystemHome/Configuration/Data Imports/TempLogFiles/";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -37,6 +38,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             SystemHRISIntegration dataImport = new SystemHRISIntegration();
             try
             {
+                string u_sftp_URI = string.Empty;
+                string u_sftp_username = string.Empty;
+                string u_sftp_password = string.Empty;
+
                 DataTable dtDataBackground = new DataTable();
                 dtDataBackground = SystemBackgroundJobsBLL.GetBackgroundInformation(dtTime, date);
                 if (dtDataBackground.Rows.Count > 0)
@@ -51,7 +56,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                             {
                                 if (string.IsNullOrEmpty(dtDataBackground.Rows[i]["NeedToRun"].ToString()))
                                 {
-
+                                    u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
+                                    u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
+                                    u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
                                     //Do Hris background process
                                 }
                             }
@@ -59,67 +66,70 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                             {
                                 if (string.IsNullOrEmpty(dtDataBackground.Rows[i]["NeedToRun"].ToString()))
                                 {
+                                    u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
+                                    u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
+                                    u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
+
                                     //do Data Import Hris Background Process
                                     DataTable dtFacility = GetCSVData(Server.MapPath(_attachmentpath + dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString()));
                                     if (dtFacility.Rows.Count > 0)
                                     {
-                                        InsertIntoFacility(dtFacility, dataImport.u_sftp_URI, dataImport.u_sftp_username, dataImport.u_sftp_password);
                                         //Insert/Update Facility 
+                                        InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
                                     }
 
-                                    //DataTable dtRoom = getExcelData(Server.MapPath(_attachmentpath + dataImport.u_sftp_imp_room_filename), "room");
-                                    //if (dtRoom.Rows.Count > 0)
-                                    //{
-                                        //Insert/Update Room 
-                                    //}
+                                    DataTable dtRoom = GetCSVData(Server.MapPath(_attachmentpath + dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString()));
+                                    if (dtRoom.Rows.Count > 0)
+                                    {
+                                        InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                    }
 
                                     DataTable dtCourse = GetCSVData(Server.MapPath(_attachmentpath + dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString()));
                                     if (dtCourse.Rows.Count > 0)
                                     {
                                         //Insert/Update Course 
-                                        //InsertIntoCourse(dtCourse, dataImport.u_sftp_URI, dataImport.u_sftp_username, dataImport.u_sftp_password);
+                                        InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
                                     }
 
                                     DataTable dtCurrriculum = GetCSVData(Server.MapPath(_attachmentpath + dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString()));
                                     if (dtCurrriculum.Rows.Count > 0)
                                     {
                                         //Insert/Update Curriculum 
-                                        InsertIntoCurriculum(dtCurrriculum, dataImport.u_sftp_URI, dataImport.u_sftp_username, dataImport.u_sftp_password);
+                                        InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
                                     }
 
-                                    if (dataImport.u_sftp_imp_is_enrollment == true)
+                                    if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_imp_is_enrollment"]) == true)
                                     {
-                                        //DataTable dtEnrollment = getExcelData(Server.MapPath(_attachmentpath + dataImport.u_sftp_imp_enrollment_filename), "enrollment");
-                                        //if (dtEnrollment.Rows.Count > 0)
-                                        //{
-                                        //    //Insert/Update Enrollment 
-                                        //}
+                                        DataTable dtEnrollment = GetCSVData(Server.MapPath(_attachmentpath + dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString()));
+                                        if (dtEnrollment.Rows.Count > 0)
+                                        {
+                                            //Insert/Update Enrollment 
+                                            InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                        }
                                     }
 
-                                    if (dataImport.u_sftp_imp_is_learning_history == true)
+                                    if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_imp_is_learning_history"]) == true)
                                     {
-                                        //DataTable dtLearningHistory = getExcelData(Server.MapPath(_attachmentpath + dataImport.u_sftp_imp_learning_history_filename), "learningHistory");
-                                        //if (dtLearningHistory.Rows.Count > 0)
-                                        //{
-                                        //    //Insert/Update Learning History 
-                                        //}
+                                        DataTable dtLearningHistory = GetCSVData(Server.MapPath(_attachmentpath + dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString()));
+                                        if (dtLearningHistory.Rows.Count > 0)
+                                        {
+                                            //Insert/Update Learning History 
+                                            InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                        }
                                     }
                                 }
-
                             }
                             else if (u_sftp_id_pk.Contains("DEXP"))
                             {
+                                u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
+                                u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
+                                u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
                                 //do Data Export Background Process
                             }
                         }
 
                     }
                 }
-                ////dataImport = SystemBackgroundJobsBLL.GetBackgroundInformation(dtTime, date);
-                //if (!string.IsNullOrEmpty(dataImport.u_sftp_URI))
-                //{
-
-                //}
             }
             catch (Exception ex)
             {
@@ -127,6 +137,13 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             }
         }
 
+        /// <summary>
+        /// Insert Facility ( Data Import )
+        /// </summary>
+        /// <param name="dtFacility"></param>
+        /// <param name="sftp_URI"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         private void InsertIntoFacility(DataTable dtFacility, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -198,11 +215,17 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                         }
                     }
                 }
-                CreateLogFile(dtFacility, sftp_URI, userName, password,"Facility");
+                CreateLogFile(dtFacility, sftp_URI, userName, password, "Facility", "DIMP");
                 //Create Log File For Facility
             }
         }
-
+        /// <summary>
+        /// Insert Room ( Data Import )
+        /// </summary>
+        /// <param name="dtRoom"></param>
+        /// <param name="sftp_URI"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         private void InsertIntoRoom(DataTable dtRoom, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -213,16 +236,17 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             for (int i = 0; i < dtRoom.Rows.Count; i++)
             {
                 SystemRoom createRoom = new SystemRoom();
-                //createRoom.s_room_system_id_pk = dtRoom.Rows[i]["s_room_system_id_pk"].ToString();
-                createRoom.s_room_id_pk = dtRoom.Rows[i]["c_room_id_pk"].ToString();
-                createRoom.s_room_name = dtRoom.Rows[i]["c_room_name"].ToString();
-                createRoom.s_room_desc = dtRoom.Rows[i]["c_room_desc"].ToString();
-                createRoom.s_room_status_id_fk = dtRoom.Rows[i]["c_room_status_id_fk"].ToString();
-                createRoom.s_room_type_id_fk = dtRoom.Rows[i]["c_room_type_id_fk"].ToString();
-                createRoom.s_room_facility_id_fk = dtRoom.Rows[i]["c_room_facility_id_fk"].ToString();
-
                 try
                 {
+                    //createRoom.s_room_system_id_pk = dtRoom.Rows[i]["s_room_system_id_pk"].ToString();
+                    createRoom.s_room_id_pk = dtRoom.Rows[i]["c_room_id_pk"].ToString();
+                    createRoom.s_room_name = dtRoom.Rows[i]["c_room_name"].ToString();
+                    createRoom.s_room_desc = dtRoom.Rows[i]["c_room_desc"].ToString();
+                    createRoom.s_room_status_id_fk = dtRoom.Rows[i]["c_room_status_id_fk"].ToString();
+                    createRoom.s_room_type_id_fk = dtRoom.Rows[i]["c_room_type_id_fk"].ToString();
+                    createRoom.s_room_facility_id_fk = dtRoom.Rows[i]["c_room_facility_id_fk"].ToString();
+
+
                     int result = SystemBackgroundJobsBLL.CreateNewRoom(createRoom);
                     if (result == 0)
                     {
@@ -248,11 +272,18 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                             continue;
                         }
                     }
-                }
-                //Create Log File For Room                
+                }            
             }
+            //Create Log File For Room   
+            CreateLogFile(dtRoom, sftp_URI, userName, password, "Room", "DIMP");
         }
-
+        /// <summary>
+        /// Insert Course ( Data Import )
+        /// </summary>
+        /// <param name="dtCourse"></param>
+        /// <param name="sftp_URI"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         private void InsertIntoCourse(DataTable dtCourse, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -263,130 +294,129 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             for (int i = 0; i < dtCourse.Rows.Count; i++)
             {
                 SystemCatalog CreateCourse = new SystemCatalog();
-                 
-                CreateCourse.c_course_id_pk = dtCourse.Rows[i]["c_course_id_pk"].ToString();
-                CreateCourse.c_course_title = dtCourse.Rows[i]["c_course_title"].ToString();
-                CreateCourse.c_course_desc = dtCourse.Rows[i]["c_course_desc"].ToString();
-                CreateCourse.c_course_abstract = dtCourse.Rows[i]["c_course_abstract"].ToString();
-                CreateCourse.c_course_version = dtCourse.Rows[i]["c_course_version"].ToString();
-                CreateCourse.c_course_owner_id_fk = dtCourse.Rows[i]["c_course_owner_id_fk"].ToString();
-                CreateCourse.c_course_coordinator_id_fk = dtCourse.Rows[i]["c_course_coordinator_id_fk"].ToString();
-                int tempCost;
-                if (int.TryParse(dtCourse.Rows[i]["c_course_cost"].ToString(), out tempCost))
-                {
-                    CreateCourse.c_course_cost = tempCost;
-                }
-                else
-                {
-                    CreateCourse.c_course_cost = null;
-                }
-
-                int tempCreditUnits;
-                if (int.TryParse(dtCourse.Rows[i]["c_course_credit_units"].ToString(), out tempCreditUnits))
-                {
-                    CreateCourse.c_course_credit_units = tempCreditUnits;
-                }
-                else
-                {
-                    CreateCourse.c_course_credit_units = null;
-                }
-                int tempCreditHours;
-                if (int.TryParse(dtCourse.Rows[i]["c_course_credit_hours"].ToString(), out tempCreditHours))
-                {
-                    CreateCourse.c_course_credit_hours = tempCreditHours;
-                }
-                else
-                {
-                    CreateCourse.c_course_credit_hours = null;
-                }
-                CreateCourse.c_course_icon_uri = dtCourse.Rows[i]["c_course_icon_uri"].ToString();
-
-                //CreateCourse.c_course_icon_uri_file_name = dtCourse.Rows[i]["c_course_icon_uri_file_name"].ToString();
-                //CreateCourse.c_course_active_type_id_fk = dtCourse.Rows[i]["c_course_active_type_id_fk"].ToString();
-
-                if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_visible_flag"].ToString()))
-                {
-                    CreateCourse.c_course_visible_flag = Convert.ToBoolean(dtCourse.Rows[i]["c_course_visible_flag"]);
-                }
-                else
-                {
-                    CreateCourse.c_course_visible_flag = false;
-                }
-                if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_approval_req"].ToString()))
-                {
-                    CreateCourse.c_course_approval_req = Convert.ToBoolean(dtCourse.Rows[i]["c_course_approval_req"]);
-                }
-                else
-                {
-                    CreateCourse.c_course_approval_req = false;
-                }
-                CreateCourse.c_course_approval_id_fk = dtCourse.Rows[i]["c_course_approval_id_fk"].ToString();
-
-                //recurrance
-                int tempEvery;
-                if (int.TryParse(dtCourse.Rows[i]["c_course_recurrence_every"].ToString(), out tempEvery))
-                {
-                    CreateCourse.c_course_recurrence_every = tempEvery;
-                }
-                else
-                {
-                    CreateCourse.c_course_recurrence_every = null;
-                }
-                CreateCourse.c_course_recurrence_period = dtCourse.Rows[i]["c_course_recurrence_period"].ToString();
-                CreateCourse.c_course_recurrence_date_option = dtCourse.Rows[i]["c_course_recurrence_date_option"].ToString();
-                DateTime? recurancedate = null;
-                DateTime temprecurancedate;
-                if (DateTime.TryParseExact(dtCourse.Rows[i]["c_course_recurrence_date"].ToString(), "MM/dd/yyyy", culture, DateTimeStyles.None, out temprecurancedate))
-                {
-                    recurancedate = temprecurancedate;
-                }
-                CreateCourse.c_course_recurrence_date = recurancedate;
-                CreateCourse.c_course_custom_01 = dtCourse.Rows[i]["c_course_custom_01"].ToString();
-                CreateCourse.c_course_custom_02 = dtCourse.Rows[i]["c_course_custom_02"].ToString();
-                CreateCourse.c_course_custom_03 = dtCourse.Rows[i]["c_course_custom_03"].ToString();
-                CreateCourse.c_course_custom_04 = dtCourse.Rows[i]["c_course_custom_04"].ToString();
-                CreateCourse.c_course_custom_05 = dtCourse.Rows[i]["c_course_custom_05"].ToString();
-                CreateCourse.c_course_custom_06 = dtCourse.Rows[i]["c_course_custom_06"].ToString();
-                CreateCourse.c_course_custom_07 = dtCourse.Rows[i]["c_course_custom_07"].ToString();
-                CreateCourse.c_course_custom_08 = dtCourse.Rows[i]["c_course_custom_08"].ToString();
-                CreateCourse.c_course_custom_09 = dtCourse.Rows[i]["c_course_custom_09"].ToString();
-                CreateCourse.c_course_custom_10 = dtCourse.Rows[i]["c_course_custom_10"].ToString();
-                CreateCourse.c_course_custom_11 = dtCourse.Rows[i]["c_course_custom_11"].ToString();
-                CreateCourse.c_course_custom_12 = dtCourse.Rows[i]["c_course_custom_12"].ToString();
-                CreateCourse.c_course_custom_13 = dtCourse.Rows[i]["c_course_custom_13"].ToString();
-
-                //c_course_cert_flag
-                //if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_cert_date"].ToString()))
-                //{
-                //   CreateCourse.c_course_cert_date = Convert.ToDateTime(dtCourse.Rows[i]["c_course_cert_date"]);
-                //}
-
-                CreateCourse.c_course_cert_flag = false;
-
-                //c_course_recurrence_grace_days
-                int tempGraceDays;
-                if (int.TryParse(dtCourse.Rows[i]["c_course_recurrence_grace_days"].ToString(), out tempGraceDays))
-                {
-                    CreateCourse.c_course_recurrence_grace_days = tempGraceDays;
-                }
-                else
-                {
-                    CreateCourse.c_course_recurrence_grace_days = null;
-                }
-
-                if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_active_flag"].ToString()))
-                {
-                    CreateCourse.c_course_active_flag = Convert.ToBoolean(dtCourse.Rows[i]["c_course_active_flag"]);
-                }
-                else
-                {
-                    CreateCourse.c_course_active_flag = false;
-                }
-
-                //CreateCourse.c_course_created_by_id_fk = dtCourse.Rows[i]["c_course_created_by_id_fk"].ToString();  
-
                 try
                 {
+                    CreateCourse.c_course_id_pk = dtCourse.Rows[i]["c_course_id_pk"].ToString();
+                    CreateCourse.c_course_title = dtCourse.Rows[i]["c_course_title"].ToString();
+                    CreateCourse.c_course_desc = dtCourse.Rows[i]["c_course_desc"].ToString();
+                    CreateCourse.c_course_abstract = dtCourse.Rows[i]["c_course_abstract"].ToString();
+                    CreateCourse.c_course_version = dtCourse.Rows[i]["c_course_version"].ToString();
+                    CreateCourse.c_course_owner_id_fk = dtCourse.Rows[i]["c_course_owner_id_fk"].ToString();
+                    CreateCourse.c_course_coordinator_id_fk = dtCourse.Rows[i]["c_course_coordinator_id_fk"].ToString();
+                    int tempCost;
+                    if (int.TryParse(dtCourse.Rows[i]["c_course_cost"].ToString(), out tempCost))
+                    {
+                        CreateCourse.c_course_cost = tempCost;
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_cost = null;
+                    }
+
+                    int tempCreditUnits;
+                    if (int.TryParse(dtCourse.Rows[i]["c_course_credit_units"].ToString(), out tempCreditUnits))
+                    {
+                        CreateCourse.c_course_credit_units = tempCreditUnits;
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_credit_units = null;
+                    }
+                    int tempCreditHours;
+                    if (int.TryParse(dtCourse.Rows[i]["c_course_credit_hours"].ToString(), out tempCreditHours))
+                    {
+                        CreateCourse.c_course_credit_hours = tempCreditHours;
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_credit_hours = null;
+                    }
+                    CreateCourse.c_course_icon_uri = dtCourse.Rows[i]["c_course_icon_uri"].ToString();
+
+                    //CreateCourse.c_course_icon_uri_file_name = dtCourse.Rows[i]["c_course_icon_uri_file_name"].ToString();
+                    //CreateCourse.c_course_active_type_id_fk = dtCourse.Rows[i]["c_course_active_type_id_fk"].ToString();
+
+                    if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_visible_flag"].ToString()))
+                    {
+                        CreateCourse.c_course_visible_flag = Convert.ToBoolean(dtCourse.Rows[i]["c_course_visible_flag"]);
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_visible_flag = false;
+                    }
+                    if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_approval_req"].ToString()))
+                    {
+                        CreateCourse.c_course_approval_req = Convert.ToBoolean(dtCourse.Rows[i]["c_course_approval_req"]);
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_approval_req = false;
+                    }
+                    CreateCourse.c_course_approval_id_fk = dtCourse.Rows[i]["c_course_approval_id_fk"].ToString();
+
+                    //recurrance
+                    int tempEvery;
+                    if (int.TryParse(dtCourse.Rows[i]["c_course_recurrence_every"].ToString(), out tempEvery))
+                    {
+                        CreateCourse.c_course_recurrence_every = tempEvery;
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_recurrence_every = null;
+                    }
+                    CreateCourse.c_course_recurrence_period = dtCourse.Rows[i]["c_course_recurrence_period"].ToString();
+                    CreateCourse.c_course_recurrence_date_option = dtCourse.Rows[i]["c_course_recurrence_date_option"].ToString();
+                    DateTime? recurancedate = null;
+                    DateTime temprecurancedate;
+                    if (DateTime.TryParseExact(dtCourse.Rows[i]["c_course_recurrence_date"].ToString(), "MM/dd/yyyy", culture, DateTimeStyles.None, out temprecurancedate))
+                    {
+                        recurancedate = temprecurancedate;
+                    }
+                    CreateCourse.c_course_recurrence_date = recurancedate;
+                    CreateCourse.c_course_custom_01 = dtCourse.Rows[i]["c_course_custom_01"].ToString();
+                    CreateCourse.c_course_custom_02 = dtCourse.Rows[i]["c_course_custom_02"].ToString();
+                    CreateCourse.c_course_custom_03 = dtCourse.Rows[i]["c_course_custom_03"].ToString();
+                    CreateCourse.c_course_custom_04 = dtCourse.Rows[i]["c_course_custom_04"].ToString();
+                    CreateCourse.c_course_custom_05 = dtCourse.Rows[i]["c_course_custom_05"].ToString();
+                    CreateCourse.c_course_custom_06 = dtCourse.Rows[i]["c_course_custom_06"].ToString();
+                    CreateCourse.c_course_custom_07 = dtCourse.Rows[i]["c_course_custom_07"].ToString();
+                    CreateCourse.c_course_custom_08 = dtCourse.Rows[i]["c_course_custom_08"].ToString();
+                    CreateCourse.c_course_custom_09 = dtCourse.Rows[i]["c_course_custom_09"].ToString();
+                    CreateCourse.c_course_custom_10 = dtCourse.Rows[i]["c_course_custom_10"].ToString();
+                    CreateCourse.c_course_custom_11 = dtCourse.Rows[i]["c_course_custom_11"].ToString();
+                    CreateCourse.c_course_custom_12 = dtCourse.Rows[i]["c_course_custom_12"].ToString();
+                    CreateCourse.c_course_custom_13 = dtCourse.Rows[i]["c_course_custom_13"].ToString();
+
+                    //c_course_cert_flag
+                    //if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_cert_date"].ToString()))
+                    //{
+                    //   CreateCourse.c_course_cert_date = Convert.ToDateTime(dtCourse.Rows[i]["c_course_cert_date"]);
+                    //}
+
+                    CreateCourse.c_course_cert_flag = false;
+
+                    //c_course_recurrence_grace_days
+                    int tempGraceDays;
+                    if (int.TryParse(dtCourse.Rows[i]["c_course_recurrence_grace_days"].ToString(), out tempGraceDays))
+                    {
+                        CreateCourse.c_course_recurrence_grace_days = tempGraceDays;
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_recurrence_grace_days = null;
+                    }
+
+                    if (!string.IsNullOrEmpty(dtCourse.Rows[i]["c_course_active_flag"].ToString()))
+                    {
+                        CreateCourse.c_course_active_flag = Convert.ToBoolean(dtCourse.Rows[i]["c_course_active_flag"]);
+                    }
+                    else
+                    {
+                        CreateCourse.c_course_active_flag = false;
+                    }
+
+                    //CreateCourse.c_course_created_by_id_fk = dtCourse.Rows[i]["c_course_created_by_id_fk"].ToString(); 
+
                     int result = SystemBackgroundJobsBLL.CreateCourse(CreateCourse);
                     if (result == 0)
                     {
@@ -414,8 +444,16 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                     }
                 }
             }
+            CreateLogFile(dtCourse, sftp_URI, userName, password, "Course", "DIMP");
         }
 
+        /// <summary>
+        /// Insert Curriculum ( Data Import )Insert Learning History ( Data Import )
+        /// </summary>
+        /// <param name="dtCurriculum"></param>
+        /// <param name="sftp_URI"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         private void InsertIntoCurriculum(DataTable dtCurriculum, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -426,100 +464,101 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             for (int i = 0; i < dtCurriculum.Rows.Count; i++)
             {
                 SystemCurriculum CreateCurriculum = new SystemCurriculum();
-                //CreateCurriculum.c_curriculum_system_id_pk = dtCurriculum.Rows[i]["c_curriculum_system_id_pk"].ToString();
-                CreateCurriculum.c_curriculum_id_pk = dtCurriculum.Rows[i]["c_curriculum_id_pk"].ToString();
-                CreateCurriculum.c_curriculum_title = dtCurriculum.Rows[i]["c_curriculum_title"].ToString();
-                CreateCurriculum.c_curriculum_desc = dtCurriculum.Rows[i]["c_curriculum_desc"].ToString();
-                CreateCurriculum.c_curriculum_abstract = dtCurriculum.Rows[i]["c_curriculum_abstract"].ToString();
-                CreateCurriculum.c_curriculum_version = dtCurriculum.Rows[i]["c_curriculum_version"].ToString();
-                CreateCurriculum.c_curriculum_owner_id_fk = dtCurriculum.Rows[i]["c_curriculum_owner_id_fk"].ToString();
-                CreateCurriculum.c_curriculum_coordinator_id_fk = dtCurriculum.Rows[i]["c_curriculum_coordinator_id_fk"].ToString();
-                //int tempCost;
-                //if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_cost"].ToString(), out tempCost))
-                //{
-                //    CreateCurriculum.c_curriculum_cost = tempCost;
-                //}
-                //else
-                //{
-                //    CreateCurriculum.c_curriculum_cost = null;
-                //}
-
-                int tempCreditUnits;
-                if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_credit_units"].ToString(), out tempCreditUnits))
-                {
-                    CreateCurriculum.c_curriculum_credit_units = tempCreditUnits;
-                }
-                else
-                {
-                    CreateCurriculum.c_curriculum_credit_units = null;
-                }
-                int tempCreditHours;
-                if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_credit_hours"].ToString(), out tempCreditHours))
-                {
-                    CreateCurriculum.c_curriculum_credit_hours = tempCreditHours;
-                }
-                else
-                {
-                    CreateCurriculum.c_curriculum_credit_hours = null;
-                }
-                CreateCurriculum.c_curriculum_icon_uri = dtCurriculum.Rows[i]["c_curriculum_icon_uri"].ToString();
-                //CreateCurriculum.c_curriculum_icon_uri_file_name = dtCurriculum.Rows[i]["c_curriculum_icon_uri_file_name"].ToString();
-                //CreateCurriculum.c_curriculum_active_type_id_fk = dtCurriculum.Rows[i]["c_curriculum_active_type_id_fk"].ToString();
-                CreateCurriculum.c_curriculum_visible_flag = Convert.ToBoolean(dtCurriculum.Rows[i]["c_curriculum_visible_flag"]);
-                CreateCurriculum.c_curriculum_approval_req = Convert.ToBoolean(dtCurriculum.Rows[i]["c_curriculum_approval_req"]);
-                CreateCurriculum.c_curriculum_approval_id_fk = dtCurriculum.Rows[i]["c_curriculum_approval_id_fk"].ToString();
-                //recurrance
-                int tempEvery;
-                if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_recurrance_every"].ToString(), out tempEvery))
-                {
-                    CreateCurriculum.c_curriculum_recurrance_every = tempEvery;
-                }
-                else
-                {
-                    CreateCurriculum.c_curriculum_recurrance_every = null;
-                }
-                CreateCurriculum.c_curriculum_recurrance_period = dtCurriculum.Rows[i]["c_curriculum_recurrance_period"].ToString();
-                CreateCurriculum.c_curriculum_recurance_date_option = dtCurriculum.Rows[i]["c_curriculum_recurance_date_option"].ToString();
-                DateTime? recurancedate = null;
-                DateTime temprecurancedate;
-
-                if (DateTime.TryParseExact(dtCurriculum.Rows[i]["c_curriculum_recurance_date"].ToString(), "MM/dd/yyyy", culture, DateTimeStyles.None, out temprecurancedate))
-                {
-                    recurancedate = temprecurancedate;
-                }
-                CreateCurriculum.c_curriculum_recurance_date = recurancedate;
-                //custom section
-                CreateCurriculum.c_curriculum_custom_01 = dtCurriculum.Rows[i]["c_curriculum_custom_01"].ToString();
-                CreateCurriculum.c_curriculum_custom_02 = dtCurriculum.Rows[i]["c_curriculum_custom_02"].ToString();
-                CreateCurriculum.c_curriculum_custom_03 = dtCurriculum.Rows[i]["c_curriculum_custom_03"].ToString();
-                CreateCurriculum.c_curriculum_custom_04 = dtCurriculum.Rows[i]["c_curriculum_custom_04"].ToString();
-                CreateCurriculum.c_curriculum_custom_05 = dtCurriculum.Rows[i]["c_curriculum_custom_05"].ToString();
-                CreateCurriculum.c_curriculum_custom_06 = dtCurriculum.Rows[i]["c_curriculum_custom_06"].ToString();
-                CreateCurriculum.c_curriculum_custom_07 = dtCurriculum.Rows[i]["c_curriculum_custom_07"].ToString();
-                CreateCurriculum.c_curriculum_custom_08 = dtCurriculum.Rows[i]["c_curriculum_custom_08"].ToString();
-                CreateCurriculum.c_curriculum_custom_09 = dtCurriculum.Rows[i]["c_curriculum_custom_09"].ToString();
-                CreateCurriculum.c_curriculum_custom_10 = dtCurriculum.Rows[i]["c_curriculum_custom_10"].ToString();
-                CreateCurriculum.c_curriculum_custom_11 = dtCurriculum.Rows[i]["c_curriculum_custom_11"].ToString();
-                CreateCurriculum.c_curriculum_custom_12 = dtCurriculum.Rows[i]["c_curriculum_custom_12"].ToString();
-                CreateCurriculum.c_curriculum_custom_13 = dtCurriculum.Rows[i]["c_curriculum_custom_13"].ToString();
-                //c_curriculum_cert_flag
-                //CreateCurriculum.c_curriculum_cert_date = Convert.ToDateTime(dtCurriculum.Rows[i][""]);
-                CreateCurriculum.c_curriculum_cert_flag = false;
-                //c_curriculum_recurrance_grace_days
-                int tempGraceDays;
-                if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_recurrance_grace_days"].ToString(), out tempGraceDays))
-                {
-                    CreateCurriculum.c_curriculum_recurrance_grace_days = tempGraceDays;
-                }
-                else
-                {
-                    CreateCurriculum.c_curriculum_recurrance_grace_days = null;
-                }
-
-                CreateCurriculum.c_curriculum_active_flag = Convert.ToBoolean(dtCurriculum.Rows[i]["c_curriculum_active_flag"]);
-
                 try
                 {
+                    //CreateCurriculum.c_curriculum_system_id_pk = dtCurriculum.Rows[i]["c_curriculum_system_id_pk"].ToString();
+                    CreateCurriculum.c_curriculum_id_pk = dtCurriculum.Rows[i]["c_curriculum_id_pk"].ToString();
+                    CreateCurriculum.c_curriculum_title = dtCurriculum.Rows[i]["c_curriculum_title"].ToString();
+                    CreateCurriculum.c_curriculum_desc = dtCurriculum.Rows[i]["c_curriculum_desc"].ToString();
+                    CreateCurriculum.c_curriculum_abstract = dtCurriculum.Rows[i]["c_curriculum_abstract"].ToString();
+                    CreateCurriculum.c_curriculum_version = dtCurriculum.Rows[i]["c_curriculum_version"].ToString();
+                    CreateCurriculum.c_curriculum_owner_id_fk = dtCurriculum.Rows[i]["c_curriculum_owner_id_fk"].ToString();
+                    CreateCurriculum.c_curriculum_coordinator_id_fk = dtCurriculum.Rows[i]["c_curriculum_coordinator_id_fk"].ToString();
+                    //int tempCost;
+                    //if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_cost"].ToString(), out tempCost))
+                    //{
+                    //    CreateCurriculum.c_curriculum_cost = tempCost;
+                    //}
+                    //else
+                    //{
+                    //    CreateCurriculum.c_curriculum_cost = null;
+                    //}
+
+                    int tempCreditUnits;
+                    if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_credit_units"].ToString(), out tempCreditUnits))
+                    {
+                        CreateCurriculum.c_curriculum_credit_units = tempCreditUnits;
+                    }
+                    else
+                    {
+                        CreateCurriculum.c_curriculum_credit_units = null;
+                    }
+                    int tempCreditHours;
+                    if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_credit_hours"].ToString(), out tempCreditHours))
+                    {
+                        CreateCurriculum.c_curriculum_credit_hours = tempCreditHours;
+                    }
+                    else
+                    {
+                        CreateCurriculum.c_curriculum_credit_hours = null;
+                    }
+                    CreateCurriculum.c_curriculum_icon_uri = dtCurriculum.Rows[i]["c_curriculum_icon_uri"].ToString();
+                    //CreateCurriculum.c_curriculum_icon_uri_file_name = dtCurriculum.Rows[i]["c_curriculum_icon_uri_file_name"].ToString();
+                    //CreateCurriculum.c_curriculum_active_type_id_fk = dtCurriculum.Rows[i]["c_curriculum_active_type_id_fk"].ToString();
+                    CreateCurriculum.c_curriculum_visible_flag = Convert.ToBoolean(dtCurriculum.Rows[i]["c_curriculum_visible_flag"]);
+                    CreateCurriculum.c_curriculum_approval_req = Convert.ToBoolean(dtCurriculum.Rows[i]["c_curriculum_approval_req"]);
+                    CreateCurriculum.c_curriculum_approval_id_fk = dtCurriculum.Rows[i]["c_curriculum_approval_id_fk"].ToString();
+                    //recurrance
+                    int tempEvery;
+                    if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_recurrance_every"].ToString(), out tempEvery))
+                    {
+                        CreateCurriculum.c_curriculum_recurrance_every = tempEvery;
+                    }
+                    else
+                    {
+                        CreateCurriculum.c_curriculum_recurrance_every = null;
+                    }
+                    CreateCurriculum.c_curriculum_recurrance_period = dtCurriculum.Rows[i]["c_curriculum_recurrance_period"].ToString();
+                    CreateCurriculum.c_curriculum_recurance_date_option = dtCurriculum.Rows[i]["c_curriculum_recurance_date_option"].ToString();
+                    DateTime? recurancedate = null;
+                    DateTime temprecurancedate;
+
+                    if (DateTime.TryParseExact(dtCurriculum.Rows[i]["c_curriculum_recurance_date"].ToString(), "MM/dd/yyyy", culture, DateTimeStyles.None, out temprecurancedate))
+                    {
+                        recurancedate = temprecurancedate;
+                    }
+                    CreateCurriculum.c_curriculum_recurance_date = recurancedate;
+                    //custom section
+                    CreateCurriculum.c_curriculum_custom_01 = dtCurriculum.Rows[i]["c_curriculum_custom_01"].ToString();
+                    CreateCurriculum.c_curriculum_custom_02 = dtCurriculum.Rows[i]["c_curriculum_custom_02"].ToString();
+                    CreateCurriculum.c_curriculum_custom_03 = dtCurriculum.Rows[i]["c_curriculum_custom_03"].ToString();
+                    CreateCurriculum.c_curriculum_custom_04 = dtCurriculum.Rows[i]["c_curriculum_custom_04"].ToString();
+                    CreateCurriculum.c_curriculum_custom_05 = dtCurriculum.Rows[i]["c_curriculum_custom_05"].ToString();
+                    CreateCurriculum.c_curriculum_custom_06 = dtCurriculum.Rows[i]["c_curriculum_custom_06"].ToString();
+                    CreateCurriculum.c_curriculum_custom_07 = dtCurriculum.Rows[i]["c_curriculum_custom_07"].ToString();
+                    CreateCurriculum.c_curriculum_custom_08 = dtCurriculum.Rows[i]["c_curriculum_custom_08"].ToString();
+                    CreateCurriculum.c_curriculum_custom_09 = dtCurriculum.Rows[i]["c_curriculum_custom_09"].ToString();
+                    CreateCurriculum.c_curriculum_custom_10 = dtCurriculum.Rows[i]["c_curriculum_custom_10"].ToString();
+                    CreateCurriculum.c_curriculum_custom_11 = dtCurriculum.Rows[i]["c_curriculum_custom_11"].ToString();
+                    CreateCurriculum.c_curriculum_custom_12 = dtCurriculum.Rows[i]["c_curriculum_custom_12"].ToString();
+                    CreateCurriculum.c_curriculum_custom_13 = dtCurriculum.Rows[i]["c_curriculum_custom_13"].ToString();
+                    //c_curriculum_cert_flag
+                    //CreateCurriculum.c_curriculum_cert_date = Convert.ToDateTime(dtCurriculum.Rows[i][""]);
+                    CreateCurriculum.c_curriculum_cert_flag = false;
+                    //c_curriculum_recurrance_grace_days
+                    int tempGraceDays;
+                    if (int.TryParse(dtCurriculum.Rows[i]["c_curriculum_recurrance_grace_days"].ToString(), out tempGraceDays))
+                    {
+                        CreateCurriculum.c_curriculum_recurrance_grace_days = tempGraceDays;
+                    }
+                    else
+                    {
+                        CreateCurriculum.c_curriculum_recurrance_grace_days = null;
+                    }
+
+                    CreateCurriculum.c_curriculum_active_flag = Convert.ToBoolean(dtCurriculum.Rows[i]["c_curriculum_active_flag"]);
+
+
                     int result = SystemBackgroundJobsBLL.CreateCurriculum(CreateCurriculum);
                     if (result == 0)
                     {
@@ -547,8 +586,16 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                     }
                 }
             }
-        }
 
+            CreateLogFile(dtCurriculum, sftp_URI, userName, password, "Curriculum", "DIMP");
+        }
+        /// <summary>
+        /// Insert Enrollment ( Data Import )
+        /// </summary>
+        /// <param name="dtEnrollment"></param>
+        /// <param name="sftp_URI"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         private void InsertIntoEnrollment(DataTable dtEnrollment, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -558,29 +605,112 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
             for (int i = 0; i < dtEnrollment.Rows.Count; i++)
             {
-                Enrollment enrollOLT = new Enrollment();
-
-                enrollOLT.e_enroll_user_id_fk = dtEnrollment.Rows[i]["u_user_id_pk"].ToString();
-                enrollOLT.e_enroll_delivery_id_fk = dtEnrollment.Rows[i]["e_enroll_delivery_id_fk"].ToString();
-                enrollOLT.e_enroll_course_id_fk = dtEnrollment.Rows[i]["e_enroll_course_id_fk"].ToString();
-                enrollOLT.e_enroll_required_flag = Convert.ToBoolean(dtEnrollment.Rows[i]["e_enroll_required_flag"]);
-                //enrollOLT.e_enroll_approval_required_flag = false;
-                enrollOLT.e_enroll_type_name = dtEnrollment.Rows[i]["e_enroll_type_name"].ToString();
-                //enrollOLT.e_enroll_approval_status_name = dtEnrollment.Rows[i]["u_user_id_pk"].ToString();
-                enrollOLT.e_enroll_status_name = dtEnrollment.Rows[i]["e_enroll_status_name"].ToString();
-                enrollOLT.e_enroll_target_due_date = Convert.ToDateTime(dtEnrollment.Rows[i]["e_enroll_target_due_date"]);
-
+                Enrollment enroll = new Enrollment();
                 try
                 {
+                    enroll.e_enroll_user_id_fk = dtEnrollment.Rows[i]["e_enroll_user_id_fk"].ToString();
+                    enroll.e_enroll_course_id_fk = dtEnrollment.Rows[i]["e_enroll_course_id_fk"].ToString();
+                    enroll.e_enroll_delivery_id_fk = dtEnrollment.Rows[i]["e_enroll_delivery_id_fk"].ToString();
 
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_enroll_date_time"].ToString()))
+                    {
+                        enroll.e_enroll_enroll_date_time_background = Convert.ToDateTime(dtEnrollment.Rows[i]["e_enroll_enroll_date_time"]);
+                    }
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_expire_date"].ToString()))
+                    {
+                        enroll.e_enroll_expire_date_background = Convert.ToDateTime(dtEnrollment.Rows[i]["e_enroll_expire_date"]);
+                    }
+                    enroll.e_enroll_enroll_type_id_fk = dtEnrollment.Rows[i]["e_enroll_enroll_type_id_fk"].ToString();
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_required_flag"].ToString()))
+                    {
+                        enroll.e_enroll_required_flag = Convert.ToBoolean(dtEnrollment.Rows[i]["e_enroll_required_flag"]);
+                    }
+                    else
+                    {
+                        enroll.e_enroll_required_flag = false;
+                    }
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_approval_required_flag"].ToString()))
+                    {
+                        enroll.e_enroll_approval_required_flag = Convert.ToBoolean(dtEnrollment.Rows[i]["e_enroll_approval_required_flag"]);
+                    }
+                    else
+                    {
+                        enroll.e_enroll_approval_required_flag = false;
+                    }
+                    enroll.e_enroll_approval_status_id_fk = dtEnrollment.Rows[i]["e_enroll_approval_status_id_fk"].ToString();
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_approval_date"].ToString()))
+                    {
+                        enroll.e_enroll_approval_date_background = Convert.ToDateTime(dtEnrollment.Rows[i]["e_enroll_approval_date"]);
+                    }
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_target_due_date"].ToString()))
+                    {
+                        enroll.e_enroll_target_due_date = Convert.ToDateTime(dtEnrollment.Rows[i]["e_enroll_target_due_date"]);
+                    }
+                    enroll.e_enroll_status_id_fk = dtEnrollment.Rows[i]["e_enroll_status_id_fk"].ToString();
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_time_spent"].ToString()))
+                    {
+                        enroll.e_enroll_time_spent = Convert.ToInt16(dtEnrollment.Rows[i]["e_enroll_time_spent"]);
+                    }
+                    else
+                    {
+                        enroll.e_enroll_time_spent = 0;
+                    }
+                    enroll.e_enroll_lesson_location = dtEnrollment.Rows[i]["e_enroll_lesson_location"].ToString();
+                    enroll.e_enroll_suspend_data = dtEnrollment.Rows[i]["e_enroll_suspend_data"].ToString();
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_score"].ToString()))
+                    {
+                        enroll.e_enroll_score = Convert.ToInt16(dtEnrollment.Rows[i]["e_enroll_score"]);
+                    }
+                    if (!string.IsNullOrEmpty(dtEnrollment.Rows[i]["e_enroll_active_flag"].ToString()))
+                    {
+                        enroll.e_enroll_active_flag = Convert.ToBoolean(dtEnrollment.Rows[i]["e_enroll_active_flag"]);
+                    }
+                    else
+                    {
+                        enroll.e_enroll_active_flag = false;
+                    }
+                    //enroll.e_enroll_lesson_status=dtEnrollment.Rows[i][""].ToString();
+                    //enroll.e_enroll_completion_date=dtEnrollment.Rows[i][""].ToString();
+                    //enroll.e_transcript_id_fk = dtEnrollment.Rows[i][""].ToString();                 
+
+
+                    int result = SystemBackgroundJobsBLL.InsertUpdateEnrollment(enroll);
+                    if (result == 0)
+                    {
+                        dtEnrollment.Rows[i]["Status"] = "Passed";
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            dtEnrollment.Rows[i]["Status"] = "Failed";
+                            dtEnrollment.Rows[i]["RecordCount"] = i + 1;
+                            dtEnrollment.Rows[i]["ErrorResult"] = ex.Message;
+                            continue;
+                        }
+                        else
+                        {
+                            dtEnrollment.Rows[i]["Status"] = "Failed";
+                            dtEnrollment.Rows[i]["RecordCount"] = i + 1;
+                            dtEnrollment.Rows[i]["ErrorResult"] = ex.Message;
+                            continue;
+                        }
+                    }
                 }
             }
+            CreateLogFile(dtEnrollment, sftp_URI, userName, password, "Enrollment", "DIMP");
         }
 
+        /// <summary>
+        /// Insert Learning History ( Data Import )
+        /// </summary>
+        /// <param name="dtLearningHistory"></param>
+        /// <param name="sftp_URI"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         private void InsertIntoLearningHistory(DataTable dtLearningHistory, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -590,10 +720,126 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
             for (int i = 0; i < dtLearningHistory.Rows.Count; i++)
             {
+                SystemTranscripts transcripts = new SystemTranscripts();
+                try
+                {
+                    transcripts.t_transcript_user_id_fk = dtLearningHistory.Rows[i]["t_transcript_user_id_fk"].ToString();
 
+                    transcripts.t_transcript_course_id_fk = dtLearningHistory.Rows[i]["t_transcript_course_id_fk"].ToString();
+                    transcripts.t_transcript_delivery_id_fk = dtLearningHistory.Rows[i]["t_transcript_delivery_id_fk"].ToString();
+                    transcripts.t_transcript_assign_id_fk = dtLearningHistory.Rows[i]["t_transcript_assign_id_fk"].ToString();
+                    transcripts.t_transcript_enroll_id_fk = dtLearningHistory.Rows[i]["t_transcript_enroll_id_fk"].ToString();
+
+                    transcripts.t_transcript_attendance_id_fk = dtLearningHistory.Rows[i]["t_transcript_attendance_id_fk"].ToString();
+                    transcripts.t_transcript_passing_status_id_fk = dtLearningHistory.Rows[i]["t_transcript_passing_status_id_fk"].ToString();
+                    transcripts.t_transcript_grade_id_fk = dtLearningHistory.Rows[i]["t_transcript_grade_id_fk"].ToString();
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_completion_score"].ToString()))
+                    {
+                        transcripts.t_transcript_completion_score = Convert.ToInt32(dtLearningHistory.Rows[i]["t_transcript_completion_score"].ToString());
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_completion_score = 0;
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_completion_date_time"].ToString()))
+                    {
+                        transcripts.t_transcript_completion_date_time = Convert.ToDateTime(dtLearningHistory.Rows[i]["t_transcript_completion_date_time"]);
+                    }
+                    transcripts.t_transcript_completion_type_id_fk = dtLearningHistory.Rows[i]["t_transcript_completion_type_id_fk"].ToString();
+                    transcripts.t_transcript_marked_by_user_id_fk = dtLearningHistory.Rows[i]["t_transcript_marked_by_user_id_fk"].ToString();
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_required_flag"].ToString()))
+                    {
+                        transcripts.t_transcript_required_flag = Convert.ToBoolean(dtLearningHistory.Rows[i]["t_transcript_required_flag"]);
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_required_flag = false;
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_target_due_date"].ToString()))
+                    {
+                        transcripts.t_transcript_target_due_date_background = Convert.ToDateTime(dtLearningHistory.Rows[i]["t_transcript_target_due_date"]);//Target date
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_actual_date"].ToString()))
+                    {
+                        transcripts.t_transcript_actual_date_background = Convert.ToDateTime(dtLearningHistory.Rows[i]["t_transcript_actual_date"]); //Actual date 
+                    }
+                    transcripts.t_transcript_status_id_fk = dtLearningHistory.Rows[i]["t_transcript_status_id_fk"].ToString();//doubt //enroll.e_enroll_status_id_fk;
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_time_spent"].ToString()))
+                    {
+                        transcripts.t_transcript_time_spent = Convert.ToInt16(dtLearningHistory.Rows[i]["t_transcript_time_spent"]);
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_time_spent = 0;
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_score"].ToString()))
+                    {
+                        transcripts.t_transcript_score = Convert.ToInt16(dtLearningHistory.Rows[i]["t_transcript_score"]);
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_score = 0;
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_credits"].ToString()))
+                    {
+                        transcripts.t_transcript_credits = Convert.ToInt16(dtLearningHistory.Rows[i]["t_transcript_credits"]);
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_credits = 0;
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_hours"].ToString()))
+                    {
+                        transcripts.t_transcript_hours = Convert.ToInt16(dtLearningHistory.Rows[i]["t_transcript_hours"]);
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_hours = 0;
+                    }
+                    if (!string.IsNullOrEmpty(dtLearningHistory.Rows[i]["t_transcript_active_flag"].ToString()))
+                    {
+                        transcripts.t_transcript_active_flag = Convert.ToBoolean(dtLearningHistory.Rows[i]["t_transcript_active_flag"]);
+                    }
+                    else
+                    {
+                        transcripts.t_transcript_active_flag = false;
+                    }
+
+
+                    int result = SystemBackgroundJobsBLL.InsertUpdateTranscripts(transcripts);
+                    if (result == 0)
+                    {
+                        dtLearningHistory.Rows[i]["Status"] = "Passed";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            dtLearningHistory.Rows[i]["Status"] = "Failed";
+                            dtLearningHistory.Rows[i]["RecordCount"] = i + 1;
+                            dtLearningHistory.Rows[i]["ErrorResult"] = ex.Message;
+                            continue;
+                        }
+                        else
+                        {
+                            dtLearningHistory.Rows[i]["Status"] = "Failed";
+                            dtLearningHistory.Rows[i]["RecordCount"] = i + 1;
+                            dtLearningHistory.Rows[i]["ErrorResult"] = ex.Message;
+                            continue;
+                        }
+                    }
+                }
             }
+            CreateLogFile(dtLearningHistory, sftp_URI, userName, password, "Learning History", "DIMP");
         }
-
+        /// <summary>
+        /// Get Csv Data
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static DataTable GetCSVData(string fileName)
         {
             string CSVFilePathName = fileName;
@@ -619,7 +865,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
             return dt;
         }
-
 
         /// <summary>
         /// Get Excel Data
@@ -751,23 +996,33 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
         /// Create Log File
         /// </summary>
         /// <param name="dtHris"></param>
-        private void CreateLogFile(DataTable dtHris, string uri, string userName, string password,string process)
+        private void CreateLogFile(DataTable dtHris, string uri, string userName, string password, string process, string dataIntegration)
         {
             DateTime start = DateTime.Now;
             var loadedrows = dtHris.Select("Status='Passed'");
             var rejectedRows = dtHris.Select("Status='Failed'");
             DateTime endDate;
             //string _logpath = "~/SystemHome/Configuration/HRIS Integration/Log/";
-            string filename = "CF_HRIS_SFTP_Job_Run_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString().Substring(0, 5) + ".txt";
+            string filename = "CF_HRIS_SFTP_Job_Run_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToString("HH:mm:ss") + ".txt";
             filename = filename.Replace("/", "_");
             filename = filename.Replace(":", "_");
             //string path = Server.MapPath(_logpath);
-            string filePath = @"C:\Users\Windows\Downloads\" + filename;
-            FileStream fs1 = new FileStream(@"C:\Users\Windows\Downloads\" + filename, FileMode.OpenOrCreate, FileAccess.Write);
+            string filePath = Server.MapPath(_logPath) + filename;
+            FileStream fs1 = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(fs1);
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("************************************");
-            sb.AppendLine("CF HRIS Upload Job: ");
+            if (dataIntegration == "HRIS")
+            {
+            }
+            else if (dataIntegration == "DIMP")
+            {
+                sb.AppendLine("CF Data Import Upload Job: ");
+            }
+            else
+            {
+                sb.AppendLine("CF Data Export Upload Job: ");
+            }
             sb.AppendLine("************************************");
             sb.AppendLine();
             sb.AppendLine("Started on:" + start.ToShortDateString() + " at " + start.ToShortTimeString());
@@ -824,7 +1079,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             hrisRunlog.u_sftp_run_records_processes = dtHris.Rows.Count;
             hrisRunlog.u_sftp_run_records_loaded = loadedrows.Length;
             hrisRunlog.u_sftp_run_records_rejected = rejectedRows.Length;
-
+            hrisRunlog.u_sftp_run_log_type = dataIntegration;
             try
             {
                 //Insert Hris Run log

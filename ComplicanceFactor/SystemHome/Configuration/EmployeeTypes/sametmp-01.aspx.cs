@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.EmployeeTypes
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_employee_types_text") + "</a>"; 
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_employee_types_text") + "</a>"; 
 
                 //Bind Employee Type Status
                 ddlStatus.DataSource = SystemEmployeeTypesBLL.GetEmployeeAllStatus(SessionWrapper.CultureName, "sametmp-01");

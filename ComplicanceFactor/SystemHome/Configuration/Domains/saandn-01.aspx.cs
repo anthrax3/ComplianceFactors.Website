@@ -26,7 +26,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                     ClearSession();
                     //set breadcrumb
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Domains/samdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_domain_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_create_new_domain_text") + "</a>";
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/Domains/samdmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_domain_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_create_new_domain_text") + "</a>";
 
                     //Bind domain status
                     ddlStatus.DataSource = SystemDomainBLL.GetDomainStatus(SessionWrapper.CultureName,"saandn-01");

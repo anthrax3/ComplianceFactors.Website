@@ -20,7 +20,7 @@ namespace ComplicanceFactor.Administrator
                 try
                 {
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_administrator_text") + "</a>&nbsp;" + " >&nbsp;<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_Manage_users_text") + "</a>";
+                    lblBreadCrumb.Text = "<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_admin") + "</a>&nbsp;" + " >&nbsp;<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_Manage_users_text") + "</a>";
 
 
                     ddlUserstatus.DataSource = UserBLL.GetUserAllStatusList(SessionWrapper.CultureName, "sasup-01");

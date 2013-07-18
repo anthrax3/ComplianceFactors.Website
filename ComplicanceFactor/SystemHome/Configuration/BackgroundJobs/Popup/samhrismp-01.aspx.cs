@@ -15,7 +15,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
 {
     public partial class samhrismp_01 : System.Web.UI.Page
     {
-
         #region "Private Member Variables"
         private string _attachmentpath = "~/SystemHome/Configuration/HRISIntegration/Uploaded/";
         private string _downloadpath = "~/SystemHome/Configuration/HRISIntegration/Sample/";
@@ -86,15 +85,35 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
             hrisIntegration.u_sftp_hris_filename = txtHrisCsvFileName.Text;
             hrisIntegration.u_sftp_occurs_every = txtOccursEvery.Text;
             if (ddlTimeConversion.SelectedValue == "AM")
-            {                
-                hrisIntegration.u_sftp_time_every = txtHours.Text;
+            {
+                DateTime time = Convert.ToDateTime(txtHours.Text);
+                string timeEvery = time.ToString("HH:mm");
+                int hours = Convert.ToInt16(timeEvery.Substring(0, 2));
+                int minites = Convert.ToInt16(timeEvery.Substring(3, 2));
+                if (hours == 12)
+                {
+                    hrisIntegration.u_sftp_time_every = "00:" + minites;
+                }
+                else
+                {
+                    hrisIntegration.u_sftp_time_every = txtHours.Text;
+                }
             }
             else
             {
-                int hours = Convert.ToInt16(txtHours.Text.Substring(0,2));
-                int minites = Convert.ToInt16(txtHours.Text.Substring(3, 2));
-                hours = hours + 12;
-                hrisIntegration.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
+                DateTime time = Convert.ToDateTime(txtHours.Text);
+                string timeEvery = time.ToString("HH:mm");
+                int hours = Convert.ToInt16(timeEvery.Substring(0, 2));
+                int minites = Convert.ToInt16(timeEvery.Substring(3, 2));
+                if (hours == 12)
+                {
+                    hrisIntegration.u_sftp_time_every = txtHours.Text;
+                }
+                else
+                {
+                    hours = hours + 12;
+                    hrisIntegration.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
+                }
             }
 
                      
@@ -140,9 +159,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
 
         protected void btnDownloadSampleHrisCsvFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "HRIS_import_csv_example.xlsx";
+            string attachmentFileId = "HRIS_import_csv_example.csv";
             string filePath = Server.MapPath(_downloadpath + attachmentFileId);
-            string attachmentFileName = "HRIS_import_csv_example.xlsx";
+            string attachmentFileName = "HRIS_import_csv_example.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -184,11 +203,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
                 string s_file_guid = Guid.NewGuid().ToString();
                 if (file != null && file.ContentLength > 0)
                 {
-                    s_file_name = Path.GetFileName(file.FileName);
+                    s_file_name = "HRIS_import_csv_example";
                     s_file_extension = Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension));
-                    //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");
-                    txtHrisCsvFileName.Text = s_file_name;
+                    file.SaveAs(Server.MapPath(_attachmentpath + s_file_name + s_file_extension));
+                    //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
+                    txtHrisCsvFileName.Text = s_file_name + s_file_extension;
                     //InsertIntoUserMaster(dtHRIS);
                 }
             }

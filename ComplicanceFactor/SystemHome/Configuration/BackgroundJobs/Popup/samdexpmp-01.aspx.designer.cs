@@ -40,6 +40,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         protected global::System.Web.UI.WebControls.CustomValidator cvValidateTime;
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// divSuccess control.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         protected global::System.Web.UI.WebControls.Button btnDownloadLearningHistory;
         
         /// <summary>
+        /// rfvServerUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvServerUrl;
+        
+        /// <summary>
         /// txtSftpServerUrl control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSftpServerUrl;
+        
+        /// <summary>
+        /// rfvSftpSeverPort control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSftpSeverPort;
         
         /// <summary>
         /// txtSftpServerPort control.
@@ -130,6 +157,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         protected global::System.Web.UI.WebControls.TextBox txtSftpServerPort;
         
         /// <summary>
+        /// rfvUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUsername;
+        
+        /// <summary>
         /// txtUserName control.
         /// </summary>
         /// <remarks>
@@ -137,6 +173,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
+        
+        /// <summary>
+        /// rfvpassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvpassword;
         
         /// <summary>
         /// txtPassword control.
@@ -202,6 +247,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         protected global::System.Web.UI.WebControls.CheckBox chkLearningHistory;
         
         /// <summary>
+        /// rfvOccuranceEvery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvOccuranceEvery;
+        
+        /// <summary>
+        /// rfvEvery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvEvery;
+        
+        /// <summary>
         /// txtOccursEvery control.
         /// </summary>
         /// <remarks>
@@ -209,6 +272,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOccursEvery;
+        
+        /// <summary>
+        /// rfvOccuranceTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvOccuranceTime;
+        
+        /// <summary>
+        /// rfvOccuranceTimeValid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvOccuranceTimeValid;
         
         /// <summary>
         /// txtHours control.
@@ -229,6 +310,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         protected global::System.Web.UI.WebControls.DropDownList ddlTimeConversion;
         
         /// <summary>
+        /// regexDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDate;
+        
+        /// <summary>
         /// txtBegining control.
         /// </summary>
         /// <remarks>
@@ -236,6 +326,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBegining;
+        
+        /// <summary>
+        /// ceDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDate;
         
         /// <summary>
         /// btnSaveDataExportSftpInformation control.

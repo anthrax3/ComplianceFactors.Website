@@ -2,6 +2,7 @@
     CodeBehind="samhrismp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.HRISIntegration.samhrismp_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -120,9 +121,7 @@
             return isValid;
 
         }
-    </script>
-    <br />
-    <br />
+    </script>     
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhris" runat="server"
         ValidationGroup="samhrismp"></asp:ValidationSummary>
     <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"

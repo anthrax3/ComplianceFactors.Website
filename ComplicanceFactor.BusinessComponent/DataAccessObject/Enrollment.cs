@@ -32,6 +32,11 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string e_enroll_status_name { get; set; }
         public string e_tb_enrollment_type_name { get; set; }
         public int e_enroll_waitlist_count { get; set; }
+
+        public DateTime? e_enroll_enroll_date_time_background { get; set; }
+        public DateTime? e_enroll_expire_date_background { get; set; }
+        public DateTime? e_enroll_approval_date_background { get; set; }
+
         //assign curricula
         public string e_curriculum_assign_system_id_pk { get; set; }
         public string e_curriculum_assign_user_id_fk { get; set; }

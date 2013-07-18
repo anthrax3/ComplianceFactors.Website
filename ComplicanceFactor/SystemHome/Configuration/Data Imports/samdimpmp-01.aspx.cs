@@ -35,7 +35,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
         private static string roomFileName;
         private static string courseFileName;
         private static string curriculumFileName;
-         
+
         private static string dimpId;
         #endregion
 
@@ -81,7 +81,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
                     if (dataImport.u_sftp_imp_is_learning_history == true)
                     {
-                        chkLearningHistory.Checked = true;                        
+                        chkLearningHistory.Checked = true;
                     }
                     else
                     {
@@ -107,11 +107,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message);
                     }
                 }
             }
@@ -127,9 +127,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 string s_file_extension = null;
                 string s_file_guid = Guid.NewGuid().ToString();
                 if (file != null && file.ContentLength > 0)
-                {                
+                {
                     s_file_name = "Facility_import_csv_file";
-                    s_file_extension = Path.GetExtension(file.FileName);                   
+                    s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
                     facilityFileName = s_file_name + s_file_extension;
                     //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
@@ -151,7 +151,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 if (file != null && file.ContentLength > 0)
                 {
                     s_file_name = "Room_import_csv_file";
-                    s_file_extension = Path.GetExtension(file.FileName);                   
+                    s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
                     roomFileName = s_file_name + s_file_extension;
                     //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
@@ -173,7 +173,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 if (file != null && file.ContentLength > 0)
                 {
                     s_file_name = "Course_import_csv_file";
-                    s_file_extension = Path.GetExtension(file.FileName);                    
+                    s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
                     courseFileName = s_file_name + s_file_extension;
                     //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
@@ -195,7 +195,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 if (file != null && file.ContentLength > 0)
                 {
                     s_file_name = "Curriculum_import_csv_file";
-                    s_file_extension = Path.GetExtension(file.FileName);                    
+                    s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
                     curriculumFileName = s_file_name + s_file_extension;
                     //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
@@ -217,7 +217,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 if (file != null && file.ContentLength > 0)
                 {
                     s_file_name = "Enrollment_import_csv_file";
-                    s_file_extension = Path.GetExtension(file.FileName);                  
+                    s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
                     //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS"); 
                     txtEnrollments.Text = s_file_name + s_file_extension;
@@ -239,7 +239,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 if (file != null && file.ContentLength > 0)
                 {
                     s_file_name = "LearningHistory_import_csv_file";
-                    s_file_extension = Path.GetExtension(file.FileName);                    
+                    s_file_extension = Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
                     txtLearningHistory.Text = s_file_name + s_file_extension;
                     //DataTable dtHRIS = getExcelData(Server.MapPath(_attachmentpath + s_file_guid + s_file_extension), "HRIS");                   
@@ -251,9 +251,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
         protected void btnSampleFacilitiesFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "Facility_import_csv_sample.xlsx";
+            string attachmentFileId = "Facility_import_csv_sample.csv";
             string filePath = Server.MapPath(_facilitypath + attachmentFileId);
-            string attachmentFileName = "Facility_import_csv_sample.xlsx";
+            string attachmentFileName = "Facility_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -286,9 +286,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
         protected void btnSampleRoomFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "Room_import_csv_sample.xlsx";
+            string attachmentFileId = "Room_import_csv_sample.csv";
             string filePath = Server.MapPath(_roompath + attachmentFileId);
-            string attachmentFileName = "Room_import_csv_sample.xlsx";
+            string attachmentFileName = "Room_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -321,9 +321,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
         protected void btnSampleCoursesFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "Course_import_csv_sample.xlsx";
+            string attachmentFileId = "Course_import_csv_sample.csv";
             string filePath = Server.MapPath(_coursespath + attachmentFileId);
-            string attachmentFileName = "Course_import_csv_sample.xlsx";
+            string attachmentFileName = "Course_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -356,9 +356,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
         protected void btnSampleBaseCurriculamFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "Curriculum_import_csv_sample.xlsx";
+            string attachmentFileId = "Curriculum_import_csv_sample.csv";
             string filePath = Server.MapPath(_curriculumpath + attachmentFileId);
-            string attachmentFileName = "Curriculum_import_csv_sample.xlsx";
+            string attachmentFileName = "Curriculum_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -391,9 +391,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
         protected void btnSampleEnrollmentsCsvFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "Enrollment_import_csv_sample.xlsx";
+            string attachmentFileId = "Enrollment_import_csv_sample.csv";
             string filePath = Server.MapPath(_enrollmentpath + attachmentFileId);
-            string attachmentFileName = "Enrollment_import_csv_sample.xlsx";
+            string attachmentFileName = "Enrollment_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -426,9 +426,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 
         protected void btnSampleLearningHistoryCsvFile_Click(object sender, EventArgs e)
         {
-            string attachmentFileId = "LearningHistory_import_csv_sample.xlsx";
+            string attachmentFileId = "LearningHistory_import_csv_sample.csv";
             string filePath = Server.MapPath(_learninghistorypath + attachmentFileId);
-            string attachmentFileName = "LearningHistory_import_csv_sample.xlsx";
+            string attachmentFileName = "LearningHistory_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
             {
@@ -481,7 +481,18 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
             dataImport.u_sftp_occurs_every = txtOccursEvery.Text;
             if (ddlTimeConversion.SelectedValue == "AM")
             {
-                dataImport.u_sftp_time_every = txtHours.Text;
+                DateTime time = Convert.ToDateTime(txtHours.Text);
+                string timeEvery = time.ToString("HH:mm");
+                int hours = Convert.ToInt16(timeEvery.Substring(0, 2));
+                int minites = Convert.ToInt16(timeEvery.Substring(3, 2));
+                if (hours == 12)
+                {
+                    dataImport.u_sftp_time_every = "00:" + minites;
+                }
+                else
+                {
+                    dataImport.u_sftp_time_every = txtHours.Text;
+                }
             }
             else
             {
@@ -489,8 +500,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 string timeEvery = time.ToString("HH:mm");
                 int hours = Convert.ToInt16(timeEvery.Substring(0, 2));
                 int minites = Convert.ToInt16(timeEvery.Substring(3, 2));
-                hours = hours + 12;
-                dataImport.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
+                if (hours == 12)
+                {
+                    dataImport.u_sftp_time_every = txtHours.Text;
+                }
+                else
+                {
+                    hours = hours + 12;
+                    dataImport.u_sftp_time_every = hours.ToString() + ":" + minites.ToString();
+                }
             }
             dataImport.u_sftp_start_date = txtBegining.Text;
 
@@ -512,10 +530,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                     if (result == 0)
                     {
                         divSuccess.Style.Add("display", "block");
-                        divSuccess.InnerHtml =  "Inserted Successfully";
+                        divSuccess.InnerHtml = "Inserted Successfully";
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -523,11 +540,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("samhrismp-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message);
                     }
                 }
             }

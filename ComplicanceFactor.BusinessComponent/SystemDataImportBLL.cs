@@ -22,10 +22,38 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertDataImport.Add("@u_sftp_imp_enrollment_filename", dataImport.u_sftp_imp_enrollment_filename);
             htInsertDataImport.Add("@u_sftp_imp_is_learning_history", dataImport.u_sftp_imp_is_learning_history);
             htInsertDataImport.Add("@u_sftp_imp_learning_history_filename", dataImport.u_sftp_imp_learning_history_filename);
-            htInsertDataImport.Add("@u_sftp_imp_facility_filename", dataImport.u_sftp_imp_facility_filename);
-            htInsertDataImport.Add("@u_sftp_imp_room_filename", dataImport.u_sftp_imp_room_filename);
-            htInsertDataImport.Add("@u_sftp_imp_course_filename", dataImport.u_sftp_imp_course_filename);
-            htInsertDataImport.Add("@u_sftp_imp_base_curricula_filename", dataImport.u_sftp_imp_base_curricula_filename);
+            if (!string.IsNullOrEmpty(dataImport.u_sftp_imp_facility_filename))
+            {
+                htInsertDataImport.Add("@u_sftp_imp_facility_filename", dataImport.u_sftp_imp_facility_filename);
+            }
+            else
+            {
+                htInsertDataImport.Add("@u_sftp_imp_facility_filename",string.Empty);
+            }
+            if (!string.IsNullOrEmpty(dataImport.u_sftp_imp_room_filename))
+            {
+                htInsertDataImport.Add("@u_sftp_imp_room_filename", dataImport.u_sftp_imp_room_filename);
+            }
+            else
+            {
+                htInsertDataImport.Add("@u_sftp_imp_room_filename", string.Empty);
+            }
+            if (!string.IsNullOrEmpty(dataImport.u_sftp_imp_course_filename))
+            {
+                htInsertDataImport.Add("@u_sftp_imp_course_filename", dataImport.u_sftp_imp_course_filename);
+            }
+            else
+            {
+                htInsertDataImport.Add("@u_sftp_imp_course_filename", string.Empty);
+            }
+            if (!string.IsNullOrEmpty(dataImport.u_sftp_imp_course_filename))
+            {
+                htInsertDataImport.Add("@u_sftp_imp_base_curricula_filename", dataImport.u_sftp_imp_base_curricula_filename);
+            }
+            else
+            {
+                htInsertDataImport.Add("@u_sftp_imp_base_curricula_filename", string.Empty);
+            }
             htInsertDataImport.Add("@u_sftp_occurs_every", dataImport.u_sftp_occurs_every);
             htInsertDataImport.Add("@u_sftp_time_every", dataImport.u_sftp_time_every);
             htInsertDataImport.Add("@u_sftp_start_date", dataImport.u_sftp_start_date);

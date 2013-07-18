@@ -11,28 +11,28 @@ namespace ComplicanceFactor.BusinessComponent
 {
     public class SystemDataExportBLL
     {
-        public static int InsertDataExport(SystemHRISIntegration dataImport)
+        public static int InsertDataExport(SystemHRISIntegration dataExport)
         {
-            Hashtable htInsertDataImport = new Hashtable();
-            htInsertDataImport.Add("@u_sftp_URI", dataImport.u_sftp_URI);
-            htInsertDataImport.Add("@u_sftp_port", dataImport.u_sftp_port);
-            htInsertDataImport.Add("@u_sftp_username", dataImport.u_sftp_username);
-            htInsertDataImport.Add("@u_sftp_password", dataImport.u_sftp_password);
-            htInsertDataImport.Add("@u_sftp_exp_is_hris", dataImport.u_sftp_exp_is_hris);
-            htInsertDataImport.Add("@u_sftp_exp_hris_filename", dataImport.u_sftp_exp_hris_filename);
-            htInsertDataImport.Add("@u_sftp_exp_is_catalog_offering", dataImport.u_sftp_exp_is_catalog_offering);
-            htInsertDataImport.Add("@u_sftp_exp_catalog_offering_filename", dataImport.u_sftp_exp_catalog_offering_filename);
-            htInsertDataImport.Add("@u_sftp_exp_is_learning_history", dataImport.u_sftp_exp_is_learning_history);
-            htInsertDataImport.Add("@u_sftp_exp_learning_history_filename", dataImport.u_sftp_exp_learning_history_filename);
+            Hashtable htInsertDataExport = new Hashtable();
+            htInsertDataExport.Add("@u_sftp_URI", dataExport.u_sftp_URI);
+            htInsertDataExport.Add("@u_sftp_port", dataExport.u_sftp_port);
+            htInsertDataExport.Add("@u_sftp_username", dataExport.u_sftp_username);
+            htInsertDataExport.Add("@u_sftp_password", dataExport.u_sftp_password);
+            htInsertDataExport.Add("@u_sftp_exp_is_hris", dataExport.u_sftp_exp_is_hris);
+            htInsertDataExport.Add("@u_sftp_exp_hris_filename", dataExport.u_sftp_exp_hris_filename);
+            htInsertDataExport.Add("@u_sftp_exp_is_catalog_offering", dataExport.u_sftp_exp_is_catalog_offering);
+            htInsertDataExport.Add("@u_sftp_exp_catalog_offering_filename", dataExport.u_sftp_exp_catalog_offering_filename);
+            htInsertDataExport.Add("@u_sftp_exp_is_learning_history", dataExport.u_sftp_exp_is_learning_history);
+            htInsertDataExport.Add("@u_sftp_exp_learning_history_filename", dataExport.u_sftp_exp_learning_history_filename);
 
-            htInsertDataImport.Add("@u_sftp_occurs_every", dataImport.u_sftp_occurs_every);
-            htInsertDataImport.Add("@u_sftp_time_every", dataImport.u_sftp_time_every);
-            htInsertDataImport.Add("@u_sftp_start_date", dataImport.u_sftp_start_date);
+            htInsertDataExport.Add("@u_sftp_occurs_every", dataExport.u_sftp_occurs_every);
+            htInsertDataExport.Add("@u_sftp_time_every", dataExport.u_sftp_time_every);
+            htInsertDataExport.Add("@u_sftp_start_date", dataExport.u_sftp_start_date);
 
 
             try
             {
-                return DataProxy.FetchSPOutput("s_sp_insert_data_export", htInsertDataImport);
+                return DataProxy.FetchSPOutput("s_sp_insert_data_export", htInsertDataExport);
             }
             catch (Exception)
             {
@@ -40,30 +40,30 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static int UpdateDataExport(SystemHRISIntegration dataImport)
+        public static int UpdateDataExport(SystemHRISIntegration dataExport)
         {
-            Hashtable htUpdateDataImport = new Hashtable();
-            htUpdateDataImport.Add("@u_sftp_id_pk", dataImport.u_sftp_id_pk);
-            htUpdateDataImport.Add("@u_sftp_URI", dataImport.u_sftp_URI);
-            htUpdateDataImport.Add("@u_sftp_port", dataImport.u_sftp_port);
-            htUpdateDataImport.Add("@u_sftp_username", dataImport.u_sftp_username);
-            htUpdateDataImport.Add("@u_sftp_password", dataImport.u_sftp_password);
+            Hashtable htUpdateDataExport = new Hashtable();
+            htUpdateDataExport.Add("@u_sftp_id_pk", dataExport.u_sftp_id_pk);
+            htUpdateDataExport.Add("@u_sftp_URI", dataExport.u_sftp_URI);
+            htUpdateDataExport.Add("@u_sftp_port", dataExport.u_sftp_port);
+            htUpdateDataExport.Add("@u_sftp_username", dataExport.u_sftp_username);
+            htUpdateDataExport.Add("@u_sftp_password", dataExport.u_sftp_password);
 
-            htUpdateDataImport.Add("@u_sftp_exp_is_hris", dataImport.u_sftp_exp_is_hris);
-            htUpdateDataImport.Add("@u_sftp_exp_hris_filename", dataImport.u_sftp_exp_hris_filename);
-            htUpdateDataImport.Add("@u_sftp_exp_is_catalog_offering", dataImport.u_sftp_exp_is_catalog_offering);
-            htUpdateDataImport.Add("@u_sftp_exp_catalog_offering_filename", dataImport.u_sftp_exp_catalog_offering_filename);
-            htUpdateDataImport.Add("@u_sftp_exp_is_learning_history", dataImport.u_sftp_exp_is_learning_history);
-            htUpdateDataImport.Add("@u_sftp_exp_learning_history_filename", dataImport.u_sftp_exp_learning_history_filename);
+            htUpdateDataExport.Add("@u_sftp_exp_is_hris", dataExport.u_sftp_exp_is_hris);
+            htUpdateDataExport.Add("@u_sftp_exp_hris_filename", dataExport.u_sftp_exp_hris_filename);
+            htUpdateDataExport.Add("@u_sftp_exp_is_catalog_offering", dataExport.u_sftp_exp_is_catalog_offering);
+            htUpdateDataExport.Add("@u_sftp_exp_catalog_offering_filename", dataExport.u_sftp_exp_catalog_offering_filename);
+            htUpdateDataExport.Add("@u_sftp_exp_is_learning_history", dataExport.u_sftp_exp_is_learning_history);
+            htUpdateDataExport.Add("@u_sftp_exp_learning_history_filename", dataExport.u_sftp_exp_learning_history_filename);
 
-            htUpdateDataImport.Add("@u_sftp_occurs_every", dataImport.u_sftp_occurs_every);
-            htUpdateDataImport.Add("@u_sftp_time_every", dataImport.u_sftp_time_every);
-            htUpdateDataImport.Add("@u_sftp_start_date", dataImport.u_sftp_start_date);
+            htUpdateDataExport.Add("@u_sftp_occurs_every", dataExport.u_sftp_occurs_every);
+            htUpdateDataExport.Add("@u_sftp_time_every", dataExport.u_sftp_time_every);
+            htUpdateDataExport.Add("@u_sftp_start_date", dataExport.u_sftp_start_date);
 
 
             try
             {
-                return DataProxy.FetchSPOutput("s_sp_update_data_export", htUpdateDataImport);
+                return DataProxy.FetchSPOutput("s_sp_update_data_export", htUpdateDataExport);
             }
             catch (Exception)
             {
@@ -74,33 +74,33 @@ namespace ComplicanceFactor.BusinessComponent
         public static SystemHRISIntegration GetSingleDataExport()
         {
 
-            SystemHRISIntegration dataImport = new SystemHRISIntegration();
+            SystemHRISIntegration dataExport = new SystemHRISIntegration();
 
-            DataTable dtSingleDataImport = new DataTable();
+            DataTable dtSingleDataExport = new DataTable();
             try
             {
-                dtSingleDataImport = DataProxy.FetchDataTable("s_sp_get_data_export_details");
-                if (dtSingleDataImport.Rows.Count > 0)
+                dtSingleDataExport = DataProxy.FetchDataTable("s_sp_get_data_export_details");
+                if (dtSingleDataExport.Rows.Count > 0)
                 {
-                    dataImport.u_sftp_id_pk = dtSingleDataImport.Rows[0]["u_sftp_id_pk"].ToString();
-                    dataImport.u_sftp_URI = dtSingleDataImport.Rows[0]["u_sftp_URI"].ToString();
-                    dataImport.u_sftp_port = dtSingleDataImport.Rows[0]["u_sftp_port"].ToString();
-                    dataImport.u_sftp_username = dtSingleDataImport.Rows[0]["u_sftp_username"].ToString();
-                    dataImport.u_sftp_password = dtSingleDataImport.Rows[0]["u_sftp_password"].ToString();
+                    dataExport.u_sftp_id_pk = dtSingleDataExport.Rows[0]["u_sftp_id_pk"].ToString();
+                    dataExport.u_sftp_URI = dtSingleDataExport.Rows[0]["u_sftp_URI"].ToString();
+                    dataExport.u_sftp_port = dtSingleDataExport.Rows[0]["u_sftp_port"].ToString();
+                    dataExport.u_sftp_username = dtSingleDataExport.Rows[0]["u_sftp_username"].ToString();
+                    dataExport.u_sftp_password = dtSingleDataExport.Rows[0]["u_sftp_password"].ToString();
 
-                    dataImport.u_sftp_exp_is_hris = Convert.ToBoolean(dtSingleDataImport.Rows[0]["u_sftp_exp_is_hris"]);
-                    dataImport.u_sftp_exp_hris_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_hris_filename"].ToString();
-                    dataImport.u_sftp_exp_is_catalog_offering = Convert.ToBoolean(dtSingleDataImport.Rows[0]["u_sftp_exp_is_catalog_offering"]);
-                    dataImport.u_sftp_exp_catalog_offering_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_catalog_offering_filename"].ToString();
-                    dataImport.u_sftp_exp_is_learning_history = Convert.ToBoolean(dtSingleDataImport.Rows[0]["u_sftp_exp_is_learning_history"]);
-                    dataImport.u_sftp_exp_learning_history_filename = dtSingleDataImport.Rows[0]["u_sftp_exp_learning_history_filename"].ToString();
+                    dataExport.u_sftp_exp_is_hris = Convert.ToBoolean(dtSingleDataExport.Rows[0]["u_sftp_exp_is_hris"]);
+                    dataExport.u_sftp_exp_hris_filename = dtSingleDataExport.Rows[0]["u_sftp_exp_hris_filename"].ToString();
+                    dataExport.u_sftp_exp_is_catalog_offering = Convert.ToBoolean(dtSingleDataExport.Rows[0]["u_sftp_exp_is_catalog_offering"]);
+                    dataExport.u_sftp_exp_catalog_offering_filename = dtSingleDataExport.Rows[0]["u_sftp_exp_catalog_offering_filename"].ToString();
+                    dataExport.u_sftp_exp_is_learning_history = Convert.ToBoolean(dtSingleDataExport.Rows[0]["u_sftp_exp_is_learning_history"]);
+                    dataExport.u_sftp_exp_learning_history_filename = dtSingleDataExport.Rows[0]["u_sftp_exp_learning_history_filename"].ToString();
 
-                    dataImport.u_sftp_occurs_every = dtSingleDataImport.Rows[0]["u_sftp_occurs_every"].ToString();
-                    dataImport.u_sftp_time_every = dtSingleDataImport.Rows[0]["u_sftp_time_every"].ToString();
-                    dataImport.u_sftp_start_date = dtSingleDataImport.Rows[0]["u_sftp_start_date"].ToString();
+                    dataExport.u_sftp_occurs_every = dtSingleDataExport.Rows[0]["u_sftp_occurs_every"].ToString();
+                    dataExport.u_sftp_time_every = dtSingleDataExport.Rows[0]["u_sftp_time_every"].ToString();
+                    dataExport.u_sftp_start_date = dtSingleDataExport.Rows[0]["u_sftp_start_date"].ToString();
                 }
 
-                return dataImport;
+                return dataExport;
             }
             catch (Exception)
             {

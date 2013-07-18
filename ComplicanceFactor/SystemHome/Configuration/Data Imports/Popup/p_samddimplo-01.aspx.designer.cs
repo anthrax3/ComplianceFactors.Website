@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports {
+namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports.Popup {
     
     
-    public partial class dsiplay_data_import_logs {
+    public partial class p_samddimplo_01 {
         
         /// <summary>
-        /// gvDataImportJobRuns control.
+        /// gvDataImportJobRun control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDataImportJobRuns;
+        protected global::System.Web.UI.WebControls.GridView gvDataImportJobRun;
         
         /// <summary>
         /// btnCloseWindow control.

@@ -7,6 +7,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
@@ -131,8 +133,41 @@
 
         }
     </script>
-    <br />
-    <br />
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $(".displayImportLog").fancybox({
+                 'type': 'iframe',
+                 'titlePosition': 'over',
+                 'titleShow': true,
+                 'showCloseButton': true,
+                 'scrolling': 'yes',
+                 'autoScale': false,
+                 'autoDimensions': false,
+                 'helpers': { overlay: { closeClick: false} },
+                 'width': 740,
+                 'height': 200,
+                 'margin': 0,
+                 'padding': 0,
+                 'overlayColor': '#000',
+                 'overlayOpacity': 0.7,
+                 'hideOnOverlayClick': false,
+                 'href': 'Popup/p_samddimplo-01.aspx',
+                 'onComplete': function () {
+                     $.fancybox.showActivity();
+                     $('#fancybox-frame').load(function () {
+                         $.fancybox.hideActivity();
+                         $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                         var heightPane = $(this).contents().find('#content').height();
+                         $(this).contents().find('#fancybox-frame').css({
+                             'height': heightPane + 'px'
+
+                         })
+                     });
+
+                 }
+             });
+         });
+    </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samdimpmp" runat="server"
         ValidationGroup="samdimpmp"></asp:ValidationSummary>
     <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"
@@ -388,7 +423,7 @@
                         <asp:CalendarExtender ID="ceDate" Format="MM/dd/yyyy" TargetControlID="txtBegining"
                             runat="server">
                         </asp:CalendarExtender>
-                        &nbsp;&nbsp;<asp:Button ID="btnDisplayImportLogs" runat="server" Text="<%$ LabelResourceExpression: app_display_import_logs_button_text %>" />
+                        &nbsp;&nbsp;<asp:Button ID="btnDisplayImportLogs" runat="server" CssClass="displayImportLog cursor_hand" Text="<%$ LabelResourceExpression: app_display_import_logs_button_text %>" />
                     </td>
                 </tr>
                 <tr>

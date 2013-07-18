@@ -18,7 +18,7 @@ namespace ComplicanceFactor.Training
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/Training/tchp-01.aspx>" + LocalResources.GetGlobalLabel("app_training_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_deliveries_text") + "</a>";
+                lblBreadCrumb.Text = "<a href=/Training/tchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_training") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_deliveries_text") + "</a>";
                 try
                 {
                     ddlStatus.DataSource = SystemCatalogBLL.GetCourseAllStatus(SessionWrapper.CultureName, "sastcp-01");

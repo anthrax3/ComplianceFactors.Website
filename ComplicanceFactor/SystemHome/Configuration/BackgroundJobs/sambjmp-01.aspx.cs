@@ -18,8 +18,6 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
         private string Minutes;
         private int total;
         #endregion
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

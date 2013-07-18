@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true" CodeBehind="p-samdexplo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.Popup.p_samdexplo_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="p-samdexplo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.Popup.p_samdexplo_01" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -58,7 +60,7 @@
     <div id="content">
         <%--Heading--%>
         <div class="div_header_700">
-           Data Export Job Run(s):
+            Data Export Job Run(s):
         </div>
         <div>
             <br />
@@ -75,7 +77,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1">
-                                        <ItemTemplate>                                            
+                                        <ItemTemplate>
                                             <input type="button" id='<%# Eval("u_sftp_run_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="View Log Details" />'
                                                 class="viewLog cursor_hand" />
                                         </ItemTemplate>
@@ -91,8 +93,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnCloseWindow" ValidationGroup="saaloc" runat="server"  OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                                Text="Close Window"/>
+                            <asp:Button ID="btnCloseWindow" ValidationGroup="saaloc" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                                Text="Close Window" />
                         </td>
                     </tr>
                 </table>
@@ -100,4 +102,3 @@
         </div>
     </div>
 </asp:Content>
-

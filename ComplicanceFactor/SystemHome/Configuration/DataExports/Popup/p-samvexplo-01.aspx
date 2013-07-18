@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true" CodeBehind="p-samvexplo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.Popup.p_samvexplo_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true"
+    CodeBehind="p-samvexplo-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.DataExports.Popup.p_samvexplo_01" %>
+
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -21,6 +23,8 @@
     <div id="content">
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
         </div>
+        <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+        </div>
         <div class="div_header_650">
             Export Log Details:
         </div>
@@ -34,22 +38,21 @@
             <table>
                 <tr>
                     <td colspan="2" class="align_left">
-                        <asp:Button ID="btnDownloadLog" CssClass="cursor_hand" Text="Download Log" 
-                            runat="server" onclick="btnDownloadLog_Click"/>
+                        <asp:Button ID="btnDownloadLog" CssClass="cursor_hand" Text="Download Log" runat="server"
+                            OnClick="btnDownloadLog_Click" />
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td class="align_left">
-                        <asp:Button ID="btnPrint" CssClass="cursor_hand" Text="Print" runat="server" 
-                            onclick="btnPrint_Click"/>
+                        <asp:Button ID="btnPrint" CssClass="cursor_hand" Text="Print" runat="server" OnClick="btnPrint_Click" />
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td align="center">
                         <asp:Button ID="btnCloseWindow" CssClass="cursor_hand" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                            runat="server" Text="Close Window"/>
+                            runat="server" Text="Close Window" />
                     </td>
                 </tr>
             </table>
@@ -59,4 +62,3 @@
         ShowDocumentMapButton="false">
     </rsweb:ReportViewer>
 </asp:Content>
-

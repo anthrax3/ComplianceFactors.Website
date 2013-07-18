@@ -101,9 +101,7 @@
                 }
             });
         });
-    </script>
-    <br />
-    <br />
+    </script>  
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samdexpmp" runat="server"
         ValidationGroup="samdexpmp"></asp:ValidationSummary>
     <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"
@@ -316,11 +314,11 @@
                     <td class="align_left" colspan="2">
                         <asp:TextBox ID="txtOccursEvery" CssClass="textbox_50" runat="server"></asp:TextBox>&nbsp;&nbsp;<%=LocalResources.GetLabel("app_days_text")%>
                         &nbsp;<%=LocalResources.GetLabel("app_at_text")%>
-                        <asp:RequiredFieldValidator ID="rfvOccuranceTime" runat="server" ValidationGroup="samhrismp"
+                        <asp:RequiredFieldValidator ID="rfvOccuranceTime" runat="server" ValidationGroup="samdexpmp"
                             ControlToValidate="txtHours" ErrorMessage="Please enter the time">&nbsp;
                         </asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="rfvOccuranceTimeValid" runat="server" ErrorMessage="Please enter valid time"
-                            ValidationGroup="samhrismp" ControlToValidate="txtHours" ValidationExpression="^[0-9]+:\d\d$">&nbsp;
+                            ValidationGroup="samdexpmp" ControlToValidate="txtHours" ValidationExpression="^[0-9]+:\d\d$">&nbsp;
                         </asp:RegularExpressionValidator>
                         <asp:TextBox ID="txtHours" CssClass="textbox_75" runat="server"></asp:TextBox>
                         <asp:DropDownList ID="ddlTimeConversion" CssClass="textbox_50" runat="server">
@@ -331,7 +329,7 @@
                     <td class="align_left" colspan="3">
                         <asp:RegularExpressionValidator ID="regexDate" runat="server" ControlToValidate="txtBegining"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please enter the valid date" Display="Dynamic" ValidationGroup="samhrismp">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="Please enter the valid date" Display="Dynamic" ValidationGroup="samdexpmp">&nbsp;</asp:RegularExpressionValidator>
                         <%=LocalResources.GetLabel("app_beginning_text")%>:&nbsp;&nbsp;<asp:TextBox ID="txtBegining"
                             CssClass="textbox_75" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceDate" Format="MM/dd/yyyy" TargetControlID="txtBegining"

@@ -20,7 +20,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DocumentTypes
             {
                 vs_saedoctn.Style.Add("display", "none");
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>" + "&nbsp;>&nbsp;" + "<a href=/SystemHome/Configuration/DocumentTypes/samdoctmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_document_types") + "</a>" + "&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_document_type_text") + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>" + "&nbsp;>&nbsp;" + "<a href=/SystemHome/Configuration/DocumentTypes/samdoctmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_document_types") + "</a>" + "&nbsp;>&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_document_type_text") + "</a>";
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     divSuccess.Style.Add("display", "block");

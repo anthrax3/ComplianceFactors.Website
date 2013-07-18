@@ -31,11 +31,12 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public int t_transcript_credits { get; set; }
         public int t_transcript_hours { get; set; }
         public bool t_transcript_active_flag { get; set; }
-
         public string t_transcript_status_name { get; set; }
-
-
         public string t_transcript_session_id_fk { get; set; }
+
+        public DateTime? t_transcript_target_due_date_background { get; set; }
+        public DateTime? t_transcript_actual_date_background { get; set; }
+
         // public string t_transcript_id_pk { get; set; }
         public string t_transcript_session_user_id_fk { get; set; }
         public string t_transcript_sessiont_course_id_fk { get; set; }

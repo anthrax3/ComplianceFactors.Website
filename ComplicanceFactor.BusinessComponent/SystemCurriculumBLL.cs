@@ -118,23 +118,23 @@ namespace ComplicanceFactor.BusinessComponent
             }
 
         }
-        /// <summary>
-        /// Get Approval
-        /// </summary>
-        /// <returns></returns>
-        public static DataTable dGetApproval()
-        {
+        ///// <summary>
+        ///// Get Approval
+        ///// </summary>
+        ///// <returns></returns>
+        //public static DataTable dGetApproval()
+        //{
 
-            try
-            {
-                return DataProxy.FetchDataTable("c_curriculum_sp_get_approval");
+        //    try
+        //    {
+        //        return DataProxy.FetchDataTable("c_curriculum_sp_get_approval");
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
         /// <summary>
