@@ -13,7 +13,6 @@
 
         $(document).ready(function () {
             var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
-
             $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
@@ -284,7 +283,7 @@
             </table>
         </div>
     </div>
-    <asp:ModalPopupExtender ID="mpeAddAttachment" runat="server" TargetControlID="btnAttachment"
+    <%--<asp:ModalPopupExtender ID="mpeAddAttachment" runat="server" TargetControlID="btnAttachment"
         PopupControlID="pnlUploadFile" BackgroundCssClass="transparent_class" DropShadow="false"
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
@@ -294,14 +293,13 @@
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
     </asp:ModalPopupExtender>
-    <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-        padding-left: 0px;  padding-right: 0px;">
+    <asp:Panel ID="pnlUploadFile" Style="display: none;  padding-left: 0px;
+        padding-right: 0px" runat="server" CssClass="modalPopup_upload modal_popup_background">
         <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
             <div>
                 <div class="uploadpopup_header">
                     <div class="left">
-                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>"
-                            runat="server"></asp:Label>
+                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>" runat="server"></asp:Label>
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
@@ -317,9 +315,9 @@
             <br />
             <div class="uploadpanel font_normal">
                 <asp:ValidationSummary class="validation_summary_error_popup" ID="vsFileUpload" runat="server"
-                    ValidationGroup="ccaharmfileupload" />
-                <asp:CustomValidator ValidationGroup="ccaharmfileupload" ID="cvFileUpload" runat="server"
-                    EnableClientScript="true" ErrorMessage="<%$ LabelResourceExpression: app_file_upload_valid_msg_text %>"
+                    ValidationGroup="materialfileupload" />
+                <asp:CustomValidator ValidationGroup="materialfileupload" ID="cvFileUpload" runat="server"
+                    EnableClientScript="true" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>"
                     ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
                 <div class="div_controls">
                     <table cellpadding="0" cellspacing="0">
@@ -337,7 +335,7 @@
                 <br />
                 <br />
                 <div class="multiple_button">
-                    <asp:Button ID="btnUploadAttachment" ValidationGroup="ccaharmfileupload" runat="server"
+                    <asp:Button ID="btnUploadAttachment" ValidationGroup="materialfileupload" runat="server"
                         Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand"
                         OnClick="btnUploadAttachment_Click" />
                 </div>
@@ -345,5 +343,66 @@
             </div>
             <br />
         </div>
+    </asp:Panel>--%>
+    <asp:ModalPopupExtender ID="mpeAddAttachment" TargetControlID="btnAttachment"
+        BackgroundCssClass="transparent_class" PopupControlID="pnlAddAttachment" OkControlID="imgClose" 
+        DropShadow="false" PopupDragHandleControlID="pnlUploadFileHeading" OnCancelScript="cleartext()" CancelControlID="btnCancel"
+        OnOkScript="cleartext()" runat="server">
+    </asp:ModalPopupExtender>
+    <asp:ModalPopupExtender ID="mpeEditAttachment" runat="server" TargetControlID="btnEdit"
+        PopupControlID="pnlAddAttachment" BackgroundCssClass="transparent_class" DropShadow="false"
+        PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
+        OnCancelScript="cleartext();" CancelControlID="btnCancel">
+    </asp:ModalPopupExtender>
+    <asp:Panel ID="pnlAddAttachment" Style="display: none;  padding-left: 0px;
+        padding-right: 0px" runat="server" CssClass="modalPopup_upload modal_popup_background">
+        <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
+            <div>
+                <div class="uploadpopup_header">
+                    <div class="left">
+                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>" runat="server"></asp:Label>
+                    </div>
+                    <div class="right">
+                        <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
+                            z-index: 1103; position: absolute; width: 30px; height: 30px;" runat="server"
+                            ImageUrl="~/Images/Zoom/fancy_close.png" />
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
+        <div>
+            <br />
+            <div class="uploadpanel font_normal">
+                <asp:ValidationSummary class="validation_summary_error_popup" ID="vsFileUpload" runat="server"
+                    ValidationGroup="vs_documentUpload" />
+                <asp:CustomValidator ValidationGroup="vs_documentUpload" ID="cvFileUpload" runat="server"
+                    EnableClientScript="true" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
+                <div class="div_controls">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td valign="middle">
+                                <%=LocalResources.GetLabel("app_select_file_text")%>
+                            </td>
+                            <td>
+                                <asp:FileUpload ID="fupFiles" runat="server" Width="460" size="60" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="multiple_button">
+                    <asp:Button ID="btnUploadAttachment" runat="server" ValidationGroup="vs_documentUpload"
+                        OnClick="btnUploadDocument_Click" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" />
+                </div>
+                <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
+            </div>
+            <br />
+        </div>
     </asp:Panel>
+</asp:Content>
+
 </asp:Content>

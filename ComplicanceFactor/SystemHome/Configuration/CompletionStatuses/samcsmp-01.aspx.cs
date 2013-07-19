@@ -91,19 +91,33 @@ namespace ComplicanceFactor.SystemHome.Configuration.Completion_Statuses
 
             hfldVLSSystem.Value = dtCompletionStatuses.Rows[15]["s_ui_dropdown_id_pk"].ToString();
             txtlblVLSSystem.Text = dtCompletionStatuses.Rows[15]["s_ui_dropdown_us_english"].ToString();
-            
-            
-            
-            
-            
 
-            chkBrowse.Checked = Convert.ToBoolean( dtCompletionsStatusesFlag.Rows[0]["s_comp_status_browse_enabled_flag"]);
-            chkUnknown.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_unknown_enabled_flag"]);
-            chkOLTPlayer.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_olt_enabled_flag"]);
-            chkVLSSystem.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_vls_enabled_flag"]);
-            chkExempt.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_exempt_enabled_flag"]);
-            chkNotScored.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_noscore_enabled_flag"]);
-            chkPending.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_pending_enabled_flag"]);
+            if (!string.IsNullOrEmpty(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_browse_enabled_flag"].ToString()))
+            {
+                chkBrowse.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_browse_enabled_flag"]);
+            }
+            if (!string.IsNullOrEmpty(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_olt_enabled_flag"].ToString()))
+            {
+                chkOLTPlayer.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_olt_enabled_flag"]);
+            }
+            if (!string.IsNullOrEmpty(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_vls_enabled_flag"].ToString()))
+            {
+                chkVLSSystem.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_vls_enabled_flag"]);
+            }
+            if (!string.IsNullOrEmpty(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_exempt_enabled_flag"].ToString()))
+            {
+                chkExempt.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_exempt_enabled_flag"]);
+            }
+            if (!string.IsNullOrEmpty(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_noscore_enabled_flag"].ToString()))
+            {
+                chkNotScored.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_noscore_enabled_flag"]);
+            }
+            if (!string.IsNullOrEmpty(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_pending_enabled_flag"].ToString()))
+            {
+                chkPending.Checked = Convert.ToBoolean(dtCompletionsStatusesFlag.Rows[0]["s_comp_status_pending_enabled_flag"]);
+            }
+            
+            
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

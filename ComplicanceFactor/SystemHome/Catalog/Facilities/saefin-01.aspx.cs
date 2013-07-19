@@ -60,7 +60,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Facilities
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = LocalResources.GetGlobalLabel("app_insert_sucess_msg_text");
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
                     }
                 }
 
@@ -216,7 +216,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Facilities
                 if (result == 0)
                 {
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerText = LocalResources.GetLabel("app_update_sucess_msg_text");
+                    divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
                 }
             }
             catch (Exception ex)

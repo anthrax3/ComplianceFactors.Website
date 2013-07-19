@@ -42,7 +42,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerHtml = LocalResources.GetText("app_success_msg_text");
+                        divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
                     }
                 }
                 //set owner and coordiantor
@@ -127,7 +127,7 @@ namespace ComplicanceFactor.SystemHome.Domains
                 {
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
-                    divSuccess.InnerHtml = LocalResources.GetText("app_update_msg_text");
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_update_text");
                 }
             }
             catch (Exception ex)

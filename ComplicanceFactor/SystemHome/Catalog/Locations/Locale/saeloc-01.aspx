@@ -29,9 +29,9 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvName" runat="server" ValidationGroup="saeresloc"
-                                ControlToValidate="txtName" ErrorMessage="<%$ LocalizationResourceExpression: app_validation_name_msg_text %>">&nbsp;
+                                ControlToValidate="txtName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                             </asp:RequiredFieldValidator>
-                            * <%=LocalResources.GetLocalizationResourceLabelText("app_location_name_text")%>:
+                            * <%=LocalResources.GetLabel("app_location_name_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtName" runat="server" CssClass="textbox_width"></asp:TextBox>
@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td valign="top">
-                            <%=LocalResources.GetLocalizationResourceLabelText("app_description_text")%>:
+                            <%=LocalResources.GetLabel("app_description_text")%>:
                         </td>
                         <td>
                             <textarea id="txtDescriptoin" runat="server" rows="3" cols="53"></textarea>
@@ -47,7 +47,7 @@
                     </tr>
                     <tr>
                         <td valign="top">
-                            <%=LocalResources.GetLocalizationResourceLabelText("app_airport_code_text")%>:
+                            <%=LocalResources.GetLabel("app_airport_code_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:TextBox ID="txtAirPortCode" runat="server" CssClass="textbox_width"></asp:TextBox>
@@ -58,11 +58,11 @@
             <br />
             <div class="div_padding_10">
                 <div class="left">
-                    <asp:Button ID="btnSave" ValidationGroup="saeresloc" runat="server" Text="<%$ LocalizationResourceExpression: app_save_button_text %>" OnClick="btnSave_Click" />
+                    <asp:Button ID="btnSave" ValidationGroup="saeresloc" runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" OnClick="btnSave_Click" />
                 </div>
                 <div class="right">
                     <asp:Button ID="btnCancel" runat="server" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close()"
-                        Text="<%$ LocalizationResourceExpression: app_cancel_button_text %>" />
+                        Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                 </div>
                 <div class="clear">
                 </div>

@@ -725,14 +725,10 @@
     <Content Include="SystemHome\Configuration\CurriculumTypes\saanctn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\saectn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\DataExports\dsiplay_data_export_logs.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\Popup\p-samvexplo-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\samdexpmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\DataExports\view_data_export_log_details.aspx" />
-    <Content Include="SystemHome\Configuration\Data Imports\dsiplay_data_import_logs.aspx" />
     <Content Include="SystemHome\Configuration\Data Imports\samdimpmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\Data Imports\view_data_import_log_details.aspx" />
     <Content Include="SystemHome\Configuration\DeliveryTypes\saandtn-01.aspx" />
     <Content Include="SystemHome\Configuration\DeliveryTypes\saedtn-01.aspx" />
     <Content Include="SystemHome\Configuration\DeliveryTypes\samdtmp-01.aspx" />
@@ -3089,13 +3085,6 @@
     <Compile Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx.designer.cs">
       <DependentUpon>samctmp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\DataExports\dsiplay_data_export_logs.aspx.cs">
-      <DependentUpon>dsiplay_data_export_logs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\DataExports\dsiplay_data_export_logs.aspx.designer.cs">
-      <DependentUpon>dsiplay_data_export_logs.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx.cs">
       <DependentUpon>p-samdexplo-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3117,33 +3106,12 @@
     <Compile Include="SystemHome\Configuration\DataExports\samdexpmp-01.aspx.designer.cs">
       <DependentUpon>samdexpmp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\DataExports\view_data_export_log_details.aspx.cs">
-      <DependentUpon>view_data_export_log_details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\DataExports\view_data_export_log_details.aspx.designer.cs">
-      <DependentUpon>view_data_export_log_details.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Data Imports\dsiplay_data_import_logs.aspx.cs">
-      <DependentUpon>dsiplay_data_import_logs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Data Imports\dsiplay_data_import_logs.aspx.designer.cs">
-      <DependentUpon>dsiplay_data_import_logs.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SystemHome\Configuration\Data Imports\samdimpmp-01.aspx.cs">
       <DependentUpon>samdimpmp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Configuration\Data Imports\samdimpmp-01.aspx.designer.cs">
       <DependentUpon>samdimpmp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Data Imports\view_data_import_log_details.aspx.cs">
-      <DependentUpon>view_data_import_log_details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Data Imports\view_data_import_log_details.aspx.designer.cs">
-      <DependentUpon>view_data_import_log_details.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\DeliveryTypes\saandtn-01.aspx.cs">
       <DependentUpon>saandtn-01.aspx</DependentUpon>

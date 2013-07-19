@@ -229,13 +229,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Materials {
         protected global::AjaxControlToolkit.ModalPopupExtender mpeEditAttachment;
         
         /// <summary>
-        /// pnlUploadFile control.
+        /// pnlAddAttachment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUploadFile;
+        protected global::System.Web.UI.WebControls.Panel pnlAddAttachment;
         
         /// <summary>
         /// pnlUploadFileHeading control.

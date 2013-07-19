@@ -289,7 +289,7 @@
                 <asp:ValidationSummary class="validation_summary_error_popup" ID="vsFileUpload" runat="server"
                     ValidationGroup="ccaharmfileupload" />
                 <asp:CustomValidator ValidationGroup="ccaharmfileupload" ID="cvFileUpload" runat="server"
-                    EnableClientScript="true" ErrorMessage="<%$ LabelResourceExpression: app_file_upload_valid_msg_text %>" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
+                    EnableClientScript="true" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
                 <div class="div_controls">
                     <table cellpadding="0" cellspacing="0">
                         <tr>

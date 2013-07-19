@@ -25,7 +25,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Navigation
                 {
                     //breadcrumb
                     Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/sascmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_configuration_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_system_navigation_text") + "</a>";
+                    lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Configuration/sascmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_configuration_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_system_navigation_text") + "</a>";
 
                     //first time the web and application navigation will be load
                     PopulateAppNavigation();

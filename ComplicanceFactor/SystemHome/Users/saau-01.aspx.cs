@@ -119,6 +119,11 @@ namespace ComplicanceFactor.SystemHome
 
         protected void btnSavenewuser_header_Click(object sender, EventArgs e)
         {
+            CreateUser();
+        }
+        // Save new user
+        private void CreateUser()
+        {
             CultureInfo culture = new CultureInfo("en-US");
             User addnewuser = new User();
             addnewuser.Userid = Guid.NewGuid().ToString();
@@ -239,7 +244,7 @@ namespace ComplicanceFactor.SystemHome
                         Response.Redirect("~/SystemHome/Users/saeu-01.aspx?id=" + SecurityCenter.EncryptText(addnewuser.Userid) + "&scopy=" + SecurityCenter.EncryptText("sucess"), false);
                     }
 
-                    //Blank form
+                    //Blank form  //doubt
 
                     reset();
 
@@ -299,10 +304,9 @@ namespace ComplicanceFactor.SystemHome
                 }
             }
         }
-
         protected void btnsavenewuser_footer_Click(object sender, EventArgs e)
         {
-            btnSavenewuser_header_Click(sender, e);
+            CreateUser();
         }
 
         protected void btnCancel_header_Click(object sender, EventArgs e)

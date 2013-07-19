@@ -181,14 +181,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
                 {
                     course.c_course_id_pk = txtCourseId.Text;
                     course.c_course_title = txtCourseTitle.Text;
-                    
+
 
                 }
                 else
                 {
                     course.c_course_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     course.c_course_title = SecurityCenter.DecryptText(Request.QueryString["name"]);
-                    
+
 
                 }
                 gvsearchDetails.DataSource = SystemInstructorBLL.SearchSystemCatalog(course);
@@ -210,15 +210,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
                     }
                 }
             }
+            
             if (gvsearchDetails.Rows.Count == 0)
             {
 
-                disable();
+                enable_disable(false);
 
             }
             else
             {
-                enable();
+                enable_disable(true);
             }
             if (gvsearchDetails.Rows.Count > 0)
             {
@@ -231,70 +232,39 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
                 }
             }
 
-
         }
-        private void disable()
+        private void enable_disable(bool status)
         {
-            btnHeaderFirst.Visible = false;
-            btnHeaderPrevious.Visible = false;
-            btnHeaderNext.Visible = false;
-            btnHeaderLast.Visible = false;
+            btnHeaderFirst.Visible = status;
+            btnHeaderPrevious.Visible = status;
+            btnHeaderNext.Visible = status;
+            btnHeaderLast.Visible = status;
 
-            btnFooterFirst.Visible = false;
-            btnFooterPrevious.Visible = false;
-            btnFooterNext.Visible = false;
-            btnFooterLast.Visible = false;
+            btnFooterFirst.Visible = status;
+            btnFooterPrevious.Visible = status;
+            btnFooterNext.Visible = status;
+            btnFooterLast.Visible = status;
 
-            ddlHeaderResultPerPage.Visible = false;
-            ddlFooterResultPerPage.Visible = false;
+            ddlHeaderResultPerPage.Visible = status;
+            ddlFooterResultPerPage.Visible = status;
 
-            txtHeaderPage.Visible = false;
-            lblHeaderPage.Visible = false;
+            txtHeaderPage.Visible = status;
+            lblHeaderPage.Visible = status;
 
-            txtFooterPage.Visible = false;
-            lblFooterPage.Visible = false;
+            txtFooterPage.Visible = status;
+            lblFooterPage.Visible = status;
 
-            btnHeaderGoto.Visible = false;
-            btnFooterGoto.Visible = false;
-
-
-            lblHeaderResultPerPage.Visible = false;
-            lblFooterResultPerPage.Visible = false;
-
-            lblFooterPageOf.Visible = false;
-            lblHeaderPageOf.Visible = false;
-
-        }
-        private void enable()
-        {
-            btnHeaderFirst.Visible = true;
-            btnHeaderPrevious.Visible = true;
-            btnHeaderNext.Visible = true;
-            btnHeaderLast.Visible = true;
-
-            btnFooterFirst.Visible = true;
-            btnFooterPrevious.Visible = true;
-            btnFooterNext.Visible = true;
-            btnFooterLast.Visible = true;
-
-            ddlHeaderResultPerPage.Visible = true;
-            ddlFooterResultPerPage.Visible = true;
-
-            txtHeaderPage.Visible = true;
-            lblHeaderPage.Visible = true;
-
-            txtFooterPage.Visible = true;
-            lblFooterPage.Visible = true;
-
-            btnHeaderGoto.Visible = true;
-            btnFooterGoto.Visible = true;
+            btnHeaderGoto.Visible = status;
+            btnFooterGoto.Visible = status;
 
 
-            lblHeaderResultPerPage.Visible = true;
-            lblFooterResultPerPage.Visible = true;
+            lblHeaderResultPerPage.Visible = status;
+            lblFooterResultPerPage.Visible = status;
 
-            lblFooterPageOf.Visible = true;
-            lblHeaderPageOf.Visible = true;
+            lblFooterPageOf.Visible = status;
+            lblHeaderPageOf.Visible = status;
+
+            btnSaveSelected.Visible = status;
 
         }
         protected void gvsearchDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -302,10 +272,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
             gvsearchDetails.PageIndex = e.NewPageIndex;
 
             SearchResult();
-        }
-        protected void gvsearchDetails_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-
         }
         protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
@@ -317,66 +283,30 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
                 CheckBox chkSelect = (CheckBox)(grdResourceRow.Cells[1].FindControl("chkSelect"));
                 if (chkSelect.Checked == true)
                 {
-                    AddDataToInstructorCourse(instructorId,gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), grdResourceRow.Cells[1].Text, grdResourceRow.Cells[0].Text, grdResourceRow.Cells[2].Text, dtInstructorCourse);
+                    AddDataToInstructorCourse(instructorId, gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), grdResourceRow.Cells[1].Text, grdResourceRow.Cells[0].Text, grdResourceRow.Cells[2].Text, dtInstructorCourse);
 
                 }
             }
-            SystemInstructorBLL.InsertInstructorCourse(ConvertDataTableToXml(dtInstructorCourse));
+            /// This method is used to convert the DataTable into string XML format.
+            ///
+            /// DataTable to be converted./// (string) XML form of the DataTable.
+            ConvertDataTables convertToXml = new ConvertDataTables();
+            SystemInstructorBLL.InsertInstructorCourse(convertToXml.ConvertDataTableToXml((dtInstructorCourse)));
 
             //Close fancybox
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
             //Remove duplicate resource
             //dtInstructorCourse = RemoveDuplicateRows(dtInstructorCourse, "s_resource_system_id_pk");
-            
+
         }
-        /// This method is used to convert the DataTable into string XML format.
-        ///
-        /// DataTable to be converted./// (string) XML form of the DataTable.
-        /// </summary>
-        public string ConvertDataTableToXml(DataTable dtBuildSql)
-        {
-            DataSet dsBuildSql = new DataSet("DataSet");
-
-            dsBuildSql.Tables.Add(dtBuildSql.Copy());
-            dsBuildSql.Tables[0].TableName = "Table";
-
-            foreach (DataColumn col in dsBuildSql.Tables[0].Columns)
-            {
-                col.ColumnMapping = MappingType.Attribute;
-            }
-            return dsBuildSql.GetXml().ToString();
-        }
-        /// <summary>
-        /// Remove duplicate rows
-        /// </summary>
-        /// <param name="dTable"></param>
-        /// <param name="colName"></param>
-        /// <returns></returns>
-        public DataTable RemoveDuplicateRows(DataTable dTable, string colName)
-        {
-            Hashtable hTable = new Hashtable();
-            ArrayList duplicateList = new ArrayList();
-
-            foreach (DataRow drow in dTable.Rows)
-            {
-                if (hTable.Contains(drow[colName]))
-                    duplicateList.Add(drow);
-                else
-                    hTable.Add(drow[colName], string.Empty);
-            }
-
-            foreach (DataRow dRow in duplicateList)
-                dTable.Rows.Remove(dRow);
-
-            return dTable;
-        }
+        
         /// <summary>
         /// Add data to instructor course
         /// </summary>
         /// <param name="c_instructor_id_fk"></param>
         /// <param name="c_course_id_fk"></param>
         /// <param name="dtTempInstructor"></param>
-        private void AddDataToInstructorCourse(string c_instructor_id_fk, string c_course_id_fk,string c_course_id_pk,string c_course_title,string c_delivery_type_name, DataTable dtTempInstructor)
+        private void AddDataToInstructorCourse(string c_instructor_id_fk, string c_course_id_fk, string c_course_id_pk, string c_course_title, string c_delivery_type_name, DataTable dtTempInstructor)
         {
             DataRow row;
             row = dtTempInstructor.NewRow();
@@ -388,6 +318,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Instructor
             dtTempInstructor.Rows.Add(row);
 
         }
-       
+
     }
 }

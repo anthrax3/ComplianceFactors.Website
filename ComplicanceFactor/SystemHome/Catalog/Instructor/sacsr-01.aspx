@@ -114,10 +114,9 @@
         <br />
         <div class="div_padding_25">
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="table_700 tablesorter"
-                runat="server" EmptyDataText="No result found." DataKeyNames="c_course_system_id_pk"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression:app_no_result_found_text %>" DataKeyNames="c_course_system_id_pk"
                 AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
-                PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
-                OnRowEditing="gvsearchDetails_RowEditing">
+                PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
                         HeaderText="<%$ LabelResourceExpression: app_course_name_text %>" DataField='c_course_title'

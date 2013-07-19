@@ -99,7 +99,7 @@
         <br />
         <div>
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
-                runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" AllowPaging="true"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" AutoGenerateColumns="False" AllowPaging="true"
                 EmptyDataRowStyle-CssClass="empty_row" DataKeyNames="c_facility_system_id_pk"
                 PagerSettings-Visible="false" PageSize="5" OnRowCommand="gvsearchDetails_RowCommand"
                 OnRowEditing="gvsearchDetails_RowEditing" OnPageIndexChanging="gvsearchDetails_PageIndexChanging">

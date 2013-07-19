@@ -84,13 +84,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <a><%=LocalResources.GetLabel("app_manage_enrollments_text")%> </a>
+                        <a href="../SystemHome/Catalog/MassEnrollment/samep-01.aspx"><%=LocalResources.GetLabel("app_manage_enrollments_text")%> </a>
                     </td>
                     <td>
-                        <a><%=LocalResources.GetLabel("app_manage_approvals_text")%></a>
+                        <a href="../SystemHome/Catalog/Approvals/samamp-01.aspx"><%=LocalResources.GetLabel("app_manage_approvals_text")%></a>
                     </td>
                     <td>
-                        <a><%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
+                        <a href="../SystemHome/Catalog/Waitlist/samwsrp-01.aspx"><%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
                     </td>
                 </tr>
                 <tr>
@@ -119,7 +119,7 @@
                         <a href="../SystemHome/Catalog/Completion/samcsp-01.aspx"><%=LocalResources.GetLabel("app_manage_completions_text")%></a>
                     </td>
                     <td>
-                        <a><%=LocalResources.GetLabel("app_mass_completions_text")%></a>
+                        <a href="../SystemHome/Catalog/MassCompletions/samcp-01.aspx"><%=LocalResources.GetLabel("app_mass_completions_text")%></a>
                     </td>
                     <td>
                         <a href="../SystemHome/Catalog/UpdateCurriculumStatuses/saucsp-01.aspx"><%=LocalResources.GetLabel("app_update_curriculum_statuses_text")%></a>

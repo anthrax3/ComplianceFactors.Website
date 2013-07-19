@@ -98,7 +98,7 @@
         <br />
         <div>
             <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
-                runat="server" EmptyDataText="No result found." AutoGenerateColumns="False" AllowPaging="true"
+                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" AutoGenerateColumns="False" AllowPaging="true"
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="c_material_system_id_pk"
                 PageSize="10" OnRowCommand="gvsearchDetails_RowCommand" OnRowEditing="gvsearchDetails_RowEditing"
                 OnPageIndexChanging="gvsearchDetails_PageIndexChanging">
