@@ -396,7 +396,7 @@
                 <br />
                 <div class="multiple_button">
                     <asp:Button ID="btnUploadAttachment" runat="server" ValidationGroup="vs_documentUpload"
-                        OnClick="btnUploadDocument_Click" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" />
+                        OnClick="btnUploadAttachment_Click" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" />
                 </div>
                 <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
             </div>
@@ -405,4 +405,3 @@
     </asp:Panel>
 </asp:Content>
 
-</asp:Content>

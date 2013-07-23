@@ -68,7 +68,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="#"><%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
+                        <a href="../SystemHome/Catalog/Waitlist/samwmp-01.aspx"><%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
                     </td>
                     <td>
                         <a href="../SystemHome/Catalog/Resources/samrimp-01.aspx"><%=LocalResources.GetLabel("app_manage_resources_text")%></a>
@@ -84,10 +84,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="#"><%=LocalResources.GetLabel("app_mass_enrollments_text")%></a>
+                        <a href="../SystemHome/Catalog/MassEnrollment/samep-01.aspx"><%=LocalResources.GetLabel("app_mass_enrollments_text")%></a>
                     </td>
                     <td>
-                        <a href="#"><%=LocalResources.GetLabel("app_mass_completions_text")%></a>
+                        <a href="../SystemHome/Catalog/MassCompletions/samcp-01.aspx"><%=LocalResources.GetLabel("app_mass_completions_text")%></a>
                     </td>
                     <td>
                        <a href="../SystemHome/Catalog/UpdateCurriculumStatuses/saucsp-01.aspx"><%=LocalResources.GetLabel("app_update_curriculum_statuses_text")%></a>

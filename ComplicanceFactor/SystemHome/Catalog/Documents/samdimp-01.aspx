@@ -76,6 +76,8 @@
                             OnSelectedIndexChanged="ddlResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>20</asp:ListItem>
+                            <asp:ListItem>30</asp:ListItem>
+                            <asp:ListItem>40</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
                             <asp:ListItem>Show All</asp:ListItem>
                         </asp:DropDownList>
@@ -157,6 +159,8 @@
                             OnSelectedIndexChanged="ddlResultPerPage_SelectedIndexChanged">
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>20</asp:ListItem>
+                            <asp:ListItem>30</asp:ListItem>
+                            <asp:ListItem>40</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
                             <asp:ListItem>Show All</asp:ListItem>
                         </asp:DropDownList>

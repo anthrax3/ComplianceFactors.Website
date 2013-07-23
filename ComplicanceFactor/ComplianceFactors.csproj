@@ -807,6 +807,7 @@
     <None Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.xss">
       <DependentUpon>dsErrorLogDetails.xsd</DependentUpon>
     </None>
+    <None Include="SystemHome\Configuration\Navigation\myPageTemplate.tmp" />
     <None Include="SystemHome\Configuration\Themes\Logo\ComplianceFactorsLogo.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Logo\rainbow_background-t2.jpg" />
     <Content Include="SystemHome\Configuration\Themes\Popup\p-preview.aspx" />

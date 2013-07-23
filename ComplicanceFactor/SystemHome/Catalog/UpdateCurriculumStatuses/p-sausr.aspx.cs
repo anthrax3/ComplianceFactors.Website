@@ -14,6 +14,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
 
             if (!IsPostBack)
             {
+                SessionWrapper.TempEmployeelist.Clear();
                 SessionWrapper.TempEmployeelist = Employee();
                 SearchResult();
                 //count page of page in search result

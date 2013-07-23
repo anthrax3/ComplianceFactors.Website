@@ -1532,7 +1532,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 Hashtable htGetCss = new Hashtable();
                 htGetCss.Add("@user_id", user_id);
-                DataTable dt = DataProxy.FetchDataTable("app_sp_get_css", htGetCss);
+                DataTable dt = DataProxy.FetchDataTable("app_sp_get_css",htGetCss);
                 usercss.css = dt.Rows[0]["css"].ToString();
                 usercss.popup_background = dt.Rows[0]["popup_background"].ToString();
                 return usercss;
@@ -1544,7 +1544,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-
+       
 
     }
 }

@@ -119,10 +119,8 @@
 
     </script>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
-        
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
-        
     </div>
     <asp:Panel ID="pnlDefault" runat="server">
         <div class="content_area_long">
@@ -133,7 +131,8 @@
                             OnClick="btnUpdate_Click" />
                     </td>
                     <td align="right">
-<asp:Button ID="btnClose" runat="server" Text="<%$ LabelResourceExpression: app_close_button_text %>"                            OnClick="btnClose_Click" />
+                        <asp:Button ID="btnClose" runat="server" Text="<%$ LabelResourceExpression: app_close_button_text %>"
+                            OnClick="btnClose_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -379,8 +378,7 @@
                         </td>
                         <td>
                             <%=LocalResources.GetLabel("app_enabled_text")%>:&nbsp;&nbsp;
-                            <asp:CheckBox ID="chkVLSSystem" runat="server" Checked="true"
-                                OnCheckedChanged="chkVLSSystem_CheckedChanged" />
+                            <asp:CheckBox ID="chkVLSSystem" runat="server" Checked="true" OnCheckedChanged="chkVLSSystem_CheckedChanged" />
                         </td>
                     </tr>
                     <tr>
@@ -475,8 +473,7 @@
                         </td>
                         <td>
                             <%=LocalResources.GetLabel("app_enabled_text")%>:&nbsp;&nbsp;
-                            <asp:CheckBox ID="chkNotScored" runat="server" Checked="true"
-                                OnCheckedChanged="chkNotScored_CheckedChanged" />
+                            <asp:CheckBox ID="chkNotScored" runat="server" Checked="true" OnCheckedChanged="chkNotScored_CheckedChanged" />
                         </td>
                     </tr>
                     <tr>

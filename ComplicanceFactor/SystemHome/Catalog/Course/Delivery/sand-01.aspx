@@ -422,7 +422,7 @@
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
         ValidationGroup="sand"></asp:ValidationSummary>
-   <div id="content">
+    <div id="content">
         <div>
             <asp:HiddenField ID="hdCheckCopy" runat="server" />
             <div class="div_header_1005">
@@ -619,7 +619,7 @@
                                                 <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text%>" />'
                                                     class="editsession cursor_hand" />
                                             </td>
-                                            <td>
+                                            <td class="gridview_row_width_1" align="center">
                                                 <%--                                            <input type="button" id='<%# Eval("c_session_system_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="Copy" />'
                                                 class="copysession cursor_hand" />--%>
                                                 <asp:Button ID="btnCopy" runat="server" CommandName='Copy' CommandArgument='<%#DataBinder.Eval(Container,"RowIndex") %>'
@@ -997,8 +997,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div class="clear">
                     <div class="uploadpopup_header">

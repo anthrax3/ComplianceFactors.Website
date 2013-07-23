@@ -652,7 +652,7 @@ namespace ComplicanceFactor.BusinessComponent
                 curriculum.cost_text = dtGetCurriculum.Rows[0]["cost_text"].ToString();
                 curriculum.c_curriculum_status_name = dtGetCurriculum.Rows[0]["c_curriculum_status_name"].ToString();
                 curriculum.c_curriculum_visible_flag_text = dtGetCurriculum.Rows[0]["c_curriculum_visible_flag_text"].ToString();
-                curriculum.c_curriculum_approval_name = dtGetCurriculum.Rows[0]["c_curriculum_approval_name"].ToString();
+                curriculum.c_curriculum_approval_name = dtGetCurriculum.Rows[0]["s_approval_workflow_name_us_english"].ToString();
                 curriculum.c_curriculum_recurrences_text = dtGetCurriculum.Rows[0]["c_curriculum_recurrences_text"].ToString();
                 curriculum.c_curriculum_approval_req_text = dtGetCurriculum.Rows[0]["c_curriculum_approval_req_text"].ToString();
                 if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_recurance_date"].ToString()))

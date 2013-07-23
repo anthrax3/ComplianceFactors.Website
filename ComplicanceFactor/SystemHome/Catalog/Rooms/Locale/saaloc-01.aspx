@@ -29,7 +29,7 @@
                     <tr>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvName" runat="server" ValidationGroup="saaloc"
-                                ControlToValidate="txtName" ErrorMessage="<%$ LabelResourceExpression: app_name_error_empty %>">&nbsp;
+                                ControlToValidate="txtName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                             </asp:RequiredFieldValidator>
                             * <%=LocalResources.GetLabel("app_room_name_text")%>:
                         </td>
