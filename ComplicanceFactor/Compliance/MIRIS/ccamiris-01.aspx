@@ -1575,7 +1575,7 @@
                     <asp:Panel ID="pnlCompleteCasePageHeading" runat="server" CssClass="drag">
                         <div>
                             <div class="div_header_620">
-                                Select the approver for complete case
+                                <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>
                             </div>
                             <div class="right">
                                 <asp:ImageButton ID="imgCloseCompleteCase" CssClass="cursor_hand" Style="top: -15px;
@@ -1589,7 +1589,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    Select the Approver
+                                    <%=LocalResources.GetLabel("app_select_approver_text")%>: 
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="ddlComplianceApprover" DataValueField="u_user_id_pk" DataTextField="u_first_name"
@@ -1606,8 +1606,8 @@
                         </div>
                         <div class="right">
                             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="cursor_hand"
-                                Text="Submit" />
-                            <asp:Button ID="btnCancelCompleteCase" CssClass="cursor_hand" runat="server" Text="Cancel" />
+                                Text="<%$ LabelResourceExpression: app_submit_button_text %>" />
+                            <asp:Button ID="btnCancelCompleteCase" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </div>
                         <div class="clear">
                         </div>

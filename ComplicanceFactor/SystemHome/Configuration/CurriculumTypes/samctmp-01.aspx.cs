@@ -81,11 +81,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Curriculum_Types
             }
             if (gvsearchDetails.Rows.Count == 0)
             {
-                disable();
+                disable_enable(false);
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
             if (gvsearchDetails.Rows.Count > 0)
             {
@@ -98,7 +98,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Curriculum_Types
                 }
             }
         }
-        private void disable()
+        private void disable_enable(bool status)
         {
             btnHeaderFirst.Visible = false;
             btnHeaderPrevious.Visible = false;
@@ -128,36 +128,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Curriculum_Types
             lblFooterPageOf.Visible = false;
             lblHeaderPageOf.Visible = false;
         }
-        private void enable()
-        {
-            btnHeaderFirst.Visible = true;
-            btnHeaderPrevious.Visible = true;
-            btnHeaderNext.Visible = true;
-            btnHeaderLast.Visible = true;
 
-            btnFooterFirst.Visible = true;
-            btnFooterPrevious.Visible = true;
-            btnFooterNext.Visible = true;
-            btnFooterLast.Visible = true;
-
-            ddlHeaderResultPerPage.Visible = true;
-            ddlFooterResultPerPage.Visible = true;
-
-            txtHeaderPage.Visible = true;
-            lblHeaderPage.Visible = true;
-
-            txtFooterPage.Visible = true;
-            lblFooterPage.Visible = true;
-
-            btnHeaderGoto.Visible = true;
-            btnFooterGoto.Visible = true;
-
-            lblHeaderResultPerPage.Visible = true;
-            lblFooterResultPerPage.Visible = true;
-
-            lblFooterPageOf.Visible = true;
-            lblHeaderPageOf.Visible = true;
-        }
         protected void btnHeaderFirst_Click(object sender, EventArgs e)
         {
             gvsearchDetails.PageIndex = 0;

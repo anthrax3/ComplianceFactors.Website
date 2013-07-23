@@ -41,12 +41,12 @@ namespace ComplicanceFactor.Compliance
 
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
             lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/Compliance/HARM/ccasharm-01.aspx>" + LocalResources.GetLabel("app_harm_text") + "</a>&nbsp;> " + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_harm_text") + "</a>";
-           // txtEditJobTitle.Text = SessionWrapper.h_job_title;
+            // txtEditJobTitle.Text = SessionWrapper.h_job_title;
             if (!IsPostBack)
             {
                 try
                 {
-                    ddlCaseCategory.DataSource = ComplianceBLL.GetHarmCategory(SessionWrapper.CultureName,"cccharm-01");
+                    ddlCaseCategory.DataSource = ComplianceBLL.GetHarmCategory(SessionWrapper.CultureName, "cccharm-01");
                     ddlCaseCategory.DataBind();
                     ddlCasestatus.DataSource = ComplianceBLL.GetHarmStatus(SessionWrapper.CultureName, "cccharm-01");
                     ddlCasestatus.DataBind();
@@ -1312,7 +1312,7 @@ namespace ComplicanceFactor.Compliance
 
                 DataTable dtCaseId = new DataTable();
                 harm = ComplianceBLL.GetHarmNumber(ddlCaseCategory.SelectedValue);
-                lblHarmNumber.Text =  harm.h_harm_number;
+                lblHarmNumber.Text = harm.h_harm_number;
 
             }
             catch (Exception ex)
@@ -1339,7 +1339,7 @@ namespace ComplicanceFactor.Compliance
             if (e.CommandName.Equals("AddControlMeasure"))
             {
                 //Page.ClientScript.RegisterStartupScript(this.GetType(), "controlmeasure", "showControlMeasureDialog();", true);
-               
+
                 ddlAddEditControlMeasure.SelectedIndex = 0;
                 gvAddEditControlMeasure.DataSource = null;
                 gvAddEditControlMeasure.DataBind();
@@ -1393,7 +1393,7 @@ namespace ComplicanceFactor.Compliance
 
                 if (ddlPermitCompliance != null)
                 {
-                    ddlPermitCompliance.DataSource = ComplianceBLL.GetPermitCompliance(SessionWrapper.CultureName,"cccharm-01");
+                    ddlPermitCompliance.DataSource = ComplianceBLL.GetPermitCompliance(SessionWrapper.CultureName, "cccharm-01");
                     ddlPermitCompliance.DataBind();
                 }
                 ddlPermitCompliance.SelectedValue = hdnPermitCompliance.Value;
@@ -1406,7 +1406,7 @@ namespace ComplicanceFactor.Compliance
 
                 if (ddlPrgCompliance != null)
                 {
-                    ddlPrgCompliance.DataSource = ComplianceBLL.GetProgramCompliance(SessionWrapper.CultureName,"cccharm-01");
+                    ddlPrgCompliance.DataSource = ComplianceBLL.GetProgramCompliance(SessionWrapper.CultureName, "cccharm-01");
                     ddlPrgCompliance.DataBind();
                 }
                 ddlPrgCompliance.SelectedValue = hdnPrgCompliance.Value;
@@ -1611,9 +1611,9 @@ namespace ComplicanceFactor.Compliance
 
         protected void gvControlMeasureSummary_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-           
-           
-           
+
+
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 GridView GridView1 = (GridView)sender;
@@ -1623,7 +1623,7 @@ namespace ComplicanceFactor.Compliance
                 int seqHazard = dle.Item.ItemIndex + 1;
                 int seqContrlMeasure = e.Row.RowIndex + 1;
                 string seq = seqHazard + "." + seqContrlMeasure;
-               
+
 
                 Label lblControlCategory = (Label)e.Row.FindControl("lblControlCategory");
                 string hazard_id_fk = GridView1.DataKeys[e.Row.RowIndex][0].ToString();
@@ -1647,7 +1647,7 @@ namespace ComplicanceFactor.Compliance
                     lblControlCategory.Text = title;
                 }
 
-               
+
                 lblControlMeasure.Text = seq + "&nbsp;&nbsp&nbsp&nbsp" + lblControlMeasure.Text;
 
             }
@@ -2151,7 +2151,7 @@ namespace ComplicanceFactor.Compliance
                 txtHazardName.Value = rows[0]["h_hazard_description"].ToString();
                 hdHazard.Value = indexofRow.ToString();
                 mpHazard.Show();
-               // Page.ClientScript.RegisterStartupScript(this.GetType(), "Hazard", "showHazardDialog();", true);
+                // Page.ClientScript.RegisterStartupScript(this.GetType(), "Hazard", "showHazardDialog();", true);
             }
             else if (e.CommandName.Equals("RemoveHazard"))
             {
@@ -2333,7 +2333,7 @@ namespace ComplicanceFactor.Compliance
                 SessionWrapper.temp_h_hazard_id_pk = GridView1.DataKeys[Convert.ToInt32(e.CommandArgument.ToString())].Values[0].ToString();
                 SessionWrapper.temp_h_control_measure_id_pk = strControlMeasureId;
                 mpControlMeasure.Show();
-               // Page.ClientScript.RegisterStartupScript(this.GetType(), "controlmeasure", "showControlMeasureDialog();", true);
+                // Page.ClientScript.RegisterStartupScript(this.GetType(), "controlmeasure", "showControlMeasureDialog();", true);
 
             }
             else if (e.CommandName.Equals("RemoveControlMeasure"))
@@ -2390,7 +2390,7 @@ namespace ComplicanceFactor.Compliance
             SessionWrapper.h_control_measure.Clear();
             SessionWrapper.ControlMeasure.Clear();
             SessionWrapper.Hazard.Clear();
-           // SessionWrapper.Hazard = TempHarmDataTable.tempHazard();
+            // SessionWrapper.Hazard = TempHarmDataTable.tempHazard();
             //SessionWrapper.h_control_measure = TempHarmDataTable.tempControlMeasure();
             dlHazard.DataSource = (SessionWrapper.Hazard).DefaultView;
             dlHazard.DataBind();

@@ -487,7 +487,7 @@ namespace ComplicanceFactor
                 else
                 {
                     divError.Style.Add("display", "block");
-                    divError.InnerText = "Please add atleast one instructor for " + title+".";
+                    divError.InnerText = LocalResources.GetText("app_course_instructor_error_empty") + title + ".";
                     
                 }
             }

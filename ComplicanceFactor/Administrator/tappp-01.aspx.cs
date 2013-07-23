@@ -185,7 +185,7 @@ namespace ComplicanceFactor.Administrator
                     HtmlGenericControl divSuccess = (HtmlGenericControl)Master.FindControl("success_login");
                     divSuccess.Style.Add("display", "none");
                     success_msg.Style.Add("display", "block");
-                    success_msg.InnerText = "Successfully updated";
+                    success_msg.InnerText = LocalResources.GetText("app_succ_update_text");
                     error_msg.Style.Add("display", "none");
                 }
                 else
@@ -194,7 +194,7 @@ namespace ComplicanceFactor.Administrator
                     divSuccess.Style.Add("display", "none");
                     success_msg.Style.Add("display", "none");
                     error_msg.Style.Add("display", "block");
-                    error_msg.InnerText = "User details was not updated";
+                    error_msg.InnerText = LocalResources.GetText("app_date_not_updated_error_wrong");
 
                 }
 

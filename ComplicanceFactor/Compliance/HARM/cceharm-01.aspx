@@ -1400,7 +1400,7 @@
                 <asp:Panel ID="pnlJobTitleHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">
-                            Job Title:
+                           <%=LocalResources.GetLabel("app_job_title_text")%>:
                         </div>
                         <asp:ImageButton ID="imgCloseJobTitle" CssClass="cursor_hand" Style="top: -15px;
                             right: -15px; z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />

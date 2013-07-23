@@ -207,7 +207,7 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        Carrier:
+                        <%=LocalResources.GetLabel("app_carrier_text")%> Carrier:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlCarrier" DataValueField="u_mobile_carrier_type_id_pk" DataTextField="u_mobile_carrier_type_name"
@@ -324,7 +324,7 @@
                     </tr>
                     <tr>
                         <td align="left">
-                            <%=LocalResources.GetLabel("app_my_to_do_text")%>s
+                            <%=LocalResources.GetLabel("app_my_to_do_text")%>
                         </td>
                         <td align="center">
                             <asp:DropDownList ID="ddlNumberOfRecordToDo" runat="server">

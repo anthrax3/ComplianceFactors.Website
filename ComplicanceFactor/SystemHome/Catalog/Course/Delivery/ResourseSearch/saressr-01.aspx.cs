@@ -244,12 +244,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             if (gvsearchDetails.Rows.Count == 0)
             {
 
-                disable();
+                disable_enable(false);
 
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
             if (gvsearchDetails.Rows.Count > 0)
             {
@@ -266,74 +266,38 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         }
 
         /// <summary>
-        /// disable search result section
+        /// disable enable search result section
         /// </summary>
-        private void disable()
+        private void disable_enable(bool status)
         {
-            btnHeaderFirst.Visible = false;
-            btnHeaderPrevious.Visible = false;
-            btnHeaderNext.Visible = false;
-            btnHeaderLast.Visible = false;
+            btnHeaderFirst.Visible = status;
+            btnHeaderPrevious.Visible = status;
+            btnHeaderNext.Visible = status;
+            btnHeaderLast.Visible = status;
 
-            btnFooterFirst.Visible = false;
-            btnFooterPrevious.Visible = false;
-            btnFooterNext.Visible = false;
-            btnFooterLast.Visible = false;
+            btnFooterFirst.Visible = status;
+            btnFooterPrevious.Visible = status;
+            btnFooterNext.Visible = status;
+            btnFooterLast.Visible = status;
 
-            ddlHeaderResultPerPage.Visible = false;
-            ddlFooterResultPerPage.Visible = false;
+            ddlHeaderResultPerPage.Visible = status;
+            ddlFooterResultPerPage.Visible = status;
 
-            txtHeaderPage.Visible = false;
-            lblHeaderPage.Visible = false;
+            txtHeaderPage.Visible = status;
+            lblHeaderPage.Visible = status;
 
-            txtFooterPage.Visible = false;
-            lblFooterPage.Visible = false;
+            txtFooterPage.Visible = status;
+            lblFooterPage.Visible = status;
 
-            btnHeaderGoto.Visible = false;
-            btnFooterGoto.Visible = false;
-
-
-            lblHeaderResultPerPage.Visible = false;
-            lblFooterResultPerPage.Visible = false;
-
-            lblFooterPageOf.Visible = false;
-            lblHeaderPageOf.Visible = false;
-
-        }
-
-        /// <summary>
-        /// enable search result section
-        /// </summary>
-        private void enable()
-        {
-            btnHeaderFirst.Visible = true;
-            btnHeaderPrevious.Visible = true;
-            btnHeaderNext.Visible = true;
-            btnHeaderLast.Visible = true;
-
-            btnFooterFirst.Visible = true;
-            btnFooterPrevious.Visible = true;
-            btnFooterNext.Visible = true;
-            btnFooterLast.Visible = true;
-
-            ddlHeaderResultPerPage.Visible = true;
-            ddlFooterResultPerPage.Visible = true;
-
-            txtHeaderPage.Visible = true;
-            lblHeaderPage.Visible = true;
-
-            txtFooterPage.Visible = true;
-            lblFooterPage.Visible = true;
-
-            btnHeaderGoto.Visible = true;
-            btnFooterGoto.Visible = true;
+            btnHeaderGoto.Visible = status;
+            btnFooterGoto.Visible = status;
 
 
-            lblHeaderResultPerPage.Visible = true;
-            lblFooterResultPerPage.Visible = true;
+            lblHeaderResultPerPage.Visible = status;
+            lblFooterResultPerPage.Visible = status;
 
-            lblFooterPageOf.Visible = true;
-            lblHeaderPageOf.Visible = true;
+            lblFooterPageOf.Visible = status;
+            lblHeaderPageOf.Visible = status;
 
         }
 

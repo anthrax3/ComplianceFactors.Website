@@ -97,7 +97,6 @@
     <Content Include="AboutUs\auplt-01.aspx" />
     <Content Include="AboutUs\auppl-01.aspx" />
     <Content Include="Administrator\ascrp-01.aspx" />
-    <Content Include="Administrator\change-password.aspx" />
     <Content Include="Administrator\sasup-01.aspx" />
     <Content Include="Administrator\taddp-01.aspx" />
     <Content Include="Administrator\tahp-01.aspx" />
@@ -931,13 +930,6 @@
     </Compile>
     <Compile Include="Administrator\ascrp-01.aspx.designer.cs">
       <DependentUpon>ascrp-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administrator\change-password.aspx.cs">
-      <DependentUpon>change-password.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administrator\change-password.aspx.designer.cs">
-      <DependentUpon>change-password.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\PdfTemplate\AdminCourse.Designer.cs" />
     <Compile Include="Administrator\sasup-01.aspx.cs">

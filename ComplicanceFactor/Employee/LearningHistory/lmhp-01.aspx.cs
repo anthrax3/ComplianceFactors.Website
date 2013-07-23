@@ -518,7 +518,9 @@ namespace ComplicanceFactor.Employee.LearningHistory
 
         protected void gvLearningHistory_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string t_transcript_course_id_fk = e.CommandArgument.ToString();
+            int rowIndex = int.Parse(e.CommandArgument.ToString());
+            string t_transcript_course_id_fk = gvLearningHistory.DataKeys[rowIndex][0].ToString();
+            string title = gvLearningHistory.DataKeys[rowIndex][1].ToString();
             bool isEnroll;
             if (e.CommandName.Equals("Enroll"))
             {
@@ -610,7 +612,7 @@ namespace ComplicanceFactor.Employee.LearningHistory
                 else
                 {
                     divError.Style.Add("display", "block");
-                    divError.InnerText = "Please add atleast one instructor.";
+                    divError.InnerText = LocalResources.GetText("app_course_instructor_error_empty")+ title + ".";
                 }
             }
         }

@@ -127,12 +127,12 @@ namespace ComplicanceFactor.Manager.Catalog
             if (gvsearchDetails.Rows.Count == 0)
             {
 
-                disable();
+                disable_enable(false);
 
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
         }
         private void SearchResult()
@@ -180,12 +180,12 @@ namespace ComplicanceFactor.Manager.Catalog
             if (gvsearchDetails.Rows.Count == 0)
             {
 
-                disable();
+                disable_enable(false);
 
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
         }
         protected void gvsearchDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -678,68 +678,37 @@ namespace ComplicanceFactor.Manager.Catalog
 
 
         }
-        private void disable()
+        private void disable_enable(bool status)
         {
-            btnFirstHeader.Visible = false;
-            btnPreviousHeader.Visible = false;
-            btnNextHeader.Visible = false;
-            btnLastHeader.Visible = false;
+            btnFirstHeader.Visible = status;
+            btnPreviousHeader.Visible = status;
+            btnNextHeader.Visible = status;
+            btnLastHeader.Visible = status;
 
-            btnFirstFooter.Visible = false;
-            btnNextFooter.Visible = false;
-            btnPreviousFooter.Visible = false;
-            btnLastFooter.Visible = false;
+            btnFirstFooter.Visible = status;
+            btnNextFooter.Visible = status;
+            btnPreviousFooter.Visible = status;
+            btnLastFooter.Visible = status;
 
-            ddlResultPerPageHeader.Visible = false;
-            ddlResultPerPageFooter.Visible = false;
+            ddlResultPerPageHeader.Visible = status;
+            ddlResultPerPageFooter.Visible = status;
 
-            txtPageHeader.Visible = false;
-            lblPageHeader.Visible = false;
+            txtPageHeader.Visible = status;
+            lblPageHeader.Visible = status;
 
-            txtPageFooter.Visible = false;
-            lblPageFooter.Visible = false;
+            txtPageFooter.Visible = status;
+            lblPageFooter.Visible = status;
 
-            btnGotoHeader.Visible = false;
-            btnGotoFooter.Visible = false;
-
-
-            lblHeaderResultPerPage.Visible = false;
-            lblResultPerPageFooter.Visible = false;
+            btnGotoHeader.Visible = status;
+            btnGotoFooter.Visible = status;
 
 
-            lblPageOfPageFooter.Visible = false;
-            lblPageOfPageHeader.Visible = false;
-        }
-        private void enable()
-        {
-            btnFirstHeader.Visible = true;
-            btnPreviousHeader.Visible = true;
-            btnNextHeader.Visible = true;
-            btnLastHeader.Visible = true;
-
-            btnFirstFooter.Visible = true;
-            btnNextFooter.Visible = true;
-            btnPreviousFooter.Visible = true;
-            btnLastFooter.Visible = true;
-
-            ddlResultPerPageHeader.Visible = true;
-            ddlResultPerPageFooter.Visible = true;
-
-            txtPageHeader.Visible = true;
-            lblPageHeader.Visible = true;
-
-            txtPageFooter.Visible = true;
-            lblPageFooter.Visible = true;
-
-            btnGotoHeader.Visible = true;
-            btnGotoFooter.Visible = true;
+            lblHeaderResultPerPage.Visible = status;
+            lblResultPerPageFooter.Visible = status;
 
 
-            lblHeaderResultPerPage.Visible = true;
-            lblResultPerPageFooter.Visible = true;
-
-            lblPageOfPageFooter.Visible = true;
-            lblPageOfPageHeader.Visible = true;
+            lblPageOfPageFooter.Visible = status;
+            lblPageOfPageHeader.Visible = status;
         }
     }
 }

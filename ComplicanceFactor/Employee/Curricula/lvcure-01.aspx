@@ -289,8 +289,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <hr />
-                                section:
-                                <%#Eval("c_curricula_path_section_seq_number")%>
+                               <%=LocalResources.GetLabel("app_section_text")%>:<%#Eval("c_curricula_path_section_seq_number")%>
                                 <asp:Label ID="lblComplete" runat="server"></asp:Label><br />
                                 0% Completed
                                 <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"

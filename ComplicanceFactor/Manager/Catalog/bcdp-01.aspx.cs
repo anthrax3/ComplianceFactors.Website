@@ -135,12 +135,12 @@ namespace ComplicanceFactor.Manager.Catalog
                 if (gvsearchDetails.Rows.Count == 0)
                 {
 
-                    disable();
+                    disable_enable(false);
 
                 }
                 else
                 {
-                    enable();
+                    disable_enable(true);
                 }
             }
 
@@ -229,12 +229,12 @@ namespace ComplicanceFactor.Manager.Catalog
             if (gvsearchDetails.Rows.Count == 0)
             {
 
-                disable();
+                disable_enable(false);
 
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
         }
 
@@ -543,7 +543,7 @@ namespace ComplicanceFactor.Manager.Catalog
 
 
         }
-        private void disable()
+        private void disable_enable(bool status)
         {
             btnFirstHeader.Visible = false;
             btnPreviousHeader.Visible = false;
@@ -574,39 +574,6 @@ namespace ComplicanceFactor.Manager.Catalog
 
             lblPageOfPageFooter.Visible = false;
             lblPageOfPageHeader.Visible = false;
-        }
-
-
-        private void enable()
-        {
-            btnFirstHeader.Visible = true;
-            btnPreviousHeader.Visible = true;
-            btnNextHeader.Visible = true;
-            btnLastHeader.Visible = true;
-
-            btnFirstFooter.Visible = true;
-            btnNextFooter.Visible = true;
-            btnPreviousFooter.Visible = true;
-            btnLastFooter.Visible = true;
-
-            ddlResultPerPageHeader.Visible = true;
-            ddlResultPerPageFooter.Visible = true;
-
-            txtPageHeader.Visible = true;
-            lblPageHeader.Visible = true;
-
-            txtPageFooter.Visible = true;
-            lblPageFooter.Visible = true;
-
-            btnGotoHeader.Visible = true;
-            btnGotoFooter.Visible = true;
-
-
-            lblHeaderResultPerPage.Visible = true;
-            lblResultPerPageFooter.Visible = true;
-
-            lblPageOfPageFooter.Visible = true;
-            lblPageOfPageHeader.Visible = true;
         }
     }
 }

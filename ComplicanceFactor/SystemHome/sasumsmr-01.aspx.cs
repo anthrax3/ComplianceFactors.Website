@@ -76,12 +76,12 @@ namespace ComplicanceFactor.SystemHome
             if (dtgetvalue.Rows.Count == 0)
             {
 
-                disable();
+                disable_enable(false);
 
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
             if (dtgetvalue.Rows.Count > 0)
             {
@@ -732,78 +732,47 @@ namespace ComplicanceFactor.SystemHome
             if (dtgetvalue.Rows.Count == 0)
             {
 
-                disable();
+                disable_enable(false);
 
             }
             else
             {
-                enable();
+                disable_enable(true);
             }
 
 
         }
-        private void disable()
+        private void disable_enable(bool status)
         {
-            btnFirst.Visible = false;
-            btnPrevious.Visible = false;
-            btnNext.Visible = false;
-            btnLast.Visible = false;
+            btnFirst.Visible = status;
+            btnPrevious.Visible = status;
+            btnNext.Visible = status;
+            btnLast.Visible = status;
 
-            btndownFirst.Visible = false;
-            btndownNext.Visible = false;
-            btndownPrevious.Visible = false;
-            btndownLast.Visible = false;
+            btndownFirst.Visible = status;
+            btndownNext.Visible = status;
+            btndownPrevious.Visible = status;
+            btndownLast.Visible = status;
 
-            dddownresultperpage.Visible = false;
-            ddresultperpage.Visible = false;
+            dddownresultperpage.Visible = status;
+            ddresultperpage.Visible = status;
 
-            txtPage.Visible = false;
-            lblPage.Visible = false;
+            txtPage.Visible = status;
+            lblPage.Visible = status;
 
-            txtdownpage.Visible = false;
-            lbldownPage.Visible = false;
+            txtdownpage.Visible = status;
+            lbldownPage.Visible = status;
 
-            btndownGoto.Visible = false;
-            btnGoto.Visible = false;
+            btndownGoto.Visible = status;
+            btnGoto.Visible = status;
 
 
-            lblHeaderPage.Visible = false;
-            lblFooterPage.Visible = false;
-            lblHeaderResultPerPage.Visible = false;
-            lblFooterResultPerPage.Visible = false;
+            lblHeaderPage.Visible = status;
+            lblFooterPage.Visible = status;
+            lblHeaderResultPerPage.Visible = status;
+            lblFooterResultPerPage.Visible = status;
         }
 
-
-        private void enable()
-        {
-            btnFirst.Visible = true;
-            btnPrevious.Visible = true;
-            btnNext.Visible = true;
-            btnLast.Visible = true;
-
-            btndownFirst.Visible = true;
-            btndownNext.Visible = true;
-            btndownPrevious.Visible = true;
-            btndownLast.Visible = true;
-
-            dddownresultperpage.Visible = true;
-            ddresultperpage.Visible = true;
-
-            txtPage.Visible = true;
-            lblPage.Visible = true;
-
-            txtdownpage.Visible = true;
-            lbldownPage.Visible = true;
-
-            btndownGoto.Visible = true;
-            btnGoto.Visible = true;
-
-
-            lblHeaderPage.Visible = true;
-            lblFooterPage.Visible = true;
-            lblHeaderResultPerPage.Visible = true;
-            lblFooterResultPerPage.Visible = true;
-        }
 
         protected void gvsearchDetails_Sorting(object sender, GridViewSortEventArgs e)
         {

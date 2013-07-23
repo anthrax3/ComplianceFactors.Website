@@ -87,7 +87,7 @@ namespace ComplicanceFactor.Compliance
                 if (!string.IsNullOrEmpty(Request.QueryString["Succ"]))
                 {
                     success_msg.Style.Add("display", "block");
-                    success_msg.InnerHtml = "Case was created and Email was sent to the Compliance approver";
+                    success_msg.InnerHtml = LocalResources.GetText("app_case_created_sento_compliance_approver_text");
                 }
                 searchResult();
                 lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();

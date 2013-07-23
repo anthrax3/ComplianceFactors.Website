@@ -29,7 +29,7 @@
     </script>
   <div id="content">
         <div class="div_header_700">
-            Courses Details:
+            <%=LocalResources.GetLabel("app_course_details_text")%>:
         </div>
         <div class="table_150">
             <br />
