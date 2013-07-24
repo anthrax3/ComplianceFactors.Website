@@ -17,6 +17,8 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Web.Caching;
+using System.Net.Mail;
+using System.Configuration;
 
 namespace ComplicanceFactor
 {
@@ -289,6 +291,150 @@ namespace ComplicanceFactor
                                     //string hrisStartDate = DateTime.Now.ToString();
                                     GetDatatableToCsv(dtHris, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Hris.csv");
                                     CreateLogFile(dtHris, u_sftp_URI, u_sftp_username, u_sftp_password, "Hris", "DEXP");
+                                }
+                            }
+                            //Scheduled Notification 
+                            else if (u_sftp_id_pk.Contains("SCN"))
+                            {
+                                //Scheduled Notification 
+                                //To use for loops 
+
+                                DataTable dtEnrolledReminder = new DataTable();
+                                dtEnrolledReminder = SystemBackgroundJobsBLL.GetEnrollReminder("ENROLL-DUE-DATE-REMINDER");                              
+
+                                for (int j = 0; j < dtEnrolledReminder.Rows.Count; j++)
+                                {
+                                    try
+                                    {
+                                        StringBuilder sbEnrolledReminder = new StringBuilder();
+
+                                        string reminderSubjectMananger = string.Empty;
+                                        reminderSubjectMananger = dtEnrolledReminder.Rows[j]["s_notification_email_subject"].ToString();
+                                        reminderSubjectMananger = reminderSubjectMananger.Replace("@$&Course Title&$@ (@$&Course ID&$@)", dtEnrolledReminder.Rows[j]["courseName"].ToString());
+                                        reminderSubjectMananger = reminderSubjectMananger.Replace("@$&User First Name&$@", dtEnrolledReminder.Rows[i]["u_first_name"].ToString());
+                                         
+                                        string EnrollTextManager = string.Empty;
+                                        EnrollTextManager = dtEnrolledReminder.Rows[j]["s_notification_email_text"].ToString();
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtEnrolledReminder.Rows[i]["u_first_name"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtEnrolledReminder.Rows[i]["u_last_name"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&Course Name&$@(@$&Course ID&$@)", dtEnrolledReminder.Rows[j]["courseName"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtEnrolledReminder.Rows[j]["deliveryName"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@)", dtEnrolledReminder.Rows[j]["e_enroll_target_due_date"].ToString());
+                                        //e_enroll_target_due_date
+                                        sbEnrolledReminder.Append(EnrollTextManager);
+
+                                        string toEmailid = dtEnrolledReminder.Rows[j]["u_email_address"].ToString();
+                                        string[] toaddress = toEmailid.Split(',');
+                                        List<MailAddress> mailAddresses = new List<MailAddress>();
+                                        foreach (string recipient in toaddress)
+                                        {
+                                            if (recipient.Trim() != string.Empty)
+                                            {
+                                                mailAddresses.Add(new MailAddress(recipient));
+                                            }
+                                        }
+
+                                        string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]); 
+                                        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                                        if (mailAddresses.Count > 0)
+                                        {
+                                            Utility.SendEMailMessages(mailAddresses, fromAddress, reminderSubjectMananger, sbEnrolledReminder.ToString());
+                                        }
+                                        else
+                                        {
+                                            if (!string.IsNullOrEmpty(dtEnrolledReminder.Rows[i]["u_mobile_number"].ToString()))
+                                            {
+                                                StringBuilder smsText = new StringBuilder();
+                                                string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                                string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                                string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                                string messagetext = dtEnrolledReminder.Rows[j]["s_notification_SMS_text"].ToString();
+                                                //messagetext = messagetext.Replace("", "");
+                                                //messagetext = messagetext.Replace("", "");
+                                                if (messagetext.Length > 180)
+                                                {
+                                                    messagetext = messagetext.Substring(0, 179);
+                                                }
+                                                messagetext = messagetext.Replace("@$&Status&$@", "REMIND");
+                                                messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtEnrolledReminder.Rows[j]["courseName"].ToString());
+                                                Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
+                                }
+
+                                DataTable dtEnrolledWarning = new DataTable();
+                                dtEnrolledWarning = SystemBackgroundJobsBLL.GetEnrollWarning("ENROLL-DUE-DATE-WARNING");
+
+                                for (int j = 0; j < dtEnrolledWarning.Rows.Count; j++)
+                                {
+                                    try
+                                    {
+                                        StringBuilder sbEnrolledWarning = new StringBuilder();
+
+                                        string warningrSubjectMananger = string.Empty;
+                                        warningrSubjectMananger = dtEnrolledWarning.Rows[j]["s_notification_email_subject"].ToString();
+                                        warningrSubjectMananger = warningrSubjectMananger.Replace("@$&Course Title&$@ (@$&Course ID&$@)", dtEnrolledWarning.Rows[j]["courseName"].ToString());
+                                        warningrSubjectMananger = warningrSubjectMananger.Replace("@$&User First Name&$@", dtEnrolledWarning.Rows[i]["u_first_name"].ToString());
+
+                                        string EnrollTextManager = string.Empty;
+                                        EnrollTextManager = dtEnrolledWarning.Rows[j]["s_notification_email_text"].ToString();
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtEnrolledWarning.Rows[i]["u_first_name"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtEnrolledWarning.Rows[i]["u_last_name"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&Course Name&$@(@$&Course ID&$@)", dtEnrolledWarning.Rows[j]["courseName"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtEnrolledWarning.Rows[j]["deliveryName"].ToString());
+                                        EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@)", dtEnrolledWarning.Rows[j]["e_enroll_target_due_date"].ToString());
+                                        //e_enroll_target_due_date
+                                        sbEnrolledWarning.Append(EnrollTextManager);
+
+                                        string toEmailid = dtEnrolledWarning.Rows[j]["u_email_address"].ToString();
+                                        string[] toaddress = toEmailid.Split(',');
+                                        List<MailAddress> mailAddresses = new List<MailAddress>();
+                                        foreach (string recipient in toaddress)
+                                        {
+                                            if (recipient.Trim() != string.Empty)
+                                            {
+                                                mailAddresses.Add(new MailAddress(recipient));
+                                            }
+                                        }
+
+                                        string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
+                                        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                                        if (mailAddresses.Count > 0)
+                                        {
+                                            Utility.SendEMailMessages(mailAddresses, fromAddress, warningrSubjectMananger, sbEnrolledWarning.ToString());
+                                        }
+                                        else
+                                        {
+                                            if (!string.IsNullOrEmpty(dtEnrolledWarning.Rows[i]["u_mobile_number"].ToString()))
+                                            {
+                                                StringBuilder smsText = new StringBuilder();
+                                                string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                                string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                                string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                                string messagetext = dtEnrolledWarning.Rows[j]["s_notification_SMS_text"].ToString();
+                                                //messagetext = messagetext.Replace("", "");
+                                                //messagetext = messagetext.Replace("", "");
+                                                if (messagetext.Length > 180)
+                                                {
+                                                    messagetext = messagetext.Substring(0, 179);
+                                                }
+                                                messagetext = messagetext.Replace("@$&Status&$@", "Warning");
+                                                messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtEnrolledWarning.Rows[j]["courseName"].ToString());
+                                                Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                    }
                                 }
                             }
                         }

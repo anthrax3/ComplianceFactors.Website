@@ -36,7 +36,7 @@
                 'autoScale': false,
                 'autoDimensions': false,
                 'helpers': { overlay: { closeClick: false} },
-                'width': 800,
+                'width': 920,
                 'height': 300,
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,
@@ -150,7 +150,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-          
+
             $(".copyGradingSchemes").click(function () {
 
                 document.getElementById('<%=hdUpdateValue.ClientID %>').value = '0';
@@ -210,10 +210,10 @@
             }
         }
 
-</script>
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:HiddenField ID="hdUpdateValue" runat="server" />
+    <asp:HiddenField ID="hdUpdateValue" runat="server" />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saangsn" runat="server"
         ValidationGroup="saangsn"></asp:ValidationSummary>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
@@ -224,25 +224,30 @@
                 <tr>
                     <td>
                         <asp:Button ID="btnHeaderSave" ValidationGroup="saangsn" CssClass="cursor_hand" runat="server"
-                            Text="<%$ LabelResourceExpression: app_save_new_grading_scheme_button_text %>" OnClick="btnHeaderSave_Click" />
+                            Text="<%$ LabelResourceExpression: app_save_new_grading_scheme_button_text %>"
+                            OnClick="btnHeaderSave_Click" />
                     </td>
                     <td class="btnsave_new_user_td">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td>
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td>
-                        <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" runat="server"
-                            OnClick="btnHeaderReset_Click" />
+                        <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            runat="server" OnClick="btnHeaderReset_Click" />
                     </td>
                     <td align="center" class="btnreset_td">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td class="btncancel_td">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnHeaderCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" runat="server"
-                            OnClick="btnHeaderCancel_Click" />
+                        <asp:Button ID="btnHeaderCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            runat="server" OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -319,9 +324,9 @@
             <table>
                 <tr>
                     <td>
-                        <asp:GridView ID="gvGradingSchemeValues" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
-                            CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="true" runat="server"
-                            AutoGenerateColumns="False" OnRowDataBound="gvGradingSchemes_RowDataBound" 
+                        <asp:GridView ID="gvGradingSchemeValues" RowStyle-CssClass="record" GridLines="None"
+                            CssClass="gridview_width_9" CellPadding="0" CellSpacing="0" ShowHeader="false"
+                            ShowFooter="true" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvGradingSchemes_RowDataBound"
                             DataKeyNames="s_grading_scheme_system_value_id_pk">
                             <RowStyle CssClass="record"></RowStyle>
                             <Columns>
@@ -333,18 +338,20 @@
                                                     <%#Eval("s_grading_scheme_value_name")%>(<%#Eval("s_grading_scheme_value_id")%>)
                                                 </td>
                                                 <td>
-                                                    <%=LocalResources.GetLabel("app_score_text")%>:<asp:TextBox ID="txtMinscore" runat="server" onkeyup ="ValidateText(this);" CssClass="textbox_50" />&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
-                                                    <asp:TextBox ID="txtMaxscore" runat="server" onkeyup ="ValidateText(this);" CssClass="textbox_50" />
+                                                    <%=LocalResources.GetLabel("app_score_text")%>:<asp:TextBox ID="txtMinscore" runat="server"
+                                                        onkeyup="ValidateText(this);" CssClass="textbox_50" />&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
+                                                    <asp:TextBox ID="txtMaxscore" runat="server" onkeyup="ValidateText(this);" CssClass="textbox_50" />
                                                 </td>
-                                               
-                                                
                                                 <td>
-                                                    <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saangsn" Display="Dynamic"
+                                                    <%-- <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saangsn" Display="Dynamic"
                                                     ControlToValidate="txtGpa" ErrorMessage="<%$ TextResourceExpression: app_gpa_error_empty %>">&nbsp;
-                                                    </asp:RequiredFieldValidator>
+                                                    </asp:RequiredFieldValidator>--%>
+                                                    <asp:RegularExpressionValidator ID="rfvGPA" runat="server" ErrorMessage="Plese enter only the numbers in GPA"
+                                                        ControlToValidate="txtGpa" ValidationGroup="saangsn" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
                                                     <asp:DropDownList ID="ddlPassingStatus" runat="server" DataTextField="s_grading_scheme_value_pass_status_name"
                                                         DataValueField="s_grading_scheme_value_pass_status_id_fk" />
-                                                    &nbsp; GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" onkeyup ="ValidateText(this);" CssClass="textbox_50" />
+                                                    &nbsp; GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" onkeyup="ValidateText(this);"
+                                                        CssClass="textbox_50" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -378,11 +385,13 @@
             <table>
                 <tr>
                     <td style="padding-left: 150px;">
-                        <input type="button" id="btnAddNew" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression:app_add_new_value_button_text%>" />' onclick="javascript:check_hdUpdateValue(this.id)"  class="createSchemeValue cursor_hand" />
+                        <input type="button" id="btnAddNew" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression:app_add_new_value_button_text%>" />'
+                            onclick="javascript:check_hdUpdateValue(this.id)" class="createSchemeValue cursor_hand" />
                     </td>
                     <td style="padding-left: 450px;">
-                        <asp:Button ID="btnUpdateValue" OnClientClick="javascript:check_hdUpdateValue(this.id)" Visible="false" ValidationGroup="saangsn" runat="server" Text="<%$ LabelResourceExpression:app_update_value_button_text %>" 
-                                                            onclick="btnUpdateValue_Click"/>
+                        <asp:Button ID="btnUpdateValue" OnClientClick="javascript:check_hdUpdateValue(this.id)"
+                            Visible="false" ValidationGroup="saangsn" runat="server" Text="<%$ LabelResourceExpression:app_update_value_button_text %>"
+                            OnClick="btnUpdateValue_Click" />
                     </td>
                 </tr>
             </table>
@@ -401,11 +410,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_EnglishUk" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -433,11 +442,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_FrenchCa" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -465,11 +474,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_FrenchFr" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -497,11 +506,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_SpanishMx" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -529,11 +538,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_SpanishSp" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -562,11 +571,11 @@
                         <asp:TextBox ID="txtGradingSchemeName_Portuguese" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -594,11 +603,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Chinese" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -626,11 +635,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_German" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -647,7 +656,7 @@
         <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_grading_scheme_information_japanese")%>
-:
+            :
         </div>
         <br />
         <div class="div_controls font_1">
@@ -659,11 +668,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Japanese" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -680,7 +689,7 @@
         <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_grading_scheme_information_russian")%>
-:
+            :
         </div>
         <br />
         <div class="div_controls font_1">
@@ -692,11 +701,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Russian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -724,11 +733,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Danish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -756,11 +765,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Polish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -788,11 +797,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Swedish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -820,11 +829,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Finnish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -852,11 +861,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Korean" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -884,11 +893,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Italian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -916,11 +925,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Dutch" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -949,11 +958,11 @@
                         <asp:TextBox ID="txtGradingSchemeName_Indonesian" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -981,11 +990,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Greek" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1013,11 +1022,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Hungarian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1045,11 +1054,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Norwegian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1077,11 +1086,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Turkish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                     <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1109,11 +1118,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Arabic" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1141,11 +1150,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom01" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1173,11 +1182,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom02" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1205,11 +1214,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom03" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1237,11 +1246,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom04" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1269,11 +1278,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom05" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1301,11 +1310,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom06" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1333,11 +1342,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom07" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1365,11 +1374,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom08" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1397,11 +1406,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom09" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1429,11 +1438,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom10" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1461,11 +1470,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom11" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1493,11 +1502,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom12" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1525,11 +1534,11 @@
                     <td>
                         <asp:TextBox ID="txtGradingSchemeName_Custom13" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2" >
+                    <td colspan="2">
                     </td>
                     <td>
                     </td>
-                    <td style=" width:180px">
+                    <td style="width: 180px">
                     </td>
                 </tr>
                 <tr>
@@ -1545,7 +1554,7 @@
         </div>
         <br />
         <div class="div_header_long">
-        <br />
+            <br />
         </div>
         <br />
         <div class="div_controls font_1">
@@ -1556,22 +1565,25 @@
                             OnClick="btnFooterSave_Click" ValidationGroup="saangsn" />
                     </td>
                     <td colspan="2" class="btnsave_new_user_td">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td>
                     </td>
                     <td align="center" class="btnreset_td">
-                        <asp:Button ID="btnFooterReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" runat="server"
-                            OnClick="btnFooterReset_Click" />
+                        <asp:Button ID="btnFooterReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            runat="server" OnClick="btnFooterReset_Click" />
                     </td>
                     <td>
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td class="btncancel_td">
-                        &nbsp;</td>
+                        &nbsp;
+                    </td>
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnFooterCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" runat="server"
-                            OnClick="btnFooterCancel_Click" />
+                        <asp:Button ID="btnFooterCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            runat="server" OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>

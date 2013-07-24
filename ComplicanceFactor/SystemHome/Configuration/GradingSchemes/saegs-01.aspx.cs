@@ -363,7 +363,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                 var indexOfRow = dtGetGradingschemeValue.Rows.IndexOf(rows[0]);
                 dtGetGradingschemeValue.Rows[indexOfRow]["s_grading_scheme_value_min_score"] = txtMinscore.Text;
                 dtGetGradingschemeValue.Rows[indexOfRow]["s_grading_scheme_value_max_score"] = txtMaxscore.Text;
-                dtGetGradingschemeValue.Rows[indexOfRow]["s_grading_scheme_value_gpa"] = txtGpa.Text;
+                if (!string.IsNullOrEmpty(txtGpa.Text))
+                {
+                    dtGetGradingschemeValue.Rows[indexOfRow]["s_grading_scheme_value_gpa"] = txtGpa.Text;
+                }
+                else
+                {
+                    dtGetGradingschemeValue.Rows[indexOfRow]["s_grading_scheme_value_gpa"] = 0;
+                }
                 dtGetGradingschemeValue.Rows[indexOfRow]["s_grading_scheme_value_pass_status_id_fk"] = ddlPassingStatus.SelectedValue;
                 dtGetGradingschemeValue.AcceptChanges();
                 

@@ -281,7 +281,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                 var indexOfRow = SessionWrapper.GradingSchemeValues.Rows.IndexOf(rows[0]);
                 SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_min_score"] = txtMinscore.Text;
                 SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_max_score"] = txtMaxscore.Text;
-                SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_gpa"] = txtGpa.Text;
+                if (!string.IsNullOrEmpty(txtGpa.Text))
+                {
+                    SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_gpa"] = txtGpa.Text;
+                }
+                else
+                {
+                    SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_gpa"] = 0;
+                }               
                 SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_pass_status_id_fk"] = ddlPassingStatus.SelectedValue;
                 SessionWrapper.GradingSchemeValues.AcceptChanges();
 

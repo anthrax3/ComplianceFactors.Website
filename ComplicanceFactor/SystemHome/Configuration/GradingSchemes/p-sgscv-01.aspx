@@ -10,7 +10,7 @@
         body
         {
             /*width: 960px;*/
-            width: 700px !important;
+            width:900px !important;
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
@@ -66,7 +66,7 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>--%>
     <div id="content">
-       <div class="div_header_1005">
+       <div class="div_header_900">
             <%=LocalResources.GetLabel("app_add_grading_value_text")%>:
         </div>
         <br />

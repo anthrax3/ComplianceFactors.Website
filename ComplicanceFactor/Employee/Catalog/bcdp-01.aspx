@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="bcdp-01.aspx.cs" Inherits="ComplicanceFactor.Employee.Catalog.bcdp_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
+    CodeBehind="bcdp-01.aspx.cs" Inherits="ComplicanceFactor.Employee.Catalog.bcdp_01" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-  
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -24,7 +25,6 @@
         });
 
     </script>
-  
     <script type="text/javascript">
         function resetall() {
             document.getElementById('<%=txtId.ClientID %>').value = '';
@@ -50,10 +50,8 @@
     <br />
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div class="content_area_long">
-           
             <div class="div_header_long">
-                  <%=LocalResources.GetLabel("app_search_results_text")%>  
-
+                <%=LocalResources.GetLabel("app_search_results_text")%>
             </div>
             <br />
             <br />
@@ -84,7 +82,7 @@
                     <div class="left">
                         <table>
                             <tr>
-                                <td  class="font_1" >
+                                <td class="font_1">
                                     <asp:Label ID="lblHeaderResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_result_per_page_text %>"></asp:Label>
                                 </td>
                                 <td>
@@ -105,13 +103,13 @@
                     <div class="div_page_search">
                         <table>
                             <tr>
-                                <td class="font_1" >
+                                <td class="font_1">
                                     <asp:Label ID="lblPageOfPageHeader" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtPageHeader" runat="server" CssClass="textbox_page_of_page" Text="1"></asp:TextBox>
                                 </td>
-                                <td class="font_1" >
+                                <td class="font_1">
                                     <asp:Label ID="lblPageHeader" runat="server" />
                                 </td>
                                 <td>
@@ -128,12 +126,12 @@
             <br />
             <div>
                 <div class="page_text">
-                    <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false" 
+                    <asp:GridView ID="gvsearchDetails" GridLines="None" ShowFooter="true" ShowHeader="false"
                         CssClass="search_result" CellPadding="0" CellSpacing="0" runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
-                        AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"  DataKeyNames="system_id,type,c_approval_req"
-                        PagerSettings-Visible="false" PageSize="5" OnPageIndexChanging="gvsearchDetails_PageIndexChanging"
-                        OnRowCommand="gvsearchDetails_RowCommand" OnRowDataBound="gvsearchDetails_RowDataBound"
-                        OnRowEditing="gvsearchDetails_RowEditing">
+                        AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
+                        DataKeyNames="system_id,type,c_approval_req" PagerSettings-Visible="false" PageSize="5"
+                        OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowCommand="gvsearchDetails_RowCommand"
+                        OnRowDataBound="gvsearchDetails_RowDataBound" OnRowEditing="gvsearchDetails_RowEditing">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -149,12 +147,11 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                 <asp:LinkButton ID="lnkCourseDetailId" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' CommandName="Detail"
-                                                    runat="server" Text='<%#Bind("title_and_id")%>'></asp:LinkButton>
-                                             
+                                                <asp:LinkButton ID="lnkCourseDetailId" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                                    CommandName="Detail" runat="server" Text='<%#Bind("title_and_id")%>'></asp:LinkButton>
                                             </td>
                                             <td>
-                                                 <%=LocalResources.GetLabel("app_revision_text")%>
+                                                <%=LocalResources.GetLabel("app_revision_text")%>
                                                 <asp:Label ID="lblVersion" runat="server" Text='<%#Bind("version")%>'></asp:Label>
                                             </td>
                                             <td class="tdright">
@@ -173,25 +170,28 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                             <td colspan="3">
+                                            <td colspan="3">
                                                 &nbsp;
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font_bold">
-                                                <%=LocalResources.GetLabel("app_cost_text")%> Free
+                                                <%=LocalResources.GetLabel("app_cost_text")%>
+                                                Free
                                             </td>
                                             <td>
                                             </td>
                                             <td class="tdright">
                                                 <asp:Label ID="lblAlreadyEnrollMessage" runat="server"></asp:Label>
-                                                <asp:Button ID="btnDrop" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_drop_button_text %>" />
+                                                <asp:Button ID="btnDrop" Style="display: none;" runat="server" CommandName="Drop"
+                                                    CommandArgument='<%#Eval("system_id")%>' Text="<%$ LabelResourceExpression: app_drop_button_text %>" />
                                                 <asp:Button ID="btnQuickLaunch" CommandName="QuickLaunch" CommandArgument='<%#Eval("system_id")%>'
-                                                    CssClass="cursor_hand" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
+                                                    CssClass="cursor_hand" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_quick_launch_button_text %>" />
                                                 <asp:Button ID="btnEnroll" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                                                     CommandName="Detail" runat="server" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                                                 <asp:Button ID="btnAssign" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
-                                                    CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>" Style="display: none;" />
+                                                    CommandName="Assign" runat="server" Text="<%$ LabelResourceExpression: app_assign_button_text %>"
+                                                    Style="display: none;" />
                                                 <asp:Button ID="btnDownload" CssClass="cursor_hand" CommandArgument='<%#Eval("system_id")%>'
                                                     CommandName="Download" runat="server" Text="Download" Style="display: none;" />
                                             </td>
@@ -249,7 +249,7 @@
                     <div class="left">
                         <table>
                             <tr>
-                                <td class="font_1" >
+                                <td class="font_1">
                                     <asp:Label ID="lblResultPerPageFooter" runat="server" Text="<%$ LabelResourceExpression: app_result_per_page_text %>"></asp:Label>
                                 </td>
                                 <td>
@@ -270,13 +270,13 @@
                     <div class="div_page_search">
                         <table>
                             <tr>
-                                <td class="font_1" >
+                                <td class="font_1">
                                     <asp:Label ID="lblPageOfPageFooter" runat="server" Text="<%$ LabelResourceExpression: app_page_text %>"></asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtPageFooter" runat="server" Text="1" CssClass="textbox_page_of_page"></asp:TextBox>
                                 </td>
-                                <td class="font_1" >
+                                <td class="font_1">
                                     <asp:Label ID="lblPageFooter" runat="server" />
                                 </td>
                                 <td>
@@ -293,26 +293,26 @@
             <br />
             <br />
             <div class="div_header_long">
-                <%=LocalResources.GetLabel("app_catalog_advanced_search_text")%> 
+                <%=LocalResources.GetLabel("app_catalog_advanced_search_text")%>
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                           <%=LocalResources.GetLabel("app_id_text")%> 
+                            <%=LocalResources.GetLabel("app_id_text")%>
                         </td>
                         <td>
                             <asp:TextBox ID="txtId" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <%=LocalResources.GetLabel("app_title_text")%> 
+                            <%=LocalResources.GetLabel("app_title_text")%>
                         </td>
                         <td>
                             <asp:TextBox ID="txtTitle" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                             <%=LocalResources.GetLabel("app_keyword_text")%> 
+                            <%=LocalResources.GetLabel("app_keyword_text")%>
                         </td>
                         <td>
                             <asp:TextBox ID="txtKeyword" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -324,7 +324,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <%=LocalResources.GetLabel("app_type_text")%> 
+                            <%=LocalResources.GetLabel("app_type_text")%>
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlType" DataValueField="c_type_id" DataTextField="c_type_name"
@@ -332,18 +332,19 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <%=LocalResources.GetLabel("app_delivery_text")%> 
+                            <%=LocalResources.GetLabel("app_delivery_text")%>
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlDelivery" DataValueField="s_delivery_type_system_id_pk" DataTextField="s_delivery_type_name"
-                                CssClass="ddl_user_advanced_search" runat="server">
+                            <asp:DropDownList ID="ddlDelivery" DataValueField="s_delivery_type_system_id_pk"
+                                DataTextField="s_delivery_type_name" CssClass="ddl_user_advanced_search" runat="server">
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <%=LocalResources.GetLabel("app_language_text")%> 
+                            <%=LocalResources.GetLabel("app_language_text")%>
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlLanguage" CssClass="ddl_user_advanced_search" runat="server" DataTextField="s_locale_description" DataValueField="s_locale_id_pk">
+                            <asp:DropDownList ID="ddlLanguage" CssClass="ddl_user_advanced_search" runat="server"
+                                DataTextField="s_locale_description" DataValueField="s_locale_id_pk">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -360,12 +361,12 @@
                             &nbsp;
                         </td>
                         <td class="btnreset_td">
-                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"  OnClientClick="return resetall();"
-                                runat="server" />
+                            <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                                OnClientClick="return resetall();" runat="server" />
                         </td>
                         <td colspan="2" class="btncancel_td">
-                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"  runat="server"
-                                OnClick="btnGosearch_Click" />
+                            <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                                runat="server" OnClick="btnGosearch_Click" />
                         </td>
                     </tr>
                 </table>

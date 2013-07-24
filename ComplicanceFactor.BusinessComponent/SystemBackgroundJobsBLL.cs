@@ -733,5 +733,50 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable GetEnrollReminder(string s_notification_id_pk)
+        {
+            Hashtable htGetEnrollReminder = new Hashtable();
+            htGetEnrollReminder.Add("@s_notification_id_pk", s_notification_id_pk);
+
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_enroll_duedate_reminder_for_background", htGetEnrollReminder);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetEnrollWarning(string s_notification_id_pk)
+        {
+            Hashtable htGetEnrollReminder = new Hashtable();
+            htGetEnrollReminder.Add("@s_notification_id_pk", s_notification_id_pk);
+
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_enroll_duedate_warning_for_background", htGetEnrollReminder);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetEnrollMissed(string s_notification_id_pk)
+        {
+            Hashtable htGetEnrollReminder = new Hashtable();
+            htGetEnrollReminder.Add("@s_notification_id_pk", s_notification_id_pk);
+
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_enroll_duedate_missed_for_background", htGetEnrollReminder);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

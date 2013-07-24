@@ -10,7 +10,7 @@
         body
         {
             /*width: 960px;*/
-            width: 700px !important;
+            width: 900px !important;
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
@@ -65,7 +65,7 @@
     <asp:ValidationSummary class="validation_summary_error" ID="vs_sgsev" runat="server"
         ValidationGroup="sgsev"></asp:ValidationSummary>
   <div id="content">
-        <div class="div_header_1005">
+        <div class="div_header_900">
             <%=LocalResources.GetLabel("app_add_grading_value_text")%>:
         </div>
         <br />

@@ -364,7 +364,6 @@ namespace ComplicanceFactor.Employee.Catalog
         {
             if (e.CommandName.Equals("Detail"))
             {
-
                // int index = Convert.ToInt32(e.CommandArgument.ToString());
                // string system_id = gvsearchDetails.DataKeys[index].Values[0].ToString();
                // string c_course_approve_req = gvsearchDetails.DataKeys[index].Values[2].ToString();
@@ -386,7 +385,55 @@ namespace ComplicanceFactor.Employee.Catalog
                 {
                     Response.Redirect("~/Employee/Catalog/ctdocp-01.aspx?id=" + SecurityCenter.EncryptText(system_id), false);
                 }
+            }
 
+            else if (e.CommandName.Equals("Assign"))
+            {
+
+                //Assign Curricula
+                BusinessComponent.DataAccessObject.Enrollment assignCurricula = new BusinessComponent.DataAccessObject.Enrollment();
+                assignCurricula.e_curriculum_assign_user_id_fk = SessionWrapper.u_userid;
+                assignCurricula.e_curriculum_assign_curriculum_id_fk = e.CommandArgument.ToString();
+                assignCurricula.e_curriculum_assign_required_flag = true;
+                assignCurricula.e_curriculum_assign_target_due_date = DateTime.UtcNow; //set empty on EnrollmentBLL  for self assign
+                assignCurricula.e_curriculum_assign_recert_due_date = DateTime.UtcNow;
+                assignCurricula.e_curriculum_assign_recert_status_id_fk = string.Empty;
+                assignCurricula.e_curriculum_assign_status_id_fk = "Assigned";
+                assignCurricula.e_curriculum_assign_percent_complete = 0;
+                assignCurricula.e_curriculum_assign_active_flag = true;
+                EnrollmentBLL.AssignCurricula(assignCurricula);
+                Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
+            }
+            else if (e.CommandName.Equals("QuickLaunch"))
+            {
+                //insert enrollment
+                BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
+                enrollOLT.e_enroll_system_id_pk = Guid.NewGuid().ToString();
+                enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                enrollOLT.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                enrollOLT.e_enroll_required_flag = true;
+                enrollOLT.e_enroll_approval_required_flag = false;
+                enrollOLT.e_enroll_type_name = "Self-enroll";
+                enrollOLT.e_enroll_approval_status_name = "Pending";
+                enrollOLT.e_enroll_status_name = "Enrolled";
+
+                int result = EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
+                if (result == 0)
+                {
+                    string url = "/LMS/CoursePlayer.aspx?eid=" + enrollOLT.e_enroll_system_id_pk + "&AICC_SID=" + enrollOLT.e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "windowopen", "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1')", true);
+                }
+                //Response.Redirect(Request.RawUrl);
+                SearchResult();
+
+            }
+            else if (e.CommandName.Equals("Drop"))
+            {
+                BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
+                DropEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
+                Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
             }
         }
 

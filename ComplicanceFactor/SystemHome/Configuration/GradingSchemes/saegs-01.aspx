@@ -36,7 +36,7 @@
                     'autoScale': false,
                     'autoDimensions': false,
                     'helpers': { overlay: { closeClick: false} },
-                    'width': 800,
+                    'width': 920,
                     'height': 300,
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
@@ -235,12 +235,12 @@
                         <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             runat="server" OnClick="btnHeaderReset_Click" />
                     </td>
-
                     <td>
                     </td>
                     <td>
                     </td>
-                    <td></td>
+                    <td>
+                    </td>
                     <td class="btncancel_td">
                         <asp:Button ID="btnHeaderCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             runat="server" OnClick="btnHeaderCancel_Click" />
@@ -341,9 +341,11 @@
                                                     <asp:TextBox ID="txtMaxscore" runat="server" CssClass="textbox_50" />
                                                 </td>
                                                 <td>
-                                                    <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saegs" ControlToValidate="txtGpa"
+                                                    <%-- <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saegs" ControlToValidate="txtGpa"
                                                         ErrorMessage="<%$ TextResourceExpression: app_gpa_error_empty %>">&nbsp;
-                                                    </asp:RequiredFieldValidator>
+                                                    </asp:RequiredFieldValidator>--%>
+                                                    <asp:RegularExpressionValidator ID="rfvEvery" runat="server" ErrorMessage="Plese enter only the numbers in GPA"
+                                                        ControlToValidate="txtGpa" ValidationGroup="saegs" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
                                                     <asp:DropDownList ID="ddlPassingStatus" runat="server" DataTextField="s_grading_scheme_value_pass_status_name"
                                                         DataValueField="s_grading_scheme_value_pass_status_id_fk" />
                                                     &nbsp; GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" CssClass="textbox_50" />
@@ -1561,7 +1563,8 @@
                     </td>
                     <td>
                     </td>
-                    <td></td>
+                    <td>
+                    </td>
                     <td align="center" class="btnreset_td">
                         <asp:Button ID="btnFooterReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             runat="server" OnClick="btnFooterReset_Click" />
