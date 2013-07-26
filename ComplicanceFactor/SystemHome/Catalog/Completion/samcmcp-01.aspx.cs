@@ -31,9 +31,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_search_result_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_course_details_page_text") + "</a>";
 
                 btnSaveCompletion.Attributes.Add("OnClick", "return IsCheckBoxSelected(gvsearchSession)");
-                SessionWrapper.TempEmployeelist_delivery = null;
-
-                
+                SessionWrapper.TempEmployeelist_delivery = null;                
 
                 if (!string.IsNullOrEmpty(Request.QueryString["deliveryId"]))
                 {
@@ -318,6 +316,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
                 string passingStatus = string.Empty;
                 string grade = string.Empty;
+                int score = 0;
                 if (chkSelect.Checked == true)
                 {
                     SessionWrapper.selecteduserId_OLT = SessionWrapper.selecteduserId_OLT + "'" + u_user_id_pk+"',";
@@ -329,8 +328,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                     if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                     {
                         //do calculation and change the Passing status Grading Scheme
+                        Decimal scoreValue = Convert.ToDecimal(txtscore.Text);
+                        score = Convert.ToInt32(scoreValue); 
                         SystemGradingSchemes gradevalues = new SystemGradingSchemes();
-                        gradevalues = ManageCompletionBLL.GetGradeByScore(deliveryId, Convert.ToInt32(txtscore.Text));
+                        gradevalues = ManageCompletionBLL.GetGradeByScore(deliveryId, score);
                         if (!string.IsNullOrEmpty(gradevalues.s_grading_scheme_value_pass_status_id_fk))
                         {
                             if (gradevalues.s_grading_scheme_value_pass_status_id_fk == "app_ddl_pass_text")
@@ -376,7 +377,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                         updateTranscripts.t_transcript_grade_id_fk = grade;
                         if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                         {
-                            updateTranscripts.t_transcript_completion_score = Convert.ToInt32(txtscore.Text);
+                            updateTranscripts.t_transcript_completion_score = score;
                         }
                         else
                         {
@@ -420,7 +421,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             transcripts.t_transcript_grade_id_fk = grade;
                             if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                             {
-                                transcripts.t_transcript_completion_score = Convert.ToInt32(txtscore.Text);
+                                transcripts.t_transcript_completion_score = score;
                             }
                             else
                             {
@@ -434,7 +435,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             transcripts.t_transcript_actual_date = DateTime.Now; //Actual date  
                             transcripts.t_transcript_status_name = "Completed";//doubt //enroll.e_enroll_status_id_fk;
                             transcripts.t_transcript_time_spent = 0;
-                            transcripts.t_transcript_score = 0;
+                            transcripts.t_transcript_score = score;
                             transcripts.t_transcript_credits = 0;
                             transcripts.t_transcript_hours = 0;
                             transcripts.t_transcript_active_flag = true;
@@ -494,7 +495,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             transcripts.t_transcript_actual_date = DateTime.Now; //Actual date  
                             transcripts.t_transcript_status_name = "Completed";//doubt //enroll.e_enroll_status_id_fk;
                             transcripts.t_transcript_time_spent = 0;
-                            transcripts.t_transcript_score = 0;
+                            transcripts.t_transcript_score = score;
                             transcripts.t_transcript_credits = 0;
                             transcripts.t_transcript_hours = 0;
                             transcripts.t_transcript_active_flag = true;

@@ -57,6 +57,7 @@
                     }
                 }
             }
+            alert('Please select atleast one employee');
             return false;
         }
         function resetall() {

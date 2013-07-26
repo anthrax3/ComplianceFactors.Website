@@ -864,7 +864,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                     //Show error message 
                     divSuccess.Style.Add("display", "none");
                     divError.Style.Add("display", "block");
-                    divError.InnerText = LocalResources.GetText("app_course_id_already_exists_error_text");
+                    divError.InnerText = LocalResources.GetText("app_course_id_already_exist_error_wrong");
 
                 }
 

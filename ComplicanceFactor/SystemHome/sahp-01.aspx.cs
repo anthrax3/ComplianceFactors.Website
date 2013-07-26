@@ -233,5 +233,10 @@ namespace ComplicanceFactor.SystemHome
         {
             SessionWrapper.IsClose = "True";
         }
+        protected void ibtnCloseSplash_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.IsClose = "True";
+        }
+        
     }
 }

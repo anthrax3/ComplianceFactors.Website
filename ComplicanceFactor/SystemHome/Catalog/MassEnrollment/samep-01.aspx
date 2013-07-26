@@ -260,7 +260,7 @@
             var isValid = validateAll();
             if (isValid == true) {
                 if (confirm('Are you sure') == true)
-                    return isv;
+                    return true;
                 else
                     return false;
             }

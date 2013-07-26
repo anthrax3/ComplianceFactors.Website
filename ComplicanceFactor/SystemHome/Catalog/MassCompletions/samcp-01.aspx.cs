@@ -140,7 +140,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                     {
                         grade = ddlGrade.SelectedItem.Text;
                     }
-                    sbSelectedCompletionDate.Append(lblDelivery.Text + " : " + txtCompletionDate.Text + "<br/>");
+                    if (!string.IsNullOrEmpty(txtCompletionDate.Text))
+                    {
+                        sbSelectedCompletionDate.Append(lblDelivery.Text + " : " + txtCompletionDate.Text + "<br/>");
+                    }
+                    else
+                    {
+                        sbSelectedCompletionDate.Append(lblDelivery.Text + " : " + DateTime.Now.ToShortDateString() + "<br/>");
+                    }
                     sbSelectedCompletion.Append(lblDelivery.Text + " : " + attendanceStatus + " - " + PassingStatus + " - " + grade + "<br/>");
                 }
                 string pinNumber = UserBLL.GetUserPIN(SessionWrapper.u_userid);
@@ -149,6 +156,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 selectedEmployee.InnerHtml = sbSelectedEmployee.ToString();
                 lblStatus.Text = sbSelectedCompletion.ToString();
                 lblCompletionDate.Text = sbSelectedCompletionDate.ToString();
+
+
                 mpeCurriculumNotes.Show();
             }
         }
@@ -164,7 +173,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
 
                     Label lblDelivery = (Label)e.Row.FindControl("lblDeliveryIdName");
                     lblDelivery.Text = Header;
-                  
+
                     DataRowView drgrade = (DataRowView)e.Row.DataItem;
                     string deliveryId = Convert.ToString(drgrade["c_delivery_id_pk"]);
 
@@ -208,21 +217,35 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             DataRow[] getrow = dtTempSelectedDeliveries.Select("RowIndex=" + idx);
             if (getrow.Length > 0)
             {
-                foreach (var updaterow in getrow)
+                if (id != "Select a Delivery")
                 {
-                    updaterow["c_delivery_id_pk"] = c_delivery_id_pk;
-                    updaterow["Id"] = id;
+                    foreach (var updaterow in getrow)
+                    {
+                        updaterow["c_delivery_id_pk"] = c_delivery_id_pk;
+                        updaterow["Id"] = id;
+                    }
                 }
             }
             else
             {
-                DataRow row;
-                row = dtTempSelectedDeliveries.NewRow();
-                //row["c_instructor_id_fk"] = c_instructor_id_fk;
-                row["Id"] = id;
-                row["RowIndex"] = idx;
-                row["c_delivery_id_pk"] = c_delivery_id_pk;
-                dtTempSelectedDeliveries.Rows.Add(row);
+                if (id != "Select a Delivery")
+                {
+                    DataRow row;
+                    row = dtTempSelectedDeliveries.NewRow();
+                    //row["c_instructor_id_fk"] = c_instructor_id_fk;
+                    row["Id"] = id;
+                    row["RowIndex"] = idx;
+                    row["c_delivery_id_pk"] = c_delivery_id_pk;
+                    dtTempSelectedDeliveries.Rows.Add(row);
+                }
+            }
+
+            if (id == "Select a Delivery")
+            {
+                var rows = dtTempSelectedDeliveries.Select("RowIndex= " + idx + "");
+                foreach (var row in rows)
+                    row.Delete();
+                dtTempSelectedDeliveries.AcceptChanges();
             }
         }
         protected void btnSaveStatus_Click(object sender, EventArgs e)
@@ -231,7 +254,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             string deliveryID = string.Empty;
             string passingStatus = string.Empty;
             string grade = string.Empty;
-
+            int score = 0;
             //For get the completion status and session emplyee/course
             DataTable dtCompletionStatus = TempCompletionStatus();
 
@@ -247,8 +270,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                 {
                     //do calculation and change the Passing status Grading Scheme
+                    Decimal scoreValue = Convert.ToDecimal(txtscore.Text);
+                    score = Convert.ToInt32(scoreValue);
                     SystemGradingSchemes gradevalues = new SystemGradingSchemes();
-                    gradevalues = ManageCompletionBLL.GetGradeByScore(c_delivery_id_pk, Convert.ToInt32(txtscore.Text));
+                    gradevalues = ManageCompletionBLL.GetGradeByScore(c_delivery_id_pk, score);
                     if (!string.IsNullOrEmpty(gradevalues.s_grading_scheme_value_pass_status_id_fk))
                     {
                         if (gradevalues.s_grading_scheme_value_pass_status_id_fk == "app_ddl_pass_text")
@@ -287,7 +312,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 }
                 if (!string.IsNullOrEmpty(txtscore.Text) && !string.IsNullOrWhiteSpace(txtscore.Text))
                 {
-                    Completionrow["t_transcript_completion_score"] = txtscore.Text;
+                    Completionrow["t_transcript_completion_score"] = score;
                 }
                 else
                 {
@@ -295,8 +320,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                 }
                 Completionrow["attendance_value"] = ddlAttendance.SelectedItem.Text;
                 Completionrow["passsingstatusValue"] = ddlPassingStatus.SelectedItem.Text;
-                Completionrow["gradeValue"] =  ddlGrade.SelectedItem.Text;
-                Completionrow["t_transcript_completion_date_time"] = txtCompletionDate.Text;
+                Completionrow["gradeValue"] = ddlGrade.SelectedItem.Text;
+                if (!string.IsNullOrEmpty(txtCompletionDate.Text))
+                {
+                    Completionrow["t_transcript_completion_date_time"] = txtCompletionDate.Text;
+                }
+                else
+                {
+                    Completionrow["t_transcript_completion_date_time"] = DateTime.Now;
+                }
                 dtCompletionStatus.Rows.Add(Completionrow);
             }
 
@@ -332,14 +364,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             SystemTranscripts transcripts = new SystemTranscripts();
             transcripts.t_transcript_id_pk = Guid.NewGuid().ToString();
             transcripts.t_transcript_assign_id_fk = string.Empty;
-            transcripts.t_transcript_enroll_id_fk = string.Empty;            
+            transcripts.t_transcript_enroll_id_fk = string.Empty;
             transcripts.t_transcript_completion_date_time = DateTime.UtcNow;
             transcripts.t_transcript_completion_type_id_fk = "app_ddl_manual_user_mark_completion_text";//doubt
             transcripts.t_transcript_marked_by_user_id_fk = SessionWrapper.u_userid;
             transcripts.t_transcript_required_flag = true;
             transcripts.t_transcript_target_due_date = DateTime.Now; //Target date
             transcripts.t_transcript_actual_date = DateTime.Now; //Actual date  
-            transcripts.t_transcript_status_name = "Completed"; 
+            transcripts.t_transcript_status_name = "Completed";
             transcripts.t_transcript_time_spent = 0;
             transcripts.t_transcript_score = 0;
             transcripts.t_transcript_credits = 0;
@@ -354,7 +386,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             transcripts.Userid = SessionWrapper.u_userid;
             transcripts.user_type = SessionWrapper.u_user_type;
             transcripts.user_detail = SessionWrapper.u_lastname + ' ' + SessionWrapper.u_firstname + ' ' + SessionWrapper.u_middlename;
-            transcripts.action_desc = "Marked Completion";       
+            transcripts.action_desc = "Marked Completion";
             transcripts.ipaddress = strIPAddress;
             transcripts.device = Request.UserAgent;
 
@@ -531,7 +563,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
 
             dtColumn = new DataColumn();
             dtColumn.DataType = Type.GetType("System.String");
-            dtColumn.ColumnName = "t_transcript_grade_id_fk";           
+            dtColumn.ColumnName = "t_transcript_grade_id_fk";
             dt.Columns.Add(dtColumn);
             dt.Columns["t_transcript_grade_id_fk"].AllowDBNull = true;
 
@@ -635,7 +667,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
             dtColumn.DataType = Type.GetType("System.String");
             dtColumn.ColumnName = "t_transcript_completion_date_time";
             dt.Columns.Add(dtColumn);
-            
+
 
             dtColumn = new DataColumn();
             dtColumn.DataType = Type.GetType("System.String");
@@ -678,11 +710,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                         lblEmployeeName.ForeColor = System.Drawing.Color.Red;
 
                         Label lblEmployeeId = (Label)e.Row.FindControl("lblEmployeeId");
-                        lblEmployeeName.ForeColor = System.Drawing.Color.Red;                 
-                        
+                        lblEmployeeName.ForeColor = System.Drawing.Color.Red;
+
                         //e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                     }
-                        
+
                 }
                 catch (Exception ex)
                 {

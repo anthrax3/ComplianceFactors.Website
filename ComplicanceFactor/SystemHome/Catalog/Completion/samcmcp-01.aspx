@@ -97,15 +97,44 @@
                 $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', false);
             }
         }
+    </script>     
+    <script type="text/javascript">
+        function check_hdUpdateValue(sender, args) {
+            document.getElementById('<%=hdUpdateValue.ClientID %>').value = "0";
+            var isValid = validateAll();
+            if (isValid == true) {
+                if (confirm('Are you sure') == true)
+                    return true;
+                else
+                    return false;
+            }
+
+        }
     </script>
     <script type="text/javascript">
-        function check_hdUpdateValue(id) {
-            if (id == "btnAddNew") {
-                document.getElementById('<%=hdUpdateValue.ClientID %>').value = "0";
+        function CheckScore(sender, args) {
+            var f = document.getElementById('<%=gvsearchDetails.ClientID %>');
+            for (var i = 0; i < f.getElementsByTagName("input").length; i++) {
+                if (f.getElementsByTagName("input").item(i).type == "text") {
+
+                    if (f.getElementsByTagName("input").item(i).value > 100) {
+                        f.getElementsByTagName("input").item(i).focus();
+                        args.IsValid = false;
+                    }
+                    else {
+                        args.IsValid = true;
+                    }
+
+                }
+
             }
-            else {
-                document.getElementById('<%=hdUpdateValue.ClientID %>').value = "1";
-            }
+        }
+    </script>
+    <script type="text/javascript">
+        function validateAll() {
+            var isValid = false;
+            isValid = Page_ClientValidate('samcmcp');
+            return isValid;
         }
     </script>
     <script type="text/javascript">
@@ -227,6 +256,10 @@
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
+    <asp:ValidationSummary class="validation_summary_error" ID="vs_samcmcp" runat="server"
+        ValidationGroup="samcmcp"></asp:ValidationSummary>
+    <asp:CustomValidator ID="cvValidateScore" EnableClientScript="true" ClientValidationFunction="CheckScore"
+        ValidationGroup="samcmcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_score_limit_error_wrong %>">&nbsp;</asp:CustomValidator>
     <div class="content_area_long">
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
@@ -480,7 +513,7 @@
                         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_2" HeaderText="<%$ LabelResourceExpression: app_score_text %>"
                             HeaderStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1"
                             ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
+                            <ItemTemplate>                                
                                 <asp:TextBox ID="txtScore" CssClass="textbox_50" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>

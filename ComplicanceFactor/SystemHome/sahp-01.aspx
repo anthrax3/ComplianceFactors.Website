@@ -277,8 +277,8 @@
                 <div class="div_header_900">
                     <span class="font_1" style="color:Black;">Splash Preview:</span>
                 </div>
-                <asp:ImageButton ID="imgCloseSplash" CssClass="cursor_hand" Style="top: -15px; right: -15px;
-                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
+                <asp:ImageButton ID="ibtnCloseSplash" CssClass="cursor_hand" Style="top: -15px; right: -15px;
+                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" OnClick="ibtnCloseSplash_Click" />
             </div>
         </asp:Panel>
         <br />
@@ -308,6 +308,6 @@
     </asp:Panel>
     <asp:ModalPopupExtender ID="mpSplashPage" runat="server" TargetControlID="btnSplash"
         PopupControlID="pnlSplashPage" BackgroundCssClass="transparent_class" DropShadow="false"
-        PopupDragHandleControlID="pnlSplashPageHeading" OkControlID="imgCloseSplash">
+        PopupDragHandleControlID="pnlSplashPageHeading">
     </asp:ModalPopupExtender>
 </asp:Content>

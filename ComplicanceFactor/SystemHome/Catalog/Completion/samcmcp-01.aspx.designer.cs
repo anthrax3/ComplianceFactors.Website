@@ -31,6 +31,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
+        /// vs_samcmcp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samcmcp;
+        
+        /// <summary>
+        /// cvValidateScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateScore;
+        
+        /// <summary>
         /// hdNav_selected control.
         /// </summary>
         /// <remarks>
