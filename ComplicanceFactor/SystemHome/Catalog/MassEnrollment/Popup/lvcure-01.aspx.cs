@@ -38,7 +38,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
             //lblCreditUnits.Text = Convert.ToString(Course.c_course_credit_units);
             lblCreditHours.Text = Convert.ToString(curriculum.c_curriculum_credit_hours);
             //Get Path
-            dlPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaPath(curriculumId);
+            dlPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaPath(curriculumId,SessionWrapper.u_userid);
             dlPath.DataBind();
             //Store Prerequisites,Equivalencies and Fulfillments in dataset
             DataSet dsprerequisiteEquivalenciesFullfillments = SystemCurriculumBLL.GetprerequisiteEquivalenciesFullfillments(curriculumId);
@@ -132,7 +132,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment.Popup
         {
             try
             {
-                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(curriculumId, c_curricula_path_system_id_pk);
+                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(curriculumId, c_curricula_path_system_id_pk, SessionWrapper.u_userid);
                 GridView.DataBind();
             }
             catch (Exception ex)

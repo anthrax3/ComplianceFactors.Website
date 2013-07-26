@@ -42,6 +42,9 @@
             $(".viewCurriculum").click(function () {
                 //Get the Id of the record to delete
                 var record_id = $(this).attr("id");
+
+                var userid = document.getElementById('<%=hdnUserId.ClientID %>').value;
+                //alert(userid);
                 //Get the GridView Row reference
                 var tr_id = $(this).parents("#.record");
                 $.fancybox({
@@ -61,7 +64,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Manager/Popup/p-lvcurd-01.aspx?id=' + record_id,
+                    'href': '/Manager/Popup/p-lvcurd-01.aspx?id=' + record_id + '&userid=' + userid,
                     'onComplete': function () {
                         $.fancybox.showActivity();
                         $('#fancybox-frame').load(function () {
@@ -90,6 +93,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
+    <asp:HiddenField ID="hdnUserId" runat="server" />
    <div id="content">
         <div class="div_header_870">
             <%=LocalResources.GetLabel("app_my_curricula_text")%>:

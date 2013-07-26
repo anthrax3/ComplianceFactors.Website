@@ -39,7 +39,7 @@ namespace ComplicanceFactor.Employee.Curricula
                 {
                     CurriculumId = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     PopulateCurriculum(CurriculumId);
-                    dlPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaPath(CurriculumId);
+                    dlPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaPath(CurriculumId,SessionWrapper.u_userid);
                     dlPath.DataBind();
                    // dlRecertPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaRecertPath(CurriculumId);
                     //dlRecertPath.DataBind();
@@ -251,7 +251,6 @@ namespace ComplicanceFactor.Employee.Curricula
                         Response.Write("Please provide a file to download.");
                     }
                 }
-
             }
         }
         protected void dlPath_ItemDataBound(object sender, DataListItemEventArgs e)
@@ -260,6 +259,10 @@ namespace ComplicanceFactor.Employee.Curricula
             Label lblCompleteSection = (Label)e.Item.FindControl("lblCompleteSection");
             BindPathSection(gvSection, dlPath.DataKeys[e.Item.ItemIndex].ToString());
             lblCompleteSection.Text = "Complete " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_complete") + " of " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_sections") + " Section(s) below to complete the requirements for this Curriculum.";
+            Label lblPathCompletionPercentage = (Label)e.Item.FindControl("lblPathCompletionPercentage");
+            lblPathCompletionPercentage.Text = "Completed " + DataBinder.Eval(e.Item.DataItem, "percentage") + " Completed";
+            
+
         }
         protected void gvSection_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -270,7 +273,13 @@ namespace ComplicanceFactor.Employee.Curricula
                 DataListItemEventArgs dle = new DataListItemEventArgs(dlItem);
                 GridView gvCourses = (GridView)e.Row.FindControl("gvCourses");
                 Label lblComplete = (Label)e.Row.FindControl("lblComplete");
+                Label lblCompletedCoursePercentage = (Label)e.Row.FindControl("lblCompletedCoursePercentage");
+                lblComplete.Text = "(Complete " + DataBinder.Eval(e.Row.DataItem, "completedcourse").ToString() +")";  
+                lblCompletedCoursePercentage.Text = "Completed " + DataBinder.Eval(e.Row.DataItem, "percentage").ToString(); 
                 string str_path_section_complete = DataBinder.Eval(e.Row.DataItem, "c_curricula_path_section_complete").ToString();
+
+
+
                 BindPathCourse(gvCourses, GridView1.DataKeys[e.Row.RowIndex][0].ToString(), GridView1.DataKeys[e.Row.RowIndex][1].ToString(), lblComplete, str_path_section_complete);
                 
             }
@@ -317,7 +326,7 @@ namespace ComplicanceFactor.Employee.Curricula
         {
             try
             {
-                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(CurriculumId, c_curricula_path_system_id_pk);
+                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(CurriculumId, c_curricula_path_system_id_pk,SessionWrapper.u_userid);
                 GridView.DataBind();
             }
             catch (Exception ex)
@@ -349,7 +358,8 @@ namespace ComplicanceFactor.Employee.Curricula
                 GridView.DataSource = dtPathCourse;
                 GridView.DataBind();
                 //lblComplete.Text = "(Complete " + path_section_complete + " of " + dtPathCourse.Rows.Count.ToString() + " Courses)";
-                lblComplete.Text = "(Complete " + GridView.Rows.Count + " of " + GridView.Rows.Count + " Courses)";
+                //lblComplete.Text = "(Complete " + GridView.Rows.Count + " of " + GridView.Rows.Count + " Courses)";
+                
             }
             catch (Exception ex)
             {

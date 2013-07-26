@@ -88,7 +88,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.UpdateCurriculumStatuses
         {
             try
             {
-                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(curriculumId, pathId);
+                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(curriculumId, pathId, SessionWrapper.u_userid);
                 GridView.DataBind();
             }
             catch (Exception ex)

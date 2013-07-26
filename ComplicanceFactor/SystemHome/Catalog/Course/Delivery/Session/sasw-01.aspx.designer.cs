@@ -22,13 +22,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// vs_sand control.
+        /// vs_sasw control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_sand;
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_sasw;
         
         /// <summary>
         /// hdValue control.

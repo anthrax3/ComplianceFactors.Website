@@ -279,7 +279,7 @@
                 <br />
                 <div class="div_controls font_1">
                     <asp:Label ID="lblCompleteSection" runat="server"></asp:Label><br />
-                    Currently 0% Completed
+                   <asp:Label ID="lblPathCompletionPercentage" runat="server" Text="Label"></asp:Label>
                 </div>
                 <asp:GridView ID="gvSection" ShowHeader="false" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
                     runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" GridLines="None" DataKeyNames="c_curricula_path_id_fk,c_curricula_path_section_id_pk"
@@ -291,7 +291,7 @@
                                 <hr />
                                <%=LocalResources.GetLabel("app_section_text")%>:<%#Eval("c_curricula_path_section_seq_number")%>
                                 <asp:Label ID="lblComplete" runat="server"></asp:Label><br />
-                                0% Completed
+                               <asp:Label ID="lblCompletedCoursePercentage" runat="server" Text="Label"></asp:Label>
                                 <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
                                     runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" GridLines="None" ShowFooter="true"
                                     RowStyle-CssClass="record" DataKeyNames="c_curricula_path_course_id_fk" AutoGenerateColumns="False"

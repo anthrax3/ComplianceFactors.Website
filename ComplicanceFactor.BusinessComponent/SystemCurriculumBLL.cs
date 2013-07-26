@@ -2175,10 +2175,12 @@ namespace ComplicanceFactor.BusinessComponent
         //        throw;
         //    }
         //}
-        public static DataTable GetSingleCurriculaPath(string c_curricula_id_fk)
+        public static DataTable GetSingleCurriculaPath(string c_curricula_id_fk, string u_user_id_pk)
         {
             Hashtable htGetSingleCurriculaPath = new Hashtable();
             htGetSingleCurriculaPath.Add("@c_curricula_id_fk", c_curricula_id_fk);
+            htGetSingleCurriculaPath.Add("@u_user_id_pk", u_user_id_pk);
+
             try
             {
                 return DataProxy.FetchDataTable("c_sp_get_single_curricula_path", htGetSingleCurriculaPath);
@@ -2189,11 +2191,12 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static DataTable GetSingleCurriculaPathSection(string c_curricula_id_fk, string c_curricula_path_id_fk)
+        public static DataTable GetSingleCurriculaPathSection(string c_curricula_id_fk, string c_curricula_path_id_fk, string u_user_id_pk)
         {
             Hashtable htGetSingleCurriculaPathSection = new Hashtable();
             htGetSingleCurriculaPathSection.Add("@c_curricula_path_id_fk", c_curricula_path_id_fk);
             htGetSingleCurriculaPathSection.Add("@c_curricula_id_fk", c_curricula_id_fk);
+            htGetSingleCurriculaPathSection.Add("@u_user_id_pk", u_user_id_pk);
             try
             {
                 return DataProxy.FetchDataTable("c_sp_get_single_curricula_path_section", htGetSingleCurriculaPathSection);

@@ -21,22 +21,27 @@ namespace ComplicanceFactor.Manager.Popup
         private string _attachmentpath = "~/SystemHome/Catalog/Curriculum/Attachments/";
         #endregion
         private string CurriculumId;
+        private string userId;
         protected void Page_Load(object sender, EventArgs e)
         {
             //CurriculumId = SecurityCenter.DecryptText(Request.QueryString["id"]);
             if (!IsPostBack)
             {
+                if (!string.IsNullOrEmpty(Request.QueryString["userid"]))
+                {
+                    userId = Request.QueryString["userid"].ToString();
+                }
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     CurriculumId = Request.QueryString["id"];
                     PopulateCurriculum(CurriculumId);
-                    dlPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaPath(CurriculumId);
+                    dlPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaPath(CurriculumId, userId);
                     dlPath.DataBind();
                     // dlRecertPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaRecertPath(CurriculumId);
                     //dlRecertPath.DataBind();
                     gvRecertPath.DataSource = SystemCurriculumBLL.GetSingleCurriculaRecertPath(CurriculumId);
                     gvRecertPath.DataBind();
-                }
+                }               
             }
         }
 
@@ -226,6 +231,9 @@ namespace ComplicanceFactor.Manager.Popup
             Label lblCompleteSection = (Label)e.Item.FindControl("lblCompleteSection");
             BindPathSection(gvSection, dlPath.DataKeys[e.Item.ItemIndex].ToString());
             lblCompleteSection.Text = "Complete " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_complete") + " of " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_sections") + " Section(s) below to complete the requirements for this Curriculum.";
+
+            Label lblPathCompletionPercentage = (Label)e.Item.FindControl("lblPathCompletionPercentage");
+            lblPathCompletionPercentage.Text = "Completed " + DataBinder.Eval(e.Item.DataItem, "percentage") + " Completed";
         }
         protected void gvSection_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -236,6 +244,9 @@ namespace ComplicanceFactor.Manager.Popup
                 DataListItemEventArgs dle = new DataListItemEventArgs(dlItem);
                 GridView gvCourses = (GridView)e.Row.FindControl("gvCourses");
                 Label lblComplete = (Label)e.Row.FindControl("lblComplete");
+                Label lblCompletedCoursePercentage = (Label)e.Row.FindControl("lblCompletedCoursePercentage");
+                lblComplete.Text = "(Complete " + DataBinder.Eval(e.Row.DataItem, "completedcourse").ToString() + ")";
+                lblCompletedCoursePercentage.Text = "Completed " + DataBinder.Eval(e.Row.DataItem, "percentage").ToString(); 
                 string str_path_section_complete = DataBinder.Eval(e.Row.DataItem, "c_curricula_path_section_complete").ToString();
                 BindPathCourse(gvCourses, GridView1.DataKeys[e.Row.RowIndex][0].ToString(), GridView1.DataKeys[e.Row.RowIndex][1].ToString(), lblComplete, str_path_section_complete);
 
@@ -280,7 +291,7 @@ namespace ComplicanceFactor.Manager.Popup
         {
             try
             {
-                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(CurriculumId, c_curricula_path_system_id_pk);
+                GridView.DataSource = SystemCurriculumBLL.GetSingleCurriculaPathSection(CurriculumId, c_curricula_path_system_id_pk, userId);
                 GridView.DataBind();
             }
             catch (Exception ex)
@@ -305,14 +316,14 @@ namespace ComplicanceFactor.Manager.Popup
             {
                 DataTable dtPathCourse = new DataTable();
                 //DataView dvPathCourse = new DataView(SystemCurriculumBLL.GetSingleCurriculaPathCourse(CurriculumId, c_curricula_path_system_id_pk));
-                DataView dvPathCourse = new DataView(EnrollmentBLL.EnrollGetSingleCurriculaPathCourse(CurriculumId, c_curricula_path_system_id_pk,SessionWrapper.u_userid));
+                DataView dvPathCourse = new DataView(EnrollmentBLL.EnrollGetSingleCurriculaPathCourse(CurriculumId, c_curricula_path_system_id_pk, userId));
                 dvPathCourse.RowFilter = "c_curricula_path_section_id_fk= '" + c_curricula_path_section_id_pk + "'";
                 dvPathCourse.Sort = "c_curricula_path_course_seq_number ASC";
                 dtPathCourse = dvPathCourse.ToTable();
                 GridView.DataSource = dtPathCourse;
                 GridView.DataBind();
                 //lblComplete.Text = "(Complete " + path_section_complete + " of " + dtPathCourse.Rows.Count.ToString() + " Courses)";
-                lblComplete.Text = "(Complete " + GridView.Rows.Count + " of " + GridView.Rows.Count + " Courses)";
+                //lblComplete.Text = "(Complete " + GridView.Rows.Count + " of " + GridView.Rows.Count + " Courses)";
             }
             catch (Exception ex)
             {

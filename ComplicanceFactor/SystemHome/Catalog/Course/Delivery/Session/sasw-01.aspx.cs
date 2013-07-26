@@ -150,16 +150,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
         /// <param name="e"></param>
         protected void btnGenerateSession_Click(object sender, EventArgs e)
         {
-            //Instructor ----->Instructor type ---->c_instructor_type_id_fk
-            //SessionWrapper.TempDeliveryInstructor
-            foreach (GridViewRow row in  gvInstructor.Rows)
+            foreach (GridViewRow row in gvInstructor.Rows)
             {
-                
+
                 DropDownList ddlInstrcdtorType = (DropDownList)row.FindControl("ddlInstrcdtorType");
                 string c_user_id_fk = gvInstructor.DataKeys[row.RowIndex].Value.ToString();
                 var rows = SessionWrapper.TempDeliveryInstructor.Select("c_user_id_fk='" + c_user_id_fk + "'");
                 var indexOfRow = SessionWrapper.TempDeliveryInstructor.Rows.IndexOf(rows[0]);
                 SessionWrapper.TempDeliveryInstructor.Rows[indexOfRow]["c_instructor_type_id_fk"] = ddlInstrcdtorType.SelectedValue;
+                SessionWrapper.TempDeliveryInstructor.AcceptChanges();
             }
 
             result = SystemCatalogBLL.checkMaximumOnePrimaryInstructors(ConvertDataTableToXml(SessionWrapper.TempDeliveryInstructor));

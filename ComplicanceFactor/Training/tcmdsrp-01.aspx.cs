@@ -230,11 +230,11 @@ namespace ComplicanceFactor.Training
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sastcr-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("tcmdsrp-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sastcr-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("tcmdsrp-01.aspx", ex.Message);
                     }
                 }
             }

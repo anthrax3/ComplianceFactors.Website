@@ -26,6 +26,7 @@ namespace ComplicanceFactor.Manager.Popup
         private void GetAllEmployee()
         {
             DataSet dsEmployee = EmployeeBLL.GetAllEmployee(Request.QueryString["id"]);
+            hdnUserId.Value = Request.QueryString["id"].ToString();
             //bind curriculum
             gvCurriculum.DataSource = dsEmployee.Tables[1];
             gvCurriculum.DataBind();

@@ -724,6 +724,8 @@
     <Content Include="SystemHome\Configuration\CurriculumTypes\saanctn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\saectn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Data Imports\Popup\p_samddimplo-01.aspx" />
+    <Content Include="SystemHome\Configuration\Data Imports\Popup\p_samvdimplo-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\Popup\p-samvexplo-01.aspx" />
     <Content Include="SystemHome\Configuration\DataExports\samdexpmp-01.aspx" />
@@ -797,6 +799,18 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleCourse\Course_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleCurriculum\Curriculum_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleEnrollment\Enrollment_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleFacility\Facility_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleLearningHistory\LearningHistory_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleRoom\Room_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\Upload\Course_import_csv_file.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\Upload\Curriculum_import_csv_file.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\Upload\Enrollment_import_csv_file.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\Upload\Facility_import_csv_file.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\Upload\LearningHistory_import_csv_file.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\Upload\Room_import_csv_file.csv" />
     <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\EHA-20130121-001.pdf" />
     <None Include="SystemHome\Configuration\DigitalMediaFiles\Images\Questions_10132012.docx" />
     <None Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\dsErrorLogDetails.xsc">
@@ -3078,6 +3092,20 @@
     <Compile Include="SystemHome\Configuration\CurriculumTypes\samctmp-01.aspx.designer.cs">
       <DependentUpon>samctmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\Data Imports\Popup\p_samddimplo-01.aspx.cs">
+      <DependentUpon>p_samddimplo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Data Imports\Popup\p_samddimplo-01.aspx.designer.cs">
+      <DependentUpon>p_samddimplo-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Data Imports\Popup\p_samvdimplo-01.aspx.cs">
+      <DependentUpon>p_samvdimplo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Data Imports\Popup\p_samvdimplo-01.aspx.designer.cs">
+      <DependentUpon>p_samvdimplo-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\DataExports\Popup\p-samdexplo-01.aspx.cs">
       <DependentUpon>p-samdexplo-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3902,6 +3930,7 @@
     <Folder Include="SystemHome\Catalog\Course\Icons\" />
     <Folder Include="SystemHome\Catalog\Documents\Upload\" />
     <Folder Include="SystemHome\Catalog\Materials\Upload\" />
+    <Folder Include="SystemHome\Configuration\Data Imports\TempLogFiles\" />
     <Folder Include="SystemHome\Configuration\DataExports\Export_CSV\" />
     <Folder Include="SystemHome\Configuration\DataExports\TempLogFiles\" />
     <Folder Include="SystemHome\Configuration\HRISIntegration\Log\" />

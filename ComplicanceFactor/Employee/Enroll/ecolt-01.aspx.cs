@@ -546,7 +546,7 @@ namespace ComplicanceFactor.Employee.Enroll
                 enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
                 enrollOLT.e_enroll_delivery_id_fk = deliveryId;
                 enrollOLT.e_enroll_course_id_fk = courseid;
-                enrollOLT.e_enroll_required_flag = false;
+                enrollOLT.e_enroll_required_flag = reEnroll;// If reEnroll means e_enroll_required_flag true Otherwise false
                 enrollOLT.e_enroll_approval_required_flag = false;
                 enrollOLT.e_enroll_type_name = "Self-enroll";
                 enrollOLT.e_enroll_approval_status_name = "Pending";

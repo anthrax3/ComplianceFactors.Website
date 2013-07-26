@@ -300,7 +300,7 @@ namespace ComplicanceFactor
                                 //To use for loops 
 
                                 DataTable dtEnrolledReminder = new DataTable();
-                                dtEnrolledReminder = SystemBackgroundJobsBLL.GetEnrollReminder("ENROLL-DUE-DATE-REMINDER");                              
+                                //dtEnrolledReminder = SystemBackgroundJobsBLL.GetEnrollReminder("ENROLL-DUE-DATE-REMINDER");                              
 
                                 for (int j = 0; j < dtEnrolledReminder.Rows.Count; j++)
                                 {
@@ -369,7 +369,7 @@ namespace ComplicanceFactor
                                 }
 
                                 DataTable dtEnrolledWarning = new DataTable();
-                                dtEnrolledWarning = SystemBackgroundJobsBLL.GetEnrollWarning("ENROLL-DUE-DATE-WARNING");
+                                //dtEnrolledWarning = SystemBackgroundJobsBLL.GetEnrollWarning("ENROLL-DUE-DATE-WARNING");
 
                                 for (int j = 0; j < dtEnrolledWarning.Rows.Count; j++)
                                 {

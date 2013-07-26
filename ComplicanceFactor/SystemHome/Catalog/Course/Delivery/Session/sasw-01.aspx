@@ -469,7 +469,8 @@
     </script>
     <script type="text/javascript">
         function stop_rebind_for_instructor(id) {
-            if (id == "btnGenerateSession") {
+            if (id == "ContentPlaceHolder1_btnGenerateSession") {
+                
                 document.getElementById('<%=hdValue.ClientID %>').value = "0";
             }
             else {
@@ -479,7 +480,7 @@
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
+    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sasw" runat="server"
         ValidationGroup="sasw"></asp:ValidationSummary>
     <asp:HiddenField ID="hdValue" runat="server" />
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
@@ -936,10 +937,10 @@
         <div>
             <table>
                 <tr>
-                    <td align="left">
-                        <asp:Button ID="btnGenerateSession" ValidationGroup="sasw" CssClass="cursor_hand"
+                    <td align="left"> 
+                        <asp:Button ID="btnGenerateSession"  CssClass="cursor_hand" ValidationGroup="sasw"
                             runat="server" Text="<%$ LabelResourceExpression: app_generatr_session_button_text %>"
-                            OnClick="btnGenerateSession_Click" OnClientClick="javascript:stop_rebind_for_instructor(this.id)" />
+                             Onclientclick="javascript:stop_rebind_for_instructor(this.id)" OnClick="btnGenerateSession_Click"/>
                     </td>
                     <td class="textbox_long">
                         &nbsp;

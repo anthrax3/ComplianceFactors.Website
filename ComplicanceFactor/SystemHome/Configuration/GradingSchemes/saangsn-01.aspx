@@ -269,9 +269,13 @@
                         </asp:RequiredFieldValidator>
                         <asp:TextBox ID="txtGradingSchemeId_EnglishUs" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
-                    <td colspan="2">
+                    <td>
+                        &nbsp;
                     </td>
                     <td>
+                        &nbsp;
+                    </td>
+                    <td colspan="2">
                         <asp:RequiredFieldValidator ID="rfvGradingSchemeName" runat="server" ValidationGroup="saangsn"
                             ControlToValidate="txtGradingSchmeName_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
@@ -288,8 +292,8 @@
                         </asp:RequiredFieldValidator>
                         *<%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
-                    <td colspan="5">
-                        <asp:TextBox ID="txtGradingDescription_EnglishUs" TextMode="MultiLine" Rows="7" Width="672px"
+                    <td colspan="6" class="align_left">
+                        <asp:TextBox ID="txtGradingDescription_EnglishUs" TextMode="MultiLine" Rows="7" Width="780px"
                             runat="server"></asp:TextBox>
                     </td>
                 </tr>
@@ -303,6 +307,10 @@
                         </asp:DropDownList>
                     </td>
                     <td colspan="2">
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
                     </td>
                     <td>
                         <%=LocalResources.GetLabel("app_type_text")%>:

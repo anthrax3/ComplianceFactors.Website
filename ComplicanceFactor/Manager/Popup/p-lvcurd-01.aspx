@@ -63,7 +63,7 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true"
         EnableScriptLocalization="true">
     </asp:ToolkitScriptManager>
-   <div id="content">
+    <div id="content">
         <div class="content_area_long">
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_curriculum_information_text")%>:
@@ -222,6 +222,7 @@
                     <br />
                     <div class="div_controls font_1">
                         <asp:Label ID="lblCompleteSection" runat="server"></asp:Label>
+                        <asp:Label ID="lblPathCompletionPercentage" runat="server" Text="Label"></asp:Label>
                     </div>
                     <asp:GridView ID="gvSection" ShowHeader="false" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
                         runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
@@ -234,6 +235,7 @@
                                     <hr />
                                     <%=LocalResources.GetLabel("app_section_text")%>:<%#Eval("c_curricula_path_section_seq_number")%>
                                     <asp:Label ID="lblComplete" runat="server"></asp:Label>
+                                     <asp:Label ID="lblCompletedCoursePercentage" runat="server" Text="Label"></asp:Label>
                                     <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
                                         runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
                                         GridLines="None" DataKeyNames="c_curricula_path_course_id_fk" AutoGenerateColumns="False"

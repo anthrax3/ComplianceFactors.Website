@@ -2,6 +2,7 @@
     CodeBehind="p-scesr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Completion.p_scesr_01" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <style type="text/css">
         body
         {
@@ -25,7 +26,6 @@
     </script>
     <script type="text/javascript" language="javascript">
         function toggleSelection(source) {
-
             $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").each(function (index) {
                 $(this).attr('checked', source.checked);
             });
@@ -33,14 +33,14 @@
 
         }
         function clearSelection() {
-            if ($("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").length == $("#gvsearchDetails input[name$='chkSelect']:checked").length) {
+            if ($("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']").length == $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelect']:checked").length) {
                 $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', true);
 
             }
             else {
                 $("#<%=gvsearchDetails.ClientID %> input[name$='chkSelectAll']").first().attr('checked', false);
             }
-        }          
+        }         
     </script>
     <script type="text/javascript" language="javascript">
         function validateCheckBoxes() {
