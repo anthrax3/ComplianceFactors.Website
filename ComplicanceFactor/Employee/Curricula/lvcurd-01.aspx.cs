@@ -258,9 +258,9 @@ namespace ComplicanceFactor.Employee.Curricula
             GridView gvSection = (GridView)e.Item.FindControl("gvSection");
             Label lblCompleteSection = (Label)e.Item.FindControl("lblCompleteSection");
             BindPathSection(gvSection, dlPath.DataKeys[e.Item.ItemIndex].ToString());
-            lblCompleteSection.Text = "Complete " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_complete") + " of " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_sections") + " Section(s) below to complete the requirements for this Curriculum.";
+            lblCompleteSection.Text = "Completed" + DataBinder.Eval(e.Item.DataItem, "sectionComplete") + " of " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_sections") + " Section(s) below to complete the requirements for this Curriculum.";
             Label lblPathCompletionPercentage = (Label)e.Item.FindControl("lblPathCompletionPercentage");
-            lblPathCompletionPercentage.Text = "Completed " + DataBinder.Eval(e.Item.DataItem, "percentage") + " Completed";
+            lblPathCompletionPercentage.Text = DataBinder.Eval(e.Item.DataItem, "percentage") + " Completed";
             
 
         }
@@ -277,8 +277,6 @@ namespace ComplicanceFactor.Employee.Curricula
                 lblComplete.Text = "(Complete " + DataBinder.Eval(e.Row.DataItem, "completedcourse").ToString() +")";  
                 lblCompletedCoursePercentage.Text = "Completed " + DataBinder.Eval(e.Row.DataItem, "percentage").ToString(); 
                 string str_path_section_complete = DataBinder.Eval(e.Row.DataItem, "c_curricula_path_section_complete").ToString();
-
-
 
                 BindPathCourse(gvCourses, GridView1.DataKeys[e.Row.RowIndex][0].ToString(), GridView1.DataKeys[e.Row.RowIndex][1].ToString(), lblComplete, str_path_section_complete);
                 

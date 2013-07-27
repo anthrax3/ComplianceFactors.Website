@@ -281,4 +281,45 @@
         ShowDocumentMapButton="false">
     </rsweb:ReportViewer>
     </div>
+    <asp:Button ID="btnSplash" runat="server" Style="display: none;" />
+    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900 modal_popup_background" Style="display: none;
+        padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlSplashPageHeading" runat="server" CssClass="drag">
+            <div>
+                <div class="div_header_900">
+                    <span class="font_1" style="color:Black;">Splash Preview:</span>
+                </div>
+                <asp:ImageButton ID="ibtnCloseSplash" CssClass="cursor_hand" Style="top: -15px; right: -15px;
+                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" OnClick="ibtnCloseSplash_Click" />
+            </div>
+        </asp:Panel>
+        <br />
+        <div class="div_controls">
+            <div class="div_padding_10" id="spalsh" style="height: 495px; overflow: auto" runat="server">
+            </div>
+        </div>
+        <div class="div_header_900">
+            &nbsp;
+        </div>
+        <br />
+        <div>
+            <div class="div_padding_10">
+                <div class="left">
+                    <asp:Button ID="btnDonotShow" ValidationGroup="JobTitle" runat="server" Text="Do Not Display Again"
+                        OnClick="btnDonotShow_Click" />
+                </div>
+                <div class="right">
+                    <asp:Button ID="btnCloseSplashPage" OnClick="btnCloseSplashPage_Click" CssClass="cursor_hand"
+                        runat="server" Text="Close Splash Page" />
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <br />
+    </asp:Panel>
+    <asp:ModalPopupExtender ID="mpSplashPage" runat="server" TargetControlID="btnSplash"
+        PopupControlID="pnlSplashPage" BackgroundCssClass="transparent_class" DropShadow="false"
+        PopupDragHandleControlID="pnlSplashPageHeading">
+    </asp:ModalPopupExtender>
 </asp:Content>

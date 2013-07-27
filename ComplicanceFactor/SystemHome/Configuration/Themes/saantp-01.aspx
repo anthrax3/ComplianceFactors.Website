@@ -8,24 +8,26 @@
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
+      <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
-            // toggles the slickbox on clicking the noted link  
-            $('.main_menu li a').hover(function () {
+          $(document).ready(function () {
+              var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-                $('.main_menu li a').removeClass('selected');
-                $(this).addClass('active');
+              $(navigationSelectedValue).addClass('selected');
+              // toggles the slickbox on clicking the noted link  
+              $('.main_menu li a').hover(function () {
 
-                return false;
-            });
-            $('.main_menu li a').mouseleave(function () {
+                  $('.main_menu li a').removeClass('selected');
+                  $(this).addClass('active');
 
-                $('#app_nav_system').addClass('selected');
-                return false;
-            });
-        });
+                  return false;
+              });
+              $('.main_menu li a').mouseleave(function () {
+
+                  $(navigationSelectedValue).addClass('selected');
+                  return false;
+              });
+          });
 
     </script>
     <script type="text/javascript">
@@ -287,9 +289,7 @@
 
             });
         }
-    </script>
-    <br />
-    <br />
+    </script> 
     <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>

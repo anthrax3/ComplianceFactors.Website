@@ -185,29 +185,31 @@
     <div class="div_padding_10" id="div_Themes" runat="server">
         <asp:GridView ID="gvThemes" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
-            GridLines="None" DataKeyNames="" AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row"
-            PagerSettings-Visible="false">
+            GridLines="None" DataKeyNames="s_theme_system_id_pk" AutoGenerateColumns="False"
+            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" OnRowCommand="gvThemes_RowCommand"
+            OnRowEditing="gvThemes_RowEditing">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_theme_name_with_id_text %>" DataField="ThemeName"
+                    HeaderText="<%$ LabelResourceExpression: app_theme_name_with_id_text %>" DataField="themename"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_created_text %>" DataField="Created"
+                    HeaderText="<%$ LabelResourceExpression: app_created_text %>" DataField="s_theme_created_date"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_domains_text %>" DataField="Domain"
+                    HeaderText="<%$ LabelResourceExpression: app_domains_text %>" DataField="u_domain_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:Button ID="btnManageTheme" runat="server" Text="<%$ LabelResourceExpression: app_manage_themes_button_text %>" />
+                        <asp:Button ID="btnManageTheme" CommandName="Edit" runat="server" CssClass="cursor_hand"
+                            CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' Text="<%$ LabelResourceExpression: app_manage_themes_button_text %>" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <b>
             <asp:LinkButton ID="lnkManageThemes" Text="<%$ LabelResourceExpression: app_view_all_manage_themes_button_text %>"
-                runat="server" CssClass="body_link"></asp:LinkButton></b>
+                runat="server" CssClass="body_link" OnClick="lnkManageThemes_Click"></asp:LinkButton></b>
         <div class="clear">
         </div>
     </div>
@@ -270,15 +272,16 @@
         <br />
     </div>
     <asp:Button ID="btnSplash" runat="server" Style="display: none;" />
-    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900 modal_popup_background" Style="display: none;
-        padding-left: 0px;  padding-right: 0px;">
+    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900 modal_popup_background"
+        Style="display: none; padding-left: 0px; padding-right: 0px;">
         <asp:Panel ID="pnlSplashPageHeading" runat="server" CssClass="drag">
             <div>
                 <div class="div_header_900">
-                    <span class="font_1" style="color:Black;">Splash Preview:</span>
+                    <span class="font_1" style="color: Black;">Splash Preview:</span>
                 </div>
                 <asp:ImageButton ID="ibtnCloseSplash" CssClass="cursor_hand" Style="top: -15px; right: -15px;
-                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" OnClick="ibtnCloseSplash_Click" />
+                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png"
+                    OnClick="ibtnCloseSplash_Click" />
             </div>
         </asp:Panel>
         <br />

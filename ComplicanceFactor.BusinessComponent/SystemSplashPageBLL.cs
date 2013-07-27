@@ -427,11 +427,11 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static DataTable GetSplashPages()
+        public static DataSet GetSplashPage_theme_report()
         {
             try
             {
-                return DataProxy.FetchDataTable("s_sp_get_splash_pages");
+                return DataProxy.FetchDataSet("s_sp_get_splash_page_theme_report");
             }
             catch (Exception)
             {

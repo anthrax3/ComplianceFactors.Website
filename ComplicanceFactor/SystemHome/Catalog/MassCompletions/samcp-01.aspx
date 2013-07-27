@@ -227,6 +227,14 @@
         });
     </script>
     <script type="text/javascript" language="javascript">
+            function validateCourse(sender, args) {
+                var gvRows = $("#<%=gvCatalog.ClientID %> tr").length;
+                if (gvRows == 0) {
+                    args.IsValid = false;
+                }
+            }        
+    </script>
+    <script type="text/javascript" language="javascript">
         function getEmployeeCount(sender, args) {
             var gvRows = $("#<%=gvEmployee.ClientID %> tr").length;
             if (gvRows == 0) {
@@ -270,10 +278,15 @@
     <script type="text/javascript">
         function validateAll() {
             var isValid = false;
-            isValid = Page_ClientValidate('samcp');
+            isValid = Page_ClientValidate('samep_course_emp');
+
+            if (isValid) {
+                isValid = Page_ClientValidate('samcp');
+            } 
             if (isValid) {
                 isValid = Page_ClientValidate('samcp_employee');
-            }           
+            } 
+                      
             if (isValid) {
                 isValid = Page_ClientValidate('samcp_completion');
             }
@@ -297,13 +310,19 @@
             ValidationGroup="samcp_completion"></asp:ValidationSummary>
         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_employee" runat="server"
             ValidationGroup="samcp_employee"></asp:ValidationSummary>
-         <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_score" runat="server"
+        <asp:ValidationSummary class="validation_summary_error" ID="vs_samcp_score" runat="server"
             ValidationGroup="samcp_score"></asp:ValidationSummary>
+        <asp:ValidationSummary class="validation_summary_error" ID="vs_samep_course_emp" runat="server"
+            ValidationGroup="samep_course_emp"></asp:ValidationSummary>
+
+        <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
+            ValidateEmptyText="true" ValidationGroup="samep_course_emp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_course_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
-            ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
+            ValidationGroup="samep_course_emp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
+
         <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
             ValidationGroup="samcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
-        <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
+        <asp:CustomValidator ID="cvValidateCourseDelivery" EnableClientScript="true" ClientValidationFunction="validateCourse"
             ValidationGroup="samcp_employee" runat="server" ErrorMessage="<%$ TextResourceExpression: app_course_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCompletion" EnableClientScript="true" ClientValidationFunction="validateCompletion"
             ValidationGroup="samcp_completion" runat="server" ErrorMessage="<%$ TextResourceExpression: app_date_error_empty %>">&nbsp;</asp:CustomValidator>

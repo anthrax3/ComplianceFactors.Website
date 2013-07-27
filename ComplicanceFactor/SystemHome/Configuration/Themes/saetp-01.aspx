@@ -11,7 +11,9 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#app_nav_system').addClass('selected');
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+
+            $(navigationSelectedValue).addClass('selected');
             // toggles the slickbox on clicking the noted link  
             $('.main_menu li a').hover(function () {
 
@@ -22,7 +24,7 @@
             });
             $('.main_menu li a').mouseleave(function () {
 
-                $('#app_nav_system').addClass('selected');
+                $(navigationSelectedValue).addClass('selected');
                 return false;
             });
         });
@@ -311,9 +313,7 @@
 
                 });
             }
-    </script>
-    <br />
-    <br />
+    </script>   
      <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>

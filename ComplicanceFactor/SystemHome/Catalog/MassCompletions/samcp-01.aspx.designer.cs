@@ -76,6 +76,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions {
         protected global::System.Web.UI.WebControls.ValidationSummary vs_samcp_score;
         
         /// <summary>
+        /// vs_samep_course_emp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_samep_course_emp;
+        
+        /// <summary>
+        /// cvValidateCourse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateCourse;
+        
+        /// <summary>
         /// cvValidateEmployee control.
         /// </summary>
         /// <remarks>
@@ -94,13 +112,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions {
         protected global::System.Web.UI.WebControls.CustomValidator cvValidateCheckboxes;
         
         /// <summary>
-        /// cvValidateCourse control.
+        /// cvValidateCourseDelivery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvValidateCourse;
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateCourseDelivery;
         
         /// <summary>
         /// cvValidateCompletion control.

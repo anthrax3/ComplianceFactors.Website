@@ -91,7 +91,7 @@ namespace ComplicanceFactor.Employee.Curricula
             GridView gvSection = (GridView)e.Item.FindControl("gvSection");
             BindPathSection(gvSection, dlPath.DataKeys[e.Item.ItemIndex].ToString());
             Label lblCompleteSection = (Label)e.Item.FindControl("lblCompleteSection");
-            lblCompleteSection.Text = "Complete " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_complete") + " of " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_sections") + " Section(s) below to complete the requirements for this Curriculum.";
+            lblCompleteSection.Text = "Completed " + DataBinder.Eval(e.Item.DataItem, "sectionComplete") + " of " + DataBinder.Eval(e.Item.DataItem, "c_curricula_path_sections") + " Section(s) below to complete the requirements for this Curriculum.";
 
             Label lblPathCompletionPercentage = (Label)e.Item.FindControl("lblPathCompletionPercentage");
             lblPathCompletionPercentage.Text = "Completed " + DataBinder.Eval(e.Item.DataItem, "percentage") + " Completed";

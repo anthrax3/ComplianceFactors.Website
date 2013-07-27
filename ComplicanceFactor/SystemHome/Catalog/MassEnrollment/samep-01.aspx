@@ -291,9 +291,9 @@
     <script type="text/javascript">
         function validateAll() {
             var isValid = false;
-            isValid = Page_ClientValidate('samep');
+            isValid = Page_ClientValidate('samep_course');
             if (isValid) {
-                isValid = Page_ClientValidate('samep_course');
+                isValid = Page_ClientValidate('samep');
             }
             if (isValid) {
                 isValid = Page_ClientValidate('samep_required');
@@ -318,7 +318,7 @@
         <asp:CustomValidator ID="cvValidateCheckboxes" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
             ValidateEmptyText="true" ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_delivery_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateEmployee" EnableClientScript="true" ClientValidationFunction="getEmployeeCount"
-            ValidateEmptyText="true" ValidationGroup="samep" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
+            ValidateEmptyText="true" ValidationGroup="samep_course" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
             ValidateEmptyText="true" ValidationGroup="samep_course" runat="server" ErrorMessage="<%$ TextResourceExpression: app_course_error_empty %>">&nbsp;</asp:CustomValidator>
         <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired"

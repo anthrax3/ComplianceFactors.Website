@@ -24,6 +24,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 //Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 //lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_system_text") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_search_result_text") + "</a>&nbsp;" + " >&nbsp;" + LocalResources.GetGlobalLabel("app_course_details_page_text");
 
+                //
+                vs_samcmcp_employee.Style.Add("display", "Block");
                 string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
@@ -31,7 +33,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Completion/samcsp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_completion_search_result_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_course_details_page_text") + "</a>";
 
                 btnSaveCompletion.Attributes.Add("OnClick", "return IsCheckBoxSelected(gvsearchSession)");
-                SessionWrapper.TempEmployeelist_delivery = null;                
+                SessionWrapper.TempEmployeelist_delivery = null;
 
                 if (!string.IsNullOrEmpty(Request.QueryString["deliveryId"]))
                 {
@@ -80,7 +82,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                     deliveryType = SecurityCenter.DecryptText(Request.QueryString["deliveryType"]);
                     if (deliveryType != "OLT")
                     {
-                        btnSaveCompletion.OnClientClick = "check_hdUpdateValue();javascript:return TestCheckBox();";
+                        btnSaveCompletion.OnClientClick = "ConfirmSave();javascript:return TestCheckBox();";
                         try
                         {
                             gvsearchDetails.DataSource = ManageCompletionBLL.GetDeliveryEmployeeOLT(deliveryId);
@@ -114,7 +116,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 }
                 PopulateCourseDelivery();
             }
-            if (hdUpdateValue.Value != "1")
+            if (hdUpdateValue.Value != "0")
             {
                 dtselectedOLT = TempDataTables.Employee();
                 if (SessionWrapper.TempEmployeelist_delivery.Rows.Count > 0)
@@ -280,7 +282,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                             e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                         }
-                        
+
                         //e.Row.Cells[8].Visible = false;
                         //gvsearchDetails.Columns[8].ShowHeader = false;
                         gvsearchDetails.Columns[8].Visible = false;
@@ -319,8 +321,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                 int score = 0;
                 if (chkSelect.Checked == true)
                 {
-                    SessionWrapper.selecteduserId_OLT = SessionWrapper.selecteduserId_OLT + "'" + u_user_id_pk+"',";
-                    
+                    SessionWrapper.selecteduserId_OLT = SessionWrapper.selecteduserId_OLT + "'" + u_user_id_pk + "',";
                     DropDownList ddlAttendance = (DropDownList)row.FindControl("ddlAttendanceStatus");
                     DropDownList ddlPassingStatus = (DropDownList)row.FindControl("ddlPassignStatus");
                     DropDownList ddlGrade = (DropDownList)row.FindControl("ddlGrade");
@@ -329,7 +330,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                     {
                         //do calculation and change the Passing status Grading Scheme
                         Decimal scoreValue = Convert.ToDecimal(txtscore.Text);
-                        score = Convert.ToInt32(scoreValue); 
+                        score = Convert.ToInt32(scoreValue);
                         SystemGradingSchemes gradevalues = new SystemGradingSchemes();
                         gradevalues = ManageCompletionBLL.GetGradeByScore(deliveryId, score);
                         if (!string.IsNullOrEmpty(gradevalues.s_grading_scheme_value_pass_status_id_fk))
@@ -414,7 +415,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             transcripts.t_transcript_course_id_fk = courseId;
                             transcripts.t_transcript_delivery_id_fk = deliveryId;
                             transcripts.t_transcript_assign_id_fk = string.Empty;
-                            transcripts.t_transcript_enroll_id_fk = string.Empty; 
+                            transcripts.t_transcript_enroll_id_fk = string.Empty;
 
                             transcripts.t_transcript_attendance_id_fk = ddlAttendance.SelectedValue;
                             transcripts.t_transcript_passing_status_id_fk = passingStatus;
@@ -640,7 +641,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                                     enrollOLT.e_enroll_type_name = "System Completion Assign";
                                     //enrollOLT.e_enroll_approval_status_name = "Pending";
                                     enrollOLT.e_enroll_status_name = "Enrolled";
-                                    enrollOLT.e_enroll_target_due_date = duedate;                                    
+                                    enrollOLT.e_enroll_target_due_date = duedate;
                                     try
                                     {
                                         ManageCompletionBLL.SingleEnroll(enrollOLT);//analyse the reason of false
@@ -667,11 +668,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             // The Number of Completed Courses divided by
                             //Number of Required Courses (for each path if there are more than 1 and then take
                             //the lowest %).
-                            
+
                             //
                             //Update Curriculum Percentage
-                            UpdateCurriculumPercentage(courseId, u_user_id_pk);                        
-                        }                     
+                            UpdateCurriculumPercentage(courseId, u_user_id_pk);
+                        }
                     }
                     string employeeNumber;
                     string lastName;
@@ -691,13 +692,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                     {
                         lastName = row.Cells[1].Text;
                     }
-                    AddDataToEmployee(u_user_id_pk, row.Cells[2].Text, lastName, employeeNumber, ddlAttendance.SelectedValue, passingStatus, grade,"true", transcripts.t_transcript_id_pk,dtselectedOLT);
-                     
-                }
-            }
-            Response.Redirect("~/SystemHome/Catalog/Completion/samcmcp-01.aspx?deliveryId=" + SecurityCenter.EncryptText(deliveryId) + "&courseId=" + SecurityCenter.EncryptText(courseId) + "&deliveryType=" + SecurityCenter.EncryptText(deliveryType) + "&succ=" + SecurityCenter.EncryptText("true"), false);
-        }
+                    AddDataToEmployee(u_user_id_pk, row.Cells[2].Text, lastName, employeeNumber, ddlAttendance.SelectedValue, passingStatus, grade, "true", transcripts.t_transcript_id_pk, dtselectedOLT);
 
+                }
+                Response.Redirect("~/SystemHome/Catalog/Completion/samcmcp-01.aspx?deliveryId=" + SecurityCenter.EncryptText(deliveryId) + "&courseId=" + SecurityCenter.EncryptText(courseId) + "&deliveryType=" + SecurityCenter.EncryptText(deliveryType) + "&succ=" + SecurityCenter.EncryptText("true"), false);
+            }
+        }
         private void InsertSessionTranscripts(string u_user_id_pk, string attendence, string passingstatus, string grade, string score)
         {
             //string statustypeId = UpdateCurriculumStatusesBLL.GetStatusTypeId("User Manual Change");
@@ -933,7 +933,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                         }
                     }
                 }
-            } 
+            }
         }
 
         //protected void gvsearchDetails_RowCommand(object sender, GridViewCommandEventArgs e)

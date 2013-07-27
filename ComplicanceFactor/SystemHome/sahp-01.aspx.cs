@@ -47,7 +47,7 @@ namespace ComplicanceFactor.SystemHome
                         }
                     }
                 }
-
+                SessionWrapper.navigationText = "app_nav_system";
                 gvSplashPages.AllowPaging = true;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
@@ -105,9 +105,30 @@ namespace ComplicanceFactor.SystemHome
 
         private void SearchResult()
         {
-            gvSplashPages.DataSource = SystemSplashPageBLL.GetSplashPages();
+            DataSet systemInfo = new DataSet();
+            try
+            {
+                systemInfo = SystemSplashPageBLL.GetSplashPage_theme_report();
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("sahp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("sahp-01.aspx", ex.Message);
+                    }
+                }
+            }
+
+            gvSplashPages.DataSource = systemInfo.Tables[0];
             gvSplashPages.DataBind();
 
+           
             if (gvSplashPages.Rows.Count > 0)
             {
                 gvSplashPages.UseAccessibleHeader = true;
@@ -119,20 +140,7 @@ namespace ComplicanceFactor.SystemHome
                 }
             }
 
-            DataTable dtThemes = new DataTable();
-            dtThemes.Columns.Add("ThemeName", Type.GetType("System.String"));
-            dtThemes.Columns.Add("Created", Type.GetType("System.String"));
-            dtThemes.Columns.Add("Domain", Type.GetType("System.String"));
-            DataRow dr;
-            for (int i = 0; i < 5; i++)
-            {
-                dr = dtThemes.NewRow();
-                dr["ThemeName"] = "Compliance Factor(Default Theme 00" + i.ToString();
-                dr["Created"] = DateTime.Now.AddDays(-i);
-                dr["Domain"] = "Test";
-                dtThemes.Rows.Add(dr);
-            }
-            gvThemes.DataSource = dtThemes;
+            gvThemes.DataSource = systemInfo.Tables[1];
             gvThemes.DataBind();
 
             if (gvThemes.Rows.Count > 0)
@@ -144,7 +152,7 @@ namespace ComplicanceFactor.SystemHome
                     //using instead of the simple <tr>
                     gvThemes.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
-            }
+            }            
 
             DataTable dtReports = new DataTable();
             dtReports.Columns.Add("ReportName", Type.GetType("System.String"));
@@ -237,6 +245,24 @@ namespace ComplicanceFactor.SystemHome
         {
             SessionWrapper.IsClose = "True";
         }
-        
+
+        protected void gvThemes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rowIndex = int.Parse(e.CommandArgument.ToString());
+            if (e.CommandName.Equals("Edit"))
+            {
+                Response.Redirect("~/SystemHome/Configuration/Themes/saetp-01.aspx?themeid=" + SecurityCenter.EncryptText(gvThemes.DataKeys[rowIndex].Values[0].ToString()), false);
+            }
+        }
+
+        protected void gvThemes_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void lnkManageThemes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SystemHome/Configuration/Themes/samtmp-01.aspx");
+        }        
     }
 }

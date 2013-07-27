@@ -17,8 +17,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Themes
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                
+            {              
 
                 string navigationText;
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");

@@ -157,8 +157,8 @@
                                     <td style="width: 30%">
                                          <%# Eval("ApproverName")%>
                                     </td>
-                                    <td>
-                                        <%=LocalResources.GetLabel("app_status_text")%>:<%# Eval("ApprovalStatus")%></td>
+                                    <td><%-- <%=LocalResources.GetLabel("app_status_text")%>:--%> 
+                                        <%# Eval("ApprovalStatus")%></td>
                                     <td class="align_right">
                                         <asp:Button ID="btnDeny" runat="server" Style="display: none;" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                                             CommandName="Deny" Text="<%$ LabelResourceExpression: app_deny_button_text %>" />

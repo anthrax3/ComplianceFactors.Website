@@ -98,45 +98,7 @@
             }
         }
     </script>     
-    <script type="text/javascript">
-        function check_hdUpdateValue(sender, args) {
-            document.getElementById('<%=hdUpdateValue.ClientID %>').value = "0";
-            var isValid = validateAll();
-            if (isValid == true) {
-                if (confirm('Are you sure') == true)
-                    return true;
-                else
-                    return false;
-            }
 
-        }
-    </script>
-    <script type="text/javascript">
-        function CheckScore(sender, args) {
-            var f = document.getElementById('<%=gvsearchDetails.ClientID %>');
-            for (var i = 0; i < f.getElementsByTagName("input").length; i++) {
-                if (f.getElementsByTagName("input").item(i).type == "text") {
-
-                    if (f.getElementsByTagName("input").item(i).value > 100) {
-                        f.getElementsByTagName("input").item(i).focus();
-                        args.IsValid = false;
-                    }
-                    else {
-                        args.IsValid = true;
-                    }
-
-                }
-
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function validateAll() {
-            var isValid = false;
-            isValid = Page_ClientValidate('samcmcp');
-            return isValid;
-        }
-    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".editCompletion").click(function () {
@@ -252,14 +214,86 @@
             return false;
         }
     </script>
+    <script type="text/javascript">
+        function ConfirmSave(sender, args) {
+                document.getElementById('<%=hdUpdateValue.ClientID %>').value = "0";
+                var isValid = validateAll();
+                if (isValid == true) {
+                    if (confirm('Are you sure') == true)
+                        return true;
+                    else
+                        return false;
+                }
+
+            }
+    </script>
+        <script type="text/javascript">
+            function validateAll() {
+                var isValid = false;
+                isValid = Page_ClientValidate('samcmcp');
+                if (isValid) {
+                    isValid = Page_ClientValidate('samcmcp_employee')
+                }
+                return isValid;
+            }
+    </script>
+    <script type="text/javascript">
+        function CheckScore(sender, args) {
+            var grid = document.getElementById('<%=gvsearchDetails.ClientID %>');
+            for (var i = 0; i < grid.getElementsByTagName("input").length; i++) {
+                if (grid.getElementsByTagName("input").item(i).type == "text") {
+                    if (grid.getElementsByTagName("input").item(i).value > 100 && grid.getElementsByTagName("input").item(i).value!="") {
+                        grid.getElementsByTagName("input").item(i).focus();
+                        args.IsValid = false;
+                    }
+                    else {
+                        args.IsValid = true;
+                    }
+
+                }
+
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function validateCheckBoxes(sender, args) {
+            var gridView = document.getElementById('<%= gvsearchDetails.ClientID %>');
+            var flag = 0;
+            if (gridView.rows.length == 1) {
+                args.IsValid = false;
+            }
+            for (var i = 1; i < gridView.rows.length; i++) {
+                if (flag == 0) {
+                    var inputs = gridView.rows[i].getElementsByTagName('input');
+                    if (inputs != null) {
+                        if (inputs[0].type == "checkbox") {
+                            if (inputs[0].checked) {
+                                args.IsValid = true;
+                                flag = 1;
+                            }
+                            else {
+                                args.IsValid = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samcmcp" runat="server"
         ValidationGroup="samcmcp"></asp:ValidationSummary>
+
+    <asp:ValidationSummary class="validation_summary_error" ID="vs_samcmcp_employee" runat="server"
+        ValidationGroup="samcmcp_employee"></asp:ValidationSummary>
+
     <asp:CustomValidator ID="cvValidateScore" EnableClientScript="true" ClientValidationFunction="CheckScore"
         ValidationGroup="samcmcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_score_limit_error_wrong %>">&nbsp;</asp:CustomValidator>
+    <asp:CustomValidator ID="cvValidateCheckbox" EnableClientScript="true" ClientValidationFunction="validateCheckBoxes"
+        ValidationGroup="samcmcp" runat="server" ErrorMessage="<%$ TextResourceExpression: app_select_atleast_one_employee_error_empty %>">&nbsp;</asp:CustomValidator>
     <div class="content_area_long">
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
@@ -556,7 +590,7 @@
                 <tr>
                     <td style="text-align: center">
                         <asp:Button ID="btnSaveCompletion" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_save_completion_information_button_text %>"
-                            OnClientClick="check_hdUpdateValue();" OnClick="btnSaveCompletion_Click" />
+                            OnClientClick="ConfirmSave()" OnClick="btnSaveCompletion_Click" />
                     </td>
                 </tr>
             </table>

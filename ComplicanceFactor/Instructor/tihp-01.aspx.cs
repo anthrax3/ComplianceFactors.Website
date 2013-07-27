@@ -13,6 +13,7 @@ using System.Net.Mail;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using Microsoft.Reporting.WebForms;
 using ComplicanceFactor.Common.Languages;
+using System.Net;
 
 namespace ComplicanceFactor.Instructor
 {
@@ -24,6 +25,38 @@ namespace ComplicanceFactor.Instructor
         {
             if (!IsPostBack)
             {
+                if (!string.IsNullOrEmpty(SessionWrapper.u_userid))
+                {
+                    User userSplash = new User();
+                    try
+                    {
+                        userSplash = UserBLL.GetUserSplash(SessionWrapper.u_userid);
+                        bool result = userSplash.u_splash_display_flag;
+                        SystemSplashPage splashContent = new SystemSplashPage();
+                        //Here we can get the splash content based on the domain Id
+                        splashContent = SystemSplashPageBLL.GetSplashContent(SessionWrapper.u_domain, SessionWrapper.CultureName);
+                        spalsh.InnerHtml = WebUtility.HtmlDecode(splashContent.u_splash_content);
+                        if (result == false && (!string.IsNullOrEmpty(splashContent.u_splash_content)) && string.IsNullOrEmpty(SessionWrapper.IsClose))
+                        {
+                            mpSplashPage.Show();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("tihp-01.aspx", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("tihp-01.aspx", ex.Message);
+                            }
+                        }
+                    }
+                }
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/Instructor/tihp-01.aspx>" + LocalResources.GetGlobalLabel("app_instructor_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 gvMyReports.AllowPaging = true;
@@ -590,5 +623,41 @@ namespace ComplicanceFactor.Instructor
             return userTheme;
         }
 
+        //Splash page
+
+        protected void btnDonotShow_Click(object sender, EventArgs e)
+        {
+            //Set the u_splash_display_flag as 1.
+            User userSplash = new User();
+            userSplash.Userid = SessionWrapper.u_userid;
+            userSplash.u_splash_display_flag = true;
+
+            try
+            {
+                int result = UserBLL.UpdateSplash(userSplash);
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("tihp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("tihp-01.aspx", ex.Message);
+                    }
+                }
+            }
+        }
+        protected void btnCloseSplashPage_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.IsClose = "True";
+        }
+        protected void ibtnCloseSplash_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.IsClose = "True";
+        }
     }
 }

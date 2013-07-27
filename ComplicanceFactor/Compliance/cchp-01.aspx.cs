@@ -15,6 +15,7 @@ using System.Data;
 using System.Text;
 using System.Net.Mail;
 using System.Configuration;
+using System.Net;
 namespace ComplicanceFactor.Compliance
 {
     public partial class cchp_01 : BasePage
@@ -25,6 +26,40 @@ namespace ComplicanceFactor.Compliance
         {
             if (!IsPostBack)
             {
+
+                if (!string.IsNullOrEmpty(SessionWrapper.u_userid))
+                {
+                    User userSplash = new User();
+                    try
+                    {
+                        userSplash = UserBLL.GetUserSplash(SessionWrapper.u_userid);
+                        bool result = userSplash.u_splash_display_flag;
+                        SystemSplashPage splashContent = new SystemSplashPage();
+                        //Here we can get the splash content based on the domain Id
+                        splashContent = SystemSplashPageBLL.GetSplashContent(SessionWrapper.u_domain, SessionWrapper.CultureName);
+                        spalsh.InnerHtml = WebUtility.HtmlDecode(splashContent.u_splash_content);
+                        if (result == false && (!string.IsNullOrEmpty(splashContent.u_splash_content)) && string.IsNullOrEmpty(SessionWrapper.IsClose))
+                        {
+                            mpSplashPage.Show();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("cchp-01.aspx", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("cchp-01.aspx", ex.Message);
+                            }
+                        }
+                    }
+                }
+
                 SessionWrapper.navigationText = "app_nav_compliance";
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>" + " > " + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
@@ -194,11 +229,11 @@ namespace ComplicanceFactor.Compliance
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("ccasharm-01", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("ccasharm-01", ex.Message);
+                            Logger.WriteToErrorLog("cchp-01", ex.Message);
                         }
                     }
                 }
@@ -239,11 +274,11 @@ namespace ComplicanceFactor.Compliance
                             {
                                 if (ex.InnerException != null)
                                 {
-                                    Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                    Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                                 }
                                 else
                                 {
-                                    Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                    Logger.WriteToErrorLog("cchp-01", ex.Message);
                                 }
                             }
 
@@ -275,11 +310,11 @@ namespace ComplicanceFactor.Compliance
                             {
                                 if (ex.InnerException != null)
                                 {
-                                    Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                    Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                                 }
                                 else
                                 {
-                                    Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                    Logger.WriteToErrorLog("cchp-01", ex.Message);
                                 }
                             }
 
@@ -312,11 +347,11 @@ namespace ComplicanceFactor.Compliance
                             {
                                 if (ex.InnerException != null)
                                 {
-                                    Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                    Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                                 }
                                 else
                                 {
-                                    Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                    Logger.WriteToErrorLog("cchp-01", ex.Message);
                                 }
                             }
                         }
@@ -348,11 +383,11 @@ namespace ComplicanceFactor.Compliance
                         {
                             if (ex.InnerException != null)
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                             }
                             else
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message);
                             }
                         }
                     }
@@ -370,11 +405,11 @@ namespace ComplicanceFactor.Compliance
                         {
                             if (ex.InnerException != null)
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                             }
                             else
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message);
                             }
                         }
                     }
@@ -393,11 +428,11 @@ namespace ComplicanceFactor.Compliance
                         {
                             if (ex.InnerException != null)
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                             }
                             else
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message);
                             }
                         }
                     }
@@ -428,11 +463,11 @@ namespace ComplicanceFactor.Compliance
                         {
                             if (ex.InnerException != null)
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message, ex.InnerException.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                             }
                             else
                             {
-                                Logger.WriteToErrorLog("cccmiris-01", ex.Message);
+                                Logger.WriteToErrorLog("cchp-01", ex.Message);
                             }
                         }
                     }
@@ -490,11 +525,11 @@ namespace ComplicanceFactor.Compliance
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("coi-01", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("cchp-01", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("coi-01", ex.Message);
+                        Logger.WriteToErrorLog("cchp-01", ex.Message);
                     }
                 }
             }
@@ -845,5 +880,42 @@ namespace ComplicanceFactor.Compliance
         {
             Response.Redirect("~/Compliance/ccmrp-01.aspx", false);
         }
+
+        //Splash page
+
+        protected void btnDonotShow_Click(object sender, EventArgs e)
+        {
+            //Set the u_splash_display_flag as 1.
+            User userSplash = new User();
+            userSplash.Userid = SessionWrapper.u_userid;
+            userSplash.u_splash_display_flag = true;
+
+            try
+            {
+                int result = UserBLL.UpdateSplash(userSplash);
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("cchp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("cchp-01.aspx", ex.Message);
+                    }
+                }
+            }
+        }
+        protected void btnCloseSplashPage_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.IsClose = "True";
+        }
+        protected void ibtnCloseSplash_Click(object sender, EventArgs e)
+        {
+            SessionWrapper.IsClose = "True";
+        } 
     }
 }
