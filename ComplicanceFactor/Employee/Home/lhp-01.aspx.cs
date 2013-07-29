@@ -287,6 +287,7 @@ namespace ComplicanceFactor
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString().Trim();
                 string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString().Trim();
                 string e_enroll_system_id_pk = DataBinder.Eval(e.Row.DataItem, "e_enroll_system_id_pk").ToString().Trim();
+                string enrollType = DataBinder.Eval(e.Row.DataItem, "enrollmentType").ToString();
                 if (status == "Assigned")
                 {
                     btnEnroll.Style.Add("display", "inline");
@@ -299,15 +300,24 @@ namespace ComplicanceFactor
                 }
                 else if(status == "Enrolled")
                 {
-                    btnDrop.Style.Add("display", "inline");
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnDrop.Style.Add("display", "inline");
+                    }
                 }
                 else if (status == "Pending")
                 {
-                    btnDrop.Style.Add("display", "inline");
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnDrop.Style.Add("display", "inline");
+                    }
                 }
                 else if (status == "Denied")
                 {
-                    btnDrop.Style.Add("display", "inline");
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnDrop.Style.Add("display", "inline");
+                    }
                 }
                 else if (status == "Approved")
                 {
@@ -395,10 +405,11 @@ namespace ComplicanceFactor
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                string t_transcript_course_id_fk = gvLearningHistory.DataKeys[e.Row.RowIndex]["t_transcript_course_id_fk"].ToString();
                 Button btnReview = (Button)e.Row.FindControl("btnReview");
                 Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                 Button btnCertificate = (Button)e.Row.FindControl("btnCertificate");
-                Button btnViewDetails = (Button)e.Row.FindControl("btnViewDetails");
+                Literal ltlViewDetails = (Literal)e.Row.FindControl("ltlViewDetails");
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
                 if (status == "Completed")
                 {
@@ -409,7 +420,8 @@ namespace ComplicanceFactor
                 else if (status == "Passed")
                 {
 
-                    btnViewDetails.Style.Add("display", "Block");
+                    //btnViewDetails.Style.Add("display", "Block");
+                    ltlViewDetails.Text = "<input type='button' id='" + t_transcript_course_id_fk + "' value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='courseviewdetails' />";
                     btnCertificate.Style.Add("display", "Block");
                 }
                 else if (status == "Failed")

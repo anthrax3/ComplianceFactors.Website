@@ -266,7 +266,7 @@ namespace ComplicanceFactor.Employee.Catalog
                             btnEnroll.Style.Add("display", "none");
 
                         }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
+                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")//Note:Manager Enroll or other enroll means drop button should not apper
                         {
                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
                             btnDrop.Style.Add("display", "none");

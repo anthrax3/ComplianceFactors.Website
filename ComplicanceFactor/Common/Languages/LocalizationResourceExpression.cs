@@ -26,9 +26,11 @@ namespace ComplicanceFactor
             return new CodeCastExpression(descriptor1.PropertyType, new CodeMethodInvokeExpression(new CodeTypeReferenceExpression(base.GetType()), "GetEvalLocalizationLabel", expressionArray1));
 
         }
+        #region "Hide Old language methods"
         //public static object GetEvalLocalizationLabel(string expression, Type target, string entry)
         //{
         //    return LocalResources.GetLocalizationResourceLabelText(expression);
         //}
+        #endregion
     }
 }

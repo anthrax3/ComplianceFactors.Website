@@ -7,8 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
-    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <style type="text/css">
         body
         {
@@ -81,6 +81,11 @@
                 }
             }
         }
+        $(function () {
+            $('#<%=gvsearchDetails.ClientID %>')
+			.tablesorter({ headers: { 3: { sorter: false}} });
+
+        });
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>

@@ -2,7 +2,9 @@
     CodeBehind="p-scesr-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Completion.p_scesr_01" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <style type="text/css">
         body
         {
