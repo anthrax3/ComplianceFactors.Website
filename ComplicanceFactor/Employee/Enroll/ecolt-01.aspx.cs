@@ -1064,7 +1064,16 @@ namespace ComplicanceFactor.Employee.Enroll
             try
             {
                 //insert enrollment with approval
-                Enrollment(true, c_course_approval, c_delivery_approval,false);
+                if (!string.IsNullOrEmpty(Request.QueryString["action"]) && Request.QueryString["action"].ToString() == "re")
+                {
+                    //Re-enroll course with approval
+                    Enrollment(true, c_course_approval, c_delivery_approval, true);
+                }
+                else
+                {
+                    //enroll course with approval
+                    Enrollment(true, c_course_approval, c_delivery_approval, false);
+                }
                 //send approval request to employee and first approval
                 SendApprovalRequest();
                 //Close popup

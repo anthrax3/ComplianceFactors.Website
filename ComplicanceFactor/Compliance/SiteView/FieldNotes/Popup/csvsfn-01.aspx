@@ -72,7 +72,7 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUserName"
-                            ErrorMessage="Please enter user name" ValidationGroup="csvsfn">&nbsp;
+                            ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>" ValidationGroup="csvsfn">&nbsp;
                         </asp:RequiredFieldValidator>
                         <%=LocalResources.GetLabel("app_user_name_text")%>:
                     </td>
@@ -95,7 +95,7 @@
                                     CssClass="textbox_width_260" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass ="align_center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="30px" HeaderText="Acknowledge">
+                        <asp:TemplateField ItemStyle-CssClass ="align_center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="30px" HeaderText="<%$ LabelResourceExpression:app_acknowledgement_text %>">
                             <ItemTemplate>
                                 <asp:CheckBox ID="chkIsAcknowledge" runat="server" />
                             </ItemTemplate>

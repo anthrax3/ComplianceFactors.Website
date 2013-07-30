@@ -18,26 +18,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   <div id="content">
         <div class="div_header_popup_1">
-            On Job Training Details:
+           <%=LocalResources.GetLabel("app_on_job_training_details_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="text_font_normal">
-                        OJT Number:
+                        <%=LocalResources.GetLabel("app_OJT_Number_text")%>: 
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtNumber" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        Title:
+                        <%=LocalResources.GetLabel("app_title_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtTitle" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        Description:
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtDescription" runat="server" Text=""></asp:Label>
@@ -49,19 +49,19 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Location:
+                        <%=LocalResources.GetLabel("app_location_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtLocation" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        Trainer:
+                        <%=LocalResources.GetLabel("app_trainer_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtTrainer" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        Date:
+                        <%=LocalResources.GetLabel("app_date_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtDate" runat="server" Text=""></asp:Label>
@@ -73,19 +73,19 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Start Time:
+                        <%=LocalResources.GetLabel("app_start_time_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtStartTime" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        End Time:
+                        <%=LocalResources.GetLabel("app_end_time_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtEndTime" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        Duration:
+                        <%=LocalResources.GetLabel("app_duration_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtDuration" runat="server" Text=""></asp:Label>
@@ -97,19 +97,19 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Type:
+                        <%=LocalResources.GetLabel("app_type_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtType" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="text_font_normal">
-                        Safety Brief:
+                        <%=LocalResources.GetLabel("app_safety_brief_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:CheckBox ID="chkOjtIsSafety" Enabled="false" runat="server" />
                     </td>
                     <td class="text_font_normal">
-                        Frequency:
+                        <%=LocalResources.GetLabel("app_frequency_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtFrequency" runat="server" Text=""></asp:Label>
@@ -121,13 +121,13 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Harm Related:
+                        <%=LocalResources.GetLabel("app_harm_related_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:CheckBox ID="chkOjtIsHarm" Enabled="false" runat="server" />
                     </td>
                     <td class="text_font_normal">
-                        Harm  Details:
+                        <%=LocalResources.GetLabel("app_harm_details_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblOjtHarmDetail" runat="server" Text=""></asp:Label> 
@@ -138,17 +138,17 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Certification Related:
+                        <%=LocalResources.GetLabel("app_certification_related_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:CheckBox ID="chkIsCertRelated" Enabled="false" runat="server" />
                     </td>
-                    <td class="text_font_normal">Cerification file</td>
+                    <td class="text_font_normal"><%=LocalResources.GetLabel("app_cerification_file_text")%></td>
                     <td class="lable_td_width_1 align_left">
                         <asp:LinkButton ID="lbtnCertificationFile" runat="server" 
                             onclick="lbtnCertificationFile_Click"></asp:LinkButton></td>
                     <td class="text_font_normal">
-                       Others: 
+                       <%=LocalResources.GetLabel("app_others_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                        <asp:Label ID="lblOthers" runat="server" Text=""></asp:Label>  
@@ -159,7 +159,7 @@
         </div>
         <br />
         <div class="div_header_popup_1">
-            Attachments:
+            <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
         <br />
         <div class="div_padding_40 align_center">
@@ -188,7 +188,7 @@
         </div>
         <br />
          <div class="div_header_popup_1">
-            Acknowledgement:
+            <%=LocalResources.GetLabel("app_acknowledgement_text")%>:
         </div>
         <br />
         <div  class="div_padding_40 font_1">
@@ -222,7 +222,7 @@
         <br />
         <div class="div_controls font_1">
             <center>
-                <input type="button" value="Cancel" onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                <input type="button" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />' onclick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
                     class="cursor_hand" />
             </center>
         </div>

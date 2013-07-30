@@ -121,14 +121,14 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveOJT" ValidationGroup="csveojt" CssClass="cursor_hand"
-                            runat="server" Text="Save OJT" OnClick="btnHeaderSaveOJT_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" OnClick="btnHeaderSaveOJT_Click" /> 
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="Reset"
+                        <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnHeaderReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="Cancel"
+                        <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
@@ -136,14 +136,14 @@
         </div>
         <br />
         <div class="div_header_long">
-            On the Job Training:
+            <%=LocalResources.GetLabel("app_on_the_job_training_text")%>:
         </div>
         <br />
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr style="display: none">
                     <td>
-                        OJT Id:
+                        <%=LocalResources.GetLabel("app_ojt_id_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
@@ -152,8 +152,8 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvTitle" runat="server" ValidationGroup="csveojt"
-                            ControlToValidate="txtTitle" ErrorMessage="please Enter Title">&nbsp; </asp:RequiredFieldValidator>
-                        * Title:
+                            ControlToValidate="txtTitle" ErrorMessage="<%$ TextResourceExpression: app_title_error_empty %>">&nbsp; </asp:RequiredFieldValidator>
+                        * <%=LocalResources.GetLabel("app_title_text")%>: 
                     </td>
                     <td>
                         <asp:TextBox ID="txtTitle" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -169,8 +169,8 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ValidationGroup="csveojt"
-                            ControlToValidate="txtLocation" ErrorMessage="Please Enter Location">&nbsp; </asp:RequiredFieldValidator>
-                        * Location:
+                            ControlToValidate="txtLocation" ErrorMessage="<%$ TextResourceExpression: app_location_name_error_empty %>">&nbsp; </asp:RequiredFieldValidator>
+                        * <%=LocalResources.GetLabel("app_location_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtLocation" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -179,8 +179,8 @@
                 <tr>
                     <td valign="top">
                         <asp:RequiredFieldValidator ID="rfvDescription" runat="server" ValidationGroup="csveojt"
-                            ControlToValidate="txtFieldDescription" ErrorMessage="Please Enter Description">&nbsp; </asp:RequiredFieldValidator>
-                        * description:
+                            ControlToValidate="txtFieldDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp; </asp:RequiredFieldValidator>
+                        * <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtFieldDescription" runat="server" class="txtInput_long" rows="3"
@@ -191,13 +191,13 @@
             <table>
                 <tr>
                     <td align="right">
-                        OJT Number:
+                        <%=LocalResources.GetLabel("app_OJT_Number_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblOjtNumber" runat="server" CssClass="textbox_long"></asp:Label>
                     </td>
                     <td>
-                        Date:
+                        <%=LocalResources.GetLabel("app_date_text")%>:
                     </td>
                     <td>
                         <asp:CalendarExtender ID="ceTimeDateNotified" Format="MM/dd/yyyy" TargetControlID="txtDate"
@@ -206,7 +206,7 @@
                         <asp:TextBox ID="txtDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Type:
+                         <%=LocalResources.GetLabel("app_type_text")%>:
                     </td>
                     <td>
                         <%--<asp:TextBox ID="txtType" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
@@ -220,19 +220,19 @@
                 </tr>
                 <tr>
                     <td>
-                        Start Time:
+                        <%=LocalResources.GetLabel("app_start_time_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtStartTime" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        End Time:
+                        <%=LocalResources.GetLabel("app_end_time_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEndTime" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        Duration:
+                        <%=LocalResources.GetLabel("app_duration_text")%>:
                     </td>
                     <td>
                         <%--<asp:TextBox ID="txtDuration" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
@@ -251,14 +251,14 @@
                 </tr>
                 <tr>
                     <td>
-                        Safety Brief:
+                        <%=LocalResources.GetLabel("app_safety_brief_text")%>:
                     </td>
                     <td class="align_left">
                         <input type="checkbox" id="chkIsSafety" name="checkSafetyBrief" runat="server" onclick="checkSafetyBrief(this)" />
                         <%--<asp:CheckBox ID="chkIsSafety" runat="server" />--%>
                     </td>
                     <td>
-                        Frequency:
+                        <%=LocalResources.GetLabel("app_frequency_text")%>:
                     </td>
                     <td>
                         <%--<asp:TextBox ID="txtFrequency" CssClass="textbox_long" runat="server"></asp:TextBox>--%>
@@ -273,7 +273,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Harm Related:
+                        <%=LocalResources.GetLabel("app_harm_related_text")%>:
                     </td>
                     <td class="align_left">
                         <input type="checkbox" id="chkIsHarm" name="checkHarm" runat="server" onclick="checkHarm(this)" />
@@ -286,7 +286,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        Harm Details
+                        <%=LocalResources.GetLabel("app_harm_details_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlHarm" runat="server" DataTextField="h_harm_number" DataValueField="h_harm_id_pk"
@@ -296,7 +296,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Certification Related:
+                        <%=LocalResources.GetLabel("app_certification_related_text")%>:
                     </td>
                     <td class="align_left">
                         <input type="checkbox" id="chkIsCertification" name="checkCertification" runat="server"
@@ -305,14 +305,14 @@
                     </td>
                     <td colspan="3">
                         <asp:LinkButton ID="lnkFileName" runat="server" OnClick="lnkFileName_Click"></asp:LinkButton>
-                        <asp:Button ID="btnEdit" runat="server" CssClass="cursor_hand" Text="Edit" />
-                        <asp:Button ID="btnRemove" runat="server" CssClass="cursor_hand" Text="Remove" OnClick="btnRemove_Click" />
-                        <asp:Button ID="btnUploadCeritification" CssClass="cursor_hand" runat="server" Text="Upload Certification" />
+                        <asp:Button ID="btnEdit" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />
+                        <asp:Button ID="btnRemove" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClick="btnRemove_Click" />
+                        <asp:Button ID="btnUploadCeritification" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_upload_certification_button_text %>" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Other:
+                        <%=LocalResources.GetLabel("app_others_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtOthers" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -324,7 +324,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        Trainer:
+                        <%=LocalResources.GetLabel("app_trainer_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtTrainer" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -332,7 +332,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Is Acknowledge
+                        <%=LocalResources.GetLabel("app_is_acknowledged_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:CheckBox ID="chkIsAcknowledge" runat="server" />
@@ -343,7 +343,7 @@
             <br />
         </div>
         <div class="div_header_long">
-            Attachment(s):
+            <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
         <br />
         <br />
@@ -364,7 +364,7 @@
                             <ItemTemplate>
                                 <asp:Button ID="btnRemoveFiles" OnClientClick="return confirmStatus();" CommandName="Remove"
                                     runat="server" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    Text="Remove" CssClass="cursor_hand" />
+                                    Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -375,7 +375,7 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="align_left">
-                        <asp:Button CssClass="cursor_hand" ID="btnAddAttachment" runat="server" Text="Attachment" />
+                        <asp:Button CssClass="cursor_hand" ID="btnAddAttachment" runat="server" Text="<%$ LabelResourceExpression: app_add_attachment_button_text %>" />  
                     </td>
                 </tr>
             </table>
@@ -392,14 +392,14 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveOJT" ValidationGroup="csveojt" CssClass="cursor_hand"
-                            runat="server" Text="Save OJT" OnClick="btnFooterSaveOJT_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_button_text %>" OnClick="btnFooterSaveOJT_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="Reset"
+                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                             OnClick="btnFooterReset_Click" />
                     </td>
                     <td align="right">
-                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="Cancel"
+                        <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnFooterCancel_Click" />
                     </td>
                 </tr>
@@ -421,7 +421,7 @@
                 <div>
                     <div class="uploadpopup_header">
                         <div class="left">
-                            Upload File:
+                            <%=LocalResources.GetLabel("app_upload_file_text")%>:
                             <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                                 z-index: 1103; position: absolute; width: 30px; height: 30px;" runat="server"
                                 ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -434,7 +434,7 @@
             <div>
                 <br />
                 <div class="uploadpanel">
-                    Select File:
+                    <%=LocalResources.GetLabel("app_select_file_text")%>:
                     <br />
                     <br />
                     <asp:FileUpload ID="FileUpload1" runat="server" Width="525" size="70" />
@@ -442,10 +442,10 @@
                     <br />
                     <br />
                     <div class="uploadbutton">
-                        <asp:Button ID="btnUploadAttachements" runat="server" Text="Upload" CssClass="cursor_hand"
+                        <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" 
                             OnClick="btnUploadAttachements_Click" />
                     </div>
-                    <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="Cancel" />
+                    <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                 </div>
                 <br />
             </div>
@@ -466,7 +466,7 @@
                 <div>
                     <div class="uploadpopup_header">
                         <div class="left">
-                            Upload File:
+                            <%=LocalResources.GetLabel("app_upload_file_text")%>:
                             <asp:ImageButton ID="imgCloseCertificate" CssClass="cursor_hand" Style="top: -15px;
                                 right: -15px; z-index: 1103; position: absolute; width: 30px; height: 30px;"
                                 runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -479,7 +479,7 @@
             <div>
                 <br />
                 <div class="uploadpanel">
-                    Select File:
+                  <%=LocalResources.GetLabel("app_select_file_text")%>:
                     <br />
                     <br />
                     <asp:FileUpload ID="FileUpload2" runat="server" Width="525" size="70" />
@@ -487,10 +487,10 @@
                     <br />
                     <br />
                     <div class="uploadbutton">
-                        <asp:Button ID="btnUploadCertificate" runat="server" Text="Upload" CssClass="cursor_hand"
+                        <asp:Button ID="btnUploadCertificate" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand"
                             OnClick="btnUploadCertificate_Click" />
                     </div>
-                    <asp:Button ID="btnCertificateClose" CssClass="cursor_hand" runat="server" Text="Cancel" />
+                    <asp:Button ID="btnCertificateClose" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                 </div>
                 <br />
             </div>

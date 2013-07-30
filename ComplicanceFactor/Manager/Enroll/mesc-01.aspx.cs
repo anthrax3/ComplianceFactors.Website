@@ -595,6 +595,17 @@ namespace ComplicanceFactor.Manager.Enroll
         {
             gvsearchDetails.DataSource = SessionWrapper.Employee;
             gvsearchDetails.DataBind();
+
+            if (gvsearchDetails.Rows.Count > 0)
+            {
+                gvsearchDetails.UseAccessibleHeader = true;
+                if (gvsearchDetails.HeaderRow != null)
+                {
+                    //This will tell ASP.NET to render the <thead> for the header row
+                    //using instead of the simple <tr>
+                    gvsearchDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+            }
         }
 
     }

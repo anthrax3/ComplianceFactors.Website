@@ -537,7 +537,7 @@ namespace ComplicanceFactor.Employee.LearningHistory
                 {
                     SessionWrapper.isLeraningHistory = false;
                 }
-                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
+                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
 
             }
             else if (e.CommandName.Equals("Certificate"))

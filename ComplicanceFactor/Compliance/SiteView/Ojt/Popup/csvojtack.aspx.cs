@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
 {
@@ -69,13 +70,13 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
                     SessionWrapper.isFieldNoteLoad = true;
                     divSuccess.Style.Add("display", "block");
                     divError.Style.Add("display", "none");
-                    divSuccess.InnerText = "Acknowledgement updated Successfully";
+                    divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
                 }
                 else
                 {
                     divSuccess.Style.Add("display", "none");
                     divError.Style.Add("display", "block");
-                    divSuccess.InnerText = "Acknowledgement not updated";
+                    divSuccess.InnerText = LocalResources.GetText("app_date_not_updated_error_wrong"); 
                 }
             }
             catch (Exception ex)

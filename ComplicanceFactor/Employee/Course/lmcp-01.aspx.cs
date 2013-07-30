@@ -221,6 +221,7 @@ namespace ComplicanceFactor.Employee.Course
                 Button btnDrop = (Button)e.Row.FindControl("btnDrop");
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString().Trim();
                 string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString().Trim();
+                string enrollType = DataBinder.Eval(e.Row.DataItem, "enrollmentType").ToString();
                 if (status == "Assigned")
                 {
                     btnEnroll.Style.Add("display", "inline");
@@ -231,15 +232,24 @@ namespace ComplicanceFactor.Employee.Course
                 }
                 else if (status == "Enrolled")
                 {
-                    btnDrop.Style.Add("display", "inline");
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnDrop.Style.Add("display", "inline");
+                    }
                 }
                 else if (status == "Pending")
                 {
-                    btnDrop.Style.Add("display", "inline");
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnDrop.Style.Add("display", "inline");
+                    }
                 }
                 else if (status == "Denied")
                 {
-                    btnDrop.Style.Add("display", "inline");
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnDrop.Style.Add("display", "inline");
+                    }
                 }
                 else if (status == "Approved")
                 {

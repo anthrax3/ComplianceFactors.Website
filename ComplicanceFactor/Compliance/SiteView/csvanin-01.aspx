@@ -173,7 +173,7 @@
                     </td>
                     <td class="width_180 align_right">
                         <asp:RequiredFieldValidator ID="rfvInspectionName" runat="server" ControlToValidate="txtInspectionName"
-                            ValidationGroup="csvanin" ErrorMessage="Please Enter Inspection Name">&nbsp;
+                            ValidationGroup="csvanin" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         * <%=LocalResources.GetLabel("app_inspection_name_text")%>:
                     </td>

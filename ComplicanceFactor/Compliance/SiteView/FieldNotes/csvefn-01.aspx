@@ -77,7 +77,7 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvTitle" runat="server" ValidationGroup="csvefn"
-                            ControlToValidate="txtTitle" ErrorMessage=" ">&nbsp;
+                            ControlToValidate="txtTitle" ErrorMessage="<%$ TextResourceExpression: app_title_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_title_text")%>:
@@ -96,7 +96,7 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ValidationGroup="csvefn"
-                            ControlToValidate="txtLocation" ErrorMessage=" ">&nbsp;
+                            ControlToValidate="txtLocation" ErrorMessage="<%$ TextResourceExpression: app_location_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_location_text")%>:
@@ -107,7 +107,9 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                        *
+                        *<asp:RequiredFieldValidator ID="rfvDescription" runat="server" ValidationGroup="csvefn"
+                            ControlToValidate="txtFieldDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
                         <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
@@ -122,7 +124,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Is Acknowledged
+                        <%=LocalResources.GetLabel("app_is_acknowledged_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:CheckBox ID="chkIsAcknowledge" runat="server" />

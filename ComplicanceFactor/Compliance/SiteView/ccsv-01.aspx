@@ -719,7 +719,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        Date:
+                       <%=LocalResources.GetLabel("app_date_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtDate" CssClass="textbox_long" runat="server"></asp:TextBox>

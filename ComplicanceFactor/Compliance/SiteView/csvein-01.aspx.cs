@@ -26,7 +26,7 @@ namespace ComplicanceFactor.Compliance.SiteView
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = "Inserted Successfully";
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
                 }
                 //ddlStatus Bind
                 ddlStatus.DataSource = SiteViewInspectionBLL.GetStatus(SessionWrapper.CultureName,"csvein-01");

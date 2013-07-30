@@ -662,7 +662,7 @@ namespace ComplicanceFactor.Compliance.SiteView
                 Literal ltlAcknowledge = (Literal)e.Row.FindControl("ltlAcknowledge");
                 if (acknowledgement == "Sent to you – No Acknowledged")
                 {
-                    ltlAcknowledge.Text = "<input id=" + fieldnote_id_pk + " class='editacknowledge cursor_hand' type='button' value='Acknowledge'/>";
+                    ltlAcknowledge.Text = "<input id=" + fieldnote_id_pk + " class='editacknowledge cursor_hand' type='button' value='" + LocalResources.GetLabel("app_acknowledgement_button_text") + "'/>";
                 }
                 else
                 {
@@ -685,7 +685,7 @@ namespace ComplicanceFactor.Compliance.SiteView
                 Literal ltlAcknowledge = (Literal)e.Row.FindControl("ltlAcknowledge");
                 if (acknowledgement == "Sent to you – No Acknowledged")
                 {
-                    ltlAcknowledge.Text = "<input id=" + ojt_id_pk + " class='editOjtacknowledge cursor_hand' type='button' value='Acknowledge'/>";
+                    ltlAcknowledge.Text = "<input id=" + ojt_id_pk + " class='editOjtacknowledge cursor_hand' type='button' value='" + LocalResources.GetLabel("app_acknowledgement_button_text") + "'/>";
                 }
                 else
                 {

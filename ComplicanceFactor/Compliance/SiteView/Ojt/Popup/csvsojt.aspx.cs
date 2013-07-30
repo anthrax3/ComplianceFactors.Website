@@ -8,6 +8,7 @@ using ComplicanceFactor.Common;
 using System.Data;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
 {
@@ -170,7 +171,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = "Send Successfully";
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_send_text");
                     }
                 }
                 catch (Exception ex)
@@ -205,7 +206,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt.Popup
             {
                 divSuccess.Style.Add("display", "none");
                 divError.Style.Add("display", "block");
-                divError.InnerText = "User name is mismatched.";
+                divError.InnerText = LocalResources.GetText("app_username_mismatched_error_wrong");
             }
             txtUserName.Text = string.Empty;
         }

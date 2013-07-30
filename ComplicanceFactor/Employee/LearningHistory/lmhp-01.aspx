@@ -175,9 +175,9 @@
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:Button ID="btnReview" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' CommandName="Review"
+                        <asp:Button ID="btnReview" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' CommandName="Review"
                             runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"  Style="display: none;"/>
-                        <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("t_transcript_course_id_fk")%>' Style="display:none;" 
+                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' Style="display:none;" 
                             runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                         <%--<asp:Button ID="btnViewDetails" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' 
                             runat="server" Style="display:none;"  CommandName="View" Text="View Details" />--%>

@@ -63,7 +63,7 @@
         <div id="divError" runat="server" class="msgarea_error" style="display: none;">
         </div>
         <div class="div_header_700">
-            Inspection Details:
+            <%=LocalResources.GetLabel("app_inspection_details_text")%>: 
         </div>
         <br />
         <div class="div_controls font_1">
@@ -71,15 +71,15 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUserName"
-                            ErrorMessage="Please enter user name" ValidationGroup="csvsojt">&nbsp;
+                            ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>" ValidationGroup="csvsojt">&nbsp;
                         </asp:RequiredFieldValidator>
-                        User Name:
+                        <%=LocalResources.GetLabel("app_user_name_text")%>:  
                     </td>
                     <td>
                         <asp:TextBox ID="txtUserName" CssClass="textbox_width_260" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" ValidationGroup="csvsojt" />
+                        <asp:Button ID="btnAdd" runat="server" Text="<%$ LabelResourceExpression: app_add_button_text %>" OnClick="btnAdd_Click" ValidationGroup="csvsojt" />
                     </td>
                 </tr>
             </table>
@@ -93,7 +93,7 @@
                                     CssClass="textbox_width_260" runat="server"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass ="align_center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="30px" HeaderText="Acknowledge">
+                        <asp:TemplateField ItemStyle-CssClass ="align_center" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="30px" HeaderText="<%$ LabelResourceExpression: app_acknowledge_text %>">
                             <ItemTemplate>
                                 <asp:CheckBox ID="chkIsAcknowledge" runat="server" />
                             </ItemTemplate>
@@ -115,7 +115,7 @@
                         <td align="left">
                         </td>
                         <td align="left">
-                            <asp:Button ID="btnSend" runat="server" Text="Send" OnClick="btnSend_Click" />
+                            <asp:Button ID="btnSend" runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSend_Click" />
                         </td>
                         <td align="right">
                         </td>
