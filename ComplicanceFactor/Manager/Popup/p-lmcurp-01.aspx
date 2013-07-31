@@ -15,10 +15,10 @@
         {
             /*width: 960px;*/
             width: 870px !important;
-            margin: 0;
+            margin: 0px 0 0 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 500px;
+            height: 420px;
         }
     </style>
     <script type="text/javascript">

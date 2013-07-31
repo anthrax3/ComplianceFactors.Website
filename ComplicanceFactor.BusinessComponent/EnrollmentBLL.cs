@@ -768,9 +768,25 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        //Single re-enroll from leraning history(employee/manager)
+        public static int SingleReEnroll(Enrollment Enroll)
+        {
+                Hashtable htConfirmEnroll = new Hashtable();
+                htConfirmEnroll.Add("@e_enroll_user_id_fk",Enroll.e_enroll_user_id_fk);
+	            htConfirmEnroll.Add("@e_enroll_course_id_fk",Enroll.e_enroll_course_id_fk);
+	            htConfirmEnroll.Add("@e_enroll_delivery_id_fk",Enroll.e_enroll_delivery_id_fk);
+	            htConfirmEnroll.Add("@e_enroll_type_name",Enroll.e_enroll_type_name);
+	            htConfirmEnroll.Add("@e_enroll_status_name",Enroll.e_enroll_status_name);
+                htConfirmEnroll.Add("@e_enroll_target_due_date", DBNull.Value);
+                try
+                {
+                    return DataProxy.FetchSPOutput("e_sp_insert_reenrollment", htConfirmEnroll);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+        }
         
-
-
-
     }   
 }

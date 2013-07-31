@@ -292,10 +292,10 @@ namespace ComplicanceFactor
                 {
                     btnEnroll.Style.Add("display", "inline");
                 }
-                else if (status == "Enrolled" && deliveryType == "OLT")
+                else if (status == "Enrolled" && deliveryType == "OLT") 
                 {
                     btnLaunch.Style.Add("display", "inline");
-                    string url = "/LMS/CoursePlayer.aspx?eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                    string url = "/LMS/CoursePlayer.aspx?eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx"; //In future add url dynamic using (Request.Url.Host.ToLower())
                     btnLaunch.OnClientClick = "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1');";
                 }
                 else if(status == "Enrolled")
@@ -406,6 +406,7 @@ namespace ComplicanceFactor
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string t_transcript_course_id_fk = gvLearningHistory.DataKeys[e.Row.RowIndex]["t_transcript_course_id_fk"].ToString();
+                string reEnroll = DataBinder.Eval(e.Row.DataItem,"reEnroll").ToString();
                 Button btnReview = (Button)e.Row.FindControl("btnReview");
                 Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                 Button btnCertificate = (Button)e.Row.FindControl("btnCertificate");
@@ -424,9 +425,15 @@ namespace ComplicanceFactor
                     ltlViewDetails.Text = "<input type='button' id='" + t_transcript_course_id_fk + "' value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='courseviewdetails' />";
                     btnCertificate.Style.Add("display", "Block");
                 }
-                else if (status == "Failed")
+                else if (status == "Failed" && reEnroll == "reenroll")
                 {
                     btnEnroll.Style.Add("display", "Block");
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
+                }
+                else if (status == "Failed" && reEnroll == "enrolled")
+                {
+                    btnEnroll.Style.Add("display", "none");
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                     e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                 }
@@ -438,20 +445,34 @@ namespace ComplicanceFactor
             int rowIndex = int.Parse(e.CommandArgument.ToString());
             string t_transcript_course_id_fk = gvLearningHistory.DataKeys[rowIndex][0].ToString();
             string title = gvLearningHistory.DataKeys[rowIndex][1].ToString();
-            bool isEnroll;
+
+            //bool isEnroll;
             if (e.CommandName.Equals("Enroll"))
             {
-                
-                isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk,SessionWrapper.u_userid);
-                if (isEnroll == true)
+
+                Enrollment enroll = new Enrollment();
+                enroll.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                enroll.e_enroll_course_id_fk = t_transcript_course_id_fk;
+                enroll.e_enroll_delivery_id_fk = gvLearningHistory.DataKeys[rowIndex][2].ToString();
+                enroll.e_enroll_type_name = "Self-enroll";
+                enroll.e_enroll_status_name = "Enrolled";
+                enroll.e_enroll_target_due_date = null;
+                int result = EnrollmentBLL.SingleReEnroll(enroll);
+                if (result == -2)
                 {
-                    SessionWrapper.isLeraningHistory = true;
+                    ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", @"alert('Already enrolled')", true);
                 }
-                else
-                {
-                    SessionWrapper.isLeraningHistory = false;
-                }
-                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
+                //isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
+                //if (isEnroll == true)
+                //{
+                //    SessionWrapper.isLeraningHistory = true;
+                //}
+                //else
+                //{
+                //    SessionWrapper.isLeraningHistory = false;
+                //}
+                //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
+                GetAllEmployee();
                 
             }
             else if (e.CommandName.Equals("Certificate"))

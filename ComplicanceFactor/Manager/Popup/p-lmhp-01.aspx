@@ -85,10 +85,6 @@
 			.tablesorter({ headers: { 5: { sorter: false }, 6: { sorter: false }, 7: { sorter: false }, 8: { sorter: false}} });
 
         });
-
-       
-
-  
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -113,8 +109,8 @@
             <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
                 runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
                 GridLines="None" AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row"
-                PagerSettings-Visible="false" DataKeyNames="t_transcript_user_id_fk,t_transcript_course_id_fk"
-                OnRowCommand="gvLearningHistory_RowCommand">
+                PagerSettings-Visible="false" DataKeyNames="t_transcript_user_id_fk,t_transcript_course_id_fk,t_transcript_delivery_id_fk"
+                OnRowCommand="gvLearningHistory_RowCommand" OnRowDataBound="gvLearningHistory_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_course_title_text %>" DataField='title'
@@ -134,10 +130,22 @@
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                CommandName="Certificate" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
-                        </ItemTemplate>
-                        <%--CommandArgument='<%#Eval("t_transcript_course_id_fk") %>'--%>
+                        <asp:Button ID="btnReview" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            CommandName="Review" runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"
+                            Style="display: none;" />
+                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            Style="display: none;" runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
+                        <%--<asp:Button ID="btnViewDetails" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            Style="display: none;" runat="server" CommandName="View" Text="<%$LabelResourceExpression: app_view_details_button_text %>" />--%>
+                        <asp:Literal ID="ltlViewDetails" runat="server"></asp:Literal>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                       <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                         CommandName="Certificate" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" /> 
+                    </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>

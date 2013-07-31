@@ -153,7 +153,7 @@
     <div class="div_padding_10" id="div_course" runat="server">
         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="No result found." GridLines="None" AutoGenerateColumns="False"
-            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="t_transcript_course_id_fk,title"
+            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk"
             OnRowDataBound="gvLearningHistory_RowDataBound"
             OnRowCommand="gvLearningHistory_RowCommand">
             <Columns>
@@ -188,7 +188,7 @@
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                        <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                         CommandName="Certificate" style="display:none;" runat="server" Text="Certificate" />
+                         CommandName="Certificate" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 

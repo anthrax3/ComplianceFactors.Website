@@ -42,7 +42,7 @@ namespace ComplicanceFactor.Compliance.SiteView.FieldNotes.Popup
             {
                 SiteViewFieldNotes fieldNotesId = new SiteViewFieldNotes();
                 fieldNotesId = SiteViewFieldNotesBLL.GetFieldNoteId();
-                lblFieldNoteHeader.Text = "FieldNote [" + fieldNotesId.sv_fieldnote_id + "]";
+                lblFieldNoteHeader.Text = LocalResources.GetLabel("app_field_note_text")+ "[" + fieldNotesId.sv_fieldnote_id + "]";
             }
             catch (Exception ex)
             {

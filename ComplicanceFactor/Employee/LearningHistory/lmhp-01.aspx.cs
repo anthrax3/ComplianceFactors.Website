@@ -188,6 +188,8 @@ namespace ComplicanceFactor.Employee.LearningHistory
                 //Button btnViewDetails = (Button)e.Row.FindControl("btnViewDetails");
                 Literal ltlViewDetails = (Literal)e.Row.FindControl("ltlViewDetails");
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
+                string reEnroll = DataBinder.Eval(e.Row.DataItem, "reEnroll").ToString();
+
                 if (status == "Completed")
                 {
 
@@ -201,9 +203,15 @@ namespace ComplicanceFactor.Employee.LearningHistory
                     ltlViewDetails.Text = "<input type='button' id='" + t_transcript_course_id_fk + "' value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='viewdetails' />";
                     btnCertificate.Style.Add("display", "Block");
                 }
-                else if (status == "Failed")
+                else if (status == "Failed" && reEnroll == "reenroll")
                 {
                     btnEnroll.Style.Add("display", "Block");
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
+                }
+                else if (status == "Failed" && reEnroll == "enrolled")
+                {
+                    btnEnroll.Style.Add("display", "none");
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                     e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                 }
@@ -524,20 +532,33 @@ namespace ComplicanceFactor.Employee.LearningHistory
             int rowIndex = int.Parse(e.CommandArgument.ToString());
             string t_transcript_course_id_fk = gvLearningHistory.DataKeys[rowIndex][0].ToString();
             string title = gvLearningHistory.DataKeys[rowIndex][1].ToString();
-            bool isEnroll;
+            //bool isEnroll;
             if (e.CommandName.Equals("Enroll"))
             {
 
-                isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
-                if (isEnroll == true)
+                //isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
+                //if (isEnroll == true)
+                //{
+                //    SessionWrapper.isLeraningHistory = true;
+                //}
+                //else
+                //{
+                //    SessionWrapper.isLeraningHistory = false;
+                //}
+                //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
+
+                Enrollment enroll = new Enrollment();
+                enroll.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                enroll.e_enroll_course_id_fk = t_transcript_course_id_fk;
+                enroll.e_enroll_delivery_id_fk = gvLearningHistory.DataKeys[rowIndex][2].ToString();
+                enroll.e_enroll_type_name = "Self-enroll";
+                enroll.e_enroll_status_name = "Enrolled";
+                enroll.e_enroll_target_due_date = null;
+                int result = EnrollmentBLL.SingleReEnroll(enroll);
+                if (result == -2)
                 {
-                    SessionWrapper.isLeraningHistory = true;
+                    ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", @"alert('Already enrolled')", true);
                 }
-                else
-                {
-                    SessionWrapper.isLeraningHistory = false;
-                }
-                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
 
             }
             else if (e.CommandName.Equals("Certificate"))
@@ -556,11 +577,11 @@ namespace ComplicanceFactor.Employee.LearningHistory
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("lmcurp-01.aspx (Certificate PDF)", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("p-lmhp-01.aspx (Certificate PDF)", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("lmcurp-01.aspx (Certificate PDF)", ex.Message);
+                            Logger.WriteToErrorLog("p-lmhp-01.aspx (Certificate PDF)", ex.Message);
                         }
                     }
 

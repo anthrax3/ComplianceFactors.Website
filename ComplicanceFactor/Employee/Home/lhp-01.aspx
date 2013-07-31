@@ -363,7 +363,7 @@
         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>"
             GridLines="None" AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row"
-            DataKeyNames="t_transcript_course_id_fk,title" PagerSettings-Visible="false"
+            DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk" PagerSettings-Visible="false"
             OnRowCommand="gvLearningHistory_RowCommand" OnRowDataBound="gvLearningHistory_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"

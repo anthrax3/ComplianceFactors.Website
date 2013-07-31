@@ -99,7 +99,7 @@
         </div>
         <br />
         <div class="div_header_popup_1">
-            Acknowledgement:
+            <%=LocalResources.GetLabel("app_attachments_text")%>: 
         </div>
         <br />
         <div class="div_padding_40 font_1">

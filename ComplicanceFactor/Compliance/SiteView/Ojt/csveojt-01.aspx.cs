@@ -603,7 +603,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = "OJT updated Successfully.";
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_update_text");
                     }
                 }
                 catch (Exception ex)
@@ -633,7 +633,8 @@ namespace ComplicanceFactor.Compliance.SiteView.Ojt
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = "OJT Insered Successfully.";
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
+
                     }
                 }
                 catch (Exception ex)

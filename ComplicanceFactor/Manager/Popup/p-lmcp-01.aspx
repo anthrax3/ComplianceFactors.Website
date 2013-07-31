@@ -15,11 +15,12 @@
     <style type="text/css">
         body
         {
-            width: 800px !important;
-            margin: 0;
+            /*width: 960px;*/
+            width: 870px !important;
+            margin: 0px 0 0 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 500px;
+            height: 420px;
         }
     </style>
     <script type="text/javascript">
@@ -75,7 +76,7 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div id="content">
-        <div class="div_header_800">
+        <div class="div_header_870">
             <%=LocalResources.GetLabel("app_my_courses_text")%>
             <div class="right div_padding_10">
                 <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_pdf_button_text %>"
@@ -117,7 +118,7 @@
             </asp:GridView>
         </div>
         <br />
-        <div class="div_header_800">
+        <div class="div_header_870">
             &nbsp;
         </div>
     </div>

@@ -69,7 +69,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Popup
                     {
                         divSuccess.Style.Add("display", "block");
                         divError.Style.Add("display", "none");
-                        divSuccess.InnerText = "Send Successfully";
+                        divSuccess.InnerText = LocalResources.GetText("app_succ_send_text");
                     }
                 }
                 catch (Exception ex)
@@ -101,7 +101,7 @@ namespace ComplicanceFactor.Compliance.SiteView.Popup
             {
                 divSuccess.Style.Add("display", "none");
                 divError.Style.Add("display", "block");
-                divError.InnerText = "User name is mismatched.";
+                divError.InnerText = LocalResources.GetText("app_username_mismatched_error_wrong");
             }
             txtUserName.Text = string.Empty;           
         }       

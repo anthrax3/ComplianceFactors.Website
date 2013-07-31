@@ -222,6 +222,7 @@ namespace ComplicanceFactor.Employee.Course
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString().Trim();
                 string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString().Trim();
                 string enrollType = DataBinder.Eval(e.Row.DataItem, "enrollmentType").ToString();
+                string e_enroll_system_id_pk = DataBinder.Eval(e.Row.DataItem, "e_enroll_system_id_pk").ToString().Trim();
                 if (status == "Assigned")
                 {
                     btnEnroll.Style.Add("display", "inline");
@@ -229,6 +230,8 @@ namespace ComplicanceFactor.Employee.Course
                 else if (status == "Enrolled" && deliveryType == "OLT")
                 {
                     btnLaunch.Style.Add("display", "inline");
+                    string url = "/LMS/CoursePlayer.aspx?eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                    btnLaunch.OnClientClick = "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1');";
                 }
                 else if (status == "Enrolled")
                 {
@@ -266,22 +269,22 @@ namespace ComplicanceFactor.Employee.Course
                 Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
 
             }
-            else if (e.CommandName.Equals("Launch"))
-            {
-                //insert enrollment
-                string url = e.CommandArgument.ToString();
-                if (!string.IsNullOrEmpty(url))
-                {
-                    if (!url.Contains("http"))
-                        url = "http://" + url;
-                    ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
-                }
-                else
-                {
-                    string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
-                }
-            }
+            //else if (e.CommandName.Equals("Launch"))
+            //{
+            //    //insert enrollment
+            //    string url = e.CommandArgument.ToString();
+            //    if (!string.IsNullOrEmpty(url))
+            //    {
+            //        if (!url.Contains("http"))
+            //            url = "http://" + url;
+            //        ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
+            //    }
+            //    else
+            //    {
+            //        string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
+            //        Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
+            //    }
+            //}
             else if (e.CommandName.Equals("Details"))
             {
                 //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
