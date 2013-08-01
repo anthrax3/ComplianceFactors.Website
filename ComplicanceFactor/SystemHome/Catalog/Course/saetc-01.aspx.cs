@@ -107,7 +107,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                     SessionWrapper.ResetFulfillments = dsprerequisiteEquivalenciesFullfillments.Tables[2];
                     //RevertBack
                     RevertBack(editCourseId);
-                    
+
 
                 }
                 catch (Exception ex)
@@ -633,7 +633,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
             try
             {
 
-                SystemCategories  deleteCatalog = new SystemCategories();
+                SystemCategories deleteCatalog = new SystemCategories();
                 deleteCatalog.CategoryID = args.Trim();
                 deleteCatalog.s_category_system_id_pk = editCourseId;
                 SystemCategoriesBLL.DeleteCategory(deleteCatalog);
@@ -827,7 +827,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 CreateCourse.c_course_custom_13 = txtCustom13.Text;
                 //c_course_cert_flag
                 CreateCourse.c_course_cert_flag = false;
-               
+
                 //c_course_recurrence_grace_days
                 int tempGraceDays;
                 if (int.TryParse(txtGracePreiod.Text, out tempGraceDays))
@@ -1261,6 +1261,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     string c_delivery_id_pk = gvDeliveries.DataKeys[e.Row.RowIndex].Values[0].ToString();
+
+                    DataRowView drv = (DataRowView)e.Row.DataItem;
+                    string deliveryType = Convert.ToString(drv["c_delivery_type_text"]);
+                         
+
                     Label lblSession = (Label)e.Row.FindControl("lblSession");
                     SystemCatalog sessionDate = new SystemCatalog();
                     sessionDate = SystemCatalogBLL.GetSessionDate(c_delivery_id_pk);
@@ -1270,7 +1275,14 @@ namespace ComplicanceFactor.SystemHome.Catalog
                     }
                     else
                     {
-                        lblSession.Text = "(Self-paced - Anytime/Anywhere)";
+                        if (deliveryType == "OLT")
+                        {
+                            lblSession.Text = "(Self-paced - Anytime/Anywhere)";
+                        }
+                        else
+                        {
+                            lblSession.Text = "No Sessions";
+                        }
                     }
 
                 }
@@ -1289,7 +1301,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
         }
 
-        
+
         private void GetDeliveries()
         {
             DataSet dsGetcourseDelivery = new DataSet();
@@ -1298,6 +1310,6 @@ namespace ComplicanceFactor.SystemHome.Catalog
             gvDeliveries.DataBind();
         }
 
-       
+
     }
 }

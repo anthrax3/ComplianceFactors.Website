@@ -778,5 +778,17 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static DataSet GetWarningOverDue()
+        {
+            try
+            {
+                return DataProxy.FetchDataSet("s_sp_get_warning_overdue");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -79,6 +79,15 @@
 
   
     </script>
+        <script type="text/javascript" language="javascript">
+            function confirmStatus() {
+                if (confirm('Are you sure?') == true)
+                    return true;
+                else
+                    return false;
+
+            }
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div id="content">
@@ -132,7 +141,7 @@
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="btnDrop" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' CommandName="Drop"
+                            <asp:Button ID="btnDrop" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' CommandName="Drop" OnClientClick="return confirmStatus();"
                                 runat="server" Text="<%$ LabelResourceExpression: app_drop_button_text %>" Style="display: none;" />
                             <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' runat="server"
                                 CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>"

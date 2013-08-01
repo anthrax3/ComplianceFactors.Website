@@ -5,6 +5,9 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
 using System.Data;
+using System.Text;
+using System.Net.Mail;
+using System.Collections.Generic;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Completion
 {
@@ -443,6 +446,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             try
                             {
                                 int result = ManageCompletionBLL.InsertTranscripts(transcripts);
+                                if (result == 0)
+                                {
+                                    DataTable dt = ManageCompletionBLL.GetWaitlistCourses(courseId, deliveryId, u_user_id_pk);
+                                    if (dt.Rows.Count > 0)
+                                    {
+                                        SendClosedMailToUser(dt);
+                                    }
+                                }
+
+
                             }
                             catch (Exception ex)
                             {
@@ -503,6 +516,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                             try
                             {
                                 int result = ManageCompletionBLL.InsertTranscripts(transcripts);
+                                if (result == 0)
+                                {
+                                    DataTable dt = ManageCompletionBLL.GetWaitlistCourses(courseId, deliveryId, u_user_id_pk);
+                                    if (dt.Rows.Count > 0)
+                                    {
+                                        SendClosedMailToUser(dt);
+                                    }
+                                }
                             }
                             catch (Exception ex)
                             {
@@ -902,7 +923,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
                     }
                 }
             }
-
         }
 
         private void UpdateCurriculumPercentage(string courseId, string UserId)
@@ -992,6 +1012,39 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
             row["isSaved"] = Convert.ToBoolean(issaved);
             row["t_transcript_id_pk"] = transcriptid;
             dtTempEmployee.Rows.Add(row);
+        }
+
+        private void SendClosedMailToUser(DataTable dtMail)
+        {
+            for (int i = 0; i <= dtMail.Rows.Count; i++)
+            {
+                String closeSubject = "***" + dtMail.Rows[i]["courseName"].ToString() + "is now closed";
+
+                StringBuilder sbCloseCourse = new StringBuilder();
+                sbCloseCourse.Append("Hello "+dtMail.Rows[i]["u_first_name"].ToString() + ' ' + dtMail.Rows[i]["u_last_name"].ToString());
+                sbCloseCourse.Append("<br>");
+                sbCloseCourse.Append("Course: " + dtMail.Rows[i]["courseName"].ToString());
+                sbCloseCourse.Append("<br>");
+                sbCloseCourse.Append("Delivery: " +  dtMail.Rows[i]["deliveryName"].ToString());
+                sbCloseCourse.Append("<br>");
+                sbCloseCourse.Append("has been closed.");
+                sbCloseCourse.Append("<br>");
+
+                sbCloseCourse.Append("<br>");
+                string toEmailid = dtMail.Rows[i]["u_email_address"].ToString(); 
+                string[] toaddress = toEmailid.Split(',');
+                List<MailAddress> mailAddresses = new List<MailAddress>();
+                foreach (string recipient in toaddress)
+                {
+                    if (recipient.Trim() != string.Empty)
+                    {
+                        mailAddresses.Add(new MailAddress(recipient));
+                    }
+                }
+                string fromAddress = SessionWrapper.u_email_id;// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
+                //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                Utility.SendEMailMessages(mailAddresses, fromAddress, closeSubject, sbCloseCourse.ToString());
+            }
         }
 
     }

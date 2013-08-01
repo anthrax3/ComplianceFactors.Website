@@ -251,6 +251,39 @@
 
                     });
                 }
+                else if (jobId[0] == 'DCUB') {
+                    var tr_id = $(this).parents("#.record");
+                    $.fancybox({
+                        'type': 'iframe',
+                        'titlePosition': 'over',
+                        'titleShow': true,
+                        'showCloseButton': true,
+                        'scrolling': 'yes',
+                        'autoScale': false,
+                        'autoDimensions': false,
+                        'helpers': { overlay: { closeClick: false} },
+                        'width': 732,
+                        'height': 200,
+                        'margin': 0,
+                        'padding': 0,
+                        'overlayColor': '#000',
+                        'overlayOpacity': 0.7,
+                        'hideOnOverlayClick': false,
+                        'href': '../Data%20Imports/Popup/p_samddimplo-01.aspx',
+                        'onComplete': function () {
+                            $('#fancybox-frame').load(function () {
+                                $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                                var heightPane = $(this).contents().find('#content').height();
+                                $(this).contents().find('#fancybox-frame').css({
+                                    'height': heightPane + 'px'
+
+                                })
+                            });
+
+                        }
+
+                    });
+                }
             });
 
         });
@@ -270,9 +303,10 @@
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_7"
                         HeaderStyle-CssClass="gridview_row_width_7" HeaderText="<%$ LabelResourceExpression: app_frequency_text %>">
                         <ItemTemplate>
-                            <%=LocalResources.GetLabel("app_occurs_every_text")%>:
+                            <asp:Label ID="lblOccursEvery" runat="server" Text="<%$ LabelResourceExpression: app_occurs_every_text %>" ></asp:Label>                            
                             <asp:TextBox ID="txtOccursEvery" runat="server" CssClass="textbox_50" Text='<%#Eval("u_sftp_occurs_every") %>'></asp:TextBox>
-                            <%=LocalResources.GetLabel("app_days_text")%>:
+                            <asp:Label ID="lblEveryDays" runat="server" Text="<%$ LabelResourceExpression: app_days_text %>"></asp:Label>
+                            <asp:Label ID="lblOccursCommon" runat="server" Text="Occurs Every Day" ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_7"
@@ -290,7 +324,8 @@
                         ItemStyle-CssClass="gridview_row_width_2" DataField="" HeaderText="Status " />
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="gridview_row_width_2">
                         <ItemTemplate>
-                            <input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="manage" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_manage_button_text %>" />' />
+                            <asp:Literal ID="ltlButton" runat="server"></asp:Literal>
+                            <%--<input type="button" id='<%#Eval("u_sftp_id_pk") %>' class="manage" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_manage_button_text %>" />' />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="gridview_row_width_2">

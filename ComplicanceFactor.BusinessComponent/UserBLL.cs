@@ -1544,7 +1544,20 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-       
+        public static int MergeUser(string user1, string user2)
+        {
+            Hashtable htMergeUser = new Hashtable();
+            htMergeUser.Add("@user1", user1);
+            htMergeUser.Add("@user2", user2);
+            try
+            {
+                return DataProxy.FetchSPOutput("", htMergeUser);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

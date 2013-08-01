@@ -11,6 +11,7 @@ using System.Data;
 using System.Text;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Web.UI.HtmlControls;
+using System.Net.Mail;
 
 namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
 {
@@ -392,9 +393,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
 
             try
             {
-                int result = SystemMassCompletionBLL.MassCompletion(transcripts);
-                if (result == 0)
+                DataSet ds  = SystemMassCompletionBLL.MassCompletion(transcripts);
+                if (ds.Tables[ds.Tables.Count-1].Rows.Count > 0)
                 {
+                    SendClosedMailToUser(ds.Tables[ds.Tables.Count-1]);
                     divSuccess.Style.Add("display", "block");
                     divSuccess.InnerHtml = "Courses Completed Successfully";
                 }
@@ -730,6 +732,39 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassCompletions
                         }
                     }
                 }
+            }
+        }
+
+        private void SendClosedMailToUser(DataTable dtMail)
+        {
+            for (int i = 0; i < dtMail.Rows.Count; i++)
+            {
+                String closeSubject = "***" + dtMail.Rows[i]["courseName"].ToString() + "is now closed";
+
+                StringBuilder sbCloseCourse = new StringBuilder();
+                sbCloseCourse.Append("Hello " + dtMail.Rows[i]["u_first_name"].ToString() + ' ' + dtMail.Rows[i]["u_last_name"].ToString());
+                sbCloseCourse.Append("<br>");
+                sbCloseCourse.Append("Course: " + dtMail.Rows[i]["courseName"].ToString());
+                sbCloseCourse.Append("<br>");
+                sbCloseCourse.Append("Delivery: " + dtMail.Rows[i]["deliveryName"].ToString());
+                sbCloseCourse.Append("<br>");
+                sbCloseCourse.Append("has been closed.");
+                sbCloseCourse.Append("<br>");
+
+                sbCloseCourse.Append("<br>");
+                string toEmailid = dtMail.Rows[i]["u_email_address"].ToString();
+                string[] toaddress = toEmailid.Split(',');
+                List<MailAddress> mailAddresses = new List<MailAddress>();
+                foreach (string recipient in toaddress)
+                {
+                    if (recipient.Trim() != string.Empty)
+                    {
+                        mailAddresses.Add(new MailAddress(recipient));
+                    }
+                }
+                string fromAddress = SessionWrapper.u_email_id;// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
+                //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                Utility.SendEMailMessages(mailAddresses, fromAddress, closeSubject, sbCloseCourse.ToString());
             }
         }
     }

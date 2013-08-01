@@ -287,7 +287,7 @@ namespace ComplicanceFactor
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString().Trim();
                 string deliveryType = DataBinder.Eval(e.Row.DataItem, "deliveryType").ToString().Trim();
                 string e_enroll_system_id_pk = DataBinder.Eval(e.Row.DataItem, "e_enroll_system_id_pk").ToString().Trim();
-                string enrollType = DataBinder.Eval(e.Row.DataItem, "enrollmentType").ToString();
+                string enrollType = DataBinder.Eval(e.Row.DataItem, "enrollmentType").ToString().Trim();
                 if (status == "Assigned")
                 {
                     btnEnroll.Style.Add("display", "inline");
@@ -305,7 +305,14 @@ namespace ComplicanceFactor
                         btnDrop.Style.Add("display", "inline");
                     }
                 }
-                else if (status == "Pending")
+                else if (status == "Pending" && deliveryType == "OLT") // Note: If status is pending and delivery type is OLT then show drop button
+                {
+                    if (enrollType == "Self-enroll")
+                    {
+                        btnLaunch.Style.Add("display", "inline");
+                    }
+                }
+                else if (status == "Pending" && deliveryType != "OLT") // Note: If status is pending and delivery type is not OLT then show drop button
                 {
                     if (enrollType == "Self-enroll")
                     {
@@ -420,9 +427,7 @@ namespace ComplicanceFactor
                 }
                 else if (status == "Passed")
                 {
-
-                    //btnViewDetails.Style.Add("display", "Block");
-                    ltlViewDetails.Text = "<input type='button' id='" + t_transcript_course_id_fk + "' value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='courseviewdetails' />";
+                    ltlViewDetails.Text = "<input type='button' id=" + t_transcript_course_id_fk+','+SessionWrapper.u_userid +" value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='ViewLearningdetails' />";
                     btnCertificate.Style.Add("display", "Block");
                 }
                 else if (status == "Failed" && reEnroll == "reenroll")

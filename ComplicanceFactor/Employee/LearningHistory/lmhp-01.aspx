@@ -69,8 +69,50 @@
                 });
 
             });
-        });
 
+
+            $(".ViewLearningdetails").click(function () {
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                var element = $(this).attr("id").split(",");
+                $.fancybox({
+
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 732,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '/Employee/Course/p-lvcomd.aspx?cid=' + element[0] + '&eid=' + element[1],
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+
+            });
+        });
         $(function () {
             $('#<%=gvLearningHistory.ClientID %>')
 			.tablesorter({ headers: { 5: { sorter: false }, 6: { sorter: false }, 7: { sorter: false }, 8: { sorter: false}} });
@@ -89,7 +131,8 @@
     </script>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
-    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_lmhp" runat="server" ValidationGroup="lmhp" />
+    <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_lmhp" runat="server"
+        ValidationGroup="lmhp" />
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div class="content_area">
@@ -110,9 +153,8 @@
         </div>
         <div class="clear">
         </div>
-       
     </div>
-     <br />
+    <br />
     <div>
         <table cellpadding="0" cellspacing="0" class="paging">
             <tr>
@@ -154,8 +196,7 @@
         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="No result found." GridLines="None" AutoGenerateColumns="False"
             EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk"
-            OnRowDataBound="gvLearningHistory_RowDataBound"
-            OnRowCommand="gvLearningHistory_RowCommand">
+            OnRowDataBound="gvLearningHistory_RowDataBound" OnRowCommand="gvLearningHistory_RowCommand">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
                     HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title'
@@ -175,10 +216,11 @@
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:Button ID="btnReview" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' CommandName="Review"
-                            runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"  Style="display: none;"/>
-                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' Style="display:none;" 
-                            runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
+                        <asp:Button ID="btnReview" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            CommandName="Review" runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"
+                            Style="display: none;" />
+                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            Style="display: none;" runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                         <%--<asp:Button ID="btnViewDetails" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' 
                             runat="server" Style="display:none;"  CommandName="View" Text="View Details" />--%>
                         <asp:Literal ID="ltlViewDetails" runat="server"></asp:Literal>
@@ -187,12 +229,10 @@
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                       <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                         CommandName="Certificate" style="display:none;" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
+                        <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            CommandName="Certificate" Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_certificate_button_text %>" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                
-                
             </Columns>
         </asp:GridView>
     </div>
@@ -237,7 +277,7 @@
     <br />
     <br />
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
-         <div class="div_header_long">
+        <div class="div_header_long">
             <%= LocalResources.GetLabel("app_advanced_learning_history_search_text")%>:
         </div>
         <br />
@@ -245,31 +285,33 @@
             <table>
                 <tr>
                     <td>
-                       <%= LocalResources.GetLabel("app_keyword_text")%>:
+                        <%= LocalResources.GetLabel("app_keyword_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtKeyword" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         <asp:RegularExpressionValidator ID="refromdate" runat="server" ControlToValidate="txtFromDate"
-                                    ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                                    ErrorMessage="In Valid From Date" Display="Dynamic" ValidationGroup="lmhp">&nbsp;</asp:RegularExpressionValidator>
-                      <%= LocalResources.GetLabel("app_from_text")%>:
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="In Valid From Date" Display="Dynamic" ValidationGroup="lmhp">&nbsp;</asp:RegularExpressionValidator>
+                        <%= LocalResources.GetLabel("app_from_text")%>:
                     </td>
                     <td>
-                       <asp:TextBox ID="txtFromDate" CssClass="textbox_long" Style="font-size: small;" runat="server"></asp:TextBox>
-                       <asp:CalendarExtender ID="ceFromdate" TargetControlID="txtFromDate" Format="MM/dd/yyyy" runat="server">
-                       </asp:CalendarExtender>
+                        <asp:TextBox ID="txtFromDate" CssClass="textbox_long" Style="font-size: small;" runat="server"></asp:TextBox>
+                        <asp:CalendarExtender ID="ceFromdate" TargetControlID="txtFromDate" Format="MM/dd/yyyy"
+                            runat="server">
+                        </asp:CalendarExtender>
                     </td>
                     <td>
-                    <asp:RegularExpressionValidator ID="reTodate" runat="server" ControlToValidate="txtToDate"
-                                    ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                                    ErrorMessage="In Valid To Date" Display="Dynamic" ValidationGroup="lmhp">&nbsp;</asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="reTodate" runat="server" ControlToValidate="txtToDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="In Valid To Date" Display="Dynamic" ValidationGroup="lmhp">&nbsp;</asp:RegularExpressionValidator>
                         To:
                     </td>
                     <td>
                         <asp:TextBox ID="txtToDate" CssClass="textbox_long" Style="font-size: small;" runat="server"></asp:TextBox>
-                        <asp:CalendarExtender ID="ceTodate" TargetControlID="txtToDate" Format="MM/dd/yyyy" runat="server">
+                        <asp:CalendarExtender ID="ceTodate" TargetControlID="txtToDate" Format="MM/dd/yyyy"
+                            runat="server">
                         </asp:CalendarExtender>
                     </td>
                 </tr>
@@ -279,8 +321,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlStatus" CssClass="textbox_long" runat="server" DataTextField="e_learning_history_status_name"
-                         DataValueField="e_learning_history_status_id">
-                        
+                            DataValueField="e_learning_history_status_id">
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -303,15 +344,15 @@
                         &nbsp;
                     </td>
                     <td align="right">
-                        <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" runat="server"
-                            OnClick="btnGosearch_Click" />
+                        <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
+                            runat="server" OnClick="btnGosearch_Click" />
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td align="right">
-                       <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" OnClientClick="return resetall();"
-                            runat="server" />
+                        <asp:Button ID="btnReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            OnClientClick="return resetall();" runat="server" />
                     </td>
                 </tr>
             </table>

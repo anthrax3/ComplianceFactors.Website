@@ -33,7 +33,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <asp:HiddenField ID="hdDeliveryType" runat="server" />
-    <div id="content">
+<div id="content">
         <div>
             <div class="div_header_700">
                 <%=LocalResources.GetLabel("app_delivery_details_text")%>:
@@ -370,4 +370,5 @@
             </table>
         </div>
     </div>
+    
 </asp:Content>

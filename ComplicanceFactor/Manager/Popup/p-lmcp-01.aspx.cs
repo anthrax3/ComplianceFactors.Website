@@ -17,7 +17,10 @@ namespace ComplicanceFactor.Manager.Popup
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetAllCourse();
+            if (!IsPostBack)
+            {
+                GetAllCourse();
+            }
         }
         private void GetAllCourse()
         {
@@ -186,6 +189,32 @@ namespace ComplicanceFactor.Manager.Popup
             SystemThemes userTheme = new SystemThemes();
             userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
             return userTheme;
+        }
+
+        protected void gvCourses_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Drop"))
+            {
+                BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
+                DropEnrollmentStatus.e_enroll_user_id_fk = Request.QueryString["id"].ToString();//current employee id
+                DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
+                GetAllCourse();
+            }
+        }
+
+        protected void gvCourses_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Button btnDrop = (Button)e.Row.FindControl("btnDrop");
+                string status = DataBinder.Eval(e.Row.DataItem, "status").ToString().Trim();
+                if (status == "Enrolled")
+                {
+                    btnDrop.Style.Add("display", "Block");
+                }
+                
+            }
         }
     }
 }

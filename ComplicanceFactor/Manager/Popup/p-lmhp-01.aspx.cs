@@ -291,6 +291,7 @@ namespace ComplicanceFactor.Manager.Popup
                 {
                     ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", @"alert('Already enrolled')", true);
                 }
+                SearchResult();
             }
         }
 
@@ -326,8 +327,7 @@ namespace ComplicanceFactor.Manager.Popup
                     else if (status == "Passed")
                     {
 
-                        //btnViewDetails.Style.Add("display", "Block");
-                        ltlViewDetails.Text = "<input type='button' id='" + t_transcript_course_id_fk + "' value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='viewdetails' />";
+                        ltlViewDetails.Text = "<input type='button' id=" + t_transcript_course_id_fk + ',' + Request.QueryString["id"].ToString() + " value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='ViewLearningdetails' />";
                         btnCertificate.Style.Add("display", "Block");
                     }
                     else if (status == "Failed" && reEnroll == "reenroll")

@@ -291,11 +291,12 @@ namespace ComplicanceFactor.Employee.Course
             }
             else if (e.CommandName.Equals("Drop"))
             {
-                BusinessComponent.DataAccessObject.Enrollment UpdateEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
-                UpdateEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                UpdateEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
-                EnrollmentBLL.UpdateEnrollmentStatus(UpdateEnrollmentStatus);
-                Response.Redirect("~/Employee/Course/lmcp-01.aspx", false);
+                BusinessComponent.DataAccessObject.Enrollment DropEnrollmentStatus = new BusinessComponent.DataAccessObject.Enrollment();
+                DropEnrollmentStatus.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                DropEnrollmentStatus.e_enroll_course_id_fk = e.CommandArgument.ToString();
+                //EnrollmentBLL.UpdateEnrollmentStatus(UpdateEnrollmentStatus);
+                EnrollmentBLL.DropEnrollmentStatus(DropEnrollmentStatus);
+                GetAllCourse();
             }
         }
 

@@ -167,6 +167,47 @@
                 });
             });
 
+            $(".ViewLearningdetails").click(function () {
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                var element = $(this).attr("id").split(",");
+                $.fancybox({
+
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 732,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '/Employee/Course/p-lvcomd.aspx?cid=' + element[0] + '&eid=' + element[1],
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+
+            });
 
 
             //Curriculum popup

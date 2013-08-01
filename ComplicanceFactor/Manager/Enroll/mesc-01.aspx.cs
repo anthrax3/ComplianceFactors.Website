@@ -246,11 +246,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment)", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("mesc-01.aspx (Enrollment)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment)", ex.Message);
+                        Logger.WriteToErrorLog("mesc-01.aspx (Enrollment)", ex.Message);
                     }
                 }
             }
@@ -307,11 +307,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment Approvels)", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("mesc-01.aspx (Enrollment Approvels)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("ecolt-01.aspx (Enrollment Approvels)", ex.Message);
+                        Logger.WriteToErrorLog("mesc-01.aspx (Enrollment Approvels)", ex.Message);
                     }
                 }
             }
@@ -533,11 +533,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("(confirm enroll email) mese-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("(confirm enroll email) mesc-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("(confirm enroll email) mese-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("(confirm enroll email) mesc-01.aspx", ex.Message);
                     }
                 }
             }

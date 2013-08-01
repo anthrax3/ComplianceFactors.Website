@@ -104,11 +104,31 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string e_learning_deliveryType { get; set; }
         public bool e_re_enroll { get; set; }
 
+          public string t_transcript_id_pk { get; set; }
+          public string t_transcript_user_id_fk { get; set; }
+          public string t_transcript_course_id_fk { get; set; }
+          public string t_transcript_delivery_id_fk { get; set; }
+          public string t_transcript_assign_id_fk { get; set; }
+          public string t_transcript_enroll_id_fk { get; set; }
+          public string t_transcript_attendance_id_fk { get; set; }
+          public string t_transcript_passing_status_id_fk { get; set; }
+          public string t_transcript_grade_id_fk { get; set; }
+          public string t_transcript_completion_score { get; set; }
+          public string t_transcript_completion_date_time { get; set; }
+          public string t_transcript_completion_type_id_fk { get; set; }
+          public string t_transcript_marked_by_user_id_fk { get; set; }
+          public string t_transcript_required_flag { get; set; }
+          public string t_transcript_target_due_date { get; set; }
+          public string t_transcript_actual_date { get; set; }
+          public string t_transcript_status_id_fk{ get; set; }
+          public string t_transcript_time_spent { get; set; }
+          public string t_transcript_score { get; set; }
+          public string t_transcript_credits { get; set; }
+          public string t_transcript_hours { get; set; }
+          public string t_transcript_active_flag { get; set; }
+           
         //Waitlist - for move roaster
         public string e_course_waitlist_system_id_pk { get; set; }
-
-
-
         public string e_curriculum_assign_status { get; set; }
     }
 }

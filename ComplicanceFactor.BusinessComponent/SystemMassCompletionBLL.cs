@@ -56,7 +56,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static int MassCompletion(SystemTranscripts transcripts)
+        public static DataSet MassCompletion(SystemTranscripts transcripts)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace ComplicanceFactor.BusinessComponent
 
 
 
-                return DataProxy.FetchSPOutput("s_sp_mass_completion", htInsertTranscripts);
+                return DataProxy.FetchDataSet("s_sp_mass_completion", htInsertTranscripts);
             }
             catch (Exception)
             {

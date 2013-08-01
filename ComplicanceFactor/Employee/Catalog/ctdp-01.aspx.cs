@@ -233,8 +233,15 @@ namespace ComplicanceFactor.Employee.Catalog
                 }
                 else
                 {
-                    //this for if session time is empty
-                    lblSession.Text = "(Self-paced - Anytime/Anywhere)";
+                    if (strDeliveryType == "OLT")
+                    {
+                        lblSession.Text = "(Self-paced - Anytime/Anywhere)";
+                    }
+                    else
+                    {
+                        lblSession.Text = "No Sessions";
+                    }
+
                 }
             }
         }

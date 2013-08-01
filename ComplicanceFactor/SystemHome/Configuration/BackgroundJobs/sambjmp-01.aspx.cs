@@ -37,8 +37,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
 
         protected void gvBackgroundJobs_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            GridView GridView1 = (GridView)sender;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                string u_sftp_id_pk = GridView1.DataKeys[e.Row.RowIndex][0].ToString();
                 try
                 {
                     DataRowView drheader = (DataRowView)e.Row.DataItem;
@@ -51,6 +53,32 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
 
                     TextBox txtTime = (TextBox)e.Row.FindControl("txtTime");
                     txtTime.Text = time.Substring(0, length - 2);
+
+
+                    if (u_sftp_id_pk.Contains("DCUB"))
+                    {
+                        Label lblOccursEvery = (Label)e.Row.FindControl("lblOccursEvery");
+                        lblOccursEvery.Style.Add("display", "none");
+
+                        Label lblEveryDays = (Label)e.Row.FindControl("lblEveryDays");
+                        lblEveryDays.Style.Add("display", "none");                         
+
+                        TextBox txtOccursEvery = (TextBox)e.Row.FindControl("txtOccursEvery");
+                        txtOccursEvery.Style.Add("display", "none");                                        
+
+                        Literal ltl = (Literal)e.Row.FindControl("Literal1");
+                        ltl.Visible = false;
+                    }
+                    else
+                    {
+                        Label lblOccursCommon = (Label)e.Row.FindControl("lblOccursCommon");
+                        lblOccursCommon.Style.Add("display", "none");       
+
+                        Literal ltlButton = (Literal)e.Row.FindControl("ltlButton");
+                        ltlButton.Text = "<input id=" + u_sftp_id_pk + " class='manage cursor_hand' type='button' value='Manage'/>";
+                    }
+                    
+
                 }
                 catch (Exception ex)
                 {

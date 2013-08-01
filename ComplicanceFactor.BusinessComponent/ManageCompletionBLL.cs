@@ -641,5 +641,23 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static DataTable GetWaitlistCourses(string c_course_system_id_pk, string c_delivery_system_id_pk, string u_user_id_pk)
+        {
+            Hashtable htWaitlist = new Hashtable();
+            htWaitlist.Add("@c_course_system_id_pk",c_course_system_id_pk);
+            htWaitlist.Add("@c_delivery_system_id_pk",c_delivery_system_id_pk);
+            htWaitlist.Add("@u_user_id_pk", u_user_id_pk);
+
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_wait_list_from_completion", htWaitlist);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
     }
 }

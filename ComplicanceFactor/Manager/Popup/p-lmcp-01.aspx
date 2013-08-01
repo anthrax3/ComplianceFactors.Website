@@ -73,6 +73,15 @@
             });
         });
     </script>
+        <script type="text/javascript" language="javascript">
+            function confirmStatus() {
+                if (confirm('Are you sure?') == true)
+                    return true;
+                else
+                    return false;
+
+            }
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div id="content">
@@ -91,7 +100,8 @@
             <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_800 tablesorter"
                 runat="server" EmptyDataText="<%$ LabelResourceExpression: app_No_result_found_text %>"
                 GridLines="None" DataKeyNames="e_enroll_course_id_fk" AutoGenerateColumns="False"
-                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
+                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" 
+                onrowcommand="gvCourses_RowCommand" onrowdatabound="gvCourses_RowDataBound">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title'
@@ -110,8 +120,13 @@
                         <ItemTemplate>
                             <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$ LabelResourceExpression: app_view_details_button_text %>" />'
                                 class="viewCourse cursor_hand" />
-                            <%-- <asp:Button ID="btnViewDetail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                            CommandName="View" runat="server" Text="View Details" />--%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Button ID="btnDrop" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' CommandName="Drop"
+                                runat="server" Text="Drop" Style="display: none;" OnClientClick="return confirmStatus();" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -287,6 +287,7 @@
     <Content Include="Employee\Catalog\qscr-01.aspx" />
     <Content Include="Employee\Course\lmcp-01.aspx" />
     <Content Include="Employee\Course\lvcd-01.aspx" />
+    <Content Include="Employee\Course\p-lvcomd.aspx" />
     <Content Include="Employee\Curricula\lmcurp-01.aspx" />
     <Content Include="Employee\Curricula\lvcurd-01.aspx" />
     <Content Include="Employee\Curricula\lvcure-01.aspx" />
@@ -1399,6 +1400,13 @@
     </Compile>
     <Compile Include="Employee\Course\lvcd-01.aspx.designer.cs">
       <DependentUpon>lvcd-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\Course\p-lvcomd.aspx.cs">
+      <DependentUpon>p-lvcomd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\Course\p-lvcomd.aspx.designer.cs">
+      <DependentUpon>p-lvcomd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee\Course\PdfTemplate\dsMyCourses.Designer.cs">
       <AutoGen>True</AutoGen>

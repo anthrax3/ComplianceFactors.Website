@@ -326,7 +326,7 @@ namespace ComplicanceFactor.BusinessComponent
                 }
                 else
                 {
-                    htAssignCurricula.Add("@e_curriculum_assign_target_due_date", DBNull.Value);
+                    htAssignCurricula.Add("@e_curriculum_assign_target_due_date", assignCurricula.e_curriculum_assign_target_due_date);
                 }
                 if (assignCurricula.e_curriculum_assign_recert_due_date == null)
                 {
@@ -787,6 +787,29 @@ namespace ComplicanceFactor.BusinessComponent
                     throw;
                 }
         }
-        
+        //Get Completion details
+        public static Enrollment GetCompletionDetails(string t_transcript_user_id_fk, string t_transcript_course_id_fk)
+        {
+            try
+            {
+                Hashtable htCompletion = new Hashtable();
+                htCompletion.Add("@t_transcript_user_id_fk", t_transcript_user_id_fk);
+                htCompletion.Add("@t_transcript_course_id_fk", t_transcript_course_id_fk);
+                Enrollment enroll = new Enrollment();
+                DataTable dtCompletionDetails = DataProxy.FetchDataTable("e_sp_get_completion_details", htCompletion);
+                if (dtCompletionDetails.Rows.Count > 0)
+                {
+                    enroll.t_transcript_completion_date_time = dtCompletionDetails.Rows[0]["t_transcript_completion_date_time"].ToString();
+                    enroll.t_transcript_score = dtCompletionDetails.Rows[0]["t_transcript_score"].ToString();
+                    enroll.t_transcript_passing_status_id_fk = dtCompletionDetails.Rows[0]["status"].ToString();    
+                }
+                return enroll;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
+        }
     }   
 }
