@@ -382,6 +382,9 @@
     <Content Include="SystemHome\Catalog\Approvals\saeas-01.aspx" />
     <Content Include="SystemHome\Catalog\Approvals\samamp-01.aspx" />
     <Content Include="SystemHome\Catalog\Approvals\samasrp-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentGroups\saanagn-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentGroups\saeag-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentGroups\samagmp-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sceci-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sces-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-scesr-01.aspx" />
@@ -2014,6 +2017,27 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Approvals\samasrp-01.aspx.designer.cs">
       <DependentUpon>samasrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\saanagn-01.aspx.cs">
+      <DependentUpon>saanagn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\saanagn-01.aspx.designer.cs">
+      <DependentUpon>saanagn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\saeag-01.aspx.cs">
+      <DependentUpon>saeag-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\saeag-01.aspx.designer.cs">
+      <DependentUpon>saeag-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\samagmp-01.aspx.cs">
+      <DependentUpon>samagmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\samagmp-01.aspx.designer.cs">
+      <DependentUpon>samagmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Completion\p-sceci-01.aspx.cs">
       <DependentUpon>p-sceci-01.aspx</DependentUpon>

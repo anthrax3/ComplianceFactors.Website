@@ -109,7 +109,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="#">
+                        <a href="AssignmentGroups/samagmp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_assignment_groups_text")%></a>
                     </td>
                     <td>
