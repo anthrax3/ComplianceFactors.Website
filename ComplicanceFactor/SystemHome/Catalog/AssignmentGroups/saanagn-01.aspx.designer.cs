@@ -67,13 +67,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupId;
         
         /// <summary>
-        /// txtAssignmentGroupId_EnglishUs control.
+        /// txtAssignmentGroupId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupId_EnglishUs;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupId;
         
         /// <summary>
         /// rfvAssignmentGroupIdName control.
@@ -85,13 +85,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupIdName;
         
         /// <summary>
-        /// txtAssignmentGroupName_EnglishUs control.
+        /// txtAssignmentGroupName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_EnglishUs;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName;
         
         /// <summary>
         /// rfvAssignmentGroupDescription control.
@@ -103,13 +103,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupDescription;
         
         /// <summary>
-        /// txtAssignmentGroupDescription_EnglishUs control.
+        /// txtAssignmentGroupDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAssignmentGroupDescription_EnglishUs;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAssignmentGroupDescription;
         
         /// <summary>
         /// ddlStatus control.
@@ -128,6 +128,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvAssignmentGroupValues;
+        
+        /// <summary>
+        /// btnAddNewParameters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNewParameters;
         
         /// <summary>
         /// txtAssignmentGroupName_EnglishUk control.
@@ -757,7 +766,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom12;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom12;
         
         /// <summary>
         /// txtAssignmentGroupName_Custom13 control.

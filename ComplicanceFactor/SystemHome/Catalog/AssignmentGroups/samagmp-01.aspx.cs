@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
+using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 {
@@ -16,9 +17,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
         {
             if (!IsPostBack)
             {
+                Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Manage Assignment Groups" + "</a>";
+                //Get Search Result
                 SearchResult();
+                //Bind Status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetAllStatus(SessionWrapper.CultureName,"sasup-01");
                 ddlStatus.DataBind();
+                ddlStatus.SelectedValue = "app_ddl_all_text";
             }
         }
         protected void btnHeaderFirst_Click(object sender, EventArgs e)
@@ -185,6 +191,50 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 
         private void SearchResult()
         {
+            try
+            {
+                SystemAssingnmentGroup assignmentGroup = new SystemAssingnmentGroup();
+                if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
+                {
+
+                    assignmentGroup.u_assignment_group_id_pk = txtAssignmentGroupId.Text;
+                    assignmentGroup.u_assignment_group_name = txtName.Text;
+                    if (ddlStatus.SelectedValue == "app_ddl_all_text")
+                    {
+                        assignmentGroup.u_assignment_group_status_id_fk = "0";
+                    }
+                    else
+                    {
+                        assignmentGroup.u_assignment_group_status_id_fk = ddlStatus.SelectedValue;
+                    }
+
+                }
+                else
+                {
+                    assignmentGroup.u_assignment_group_id_pk = txtAssignmentGroupId.Text;
+                    assignmentGroup.u_assignment_group_name = txtName.Text;
+                    assignmentGroup.u_assignment_group_status_id_fk = "0";
+                }
+                gvsearchDetails.DataSource = SystemAssignmentGroupBLL.GetSearchAssignmentGroup(assignmentGroup);
+                gvsearchDetails.DataBind();
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samagmp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samagmp-01.aspx", ex.Message);
+                    }
+                }
+            }
+
             if (gvsearchDetails.Rows.Count == 0)
             {
                 disable_enable(false);
@@ -222,6 +272,44 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             ddlFooterResultPerPage.SelectedIndex = 0;
             ddlHeaderResultPerPage.SelectedIndex = 0;
+        }
+
+        protected void gvsearchDetails_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rowIndex = Convert.ToInt16((e.CommandArgument).ToString());
+            if (e.CommandName.Equals("Edit"))
+            {
+                Response.Redirect("/SystemHome/Catalog/AssignmentGroups/saeag-01.aspx?id=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex][0].ToString()));
+            }
+            else if (e.CommandName.Equals("Copy"))
+            {
+                Response.Redirect("/SystemHome/Catalog/AssignmentGroups/saanagn-01.aspx?copy=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex][0].ToString()));
+            }
+            else if (e.CommandName.Equals("Archive"))
+            {
+                string assignmentGroupId = gvsearchDetails.DataKeys[rowIndex][0].ToString();
+                try
+                {
+                    int result = SystemAssignmentGroupBLL.UpdateAssignmentGrouptatus(assignmentGroupId);
+                    SearchResult();
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Show user friendly error here
+                    //Log here
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("samagmp-01", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("samagmp-01", ex.Message);
+                        }
+                    }
+                }
+            }
         }
         private void disable_enable(bool status)
         {

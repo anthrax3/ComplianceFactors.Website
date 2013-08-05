@@ -75,9 +75,9 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvAssignmentGroupId" runat="server" ValidationGroup="saanagn"
-                            ControlToValidate="txtAssignmentGroupId_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
+                            ControlToValidate="txtAssignmentGroupId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        <asp:TextBox ID="txtAssignmentGroupId_EnglishUs" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAssignmentGroupId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
@@ -87,25 +87,24 @@
                     </td>
                     <td colspan="2">
                         <asp:RequiredFieldValidator ID="rfvAssignmentGroupIdName" runat="server" ValidationGroup="saanagn"
-                            ControlToValidate="txtAssignmentGroupName_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
+                            ControlToValidate="txtAssignmentGroupName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_assignment_group_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_EnglishUs" CssClass="textbox_manage_user"
-                            runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAssignmentGroupName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvAssignmentGroupDescription" runat="server" ValidationGroup="saanagn"
-                            ControlToValidate="txtAssignmentGroupDescription_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
+                            ControlToValidate="txtAssignmentGroupDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *<%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
-                        <textarea id="txtAssignmentGroupDescription_EnglishUs" runat="server" class="txtInput_long"
+                        <textarea id="txtAssignmentGroupDescription" runat="server" class="txtInput_long"
                             rows="3" cols="100"></textarea>
                     </td>
                 </tr>
@@ -145,8 +144,9 @@
             <table>
                 <tr>
                     <td style="padding-left: 150px;">
-                        <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
-                            onclick="javascript:check_hdUpdateValue(this.id)" class="cursor_hand" />
+                        <asp:Button ID="btnAddNewParameters" runat="server" 
+                            Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" 
+                            CssClass="cursor_hand" ValidationGroup="saanagn" onclick="btnAddNewParameters_Click" />
                     </td>
                 </tr>
             </table>
@@ -1288,9 +1288,9 @@
                     <td>
                         <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
-                    <td colspan="5">
-                        <asp:TextBox ID="txtDescription_Custom12" TextMode="MultiLine" Rows="7" Width="670px"
-                            runat="server"></asp:TextBox>
+                    <td class="align_left" colspan="6">
+                    <textarea id="txtDescription_Custom12" runat="server" class="txtInput_long" rows="3"
+                            cols="100"></textarea>
                     </td>
                 </tr>
             </table>

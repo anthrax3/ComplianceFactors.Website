@@ -2,8 +2,10 @@
     CodeBehind="saeag-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.saeag_01" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-
         $(document).ready(function () {
             $('#app_nav_system').addClass('selected');
             // toggles the slickbox on clicking the noted link  
@@ -21,12 +23,58 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        function showParameterPopup() {
+            var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>')
+            $.fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'no',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 820,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': 'Popup/p-sagp-01.aspx?id=' + id,
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function ConfirmRemove() {
+            if (confirm("Are you sure?") == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saeag" runat="server"
         ValidationGroup="saeag"></asp:ValidationSummary>
-    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
-    </div>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
+    <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
+    <asp:HiddenField ID="hdEditAssignmentId" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table>
@@ -74,9 +122,9 @@
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvAssignmentGroupId" runat="server" ValidationGroup="saeag"
-                            ControlToValidate="txtAssignmentGroupId_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
+                            ControlToValidate="txtAssignmentGroupId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        <asp:TextBox ID="txtAssignmentGroupId_EnglishUs" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAssignmentGroupId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
@@ -86,25 +134,24 @@
                     </td>
                     <td colspan="2">
                         <asp:RequiredFieldValidator ID="rfvAssignmentGroupIdName" runat="server" ValidationGroup="saeag"
-                            ControlToValidate="txtAssignmentGroupName_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
+                            ControlToValidate="txtAssignmentGroupName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_assignment_group_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_EnglishUs" CssClass="textbox_manage_user"
-                            runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAssignmentGroupName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvAssignmentGroupDescription" runat="server" ValidationGroup="saeag"
-                            ControlToValidate="txtAssignmentGroupDescription_EnglishUs" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
+                            ControlToValidate="txtAssignmentGroupDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *<%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
-                        <textarea id="txtAssignmentGroupDescription_EnglishUs" runat="server" class="txtInput_long"
+                        <textarea id="txtAssignmentGroupDescription" runat="server" class="txtInput_long"
                             rows="3" cols="100"></textarea>
                     </td>
                 </tr>
@@ -129,11 +176,40 @@
             <table>
                 <tr>
                     <td>
-                        <asp:GridView ID="gvAssignmentGroupValues" RowStyle-CssClass="record" GridLines="None"
+                        <asp:GridView ID="gvAssignmentGroupParameters" RowStyle-CssClass="record" GridLines="None"
                             CssClass="gridview_width_9" CellPadding="0" CellSpacing="0" ShowHeader="false"
-                            runat="server">
+                            runat="server" DataKeyNames="" OnRowCommand="gvAssignmentGroupParameters_RowCommand">
                             <RowStyle CssClass="record"></RowStyle>
                             <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <%# Eval("u_assignment_group_param_element_id_fk")%>
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="ddlElement" runat="server">
+                                                    </asp:DropDownList>
+                                                </td>
+                                                <td>
+                                                    Value(s):
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtValues" runat="server"></asp:TextBox>
+                                                </td>
+                                                <td>
+                                                    <asp:Button ID="btnRemove" runat="server" Text="Remove" OnClientClick="return ConfirmRemove();" CommandName="Remove" CommandArgument="" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    --and--
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </td>
@@ -145,7 +221,11 @@
                 <tr>
                     <td style="padding-left: 150px;">
                         <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
-                        onclick="javascript:check_hdUpdateValue(this.id)" class="cursor_hand" />
+                            onclick="javascript:showParameterPopup()" class="cursor_hand" />
+                    </td>
+                    <td>
+                        <input type="button" id="btnpReviewAssignmentGroup" value='Preview Assignment Group'
+                            class="cursor_hand" />
                     </td>
                 </tr>
             </table>
