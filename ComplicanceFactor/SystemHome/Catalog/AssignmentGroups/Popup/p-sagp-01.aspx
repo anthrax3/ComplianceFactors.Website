@@ -17,6 +17,7 @@
         }
     </style>
     <div id="content">
+    <asp:ValidationSummary ID="vs_p_sagp" ValidationGroup="sagp" class="validation_summary_error" runat="server" />
         <div class="div_header_800">
             Add Parameter:
         </div>
@@ -48,7 +49,8 @@
                         &nbsp;
                     </td>
                     <td>
-                        Values
+                        Values:
+                        <asp:RequiredFieldValidator ID="rfvValues" runat="server" ValidationGroup="sagp" ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="txtValues" runat="server" CssClass="textbox_long"></asp:TextBox>
@@ -64,7 +66,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Button ID="btnAddParameter" runat="server" 
+                        <asp:Button ID="btnAddParameter" runat="server" ValidationGroup="sagp" 
                             Text="Save and Add New Parameter" onclick="btnAddParameter_Click" />
                     </td>
                     <td colspan="6">
@@ -72,6 +74,7 @@
                     </td>
                     <td>
                         <asp:Button ID="btnCancel" runat="server" Text="Cancel"  OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"/>
+                        
                     </td>
                 </tr>
             </table>

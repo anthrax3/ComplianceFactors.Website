@@ -12,7 +12,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 {
     public partial class saeag_01 : System.Web.UI.Page
     {
-        private static string editAssignmentGroupId ;
+        private static string editAssignmentGroupId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,6 +34,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     editAssignmentGroupId = SecurityCenter.DecryptText(Request.QueryString["id"]);
+                    hdEditAssignmentId.Value = editAssignmentGroupId;
                 }
                 //Bind status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
@@ -44,13 +45,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 {
                     if (Convert.ToBoolean(Request.QueryString["popup"].ToString()) == true)
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowPopup", "showParameterPopup();", true);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup();", true);
                     }
                 }
-                //Bind Parameter
-                gvAssignmentGroupParameters.DataSource = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
-                gvAssignmentGroupParameters.DataBind();
+                //using jquery hide the '-or-' in last row
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastEquivalenciesrow();", true);
             }
+            //Bind Parameter
+            BindAssignmentParams();
+
         }
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
@@ -270,13 +273,46 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             }
         }
 
-
-        private void gvAssignmentGroupParameters_RowCommand(object sender,GridViewCommandEventArgs e)
+        private void BindAssignmentParams()
         {
-            if (e.CommandName.Equals("Remove"))
+            gvAssignmentGroupParameters.DataSource = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
+            gvAssignmentGroupParameters.DataBind();
+        }
+        //Delete Param
+        [System.Web.Services.WebMethod]
+        public static void DeleteParam(string args)
+        {
+            try
             {
-                string u_assignment_group_param_system_id_pk="--ID--";
-                SystemAssignmentGroupBLL.RemoveParameter(editAssignmentGroupId,u_assignment_group_param_system_id_pk);
+                SystemAssignmentGroupBLL.RemoveParameter(editAssignmentGroupId, args.Trim());
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saeag-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saeag-01", ex.Message);
+                    }
+                }
+            }
+
+        }
+
+        protected void gvAssignmentGroupParameters_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlOperator = (DropDownList)e.Row.FindControl("ddlOperator");
+                TextBox txtValues = (TextBox)e.Row.FindControl("txtValues");
+                ddlOperator.SelectedValue = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][1].ToString();
+                txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();                
             }
         }
     }

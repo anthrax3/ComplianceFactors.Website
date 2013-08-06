@@ -6718,7 +6718,29 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        /// <summary>
+        /// AssignmentGroupsParam
+        /// </summary>
+        public static DataTable AssignmentGroupsParam
+        {
+            get
+            {
+                if (HttpContext.Current.Session["AssignmentGroupsParam"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["AssignmentGroupsParam"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
 
+            }
+            set
+            {
+                HttpContext.Current.Session["AssignmentGroupsParam"] = value;
+            }
+        }
         public static void clearsession()
         {
             sessionid = "";

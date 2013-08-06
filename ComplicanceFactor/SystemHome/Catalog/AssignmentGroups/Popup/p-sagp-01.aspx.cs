@@ -32,6 +32,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             assignparam.u_assignment_group_param_operator_id_fk = ddlOperator.SelectedValue;
             assignparam.u_assignment_group_param_values = txtValues.Text;
             SystemAssignmentGroupBLL.AddParameter(assignparam);
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
+
     }
 }

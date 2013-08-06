@@ -92,5 +92,6 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string u_assignment_group_param_element_id_fk { get; set; }
         public string u_assignment_group_param_operator_id_fk { get; set; }
         public string u_assignment_group_param_values { get; set; }
+        public string assignment_parameters { get; set; }//for XMl
     }
 }

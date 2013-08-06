@@ -155,6 +155,8 @@ namespace ComplicanceFactor.BusinessComponent
             htCreateAssignmentGroup.Add("@u_assignment_group_desc_custom_12", createAssignmentGroup.u_assignment_group_desc_custom_12);
             htCreateAssignmentGroup.Add("@u_assignment_group_name_custom_13", createAssignmentGroup.u_assignment_group_name_custom_13);
             htCreateAssignmentGroup.Add("@u_assignment_group_desc_custom_13", createAssignmentGroup.u_assignment_group_name_custom_13);
+            htCreateAssignmentGroup.Add("@assignment_parameters", createAssignmentGroup.assignment_parameters);
+
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_insert_assignment_group", htCreateAssignmentGroup);

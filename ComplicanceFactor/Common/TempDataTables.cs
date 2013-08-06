@@ -1568,5 +1568,43 @@ namespace ComplicanceFactor.Common
             return dtTempEnrollmentCourseCurriculum;
 
         }
+
+        public static DataTable TempAssignmentGroups()
+        {
+            DataTable dtTempAssignmentGroups = new DataTable();
+            DataColumn dtTempAssignmentGroupsColumn;
+
+            //u_assignment_group_param_system_id_pk
+            dtTempAssignmentGroupsColumn = new DataColumn();
+            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
+            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_system_id_pk";
+            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+
+            //u_assignment_group_id_fk
+            dtTempAssignmentGroupsColumn = new DataColumn();
+            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
+            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_id_fk";
+            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+
+            //u_assignment_group_param_element_id_fk
+            dtTempAssignmentGroupsColumn = new DataColumn();
+            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
+            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_element_id_fk";
+            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+
+            //u_assignment_group_param_operator_id_fk
+            dtTempAssignmentGroupsColumn = new DataColumn();
+            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
+            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_operator_id_fk";
+            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+
+            //u_assignment_group_param_values
+            dtTempAssignmentGroupsColumn = new DataColumn();
+            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
+            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_values";
+            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+            return dtTempAssignmentGroups;
+
+        }
     }
 }

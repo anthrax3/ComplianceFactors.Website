@@ -8,29 +8,39 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
-
+using System.Data;
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 {
     public partial class saanagn_01 : System.Web.UI.Page
     {
-        private static string copyAssignmentGroup;
+        private static string copyAssignmentGroupid;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentGroups/samagmp-01.aspx>" + "Manage Assignment Groups" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Create Assignment Groups" + "</a>";
-
                 //Bind Status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
                 ddlStatus.DataBind();
                 //Copy a single Assignment groups
                 if (!string.IsNullOrEmpty(Request.QueryString["copy"]))
                 {
-                    copyAssignmentGroup = SecurityCenter.DecryptText(Request.QueryString["copy"]);
-                    PopulateassignmentGroup(copyAssignmentGroup);
+                    SessionWrapper.AssignmentGroupsParam = TempDataTables.TempAssignmentGroups();
+                    copyAssignmentGroupid = SecurityCenter.DecryptText(Request.QueryString["copy"]);
+                    PopulateassignmentGroup(copyAssignmentGroupid);
+                    //Bind Assignment param 
+                    SessionWrapper.AssignmentGroupsParam = SystemAssignmentGroupBLL.GetAssignmentParameter(copyAssignmentGroupid);
+
+                    //using jquery hide the '-or-' in last row
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastEquivalenciesrow();", true);
                 }
             }
+            //if (hdStopRebind.Value!="0")
+            //{
+                gvAssignmentGroupParameters.DataSource = SessionWrapper.AssignmentGroupsParam;
+                gvAssignmentGroupParameters.DataBind();
+            //}
         }
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
@@ -143,6 +153,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             createAssignmentGroup.u_assignment_group_desc_custom_12 = txtDescription_Custom12.Value;
             createAssignmentGroup.u_assignment_group_name_custom_13 = txtAssignmentGroupName_Custom13.Text;
             createAssignmentGroup.u_assignment_group_desc_custom_13 = txtDescription_Custom13.Value;
+
+            if (SessionWrapper.AssignmentGroupsParam.Rows.Count > 0)
+            {
+                UpdateAssignmentParameter();
+                ConvertDataTables Convertxml = new ConvertDataTables();
+                createAssignmentGroup.assignment_parameters = Convertxml.ConvertDataTableToXml(SessionWrapper.AssignmentGroupsParam);
+            }
+            
             int error = SystemAssignmentGroupBLL.CreateAssignmentGroup(createAssignmentGroup);
             if (error != -2)
             {
@@ -242,6 +260,62 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
         protected void btnAddNewParameters_Click(object sender, EventArgs e)
         {
             CreateAssignmentGroups(true);
+        }
+        protected void gvAssignmentGroupParameters_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlOperator = (DropDownList)e.Row.FindControl("ddlOperator");
+                TextBox txtValues = (TextBox)e.Row.FindControl("txtValues");
+                ddlOperator.SelectedValue = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][1].ToString();
+                txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();
+            }
+        }
+        //Delete Param
+        [System.Web.Services.WebMethod]
+        public static void DeleteParam(string args)
+        {
+            try
+            {
+                var rows = SessionWrapper.AssignmentGroupsParam.Select("u_assignment_group_param_system_id_pk='" + args.Trim() + "'");
+                foreach (var row in rows)
+                {
+                    row.Delete();
+                    SessionWrapper.AssignmentGroupsParam.AcceptChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saanagn-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saanagn-01", ex.Message);
+                    }
+                }
+            }
+
+        }
+
+        private void UpdateAssignmentParameter()
+        {
+            foreach (GridViewRow row in gvAssignmentGroupParameters.Rows)
+            {
+                DropDownList ddlOperator = (DropDownList)row.FindControl("ddlOperator");
+                TextBox txtValues = (TextBox)row.FindControl("txtValues");
+                string u_assignment_group_param_system_id_pk = gvAssignmentGroupParameters.DataKeys[row.RowIndex][0].ToString();
+                var rows = SessionWrapper.AssignmentGroupsParam.Select("u_assignment_group_param_system_id_pk='" + u_assignment_group_param_system_id_pk + "'");
+                var indexRow = SessionWrapper.AssignmentGroupsParam.Rows.IndexOf(rows[0]);
+                SessionWrapper.AssignmentGroupsParam.Rows[indexRow]["u_assignment_group_param_operator_id_fk"] = ddlOperator.SelectedValue;
+                SessionWrapper.AssignmentGroupsParam.Rows[indexRow]["u_assignment_group_param_values"] = txtValues.Text;
+                SessionWrapper.AssignmentGroupsParam.AcceptChanges();
+            }
         }
     }
 }
