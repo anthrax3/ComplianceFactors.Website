@@ -36,15 +36,14 @@ namespace ComplicanceFactor
         public static string ERROR_LOG_FILE_PATH = LOGGER_APP_PATH + "ErrorLog.txt";
         public static string NEW_LINE = "\r\n";
         private const string DummyCacheItemKey = "Background";
-        private static readonly string DummyPageUrl = "http://compliancefactors.com.lavender.arvixe.com/SystemHome/sahp-01.aspx"; //"~/Default2.aspx";
-        //private static readonly string DummyPageUrl = HttpContext.Current.Server.MapPath("~/SystemHome/sahp-01.aspx");
+        //private static readonly string DummyPageUrl = "http://compliancefactors.com.lavender.arvixe.com/SystemHome/sahp-01.aspx"; //"~/Default2.aspx";
+        private static readonly string DummyPageUrl = HttpContext.Current.Server.MapPath("~/SystemHome/sahp-01.aspx");
         private string passPhrase = "Pas5pr@ej";      // can be any string
         private string initVector = "@1B2c3D4e5F6g7H8"; // must be 16 bytes
 
-
         protected void Application_Start(object sender, EventArgs e)
         {
-            BackgroundProcess();                      
+            //BackgroundProcess();                      
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -56,7 +55,7 @@ namespace ComplicanceFactor
         {
             if (HttpContext.Current.Request.Url.ToString() == DummyPageUrl)
             {
-                BackgroundProcess();
+                //BackgroundProcess();
             }
         }
 
@@ -99,7 +98,7 @@ namespace ComplicanceFactor
         {
             //TODO: Set Stored Procedure.
             string dtTime = String.Format("{0:HH:mm}", DateTime.Now);
-            //dtTime = "11:50";
+            dtTime = "11:50";
             DateTime dtCurrentTime = DateTime.Now;
             string date = dtCurrentTime.ToShortDateString();
 
@@ -136,6 +135,7 @@ namespace ComplicanceFactor
                                             DataTable dtHRIS = GetCSVData(hrisPath);
                                             if (dtHRIS.Rows.Count > 0)
                                             {
+                                                //BackgroundJobs.InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
@@ -159,10 +159,10 @@ namespace ComplicanceFactor
                                             if (dtFacility.Rows.Count > 0)
                                             {
                                                 //Insert/Update Facility 
+                                                //BackgroundJobs.InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
-
                                     }
 
                                     if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString()))
@@ -172,6 +172,7 @@ namespace ComplicanceFactor
                                             DataTable dtRoom = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString());
                                             if (dtRoom.Rows.Count > 0)
                                             {
+                                                //BackgroundJobs.InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
@@ -185,6 +186,7 @@ namespace ComplicanceFactor
                                             if (dtCourse.Rows.Count > 0)
                                             {
                                                 //Insert/Update Course 
+                                                //BackgroundJobs.InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
@@ -198,6 +200,7 @@ namespace ComplicanceFactor
                                             if (dtCurrriculum.Rows.Count > 0)
                                             {
                                                 //Insert/Update Curriculum 
+                                                //BackgroundJobs.InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
@@ -213,6 +216,7 @@ namespace ComplicanceFactor
                                                 if (dtEnrollment.Rows.Count > 0)
                                                 {
                                                     //Insert/Update Enrollment 
+                                                    //BackgroundJobs.InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                     InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 }
                                             }
@@ -229,6 +233,7 @@ namespace ComplicanceFactor
                                                 if (dtLearningHistory.Rows.Count > 0)
                                                 {
                                                     //Insert/Update Learning History 
+                                                    //BackgroundJobs.InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                     InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 }
                                             }
@@ -249,24 +254,28 @@ namespace ComplicanceFactor
                                     //DateTime facilitiyStartDate = DateTime.Now;
                                     GetDatatableToCsv(dtFacilities, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Facilities.csv");
                                     CreateLogFile(dtFacilities, u_sftp_URI, u_sftp_username, u_sftp_password, "Facility", "DEXP");
+                                    //BackgroundJobs.CreateLogFile(dtFacilities, u_sftp_URI, u_sftp_username, u_sftp_password, "Facility", "DEXP");
 
                                     DataTable dtCourses = new DataTable();
                                     dtCourses = SystemDataExportBLL.GetCourses();
                                     //string CourseStartDate = DateTime.Now.ToString();
                                     GetDatatableToCsv(dtCourses, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Courses.csv");
                                     CreateLogFile(dtCourses, u_sftp_URI, u_sftp_username, u_sftp_password, "Courses", "DEXP");
+                                    //BackgroundJobs.CreateLogFile(dtCourses, u_sftp_URI, u_sftp_username, u_sftp_password, "Courses", "DEXP");
 
                                     DataTable dtCurriculum = new DataTable();
                                     dtCurriculum = SystemDataExportBLL.GetCurriculum();
                                     //string CurriculumStartDate = DateTime.Now.ToString();
                                     GetDatatableToCsv(dtCurriculum, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Curriculum.csv");
                                     CreateLogFile(dtCurriculum, u_sftp_URI, u_sftp_username, u_sftp_password, "Curriculum", "DEXP");
+                                    //BackgroundJobs.CreateLogFile(dtCurriculum, u_sftp_URI, u_sftp_username, u_sftp_password, "Curriculum", "DEXP");
 
                                     DataTable dtRooms = new DataTable();
                                     dtRooms = SystemDataExportBLL.GetRooms();
                                     //string roomStartDate = DateTime.Now.ToString();
                                     GetDatatableToCsv(dtRooms, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Rooms.csv");
                                     CreateLogFile(dtRooms, u_sftp_URI, u_sftp_username, u_sftp_password, "Rooms", "DEXP");
+                                    //BackgroundJobs.CreateLogFile(dtRooms, u_sftp_URI, u_sftp_username, u_sftp_password, "Rooms", "DEXP");
                                 }
 
                                 DataTable dtEnrollments = new DataTable();
@@ -274,6 +283,7 @@ namespace ComplicanceFactor
                                 //string EnrollmentStartDate = DateTime.Now.ToString();
                                 GetDatatableToCsv(dtEnrollments, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Enrollment.csv");
                                 CreateLogFile(dtEnrollments, u_sftp_URI, u_sftp_username, u_sftp_password, "Enrollment", "DEXP");
+                                //BackgroundJobs.CreateLogFile(dtEnrollments, u_sftp_URI, u_sftp_username, u_sftp_password, "Enrollment", "DEXP");
 
                                 if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_exp_is_learning_history"]) == true)
                                 {
@@ -282,6 +292,7 @@ namespace ComplicanceFactor
                                     //string LearningHistoryStartDate = DateTime.Now.ToString();
                                     GetDatatableToCsv(dtLearningHistory, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Learning_History.csv");
                                     CreateLogFile(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password, "Learning_History", "DEXP");
+                                    //BackgroundJobs.CreateLogFile(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password, "Learning_History", "DEXP");
                                 }
 
                                 if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_exp_is_hris"]) == true)
@@ -291,6 +302,7 @@ namespace ComplicanceFactor
                                     //string hrisStartDate = DateTime.Now.ToString();
                                     GetDatatableToCsv(dtHris, TEMP_PATH_DEXP, u_sftp_URI, u_sftp_username, u_sftp_password, "Hris.csv");
                                     CreateLogFile(dtHris, u_sftp_URI, u_sftp_username, u_sftp_password, "Hris", "DEXP");
+                                    //BackgroundJobs.CreateLogFile(dtHris, u_sftp_URI, u_sftp_username, u_sftp_password, "Hris", "DEXP");
                                 }
                             }
                             //Daily Curriculum Update Background Job 
@@ -302,158 +314,31 @@ namespace ComplicanceFactor
                                 //To use for loops 
 
                                 DataTable dtWarning = dsCurriculum.Tables[0];
-                                //dtEnrolledReminder = SystemBackgroundJobsBLL.GetEnrollReminder("ENROLL-DUE-DATE-REMINDER");
-
-                                SystemNotification notification = new SystemNotification();
-                                notification = SystemNotificationBLL.GetSingleNotificationbyId("CURR-DUE-DATE-WARNING", "en-US");
-                                if (notification.s_notification_on_off_flag == true)
+                                if (dtWarning.Rows.Count > 0)
                                 {
-                                    for (int j = 0; j < dtWarning.Rows.Count; j++)
-                                    {
-                                        try
-                                        {
-                                            StringBuilder sbEnrolledReminder = new StringBuilder();
-
-                                            string reminderSubjectMananger = string.Empty;
-                                            reminderSubjectMananger = notification.s_notification_email_subject;
-                                            reminderSubjectMananger = reminderSubjectMananger.Replace("@$&Curriculum Title&$@", dtWarning.Rows[j]["CurriculumName"].ToString());
-                                            reminderSubjectMananger = reminderSubjectMananger.Replace("@$&User First Name&$@", dtWarning.Rows[i]["u_first_name"].ToString());
-
-                                            string EnrollTextManager = string.Empty;
-                                            EnrollTextManager = notification.s_notification_email_text;
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtWarning.Rows[i]["u_first_name"].ToString());
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtWarning.Rows[i]["u_last_name"].ToString());
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&Curriculum Name&$@(@$&Curriculum ID&$@)", dtWarning.Rows[j]["CurriculumName"].ToString());
-                                            //EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtWarning.Rows[j]["deliveryName"].ToString());
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@", dtWarning.Rows[j]["e_curriculum_assign_target_due_date"].ToString());
-                                            //e_enroll_target_due_date
-                                            sbEnrolledReminder.Append(EnrollTextManager);
-
-                                            string toEmailid = dtWarning.Rows[j]["u_email_address"].ToString();
-                                            string[] toaddress = toEmailid.Split(',');
-                                            List<MailAddress> mailAddresses = new List<MailAddress>();
-                                            foreach (string recipient in toaddress)
-                                            {
-                                                if (recipient.Trim() != string.Empty)
-                                                {
-                                                    mailAddresses.Add(new MailAddress(recipient));
-                                                }
-                                            }
-
-                                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
-                                            //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                                            if (mailAddresses.Count > 0)
-                                            {
-                                                Utility.SendEMailMessages(mailAddresses, fromAddress, reminderSubjectMananger, sbEnrolledReminder.ToString());
-                                            }
-                                            else
-                                            {
-                                                if (!string.IsNullOrEmpty(dtWarning.Rows[i]["u_mobile_number"].ToString()))
-                                                {
-                                                    StringBuilder smsText = new StringBuilder();
-                                                    string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
-                                                    string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
-                                                    string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
-
-                                                    string messagetext = notification.s_notification_SMS_text;
-                                                    //messagetext = messagetext.Replace("", "");
-                                                    //messagetext = messagetext.Replace("", "");
-                                                    if (messagetext.Length > 180)
-                                                    {
-                                                        messagetext = messagetext.Substring(0, 179);
-                                                    }
-                                                    messagetext = messagetext.Replace("@$&Status&$@", "REMIND");
-                                                    messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtWarning.Rows[j]["CurriculumName"].ToString());
-                                                    Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
-                                                }
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            if (ConfigurationWrapper.LogErrors == true)
-                                            {
-                                                LogErrorMessage(ex.Message);
-                                            }
-                                        }
-                                    }
+                                    //BackgroundJobs.SendWarnigNotification(dtWarning);
+                                    SendWarnigNotification(dtWarning);
                                 }
-                            
 
                                 DataTable dtOverDue =dsCurriculum.Tables[1];
-                                
-                                //dtEnrolledWarning = SystemBackgroundJobsBLL.GetEnrollWarning("ENROLL-DUE-DATE-WARNING");
-                                SystemNotification notificationOverDue = new SystemNotification();
-                                notificationOverDue = SystemNotificationBLL.GetSingleNotificationbyId("CURR-EXPIRED", "en-US");
-                                if (notificationOverDue.s_notification_on_off_flag == true)
+
+                                if (dtOverDue.Rows.Count > 0)
                                 {
-                                    for (int j = 0; j < dtOverDue.Rows.Count; j++)
-                                    {
-                                        try
-                                        {
-                                            StringBuilder sbEnrolledWarning = new StringBuilder();
-
-                                            string warningrSubjectMananger = string.Empty;
-                                            warningrSubjectMananger = notificationOverDue.s_notification_email_subject;
-                                            warningrSubjectMananger = warningrSubjectMananger.Replace("@$&Curriculum Title&$@", dtOverDue.Rows[j]["CurriculumName"].ToString());
-                                            warningrSubjectMananger = warningrSubjectMananger.Replace("@$&User First Name&$@", dtOverDue.Rows[i]["u_first_name"].ToString());
-
-                                            string EnrollTextManager = string.Empty;
-                                            EnrollTextManager = notificationOverDue.s_notification_email_text;
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtOverDue.Rows[i]["u_first_name"].ToString());
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtOverDue.Rows[i]["u_last_name"].ToString());
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&Curriculum Name&$@(@$&Curriculum ID&$@)", dtOverDue.Rows[j]["CurriculumName"].ToString());
-                                            //EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtOverDue.Rows[j]["deliveryName"].ToString());
-                                            EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@", dtOverDue.Rows[j]["e_curriculum_assign_target_due_date"].ToString());
-                                            //e_enroll_target_due_date
-                                            sbEnrolledWarning.Append(EnrollTextManager);
-
-                                            string toEmailid = dtOverDue.Rows[j]["u_email_address"].ToString();
-                                            string[] toaddress = toEmailid.Split(',');
-                                            List<MailAddress> mailAddresses = new List<MailAddress>();
-                                            foreach (string recipient in toaddress)
-                                            {
-                                                if (recipient.Trim() != string.Empty)
-                                                {
-                                                    mailAddresses.Add(new MailAddress(recipient));
-                                                }
-                                            }
-
-                                            string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
-                                            //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                                            if (mailAddresses.Count > 0)
-                                            {
-                                                Utility.SendEMailMessages(mailAddresses, fromAddress, warningrSubjectMananger, sbEnrolledWarning.ToString());
-                                            }
-                                            else
-                                            {
-                                                if (!string.IsNullOrEmpty(dtOverDue.Rows[i]["u_mobile_number"].ToString()))
-                                                {
-                                                    StringBuilder smsText = new StringBuilder();
-                                                    string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
-                                                    string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
-                                                    string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
-
-                                                    string messagetext = notificationOverDue.s_notification_SMS_text;
-                                                    //messagetext = messagetext.Replace("", "");
-                                                    //messagetext = messagetext.Replace("", "");
-                                                    if (messagetext.Length > 180)
-                                                    {
-                                                        messagetext = messagetext.Substring(0, 179);
-                                                    }
-                                                    messagetext = messagetext.Replace("@$&Status&$@", "OverDue");
-                                                    messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtOverDue.Rows[j]["courseName"].ToString());
-                                                    Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
-                                                }
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            if (ConfigurationWrapper.LogErrors == true)
-                                            {
-                                                LogErrorMessage(ex.Message);
-                                            }
-                                        }
-                                    }
+                                    //BackgroundJobs.SendOverdueNotification(dtOverDue);
+                                    SendOverdueNotification(dtOverDue);
+                                }
+                                
+                                DataTable dtCourseWarning = dsCurriculum.Tables[2];
+                                if (dtWarning.Rows.Count > 0)
+                                {
+                                    //BackgroundJobs.SendWarnigNotification(dtCourseWarning);
+                                    SendWarnigNotification(dtCourseWarning);
+                                }
+                                DataTable dtCourseOverDue = dsCurriculum.Tables[3];
+                                if (dtOverDue.Rows.Count > 0)
+                                {
+                                    //BackgroundJobs.SendOverdueNotification(dtCourseOverDue);
+                                    SendOverdueNotification(dtCourseOverDue);
                                 }
                                 // Have to insert in Run log 
                                 InsertRunLogDetails(starttime, "DCUB");
@@ -532,14 +417,310 @@ namespace ComplicanceFactor
         protected void Application_End(object sender, EventArgs e)
         {
 
-        }
+        }       
 
-        //To do HRIS Integration        
+        public void LogErrorMessage(string errorMessage)
+        {
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(ERROR_LOG_FILE_PATH, true);
+            writer.WriteLine(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt") + " : " + "Global.asax : " + errorMessage.ToString() + NEW_LINE);
+            writer.Flush();
+            writer.Close();
+            writer.Dispose();
+            writer = null;
+        }       
 
         /// <summary>
-        /// Insert/Update to usermaster table
+        /// Get Csv Data
         /// </summary>
-        /// <param name="dtHRIS"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static DataTable GetCSVData(string CSVFilePathName)
+        {
+            string[] Lines = File.ReadAllLines(CSVFilePathName);
+            string[] Fields;
+
+            Fields = Lines[0].TrimEnd(',').Split(new char[] { ',' });
+            int Cols = Fields.GetLength(0);
+
+            DataTable dt = new DataTable();
+
+            for (int i = 0; i < Cols; i++)
+                dt.Columns.Add(Fields[i].ToLower(), typeof(string));
+            DataRow Row;
+
+            using (var sr = File.OpenText(CSVFilePathName))
+            {
+                string line;
+                int i = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Length != 0)
+                    {
+                        Fields = Lines[i].Split(new char[] { ',' });
+                        Row = dt.NewRow();
+
+                        for (int f = 0; f < Cols; f++)
+
+                            Row[f] = Fields[f];
+
+                        dt.Rows.Add(Row);
+                        i = i + 1;
+                    }
+                }
+            }
+            dt.Rows.RemoveAt(0);
+            return dt;
+        }
+
+        /// <summary>
+        /// Convert DataTable to CSV
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="path"></param>
+        private void GetDatatableToCsv(DataTable dt, string path, string sftp_uri, string userName, string password, string fileName)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int k = 0; k < dt.Columns.Count; k++)
+            {
+                //add separator
+                sb.Append(dt.Columns[k].ColumnName + ',');
+            }
+            //append new line
+            sb.Append("\r\n");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int k = 0; k < dt.Columns.Count; k++)
+                {
+                    //add separator
+                    sb.Append(dt.Rows[i][k].ToString().Replace(",", ";") + ',');
+                }
+                //append new line
+                sb.Append("\r\n");
+            }
+
+            FileInfo file = new System.IO.FileInfo(path + fileName);
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(path + fileName, true);
+            writer.WriteLine(sb.ToString());
+            writer.Flush();
+            writer.Close();
+            writer.Dispose();
+            writer = null;
+
+            System.Threading.Thread.Sleep(8000);
+
+            CreateCSVFile(sftp_uri, userName, password, path, fileName);
+
+        }
+
+        /// <summary>
+        /// Create Log File For HRIS
+        /// </summary>
+        /// <param name="dtHris"></param>
+        private void CreateCSVFile(string uri, string userName, string password, string path, string filename)
+        {
+
+            FileInfo toUpload = new FileInfo(filename);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri + toUpload.Name);
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+            request.Credentials = new NetworkCredential(userName, password);
+            Stream ftpStream = request.GetRequestStream();
+
+            FileStream file = File.OpenRead(path + filename);
+
+            int length = 1024;
+            byte[] buffer = new byte[length];
+            int bytesRead = 0;
+
+            do
+            {
+                bytesRead = file.Read(buffer, 0, length);
+                ftpStream.Write(buffer, 0, bytesRead);
+            }
+            while (bytesRead != 0);
+
+            file.Close();
+            ftpStream.Close();
+
+
+        }
+
+
+
+
+        public static void SendWarnigNotification(DataTable dtWarning)
+        {
+            SystemNotification notification = new SystemNotification();
+            notification = SystemNotificationBLL.GetSingleNotificationbyId("CURR-DUE-DATE-WARNING", "en-US");
+            if (notification.s_notification_on_off_flag == true)
+            {
+                for (int j = 0; j < dtWarning.Rows.Count; j++)
+                {
+                    try
+                    {
+                        StringBuilder sbEnrolledReminder = new StringBuilder();
+
+                        string reminderSubjectMananger = string.Empty;
+                        reminderSubjectMananger = notification.s_notification_email_subject;
+                        reminderSubjectMananger = reminderSubjectMananger.Replace("@$&Curriculum Title&$@", dtWarning.Rows[j]["CurriculumName"].ToString());
+                        reminderSubjectMananger = reminderSubjectMananger.Replace("@$&User First Name&$@", dtWarning.Rows[j]["u_first_name"].ToString());
+
+                        string EnrollTextManager = string.Empty;
+                        EnrollTextManager = notification.s_notification_email_text;
+                        EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtWarning.Rows[j]["u_first_name"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtWarning.Rows[j]["u_last_name"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&Curriculum Name&$@(@$&Curriculum ID&$@)", dtWarning.Rows[j]["CurriculumName"].ToString());
+                        //EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtWarning.Rows[j]["deliveryName"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@", dtWarning.Rows[j]["e_curriculum_assign_target_due_date"].ToString());
+                        //e_enroll_target_due_date
+                        sbEnrolledReminder.Append(EnrollTextManager);
+
+                        string toEmailid = dtWarning.Rows[j]["u_email_address"].ToString();
+                        string[] toaddress = toEmailid.Split(',');
+                        List<MailAddress> mailAddresses = new List<MailAddress>();
+                        foreach (string recipient in toaddress)
+                        {
+                            if (recipient.Trim() != string.Empty)
+                            {
+                                mailAddresses.Add(new MailAddress(recipient));
+                            }
+                        }
+
+                        string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
+                        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                        if (mailAddresses.Count > 0)
+                        {
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, reminderSubjectMananger, sbEnrolledReminder.ToString());
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(dtWarning.Rows[j]["u_mobile_number"].ToString()))
+                            {
+                                StringBuilder smsText = new StringBuilder();
+                                string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                string username = HttpContext.Current.Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                string passwd = HttpContext.Current.Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                string messagetext = notification.s_notification_SMS_text;
+                                //messagetext = messagetext.Replace("", "");
+                                //messagetext = messagetext.Replace("", "");
+                                if (messagetext.Length > 180)
+                                {
+                                    messagetext = messagetext.Substring(0, 179);
+                                }
+                                messagetext = messagetext.Replace("@$&Status&$@", "REMIND");
+                                messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtWarning.Rows[j]["CurriculumName"].ToString());
+                                Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("global.asax", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("global.asax", ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Send Overdue Notificication
+        /// </summary>
+        /// <param name="dtOverDue"></param>
+        public static void SendOverdueNotification(DataTable dtOverDue)
+        {
+            //dtEnrolledWarning = SystemBackgroundJobsBLL.GetEnrollWarning("ENROLL-DUE-DATE-WARNING");
+            SystemNotification notificationOverDue = new SystemNotification();
+            notificationOverDue = SystemNotificationBLL.GetSingleNotificationbyId("CURR-EXPIRED", "en-US");
+            if (notificationOverDue.s_notification_on_off_flag == true)
+            {
+                for (int j = 0; j < dtOverDue.Rows.Count; j++)
+                {
+                    try
+                    {
+                        StringBuilder sbEnrolledWarning = new StringBuilder();
+
+                        string warningrSubjectMananger = string.Empty;
+                        warningrSubjectMananger = notificationOverDue.s_notification_email_subject;
+                        warningrSubjectMananger = warningrSubjectMananger.Replace("@$&Curriculum Title&$@", dtOverDue.Rows[j]["CurriculumName"].ToString());
+                        warningrSubjectMananger = warningrSubjectMananger.Replace("@$&User First Name&$@", dtOverDue.Rows[j]["u_first_name"].ToString());
+
+                        string EnrollTextManager = string.Empty;
+                        EnrollTextManager = notificationOverDue.s_notification_email_text;
+                        EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtOverDue.Rows[j]["u_first_name"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtOverDue.Rows[j]["u_last_name"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&Curriculum Name&$@(@$&Curriculum ID&$@)", dtOverDue.Rows[j]["CurriculumName"].ToString());
+                        //EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtOverDue.Rows[j]["deliveryName"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@", dtOverDue.Rows[j]["e_curriculum_assign_target_due_date"].ToString());
+                        //e_enroll_target_due_date
+                        sbEnrolledWarning.Append(EnrollTextManager);
+
+                        string toEmailid = dtOverDue.Rows[j]["u_email_address"].ToString();
+                        string[] toaddress = toEmailid.Split(',');
+                        List<MailAddress> mailAddresses = new List<MailAddress>();
+                        foreach (string recipient in toaddress)
+                        {
+                            if (recipient.Trim() != string.Empty)
+                            {
+                                mailAddresses.Add(new MailAddress(recipient));
+                            }
+                        }
+
+                        string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
+                        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                        if (mailAddresses.Count > 0)
+                        {
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, warningrSubjectMananger, sbEnrolledWarning.ToString());
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(dtOverDue.Rows[j]["u_mobile_number"].ToString()))
+                            {
+                                StringBuilder smsText = new StringBuilder();
+                                string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                string username = HttpContext.Current.Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                string passwd = HttpContext.Current.Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                string messagetext = notificationOverDue.s_notification_SMS_text;
+                                //messagetext = messagetext.Replace("", "");
+                                //messagetext = messagetext.Replace("", "");
+                                if (messagetext.Length > 180)
+                                {
+                                    messagetext = messagetext.Substring(0, 179);
+                                }
+                                messagetext = messagetext.Replace("@$&Status&$@", "OverDue");
+                                messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtOverDue.Rows[j]["courseName"].ToString());
+                                Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("global.asax", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("global.asax", ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Insert Into user master table: HRIS
+
         private void InsertIntoUserMaster(DataTable dtHRIS, string sftp_URI, string userName, string password)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -703,7 +884,7 @@ namespace ComplicanceFactor
         /// Create Log File For HRIS
         /// </summary>
         /// <param name="dtHris"></param>
-        private void CreateLogFile(DataTable dtHris, string uri, string userName, string password, string processName, string runlogType)
+        public static void CreateLogFile(DataTable dtHris, string uri, string userName, string password, string processName, string runlogType)
         {
             DateTime startTime = DateTime.Now;
             string filePath = string.Empty;
@@ -851,10 +1032,18 @@ namespace ComplicanceFactor
             {
                 if (ConfigurationWrapper.LogErrors == true)
                 {
-                    LogErrorMessage(ex.Message);
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("global.asax", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("global.asax", ex.Message);
+                    }
                 }
             }
         }
+
 
         /// <summary>
         /// Create Log File In FTP Server
@@ -864,7 +1053,7 @@ namespace ComplicanceFactor
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <param name="text"></param>
-        private bool CreateLogFileInFTP(string filename, string uri, string userName, string password, string text, string path)
+        public static bool CreateLogFileInFTP(string filename, string uri, string userName, string password, string text, string path)
         {
             bool IsExists = true;
             try
@@ -898,15 +1087,9 @@ namespace ComplicanceFactor
             return IsExists;
         }
 
-        public void LogErrorMessage(string errorMessage)
-        {
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(ERROR_LOG_FILE_PATH, true);
-            writer.WriteLine(DateTime.Now.ToString("MM/dd/yyyy hh:mm tt") + " : " + "Global.asax : " + errorMessage.ToString() + NEW_LINE);
-            writer.Flush();
-            writer.Close();
-            writer.Dispose();
-            writer = null;
-        }
+
+        /////Data Import
+        //////////
 
         /// <summary>
         /// Insert Facility ( Data Import )
@@ -1638,122 +1821,15 @@ namespace ComplicanceFactor
             CreateLogFile(dtLearningHistory, sftp_URI, userName, password, "Learning History", "DIMP");
         }
 
-        /// <summary>
-        /// Get Csv Data
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        public static DataTable GetCSVData(string CSVFilePathName)
-        {
-            string[] Lines = File.ReadAllLines(CSVFilePathName);
-            string[] Fields;
 
-            Fields = Lines[0].TrimEnd(',').Split(new char[] { ',' });
-            int Cols = Fields.GetLength(0);
-
-            DataTable dt = new DataTable();
-
-            for (int i = 0; i < Cols; i++)
-                dt.Columns.Add(Fields[i].ToLower(), typeof(string));
-            DataRow Row;
-
-            using (var sr = File.OpenText(CSVFilePathName))
-            {
-                string line;
-                int i = 0;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (line.Length != 0)
-                    {
-                        Fields = Lines[i].Split(new char[] { ',' });
-                        Row = dt.NewRow();
-
-                        for (int f = 0; f < Cols; f++)
-
-                            Row[f] = Fields[f];
-
-                        dt.Rows.Add(Row);
-                        i = i + 1;
-                    }
-                }
-            }
-            dt.Rows.RemoveAt(0);
-            return dt;
-        }
+        // Insert Run log Details for Update Curriculum status
 
         /// <summary>
-        /// Convert DataTable to CSV
+        /// Inser Run Log Details
         /// </summary>
-        /// <param name="dt"></param>
-        /// <param name="path"></param>
-        private void GetDatatableToCsv(DataTable dt, string path, string sftp_uri, string userName, string password, string fileName)
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < dt.Columns.Count; k++)
-            {
-                //add separator
-                sb.Append(dt.Columns[k].ColumnName + ',');
-            }
-            //append new line
-            sb.Append("\r\n");
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                for (int k = 0; k < dt.Columns.Count; k++)
-                {
-                    //add separator
-                    sb.Append(dt.Rows[i][k].ToString().Replace(",", ";") + ',');
-                }
-                //append new line
-                sb.Append("\r\n");
-            }
-
-            FileInfo file = new System.IO.FileInfo(path + fileName);
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(path + fileName, true);
-            writer.WriteLine(sb.ToString());
-            writer.Flush();
-            writer.Close();
-            writer.Dispose();
-            writer = null;
-
-            System.Threading.Thread.Sleep(8000);
-
-            CreateCSVFile(sftp_uri, userName, password, path, fileName);
-
-        }
-
-        /// <summary>
-        /// Create Log File For HRIS
-        /// </summary>
-        /// <param name="dtHris"></param>
-        private void CreateCSVFile(string uri, string userName, string password, string path, string filename)
-        {
-
-            FileInfo toUpload = new FileInfo(filename);
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri + toUpload.Name);
-            request.Method = WebRequestMethods.Ftp.UploadFile;
-            request.Credentials = new NetworkCredential(userName, password);
-            Stream ftpStream = request.GetRequestStream();
-
-            FileStream file = File.OpenRead(path + filename);
-
-            int length = 1024;
-            byte[] buffer = new byte[length];
-            int bytesRead = 0;
-
-            do
-            {
-                bytesRead = file.Read(buffer, 0, length);
-                ftpStream.Write(buffer, 0, bytesRead);
-            }
-            while (bytesRead != 0);
-
-            file.Close();
-            ftpStream.Close();
-
-
-        }
-
-        private void InsertRunLogDetails(DateTime starttime, string runlogType)
+        /// <param name="starttime"></param>
+        /// <param name="runlogType"></param>
+        private  void InsertRunLogDetails(DateTime starttime, string runlogType)
         {
             StringBuilder sb = new StringBuilder();
             DateTime endDate;
@@ -1800,9 +1876,18 @@ namespace ComplicanceFactor
             {
                 if (ConfigurationWrapper.LogErrors == true)
                 {
-                    LogErrorMessage(ex.Message);
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("global.asax", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("global.asax", ex.Message);
+                    }
                 }
             }
         }
+       
+       
     }
 }

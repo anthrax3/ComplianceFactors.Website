@@ -1569,42 +1569,46 @@ namespace ComplicanceFactor.Common
 
         }
 
-        public static DataTable TempAssignmentGroups()
+        public static DataTable TempAssignmentRuleCatalogItem()
         {
-            DataTable dtTempAssignmentGroups = new DataTable();
-            DataColumn dtTempAssignmentGroupsColumn;
+            DataTable dtTempTempAssignmentRuleCatalogItem = new DataTable();
+            DataColumn dtTempTempAssignmentRuleCatalogItemColumn;
 
-            //u_assignment_group_param_system_id_pk
-            dtTempAssignmentGroupsColumn = new DataColumn();
-            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
-            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_system_id_pk";
-            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+            //c_course_system_id_fk
+            dtTempTempAssignmentRuleCatalogItemColumn = new DataColumn();
+            dtTempTempAssignmentRuleCatalogItemColumn.DataType = Type.GetType("System.String");
+            dtTempTempAssignmentRuleCatalogItemColumn.ColumnName = "u_assignment_rule_item_system_id_pk";
+            dtTempTempAssignmentRuleCatalogItem.Columns.Add(dtTempTempAssignmentRuleCatalogItemColumn);
+            //c_course_id
+            dtTempTempAssignmentRuleCatalogItemColumn = new DataColumn();
+            dtTempTempAssignmentRuleCatalogItemColumn.DataType = Type.GetType("System.String");
+            dtTempTempAssignmentRuleCatalogItemColumn.ColumnName = "u_assignment_rule_item_id_fk";
+            dtTempTempAssignmentRuleCatalogItem.Columns.Add(dtTempTempAssignmentRuleCatalogItemColumn);
+            //c_course_title
+            dtTempTempAssignmentRuleCatalogItemColumn = new DataColumn();
+            dtTempTempAssignmentRuleCatalogItemColumn.DataType = Type.GetType("System.String");
+            dtTempTempAssignmentRuleCatalogItemColumn.ColumnName = "u_assignment_rule_id_fk";
+            dtTempTempAssignmentRuleCatalogItem.Columns.Add(dtTempTempAssignmentRuleCatalogItemColumn);
 
-            //u_assignment_group_id_fk
-            dtTempAssignmentGroupsColumn = new DataColumn();
-            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
-            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_id_fk";
-            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
 
-            //u_assignment_group_param_element_id_fk
-            dtTempAssignmentGroupsColumn = new DataColumn();
-            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
-            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_element_id_fk";
-            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+            //c_course_id
+            dtTempTempAssignmentRuleCatalogItemColumn = new DataColumn();
+            dtTempTempAssignmentRuleCatalogItemColumn.DataType = Type.GetType("System.String");
+            dtTempTempAssignmentRuleCatalogItemColumn.ColumnName = "Id";
+            dtTempTempAssignmentRuleCatalogItem.Columns.Add(dtTempTempAssignmentRuleCatalogItemColumn);
+            //c_course_title
+            dtTempTempAssignmentRuleCatalogItemColumn = new DataColumn();
+            dtTempTempAssignmentRuleCatalogItemColumn.DataType = Type.GetType("System.String");
+            dtTempTempAssignmentRuleCatalogItemColumn.ColumnName = "title";
+            dtTempTempAssignmentRuleCatalogItem.Columns.Add(dtTempTempAssignmentRuleCatalogItemColumn);
 
-            //u_assignment_group_param_operator_id_fk
-            dtTempAssignmentGroupsColumn = new DataColumn();
-            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
-            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_operator_id_fk";
-            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
+            //c_delivery_id
+            dtTempTempAssignmentRuleCatalogItemColumn = new DataColumn();
+            dtTempTempAssignmentRuleCatalogItemColumn.DataType = Type.GetType("System.String");
+            dtTempTempAssignmentRuleCatalogItemColumn.ColumnName = "type";
+            dtTempTempAssignmentRuleCatalogItem.Columns.Add(dtTempTempAssignmentRuleCatalogItemColumn);
 
-            //u_assignment_group_param_values
-            dtTempAssignmentGroupsColumn = new DataColumn();
-            dtTempAssignmentGroupsColumn.DataType = Type.GetType("System.String");
-            dtTempAssignmentGroupsColumn.ColumnName = "u_assignment_group_param_values";
-            dtTempAssignmentGroups.Columns.Add(dtTempAssignmentGroupsColumn);
-            return dtTempAssignmentGroups;
-
+            return dtTempTempAssignmentRuleCatalogItem;
         }
     }
 }

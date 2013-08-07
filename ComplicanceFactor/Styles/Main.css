@@ -514,6 +514,7 @@ img.logo_image
 
 .validation_summary_error
 {
+    height: auto;
     font-size: 13px;
     font-weight: 700;
     color: #000;

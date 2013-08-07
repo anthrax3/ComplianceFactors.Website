@@ -8,6 +8,7 @@ using System.Data;
 using System.Text;
 using System.Net.Mail;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Completion
 {
@@ -1016,36 +1017,120 @@ namespace ComplicanceFactor.SystemHome.Catalog.Completion
 
         private void SendClosedMailToUser(DataTable dtMail)
         {
-            for (int i = 0; i <= dtMail.Rows.Count; i++)
+            SystemNotification notificationWailtlist = new SystemNotification();
+            notificationWailtlist = SystemNotificationBLL.GetSingleNotificationbyId("ENROLL-WAITLIST-DROPPED", SessionWrapper.CultureName);
+            if (notificationWailtlist.s_notification_on_off_flag == true)
             {
-                String closeSubject = "***" + dtMail.Rows[i]["courseName"].ToString() + "is now closed";
-
-                StringBuilder sbCloseCourse = new StringBuilder();
-                sbCloseCourse.Append("Hello "+dtMail.Rows[i]["u_first_name"].ToString() + ' ' + dtMail.Rows[i]["u_last_name"].ToString());
-                sbCloseCourse.Append("<br>");
-                sbCloseCourse.Append("Course: " + dtMail.Rows[i]["courseName"].ToString());
-                sbCloseCourse.Append("<br>");
-                sbCloseCourse.Append("Delivery: " +  dtMail.Rows[i]["deliveryName"].ToString());
-                sbCloseCourse.Append("<br>");
-                sbCloseCourse.Append("has been closed.");
-                sbCloseCourse.Append("<br>");
-
-                sbCloseCourse.Append("<br>");
-                string toEmailid = dtMail.Rows[i]["u_email_address"].ToString(); 
-                string[] toaddress = toEmailid.Split(',');
-                List<MailAddress> mailAddresses = new List<MailAddress>();
-                foreach (string recipient in toaddress)
+                for (int i = 0; i < dtMail.Rows.Count; i++)
                 {
-                    if (recipient.Trim() != string.Empty)
+                    try
                     {
-                        mailAddresses.Add(new MailAddress(recipient));
+                        StringBuilder sbEnrolledWarning = new StringBuilder();
+
+                        string warningrSubjectMananger = string.Empty;
+                        warningrSubjectMananger = notificationWailtlist.s_notification_email_subject;
+                        warningrSubjectMananger = warningrSubjectMananger.Replace("@$&Course Name&$@", dtMail.Rows[i]["courseName"].ToString());
+                        //warningrSubjectMananger = warningrSubjectMananger.Replace("@$&User First Name&$@", dtMail.Rows[i]["u_first_name"].ToString());
+
+                        string EnrollTextManager = string.Empty;
+                        EnrollTextManager = notificationWailtlist.s_notification_email_text;
+                        EnrollTextManager = EnrollTextManager.Replace("@$&User First Name&$@", dtMail.Rows[i]["u_first_name"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&User Last Name&$@", dtMail.Rows[i]["u_last_name"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&Course Name&$@(@$&Course ID&$@)", dtMail.Rows[i]["courseName"].ToString());
+                        EnrollTextManager = EnrollTextManager.Replace("@$&Delivery Title&$@(@$&Delivery ID&$@)", dtMail.Rows[i]["deliveryName"].ToString());
+                        //EnrollTextManager = EnrollTextManager.Replace("@$&Target Due Date&$@", dtMail.Rows[i]["e_curriculum_assign_target_due_date"].ToString());
+                        //e_enroll_target_due_date
+                        sbEnrolledWarning.Append(EnrollTextManager);
+
+                        string toEmailid = dtMail.Rows[i]["u_email_address"].ToString();
+                        string[] toaddress = toEmailid.Split(',');
+                        List<MailAddress> mailAddresses = new List<MailAddress>();
+                        foreach (string recipient in toaddress)
+                        {
+                            if (recipient.Trim() != string.Empty)
+                            {
+                                mailAddresses.Add(new MailAddress(recipient));
+                            }
+                        }
+
+                        string fromAddress = (ConfigurationManager.AppSettings["FROMMAIL"]);
+                        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+                        if (mailAddresses.Count > 0)
+                        {
+                            Utility.SendEMailMessages(mailAddresses, fromAddress, warningrSubjectMananger, sbEnrolledWarning.ToString());
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(dtMail.Rows[i]["u_mobile_number"].ToString()))
+                            {
+                                StringBuilder smsText = new StringBuilder();
+                                string[] toPhoneNumber = SessionWrapper.u_mobile_number.Split(',');
+                                string username = Server.UrlEncode(ConfigurationManager.AppSettings["mobileusername"]);
+                                string passwd = Server.UrlEncode(ConfigurationManager.AppSettings["mobilepwd"]);
+
+                                string messagetext = notificationWailtlist.s_notification_SMS_text;
+                                //messagetext = messagetext.Replace("", "");
+                                //messagetext = messagetext.Replace("", "");
+                                if (messagetext.Length > 180)
+                                {
+                                    messagetext = messagetext.Substring(0, 179);
+                                }
+                                messagetext = messagetext.Replace("@$&Status&$@", "Waiting Closed");
+                                messagetext = messagetext.Replace("@$&Course Name&$@({Course ID&$@)", dtMail.Rows[i]["courseName"].ToString());
+                                Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("samcmcp-01", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("samcmcp-01", ex.Message);
+                            }
+                        }
                     }
                 }
-                string fromAddress = SessionWrapper.u_email_id;// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
-                //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
-                Utility.SendEMailMessages(mailAddresses, fromAddress, closeSubject, sbCloseCourse.ToString());
             }
         }
+
+        //private void SendClosedMailToUser(DataTable dtMail)
+        //{
+        //    for (int i = 0; i <= dtMail.Rows.Count; i++)
+        //    {
+        //        String closeSubject = "***" + dtMail.Rows[i]["courseName"].ToString() + "is now closed";
+
+        //        StringBuilder sbCloseCourse = new StringBuilder();
+        //        sbCloseCourse.Append("Hello "+dtMail.Rows[i]["u_first_name"].ToString() + ' ' + dtMail.Rows[i]["u_last_name"].ToString());
+        //        sbCloseCourse.Append("<br>");
+        //        sbCloseCourse.Append("Course: " + dtMail.Rows[i]["courseName"].ToString());
+        //        sbCloseCourse.Append("<br>");
+        //        sbCloseCourse.Append("Delivery: " +  dtMail.Rows[i]["deliveryName"].ToString());
+        //        sbCloseCourse.Append("<br>");
+        //        sbCloseCourse.Append("has been closed.");
+        //        sbCloseCourse.Append("<br>");
+
+        //        sbCloseCourse.Append("<br>");
+        //        string toEmailid = dtMail.Rows[i]["u_email_address"].ToString(); 
+        //        string[] toaddress = toEmailid.Split(',');
+        //        List<MailAddress> mailAddresses = new List<MailAddress>();
+        //        foreach (string recipient in toaddress)
+        //        {
+        //            if (recipient.Trim() != string.Empty)
+        //            {
+        //                mailAddresses.Add(new MailAddress(recipient));
+        //            }
+        //        }
+        //        string fromAddress = SessionWrapper.u_email_id;// for submite Request from: employeeemailId to admin@compliancefactors.com,owneremailId,coordinatoremailId 
+        //        //mailAddresses.Add(new MailAddress(ConfigurationManager.AppSettings["FROMMAIL"]));
+        //        Utility.SendEMailMessages(mailAddresses, fromAddress, closeSubject, sbCloseCourse.ToString());
+        //    }
+        //}
 
     }
 }

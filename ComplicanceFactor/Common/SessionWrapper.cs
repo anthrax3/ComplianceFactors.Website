@@ -6718,16 +6718,13 @@ namespace ComplicanceFactor.Common
             }
         }
 
-        /// <summary>
-        /// AssignmentGroupsParam
-        /// </summary>
-        public static DataTable AssignmentGroupsParam
+        public static DataTable AssignmentRule_CatalogItem
         {
             get
             {
-                if (HttpContext.Current.Session["AssignmentGroupsParam"] != null)
+                if (HttpContext.Current.Session["AssignmentRule_CatalogItem"] != null)
                 {
-                    return (DataTable)HttpContext.Current.Session["AssignmentGroupsParam"];
+                    return (DataTable)HttpContext.Current.Session["AssignmentRule_CatalogItem"];
                 }
                 else
                 {
@@ -6738,9 +6735,30 @@ namespace ComplicanceFactor.Common
             }
             set
             {
-                HttpContext.Current.Session["AssignmentGroupsParam"] = value;
+                HttpContext.Current.Session["AssignmentRule_CatalogItem"] = value;
             }
         }
+
+        public static DataTable Reset_AssignmentRule_CatalogItem
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_AssignmentRule_CatalogItem"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Reset_AssignmentRule_CatalogItem"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_AssignmentRule_CatalogItem"] = value;
+            }
+        }
+
         public static void clearsession()
         {
             sessionid = "";

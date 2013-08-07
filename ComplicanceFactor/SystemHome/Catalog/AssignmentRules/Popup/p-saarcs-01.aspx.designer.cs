@@ -7,82 +7,55 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup {
+namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules.Popup {
     
     
-    public partial class p_sagp_01 {
+    public partial class p_saarcs_01 {
         
         /// <summary>
-        /// vs_p_sagp control.
+        /// pnlDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_p_sagp;
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
-        /// divError control.
+        /// txtCatalogName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        protected global::System.Web.UI.WebControls.TextBox txtCatalogName;
         
         /// <summary>
-        /// divSuccess control.
+        /// txtCatalogId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        protected global::System.Web.UI.WebControls.TextBox txtCatalogId;
         
         /// <summary>
-        /// ddlElement control.
+        /// btnGoSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlElement;
+        protected global::System.Web.UI.WebControls.Button btnGoSearch;
         
         /// <summary>
-        /// ddlOperator control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlOperator;
-        
-        /// <summary>
-        /// rfvValues control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvValues;
-        
-        /// <summary>
-        /// txtValues control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValues;
-        
-        /// <summary>
-        /// btnAddParameter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddParameter;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
         /// btnCancel control.

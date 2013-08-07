@@ -8,16 +8,18 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using System.Data;
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 {
     public partial class saeag_01 : System.Web.UI.Page
     {
         private static string editAssignmentGroupId;
+        private static DataTable dtResetAssignmentParameter;
+        public static DataTable dtAssignmentParam;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                
+            {               
                 //<summary>
                 ///Hide validation on postback (if user select AssignmentGroupValues)
                 ///</summary>
@@ -45,15 +47,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 {
                     if (Convert.ToBoolean(Request.QueryString["popup"].ToString()) == true)
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup();", true);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup('false');", true);
                     }
                 }
-                //using jquery hide the '-or-' in last row
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastEquivalenciesrow();", true);
+                //Bind Parameter
+                BindAssignmentParams();
             }
-            //Bind Parameter
-            BindAssignmentParams();
-
+            if (hdStopRebind.Value == "0")
+            {
+                BindAssignmentParams();
+            }
+            //using jquery hide the '-or-' in last row
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastEquivalenciesrow();", true);
         }
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
@@ -253,6 +258,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             updateAssignmentGroup.u_assignment_group_desc_custom_12 = txtDescription_Custom12.Value;
             updateAssignmentGroup.u_assignment_group_name_custom_13 = txtAssignmentGroupName_Custom13.Text;
             updateAssignmentGroup.u_assignment_group_desc_custom_13 = txtDescription_Custom13.Value;
+            if (dtAssignmentParam.Rows.Count > 0)
+            {
+                UpdateAssignmentParameter();
+                ConvertDataTables Convertxml = new ConvertDataTables();
+                updateAssignmentGroup.assignment_parameters = Convertxml.ConvertDataTableToXml(dtAssignmentParam);
+            }
 
             int error = SystemAssignmentGroupBLL.UpdateAssignmentGroup(updateAssignmentGroup);
             if (error != -2)
@@ -275,9 +286,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 
         private void BindAssignmentParams()
         {
-            gvAssignmentGroupParameters.DataSource = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
+            dtAssignmentParam = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
+            gvAssignmentGroupParameters.DataSource = dtAssignmentParam;
             gvAssignmentGroupParameters.DataBind();
         }
+
         //Delete Param
         [System.Web.Services.WebMethod]
         public static void DeleteParam(string args)
@@ -314,6 +327,33 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 ddlOperator.SelectedValue = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][1].ToString();
                 txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();                
             }
+        }
+
+        private void UpdateAssignmentParameter()
+        {
+            foreach (GridViewRow row in gvAssignmentGroupParameters.Rows)
+            {
+                DropDownList ddlOperator = (DropDownList)row.FindControl("ddlOperator");
+                TextBox txtValues = (TextBox)row.FindControl("txtValues");
+                string u_assignment_group_param_system_id_pk = gvAssignmentGroupParameters.DataKeys[row.RowIndex][0].ToString();
+                var rows = dtAssignmentParam.Select("u_assignment_group_param_system_id_pk='" + u_assignment_group_param_system_id_pk + "'");
+                var indexRow = dtAssignmentParam.Rows.IndexOf(rows[0]);
+                dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_operator_id_fk"] = ddlOperator.SelectedValue;
+                dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = txtValues.Text;
+                dtAssignmentParam.AcceptChanges();
+            }
+        }
+
+        protected void gvAssignmentGroupParameters_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Remove"))
+            {
+                    SystemAssignmentGroupBLL.RemoveParameter(editAssignmentGroupId, e.CommandArgument.ToString());
+                    BindAssignmentParams();
+                   //using jquery hide the '-or-' in last row                   
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
+            }
+                
         }
     }
 }

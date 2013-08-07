@@ -7,37 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
+namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules {
     
     
-    public partial class saeag_01 {
-        
-        /// <summary>
-        /// vs_saeag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_saeag;
-        
-        /// <summary>
-        /// ToolkitScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-        
-        /// <summary>
-        /// divError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+    public partial class saear_01 {
         
         /// <summary>
         /// divSuccess control.
@@ -49,22 +22,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
         
         /// <summary>
-        /// hdEditAssignmentId control.
+        /// divError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdEditAssignmentId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
-        /// hdStopRebind control.
+        /// hdnEditAssignmentRule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdStopRebind;
+        protected global::System.Web.UI.WebControls.HiddenField hdnEditAssignmentRule;
         
         /// <summary>
         /// btnHeaderSave control.
@@ -94,58 +67,67 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         protected global::System.Web.UI.WebControls.Button btnHeaderCancel;
         
         /// <summary>
-        /// rfvAssignmentGroupId control.
+        /// hdNav_selected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupId;
+        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
         
         /// <summary>
-        /// txtAssignmentGroupId control.
+        /// rfvAssignmentRuleId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupId;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentRuleId;
         
         /// <summary>
-        /// rfvAssignmentGroupIdName control.
+        /// txtAssignmentRuleId_EnglishUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupIdName;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleId_EnglishUs;
         
         /// <summary>
-        /// txtAssignmentGroupName control.
+        /// rfvAssignmentRuleName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentRuleName;
         
         /// <summary>
-        /// rfvAssignmentGroupDescription control.
+        /// txtAssignmentRuleName_EnglishUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_EnglishUs;
         
         /// <summary>
-        /// txtAssignmentGroupDescription control.
+        /// rfvAssignmentDescriptionUS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAssignmentGroupDescription;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentDescriptionUS;
+        
+        /// <summary>
+        /// txtAssignmentDescriptionUS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentDescriptionUS;
         
         /// <summary>
         /// ddlStatus control.
@@ -157,49 +139,112 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
-        /// upnlAssignmentGroupParameters control.
+        /// gvCatalogItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlAssignmentGroupParameters;
+        protected global::System.Web.UI.WebControls.GridView gvCatalogItems;
         
         /// <summary>
-        /// gvAssignmentGroupParameters control.
+        /// btnCatalogItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAssignmentGroupParameters;
+        protected global::System.Web.UI.WebControls.Button btnCatalogItems;
         
         /// <summary>
-        /// txtAssignmentGroupName_EnglishUk control.
+        /// btnNewGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_EnglishUk;
+        protected global::System.Web.UI.WebControls.Button btnNewGroups;
         
         /// <summary>
-        /// txtDescription_EnglishUk control.
+        /// chkRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_EnglishUk;
+        protected global::System.Web.UI.WebControls.CheckBox chkRequired;
         
         /// <summary>
-        /// txtAssignmentGroupName_FrenchCa control.
+        /// rbtTagetduedate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_FrenchCa;
+        protected global::System.Web.UI.WebControls.RadioButton rbtTagetduedate;
+        
+        /// <summary>
+        /// txtTargetduedate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTargetduedate;
+        
+        /// <summary>
+        /// rbtDue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbtDue;
+        
+        /// <summary>
+        /// txtDue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDue;
+        
+        /// <summary>
+        /// ddlDuedaysfrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuedaysfrom;
+        
+        /// <summary>
+        /// txtAssignmentRuleUk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleUk;
+        
+        /// <summary>
+        /// txtDescriptionUk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescriptionUk;
+        
+        /// <summary>
+        /// txtAssignmentRuleName_FrenchCa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_FrenchCa;
         
         /// <summary>
         /// txtDescription_FrenchCa control.
@@ -208,16 +253,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_FrenchCa;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_FrenchCa;
         
         /// <summary>
-        /// txtAssignmentGroupName_FrenchFr control.
+        /// txtAssignmentRuleName_FrenchFr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_FrenchFr;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_FrenchFr;
         
         /// <summary>
         /// txtDescription_FrenchFr control.
@@ -226,16 +271,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_FrenchFr;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_FrenchFr;
         
         /// <summary>
-        /// txtAssignmentGroupName_SpanishMx control.
+        /// txtAssignmentRuleName_SpanishMx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_SpanishMx;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_SpanishMx;
         
         /// <summary>
         /// txtDescription_SpanishMx control.
@@ -244,16 +289,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_SpanishMx;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_SpanishMx;
         
         /// <summary>
-        /// txtAssignmentGroupName_SpanishSp control.
+        /// txtAssignmentRuleName_SpanishSp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_SpanishSp;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_SpanishSp;
         
         /// <summary>
         /// txtDescription_SpanishSp control.
@@ -262,16 +307,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_SpanishSp;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_SpanishSp;
         
         /// <summary>
-        /// txtAssignmentGroupName_Portuguese control.
+        /// txtAssignmentRuleName_Portuguese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Portuguese;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Portuguese;
         
         /// <summary>
         /// txtDescription_Portuguese control.
@@ -280,16 +325,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Portuguese;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Portuguese;
         
         /// <summary>
-        /// txtAssignmentGroupName_Chinese control.
+        /// txtAssignmentRuleName_Chinese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Chinese;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Chinese;
         
         /// <summary>
         /// txtDescription_Chinese control.
@@ -298,16 +343,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Chinese;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Chinese;
         
         /// <summary>
-        /// txtAssignmentGroupName_German control.
+        /// txtAssignmentRuleName_German control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_German;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_German;
         
         /// <summary>
         /// txtDescription_German control.
@@ -316,16 +361,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_German;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_German;
         
         /// <summary>
-        /// txtAssignmentGroupName_Japanese control.
+        /// txtAssignmentRuleName_Japanese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Japanese;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Japanese;
         
         /// <summary>
         /// txtDescription_Japanese control.
@@ -334,16 +379,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Japanese;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Japanese;
         
         /// <summary>
-        /// txtAssignmentGroupName_Russian control.
+        /// txtAssignmentRuleName_Russian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Russian;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Russian;
         
         /// <summary>
         /// txtDescription_Russian control.
@@ -352,16 +397,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Russian;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Russian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Danish control.
+        /// txtAssignmentRuleName_Danish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Danish;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Danish;
         
         /// <summary>
         /// txtDescription_Danish control.
@@ -370,16 +415,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Danish;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Danish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Polish control.
+        /// txtAssignmentRuleName_Polish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Polish;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Polish;
         
         /// <summary>
         /// txtDescription_Polish control.
@@ -388,16 +433,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Polish;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Polish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Swedish control.
+        /// txtAssignmentRuleName_Swedish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Swedish;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Swedish;
         
         /// <summary>
         /// txtDescription_Swedish control.
@@ -406,16 +451,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Swedish;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Swedish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Finnish control.
+        /// txtAssignmentRuleName_Finnish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Finnish;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Finnish;
         
         /// <summary>
         /// txtDescription_Finnish control.
@@ -424,16 +469,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Finnish;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Finnish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Korean control.
+        /// txtAssignmentRuleName_Korean control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Korean;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Korean;
         
         /// <summary>
         /// txtDescription_Korean control.
@@ -442,16 +487,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Korean;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Korean;
         
         /// <summary>
-        /// txtAssignmentGroupName_Italian control.
+        /// txtAssignmentRuleName_Italian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Italian;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Italian;
         
         /// <summary>
         /// txtDescription_Italian control.
@@ -460,16 +505,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Italian;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Italian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Dutch control.
+        /// txtAssignmentRuleName_Dutch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Dutch;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Dutch;
         
         /// <summary>
         /// txtDescription_Dutch control.
@@ -478,16 +523,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Dutch;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Dutch;
         
         /// <summary>
-        /// txtAssignmentGroupName_Indonesian control.
+        /// txtAssignmentRuleName_Indonesian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Indonesian;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Indonesian;
         
         /// <summary>
         /// txtDescription_Indonesian control.
@@ -496,16 +541,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Indonesian;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Indonesian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Greek control.
+        /// txtAssignmentRuleName_Greek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Greek;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Greek;
         
         /// <summary>
         /// txtDescription_Greek control.
@@ -514,16 +559,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Greek;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Greek;
         
         /// <summary>
-        /// txtAssignmentGroupName_Hungarian control.
+        /// txtAssignmentRuleName_Hungarian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Hungarian;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Hungarian;
         
         /// <summary>
         /// txtDescription_Hungarian control.
@@ -532,16 +577,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Hungarian;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Hungarian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Norwegian control.
+        /// txtAssignmentRuleName_Norwegian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Norwegian;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Norwegian;
         
         /// <summary>
         /// txtDescription_Norwegian control.
@@ -550,16 +595,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Norwegian;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Norwegian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Turkish control.
+        /// txtAssignmentRuleName_Turkish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Turkish;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Turkish;
         
         /// <summary>
         /// txtDescription_Turkish control.
@@ -568,16 +613,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Turkish;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Turkish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Arabic control.
+        /// txtAssignmentRuleName_Arabic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Arabic;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Arabic;
         
         /// <summary>
         /// txtDescription_Arabic control.
@@ -586,16 +631,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Arabic;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Arabic;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom01 control.
+        /// txtAssignmentRuleName_Custom01 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom01;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom01;
         
         /// <summary>
         /// txtDescription_Custom01 control.
@@ -604,16 +649,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom01;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom01;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom02 control.
+        /// txtAssignmentRuleName_Custom02 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom02;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom02;
         
         /// <summary>
         /// txtDescription_Custom02 control.
@@ -622,16 +667,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom02;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom02;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom03 control.
+        /// txtAssignmentRuleName_Custom03 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom03;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom03;
         
         /// <summary>
         /// txtDescription_Custom03 control.
@@ -640,16 +685,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom03;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom03;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom04 control.
+        /// txtAssignmentRuleName_Custom04 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom04;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom04;
         
         /// <summary>
         /// txtDescription_Custom04 control.
@@ -658,16 +703,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom04;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom04;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom05 control.
+        /// txtAssignmentRuleName_Custom05 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom05;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom05;
         
         /// <summary>
         /// txtDescription_Custom05 control.
@@ -676,16 +721,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom05;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom05;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom06 control.
+        /// txtAssignmentRuleName_Custom06 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom06;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom06;
         
         /// <summary>
         /// txtDescription_Custom06 control.
@@ -694,16 +739,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom06;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom06;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom07 control.
+        /// txtAssignmentRuleName_Custom07 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom07;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom07;
         
         /// <summary>
         /// txtDescription_Custom07 control.
@@ -712,16 +757,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom07;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom07;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom08 control.
+        /// txtAssignmentRuleName_Custom08 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom08;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom08;
         
         /// <summary>
         /// txtDescription_Custom08 control.
@@ -730,16 +775,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom08;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom08;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom09 control.
+        /// txtAssignmentRuleName_Custom09 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom09;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom09;
         
         /// <summary>
         /// txtDescription_Custom09 control.
@@ -748,16 +793,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom09;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom09;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom10 control.
+        /// txtAssignmentRuleName_Custom10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom10;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom10;
         
         /// <summary>
         /// txtDescription_Custom10 control.
@@ -766,16 +811,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom10;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom10;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom11 control.
+        /// txtAssignmentRuleName_Custom11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom11;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom11;
         
         /// <summary>
         /// txtDescription_Custom11 control.
@@ -784,16 +829,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom11;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom11;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom12 control.
+        /// txtAssignmentRuleName_Custom12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom12;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom12;
         
         /// <summary>
         /// txtDescription_Custom12 control.
@@ -802,16 +847,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom12;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom12;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom13 control.
+        /// txtAssignmentRuleName_Custom13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom13;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentRuleName_Custom13;
         
         /// <summary>
         /// txtDescription_Custom13 control.
@@ -820,16 +865,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom13;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription_Custom13;
         
         /// <summary>
-        /// btnFooterSave control.
+        /// btnFooterSaveAssignmentRule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterSave;
+        protected global::System.Web.UI.WebControls.Button btnFooterSaveAssignmentRule;
         
         /// <summary>
         /// btnFooterReset control.

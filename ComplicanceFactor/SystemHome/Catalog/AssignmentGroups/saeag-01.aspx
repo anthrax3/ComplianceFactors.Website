@@ -25,48 +25,43 @@
         });
     </script>
     <script type="text/javascript">
-        function showParameterPopup() {
-            var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
-            $.fancybox({
-                'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
-                'showCloseButton': true,
-                'scrolling': 'no',
-                'autoScale': false,
-                'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false} },
-                'width': 820,
-                'height': 200,
-                'margin': 0,
-                'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': 'Popup/p-sagp-01.aspx?id=' + id,
-                'onComplete': function () {
-                    $('#fancybox-frame').load(function () {
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
-
-                        })
-                    });
-
-                }
-
-            });
-        }
-    </script>
-    <script type="text/javascript">
-        function ConfirmRemove() {
-            if (confirm("Are you sure?") == true) {
-                return true;
+        function showParameterPopup(staus) {
+            alert(status);
+            if (status == "true") {
+                alert(true);
+                document.getElementById('<%=hdStopRebind.ClientID %>').value = "0";
             }
-            else {
-                return false;
-            }
+//            var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+//            $.fancybox({
+//                'type': 'iframe',
+//                'titlePosition': 'over',
+//                'titleShow': true,
+//                'showCloseButton': true,
+//                'scrolling': 'no',
+//                'autoScale': false,
+//                'autoDimensions': false,
+//                'helpers': { overlay: { closeClick: false} },
+//                'width': 820,
+//                'height': 200,
+//                'margin': 0,
+//                'padding': 0,
+//                'overlayColor': '#000',
+//                'overlayOpacity': 0.7,
+//                'hideOnOverlayClick': false,
+//                'href': 'Popup/p-sagp-01.aspx?id=' + id,
+//                'onComplete': function () {
+//                    $('#fancybox-frame').load(function () {
+//                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+//                        var heightPane = $(this).contents().find('#content').height();
+//                        $(this).contents().find('#fancybox-frame').css({
+//                            'height': heightPane + 'px'
+
+//                        })
+//                    });
+
+//                }
+
+//            });
         }
     </script>
     <script type="text/javascript">
@@ -74,47 +69,15 @@
             $('#<%=gvAssignmentGroupParameters.ClientID %> tr:last').eq(-1).css("display", "none");
         }
     </script>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $(".deleteParam").click(function () {
-
-                //Get the Id of the record to delete
-                var record_id = $(this).attr("id");
-
-                //Get the GridView Row reference
-                var tr_id = $(this).parents("#.record");
-
-                // Ask user's confirmation before delete records
-                if (confirm("Do you want to delete this record?")) {
-
-                    $.ajax({
-                        type: "POST",
-
-                        //saetc-01.aspx is the page name and DeleteUser is the server side method to delete records in saetc-01.aspx.cs
-                        url: "saeag-01.aspx/DeleteParam",
-
-                        //Pass the selected record id
-                        data: "{'args': '" + record_id + "'}",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function () {
-
-                            // Do some animation effect
-                            tr_id.fadeOut(500, function () {
-
-                                //Remove GridView row
-                                tr_id.remove();
-                                $('#<%=gvAssignmentGroupParameters.ClientID %> tr:last').eq(-1).css("display", "none");
-                            });
-                        }
-                    });
-
+        <script type="text/javascript">
+            function ConfirmRemove() {
+                if (confirm("Do you want to delete this record?") == true) {
+                    return true;
                 }
-                return false;
-            });
-        });
+                else {
+                    return false;
+                }
+            }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -125,6 +88,7 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
     <asp:HiddenField ID="hdEditAssignmentId" runat="server" />
+    <asp:HiddenField ID="hdStopRebind" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table>
@@ -223,68 +187,78 @@
         </div>
         <br />
         <div class="div_controls_from_left">
-            <asp:GridView ID="gvAssignmentGroupParameters" RowStyle-CssClass="record" GridLines="None"
-                CssClass="gridview_width_9" CellPadding="0" CellSpacing="0" ShowHeader="false"
-                runat="server" DataKeyNames="u_assignment_group_param_system_id_pk,u_assignment_group_param_operator_id_fk,u_assignment_group_param_values"
-                AutoGenerateColumns="false" OnRowDataBound="gvAssignmentGroupParameters_RowDataBound">
-                <RowStyle CssClass="record"></RowStyle>
-                <Columns>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <%# Eval("u_assignment_group_param_element_id_fk")%>
-                                    </td>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="ddlOperator" runat="server">
-                                            <asp:ListItem>Matches</asp:ListItem>
-                                            <asp:ListItem>Not Matches</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        Value(s):
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
-                                    </td>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
-                                            class="deleteParam cursor_hand" />
-                                    </td>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td colspan="8">
-                                        --and--
-                                    </td>
-                                </tr>
-                            </table>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+            <asp:UpdatePanel ID="upnlAssignmentGroupParameters" runat="server">
+                <ContentTemplate>
+                    <asp:GridView ID="gvAssignmentGroupParameters" RowStyle-CssClass="record" GridLines="None"
+                        CssClass="gridview_width_9" CellPadding="0" CellSpacing="0" ShowHeader="false"
+                        runat="server" DataKeyNames="u_assignment_group_param_system_id_pk,u_assignment_group_param_operator_id_fk,u_assignment_group_param_values"
+                        AutoGenerateColumns="false" OnRowDataBound="gvAssignmentGroupParameters_RowDataBound"
+                        OnRowCommand="gvAssignmentGroupParameters_RowCommand">
+                        <RowStyle CssClass="record"></RowStyle>
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <%# Eval("u_assignment_group_param_element_id_fk")%>
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlOperator" runat="server">
+                                                    <asp:ListItem>Matches</asp:ListItem>
+                                                    <asp:ListItem>Not Matches</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                Value(s):
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                               <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                    class="deleteParam cursor_hand" />--%>
+                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
+                                                    CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" />
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="8">
+                                                --and--
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
         <div>
             <table>
                 <tr>
                     <td style="padding-left: 80px;">
-                        <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
-                            onclick="javascript:showParameterPopup()" class="cursor_hand" />
+                           <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
+                            onclick="javascript:showParameterPopup('1')" class="cursor_hand" />
+<%--                        <asp:Button ID="btnAddNewParameters" ValidationGroup="saeag" CssClass="cursor_hand"
+                            runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"
+                            OnClick="btnAddNewParameters_Click" />--%>
                     </td>
                     <td style="padding-left: 450px;">
                         <input type="button" id="btnpReviewAssignmentGroup" value='Preview Assignment Group'

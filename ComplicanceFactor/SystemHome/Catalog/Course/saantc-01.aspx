@@ -562,7 +562,7 @@
     </script>
     <script type="text/javascript">
         function lastEquivalenciesrow() {
-            alert(1);
+
             $('#<%=gvEquivalencies.ClientID %> tr:last').eq(-1).css("display", "none");
             $('#<%=gvFulfillments.ClientID %> tr:last').eq(-1).css("display", "none");
             $('#<%=gvPrerequisites.ClientID %> tr:last').eq(-1).css("display", "none");

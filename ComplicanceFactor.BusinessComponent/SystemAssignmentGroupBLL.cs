@@ -20,8 +20,6 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetStatus(string s_ui_locale_name, string s_ui_page_name)
         {
-
-
             try
             {
                 Hashtable htGetStatus = new Hashtable();
@@ -34,8 +32,6 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 throw;
             }
-
-
         }
         /// <summary>
         /// Get all status
@@ -45,8 +41,6 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetAllStatus(string s_ui_locale_name, string s_ui_page_name)
         {
-
-
             try
             {
                 Hashtable htGetAllStatus = new Hashtable();
@@ -54,15 +48,11 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetAllStatus.Add("@s_ui_page_name", s_ui_page_name);
                 return DataProxy.FetchDataTable("s_sp_get_all_status", htGetAllStatus);
             }
-
             catch (Exception)
             {
                 throw;
             }
-
-
         }
-
         /// <summary>
         /// Create Assignment group
         /// </summary>
@@ -156,7 +146,6 @@ namespace ComplicanceFactor.BusinessComponent
             htCreateAssignmentGroup.Add("@u_assignment_group_name_custom_13", createAssignmentGroup.u_assignment_group_name_custom_13);
             htCreateAssignmentGroup.Add("@u_assignment_group_desc_custom_13", createAssignmentGroup.u_assignment_group_name_custom_13);
             htCreateAssignmentGroup.Add("@assignment_parameters", createAssignmentGroup.assignment_parameters);
-
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_insert_assignment_group", htCreateAssignmentGroup);
@@ -349,8 +338,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateAssignmentGroup.Add("@u_assignment_group_desc_custom_12", updateAssignmentGroup.u_assignment_group_desc_custom_12);
             htUpdateAssignmentGroup.Add("@u_assignment_group_name_custom_13", updateAssignmentGroup.u_assignment_group_name_custom_13);
             htUpdateAssignmentGroup.Add("@u_assignment_group_desc_custom_13", updateAssignmentGroup.u_assignment_group_desc_custom_13);
-
-
+            htUpdateAssignmentGroup.Add("@assignment_parameters", updateAssignmentGroup.assignment_parameters);
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_update_assignment_group", htUpdateAssignmentGroup);
@@ -367,7 +355,6 @@ namespace ComplicanceFactor.BusinessComponent
         /// <returns></returns>
         public static DataTable GetSearchAssignmentGroup(SystemAssingnmentGroup serachAssignmentGroup)
         {
-
             try
             {
                 Hashtable htGetSearchAssignmentGroup = new Hashtable();
@@ -389,8 +376,6 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 throw;
             }
-
-
         }
         /// <summary>
         /// Update assignment group status
