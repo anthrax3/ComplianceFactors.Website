@@ -386,6 +386,13 @@
     <Content Include="SystemHome\Catalog\AssignmentGroups\saanagn-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentGroups\saeag-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentGroups\samagmp-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\Popup\p-saarcs-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\Popup\p-saarcsr-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\Popup\p-saargs-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\Popup\p-saargsr-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\saanarn-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\saear-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sceci-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sces-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-scesr-01.aspx" />
@@ -2046,6 +2053,55 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\AssignmentGroups\samagmp-01.aspx.designer.cs">
       <DependentUpon>samagmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saarcs-01.aspx.cs">
+      <DependentUpon>p-saarcs-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saarcs-01.aspx.designer.cs">
+      <DependentUpon>p-saarcs-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saarcsr-01.aspx.cs">
+      <DependentUpon>p-saarcsr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saarcsr-01.aspx.designer.cs">
+      <DependentUpon>p-saarcsr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saargs-01.aspx.cs">
+      <DependentUpon>p-saargs-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saargs-01.aspx.designer.cs">
+      <DependentUpon>p-saargs-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saargsr-01.aspx.cs">
+      <DependentUpon>p-saargsr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\Popup\p-saargsr-01.aspx.designer.cs">
+      <DependentUpon>p-saargsr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\saanarn-01.aspx.cs">
+      <DependentUpon>saanarn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\saanarn-01.aspx.designer.cs">
+      <DependentUpon>saanarn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\saear-01.aspx.cs">
+      <DependentUpon>saear-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\saear-01.aspx.designer.cs">
+      <DependentUpon>saear-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx.cs">
+      <DependentUpon>samarmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx.designer.cs">
+      <DependentUpon>samarmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Completion\p-sceci-01.aspx.cs">
       <DependentUpon>p-sceci-01.aspx</DependentUpon>

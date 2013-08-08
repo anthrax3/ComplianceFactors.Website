@@ -62,7 +62,7 @@
         });
 
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
 
         $(document).ready(function () {
 
@@ -101,7 +101,7 @@
                 return false;
             });
         });
-    </script>
+    </script>--%>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -210,6 +210,17 @@
             }
         }
 
+    </script>
+            <script type="text/javascript">
+                function ConfirmRemove() {
+                    if (confirm("Do you want to delete this record?") == true) {
+                        document.getElementById('<%=hdUpdateValue.ClientID %>').value = "1";
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -335,7 +346,8 @@
                         <asp:GridView ID="gvGradingSchemeValues" RowStyle-CssClass="record" GridLines="None"
                             CssClass="gridview_width_9" CellPadding="0" CellSpacing="0" ShowHeader="false"
                             ShowFooter="true" runat="server" AutoGenerateColumns="False" OnRowDataBound="gvGradingSchemes_RowDataBound"
-                            DataKeyNames="s_grading_scheme_system_value_id_pk">
+                            DataKeyNames="s_grading_scheme_system_value_id_pk" 
+                            onrowcommand="gvGradingSchemeValues_RowCommand">
                             <RowStyle CssClass="record"></RowStyle>
                             <Columns>
                                 <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
@@ -379,8 +391,10 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
-                                            class="deleteGradingSchemes cursor_hand" />
+                                        <%--<input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                            class="deleteGradingSchemes cursor_hand" />--%>
+                                        <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("s_grading_scheme_system_value_id_pk") %>'
+                                     CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -398,7 +412,7 @@
                     </td>
                     <td style="padding-left: 450px;">
                         <asp:Button ID="btnUpdateValue" OnClientClick="javascript:check_hdUpdateValue(this.id)"
-                            Visible="false" ValidationGroup="saangsn" runat="server" Text="<%$ LabelResourceExpression:app_update_value_button_text %>"
+                            Visible="false"  runat="server" Text="<%$ LabelResourceExpression:app_update_value_button_text %>"
                             OnClick="btnUpdateValue_Click" />
                     </td>
                 </tr>

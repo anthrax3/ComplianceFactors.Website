@@ -25,43 +25,45 @@
         });
     </script>
     <script type="text/javascript">
-        function showParameterPopup(staus) {
-            alert(status);
+        function showParameterPopup(status) {
             if (status == "true") {
-                alert(true);
                 document.getElementById('<%=hdStopRebind.ClientID %>').value = "0";
             }
-//            var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
-//            $.fancybox({
-//                'type': 'iframe',
-//                'titlePosition': 'over',
-//                'titleShow': true,
-//                'showCloseButton': true,
-//                'scrolling': 'no',
-//                'autoScale': false,
-//                'autoDimensions': false,
-//                'helpers': { overlay: { closeClick: false} },
-//                'width': 820,
-//                'height': 200,
-//                'margin': 0,
-//                'padding': 0,
-//                'overlayColor': '#000',
-//                'overlayOpacity': 0.7,
-//                'hideOnOverlayClick': false,
-//                'href': 'Popup/p-sagp-01.aspx?id=' + id,
-//                'onComplete': function () {
-//                    $('#fancybox-frame').load(function () {
-//                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-//                        var heightPane = $(this).contents().find('#content').height();
-//                        $(this).contents().find('#fancybox-frame').css({
-//                            'height': heightPane + 'px'
+            var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+            $.fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'no',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 820,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'afterClose': function () {
+                    //window.location.reload(); note:when i close popup then reload page
+                    window.location.replace("../AssignmentGroups/saeag-01.aspx?popup=false");
+                },
+                'href': 'Popup/p-sagp-01.aspx?id=' + id,
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
 
-//                        })
-//                    });
+                        })
+                    });
 
-//                }
+                }
 
-//            });
+            });
         }
     </script>
     <script type="text/javascript">
@@ -69,15 +71,16 @@
             $('#<%=gvAssignmentGroupParameters.ClientID %> tr:last').eq(-1).css("display", "none");
         }
     </script>
-        <script type="text/javascript">
-            function ConfirmRemove() {
-                if (confirm("Do you want to delete this record?") == true) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
+    <script type="text/javascript">
+        function ConfirmRemove() {
+            if (confirm("Do you want to delete this record?") == true) {
+                document.getElementById('<%=hdStopRebind.ClientID %>').value = "1";
+                return true;
             }
+            else {
+                return false;
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -215,7 +218,7 @@
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td>
+                                            <td style="text-align:right">
                                                 Value(s):
                                             </td>
                                             <td>
@@ -225,10 +228,10 @@
                                                 &nbsp;
                                             </td>
                                             <td>
-                                               <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
                                                     class="deleteParam cursor_hand" />--%>
-                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
-                                                    CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" />
+                                                <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
+                                                    CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                             </td>
                                             <td>
                                                 &nbsp;
@@ -254,9 +257,9 @@
             <table>
                 <tr>
                     <td style="padding-left: 80px;">
-                           <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
-                            onclick="javascript:showParameterPopup('1')" class="cursor_hand" />
-<%--                        <asp:Button ID="btnAddNewParameters" ValidationGroup="saeag" CssClass="cursor_hand"
+                        <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
+                            onclick="javascript:showParameterPopup('true')" class="cursor_hand" />
+                        <%--                        <asp:Button ID="btnAddNewParameters" ValidationGroup="saeag" CssClass="cursor_hand"
                             runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"
                             OnClick="btnAddNewParameters_Click" />--%>
                     </td>

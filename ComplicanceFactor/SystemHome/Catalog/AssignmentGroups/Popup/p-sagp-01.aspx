@@ -22,13 +22,6 @@
         $("[id*=divSuccess]").fadeOut(500);
     }
 </script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".fancybox-close").click(function () {
-            alert(1);
-        });
-    });
-</script>
     <div id="content">
         <asp:ValidationSummary ID="vs_p_sagp" ValidationGroup="sagp" class="validation_summary_error"
             runat="server" />

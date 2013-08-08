@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
     public partial class saegs_01 {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// hdUpdateValue control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        
+        /// <summary>
+        /// upnlGradingSchemes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlGradingSchemes;
         
         /// <summary>
         /// gvGradingSchemes control.

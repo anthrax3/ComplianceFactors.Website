@@ -24,17 +24,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 //Bind Status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
                 ddlStatus.DataBind();
-                //Clear Session
-                //* SessionWrapper.AssignmentGroupsParam.Clear();
+                //Clear Datatable
+                dtAssignmentParam = null;
                 //Copy a single Assignment groups
+                dtAssignmentParam = null;
                 if (!string.IsNullOrEmpty(Request.QueryString["copy"]))
                 {
-                    //* SessionWrapper.AssignmentGroupsParam = TempDataTables.TempAssignmentGroups();
+                    
                     copyAssignmentGroupid = SecurityCenter.DecryptText(Request.QueryString["copy"]);
                     PopulateassignmentGroup(copyAssignmentGroupid);
-                    //Bind Assignment param 
-                    //* SessionWrapper.AssignmentGroupsParam = SystemAssignmentGroupBLL.GetAssignmentParameter(copyAssignmentGroupid);
-                    //Bind Gridview AssignmentParameter
+                    //Bind  Assignment group Parameter
                     dtAssignmentParam = SystemAssignmentGroupBLL.GetAssignmentParameter(copyAssignmentGroupid); 
                     BindAssignmentParam();
                 }
@@ -60,7 +59,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 
         protected void btnFooterSave_Click(object sender, EventArgs e)
         {
-            CreateAssignmentGroups(false);
+            CreateAssignmentGroups(false);//false means popup does't open
         }
 
         protected void btnFooterReset_Click(object sender, EventArgs e)
@@ -154,11 +153,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             createAssignmentGroup.u_assignment_group_name_custom_13 = txtAssignmentGroupName_Custom13.Text;
             createAssignmentGroup.u_assignment_group_desc_custom_13 = txtDescription_Custom13.Value;
 
-            if (dtAssignmentParam.Rows.Count > 0)
+            if (dtAssignmentParam != null)
             {
                 UpdateAssignmentParameter(createAssignmentGroup.u_assignment_group_system_id_pk);
                 ConvertDataTables Convertxml = new ConvertDataTables();
                 createAssignmentGroup.assignment_parameters = Convertxml.ConvertDataTableToXml(dtAssignmentParam);
+            }
+            else
+            {
+                createAssignmentGroup.assignment_parameters = null;
             }
             
             int error = SystemAssignmentGroupBLL.CreateAssignmentGroup(createAssignmentGroup);
@@ -331,10 +334,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                     BindAssignmentParam();
                 }
                 //using jquery hide the '-or-' in last row
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
             }
         }
+        //Bind Assignment group parameter
         private void BindAssignmentParam()
         {
             gvAssignmentGroupParameters.DataSource = dtAssignmentParam;

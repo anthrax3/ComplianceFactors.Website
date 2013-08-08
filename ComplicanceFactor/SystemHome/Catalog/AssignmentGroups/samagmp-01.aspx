@@ -41,16 +41,6 @@
         }
     </script>
     <script type="text/javascript">
-        function ConfirmArchive() {
-            if (confirm("Are you sure?") == true) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    </script>
-    <script type="text/javascript">
 
         $(function () {
             $('#<%=gvsearchDetails.ClientID %>')
@@ -134,7 +124,7 @@
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnArchive" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                                OnClientClick="return ConfirmArchive();" CommandName="Archive" runat="server"
+                                OnClientClick="return confirm('Are you sure?');" CommandName="Archive" runat="server"
                                 Text="<%$ LabelResourceExpression: app_archive_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>

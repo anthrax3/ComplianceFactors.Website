@@ -55,6 +55,7 @@
     <Compile Include="DataAccessObject\SiteViewOnJobTraining.cs" />
     <Compile Include="DataAccessObject\SystemApproval.cs" />
     <Compile Include="DataAccessObject\SystemApprovalWorkflow.cs" />
+    <Compile Include="DataAccessObject\SystemAssignmentRules.cs" />
     <Compile Include="DataAccessObject\SystemAssingnmentGroup.cs" />
     <Compile Include="DataAccessObject\SystemCurriculum.cs" />
     <Compile Include="DataAccessObject\SystemCurriculumStatus.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="SystemApprovalBLL.cs" />
     <Compile Include="SystemApprovalWorkflowBLL.cs" />
     <Compile Include="SystemAssignmentGroupBLL.cs" />
+    <Compile Include="SystemAssignmentRuleBLL.cs" />
     <Compile Include="SystemBackgroundJobsBLL.cs" />
     <Compile Include="SystemCategoriesBLL.cs" />
     <Compile Include="SystemCompletionStatusesBLL.cs" />

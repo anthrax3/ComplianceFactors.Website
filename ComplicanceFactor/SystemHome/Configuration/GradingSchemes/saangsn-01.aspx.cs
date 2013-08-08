@@ -41,26 +41,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                 {
                     copyGradingScheme = SecurityCenter.DecryptText(Request.QueryString["copy"]);
                     PopulateGradingScheme(copyGradingScheme);
-                    hdUpdateValue.Value = copyGradingScheme;
+                    //hdUpdateValue.Value = copyGradingScheme;
                 }
+                BindGradingSchemesValues();
             }
             //Bind Grading Scheme Value
             if (hdUpdateValue.Value == "0" || string.IsNullOrEmpty(hdUpdateValue.Value))
             {
-
-                DataView dvGradingSchemes = SessionWrapper.GradingSchemeValues.DefaultView;
-                dvGradingSchemes.Sort = "s_grading_scheme_value_max_score DESC";
-                gvGradingSchemeValues.DataSource = dvGradingSchemes.ToTable();
-                gvGradingSchemeValues.DataBind();
-                if (gvGradingSchemeValues.Rows.Count == 0)
-                {
-                    btnUpdateValue.Visible = false;
-                }
-                else
-                {
-                    btnUpdateValue.Visible = true;
-                }
-
+                BindGradingSchemesValues();
             }
         }
 
@@ -232,38 +220,38 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             }
         }
 
-        [System.Web.Services.WebMethod]
-        public static void DeleteGradingSchemes(string args)
-        {
-            try
-            {
+        //[System.Web.Services.WebMethod]
+        //public static void DeleteGradingSchemes(string args)
+        //{
+        //    try
+        //    {
 
-                //Delete previous selected gradingSchemes
-                var rows = SessionWrapper.GradingSchemeValues.Select("s_grading_scheme_system_value_id_pk= '" + args.Trim() + "'");
-                foreach (var row in rows)
-                    row.Delete();
-                SessionWrapper.GradingSchemeValues.AcceptChanges();
+        //        //Delete previous selected gradingSchemes
+        //        var rows = SessionWrapper.GradingSchemeValues.Select("s_grading_scheme_system_value_id_pk= '" + args.Trim() + "'");
+        //        foreach (var row in rows)
+        //            row.Delete();
+        //        SessionWrapper.GradingSchemeValues.AcceptChanges();
 
 
 
-            }
-            catch (Exception ex)
-            {
-                //TODO: Show user friendly error here
-                //Log here
-                if (ConfigurationWrapper.LogErrors == true)
-                {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("saangsn-01", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("saangsn-01", ex.Message);
-                    }
-                }
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //TODO: Show user friendly error here
+        //        //Log here
+        //        if (ConfigurationWrapper.LogErrors == true)
+        //        {
+        //            if (ex.InnerException != null)
+        //            {
+        //                Logger.WriteToErrorLog("saangsn-01", ex.Message, ex.InnerException.Message);
+        //            }
+        //            else
+        //            {
+        //                Logger.WriteToErrorLog("saangsn-01", ex.Message);
+        //            }
+        //        }
+        //    }
+        //}
 
         protected void btnUpdateValue_Click(object sender, EventArgs e)
         {
@@ -385,6 +373,36 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             gvGradingSchemeValues.DataBind();
 
             SessionWrapper.GradingSchemeValues = SystemGradingSchemesBLL.GetGradingSchemesValue(gradingScheme.s_grading_scheme_system_id_pk);
+        }
+
+        protected void gvGradingSchemeValues_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Remove"))
+            {
+
+                var rows = SessionWrapper.GradingSchemeValues.Select("s_grading_scheme_system_value_id_pk='" + e.CommandArgument.ToString() + "'");
+                foreach (var row in rows)
+                {
+                    row.Delete();
+                    SessionWrapper.GradingSchemeValues.AcceptChanges();
+                    BindGradingSchemesValues();
+                }
+            }
+        }
+        private void BindGradingSchemesValues()
+        {
+            DataView dvGradingSchemes = SessionWrapper.GradingSchemeValues.DefaultView;
+            dvGradingSchemes.Sort = "s_grading_scheme_value_max_score DESC";
+            gvGradingSchemeValues.DataSource = dvGradingSchemes.ToTable();
+            gvGradingSchemeValues.DataBind();
+            if (gvGradingSchemeValues.Rows.Count == 0)
+            {
+                btnUpdateValue.Visible = false;
+            }
+            else
+            {
+                btnUpdateValue.Visible = true;
+            }
         }
     }
 }

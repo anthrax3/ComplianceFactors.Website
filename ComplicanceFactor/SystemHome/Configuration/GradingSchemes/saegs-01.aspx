@@ -110,7 +110,7 @@
 
         });
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
 
         $(document).ready(function () {
 
@@ -149,7 +149,7 @@
                 return false;
             });
         });
-    </script>
+    </script>--%>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -207,8 +207,20 @@
             }
         }
     </script>
+        <script type="text/javascript">
+            function ConfirmRemove() {
+                if (confirm("Do you want to delete this record?") == true) {
+                    document.getElementById('<%=hdUpdateValue.ClientID %>').value = "1";
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID="hdUpdateValue" runat="server" />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saegs" runat="server"
         ValidationGroup="saegs"></asp:ValidationSummary>
@@ -328,57 +340,65 @@
         </div>
         <br />
         <div class="div_controls_from_left">
-            <asp:GridView ID="gvGradingSchemes" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
-                CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="true" runat="server"
-                AutoGenerateColumns="False" OnRowDataBound="gvGradingSchemes_RowDataBound" DataKeyNames="s_grading_scheme_system_value_id_pk">
-                <RowStyle CssClass="record"></RowStyle>
-                <Columns>
-                    <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
-                        <ItemTemplate>
-                            <table class="grid_700">
-                                <tr>
-                                    <td class="gridview_row_width_1">
-                                        <%#Eval("s_grading_scheme_value_name")%>
-                                    </td>
-                                    <td class="gridview_row_width_1">
-                                        <%=LocalResources.GetLabel("app_score_text")%>:
-                                        <asp:TextBox ID="txtMinscore" runat="server" CssClass="textbox_50" />&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
-                                        <asp:TextBox ID="txtMaxscore" runat="server" CssClass="textbox_50" />
-                                    </td>
-                                    <td>
-                                        <%-- <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saegs" ControlToValidate="txtGpa"
+            <asp:UpdatePanel ID="upnlGradingSchemes" runat="server">
+                <ContentTemplate>
+                    <asp:GridView ID="gvGradingSchemes" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_9"
+                        CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="true" runat="server"
+                        AutoGenerateColumns="False" OnRowDataBound="gvGradingSchemes_RowDataBound" 
+                        DataKeyNames="s_grading_scheme_system_value_id_pk" 
+                        onrowcommand="gvGradingSchemes_RowCommand">
+                        <RowStyle CssClass="record"></RowStyle>
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                                <ItemTemplate>
+                                    <table class="grid_700">
+                                        <tr>
+                                            <td class="gridview_row_width_1">
+                                                <%#Eval("s_grading_scheme_value_name")%>(<%#Eval("s_grading_scheme_value_id")%>)
+                                            </td>
+                                            <td class="gridview_row_width_1">
+                                                <%=LocalResources.GetLabel("app_score_text")%>:
+                                                <asp:TextBox ID="txtMinscore" runat="server" CssClass="textbox_50" />&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
+                                                <asp:TextBox ID="txtMaxscore" runat="server" CssClass="textbox_50" />
+                                            </td>
+                                            <td>
+                                                <%-- <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saegs" ControlToValidate="txtGpa"
                                                         ErrorMessage="<%$ TextResourceExpression: app_gpa_error_empty %>">&nbsp;
                                                     </asp:RequiredFieldValidator>--%>
-                                        <asp:RegularExpressionValidator ID="rfvEvery" runat="server" ErrorMessage="Plese enter only the numbers in GPA"
-                                            ControlToValidate="txtGpa" ValidationGroup="saegs" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                                        <asp:DropDownList ID="ddlPassingStatus" runat="server" DataTextField="s_grading_scheme_value_pass_status_name"
-                                            DataValueField="s_grading_scheme_value_pass_status_id_fk" />
-                                        &nbsp; GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" CssClass="textbox_50" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
-                                class="editGradingSchemes cursor_hand" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_copy_button_text %>" />'
-                                class="copyGradingSchemes cursor_hand" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
-                                class="deleteGradingSchemes cursor_hand" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+                                                <asp:RegularExpressionValidator ID="rfvEvery" runat="server" ErrorMessage="Plese enter only the numbers in GPA"
+                                                    ControlToValidate="txtGpa" ValidationGroup="saegs" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
+                                                <asp:DropDownList ID="ddlPassingStatus" runat="server" DataTextField="s_grading_scheme_value_pass_status_name"
+                                                    DataValueField="s_grading_scheme_value_pass_status_id_fk" />
+                                                &nbsp; GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" CssClass="textbox_50" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
+                                        class="editGradingSchemes cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal2" runat="server" Text="<%$ LabelResourceExpression: app_copy_button_text %>" />'
+                                        class="copyGradingSchemes cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                        <%--<input type="button" id='<%# Eval("s_grading_scheme_system_value_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
+                                        class="deleteGradingSchemes cursor_hand" --%>
+                                    <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("s_grading_scheme_system_value_id_pk") %>'
+                                     CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
         <div>
             <table>

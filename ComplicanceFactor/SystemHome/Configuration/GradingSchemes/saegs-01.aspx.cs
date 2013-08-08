@@ -149,8 +149,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             txtGradingSchemeName_Custom13.Text = gradingScheme.s_grading_scheme_name_custom_13;
             txtDescription_Custom13.Text = gradingScheme.s_grading_scheme_desc_custom_13;
 
-            gvGradingSchemes.DataSource = SystemGradingSchemesBLL.GetGradingSchemesValue(editGradingSchemeId);
-            gvGradingSchemes.DataBind();
+            BindGradingSchemesValues();
         }
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
@@ -319,34 +318,34 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             }
         }
 
-        [System.Web.Services.WebMethod]
-        public static void DeleteGradingSchemes(string args)
-        {
-            try
-            {
+        //[System.Web.Services.WebMethod]
+        //public static void DeleteGradingSchemes(string args)
+        //{
+        //    try
+        //    {
 
-                //Delete previous selected gradingSchemes
-                int result = SystemGradingSchemesBLL.DeleteGradingSchemesValues(args.Trim());
+        //        //Delete previous selected gradingSchemes
+        //        int result = SystemGradingSchemesBLL.DeleteGradingSchemesValues(args.Trim());
 
 
-            }
-            catch (Exception ex)
-            {
-                //TODO: Show user friendly error here
-                //Log here
-                if (ConfigurationWrapper.LogErrors == true)
-                {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("saegs-01", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("saegs-01", ex.Message);
-                    }
-                }
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //TODO: Show user friendly error here
+        //        //Log here
+        //        if (ConfigurationWrapper.LogErrors == true)
+        //        {
+        //            if (ex.InnerException != null)
+        //            {
+        //                Logger.WriteToErrorLog("saegs-01", ex.Message, ex.InnerException.Message);
+        //            }
+        //            else
+        //            {
+        //                Logger.WriteToErrorLog("saegs-01", ex.Message);
+        //            }
+        //        }
+        //    }
+        //}
 
         protected void btnUpdateValue_Click(object sender, EventArgs e)
         {
@@ -380,6 +379,21 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             string UpdateGradingSchemesValues = convert.ConvertDataTableToXml(dtGetGradingschemeValue);
             int result = SystemGradingSchemesBLL.UpdateallGradingSchemeValue(UpdateGradingSchemesValues);
             hdUpdateValue.Value = "0";
+        }
+
+        protected void gvGradingSchemes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("Remove"))
+            {
+                int result = SystemGradingSchemesBLL.DeleteGradingSchemesValues(e.CommandArgument.ToString());
+                BindGradingSchemesValues();
+            }
+        }
+
+        private void BindGradingSchemesValues()
+        {
+            gvGradingSchemes.DataSource = SystemGradingSchemesBLL.GetGradingSchemesValue(editGradingSchemeId);
+            gvGradingSchemes.DataBind();
         }
         
 

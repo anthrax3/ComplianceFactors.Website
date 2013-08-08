@@ -145,7 +145,14 @@ namespace ComplicanceFactor.BusinessComponent
             htCreateAssignmentGroup.Add("@u_assignment_group_desc_custom_12", createAssignmentGroup.u_assignment_group_desc_custom_12);
             htCreateAssignmentGroup.Add("@u_assignment_group_name_custom_13", createAssignmentGroup.u_assignment_group_name_custom_13);
             htCreateAssignmentGroup.Add("@u_assignment_group_desc_custom_13", createAssignmentGroup.u_assignment_group_name_custom_13);
-            htCreateAssignmentGroup.Add("@assignment_parameters", createAssignmentGroup.assignment_parameters);
+            if (createAssignmentGroup.assignment_parameters != null)
+            {
+                htCreateAssignmentGroup.Add("@assignment_parameters", createAssignmentGroup.assignment_parameters);
+            }
+            else
+            {
+                htCreateAssignmentGroup.Add("@assignment_parameters", DBNull.Value);
+            }
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_insert_assignment_group", htCreateAssignmentGroup);
@@ -456,6 +463,24 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-
+        /// <summary>
+        /// Add parameter
+        /// </summary>
+        /// <param name="addparam"></param>
+        /// <returns></returns>
+        public static int ResetAssignmentParameter(string assignment_parameters,string u_assignment_group_id_fk)
+        {
+            Hashtable htParameter = new Hashtable();
+            htParameter.Add("@u_assignment_group_id_fk", u_assignment_group_id_fk);
+            htParameter.Add("@assignment_parameters", assignment_parameters);
+            try
+            {
+                return DataProxy.FetchSPOutput("e_sp_reset_assignment_gropup_parameter", htParameter);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

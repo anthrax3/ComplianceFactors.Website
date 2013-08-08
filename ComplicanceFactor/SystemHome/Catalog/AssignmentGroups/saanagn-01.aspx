@@ -225,7 +225,7 @@
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td>
+                                          <td style="text-align:right">
                                                 Value(s):
                                             </td>
                                             <td>
@@ -238,7 +238,7 @@
                                                 <%--<input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
                                             class="deleteParam cursor_hand" />--%>
                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
-                                                     CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" />
+                                                     CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                             </td>
                                             <td>
                                                 &nbsp;

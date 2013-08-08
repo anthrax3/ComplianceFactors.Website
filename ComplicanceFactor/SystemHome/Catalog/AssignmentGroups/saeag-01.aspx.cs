@@ -15,7 +15,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
     {
         private static string editAssignmentGroupId;
         private static DataTable dtResetAssignmentParameter;
-        public static DataTable dtAssignmentParam;
+        private static DataTable dtAssignmentParam;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -41,21 +41,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 //Bind status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
                 ddlStatus.DataBind();
-
+                //Using For rest
+                dtResetAssignmentParameter = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
+                //Populate assignment groups
                 PopulateAssignmentGroup(editAssignmentGroupId);
                 if (!string.IsNullOrEmpty(Request.QueryString["popup"]))
                 {
-                    if (Convert.ToBoolean(Request.QueryString["popup"].ToString()) == true)
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup('false');", true);
-                    }
+                       if (Convert.ToBoolean(Request.QueryString["popup"].ToString()) == true)
+                        {
+                                Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup('false');", true);//note:Popup will open from create page to edit page
+                        }
                 }
-                //Bind Parameter
+                //Bind Parameter   //Because of using Row_Command
                 BindAssignmentParams();
             }
             if (hdStopRebind.Value == "0")
             {
                 BindAssignmentParams();
+                hdStopRebind.Value = string.Empty;
             }
             //using jquery hide the '-or-' in last row
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastEquivalenciesrow();", true);
@@ -68,7 +71,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 
         protected void btnHeaderReset_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.RawUrl);
+            ResetAssignmentGroups();
         }
 
         protected void btnHeaderCancel_Click(object sender, EventArgs e)
@@ -83,7 +86,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 
         protected void btnFooterReset_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.RawUrl);
+            ResetAssignmentGroups();           
         }
 
         protected void btnFooterCancel_Click(object sender, EventArgs e)
@@ -276,7 +279,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             else
             {
                 //TO-DO show div with error message
-                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "PopupScript", "alert('the given scheme id already exists');", true);
                 divSuccess.Style.Add("display", "none");
                 divError.Style.Add("display", "block");
                 divError.InnerHtml = "Assignment Group already exist";
@@ -291,32 +293,32 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             gvAssignmentGroupParameters.DataBind();
         }
 
-        //Delete Param
-        [System.Web.Services.WebMethod]
-        public static void DeleteParam(string args)
-        {
-            try
-            {
-                SystemAssignmentGroupBLL.RemoveParameter(editAssignmentGroupId, args.Trim());
-            }
-            catch (Exception ex)
-            {
-                //TODO: Show user friendly error here
-                //Log here
-                if (ConfigurationWrapper.LogErrors == true)
-                {
-                    if (ex.InnerException != null)
-                    {
-                        Logger.WriteToErrorLog("saeag-01", ex.Message, ex.InnerException.Message);
-                    }
-                    else
-                    {
-                        Logger.WriteToErrorLog("saeag-01", ex.Message);
-                    }
-                }
-            }
+        ////Delete Param
+        //[System.Web.Services.WebMethod]
+        //public static void DeleteParam(string args)
+        //{
+        //    try
+        //    {
+        //        SystemAssignmentGroupBLL.RemoveParameter(editAssignmentGroupId, args.Trim());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //TODO: Show user friendly error here
+        //        //Log here
+        //        if (ConfigurationWrapper.LogErrors == true)
+        //        {
+        //            if (ex.InnerException != null)
+        //            {
+        //                Logger.WriteToErrorLog("saeag-01", ex.Message, ex.InnerException.Message);
+        //            }
+        //            else
+        //            {
+        //                Logger.WriteToErrorLog("saeag-01", ex.Message);
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
 
         protected void gvAssignmentGroupParameters_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -354,6 +356,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
             }
                 
+        }
+        //For Reset
+        private void ResetAssignmentGroups()
+        {
+            ConvertDataTables ConvertXml = new ConvertDataTables();
+            SystemAssignmentGroupBLL.ResetAssignmentParameter(ConvertXml.ConvertDataTableToXml(dtResetAssignmentParameter),editAssignmentGroupId);
+            Response.Redirect(Request.RawUrl);
         }
     }
 }
