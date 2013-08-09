@@ -1371,7 +1371,7 @@ namespace ComplicanceFactor.Common
 
             /// s_grading_scheme_value_max_score
             dtGradingSchemeValuesColumn = new DataColumn();
-            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.Int32");
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
             dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_max_score";
             dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
 

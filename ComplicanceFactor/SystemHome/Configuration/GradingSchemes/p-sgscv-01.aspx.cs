@@ -119,12 +119,12 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             }
             else
             {
-                AddDataToGradingScheme(txtId.Text, txtName.Text, txtDescription.InnerText, txtMinScore_InPercentage.Text, txtMaxScore_InPercentage.Text, txtGrade.Text, txtMinScore_InNumbers.Text, txtMaxScore_InNumbers.Text, txtGpa.Text, txtDescriptor.Text, txtQualification.Text, ddlPassingStatus.SelectedValue, SessionWrapper.GradingSchemeValues);
+                AddDataToGradingScheme(txtId.Text, txtName.Text, txtDescription.InnerText, txtMinScore_InPercentage.Text,txtMaxScore_InPercentage.Text, txtGrade.Text,txtMinScore_InNumbers.Text,txtMaxScore_InNumbers.Text, txtGpa.Text, txtDescriptor.Text, txtQualification.Text, ddlPassingStatus.SelectedValue, SessionWrapper.GradingSchemeValues);
             }
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
 
-        private  DataTable AddDataToGradingScheme(string s_grading_scheme_value_id,string s_grading_scheme_value_name, string s_grading_scheme_value_description, string s_grading_scheme_value_min_score, string s_grading_scheme_value_max_score, string s_grading_scheme_value_grade, string s_grading_scheme_value_min_num, string s_grading_scheme_value_max_num, string s_grading_scheme_value_gpa, string s_grading_scheme_value_descriptior, string s_grading_scheme_value_qualification, string s_grading_scheme_value_pass_status_id_fk, DataTable dtGradingscheme)
+        private DataTable AddDataToGradingScheme(string s_grading_scheme_value_id, string s_grading_scheme_value_name, string s_grading_scheme_value_description, string s_grading_scheme_value_min_score, string s_grading_scheme_value_max_score, string s_grading_scheme_value_grade, string s_grading_scheme_value_min_num, string s_grading_scheme_value_max_num, string s_grading_scheme_value_gpa, string s_grading_scheme_value_descriptior, string s_grading_scheme_value_qualification, string s_grading_scheme_value_pass_status_id_fk, DataTable dtGradingscheme)
         {
             // Add GradingScheme function
             
@@ -136,7 +136,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             row["s_grading_scheme_value_name"] = s_grading_scheme_value_name;
             row["s_grading_scheme_value_description"] = s_grading_scheme_value_description;
             row["s_grading_scheme_value_min_score"] = s_grading_scheme_value_min_score;
-            row["s_grading_scheme_value_max_score"] = Convert.ToInt32(s_grading_scheme_value_max_score);
+            row["s_grading_scheme_value_max_score"] = s_grading_scheme_value_max_score;
             row["s_grading_scheme_value_grade"] = s_grading_scheme_value_grade;
             row["s_grading_scheme_value_min_num"] = s_grading_scheme_value_min_num;
             row["s_grading_scheme_value_max_num"] = s_grading_scheme_value_max_num;

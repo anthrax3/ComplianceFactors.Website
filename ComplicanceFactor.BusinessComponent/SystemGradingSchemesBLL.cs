@@ -639,5 +639,19 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static int ResetGradingSchemeValues(string s_grading_scheme_values,string s_grading_scheme_system_id_fk)
+        {
+             Hashtable htResetGradingSchemeValues = new Hashtable();
+             htResetGradingSchemeValues.Add("@s_grading_scheme_values", s_grading_scheme_values);
+             htResetGradingSchemeValues.Add("@s_grading_scheme_system_id_fk", s_grading_scheme_system_id_fk);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_reset_grading_scheme_values", htResetGradingSchemeValues);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

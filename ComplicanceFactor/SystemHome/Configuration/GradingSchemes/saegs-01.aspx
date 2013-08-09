@@ -218,15 +218,89 @@
                 }
             }
     </script>
+            <script type="text/javascript" language="javascript">
+                function validateMinvalue(sender, args) {
+                    var gridView = document.getElementById('<%= gvGradingSchemes.ClientID %>');
+                    for (var i = 0; i < gridView.rows.length - 1; i++) {
+                        var inputs = gridView.rows[i].getElementsByTagName('input');
+                        var dropdowns = gridView.getElementsByTagName('select');
+                        if (inputs != null) {
+                            if (inputs[0].type == "text") {
+                                if (inputs[0].value != "") {
+                                    if (inputs[0].value < 100) {
+                                        args.IsValid = true;
+                                    }
+                                    else {
+                                        args.IsValid = false;
+                                        break;
+                                    }
+                                }
+                                else {
+                                    args.IsValid = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                function validateMaxvalue(sender, args) {
+                    var gridView = document.getElementById('<%= gvGradingSchemes.ClientID %>');
+                    for (var i = 0; i < gridView.rows.length - 1; i++) {
+                        var inputs = gridView.rows[i].getElementsByTagName('input');
+                        var dropdowns = gridView.getElementsByTagName('select');
+                        if (inputs != null) {
+                            if (inputs[1].type == "text") {
+                                if (inputs[1].value != "") {
+                                    if (inputs[1].value <= 100) {
+                                        args.IsValid = true;
+                                    }
+                                    else {
+                                        args.IsValid = false;
+                                        break;
+                                    }
+                                }
+                                else {
+                                    args.IsValid = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                function validateMinMaxvalue(sender, args) {
+                    var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
+                    for (var i = 0; i < gridView.rows.length - 1; i++) {
+                        var inputs = gridView.rows[i].getElementsByTagName('input');
+                        var dropdowns = gridView.getElementsByTagName('select');
+                        if (inputs != null) {
+                            if (inputs[0].value < inputs[1].value) {
+                                args.IsValid = true;
+                            }
+                            else {
+                                args.IsValid = false;
+                                break;
+                            }
+                        }
+                    }
+                }       
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:HiddenField ID="hdUpdateValue" runat="server" />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saegs" runat="server"
         ValidationGroup="saegs"></asp:ValidationSummary>
+    <asp:ValidationSummary class="validation_summary_error" ID="ValidationSummary1" runat="server"
+        ValidationGroup="saegs_values"></asp:ValidationSummary>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+    <asp:CustomValidator ID="cvValidateMinvalue" EnableClientScript="true" ClientValidationFunction="validateMinvalue"
+            ValidateEmptyText="true" ValidationGroup="saegs_values" runat="server" ErrorMessage="Please check min score value.">&nbsp;</asp:CustomValidator>
+    <asp:CustomValidator ID="cvValidateMaxvalue" EnableClientScript="true" ClientValidationFunction="validateMaxvalue"
+            ValidateEmptyText="true" ValidationGroup="saegs_values" runat="server" ErrorMessage="Please check max score value.">&nbsp;</asp:CustomValidator>
+    <asp:CustomValidator ID="cvValidateMinMax" EnableClientScript="true" ClientValidationFunction="validateMinMaxvalue"
+            ValidateEmptyText="true" ValidationGroup="saegs_values" runat="server" ErrorMessage="Min value should not exceed from max score.">&nbsp;</asp:CustomValidator>
     </div>
     <asp:HiddenField ID="hdGradingSchemeId" runat="server" />
     <div class="content_area_long">
@@ -409,7 +483,7 @@
                     </td>
                     <td style="padding-left: 450px;">
                         <asp:Button ID="btnUpdateValue" OnClientClick="javascript:check_hdUpdateValue(this.id)"
-                            ValidationGroup="saegs" runat="server" Text="<%$ LabelResourceExpression: app_update_value_button_text %>"
+                            ValidationGroup="saegs_values" runat="server" Text="<%$ LabelResourceExpression: app_update_value_button_text %>"
                             OnClick="btnUpdateValue_Click" />
                     </td>
                 </tr>

@@ -44,6 +44,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 SessionWrapper.Reset_AssignmentRule_CatalogItem = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
 
                 PopulateAssignmentRule(editassignmentRuleId);
+
+                if (!string.IsNullOrEmpty(Request.QueryString["process"]) && SecurityCenter.DecryptText(Request.QueryString["process"]) == "catalog")
+                { 
+
+                }
+                else if (!string.IsNullOrEmpty(Request.QueryString["process"]) && SecurityCenter.DecryptText(Request.QueryString["process"]) == "group")
+                {
+
+                }
             }
             //if (SessionWrapper.AssignmentRule_CatalogItem.Rows.Count > 0)
             //{

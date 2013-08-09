@@ -47,15 +47,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
         {
-            SaveNewAssignmentRule();
+            SaveNewAssignmentRule(string.Empty);
         }
 
         protected void btnFooterSaveNewAssignmentRule_Click(object sender, EventArgs e)
         {
-            SaveNewAssignmentRule();
+            SaveNewAssignmentRule(string.Empty);
         }
 
-        private void SaveNewAssignmentRule()
+        private void SaveNewAssignmentRule(string process)
         {
             SystemAssignmentRules createAssignmentRules = new SystemAssignmentRules();
             createAssignmentRules.u_assignment_rules_system_id_pk = Guid.NewGuid().ToString();
@@ -168,7 +168,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             }
             if (error != -2)
             {
-                Response.Redirect("~/SystemHome/Catalog/AssignmentRules/saear-01.aspx?id=" + SecurityCenter.EncryptText(createAssignmentRules.u_assignment_rules_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true"), false);
+                Response.Redirect("~/SystemHome/Catalog/AssignmentRules/saear-01.aspx?id=" + SecurityCenter.EncryptText(createAssignmentRules.u_assignment_rules_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true") + "&process=" + SecurityCenter.EncryptText(process), false);
             }
             else
             {
@@ -318,12 +318,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 
         protected void btnCatalogItems_Click(object sender, EventArgs e)
         {
-
+            SaveNewAssignmentRule("catalog");
         }
 
         protected void btnNewGroups_Click(object sender, EventArgs e)
         {
-
+            SaveNewAssignmentRule("group");
         }
     }
 }

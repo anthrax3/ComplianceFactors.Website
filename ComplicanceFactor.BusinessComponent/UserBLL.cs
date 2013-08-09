@@ -1544,14 +1544,14 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static int MergeUser(string user1, string user2)
+        public static DataSet MergeUser(string user1, string user2)
         {
             Hashtable htMergeUser = new Hashtable();
             htMergeUser.Add("@user1", user1);
             htMergeUser.Add("@user2", user2);
             try
             {
-                return DataProxy.FetchSPOutput("", htMergeUser);
+                return DataProxy.FetchDataSet("u_sp_merge_user", htMergeUser);
             }
             catch (Exception)
             {

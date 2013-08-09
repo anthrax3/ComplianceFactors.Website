@@ -49,6 +49,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
         
         /// <summary>
+        /// RegExp1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExp1;
+        
+        /// <summary>
         /// txtMinScore_InPercentage control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMinScore_InPercentage;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// txtMaxScore_InPercentage control.
@@ -76,6 +94,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.WebControls.TextBox txtGrade;
         
         /// <summary>
+        /// RegularExpressionValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+        
+        /// <summary>
         /// txtMinScore_InNumbers control.
         /// </summary>
         /// <remarks>
@@ -83,6 +110,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMinScore_InNumbers;
+        
+        /// <summary>
+        /// RegularExpressionValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
         
         /// <summary>
         /// txtMaxScore_InNumbers control.

@@ -100,12 +100,18 @@
                 <tr>
                     <td class="text_align">
                         <%=LocalResources.GetLabel("app_minimum_percent_score_text")%>:
+                        <asp:RegularExpressionValidator ID="RegExp1" runat="server" ErrorMessage="Min Percentage Score between 0 to 99 only."
+                            ControlToValidate="txtMinScore_InPercentage" ValidationExpression="^([0-9]|[1-9][0-9])$" ValidationGroup="sgscv">&nbsp;
+                            </asp:RegularExpressionValidator>
                     </td>
                     <td class="text_align">
                         <asp:TextBox ID="txtMinScore_InPercentage" runat="server" CssClass="textbox_50"></asp:TextBox>%
                     </td>
                     <td class="text_align">
                         <%=LocalResources.GetLabel("app_maximum_score_text")%>:
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Max Percentage Score between 1 to 100 only."
+                            ControlToValidate="txtMaxScore_InPercentage" ValidationExpression="^(100|[1-9][0-9]?)$" ValidationGroup="sgscv">&nbsp;
+                            </asp:RegularExpressionValidator>
                     </td>
                     <td class="text_align">
                         <asp:TextBox ID="txtMaxScore_InPercentage" runat="server" CssClass="textbox_50"></asp:TextBox>%
@@ -119,12 +125,18 @@
                 </tr>
                 <tr>
                     <td class="text_align">
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Min Percentage Score between 0 to 99 only."
+                            ControlToValidate="txtMinScore_InNumbers" ValidationExpression="^([0-9]|[1-9][0-9])$" ValidationGroup="sgscv">&nbsp;
+                            </asp:RegularExpressionValidator>
                         <%=LocalResources.GetLabel("app_minimum_numeric_grade_text")%>:
                     </td>
                     <td class="text_align">
                         <asp:TextBox ID="txtMinScore_InNumbers" runat="server" CssClass="textbox_50"></asp:TextBox>
                     </td>
                     <td class="text_align">
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Max Percentage Score between 1 to 100 only."
+                            ControlToValidate="txtMaxScore_InNumbers" ValidationExpression="^(100|[1-9][0-9]?)$" ValidationGroup="sgscv">&nbsp;
+                            </asp:RegularExpressionValidator>
                         <%=LocalResources.GetLabel("app_maximum_numeric_grade_text")%>:
                     </td>
                     <td class="text_align">

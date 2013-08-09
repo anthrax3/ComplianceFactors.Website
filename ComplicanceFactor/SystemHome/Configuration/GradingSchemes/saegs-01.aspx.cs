@@ -45,6 +45,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                 //Bind grading scheme type
                 ddlType.DataSource = SystemGradingSchemesBLL.GetGradingSchemeType(SessionWrapper.CultureName, "saegs-01");
                 ddlType.DataBind();
+                //Reset
+                SessionWrapper.GradingSchemeValues.Clear();
+                SessionWrapper.GradingSchemeValues = TempDataTables.GradingSchemeValues();
+                SessionWrapper.GradingSchemeValues = SystemGradingSchemesBLL.GetGradingSchemesValue(editGradingSchemeId);
                 PopulateGradingScheme(editGradingSchemeId);
             }
 
@@ -291,12 +295,12 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
 
         protected void btnFooterReset_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.RawUrl);
+            ResetGradingSchemeValues();
         }
 
         protected void btnHeaderReset_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Request.RawUrl);
+            ResetGradingSchemeValues();
         }
 
         protected void gvGradingSchemes_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -395,7 +399,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             gvGradingSchemes.DataSource = SystemGradingSchemesBLL.GetGradingSchemesValue(editGradingSchemeId);
             gvGradingSchemes.DataBind();
         }
-        
+        private void ResetGradingSchemeValues()
+        {
+            ConvertDataTables ConvertXml = new ConvertDataTables();
+            SystemGradingSchemesBLL.ResetGradingSchemeValues(ConvertXml.ConvertDataTableToXml(SessionWrapper.GradingSchemeValues),editGradingSchemeId);
+            Response.Redirect(Request.RawUrl);
+            
+        }
+
 
         
 
