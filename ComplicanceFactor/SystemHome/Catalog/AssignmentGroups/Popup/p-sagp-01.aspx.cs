@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.Common;
+using ComplicanceFactor.Common.Languages;
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 {
     public partial class p_sagp_01 : System.Web.UI.Page
@@ -39,14 +40,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             {
                 divSuccess.Style.Add("display", "block");
                 divError.Style.Add("display", "none");
-                divSuccess.InnerText = "Parameter inserted successfully";
+                divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", "HideMsg();", true);
             }
             else
             {
                 divError.Style.Add("display", "block");
                 divSuccess.Style.Add("display", "none");
-                divError.InnerText = "Data Not Inserted";
+                divError.InnerText = LocalResources.GetText("app_date_not_inserted_error_wrong");
             }
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
 

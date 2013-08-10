@@ -2,6 +2,8 @@
     CodeBehind="saangsn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.GradingSchemes.saangsn_01" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
@@ -203,15 +205,8 @@
             }
         }
     </script>
-    <script type="text/javascript" language="javascript">
-        function ValidateText(i) {
-            if (i.value.length > 0) {
-                i.value = i.value.replace(/[^\d]+/g, '');
-            }
-        }
-    </script>
-            <script type="text/javascript">
-                function ConfirmRemove() {
+ <script type="text/javascript">
+       function ConfirmRemove() {
                     if (confirm("Do you want to delete this record?") == true) {
                         document.getElementById('<%=hdUpdateValue.ClientID %>').value = "1";
                         return true;
@@ -221,61 +216,40 @@
                     }
                 }
     </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[id*=txtMinscore]").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+        $("[id*=txtMaxscore]").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+        $("[id*=txtGpa]").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+    });
+</script>
         <script type="text/javascript" language="javascript">
             function validateMinvalue(sender, args) {
                 var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
-                for (var i = 0; i < gridView.rows.length-1; i++) {
-                        var inputs = gridView.rows[i].getElementsByTagName('input');
-                        if (inputs != null) {
-                            if (inputs[0].type == "text") {
-                                    if (inputs[0].value != "") {
-                                        if (inputs[0].value < 100) {
-                                            args.IsValid = true;
-                                        }
-                                        else {
-                                            args.IsValid = false;
-                                            break;
-                                        }
-                                    }
-                                    else {
-                                        args.IsValid = false;
-                                        break;
-                                    }
-                            }
-                        }
-                    }
-                }
-                function validateMaxvalue(sender, args) {
-                    var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
-                    for (var i = 0; i < gridView.rows.length - 1; i++) {
-                        var inputs = gridView.rows[i].getElementsByTagName('input');
-                        if (inputs != null) {
-                            if (inputs[1].type == "text") {
-                                if (inputs[1].value != "") {
-                                    if (inputs[1].value <= 100) {
-                                        args.IsValid = true;
-                                    }
-                                    else {
-                                        args.IsValid = false;
-                                        break;
-                                    }
+                for (var i = 0; i < gridView.rows.length - 1; i++) {
+                    var inputs = gridView.rows[i].getElementsByTagName('input');
+                    if (inputs != null) {
+                        if (inputs[0].type == "text") {
+                            if (inputs[0].value != "") {
+                                if (parseInt(inputs[0].value) < 100) {
+                                    args.IsValid = true;
                                 }
                                 else {
                                     args.IsValid = false;
                                     break;
                                 }
-                            }
-                        }
-                    }
-                }
-                function validateMinMaxvalue(sender, args) {
-                    var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
-                    for (var i = 0; i < gridView.rows.length - 1; i++) {
-                        var inputs = gridView.rows[i].getElementsByTagName('input');
-                        var dropdowns = gridView.getElementsByTagName('select');
-                        if (inputs != null) {
-                            if (inputs[0].value < inputs[1].value) {
-                                args.IsValid = true;
                             }
                             else {
                                 args.IsValid = false;
@@ -283,10 +257,50 @@
                             }
                         }
                     }
-                }       
+                }
+            }
+            function validateMaxvalue(sender, args) {
+                var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
+                for (var i = 0; i < gridView.rows.length - 1; i++) {
+                    var inputs = gridView.rows[i].getElementsByTagName('input');
+                    if (inputs != null) {
+                        if (inputs[1].type == "text") {
+                            if (inputs[1].value != "") {
+                                if (parseInt(inputs[1].value)<= 100) {
+                                    args.IsValid = true;
+                                }
+                                else {
+                                    args.IsValid = false;
+                                    break;
+                                }
+                            }
+                            else {
+                                args.IsValid = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            function validateMinMaxvalue(sender, args) {
+                var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
+                for (var i = 0; i < gridView.rows.length - 1; i++) {
+                    var inputs = gridView.rows[i].getElementsByTagName('input');
+                    if (inputs != null) {                        
+                            var min = parseInt(inputs[0].value);
+                            var max = parseInt(inputs[1].value);                            
+                            if (min < max) {
+                                args.IsValid = true;                                
+                            }
+                            else {
+                                args.IsValid = false;                                
+                                break;
+
+                            }                        
+                    }
+                }
+            }       
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="hdUpdateValue" runat="server" />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saangsn" runat="server"
         ValidationGroup="saangsn"></asp:ValidationSummary>
@@ -432,8 +446,8 @@
                                                 </td>
                                                 <td>                                                        
                                                     <%=LocalResources.GetLabel("app_score_text")%>:<asp:TextBox ID="txtMinscore" runat="server"
-                                                        onkeyup="ValidateText(this);" CssClass="textbox_50"/>&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
-                                                    <asp:TextBox ID="txtMaxscore" runat="server" onkeyup="ValidateText(this);" CssClass="textbox_50" /></td>                                                                                                   </td>
+                                                         CssClass="textbox_50 allownumeric"/>&nbsp;<%=LocalResources.GetLabel("app_to_text")%>&nbsp;
+                                                    <asp:TextBox ID="txtMaxscore" runat="server" CssClass="textbox_50 allownumeric" /></td>                                                                                                   </td>
                                                 <td>
                                                     <%-- <asp:RequiredFieldValidator ID="rfvGpa" runat="server" ValidationGroup="saangsn" Display="Dynamic"
                                                     ControlToValidate="txtGpa" ErrorMessage="<%$ TextResourceExpression: app_gpa_error_empty %>">&nbsp;
@@ -442,8 +456,8 @@
                                                         ControlToValidate="txtGpa" ValidationGroup="saangsn" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
                                                     <asp:DropDownList ID="ddlPassingStatus" runat="server" DataTextField="s_grading_scheme_value_pass_status_name"
                                                         DataValueField="s_grading_scheme_value_pass_status_id_fk" />
-                                                     &nbsp;GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" onkeyup="ValidateText(this);"
-                                                        CssClass="textbox_50" />
+                                                     &nbsp;GPA&nbsp;<asp:TextBox ID="txtGpa" runat="server" 
+                                                        CssClass="textbox_50 allownumeric" />
                                                 </td>
                                             </tr>
                                         </table>

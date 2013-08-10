@@ -20,7 +20,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentGroups/samagmp-01.aspx>" + "Manage Assignment Groups" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Create Assignment Groups" + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentGroups/samagmp-01.aspx>" + LocalResources.GetLabel("app_manage_assignment_groups_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_assignment_groups_text") + "</a>";
                 //Bind Status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
                 ddlStatus.DataBind();
@@ -173,7 +173,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             else
             {
                 divError.Style.Add("display", "block");
-                divError.InnerText = "Assignment group id already exist";
+                divError.InnerText = LocalResources.GetText("app_assignment_group_id_already_exist_error_wrong");
             }
         }
 

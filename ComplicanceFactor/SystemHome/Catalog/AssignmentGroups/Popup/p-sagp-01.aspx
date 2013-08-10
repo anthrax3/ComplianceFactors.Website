@@ -28,13 +28,13 @@
         <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
         <div class="div_header_800">
-            Add Parameter:
+           <%=LocalResources.GetLabel("app_add_parameter_text")%>:
         </div>
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td>
-                        Element:
+                        <%=LocalResources.GetLabel("app_element_text")%>
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlElement" runat="server" CssClass="ddl_user_advanced_search">
@@ -46,7 +46,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        Operator
+                        <%=LocalResources.GetLabel("app_operator_text")%>
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlOperator" runat="server">
@@ -58,7 +58,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        Values:
+                         <%=LocalResources.GetLabel("app_values_text")%>:
                         <asp:RequiredFieldValidator ID="rfvValues" runat="server" ValidationGroup="sagp"
                             ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>
                     </td>
@@ -76,14 +76,14 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Button ID="btnAddParameter" runat="server" ValidationGroup="sagp" Text="Save and Add New Parameter"
+                        <asp:Button ID="btnAddParameter" runat="server" ValidationGroup="sagp" Text="<%$ LabelResourceExpression: app_save_and_add_new_parameter_button_text %>"
                             OnClick="btnAddParameter_Click" />
                     </td>
                     <td colspan="6">
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" 
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
                             
                             OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();" 
                             onclick="btnCancel_Click"/>

@@ -26,12 +26,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 vs_saeag.Style.Add("display", "none");
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentGroups/samagmp-01.aspx>"+"Manage Assignment Groups"+ "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Edit Assignment Groups" + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentGroups/samagmp-01.aspx>" + LocalResources.GetLabel("app_manage_assignment_groups_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_assignment_groups_text") + "</a>";
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     //TO-DO SHOW THE MESSAGE WHETHER 'SUCCESSFULLY INSERTED OR UPDATED IN A MESSAGE DIV'
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = "SuccessFully Inserted";
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
                 }
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
@@ -274,14 +274,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 //TO-DO show div with success message
                 divSuccess.Style.Add("display", "block");
                 divError.Style.Add("display", "none");
-                divSuccess.InnerHtml = "Successfully Updated";
+                divSuccess.InnerHtml = LocalResources.GetText("app_succ_update_text");
             }
             else
             {
                 //TO-DO show div with error message
                 divSuccess.Style.Add("display", "none");
                 divError.Style.Add("display", "block");
-                divError.InnerHtml = "Assignment Group already exist";
+                divError.InnerHtml = LocalResources.GetText("app_assignment_group_id_already_exist_error_wrong");
 
             }
         }

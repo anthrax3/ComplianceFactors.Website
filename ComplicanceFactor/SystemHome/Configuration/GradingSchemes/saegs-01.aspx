@@ -227,7 +227,7 @@
                         if (inputs != null) {
                             if (inputs[0].type == "text") {
                                 if (inputs[0].value != "") {
-                                    if (inputs[0].value < 100) {
+                                    if (parseInt(inputs[0].value) < 100) {
                                         args.IsValid = true;
                                     }
                                     else {
@@ -251,7 +251,7 @@
                         if (inputs != null) {
                             if (inputs[1].type == "text") {
                                 if (inputs[1].value != "") {
-                                    if (inputs[1].value <= 100) {
+                                    if (parseInt(inputs[1].value) <= 100) {
                                         args.IsValid = true;
                                     }
                                     else {
@@ -268,12 +268,12 @@
                     }
                 }
                 function validateMinMaxvalue(sender, args) {
-                    var gridView = document.getElementById('<%= gvGradingSchemeValues.ClientID %>');
+                    var gridView = document.getElementById('<%= gvGradingSchemes.ClientID %>');
                     for (var i = 0; i < gridView.rows.length - 1; i++) {
                         var inputs = gridView.rows[i].getElementsByTagName('input');
                         var dropdowns = gridView.getElementsByTagName('select');
                         if (inputs != null) {
-                            if (inputs[0].value < inputs[1].value) {
+                            if (parseInt(inputs[0].value) < parseInt(inputs[1].value)) {
                                 args.IsValid = true;
                             }
                             else {
@@ -284,6 +284,55 @@
                     }
                 }       
     </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[id*=txtMinscore]").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+        $("[id*=txtMaxscore]").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+        $("[id*=txtGpa]").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
+        });
+    });
+</script>
+<%--    <script type="text/javascript">
+        function validateMinvalue(sender, args) {
+            var min = $("[id*=txtMinscore]").val();            
+            if (parseInt(min) < 100) {
+                args.IsValid = true;
+            }
+            else {
+                args.IsValid = false;
+            }
+        }
+        function validateMaxvalue(sender, args) {
+            var max = $("[id*=txtMaxscore]").val();
+            if (parseInt(max) <= 100) {
+                args.IsValid = true;
+            }
+            else {
+                args.IsValid = false;
+            }
+        }
+        function validateMaxvalue(sender, args) {
+            var min = $("[id*=txtMinscore]").val();
+            var max = $("[id*=txtMaxscore]").val();
+            if (min < max) {
+                args.IsValid = true;
+            }
+            else {
+                args.IsValid = false;
+            }
+        }
+    </script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>

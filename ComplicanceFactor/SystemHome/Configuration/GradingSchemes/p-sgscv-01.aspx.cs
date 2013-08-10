@@ -43,11 +43,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                     getSingleGradingSchemes.s_grading_scheme_system_id_fk = editGradingSchemesId;
                     getSingleGradingSchemes.s_grading_scheme_value_name = txtName.Text;
                     getSingleGradingSchemes.s_grading_scheme_value_description = txtDescription.InnerText;
-                    getSingleGradingSchemes.s_grading_scheme_value_min_score = txtMinScore_InPercentage.Text;
-                    getSingleGradingSchemes.s_grading_scheme_value_max_score = Convert.ToInt32(txtMaxScore_InPercentage.Text);
+                    getSingleGradingSchemes.s_grading_scheme_value_min_score = Convert.ToInt16(txtMinScore_InPercentage.Text);
+                    getSingleGradingSchemes.s_grading_scheme_value_max_score = Convert.ToInt16(txtMaxScore_InPercentage.Text);
                     getSingleGradingSchemes.s_grading_scheme_value_grade = txtGrade.Text;
-                    getSingleGradingSchemes.s_grading_scheme_value_min_num = txtMinScore_InNumbers.Text;
-                    getSingleGradingSchemes.s_grading_scheme_value_max_num = txtMaxScore_InNumbers.Text;
+                    getSingleGradingSchemes.s_grading_scheme_value_min_num = Convert.ToInt16(txtMinScore_InNumbers.Text);
+                    getSingleGradingSchemes.s_grading_scheme_value_max_num = Convert.ToInt16(txtMaxScore_InNumbers.Text);
                     getSingleGradingSchemes.s_grading_scheme_value_gpa = txtGpa.Text;
                     getSingleGradingSchemes.s_grading_scheme_value_descriptior = txtDescriptor.Text;
                     getSingleGradingSchemes.s_grading_scheme_value_qualification = txtQualification.Text;
@@ -85,11 +85,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                     createSingleGradingSchemes.s_grading_scheme_system_id_fk = Request.QueryString["GradingSchemesId"].ToString();
                     createSingleGradingSchemes.s_grading_scheme_value_name = txtName.Text;
                     createSingleGradingSchemes.s_grading_scheme_value_description = txtDescription.InnerText;
-                    createSingleGradingSchemes.s_grading_scheme_value_min_score = txtMinScore_InPercentage.Text;
-                    createSingleGradingSchemes.s_grading_scheme_value_max_score = Convert.ToInt32(txtMaxScore_InPercentage.Text);
+                    createSingleGradingSchemes.s_grading_scheme_value_min_score = Convert.ToInt16(txtMinScore_InPercentage.Text);
+                    createSingleGradingSchemes.s_grading_scheme_value_max_score = Convert.ToInt16(txtMaxScore_InPercentage.Text);
                     createSingleGradingSchemes.s_grading_scheme_value_grade = txtGrade.Text;
-                    createSingleGradingSchemes.s_grading_scheme_value_min_num = txtMinScore_InNumbers.Text;
-                    createSingleGradingSchemes.s_grading_scheme_value_max_num = txtMaxScore_InNumbers.Text;
+                    createSingleGradingSchemes.s_grading_scheme_value_min_num = Convert.ToInt16(txtMinScore_InNumbers.Text);
+                    createSingleGradingSchemes.s_grading_scheme_value_max_num = Convert.ToInt16(txtMaxScore_InNumbers.Text);
                     createSingleGradingSchemes.s_grading_scheme_value_gpa = txtGpa.Text;
                     createSingleGradingSchemes.s_grading_scheme_value_descriptior = txtDescriptor.Text;
                     createSingleGradingSchemes.s_grading_scheme_value_qualification = txtQualification.Text;
@@ -119,12 +119,12 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             }
             else
             {
-                AddDataToGradingScheme(txtId.Text, txtName.Text, txtDescription.InnerText, txtMinScore_InPercentage.Text,txtMaxScore_InPercentage.Text, txtGrade.Text,txtMinScore_InNumbers.Text,txtMaxScore_InNumbers.Text, txtGpa.Text, txtDescriptor.Text, txtQualification.Text, ddlPassingStatus.SelectedValue, SessionWrapper.GradingSchemeValues);
+                AddDataToGradingScheme(txtId.Text, txtName.Text, txtDescription.InnerText, Convert.ToInt16(txtMinScore_InPercentage.Text),Convert.ToInt16(txtMaxScore_InPercentage.Text), txtGrade.Text,Convert.ToInt16(txtMinScore_InNumbers.Text),Convert.ToInt16(txtMaxScore_InNumbers.Text), txtGpa.Text, txtDescriptor.Text, txtQualification.Text, ddlPassingStatus.SelectedValue, SessionWrapper.GradingSchemeValues);
             }
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
 
-        private DataTable AddDataToGradingScheme(string s_grading_scheme_value_id, string s_grading_scheme_value_name, string s_grading_scheme_value_description, string s_grading_scheme_value_min_score, string s_grading_scheme_value_max_score, string s_grading_scheme_value_grade, string s_grading_scheme_value_min_num, string s_grading_scheme_value_max_num, string s_grading_scheme_value_gpa, string s_grading_scheme_value_descriptior, string s_grading_scheme_value_qualification, string s_grading_scheme_value_pass_status_id_fk, DataTable dtGradingscheme)
+        private DataTable AddDataToGradingScheme(string s_grading_scheme_value_id, string s_grading_scheme_value_name, string s_grading_scheme_value_description, int s_grading_scheme_value_min_score, int s_grading_scheme_value_max_score, string s_grading_scheme_value_grade, int s_grading_scheme_value_min_num, int s_grading_scheme_value_max_num, string s_grading_scheme_value_gpa, string s_grading_scheme_value_descriptior, string s_grading_scheme_value_qualification, string s_grading_scheme_value_pass_status_id_fk, DataTable dtGradingscheme)
         {
             // Add GradingScheme function
             
@@ -189,11 +189,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                     txtId.Text = getSingleGradingSchemes.s_grading_scheme_value_id + "_copy";
                     txtName.Text = getSingleGradingSchemes.s_grading_scheme_value_name;
                     txtDescription.InnerText = getSingleGradingSchemes.s_grading_scheme_value_description;
-                    txtMinScore_InPercentage.Text = getSingleGradingSchemes.s_grading_scheme_value_min_score;
+                    txtMinScore_InPercentage.Text = Convert.ToString(getSingleGradingSchemes.s_grading_scheme_value_min_score);
                     txtMaxScore_InPercentage.Text = Convert.ToString(getSingleGradingSchemes.s_grading_scheme_value_max_score);
                     txtGrade.Text = getSingleGradingSchemes.s_grading_scheme_value_grade;
-                    txtMinScore_InNumbers.Text = getSingleGradingSchemes.s_grading_scheme_value_min_num;
-                    txtMaxScore_InNumbers.Text = getSingleGradingSchemes.s_grading_scheme_value_max_num;
+                    txtMinScore_InNumbers.Text = Convert.ToString(getSingleGradingSchemes.s_grading_scheme_value_min_num);
+                    txtMaxScore_InNumbers.Text = Convert.ToString(getSingleGradingSchemes.s_grading_scheme_value_max_num);
                     txtGpa.Text = getSingleGradingSchemes.s_grading_scheme_value_gpa;
                     txtDescriptor.Text = getSingleGradingSchemes.s_grading_scheme_value_descriptior;
                     txtQualification.Text = getSingleGradingSchemes.s_grading_scheme_value_qualification;

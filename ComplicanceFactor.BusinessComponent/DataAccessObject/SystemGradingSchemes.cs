@@ -93,11 +93,11 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_grading_scheme_system_id_fk { get; set; }
         public string s_grading_scheme_value_name { get; set; }
         public string s_grading_scheme_value_description { get; set; }
-        public string s_grading_scheme_value_min_score { get; set; }
-        public Int32 s_grading_scheme_value_max_score { get; set; }
+        public Int16 s_grading_scheme_value_min_score { get; set; }
+        public Int16 s_grading_scheme_value_max_score { get; set; }
         public string s_grading_scheme_value_grade { get; set; }
-        public string s_grading_scheme_value_min_num { get; set; }
-        public string s_grading_scheme_value_max_num { get; set; }
+        public Int16 s_grading_scheme_value_min_num { get; set; }
+        public Int16 s_grading_scheme_value_max_num { get; set; }
         public string s_grading_scheme_value_gpa { get; set; }
         public string s_grading_scheme_value_descriptior { get; set; }
         public string s_grading_scheme_value_qualification { get; set; }

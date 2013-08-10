@@ -15,10 +15,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack)  
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Manage Assignment Groups" + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_manage_assignment_groups_text") + "</a>";
                 //Get Search Result
                 SearchResult();
                 //Bind Status

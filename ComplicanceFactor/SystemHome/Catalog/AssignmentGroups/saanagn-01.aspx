@@ -226,7 +226,7 @@
                                                 &nbsp;
                                             </td>
                                           <td style="text-align:right">
-                                                Value(s):
+                                                 <%=LocalResources.GetLabel("app_values_text")%>:
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -238,7 +238,7 @@
                                                 <%--<input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
                                             class="deleteParam cursor_hand" />--%>
                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
-                                                     CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
+                                                     CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                             </td>
                                             <td>
                                                 &nbsp;
@@ -249,7 +249,7 @@
                                                 &nbsp;
                                             </td>
                                             <td colspan="8">
-                                                --and--
+                                                --<%=LocalResources.GetLabel("app_and_text")%>:--
                                             </td>
                                         </tr>
                                     </table>
@@ -265,10 +265,10 @@
                 <tr>
                     <td style="padding-left: 80px;">
                         <asp:Button ID="btnAddNewParameters" ValidationGroup="saanagn" CssClass="cursor_hand"
-                            runat="server" Text="Add New Parameter" OnClick="btnAddNewParameters_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" OnClick="btnAddNewParameters_Click" />
                     </td>
                     <td style="padding-left: 450px;">
-                        <input type="button" id="btnpReviewAssignmentGroup" value='Preview Assignment Group'
+                        <input type="button" id="btnpReviewAssignmentGroup" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_assignment_group_button_text %>" />'
                             class="cursor_hand" />
                     </td>
                 </tr>

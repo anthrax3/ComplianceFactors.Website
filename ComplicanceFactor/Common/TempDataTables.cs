@@ -1364,14 +1364,14 @@ namespace ComplicanceFactor.Common
             
             //s_grading_scheme_value_min_score
             dtGradingSchemeValuesColumn = new DataColumn();
-            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.Int16");
             dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_min_score";
             dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
 
 
             /// s_grading_scheme_value_max_score
             dtGradingSchemeValuesColumn = new DataColumn();
-            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.Int16");
             dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_max_score";
             dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
 
@@ -1383,14 +1383,14 @@ namespace ComplicanceFactor.Common
 
             //s_grading_scheme_value_min_num
             dtGradingSchemeValuesColumn = new DataColumn();
-            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.Int16");
             dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_min_num";
             dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
 
 
             //s_grading_scheme_value_max_num
             dtGradingSchemeValuesColumn = new DataColumn();
-            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.String");
+            dtGradingSchemeValuesColumn.DataType = Type.GetType("System.Int16");
             dtGradingSchemeValuesColumn.ColumnName = "s_grading_scheme_value_max_num";
             dtGradingSchemeValues.Columns.Add(dtGradingSchemeValuesColumn);
 

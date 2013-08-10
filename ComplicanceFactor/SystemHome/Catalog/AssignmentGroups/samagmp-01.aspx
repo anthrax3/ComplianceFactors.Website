@@ -98,10 +98,10 @@
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" onrowcommand="gvsearchDetails_RowCommand">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="Assignment Group ID" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_group_id_pk"
+                        HeaderText="<%$ LabelResourceExpression: app_assignment_group_id_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_group_id_pk"
                         ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="Assignment Group Name" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_group_name"
+                        HeaderText="<%$ LabelResourceExpression: app_assignment_group_name_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_group_name"
                         ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center"
@@ -211,7 +211,7 @@
             <table>
                 <tr>
                     <td colspan="2" class="btnsave_new_user_td">
-                        <asp:Button ID="btnAddNewCurriculum" CssClass="cursor_hand" runat="server" Text="Create New AssignmentGroups"
+                        <asp:Button ID="btnAddNewCurriculum" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_create_new_assignment_groups_button_text %>"
                             OnClick="btnAddNewCurriculum_Click" />
                     </td>
                     <td>

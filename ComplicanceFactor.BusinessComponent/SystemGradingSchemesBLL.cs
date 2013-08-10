@@ -514,11 +514,11 @@ namespace ComplicanceFactor.BusinessComponent
                 gradingSchemes.s_grading_scheme_system_id_fk = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_system_id_fk"].ToString();
                 gradingSchemes.s_grading_scheme_value_name = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_name"].ToString();
                 gradingSchemes.s_grading_scheme_value_description = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_description"].ToString();
-                gradingSchemes.s_grading_scheme_value_min_score = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_min_score"].ToString();
-                gradingSchemes.s_grading_scheme_value_max_score = Convert.ToInt32(dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_max_score"].ToString());
+                gradingSchemes.s_grading_scheme_value_min_score = Convert.ToInt16(dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_min_score"].ToString());
+                gradingSchemes.s_grading_scheme_value_max_score = Convert.ToInt16(dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_max_score"].ToString());
                 gradingSchemes.s_grading_scheme_value_grade = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_grade"].ToString();
-                gradingSchemes.s_grading_scheme_value_min_num = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_min_num"].ToString();
-                gradingSchemes.s_grading_scheme_value_max_num = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_max_num"].ToString();
+                gradingSchemes.s_grading_scheme_value_min_num = Convert.ToInt16(dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_min_num"].ToString());
+                gradingSchemes.s_grading_scheme_value_max_num = Convert.ToInt16(dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_max_num"].ToString());
                 gradingSchemes.s_grading_scheme_value_gpa = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_gpa"].ToString();
                 gradingSchemes.s_grading_scheme_value_descriptior = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_descriptior"].ToString();
                 gradingSchemes.s_grading_scheme_value_qualification = dtGetSingletGradingSchemes.Rows[0]["s_grading_scheme_value_qualification"].ToString();

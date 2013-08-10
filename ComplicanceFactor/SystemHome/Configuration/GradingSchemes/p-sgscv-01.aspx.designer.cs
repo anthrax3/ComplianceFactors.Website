@@ -58,6 +58,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revMinPercentage;
         
         /// <summary>
+        /// rfvMinPercentage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMinPercentage;
+        
+        /// <summary>
+        /// cvValidateMinMaxPercentage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateMinMaxPercentage;
+        
+        /// <summary>
         /// txtMinScore_InPercentage control.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revMaxPercentage;
+        
+        /// <summary>
+        /// rfvMaxPercentage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMaxPercentage;
         
         /// <summary>
         /// txtMaxScore_InPercentage control.
@@ -103,6 +130,24 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revMinNumeric;
         
         /// <summary>
+        /// rfvMinNumeric control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMinNumeric;
+        
+        /// <summary>
+        /// cvValidateMinMaxNumeric control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateMinMaxNumeric;
+        
+        /// <summary>
         /// txtMinScore_InNumbers control.
         /// </summary>
         /// <remarks>
@@ -119,6 +164,15 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revMaxNumeric;
+        
+        /// <summary>
+        /// rfvMaxNumeric control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMaxNumeric;
         
         /// <summary>
         /// txtMaxScore_InNumbers control.
