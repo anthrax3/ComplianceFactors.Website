@@ -482,5 +482,37 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        /// <summary>
+        /// Get Assignment Element
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetAssignmentElement()
+        {
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_assignment_element");
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        /// <summary>
+        /// Get Assignment Operator
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetAssignmentOperator()
+        {
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_assignment_operator");
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

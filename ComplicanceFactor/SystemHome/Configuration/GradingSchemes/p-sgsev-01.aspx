@@ -111,7 +111,7 @@
                         <asp:TextBox ID="txtMinScore_InPercentage" runat="server" CssClass="textbox_50 allownumeric"></asp:TextBox>%
                     </td>
                     <td class="text_align">
-                        <%=LocalResources.GetLabel("app_maximum_score_text")%>:
+                        <%=LocalResources.GetLabel("app_maximum_percent_score_text")%>:
                         <asp:RegularExpressionValidator ID="revMaxPercentage" runat="server" ErrorMessage="Max Percentage Score between 1 to 100 only."
                             ControlToValidate="txtMaxScore_InPercentage" ValidationExpression="^(100|[1-9][0-9]?)$"
                             ValidationGroup="sgsev">&nbsp;

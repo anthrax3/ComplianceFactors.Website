@@ -383,6 +383,7 @@
     <Content Include="SystemHome\Catalog\Approvals\samamp-01.aspx" />
     <Content Include="SystemHome\Catalog\Approvals\samasrp-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentGroups\Popup\p-sagp-01.aspx" />
+    <Content Include="SystemHome\Catalog\AssignmentGroups\Popup\p-sapag-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentGroups\saanagn-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentGroups\saeag-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentGroups\samagmp-01.aspx" />
@@ -2032,6 +2033,13 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\AssignmentGroups\Popup\p-sagp-01.aspx.designer.cs">
       <DependentUpon>p-sagp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\Popup\p-sapag-01.aspx.cs">
+      <DependentUpon>p-sapag-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\Popup\p-sapag-01.aspx.designer.cs">
+      <DependentUpon>p-sapag-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\AssignmentGroups\saanagn-01.aspx.cs">
       <DependentUpon>saanagn-01.aspx</DependentUpon>

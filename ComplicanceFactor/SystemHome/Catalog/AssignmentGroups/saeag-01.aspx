@@ -199,35 +199,33 @@
                         OnRowCommand="gvAssignmentGroupParameters_RowCommand">
                         <RowStyle CssClass="record"></RowStyle>
                         <Columns>
-                            <asp:TemplateField>
+                           <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
                                 <ItemTemplate>
-                                    <table>
+                                      <table width="100%">
                                         <tr>
-                                            <td>
+                                            <td style="width: 30%">
                                                 <%# Eval("u_assignment_group_param_element_id_fk")%>
                                             </td>
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td>
-                                                <asp:DropDownList ID="ddlOperator" runat="server">
-                                                    <asp:ListItem>Matches</asp:ListItem>
-                                                    <asp:ListItem>Not Matches</asp:ListItem>
+                                             <td style="width: 40%">
+                                                <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search" DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td style="text-align:right">
+                                            <td style="text-align:right;width: 40%;">
                                                 <%=LocalResources.GetLabel("app_values_text")%>:
                                             </td>
-                                            <td>
+                                            <td class="gridview_row_width_1">
                                                 <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
                                             </td>
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td>
+                                           <td class="gridview_row_width_1">
                                                 <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
                                                     class="deleteParam cursor_hand" />--%>
                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
@@ -241,7 +239,7 @@
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td colspan="8">
+                                            <td colspan="8" style="width: 40%;">
                                                  --<%=LocalResources.GetLabel("app_and_text")%>:--
                                             </td>
                                         </tr>

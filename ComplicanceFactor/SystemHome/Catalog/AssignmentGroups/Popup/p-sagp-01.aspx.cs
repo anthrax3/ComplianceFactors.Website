@@ -16,12 +16,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
+            {                
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     // Get assignment groups id
-                    groupId = Request.QueryString["id"].ToString();
+                    groupId = Request.QueryString["id"].ToString();      
                 }
+                //Bind Elementd
+                ddlElement.DataSource = SystemAssignmentGroupBLL.GetAssignmentElement();
+                ddlElement.DataBind();
+                //Bind Operator
+                ddlOperator.DataSource = SystemAssignmentGroupBLL.GetAssignmentOperator();
+                ddlOperator.DataBind();
             }
         }
 
@@ -31,10 +37,25 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             divError.Style.Add("display", "none");
             divSuccess.Style.Add("display", "none");
             SystemAssingnmentGroup assignparam = new SystemAssingnmentGroup();
+            /// Hash encryption for username and password
+            /// </summary>
+            HashEncryption encHash = new HashEncryption();
             assignparam.u_assignment_group_id_fk = groupId;
+            if (ddlElement.SelectedValue == "u_username_enc")
+            {
+                string[] usernames = txtValues.Text.Split(',');
+                for (int i = 0; i < usernames.Length; i++)
+                {
+                    assignparam.u_assignment_group_param_values += encHash.GenerateHashvalue(usernames[i], true) + ",";
+                }
+                assignparam.u_assignment_group_param_values = assignparam.u_assignment_group_param_values.TrimEnd(',');
+            }
+            else
+            {
+                assignparam.u_assignment_group_param_values = txtValues.Text;
+            }
             assignparam.u_assignment_group_param_element_id_fk = ddlElement.SelectedValue;
-            assignparam.u_assignment_group_param_operator_id_fk = ddlOperator.SelectedValue;
-            assignparam.u_assignment_group_param_values = txtValues.Text;
+            assignparam.u_assignment_group_param_operator_id_fk = ddlOperator.SelectedValue; 
             int error = SystemAssignmentGroupBLL.AddParameter(assignparam);
             if (error != -1)
             {

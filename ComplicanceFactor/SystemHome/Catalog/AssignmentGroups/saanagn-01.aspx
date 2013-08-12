@@ -217,9 +217,7 @@
                                                 &nbsp;
                                             </td>
                                             <td>
-                                                <asp:DropDownList ID="ddlOperator" runat="server">
-                                                    <asp:ListItem>Matches</asp:ListItem>
-                                                    <asp:ListItem>Not Matches</asp:ListItem>
+                                                <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search" DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
                                                 </asp:DropDownList>
                                             </td>
                                             <td>

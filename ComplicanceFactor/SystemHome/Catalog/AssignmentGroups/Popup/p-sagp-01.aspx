@@ -17,53 +17,51 @@
             overflow: hidden;
         }
     </style>
-<script type="text/javascript">
-    function HideMsg() {
-        $("[id*=divSuccess]").fadeOut(500);
-    }
-</script>
+    <script type="text/javascript">
+        function HideMsg() {
+            $("[id*=divSuccess]").fadeOut(500);
+        }
+    </script>
     <div id="content">
         <asp:ValidationSummary ID="vs_p_sagp" ValidationGroup="sagp" class="validation_summary_error"
             runat="server" />
         <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
         <div class="div_header_800">
-           <%=LocalResources.GetLabel("app_add_parameter_text")%>:
+            <%=LocalResources.GetLabel("app_add_parameter_text")%>:
         </div>
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLabel("app_element_text")%>
+                        <%=LocalResources.GetLabel("app_element_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlElement" runat="server" CssClass="ddl_user_advanced_search">
-                            <asp:ListItem>UserName</asp:ListItem>
-                            <asp:ListItem>FirstName</asp:ListItem>
+                        <asp:DropDownList ID="ddlElement" runat="server" CssClass="ddl_user_advanced_search"
+                            DataTextField="e_assignment_element_name" DataValueField="e_assignment_element_id">
                         </asp:DropDownList>
                     </td>
                     <td>
                         &nbsp;
                     </td>
                     <td>
-                        <%=LocalResources.GetLabel("app_operator_text")%>
+                        <%=LocalResources.GetLabel("app_operator_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlOperator" runat="server">
-                            <asp:ListItem>Matches</asp:ListItem>
-                            <asp:ListItem>Not Matches</asp:ListItem>
+                        <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"
+                            DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
                         </asp:DropDownList>
                     </td>
                     <td>
                         &nbsp;
-                    </td>
-                    <td>
-                         <%=LocalResources.GetLabel("app_values_text")%>:
                         <asp:RequiredFieldValidator ID="rfvValues" runat="server" ValidationGroup="sagp"
                             ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtValues" runat="server" CssClass="textbox_long"></asp:TextBox>
+                        <%=LocalResources.GetLabel("app_values_text")%>:                        
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtValues" runat="server" CssClass="textbox_long"></asp:TextBox>                                
                     </td>
                 </tr>
                 <tr>
@@ -79,14 +77,13 @@
                         <asp:Button ID="btnAddParameter" runat="server" ValidationGroup="sagp" Text="<%$ LabelResourceExpression: app_save_and_add_new_parameter_button_text %>"
                             OnClick="btnAddParameter_Click" />
                     </td>
-                    <td colspan="6">
+                    <td colspan="5">
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" 
-                            
-                            OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();" 
-                            onclick="btnCancel_Click"/>
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
+                            OnClick="btnCancel_Click" />
                     </td>
                 </tr>
             </table>

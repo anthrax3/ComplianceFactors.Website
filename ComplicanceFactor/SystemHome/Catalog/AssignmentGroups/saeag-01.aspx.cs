@@ -285,7 +285,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
 
             }
         }
-
         private void BindAssignmentParams()
         {
             dtAssignmentParam = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
@@ -326,11 +325,26 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             {
                 DropDownList ddlOperator = (DropDownList)e.Row.FindControl("ddlOperator");
                 TextBox txtValues = (TextBox)e.Row.FindControl("txtValues");
+                string element = DataBinder.Eval(e.Row.DataItem, "u_assignment_group_param_element_id_fk").ToString();
+                ddlOperator.DataSource = SystemAssignmentGroupBLL.GetAssignmentOperator();
+                ddlOperator.DataBind();
                 ddlOperator.SelectedValue = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][1].ToString();
-                txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();                
+                HashEncryption encHash = new HashEncryption();
+                if (element == "u_username_enc")
+                {
+                    string[] usernames = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString().Split(',');
+                    for (int i = 0; i < usernames.Length; i++)
+                    {
+                        txtValues.Text += encHash.Decrypt(usernames[i], true) + ",";
+                    }
+                    txtValues.Text = txtValues.Text.TrimEnd(',');
+                }
+                else
+                {
+                    txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();
+                }
             }
         }
-
         private void UpdateAssignmentParameter()
         {
             foreach (GridViewRow row in gvAssignmentGroupParameters.Rows)
@@ -345,7 +359,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 dtAssignmentParam.AcceptChanges();
             }
         }
-
         protected void gvAssignmentGroupParameters_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName.Equals("Remove"))
@@ -354,8 +367,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                     BindAssignmentParams();
                    //using jquery hide the '-or-' in last row                   
                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
-            }
-                
+            }                
         }
         //For Reset
         private void ResetAssignmentGroups()
