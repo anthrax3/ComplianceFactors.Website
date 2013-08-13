@@ -98,7 +98,7 @@ namespace ComplicanceFactor
         {
             //TODO: Set Stored Procedure.
             string dtTime = String.Format("{0:HH:mm}", DateTime.Now);
-            dtTime = "11:50";
+            //dtTime = "11:50";
             DateTime dtCurrentTime = DateTime.Now;
             string date = dtCurrentTime.ToShortDateString();
 

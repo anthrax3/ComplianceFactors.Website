@@ -6759,6 +6759,47 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static DataTable AssignmentRule_Group
+        {
+            get
+            {
+                if (HttpContext.Current.Session["AssignmentRule_Group"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["AssignmentRule_Group"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["AssignmentRule_Group"] = value;
+            }
+        }
+
+        public static DataTable Reset_AssignmentRule_Group
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_AssignmentRule_Group"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Reset_AssignmentRule_Group"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_AssignmentRule_Group"] = value;
+            }
+        }
+
         public static void clearsession()
         {
             sessionid = "";

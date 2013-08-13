@@ -70,36 +70,39 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".addGroup").fancybox({
-                'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
-                'showCloseButton': true,
-                'scrolling': 'yes',
-                'autoScale': false,
-                'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false} },
-                'width': 733,
-                'height': 200,
-                'margin': 0,
-                'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': 'Popup/p-saargs-01.aspx',
-                'onComplete': function () {
-                    $.fancybox.showActivity();
-                    $('#fancybox-frame').load(function () {
-                        $.fancybox.hideActivity();
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
+            $(".addGroup").click(function () {
+                var hdnValue = document.getElementById('<%= hdnEditAssignmentRule.ClientID %>');
+                $(".addGroup").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 733,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'Popup/p-saargs-01.aspx?ruleId=' + hdnValue.value,
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
 
-                        })
-                    });
+                            })
+                        });
 
-                }
+                    }
+                });
             });
         });
     </script>
@@ -136,6 +139,50 @@
                 return false;
             });
         });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deleteGroup").click(function () {
+
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                // Ask user's confirmation before delete records
+                if (confirm("Are you sure?")) {
+
+                    $.ajax({
+                        type: "POST",
+                        //sasw-01.aspx is the page name and delete locale is the server side method to delete records in sacatvml-01.aspx.cs
+                        url: "saear-01.aspx/DeleteGroup",
+                        //Pass the selected record id
+                        data: "{'args': '" + record_id + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
+                            // Do some animation effect
+                            tr_id.fadeOut(500, function () {
+                                //Remove GridView row
+                                tr_id.remove();
+
+                            });
+                        }
+                    });
+
+                }
+                return false;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function lastCatalogItemsrow() {
+            $('#<%=gvCatalogItems.ClientID %> tr:last').eq(-1).css("display", "none");
+        }
+    </script>
+    <script type="text/javascript">
+        function lastGroupItemsrow() {
+            $('#<%=gvAssignmentGroups.ClientID %> tr:last').eq(-1).css("display", "none");
+        }
     </script>
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>
@@ -287,6 +334,40 @@
                 <br />
                 <div class="div_header_long">
                     Assignment Rule Group(s):
+                </div>
+                <div>
+                    <asp:GridView ID="gvAssignmentGroups" AutoGenerateColumns="false" RowStyle-CssClass="record"
+                        CssClass=" grid_870" ShowHeader="false" ShowFooter="false" GridLines="None" DataKeyNames="u_assignment_rule_group_system_id_pk"
+                        runat="server">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <table>
+                                        <tr>
+                                            <td class="width_450 align_left">
+                                                <asp:Label ID="lblGroupName" runat="server" Style="text-align: left;" Text='<%#Eval("u_assignment_group_name")  + "(" + Eval("u_assignment_group_id_pk") +")"%>'></asp:Label>
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                <input type="button" id='<%# Eval("u_assignment_rule_group_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                    class="deleteGroup cursor_hand" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="align_center">
+                                                -- and --
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Left" CssClass="gridview_row_width_4_1"></ItemStyle>
+                            </asp:TemplateField>
+                        </Columns>
+                        <RowStyle CssClass="record"></RowStyle>
+                    </asp:GridView>
+                    <br />
                 </div>
                 <br />
                 <div>

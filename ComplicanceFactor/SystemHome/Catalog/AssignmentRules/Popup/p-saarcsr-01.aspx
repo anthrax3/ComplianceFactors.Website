@@ -15,7 +15,7 @@
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 320px;
+            height: 420px;
         }
     </style>
     <script type="text/javascript">

@@ -65,6 +65,40 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".deleteGroup").click(function () {
+
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                // Ask user's confirmation before delete records
+                if (confirm("Are you sure?")) {
+
+                    $.ajax({
+                        type: "POST",
+                        //sasw-01.aspx is the page name and delete locale is the server side method to delete records in sacatvml-01.aspx.cs
+                        url: "saanarn-01.aspx/DeleteGroup",
+                        //Pass the selected record id
+                        data: "{'args': '" + record_id + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
+                            // Do some animation effect
+                            tr_id.fadeOut(500, function () {
+                                //Remove GridView row
+                                tr_id.remove();
+
+                            });
+                        }
+                    });
+
+                }
+                return false;
+            });
+        });
+    </script>
     <asp:HiddenField ID="hdnIsDeleteCatalog" runat="server" />
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanarn" runat="server"
         ValidationGroup="saanarn"></asp:ValidationSummary>
@@ -200,8 +234,7 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Button ID="btnCatalogItems" runat="server" Text="Add New Item(s)" 
-                                onclick="btnCatalogItems_Click" />
+                            <asp:Button ID="btnCatalogItems" runat="server" Text="Add New Item(s)" OnClick="btnCatalogItems_Click" />
                         </td>
                     </tr>
                 </table>
@@ -210,13 +243,46 @@
             <div class="div_header_long">
                 Assignment Rule Catalog Item(s):
             </div>
+            <div>
+                <asp:GridView ID="gvAssignmentGroups" AutoGenerateColumns="false" RowStyle-CssClass="record"
+                    CssClass=" grid_870" ShowHeader="false" ShowFooter="false" GridLines="None" DataKeyNames="u_assignment_rule_group_system_id_pk"
+                    runat="server">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <table>
+                                    <tr>
+                                        <td class="width_450 align_left">
+                                            <asp:Label ID="lblGroupName" runat="server" Style="text-align: left;" Text='<%#Eval("u_assignment_group_name")  + "(" + Eval("u_assignment_group_id_pk") +")"%>'></asp:Label>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            <input type="button" id='<%# Eval("u_assignment_rule_group_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                class="deleteGroup cursor_hand" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="align_center">
+                                            -- and --
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Left" CssClass="gridview_row_width_4_1"></ItemStyle>
+                        </asp:TemplateField>
+                    </Columns>
+                    <RowStyle CssClass="record"></RowStyle>
+                </asp:GridView>
+                <br />
+            </div>
             <br />
             <div>
                 <table>
                     <tr>
                         <td>
-                            <asp:Button ID="btnNewGroups" runat="server" Text="Add New Group(s)" 
-                                onclick="btnNewGroups_Click" />
+                            <asp:Button ID="btnNewGroups" runat="server" Text="Add New Group(s)" OnClick="btnNewGroups_Click" />
                         </td>
                     </tr>
                 </table>

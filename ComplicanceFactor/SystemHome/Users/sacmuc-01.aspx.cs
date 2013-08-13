@@ -105,12 +105,12 @@ namespace ComplicanceFactor
         {
             try
             {
-                DataSet ds = UserBLL.MergeUser(user1, user2);
-                //if (result == 0)
-                //{
+                int result = UserBLL.MergeUser(user1, user2);
+                if (result == 0)
+                {
                     string user2Username_enc = gvUser2.DataKeys[0].Values[0].ToString();
                     Response.Redirect("~/SystemHome/Users/saeu-01.aspx?id=" + SecurityCenter.EncryptText(user2Username_enc) + "&succ=" + SecurityCenter.EncryptText("merge"));
-                //}
+                }
             }
             catch (Exception ex)
             {

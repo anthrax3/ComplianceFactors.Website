@@ -53,7 +53,8 @@
                 <table class="table_td_300">
                     <tr>
                         <td>
-                            <asp:Button ID="btnGoSearch" runat="server" Text="Go Search" />
+                            <asp:Button ID="btnGoSearch" runat="server" Text="Go Search" 
+                                onclick="btnGoSearch_Click" />
                         </td>
                         <td>
                             <asp:Button ID="btnReset" OnClientClick="return resetall();" runat="server" Text="Reset" />

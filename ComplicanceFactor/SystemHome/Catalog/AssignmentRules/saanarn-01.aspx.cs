@@ -16,6 +16,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
     {
         private static string copyassignmentRule;
         private static DataTable dtTempCatalogItem;
+        private static DataTable dtTempGroup;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -164,6 +165,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 ConvertDataTables cv = new ConvertDataTables();
                 int result = SystemAssignmentRuleBLL.InsertCatalogItemForRuleFromCopy(cv.ConvertDataTableToXml(dtTempCatalogItem), createAssignmentRules.u_assignment_rules_system_id_pk);
 
+                int groupResult = SystemAssignmentRuleBLL.InsertGroupForRule(cv.ConvertDataTableToXml(dtTempGroup), createAssignmentRules.u_assignment_rules_system_id_pk);
+
+
+
                 //Add Groups
             }
             if (error != -2)
@@ -280,8 +285,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 
             dtTempCatalogItem = SystemAssignmentRuleBLL.GetCatalogItems(assignmentRuleId);
 
+            dtTempGroup = SystemAssignmentRuleBLL.GetAssignmentGroups(assignmentRuleId);
+
             gvCatalogItems.DataSource = dtTempCatalogItem;
             gvCatalogItems.DataBind();
+
+            gvAssignmentGroups.DataSource = dtTempGroup;
+            gvAssignmentGroups.DataBind();
 
         }
 
@@ -296,6 +306,36 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 foreach (var row in rows)
                     row.Delete();
                 dtTempCatalogItem.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saanarn-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saanarn-01", ex.Message);
+                    }
+                }
+            }
+        }
+
+        //Delete Group
+        [System.Web.Services.WebMethod]
+        public static void DeleteGroup(string args)
+        {
+            try
+            {
+                //Delete previous selected group
+                var rows = dtTempGroup.Select("u_assignment_rule_group_system_id_pk= '" + args.Trim() + "'");
+                foreach (var row in rows)
+                    row.Delete();
+                dtTempGroup.AcceptChanges();
             }
             catch (Exception ex)
             {

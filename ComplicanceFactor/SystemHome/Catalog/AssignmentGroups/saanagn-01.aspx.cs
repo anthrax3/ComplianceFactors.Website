@@ -331,25 +331,25 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 string u_assignment_group_param_system_id_pk = gvAssignmentGroupParameters.DataKeys[row.RowIndex][0].ToString();
                 var rows = dtAssignmentParam.Select("u_assignment_group_param_system_id_pk='" + u_assignment_group_param_system_id_pk + "'");
                 var indexRow = dtAssignmentParam.Rows.IndexOf(rows[0]);
-
                 dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_operator_id_fk"] = ddlOperator.SelectedValue;
                 if (dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "u_username_enc")
                 {
                     /// Hash encryption for username and password
                     /// </summary>
                     HashEncryption encHash = new HashEncryption();
-
                     string[] usernames = txtValues.Text.Split(',');
+                    string encryptstring = string.Empty;
                     for (int i = 0; i < usernames.Length; i++)
                     {
-                        dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] += encHash.GenerateHashvalue(usernames[i], true) + ",";
+                        encryptstring += (encHash.GenerateHashvalue(usernames[i], true) + ",").ToString();
+
                     }
-                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"].ToString().TrimEnd(',');
+                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = encryptstring.TrimEnd(',');
                 }
                 else
                 {
                     dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = txtValues.Text;
-                }           
+                }          
                 dtAssignmentParam.Rows[indexRow]["u_assignment_group_id_fk"] = u_assignment_group_id_fk;
                 dtAssignmentParam.AcceptChanges();
             }

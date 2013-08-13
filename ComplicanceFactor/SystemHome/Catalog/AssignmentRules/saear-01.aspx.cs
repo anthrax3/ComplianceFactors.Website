@@ -26,6 +26,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 
 
                 SessionWrapper.AssignmentRule_CatalogItem = TempDataTables.TempAssignmentRuleCatalogItem();
+                SessionWrapper.AssignmentRule_Group = TempDataTables.TempAssignmentRuleGroup();
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     //TO-DO SHOW THE MESSAGE WHETHER 'SUCCESSFULLY INSERTED OR UPDATED IN A MESSAGE DIV'
@@ -42,6 +43,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 ddlStatus.DataBind();
 
                 SessionWrapper.Reset_AssignmentRule_CatalogItem = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
+                SessionWrapper.Reset_AssignmentRule_Group = SystemAssignmentRuleBLL.GetAssignmentGroups(editassignmentRuleId);
 
                 PopulateAssignmentRule(editassignmentRuleId);
 
@@ -53,12 +55,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 {
 
                 }
-            }
-            //if (SessionWrapper.AssignmentRule_CatalogItem.Rows.Count > 0)
-            //{
+            }            
             gvCatalogItems.DataSource = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
             gvCatalogItems.DataBind();
-            //}
+           
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CatalogItemsgroups", "lastCatalogItemsrow();", true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastGroupItemsrow();", true);
+            
         }
         /// <summary>
         /// PopulateAssignmentRule
@@ -163,6 +166,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 
             gvCatalogItems.DataSource = SystemAssignmentRuleBLL.GetCatalogItems(assignmentRuleId);
             gvCatalogItems.DataBind();
+
+            gvAssignmentGroups.DataSource = SystemAssignmentRuleBLL.GetAssignmentGroups(assignmentRuleId);
+            gvAssignmentGroups.DataBind();
+
+
 
             //SessionWrapper.AssignmentRule_CatalogItem = SystemAssignmentRuleBLL.GetCatalogItems(assignmentRuleId);
         }
@@ -332,6 +340,38 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 
         }
 
+        //Delete Group
+        [System.Web.Services.WebMethod]
+        public static void DeleteGroup(string args)
+        {
+            try
+            {
+                int result = SystemAssignmentRuleBLL.DeleteGroup(args.Trim());
+
+                //Delete previous selected course
+                //var rows = SessionWrapper.AssignmentRule_CatalogItem.Select("u_assignment_rule_item_system_id_pk= '" + args.Trim() + "'");
+                //foreach (var row in rows)
+                //    row.Delete();
+                //SessionWrapper.AssignmentRule_CatalogItem.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saear-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saear-01", ex.Message);
+                    }
+                }
+            }
+        }
+
         protected void btnHeaderReset_Click(object sender, EventArgs e)
         {
             Reset();
@@ -347,9 +387,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
         private void Reset()
         {
             ConvertDataTables cv = new ConvertDataTables();
+
             try
             {
                 int result = SystemAssignmentRuleBLL.ResetCatalogItemForRule(cv.ConvertDataTableToXml(SessionWrapper.Reset_AssignmentRule_CatalogItem), editassignmentRuleId);
+
+                int groupResult = SystemAssignmentRuleBLL.ResetGroupsForRule(cv.ConvertDataTableToXml(SessionWrapper.Reset_AssignmentRule_Group), editassignmentRuleId);
+
                 Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)

@@ -113,7 +113,7 @@
                             <%=LocalResources.GetLabel("app_manage_assignment_groups_text")%></a>
                     </td>
                     <td>
-                        <a href="#">
+                        <a href="AssignmentRules/samarmp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_assignment_rules_text")%></a>
                     </td>
                     <td>

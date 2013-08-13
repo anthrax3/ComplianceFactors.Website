@@ -347,6 +347,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
         }
         private void UpdateAssignmentParameter()
         {
+           
             foreach (GridViewRow row in gvAssignmentGroupParameters.Rows)
             {
                 DropDownList ddlOperator = (DropDownList)row.FindControl("ddlOperator");
@@ -355,7 +356,25 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 var rows = dtAssignmentParam.Select("u_assignment_group_param_system_id_pk='" + u_assignment_group_param_system_id_pk + "'");
                 var indexRow = dtAssignmentParam.Rows.IndexOf(rows[0]);
                 dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_operator_id_fk"] = ddlOperator.SelectedValue;
-                dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = txtValues.Text;
+                
+                if (dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "u_username_enc")
+                {
+                    /// Hash encryption for username and password
+                    /// </summary>
+                    HashEncryption encHash = new HashEncryption();
+                    string[] usernames = txtValues.Text.Split(',');
+                    string encryptstring=string.Empty;
+                    for (int i = 0; i < usernames.Length; i++)
+                    {
+                        encryptstring += (encHash.GenerateHashvalue(usernames[i], true) + ",").ToString();
+                        
+                    }
+                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = encryptstring.TrimEnd(',');                    
+                }
+                else
+                {
+                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = txtValues.Text;
+                } 
                 dtAssignmentParam.AcceptChanges();
             }
         }

@@ -429,6 +429,21 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static int ResetGroupsForRule(string assignment_rule_group, string u_assignment_rule_id_fk)
+        {
+            Hashtable htResetGroups = new Hashtable();
+            htResetGroups.Add("@assignment_rule_group", assignment_rule_group);
+            htResetGroups.Add("@u_assignment_rule_id_fk", u_assignment_rule_id_fk);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_reset_assignment_rule_group", htResetGroups);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static int InsertCatalogItemForRuleFromCopy(string assignment_rule_catalog_item, string u_assignment_rule_id_fk)
         {
             Hashtable htInsertCatalogItems = new Hashtable();
@@ -458,5 +473,66 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static int DeleteGroup(string u_assignment_rule_group_system_id_pk)
+        {
+            Hashtable htInsertCatalogItems = new Hashtable();
+            htInsertCatalogItems.Add("@u_assignment_rule_group_system_id_pk", u_assignment_rule_group_system_id_pk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_delete_assignment_group_catalog_item", htInsertCatalogItems);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable SearchGroups(SystemAssingnmentGroup group)
+        {
+            Hashtable htSearchGroup = new Hashtable();
+            htSearchGroup.Add("@u_assignment_group_id_pk",group.u_assignment_group_id_pk);
+            htSearchGroup.Add("@u_assignment_group_name", group.u_assignment_group_name);
+
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_search_group_by_assignment_rule", htSearchGroup);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int InsertGroupForRule(string assignment_rule_group, string u_assignment_rule_id_fk)
+        {
+            Hashtable htInsertCatalogItems = new Hashtable();
+            htInsertCatalogItems.Add("@assignment_rule_group", assignment_rule_group);
+            htInsertCatalogItems.Add("@u_assignment_rule_id_fk", u_assignment_rule_id_fk);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_insert_assignment_rule_group", htInsertCatalogItems);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetAssignmentGroups(string u_assignment_rules_system_id_pk)
+        {
+            Hashtable htGetAssignmentGroups = new Hashtable();
+            htGetAssignmentGroups.Add("@u_assignment_rule_id_fk", u_assignment_rules_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_assignment_groups", htGetAssignmentGroups);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -351,11 +351,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules.Popup
             row = dtTempInstructor.NewRow();
             //row["c_instructor_id_fk"] = c_instructor_id_fk;
             row["u_assignment_rule_item_system_id_pk"] = Guid.NewGuid().ToString();
-            row["u_assignment_rule_item_id_fk"] = sysId;
+            if (type == "Course")
+            {
+                row["u_assignment_rule_item_id_fk"] = sysId;
+            }
+            else
+            {
+                row["u_assignment_rule_curriculum_item_id_fk"] = sysId;
+            }
             row["u_assignment_rule_id_fk"] = ruleId;           
             row["Id"] = Id;
             row["title"] = title;
             row["type"] = type;
+
             dtTempInstructor.Rows.Add(row);
 
         }

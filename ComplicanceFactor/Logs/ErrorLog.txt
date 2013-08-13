@@ -1,9 +1,2 @@
 ﻿
-08/10/2013 08:10 PM : sacmuc-01 : Thread was being aborted.
-
-08/10/2013 08:13 PM : sacmuc-01 : Thread was being aborted.
-
-08/10/2013 08:16 PM : sacmuc-01 : Thread was being aborted.
-
-08/10/2013 08:21 PM : sacmuc-01 : Thread was being aborted.
 
