@@ -415,7 +415,14 @@ namespace ComplicanceFactor.BusinessComponent
             htParameter.Add("@u_assignment_group_id_fk", addparam.u_assignment_group_id_fk);
             htParameter.Add("@u_assignment_group_param_element_id_fk", addparam.u_assignment_group_param_element_id_fk);
             htParameter.Add("@u_assignment_group_param_operator_id_fk", addparam.u_assignment_group_param_operator_id_fk);
-            htParameter.Add("@u_assignment_group_param_values", addparam.u_assignment_group_param_values);
+            if (!string.IsNullOrEmpty(addparam.u_assignment_group_param_values))
+            {
+                htParameter.Add("@u_assignment_group_param_values", addparam.u_assignment_group_param_values);
+            }
+            else
+            {
+                htParameter.Add("@u_assignment_group_param_values", DBNull.Value);
+            }
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_add_assignment_parameter", htParameter);
@@ -514,5 +521,34 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static DataTable GetAssignmentRuleUser(string u_assignment_group_system_id_pk)
+        {
+            Hashtable htUser = new Hashtable();
+            htUser.Add("@u_assignment_group_system_id_pk", u_assignment_group_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_get_assignment_group_dynamic_query", htUser);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static int InsertGroupUser(string u_assignment_group_id_fk, string assignment_group_user)
+        {
+            Hashtable htInsertUser = new Hashtable();
+            htInsertUser.Add("@u_assignment_group_id_fk", u_assignment_group_id_fk);
+            htInsertUser.Add("@assignment_group_user", assignment_group_user);
+            try
+            {
+                return DataProxy.FetchSPOutput("e_sp_insert_assignment_groups_users", htInsertUser);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

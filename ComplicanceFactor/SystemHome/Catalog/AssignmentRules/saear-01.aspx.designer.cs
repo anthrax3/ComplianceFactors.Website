@@ -31,6 +31,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// hdnEditAssignmentRule control.
         /// </summary>
         /// <remarks>
@@ -190,7 +199,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtTagetduedate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtTagetduedate;
+        
+        /// <summary>
+        /// ceDueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDueDate;
         
         /// <summary>
         /// txtTargetduedate control.
@@ -208,7 +226,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtDue;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtDue;
         
         /// <summary>
         /// txtDue control.

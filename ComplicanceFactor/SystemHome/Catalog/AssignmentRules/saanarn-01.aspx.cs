@@ -25,7 +25,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Create New Assignment Rule" + "</a>";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentRules/samarmp-01.aspx>" + "Manage Assignment Rule" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Create New Assignment Rule" + "</a>";
 
                 //Bind Status
                 ddlStatus.DataSource = SystemGradingSchemesBLL.GetStatus(SessionWrapper.CultureName, "saangsn-01");
@@ -34,16 +34,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 if (!string.IsNullOrEmpty(Request.QueryString["copy"]))
                 {
                     copyassignmentRule = SecurityCenter.DecryptText(Request.QueryString["copy"]);
-                    PopulateAssignmentRule(copyassignmentRule);                   
+                    PopulateAssignmentRule(copyassignmentRule);
                 }
             }
-            //if (hdnIsDeleteCatalog.Value == "0")
-            //{
-            //    gvCatalogItems.DataSource = dtTempCatalogItem;
-            //    gvCatalogItems.DataBind();
 
-            //    hdnIsDeleteCatalog.Value = "1";
-            //}
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CatalogItemsgroups", "lastCatalogItemsrow();", true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastGroupItemsrow();", true);
+                      
         }
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
@@ -166,9 +163,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 int result = SystemAssignmentRuleBLL.InsertCatalogItemForRuleFromCopy(cv.ConvertDataTableToXml(dtTempCatalogItem), createAssignmentRules.u_assignment_rules_system_id_pk);
 
                 int groupResult = SystemAssignmentRuleBLL.InsertGroupForRule(cv.ConvertDataTableToXml(dtTempGroup), createAssignmentRules.u_assignment_rules_system_id_pk);
-
-
-
                 //Add Groups
             }
             if (error != -2)
@@ -300,7 +294,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
         public static void DeleteCatalog(string args)
         {
             try
-            {           
+            {
                 //Delete previous selected course
                 var rows = dtTempCatalogItem.Select("u_assignment_rule_item_system_id_pk= '" + args.Trim() + "'");
                 foreach (var row in rows)

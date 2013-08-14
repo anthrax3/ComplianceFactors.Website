@@ -274,8 +274,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 ddlOperator.DataBind();
                 ddlOperator.SelectedValue = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][1].ToString();
                 string element = DataBinder.Eval(e.Row.DataItem, "u_assignment_group_param_element_id_fk").ToString();
+                string values = DataBinder.Eval(e.Row.DataItem, "u_assignment_group_param_values").ToString();
                 HashEncryption encHash = new HashEncryption();
-                if (element == "u_username_enc")
+                if (element == "u_username_enc" && !string.IsNullOrEmpty(values))
                 {
                     string[] usernames = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString().Split(',');
                     for (int i = 0; i < usernames.Length; i++)
@@ -332,7 +333,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 var rows = dtAssignmentParam.Select("u_assignment_group_param_system_id_pk='" + u_assignment_group_param_system_id_pk + "'");
                 var indexRow = dtAssignmentParam.Rows.IndexOf(rows[0]);
                 dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_operator_id_fk"] = ddlOperator.SelectedValue;
-                if (dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "u_username_enc")
+                if (dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "u_username_enc" && !string.IsNullOrEmpty(txtValues.Text))
                 {
                     /// Hash encryption for username and password
                     /// </summary>
@@ -348,7 +349,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 }
                 else
                 {
-                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = txtValues.Text;
+                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = DBNull.Value;
                 }          
                 dtAssignmentParam.Rows[indexRow]["u_assignment_group_id_fk"] = u_assignment_group_id_fk;
                 dtAssignmentParam.AcceptChanges();

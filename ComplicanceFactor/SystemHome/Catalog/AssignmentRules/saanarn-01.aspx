@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
     CodeBehind="saanarn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.AssignmentRules.saanarn_01" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -99,7 +100,19 @@
             });
         });
     </script>
+     <script type="text/javascript">
+         function lastCatalogItemsrow() {
+             $('#<%=gvCatalogItems.ClientID %> tr:last').eq(-1).css("display", "none");
+         }
+    </script>
+    <script type="text/javascript">
+        function lastGroupItemsrow() {
+            $('#<%=gvAssignmentGroups.ClientID %> tr:last').eq(-1).css("display", "none");
+        }
+    </script>
     <asp:HiddenField ID="hdnIsDeleteCatalog" runat="server" />
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanarn" runat="server"
         ValidationGroup="saanarn"></asp:ValidationSummary>
     <div class="content_area_long">
@@ -206,25 +219,29 @@
                         CssClass=" grid_870" ShowHeader="false" ShowFooter="false" GridLines="None" DataKeyNames="u_assignment_rule_item_system_id_pk"
                         runat="server">
                         <Columns>
-                            <asp:TemplateField ItemStyle-CssClass="gridview_row_width_4_1" ItemStyle-HorizontalAlign="Left">
+                            <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Label ID="lblCourseName" runat="server" Style="text-align: left;" Text='<%#Eval("title")  + "(" + Eval("Id") +")"%>'></asp:Label>
+                                    <table>
+                                        <tr>
+                                            <td class="width_450 align_left">
+                                                <asp:Label ID="lblCourseName" runat="server" Style="text-align: left;" Text='<%#Eval("title")  + "(" + Eval("Id") +")"%>'></asp:Label>
+                                            </td>
+                                            <td class="width_200 align_left">
+                                                <asp:Label ID="Label1" runat="server" Style="text-align: left;" Text='<%#Eval("type")%>'></asp:Label>
+                                            </td>
+                                            <td>
+                                                <input type="button" id='<%# Eval("u_assignment_rule_item_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                    class="deleteCatalog cursor_hand" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="align_center">
+                                                -- and --
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" CssClass="gridview_row_width_4_1"></ItemStyle>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCourseName" runat="server" Style="text-align: left;" Text='<%#Eval("type")%>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <%--<asp:Button ID="btnRemoveCatalogItem" OnClientClick="return confirmStatus();" CommandName="Remove"
-                                CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
-                                Text="Remove" />--%>
-                                    <input type="button" id='<%# Eval("u_assignment_rule_item_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
-                                        class="deleteCatalog cursor_hand" />
-                                </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                         <RowStyle CssClass="record"></RowStyle>
@@ -306,10 +323,13 @@
                             <table>
                                 <tr>
                                     <td class="align_left width_180">
-                                        <asp:RadioButton ID="rbtTagetduedate" runat="server" />
+                                        <input id="rbtTagetduedate" type="radio" name="group1" runat="server" />
+                                        <%-- <asp:RadioButton ID="rbtTagetduedate"  runat="server" />--%>
                                         &nbsp;Target Due Date:
                                     </td>
                                     <td>
+                                        <asp:CalendarExtender ID="ceDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtTargetduedate">
+                                        </asp:CalendarExtender>
                                         <asp:TextBox ID="txtTargetduedate" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
@@ -341,7 +361,8 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <asp:RadioButton ID="rbtDue" runat="server" />
+                                        <input id="rbtDue" type="radio" name="group1" runat="server" />
+                                        <%-- <asp:RadioButton ID="rbtDue" runat="server" />--%>
                                     </td>
                                     <td>
                                         Due:
@@ -354,6 +375,8 @@
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlDuedaysfrom" runat="server">
+                                            <asp:ListItem Text="HireDate" Value="HireDate"></asp:ListItem>
+                                            <asp:ListItem Text="Assignment Date" Value="Assignment Date"></asp:ListItem>
                                         </asp:DropDownList>
                                     </td>
                                 </tr>

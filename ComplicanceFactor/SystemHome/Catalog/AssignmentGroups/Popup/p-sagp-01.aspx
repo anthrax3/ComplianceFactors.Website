@@ -54,8 +54,8 @@
                     </td>
                     <td>
                         &nbsp;
-                        <asp:RequiredFieldValidator ID="rfvValues" runat="server" ValidationGroup="sagp"
-                            ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>
+                        <%--<asp:RequiredFieldValidator ID="rfvValues" runat="server" ValidationGroup="sagp"
+                            ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>--%>
                     </td>
                     <td>
                         <%=LocalResources.GetLabel("app_values_text")%>:                        

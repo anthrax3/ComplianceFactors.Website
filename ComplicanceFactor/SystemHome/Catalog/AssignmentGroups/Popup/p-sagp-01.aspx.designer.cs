@@ -58,15 +58,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup {
         protected global::System.Web.UI.WebControls.DropDownList ddlOperator;
         
         /// <summary>
-        /// rfvValues control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvValues;
-        
-        /// <summary>
         /// txtValues control.
         /// </summary>
         /// <remarks>

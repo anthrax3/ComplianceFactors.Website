@@ -99,17 +99,16 @@ namespace ComplicanceFactor
         protected void btnCancel_footer_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/SystemHome/Users/sasup-01.aspx");
-
         }
         private void MergeUser()
         {
             try
             {
                 int result = UserBLL.MergeUser(user1, user2);
-                if (result == 0)
+                if (result ==  0)
                 {
                     string user2Username_enc = gvUser2.DataKeys[0].Values[0].ToString();
-                    Response.Redirect("~/SystemHome/Users/saeu-01.aspx?id=" + SecurityCenter.EncryptText(user2Username_enc) + "&succ=" + SecurityCenter.EncryptText("merge"));
+                    Response.Redirect("~/SystemHome/Users/saeu-01.aspx?id=" + SecurityCenter.EncryptText(user2Username_enc) + "&succ=" + SecurityCenter.EncryptText("merge"),false);
                 }
             }
             catch (Exception ex)

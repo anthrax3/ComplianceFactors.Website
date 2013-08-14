@@ -41,7 +41,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             /// </summary>
             HashEncryption encHash = new HashEncryption();
             assignparam.u_assignment_group_id_fk = groupId;
-            if (ddlElement.SelectedValue == "u_username_enc")
+            if (ddlElement.SelectedValue == "u_username_enc" && !string.IsNullOrEmpty(txtValues.Text))
             {
                 string[] usernames = txtValues.Text.Split(',');
                 for (int i = 0; i < usernames.Length; i++)

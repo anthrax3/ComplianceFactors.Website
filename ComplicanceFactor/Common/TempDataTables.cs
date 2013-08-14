@@ -1654,5 +1654,74 @@ namespace ComplicanceFactor.Common
 
             return dtTempTempAssignmentRulegroup;
         }
+
+        public static DataTable TempCourseAssignDatatable()
+        {
+            DataTable dt = new DataTable();
+
+            DataColumn dtColumn;
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "course_id";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "type";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "checked";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "employeeID";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "required";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "DueDate";
+            dt.Columns.Add(dtColumn);
+
+            return dt;
+        }
+
+        public static DataTable TempCurriculumDatatable()
+        {
+            DataTable dt = new DataTable();
+
+            DataColumn dtColumn;
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "curriculum_id";
+            dt.Columns.Add(dtColumn);
+
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "employeeID";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "required";
+            dt.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = Type.GetType("System.String");
+            dtColumn.ColumnName = "DueDate";
+            dt.Columns.Add(dtColumn);
+
+            return dt;
+        }
     }
 }

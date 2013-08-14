@@ -137,6 +137,26 @@ namespace ComplicanceFactor
                                             {
                                                 //BackgroundJobs.InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
                                                 InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
+
+                                                //Insert Groups user from Assignment Groups
+                                                SystemAssingnmentGroup group = new SystemAssingnmentGroup();
+                                                DataTable dtAssignmentGroup = SystemAssignmentGroupBLL.GetSearchAssignmentGroup(group);
+
+                                                for (int j = 0; j < dtAssignmentGroup.Rows.Count; j++)
+                                                {
+                                                    //Pass the group Id for populate the group users
+                                                    InsertGroupUser(dtAssignmentGroup.Rows[j]["u_assignment_group_system_id_pk"].ToString());
+                                                   
+                                                }
+
+                                                //Assign the course and curriculum from assignment groups.
+                                                SystemAssignmentRules rule = new SystemAssignmentRules();
+                                                DataTable dtAssignmentRule = SystemAssignmentRuleBLL.SearchAssignmentRule(rule);
+
+                                                for (int k = 0; k < dtAssignmentRule.Rows.Count; k++)
+                                                {
+                                                    //AssignCourseCurriculum(dtAssignmentRule.Rows[k]["u_assignment_rules_system_id_pk"].ToString());
+                                                }
                                             }
                                         }
                                     }
@@ -877,7 +897,7 @@ namespace ComplicanceFactor
                 }
             }
             //Create Log File 
-            CreateLogFile(dtHRIS, sftp_URI, userName, password, "HRIS", "HRIS");
+            CreateLogFile(dtHRIS, sftp_URI, userName, password, "HRIS", "HRIS");            
         }
 
         /// <summary>
@@ -1887,7 +1907,73 @@ namespace ComplicanceFactor
                 }
             }
         }
-       
+
+        /// <summary>
+        /// Assign Course and Curriculum 
+        /// </summary>
+        private void AssignCourseCurriculum(string editassignmentRuleId)
+        {
+            SystemAssignmentRules rule = new SystemAssignmentRules();
+
+            rule = SystemAssignmentRuleBLL.GetAssignmentRule(editassignmentRuleId);
+
+            DataTable dtCatalogItems = new DataTable();
+            DataTable dtGroupUsers = new DataTable();
+
+            DataTable dtCourse = TempDataTables.TempCourseAssignDatatable();
+            DataTable dtCurriculum = TempDataTables.TempCurriculumDatatable();
+
+            dtCatalogItems = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
+            dtGroupUsers = SystemAssignmentRuleBLL.GetUsersAssignmentGroups(editassignmentRuleId);
+
+            if (dtCatalogItems.Rows.Count > 0)
+            {
+                for (int i = 0; i < dtCatalogItems.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dtGroupUsers.Rows.Count; j++)
+                    {
+                        if (dtCatalogItems.Rows[i]["type"].ToString() == "Course")
+                        {
+                            DataRow courserow;
+                            courserow = dtCourse.NewRow();
+                            courserow["course_id"] = dtCatalogItems.Rows[i]["u_assignment_rule_item_id_fk"].ToString();
+                            courserow["checked"] = rule.u_assignment_rules_required_flag;
+                            courserow["employeeID"] = dtGroupUsers.Rows[j]["u_assignment_group_user_id_fk"].ToString();
+                            courserow["required"] = rule.u_assignment_rules_required_flag;
+                            if (!string.IsNullOrEmpty(rule.u_assignment_rules_fix_date_param.ToString()))
+                            {
+                                courserow["DueDate"] = rule.u_assignment_rules_fix_date_param;
+                            }
+                            dtCourse.Rows.Add(courserow);
+                        }
+                        else if (dtCatalogItems.Rows[i]["type"].ToString() == "Curriculum")
+                        {
+                            DataRow curriculumrow;
+                            curriculumrow = dtCurriculum.NewRow();
+                            curriculumrow["curriculum_id"] = dtCatalogItems.Rows[i]["u_assignment_rule_curriculum_item_id_fk"].ToString();
+                            curriculumrow["employeeID"] = dtGroupUsers.Rows[j]["u_assignment_group_user_id_fk"].ToString();
+                            curriculumrow["required"] = rule.u_assignment_rules_required_flag;
+                            if (!string.IsNullOrEmpty(rule.u_assignment_rules_fix_date_param.ToString()))
+                            {
+                                curriculumrow["DueDate"] = rule.u_assignment_rules_fix_date_param;
+                            }
+                            dtCurriculum.Rows.Add(curriculumrow);
+                        }
+                    }
+                }
+                ConvertDataTables ConvertToXml = new ConvertDataTables();
+                DataTable dtSingleOLTCourseFromCurriculum = SystemMassEnrollmentBLL.EnrollCourseAssignCurriculum(string.Empty, ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid);
+            }
+        }
+        private void InsertGroupUser(string assignmentGroupId)
+        {
+            DataTable dtUser = SystemAssignmentGroupBLL.GetAssignmentRuleUser(assignmentGroupId);
+            ConvertDataTables ConvertXml = new ConvertDataTables();
+            if (dtUser.Rows.Count > 0)
+            {
+                int result = SystemAssignmentGroupBLL.InsertGroupUser(assignmentGroupId, ConvertXml.ConvertDataTableToXml(dtUser));
+            }
+        }
        
     }
 }

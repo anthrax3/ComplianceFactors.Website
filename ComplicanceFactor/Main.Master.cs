@@ -201,6 +201,7 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\MassCompletions"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\MassEnrollment"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Waitlist"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\AssignmentRules"                       
                        
 
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Languages"

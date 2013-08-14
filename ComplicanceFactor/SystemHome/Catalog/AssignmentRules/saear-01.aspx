@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
     CodeBehind="saear-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.AssignmentRules.saear_01" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -188,6 +189,8 @@
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
     <asp:HiddenField ID="hdnEditAssignmentRule" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
@@ -335,6 +338,7 @@
                 <div class="div_header_long">
                     Assignment Rule Group(s):
                 </div>
+                <br />
                 <div>
                     <asp:GridView ID="gvAssignmentGroups" AutoGenerateColumns="false" RowStyle-CssClass="record"
                         CssClass=" grid_870" ShowHeader="false" ShowFooter="false" GridLines="None" DataKeyNames="u_assignment_rule_group_system_id_pk"
@@ -398,10 +402,13 @@
                                 <table>
                                     <tr>
                                         <td class="align_left width_180">
-                                            <asp:RadioButton ID="rbtTagetduedate" runat="server" />
+                                            <input id="rbtTagetduedate" type="radio" name="group1" runat="server" />
+                                            <%--<asp:RadioButton ID="rbtTagetduedate" runat="server" />--%>
                                             &nbsp;Target Due Date:
                                         </td>
                                         <td>
+                                            <asp:CalendarExtender ID="ceDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtTargetduedate">
+                                            </asp:CalendarExtender>
                                             <asp:TextBox ID="txtTargetduedate" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
@@ -433,7 +440,8 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <asp:RadioButton ID="rbtDue" runat="server" />
+                                            <%--<asp:RadioButton ID="rbtDue" runat="server" />--%>
+                                            <input id="rbtDue" type="radio" name="group1" runat="server" />
                                         </td>
                                         <td>
                                             Due:

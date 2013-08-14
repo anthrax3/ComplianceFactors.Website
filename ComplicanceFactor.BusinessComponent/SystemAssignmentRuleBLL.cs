@@ -534,5 +534,35 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static DataTable GetUsersAssignmentGroups(string u_assignment_rules_system_id_pk)
+        {
+            Hashtable htGetUserAssignmentGroups = new Hashtable();
+            htGetUserAssignmentGroups.Add("@u_assignment_rule_id_fk", u_assignment_rules_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_assignment_group_users", htGetUserAssignmentGroups);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable CourseCurriculumAssign(string CourseAssign, string Curriculum, string course_assign_by_id)
+        {
+            Hashtable htCourseAssignCurriculum = new Hashtable();            
+            htCourseAssignCurriculum.Add("@CourseAssign", CourseAssign);
+            htCourseAssignCurriculum.Add("@Curriculum", Curriculum);
+            htCourseAssignCurriculum.Add("@course_assign_by_id", course_assign_by_id);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_course_assign_curriculum_assignment_rule", htCourseAssignCurriculum);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

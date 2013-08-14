@@ -8,6 +8,7 @@ using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common.Languages;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using System.Data;
 
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
 {
@@ -22,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Course/sastcp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Edit Assignment Rule" + "</a>";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentRules/samarmp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Edit Assignment Rule" + "</a>";
 
 
                 SessionWrapper.AssignmentRule_CatalogItem = TempDataTables.TempAssignmentRuleCatalogItem();
@@ -48,20 +49,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 PopulateAssignmentRule(editassignmentRuleId);
 
                 if (!string.IsNullOrEmpty(Request.QueryString["process"]) && SecurityCenter.DecryptText(Request.QueryString["process"]) == "catalog")
-                { 
+                {
 
                 }
                 else if (!string.IsNullOrEmpty(Request.QueryString["process"]) && SecurityCenter.DecryptText(Request.QueryString["process"]) == "group")
                 {
 
                 }
-            }            
+            }
             gvCatalogItems.DataSource = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
             gvCatalogItems.DataBind();
-           
+
+            gvAssignmentGroups.DataSource = SystemAssignmentRuleBLL.GetAssignmentGroups(editassignmentRuleId);
+            gvAssignmentGroups.DataBind();
+
             Page.ClientScript.RegisterStartupScript(this.GetType(), "CatalogItemsgroups", "lastCatalogItemsrow();", true);
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Assignmentgroups", "lastGroupItemsrow();", true);
-            
+
         }
         /// <summary>
         /// PopulateAssignmentRule
@@ -291,6 +295,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             int error = SystemAssignmentRuleBLL.UpdateAssignmentRule(updateAssignmentRules);
             if (error != -2)
             {
+                AssignCourseCurriculum();
                 //TO-DO show div with success message
                 divSuccess.Style.Add("display", "block");
                 divError.Style.Add("display", "none");
@@ -305,6 +310,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 divError.InnerHtml = "Assignment Rule Id already Exists";//LocalResources.GetText("app_grading_scheme_id_already_exists_error_text");
 
             }
+
+
         }
 
         //Delete Course
@@ -409,6 +416,59 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                         Logger.WriteToErrorLog("saear-01", ex.Message);
                     }
                 }
+            }
+        }
+        /// <summary>
+        /// Assign Course and Curriculum 
+        /// </summary>
+        private void AssignCourseCurriculum()
+        {
+            DataTable dtCatalogItems = new DataTable();
+            DataTable dtGroupUsers = new DataTable();
+
+            DataTable dtCourse = TempDataTables.TempCourseAssignDatatable();
+            DataTable dtCurriculum = TempDataTables.TempCurriculumDatatable();
+
+            dtCatalogItems = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
+            dtGroupUsers = SystemAssignmentRuleBLL.GetUsersAssignmentGroups(editassignmentRuleId);
+
+            if (dtCatalogItems.Rows.Count > 0)
+            {
+                for (int i = 0; i < dtCatalogItems.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dtGroupUsers.Rows.Count; j++)
+                    {
+                        if (dtCatalogItems.Rows[i]["type"].ToString() == "Course")
+                        {
+                            DataRow courserow;
+                            courserow = dtCourse.NewRow();
+                            courserow["course_id"] = dtCatalogItems.Rows[i]["u_assignment_rule_item_id_fk"].ToString();
+                            courserow["checked"] = chkRequired.Checked;
+                            courserow["employeeID"] = dtGroupUsers.Rows[j]["u_assignment_group_user_id_fk"].ToString();
+                            courserow["required"] = chkRequired.Checked;
+                            if (!string.IsNullOrEmpty(txtTargetduedate.Text))
+                            {
+                                courserow["DueDate"] = txtTargetduedate.Text;
+                            }
+                            dtCourse.Rows.Add(courserow);
+                        }
+                        else if (dtCatalogItems.Rows[i]["type"].ToString() == "Curriculum")
+                        {
+                            DataRow curriculumrow;
+                            curriculumrow = dtCurriculum.NewRow();
+                            curriculumrow["curriculum_id"] = dtCatalogItems.Rows[i]["u_assignment_rule_curriculum_item_id_fk"].ToString();
+                            curriculumrow["employeeID"] = dtGroupUsers.Rows[j]["u_assignment_group_user_id_fk"].ToString();
+                            curriculumrow["required"] = chkRequired.Checked;
+                            if (!string.IsNullOrEmpty(txtTargetduedate.Text))
+                            {
+                                curriculumrow["DueDate"] = txtTargetduedate.Text;
+                            }
+                            dtCurriculum.Rows.Add(curriculumrow);
+                        }
+                    }
+                }
+                ConvertDataTables ConvertToXml = new ConvertDataTables();
+                DataTable dtSingleOLTCourseFromCurriculum = SystemAssignmentRuleBLL.CourseCurriculumAssign(ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid);         
             }
         }
     }
