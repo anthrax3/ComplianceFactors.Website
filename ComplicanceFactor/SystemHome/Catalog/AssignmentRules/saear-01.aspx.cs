@@ -91,7 +91,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             {
                 rbtTagetduedate.Checked = false;
             }
-            txtTargetduedate.Text = assignmentRule.u_assignment_rules_fix_date_param.ToShortDateString();
+            if (!string.IsNullOrEmpty(assignmentRule.u_assignment_rules_fix_date_param))
+            {
+                txtTargetduedate.Text = Convert.ToDateTime(assignmentRule.u_assignment_rules_fix_date_param).ToString("d");
+            }
             txtDue.Text = assignmentRule.u_assignment_rules_days_param.ToString();
 
             txtAssignmentRuleUk.Text = assignmentRule.u_assignment_rules_name_uk_english;
@@ -212,7 +215,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             }
             if (!string.IsNullOrEmpty(txtTargetduedate.Text))
             {
-                updateAssignmentRules.u_assignment_rules_fix_date_param = Convert.ToDateTime(txtTargetduedate.Text);
+                updateAssignmentRules.u_assignment_rules_fix_date_param = txtTargetduedate.Text;
             }
             if (!string.IsNullOrEmpty(txtDue.Text))
             {

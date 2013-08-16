@@ -43,7 +43,7 @@ namespace ComplicanceFactor
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            BackgroundProcess();                      
+            //BackgroundProcess();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace ComplicanceFactor
         {
             if (HttpContext.Current.Request.Url.ToString() == DummyPageUrl)
             {
-                BackgroundProcess();
+               // BackgroundProcess();
             }
         }
 
@@ -123,142 +123,146 @@ namespace ComplicanceFactor
                             {
                                 //if (string.IsNullOrEmpty(dtDataBackground.Rows[i]["NeedToRun"].ToString()))
                                 //{
-                                    u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
-                                    u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
-                                    u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
-                                    //Do Hris background process
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_hris_filename"].ToString()))
+                                u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
+                                u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
+                                u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
+                                //Do Hris background process
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_hris_filename"].ToString()))
+                                {
+                                    string hrisPath = APP_PATH + dtDataBackground.Rows[i]["u_sftp_hris_filename"].ToString(); //getDetails.u_sftp_hris_filename; //Hard coded(extension),need to change any time.
+                                    if (File.Exists(hrisPath))
                                     {
-                                        string hrisPath = APP_PATH + dtDataBackground.Rows[i]["u_sftp_hris_filename"].ToString(); //getDetails.u_sftp_hris_filename; //Hard coded(extension),need to change any time.
-                                        if (File.Exists(hrisPath))
+                                        DataTable dtHRIS = GetCSVData(hrisPath);
+                                        if (dtHRIS.Rows.Count > 0)
                                         {
-                                            DataTable dtHRIS = GetCSVData(hrisPath);
-                                            if (dtHRIS.Rows.Count > 0)
+                                            //BackgroundJobs.InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                            InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
+
+                                            //Insert Groups user from Assignment Groups
+                                            SystemAssingnmentGroup group = new SystemAssingnmentGroup();
+                                            group.u_assignment_group_id_pk = string.Empty;
+                                            group.u_assignment_group_name = string.Empty;
+
+                                            group.u_assignment_group_status_id_fk = "0";
+
+                                            DataTable dtAssignmentGroup = SystemAssignmentGroupBLL.GetSearchAssignmentGroup(group);
+
+                                            for (int j = 0; j < dtAssignmentGroup.Rows.Count; j++)
                                             {
-                                                //BackgroundJobs.InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                InsertIntoUserMaster(dtHRIS, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                                //Pass the group Id for populate the group users
+                                                InsertGroupUser(dtAssignmentGroup.Rows[j]["u_assignment_group_system_id_pk"].ToString());
+                                            }
 
-                                                //Insert Groups user from Assignment Groups
-                                                SystemAssingnmentGroup group = new SystemAssingnmentGroup();
-                                                DataTable dtAssignmentGroup = SystemAssignmentGroupBLL.GetSearchAssignmentGroup(group);
+                                            //Assign the course and curriculum from assignment groups.
+                                            SystemAssignmentRules rule = new SystemAssignmentRules();
+                                            DataTable dtAssignmentRule = SystemAssignmentRuleBLL.SearchAssignmentRule(rule);
 
-                                                for (int j = 0; j < dtAssignmentGroup.Rows.Count; j++)
-                                                {
-                                                    //Pass the group Id for populate the group users
-                                                    InsertGroupUser(dtAssignmentGroup.Rows[j]["u_assignment_group_system_id_pk"].ToString());
-                                                   
-                                                }
-
-                                                //Assign the course and curriculum from assignment groups.
-                                                SystemAssignmentRules rule = new SystemAssignmentRules();
-                                                DataTable dtAssignmentRule = SystemAssignmentRuleBLL.SearchAssignmentRule(rule);
-
-                                                for (int k = 0; k < dtAssignmentRule.Rows.Count; k++)
-                                                {
-                                                    //AssignCourseCurriculum(dtAssignmentRule.Rows[k]["u_assignment_rules_system_id_pk"].ToString());
-                                                }
+                                            for (int k = 0; k < dtAssignmentRule.Rows.Count; k++)
+                                            {
+                                                //AssignCourseCurriculum(dtAssignmentRule.Rows[k]["u_assignment_rules_system_id_pk"].ToString());
                                             }
                                         }
                                     }
+                                }
                                 //}
                             }
                             else if (u_sftp_id_pk.Contains("DIMP"))
                             {
                                 //if (string.IsNullOrEmpty(dtDataBackground.Rows[i]["NeedToRun"].ToString()))
                                 //{
-                                    u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
-                                    u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
-                                    u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
+                                u_sftp_URI = dtDataBackground.Rows[i]["u_sftp_URI"].ToString();
+                                u_sftp_username = dtDataBackground.Rows[i]["u_sftp_username"].ToString();
+                                u_sftp_password = dtDataBackground.Rows[i]["u_sftp_password"].ToString();
 
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString()))
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString()))
+                                {
+                                    //do Data Import Hris Background Process
+                                    if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString()))
                                     {
-                                        //do Data Import Hris Background Process
-                                        if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString()))
+                                        DataTable dtFacility = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString());
+                                        if (dtFacility.Rows.Count > 0)
                                         {
-                                            DataTable dtFacility = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_facility_filename"].ToString());
-                                            if (dtFacility.Rows.Count > 0)
+                                            //Insert/Update Facility 
+                                            //BackgroundJobs.InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                            InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                        }
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString()))
+                                {
+                                    if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString()))
+                                    {
+                                        DataTable dtRoom = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString());
+                                        if (dtRoom.Rows.Count > 0)
+                                        {
+                                            //BackgroundJobs.InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                            InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                        }
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString()))
+                                {
+                                    if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString()))
+                                    {
+                                        DataTable dtCourse = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString());
+                                        if (dtCourse.Rows.Count > 0)
+                                        {
+                                            //Insert/Update Course 
+                                            //BackgroundJobs.InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                            InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                        }
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString()))
+                                {
+                                    if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString()))
+                                    {
+                                        DataTable dtCurrriculum = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString());
+                                        if (dtCurrriculum.Rows.Count > 0)
+                                        {
+                                            //Insert/Update Curriculum 
+                                            //BackgroundJobs.InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                            InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                        }
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString()))
+                                {
+                                    if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString()))
+                                    {
+                                        if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_imp_is_enrollment"]) == true)
+                                        {
+                                            DataTable dtEnrollment = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString());
+                                            if (dtEnrollment.Rows.Count > 0)
                                             {
-                                                //Insert/Update Facility 
-                                                //BackgroundJobs.InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                InsertIntoFacility(dtFacility, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                                //Insert/Update Enrollment 
+                                                //BackgroundJobs.InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                                InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
                                     }
+                                }
 
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString()))
+                                if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString()))
+                                {
+                                    if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString()))
                                     {
-                                        if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString()))
+                                        if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_imp_is_learning_history"]) == true)
                                         {
-                                            DataTable dtRoom = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_room_filename"].ToString());
-                                            if (dtRoom.Rows.Count > 0)
+                                            DataTable dtLearningHistory = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString());
+                                            if (dtLearningHistory.Rows.Count > 0)
                                             {
-                                                //BackgroundJobs.InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                InsertIntoRoom(dtRoom, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                                //Insert/Update Learning History 
+                                                //BackgroundJobs.InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
+                                                InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
                                             }
                                         }
                                     }
-
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString()))
-                                    {
-                                        if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString()))
-                                        {
-                                            DataTable dtCourse = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_course_filename"].ToString());
-                                            if (dtCourse.Rows.Count > 0)
-                                            {
-                                                //Insert/Update Course 
-                                                //BackgroundJobs.InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                InsertIntoCourse(dtCourse, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                            }
-                                        }
-                                    }
-
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString()))
-                                    {
-                                        if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString()))
-                                        {
-                                            DataTable dtCurrriculum = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_base_curricula_filename"].ToString());
-                                            if (dtCurrriculum.Rows.Count > 0)
-                                            {
-                                                //Insert/Update Curriculum 
-                                                //BackgroundJobs.InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                InsertIntoCurriculum(dtCurrriculum, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                            }
-                                        }
-                                    }
-
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString()))
-                                    {
-                                        if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString()))
-                                        {
-                                            if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_imp_is_enrollment"]) == true)
-                                            {
-                                                DataTable dtEnrollment = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_enrollment_filename"].ToString());
-                                                if (dtEnrollment.Rows.Count > 0)
-                                                {
-                                                    //Insert/Update Enrollment 
-                                                    //BackgroundJobs.InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                    InsertIntoEnrollment(dtEnrollment, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    if (!string.IsNullOrEmpty(dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString()))
-                                    {
-                                        if (File.Exists(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString()))
-                                        {
-                                            if (Convert.ToBoolean(dtDataBackground.Rows[i]["u_sftp_imp_is_learning_history"]) == true)
-                                            {
-                                                DataTable dtLearningHistory = GetCSVData(APP_PATH_DIMP + dtDataBackground.Rows[i]["u_sftp_imp_learning_history_filename"].ToString());
-                                                if (dtLearningHistory.Rows.Count > 0)
-                                                {
-                                                    //Insert/Update Learning History 
-                                                    //BackgroundJobs.InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                    InsertIntoLearningHistory(dtLearningHistory, u_sftp_URI, u_sftp_username, u_sftp_password);
-                                                }
-                                            }
-                                        }
-                                    }
+                                }
                                 //}
                             }
                             else if (u_sftp_id_pk.Contains("DEXP"))
@@ -340,14 +344,14 @@ namespace ComplicanceFactor
                                     SendWarnigNotification(dtWarning);
                                 }
 
-                                DataTable dtOverDue =dsCurriculum.Tables[1];
+                                DataTable dtOverDue = dsCurriculum.Tables[1];
 
                                 if (dtOverDue.Rows.Count > 0)
                                 {
                                     //BackgroundJobs.SendOverdueNotification(dtOverDue);
                                     SendOverdueNotification(dtOverDue);
                                 }
-                                
+
                                 DataTable dtCourseWarning = dsCurriculum.Tables[2];
                                 if (dtWarning.Rows.Count > 0)
                                 {
@@ -437,7 +441,7 @@ namespace ComplicanceFactor
         protected void Application_End(object sender, EventArgs e)
         {
 
-        }       
+        }
 
         public void LogErrorMessage(string errorMessage)
         {
@@ -447,7 +451,7 @@ namespace ComplicanceFactor
             writer.Close();
             writer.Dispose();
             writer = null;
-        }       
+        }
 
         /// <summary>
         /// Get Csv Data
@@ -897,7 +901,7 @@ namespace ComplicanceFactor
                 }
             }
             //Create Log File 
-            CreateLogFile(dtHRIS, sftp_URI, userName, password, "HRIS", "HRIS");            
+            CreateLogFile(dtHRIS, sftp_URI, userName, password, "HRIS", "HRIS");
         }
 
         /// <summary>
@@ -1849,7 +1853,7 @@ namespace ComplicanceFactor
         /// </summary>
         /// <param name="starttime"></param>
         /// <param name="runlogType"></param>
-        private  void InsertRunLogDetails(DateTime starttime, string runlogType)
+        private void InsertRunLogDetails(DateTime starttime, string runlogType)
         {
             StringBuilder sb = new StringBuilder();
             DateTime endDate;
@@ -1974,6 +1978,6 @@ namespace ComplicanceFactor
                 int result = SystemAssignmentGroupBLL.InsertGroupUser(assignmentGroupId, ConvertXml.ConvertDataTableToXml(dtUser));
             }
         }
-       
+
     }
 }

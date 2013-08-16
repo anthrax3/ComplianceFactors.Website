@@ -4,15 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ComplicanceFactor.BusinessComponent;
+using System.Text;
+using System.Data;
+using ComplicanceFactor.Common;
 
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 {
     public partial class p_sapag_01 : System.Web.UI.Page
     {
+        private static string editGroupId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if(!string.IsNullOrEmpty(Request.QueryString["id"]))
+                {
+                    editGroupId = Request.QueryString["id"].ToString();
+                }
                 SearchResult();
             }
         }
@@ -183,10 +192,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 
         private void SearchResult()
         {
-           
-
-           // gvsearchDetails.DataSource = EnrollmentBLL.SerchLearningHistory(SearchlearningHistory);
-            //gvsearchDetails.DataBind();
+            if (!string.IsNullOrEmpty(Request.QueryString["page"]))
+            {
+                gvsearchDetails.DataSource = SystemAssignmentRuleBLL.GetUsersDetailsAssignmentRule(editGroupId);
+                gvsearchDetails.DataBind();
+            }
+            else
+            {
+                gvsearchDetails.DataSource = SystemAssignmentGroupBLL.GetAssignmentRuleUserDetails(editGroupId);
+                gvsearchDetails.DataBind();
+            }
 
             gvsearchDetails.UseAccessibleHeader = true;
             if (gvsearchDetails.HeaderRow != null)
@@ -253,6 +268,83 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             ddlFooterResultPerPage.SelectedIndex = 0;
             ddlHeaderResultPerPage.SelectedIndex = 0;
+        }
+
+        protected void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            DataSet dsEmployee = new DataSet();
+            try
+            {
+
+                if (!string.IsNullOrEmpty(Request.QueryString["page"]))
+                {
+                    dsEmployee = SystemAssignmentRuleBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
+                }
+                else
+                {
+                    dsEmployee = SystemAssignmentGroupBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("lmcp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("lmcp-01.aspx", ex.Message);
+                    }
+                }
+
+            }
+            if (dsEmployee.Tables[0].Rows.Count > 0)
+            {
+                exportDataTableToCsv(dsEmployee.Tables[0], dsEmployee.Tables[1]);
+            }
+        }
+
+        protected void btnPrintPdf_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exportDataTableToCsv(DataTable dt, DataTable dtCourseColumnName)
+        {
+            Response.Clear();
+            Response.ContentType = "application/csv";
+            Response.Charset = "";
+            Response.AddHeader("Content-Disposition", "attachment;filename=MyCourses.csv");
+            Response.ContentEncoding = Encoding.Unicode;
+            StringBuilder sb = new StringBuilder();
+            for (int k = 0; k < dtCourseColumnName.Rows.Count; k++)
+            {
+                //add separator
+                sb.Append(dtCourseColumnName.Rows[k]["columnName"].ToString() + ',');
+            }
+            //append new line
+            sb.Append("\r\n");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int k = 0; k < dt.Columns.Count; k++)
+                {
+                    //add separator
+                    sb.Append(dt.Rows[i][k].ToString().Replace(",", ",") + ',');
+                }
+
+                //append new line
+                sb.Append("\r\n");
+
+            }
+            Response.Output.Write(sb.ToString());
+            Response.Flush();
+            Response.End();
+
+
         }
 
 

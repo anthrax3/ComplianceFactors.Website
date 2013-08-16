@@ -89,6 +89,46 @@
             }
         }
     </script>
+     <script type="text/javascript">
+         $(document).ready(function () {
+
+             $(".previewAssignment").click(function () {
+                 //Get the Id of the record to delete
+                 //var record_id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+                 $.fancybox({
+                     'type': 'iframe',
+                     'titlePosition': 'over',
+                     'titleShow': true,
+                     'showCloseButton': true,
+                     'scrolling': 'yes',
+                     'autoScale': false,
+                     'autoDimensions': false,
+                     'helpers': { overlay: { closeClick: false} },
+                     'width': 1050,
+                     'height': 200,
+                     'margin': 0,
+                     'padding': 0,
+                     'overlayColor': '#000',
+                     'overlayOpacity': 0.7,
+                     'hideOnOverlayClick': false,
+                     'href': 'Popup/p-sapag-01.aspx',  //?id=' + record_id,
+                     'onComplete': function () {
+                         $('#fancybox-frame').load(function () {
+                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                             var heightPane = $(this).contents().find('#content').height();
+                             $(this).contents().find('#fancybox-frame').css({
+                                 'height': heightPane + 'px'
+
+                             })
+                         });
+
+                     }
+
+                 });
+             });
+
+         });
+     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanagn" runat="server"
@@ -267,7 +307,7 @@
                     </td>
                     <td style="padding-left: 450px;">
                         <input type="button" id="btnpReviewAssignmentGroup" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_assignment_group_button_text %>" />'
-                            class="cursor_hand" />
+                            class="previewAssignment cursor_hand" />
                     </td>
                 </tr>
             </table>

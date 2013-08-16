@@ -176,6 +176,47 @@
         });
     </script>
     <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".previewAssignment").click(function () {
+                //Get the Id of the record to delete
+                var record_id = document.getElementById('<%=hdnEditAssignmentRule.ClientID %>').value;
+                //alert(record_id);
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1050,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '../AssignmentGroups/Popup/p-sapag-01.aspx?page=rule&id=' + record_id,  //?id=' + record_id,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
         function lastCatalogItemsrow() {
             $('#<%=gvCatalogItems.ClientID %> tr:last').eq(-1).css("display", "none");
         }
@@ -280,6 +321,16 @@
                             <asp:DropDownList ID="ddlStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
                                 CssClass="ddl_user_advanced_search" runat="server">
                             </asp:DropDownList>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input type="button" id="btnpReviewAssignmentGroup" value='<asp:Literal runat="server" Text="Preview Assignment Rule" />'
+                                class="previewAssignment cursor_hand" />
                         </td>
                     </tr>
                 </table>

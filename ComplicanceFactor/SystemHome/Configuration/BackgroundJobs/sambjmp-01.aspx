@@ -269,7 +269,7 @@
                         'overlayColor': '#000',
                         'overlayOpacity': 0.7,
                         'hideOnOverlayClick': false,
-                        'href': '../Data%20Imports/Popup/p_samddimplo-01.aspx',
+                        'href': 'ViewLogs/p_samddcublo-01.aspx',
                         'onComplete': function () {
                             $('#fancybox-frame').load(function () {
                                 $('#fancybox-content').height($(this).contents().find('body').height() + 20);

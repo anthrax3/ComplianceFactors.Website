@@ -233,6 +233,7 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Themes"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\BackgroundJobs"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\DigitalMediaFiles"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\BackgroundJobs"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Profile")
                     {
                         hmeLastVisisted.lastvisited = "/SystemHome/sahp-01.aspx";

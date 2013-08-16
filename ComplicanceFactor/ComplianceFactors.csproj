@@ -730,6 +730,7 @@
     <Content Include="SystemHome\Configuration\BackgroundJobs\Popup\samdimpmp-01.aspx" />
     <Content Include="SystemHome\Configuration\BackgroundJobs\Popup\samhrismp-01.aspx" />
     <Content Include="SystemHome\Configuration\BackgroundJobs\sambjmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\BackgroundJobs\ViewLogs\p_samddcublo-01.aspx" />
     <Content Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\saecs-01.aspx" />
@@ -3146,6 +3147,13 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\BackgroundJobs\sambjmp-01.aspx.designer.cs">
       <DependentUpon>sambjmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\ViewLogs\p_samddcublo-01.aspx.cs">
+      <DependentUpon>p_samddcublo-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\BackgroundJobs\ViewLogs\p_samddcublo-01.aspx.designer.cs">
+      <DependentUpon>p_samddcublo-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx.cs">
       <DependentUpon>samcsmp-01.aspx</DependentUpon>

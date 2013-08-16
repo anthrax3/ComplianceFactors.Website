@@ -23,7 +23,7 @@ namespace ComplicanceFactor.BusinessComponent
             htCreateAssignmentRule.Add("@u_assignment_rules_required_flag", assignmentRule.u_assignment_rules_required_flag);
             htCreateAssignmentRule.Add("@u_assignment_rules_due_select_param", assignmentRule.u_assignment_rules_due_select_param);
 
-            if (!string.IsNullOrEmpty(assignmentRule.u_assignment_rules_fix_date_param.ToString()))
+            if (!string.IsNullOrEmpty(assignmentRule.u_assignment_rules_fix_date_param))
             {
                 htCreateAssignmentRule.Add("@u_assignment_rules_fix_date_param", assignmentRule.u_assignment_rules_fix_date_param);
             }
@@ -146,7 +146,7 @@ namespace ComplicanceFactor.BusinessComponent
                 AssignmentRule.u_assignment_rules_due_select_param = dtGetAssignmentRules.Rows[0]["u_assignment_rules_due_select_param"].ToString();
                 if (!string.IsNullOrEmpty(dtGetAssignmentRules.Rows[0]["u_assignment_rules_fix_date_param"].ToString()))
                 {
-                    AssignmentRule.u_assignment_rules_fix_date_param = Convert.ToDateTime(dtGetAssignmentRules.Rows[0]["u_assignment_rules_fix_date_param"]);
+                    AssignmentRule.u_assignment_rules_fix_date_param = dtGetAssignmentRules.Rows[0]["u_assignment_rules_fix_date_param"].ToString();
                 }
                 if (!string.IsNullOrEmpty(dtGetAssignmentRules.Rows[0]["u_assignment_rules_days_param"].ToString()))
                 {
@@ -564,5 +564,34 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+
+        public static DataTable GetUsersDetailsAssignmentRule(string u_assignment_rules_system_id_pk)
+        {
+            Hashtable htGetUserAssignmentGroups = new Hashtable();
+            htGetUserAssignmentGroups.Add("@u_assignment_rule_id_fk", u_assignment_rules_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_assignment_group_users_details", htGetUserAssignmentGroups);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataSet GetUserPDFExcel(string u_assignment_rule_id_fk, string s_locale_culture)
+        {
+            Hashtable htGetAllLearningHistory = new Hashtable();
+            htGetAllLearningHistory.Add("@u_assignment_rule_id_fk", u_assignment_rule_id_fk);
+            htGetAllLearningHistory.Add("@s_locale_culture", s_locale_culture);
+            try
+            {
+                return DataProxy.FetchDataSet("e_sp_get_assignment_rule_preview_pdf", htGetAllLearningHistory);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

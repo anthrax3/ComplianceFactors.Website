@@ -535,6 +535,22 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        //
+
+        public static DataTable GetAssignmentRuleUserDetails(string u_assignment_group_system_id_pk)
+        {
+            Hashtable htUser = new Hashtable();
+            htUser.Add("@u_assignment_group_system_id_pk", u_assignment_group_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_assignment_group_user_details", htUser);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public static int InsertGroupUser(string u_assignment_group_id_fk, string assignment_group_user)
         {
             Hashtable htInsertUser = new Hashtable();
@@ -545,6 +561,21 @@ namespace ComplicanceFactor.BusinessComponent
                 return DataProxy.FetchSPOutput("e_sp_insert_assignment_groups_users", htInsertUser);
             }
             catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataSet GetUserPDFExcel(string u_assignment_group_system_id_pk, string s_locale_culture)
+        {
+            Hashtable htGetAllLearningHistory = new Hashtable();
+            htGetAllLearningHistory.Add("@u_assignment_group_system_id_pk", u_assignment_group_system_id_pk);
+            htGetAllLearningHistory.Add("@s_locale_culture", s_locale_culture);
+            try
+            {
+                return DataProxy.FetchDataSet("e_sp_get_assignment_preview_pdf", htGetAllLearningHistory);
+            }
+            catch (Exception ex)
             {
                 throw;
             }

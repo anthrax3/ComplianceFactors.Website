@@ -64,10 +64,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs
                         lblEveryDays.Style.Add("display", "none");                         
 
                         TextBox txtOccursEvery = (TextBox)e.Row.FindControl("txtOccursEvery");
-                        txtOccursEvery.Style.Add("display", "none");                                        
-
-                        Literal ltl = (Literal)e.Row.FindControl("Literal1");
-                        ltl.Visible = false;
+                        txtOccursEvery.Style.Add("display", "none");                                   
                     }
                     else
                     {
