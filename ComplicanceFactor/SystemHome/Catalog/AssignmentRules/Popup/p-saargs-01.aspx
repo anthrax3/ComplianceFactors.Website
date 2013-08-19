@@ -24,20 +24,20 @@
     <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
         <div id="content">
             <div class=" div_header_700">
-                 Groups Search:
+                <%=LocalResources.GetLabel("app_advance_groups_search_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                             Group Name:
+                           <%=LocalResources.GetLabel("app_group_name_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtGroupName" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                           Group Id:
+                           <%=LocalResources.GetLabel("app_group_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtGroupId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -53,15 +53,15 @@
                 <table class="table_td_300">
                     <tr>
                         <td>
-                            <asp:Button ID="btnGoSearch" runat="server" Text="Go Search" 
+                            <asp:Button ID="btnGoSearch" runat="server" Text="<%$ LabelResourceExpression: app_go_search_button_text %>" 
                                 onclick="btnGoSearch_Click" />
                         </td>
                         <td>
-                            <asp:Button ID="btnReset" OnClientClick="return resetall();" runat="server" Text="Reset" />
+                            <asp:Button ID="btnReset" OnClientClick="return resetall();" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
                         </td>
                         <td>
                             <asp:Button ID="btnCancel" OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
-                                runat="server" Text="Cancel" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                         </td>
                     </tr>
                 </table>

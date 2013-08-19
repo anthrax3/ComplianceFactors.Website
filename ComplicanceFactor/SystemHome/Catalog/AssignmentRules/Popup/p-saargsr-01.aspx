@@ -67,7 +67,7 @@
     </script>
     <div id="content">
         <div class="div_header_700">
-            Group Search Results:
+           <%=LocalResources.GetLabel("app_advance_group_search_results_text")%>:
         </div>
         <br />
         <div>
@@ -115,13 +115,13 @@
                 OnPageIndexChanging="gvsearchDetails_PageIndexChanging" OnRowEditing="gvsearchDetails_RowEditing">
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="Group Name" HeaderStyle-HorizontalAlign="Center"
+                        HeaderText="<%$ LabelResourceExpression: app_group_name_text %>" HeaderStyle-HorizontalAlign="Center"
                         DataField="u_assignment_group_name" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                        HeaderText="Group Id" HeaderStyle-HorizontalAlign="Center"
+                        HeaderText="<%$ LabelResourceExpression: app_group_id_text %>" HeaderStyle-HorizontalAlign="Center"
                         DataField="u_assignment_group_id_pk" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
-                        HeaderText="Status" HeaderStyle-HorizontalAlign="Center"
+                        HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center"
                         DataField="status" ItemStyle-HorizontalAlign="Left" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" HeaderStyle-HorizontalAlign="Center"
                         ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="gridview_row_width_1">
@@ -191,20 +191,20 @@
         <br />
         <asp:Panel ID="pnlDefault" runat="server" DefaultButton="btnGosearch">
             <div class="div_header_700">
-               Advanced Group Search:
+               <%=LocalResources.GetLabel("app_advance_groups_search_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table>
                     <tr>
                         <td>
-                            Group Name:
+                            <%=LocalResources.GetLabel("app_group_name_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtGroupName" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                             Group Id:
+                             <%=LocalResources.GetLabel("app_group_id_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtGroupId" CssClass="textbox_long" runat="server"></asp:TextBox>

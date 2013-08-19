@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup {
     public partial class p_sapag_01 {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// btnPrintPdf control.
         /// </summary>
         /// <remarks>
@@ -218,5 +227,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFooterGoto;
+        
+        /// <summary>
+        /// rvAssignmentUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rvAssignmentUser;
     }
 }

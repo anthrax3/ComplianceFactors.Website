@@ -25,7 +25,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentRules/samarmp-01.aspx>" + "Manage Assignment Rule" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Create New Assignment Rule" + "</a>";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentRules/samarmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_assignment_rules_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_create_new_assignment_rule_text") + "</a>";
 
                 //Bind Status
                 ddlStatus.DataSource = SystemGradingSchemesBLL.GetStatus(SessionWrapper.CultureName, "saangsn-01");
@@ -172,7 +172,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             else
             {
                 divError.Style.Add("display", "block");
-                divError.InnerText = "Assignment rules already exists";
+                divError.InnerText = LocalResources.GetText("app_assignment_rule_id_already_exist_error_wrong");
             }
         }
 

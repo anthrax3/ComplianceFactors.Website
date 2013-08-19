@@ -8,6 +8,8 @@ using ComplicanceFactor.BusinessComponent;
 using System.Text;
 using System.Data;
 using ComplicanceFactor.Common;
+using Microsoft.Reporting.WebForms;
+using ComplicanceFactor.BusinessComponent.DataAccessObject;
 
 namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 {
@@ -293,11 +295,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("lmcp-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("p-sapag-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("lmcp-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("p-sapag-01.aspx", ex.Message);
                     }
                 }
 
@@ -310,7 +312,84 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 
         protected void btnPrintPdf_Click(object sender, EventArgs e)
         {
+            rvAssignmentUser.LocalReport.DataSources.Clear();
+            DataSet dsAssignentUser = new DataSet();
+            DataSet dsHeaderFooter = new DataSet();
+            try
+            {
+                if (!string.IsNullOrEmpty(Request.QueryString["page"]))
+                {
+                    dsAssignentUser = SystemAssignmentRuleBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
+                }
+                else
+                {
+                    dsAssignentUser = SystemAssignmentGroupBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("p-sapag-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("p-sapag-01.aspx", ex.Message);
+                    }
+                }
 
+            }
+            if (dsAssignentUser.Tables[0].Rows.Count > 0)
+            {
+                Warning[] warnings;
+                string[] streamIds;
+                string mimeType = string.Empty;
+                string encoding = string.Empty;
+                string extension = string.Empty;
+                rvAssignmentUser.ProcessingMode = ProcessingMode.Local;
+                rvAssignmentUser.LocalReport.EnableExternalImages = true;
+                rvAssignmentUser.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate.PreviewAssignment.rdlc";
+
+                SystemThemes userTheme = new SystemThemes();
+                userTheme = GetthemeforEmailandPdf();
+
+
+                string protocol = Request.Url.AbsoluteUri;
+                int len = protocol.IndexOf(':');
+                protocol = protocol.Substring(0, len);
+
+                rvAssignmentUser.LocalReport.DataSources.Add(new ReportDataSource("dsAssignment", dsAssignentUser.Tables[0]));
+                //rvAssignmentUser.LocalReport.DataSources.Add(new ReportDataSource("HeaderFooter", dsAssignentUser.Tables[1]));
+
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("s_theme_report_logo_file_name", protocol + "://" + Request.Url.Host.ToLower() + "/SystemHome/Configuration/Themes/Logo/" + userTheme.s_theme_report_logo_file_name));
+                param.Add(new ReportParameter("s_theme_css_tag_main_background_hex_value", "#" + userTheme.s_theme_css_tag_main_background_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_top_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_top_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_foot_bot_line_hex_value", "#" + userTheme.s_theme_css_tag_foot_bot_line_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_hex_value", "#" + userTheme.s_theme_css_tag_section_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_text_hex_value", "#" + userTheme.s_theme_css_tag_section_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_section_head_border_hex_value", "#" + userTheme.s_theme_css_tag_section_head_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_hex_value", "#" + userTheme.s_theme_css_tag_table_head_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
+                param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                this.rvAssignmentUser.LocalReport.SetParameters(param);
+
+                byte[] bytes = rvAssignmentUser.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+                Response.Buffer = true;
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ContentType = mimeType;
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + "PreviewAssignment" + ".pdf" + "\"");
+                Response.BinaryWrite(bytes); // create the file     
+                Response.Flush(); // send it to the client to download  
+                Response.End();
+                Response.Close();
+            }
         }
 
         private void exportDataTableToCsv(DataTable dt, DataTable dtCourseColumnName)
@@ -318,7 +397,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             Response.Clear();
             Response.ContentType = "application/csv";
             Response.Charset = "";
-            Response.AddHeader("Content-Disposition", "attachment;filename=MyCourses.csv");
+            Response.AddHeader("Content-Disposition", "attachment;filename=PreviewAssignment.csv");
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
             for (int k = 0; k < dtCourseColumnName.Rows.Count; k++)
@@ -347,6 +426,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 
         }
 
+        // For Theme for email and pdf
+        private static SystemThemes GetthemeforEmailandPdf()
+        {
+            SystemThemes userTheme = new SystemThemes();
+            userTheme = SystemThemeBLL.GetThemeForEmailPdf(SessionWrapper.u_userid);
+            return userTheme;
+        }
 
     }
 }

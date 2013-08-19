@@ -1,4 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Empty.Master" AutoEventWireup="true" CodeBehind="p-sapag-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup.p_sapag_01" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -24,7 +29,9 @@
 
         });       
     </script>
-    <div id="content">   
+    <div id="content">  
+     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager> 
     <div class="div_header_long">
        Assignment Group Preview:
         <div class="right div_padding_10">
@@ -152,4 +159,7 @@
         </table>
     </div>
 </div> 
+<rsweb:ReportViewer ID="rvAssignmentUser" runat="server" Style="display: none;" DocumentMapCollapsed="true"
+            ShowDocumentMapButton="false">
+        </rsweb:ReportViewer>
 </asp:Content>

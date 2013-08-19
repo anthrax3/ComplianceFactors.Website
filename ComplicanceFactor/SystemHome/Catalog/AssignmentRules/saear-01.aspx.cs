@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentRules/samarmp-01.aspx>" + "Manage Training" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Edit Assignment Rule" + "</a>";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/AssignmentRules/samarmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_assignment_rules_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_edit_assignment_rule_text") + "</a>";
 
 
                 SessionWrapper.AssignmentRule_CatalogItem = TempDataTables.TempAssignmentRuleCatalogItem();
@@ -32,7 +32,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 {
                     //TO-DO SHOW THE MESSAGE WHETHER 'SUCCESSFULLY INSERTED OR UPDATED IN A MESSAGE DIV'
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = "Inserted Successfully";//LocalResources.GetText("app_succ_insert_text");                     
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");                     
                 }
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
@@ -302,7 +302,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 //TO-DO show div with success message
                 divSuccess.Style.Add("display", "block");
                 divError.Style.Add("display", "none");
-                divSuccess.InnerHtml = "Updated Successfully";//LocalResources.GetText("app_succ_update_text");
+                divSuccess.InnerHtml = LocalResources.GetText("app_succ_update_text");
 
             }
             else
@@ -310,7 +310,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 //TO-DO show div with error message                 
                 divSuccess.Style.Add("display", "none");
                 divError.Style.Add("display", "block");
-                divError.InnerHtml = "Assignment Rule Id already Exists";//LocalResources.GetText("app_grading_scheme_id_already_exists_error_text");
+                divError.InnerHtml = LocalResources.GetText("app_assignment_rule_id_already_exist_error_wrong");
 
             }
 

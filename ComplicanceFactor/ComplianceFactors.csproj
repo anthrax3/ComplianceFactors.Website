@@ -813,6 +813,17 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
+    <None Include="SystemHome\Catalog\AssignmentGroups\PdfTemplate\PreviewAssignmentGroups.xsc">
+      <DependentUpon>PreviewAssignmentGroups.xsd</DependentUpon>
+    </None>
+    <None Include="SystemHome\Catalog\AssignmentGroups\PdfTemplate\PreviewAssignmentGroups.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PreviewAssignmentGroups.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SystemHome\Catalog\AssignmentGroups\PdfTemplate\PreviewAssignmentGroups.xss">
+      <DependentUpon>PreviewAssignmentGroups.xsd</DependentUpon>
+    </None>
     <None Include="SystemHome\Configuration\Data Imports\SampleCourse\Course_import_csv_sample.csv" />
     <None Include="SystemHome\Configuration\Data Imports\SampleCurriculum\Curriculum_import_csv_sample.csv" />
     <None Include="SystemHome\Configuration\Data Imports\SampleEnrollment\Enrollment_import_csv_sample.csv" />
@@ -2027,6 +2038,11 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Approvals\samasrp-01.aspx.designer.cs">
       <DependentUpon>samasrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\AssignmentGroups\PdfTemplate\PreviewAssignmentGroups.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviewAssignmentGroups.xsd</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\AssignmentGroups\Popup\p-sagp-01.aspx.cs">
       <DependentUpon>p-sagp-01.aspx</DependentUpon>
@@ -4231,6 +4247,7 @@
     <EmbeddedResource Include="Instructor\PdfTemplate\MyRoasters.rdlc" />
     <EmbeddedResource Include="Instructor\PdfTemplate\SignUpEmployeeList.rdlc" />
     <EmbeddedResource Include="Instructor\PdfTemplate\SignUpSheet.rdlc" />
+    <EmbeddedResource Include="SystemHome\Catalog\AssignmentGroups\PdfTemplate\PreviewAssignment.rdlc" />
     <EmbeddedResource Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\ErrorLog.rdlc" />
     <EmbeddedResource Include="Training\PdfTemplate\MyCourse.rdlc" />
     <EmbeddedResource Include="Training\Popup\PdfTemplate\MyDeliveries.rdlc" />
