@@ -306,7 +306,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             }
             if (dsEmployee.Tables[0].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsEmployee.Tables[0], dsEmployee.Tables[1]);
+                exportDataTableToCsv(dsEmployee.Tables[1], dsEmployee.Tables[2]);
             }
         }
 

@@ -1,1 +1,6 @@
 ﻿
+08/20/2013 12:41 PM : p-sapag-01.aspx : Procedure e_sp_get_assignment_preview_pdf has no parameters and arguments were supplied.
+
+08/20/2013 04:11 PM : saantc-01 (Binding Dropdown) : Invalid column name 's_ui_dropdown_'.
+Invalid column name 's_ui_dropdown_'.
+

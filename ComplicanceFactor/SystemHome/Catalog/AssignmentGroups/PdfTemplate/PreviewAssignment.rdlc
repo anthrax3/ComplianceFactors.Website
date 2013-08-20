@@ -100,6 +100,10 @@
           <DataField>release_number_text</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="assignment_group_preview">
+          <DataField>assignment_group_preview</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>PreviewAssignmentGroups</DataSourceName>
@@ -167,7 +171,7 @@
                               <Value>=Fields!last_name.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -180,6 +184,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -200,7 +205,7 @@
                               <Value>=Fields!first_name.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -213,6 +218,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -233,7 +239,7 @@
                               <Value>=Fields!middle_name.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -246,6 +252,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -266,7 +273,7 @@
                               <Value>=Fields!user_name.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -279,6 +286,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -299,7 +307,7 @@
                               <Value>=Fields!employee_id.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -312,6 +320,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -332,7 +341,7 @@
                               <Value>=Fields!hire_date.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -345,6 +354,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -365,7 +375,7 @@
                               <Value>=Fields!domain_name.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -378,6 +388,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -398,7 +409,7 @@
                               <Value>=Fields!user_type.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -411,6 +422,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -431,7 +443,7 @@
                               <Value>=Fields!country.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -444,6 +456,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -464,7 +477,7 @@
                               <Value>=Fields!job_title.Value</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
-                                <Color>=Parameters!s_theme_css_tag_table_head_text_hex_value.Value</Color>
+                                <Color>=Parameters!s_theme_css_tag_section_head_text_hex_value.Value</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -477,6 +490,7 @@
                           <Color>=Parameters!s_theme_css_tag_table_head_hex_value.Value</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_table_head_hex_value.Value</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -822,7 +836,7 @@
         <Top>1.61125in</Top>
         <Left>0.14583in</Left>
         <Height>0.50521in</Height>
-        <Width>10.16333in</Width>
+        <Width>10.16332in</Width>
         <Style>
           <Border>
             <Color>=Parameters!s_theme_css_tag_table_border_hex_value.Value</Color>
@@ -843,36 +857,6 @@
           </Border>
         </Style>
       </Image>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>0.97583in</Top>
-        <Height>0.25in</Height>
-        <Width>10.55917in</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox45">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -889,9 +873,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox45</rd:DefaultName>
         <Top>2.94458in</Top>
-        <Height>0.25in</Height>
-        <Width>10.55917in</Width>
-        <ZIndex>3</ZIndex>
+        <Left>0.14583in</Left>
+        <Height>0.23958in</Height>
+        <Width>10.16332in</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -903,8 +888,92 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Tablix Name="Tablix2">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.38777in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.38777in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.38777in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.28125in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="assignment_group_preview">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!assignment_group_preview.Value</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>assignment_group_preview</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>=Parameters!s_theme_css_tag_section_head_hex_value.Value</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>3</ColSpan>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Details1" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dsAssignment</DataSetName>
+        <Top>0.955in</Top>
+        <Left>0.14583in</Left>
+        <Height>0.28125in</Height>
+        <Width>10.16331in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
     </ReportItems>
-    <Height>3.46541in</Height>
+    <Height>3.36124in</Height>
     <Style />
   </Body>
   <ReportParameters>
@@ -956,7 +1025,7 @@
   <Width>10.55917in</Width>
   <Page>
     <PageFooter>
-      <Height>0.63542in</Height>
+      <Height>0.55209in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -967,7 +1036,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Fields!release_number_text.Value</Value>
+                  <Value>=First(Fields!release_number_text.Value, "dsAssignment")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -975,8 +1044,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>0.12501in</Top>
-          <Left>0.23625in</Left>
+          <Top>0.20486in</Top>
+          <Left>0.14583in</Left>
           <Height>0.25in</Height>
           <Width>4.31583in</Width>
           <Style>
@@ -996,7 +1065,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Fields!powered_by_text.Value</Value>
+                  <Value>=First(Fields!powered_by_text.Value, "dsAssignment")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1006,7 +1075,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox32</rd:DefaultName>
-          <Top>0.12501in</Top>
+          <Top>0.21875in</Top>
           <Left>6.93417in</Left>
           <Height>0.25in</Height>
           <Width>3.36458in</Width>
@@ -1022,13 +1091,27 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>0.51042in</Top>
-          <Left>0.23625in</Left>
+          <Top>0.45486in</Top>
+          <Left>0.14583in</Left>
           <Height>0in</Height>
-          <Width>10.07292in</Width>
+          <Width>10.16332in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
+              <Color>=Parameters!s_theme_css_tag_foot_bot_line_hex_value.Value</Color>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Line Name="Line2">
+          <Top>0.21875in</Top>
+          <Left>0.14583in</Left>
+          <Height>0in</Height>
+          <Width>10.07292in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Color>=Parameters!s_theme_css_tag_foot_top_line_hex_value.Value</Color>
               <Style>Solid</Style>
             </Border>
           </Style>

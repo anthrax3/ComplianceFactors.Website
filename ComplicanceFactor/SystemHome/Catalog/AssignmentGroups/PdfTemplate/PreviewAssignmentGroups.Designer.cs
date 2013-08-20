@@ -323,6 +323,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
             
             private global::System.Data.DataColumn columnrelease_number_text;
             
+            private global::System.Data.DataColumn columnassignment_group_preview;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public e_sp_get_assignment_preview_pdfDataTable() {
@@ -534,6 +536,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn assignment_group_previewColumn {
+                get {
+                    return this.columnassignment_group_preview;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -591,7 +601,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
                         string country, 
                         string job_title, 
                         string powered_by_text, 
-                        string release_number_text) {
+                        string release_number_text, 
+                        string assignment_group_preview) {
                 e_sp_get_assignment_preview_pdfRow rowe_sp_get_assignment_preview_pdfRow = ((e_sp_get_assignment_preview_pdfRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         u_first_name,
@@ -615,7 +626,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
                         country,
                         job_title,
                         powered_by_text,
-                        release_number_text};
+                        release_number_text,
+                        assignment_group_preview};
                 rowe_sp_get_assignment_preview_pdfRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowe_sp_get_assignment_preview_pdfRow);
                 return rowe_sp_get_assignment_preview_pdfRow;
@@ -660,6 +672,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
                 this.columnjob_title = base.Columns["job_title"];
                 this.columnpowered_by_text = base.Columns["powered_by_text"];
                 this.columnrelease_number_text = base.Columns["release_number_text"];
+                this.columnassignment_group_preview = base.Columns["assignment_group_preview"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -709,6 +722,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
                 base.Columns.Add(this.columnpowered_by_text);
                 this.columnrelease_number_text = new global::System.Data.DataColumn("release_number_text", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrelease_number_text);
+                this.columnassignment_group_preview = new global::System.Data.DataColumn("assignment_group_preview", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnassignment_group_preview);
                 this.columnu_first_name.ReadOnly = true;
                 this.columnu_first_name.MaxLength = 4;
                 this.columnu_last_name.ReadOnly = true;
@@ -753,6 +768,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
                 this.columnpowered_by_text.MaxLength = 4;
                 this.columnrelease_number_text.ReadOnly = true;
                 this.columnrelease_number_text.MaxLength = 4;
+                this.columnassignment_group_preview.ReadOnly = true;
+                this.columnassignment_group_preview.MaxLength = 2;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1269,6 +1286,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string assignment_group_preview {
+                get {
+                    try {
+                        return ((string)(this[this.tablee_sp_get_assignment_preview_pdf.assignment_group_previewColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'assignment_group_preview\' in table \'e_sp_get_assignment_pre" +
+                                "view_pdf\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablee_sp_get_assignment_preview_pdf.assignment_group_previewColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isu_first_nameNull() {
                 return this.IsNull(this.tablee_sp_get_assignment_preview_pdf.u_first_nameColumn);
             }
@@ -1530,6 +1564,18 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate {
             public void Setrelease_number_textNull() {
                 this[this.tablee_sp_get_assignment_preview_pdf.release_number_textColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isassignment_group_previewNull() {
+                return this.IsNull(this.tablee_sp_get_assignment_preview_pdf.assignment_group_previewColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setassignment_group_previewNull() {
+                this[this.tablee_sp_get_assignment_preview_pdf.assignment_group_previewColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -1713,6 +1759,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.PdfTemplate.Prev
             tableMapping.ColumnMappings.Add("job_title", "job_title");
             tableMapping.ColumnMappings.Add("powered_by_text", "powered_by_text");
             tableMapping.ColumnMappings.Add("release_number_text", "release_number_text");
+            tableMapping.ColumnMappings.Add("assignment_group_preview", "assignment_group_preview");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

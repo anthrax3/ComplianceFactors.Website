@@ -36,32 +36,14 @@
 
             $("#<%=btnOnwer.ClientID %>").fancybox({
                 'type': 'iframe',
-                'titlePosition': 'over',
-                'titleShow': true,
                 'showCloseButton': true,
                 'scrolling': 'yes',
-                'autoScale': false,
-                'autoDimensions': false,
                 'helpers': { overlay: { closeClick: false} },
                 'width': 980,
                 'height': 200,
                 'margin': 0,
                 'padding': 0,
-                'overlayColor': '#000',
-                'overlayOpacity': 0.7,
-                'hideOnOverlayClick': false,
-                'href': '/SystemHome/sasumsm-01.aspx?courseowner=true&page=saantc',
-                'onComplete': function () {
-                    $('#fancybox-frame').load(function () {
-                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                        var heightPane = $(this).contents().find('#content').height();
-                        $(this).contents().find('#fancybox-frame').css({
-                            'height': heightPane + 'px'
-
-                        })
-                    });
-
-                }
+                'href': '/SystemHome/sasumsm-01.aspx?courseowner=true&page=saantc'
 
             });
             $("#<%=btnCoordinator.ClientID %>").fancybox({
@@ -121,7 +103,6 @@
 
                         })
                     });
-
                 }
 
             });

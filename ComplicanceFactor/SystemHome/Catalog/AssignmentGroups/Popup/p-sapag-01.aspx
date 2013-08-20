@@ -22,22 +22,20 @@
         }
     </style>
     <script type="text/javascript">
-
         $(function () {
             $('#<%=gvsearchDetails.ClientID %>')
-			.tablesorter({ headers: { 2: { sorter: false}} });
-
+			.tablesorter();
         });       
     </script>
     <div id="content">  
      <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager> 
     <div class="div_header_long">
-       Assignment Group Preview:
+       <%=LocalResources.GetLabel("app_assignment_group_preview_text")%>
         <div class="right div_padding_10">
-            <asp:Button ID="btnPrintPdf" runat="server" Text="Print PDF" 
+            <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_PDF_button_text %>"
                 onclick="btnPrintPdf_Click"/>
-            <asp:Button ID="btnExportExcel" runat="server" Text="Export Excel" 
+            <asp:Button ID="btnExportExcel" runat="server" Text="<%$ LabelResourceExpression: app_export_to_excel_button_text %>"
                 onclick="btnExportExcel_Click"/>
         </div>
         <div class="clear">
@@ -89,34 +87,34 @@
             PagerSettings-Visible="false" PageSize="10">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="Last Name" DataField="u_last_name"
+                    HeaderText="<%$ LabelResourceExpression: app_last_name_text %>" DataField="u_last_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="First Name" DataField="u_first_name"
+                    HeaderText="<%$ LabelResourceExpression: app_first_name_text %>" DataField="u_first_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Middle Name" DataField="u_middle_name"
+                    HeaderText="<%$ LabelResourceExpression: app_middle_name_text %>" DataField="u_middle_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="UserName" DataField=""
+                    HeaderText="<%$ LabelResourceExpression: app_username_text %>" DataField=""
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Employee Id" DataField="u_hris_employee_id"
+                    HeaderText="<%$ LabelResourceExpression: app_employee_id_text %>" DataField="u_hris_employee_id"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Hire Date" DataField="u_hris_hire_date"
+                    HeaderText="<%$ LabelResourceExpression: app_hire_date_text %>" DataField="u_hris_hire_date"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Domain" DataField="u_domain_name"
+                    HeaderText="<%$ LabelResourceExpression: app_domain_text %>" DataField="u_domain_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Type" DataField="s_ui_dropdown_us_english"
+                    HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField="s_ui_dropdown_us_english"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Country" DataField="u_country_name"
+                    HeaderText="<%$ LabelResourceExpression: app_country_text %>" DataField="u_country_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="Job Title" DataField="u_hris_job_title_fk"
+                    HeaderText="<%$ LabelResourceExpression: app_job_title_text %>" DataField="u_hris_job_title_fk"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
             </Columns>
         </asp:GridView>

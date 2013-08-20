@@ -43,6 +43,7 @@
               <Mapping SourceColumn="job_title" DataSetColumn="job_title" />
               <Mapping SourceColumn="powered_by_text" DataSetColumn="powered_by_text" />
               <Mapping SourceColumn="release_number_text" DataSetColumn="release_number_text" />
+              <Mapping SourceColumn="assignment_group_preview" DataSetColumn="assignment_group_preview" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -208,6 +209,13 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="assignment_group_preview" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnassignment_group_preview" msprop:Generator_ColumnPropNameInRow="assignment_group_preview" msprop:Generator_ColumnPropNameInTable="assignment_group_previewColumn" msprop:Generator_UserColumnName="assignment_group_preview" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
