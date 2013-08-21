@@ -43,6 +43,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 ddlStatus.DataSource = SystemGradingSchemesBLL.GetStatus(SessionWrapper.CultureName, "saegs-01");
                 ddlStatus.DataBind();
 
+                ddlDuedaysfrom.DataSource = SystemAssignmentRuleBLL.GetDaysFromDropdown(SessionWrapper.CultureName, "saear-01");
+                ddlDuedaysfrom.DataBind();
+
+
                 SessionWrapper.Reset_AssignmentRule_CatalogItem = SystemAssignmentRuleBLL.GetCatalogItems(editassignmentRuleId);
                 SessionWrapper.Reset_AssignmentRule_Group = SystemAssignmentRuleBLL.GetAssignmentGroups(editassignmentRuleId);
 
@@ -96,6 +100,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 txtTargetduedate.Text = Convert.ToDateTime(assignmentRule.u_assignment_rules_fix_date_param).ToString("d");
             }
             txtDue.Text = assignmentRule.u_assignment_rules_days_param.ToString();
+            ddlDuedaysfrom.SelectedValue = assignmentRule.u_assignment_rules_days_from_param;
 
             txtAssignmentRuleUk.Text = assignmentRule.u_assignment_rules_name_uk_english;
             txtDescriptionUk.Text = assignmentRule.u_assignment_rules_desc_uk_english;
@@ -221,6 +226,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             {
                 updateAssignmentRules.u_assignment_rules_days_param = Convert.ToInt16(txtDue.Text);
             }
+
+            updateAssignmentRules.u_assignment_rules_days_from_param = ddlDuedaysfrom.SelectedValue;
 
             updateAssignmentRules.u_assignment_rules_name_uk_english = txtAssignmentRuleUk.Text;
             updateAssignmentRules.u_assignment_rules_desc_uk_english = txtDescriptionUk.Text;
@@ -471,7 +478,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                     }
                 }
                 ConvertDataTables ConvertToXml = new ConvertDataTables();
-                DataTable dtSingleOLTCourseFromCurriculum = SystemAssignmentRuleBLL.CourseCurriculumAssign(ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid);         
+                DataTable dtSingleOLTCourseFromCurriculum = SystemAssignmentRuleBLL.CourseCurriculumAssign(ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid,editassignmentRuleId);         
             }
         }
     }

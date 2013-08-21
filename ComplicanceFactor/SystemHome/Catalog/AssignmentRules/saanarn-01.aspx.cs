@@ -31,6 +31,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 ddlStatus.DataSource = SystemGradingSchemesBLL.GetStatus(SessionWrapper.CultureName, "saangsn-01");
                 ddlStatus.DataBind();
 
+                ddlDuedaysfrom.DataSource = SystemAssignmentRuleBLL.GetDaysFromDropdown(SessionWrapper.CultureName, "saanarn-01");
+                ddlDuedaysfrom.DataBind();
+
                 if (!string.IsNullOrEmpty(Request.QueryString["copy"]))
                 {
                     copyassignmentRule = SecurityCenter.DecryptText(Request.QueryString["copy"]);
@@ -80,6 +83,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
             {
                 createAssignmentRules.u_assignment_rules_days_param = Convert.ToInt16(txtDue.Text);
             }
+            createAssignmentRules.u_assignment_rules_days_from_param = ddlDuedaysfrom.SelectedValue;
 
             createAssignmentRules.u_assignment_rules_name_uk_english = txtAssignmentRuleUk.Text;
             createAssignmentRules.u_assignment_rules_desc_uk_english = txtDescriptionUk.Text;
@@ -205,6 +209,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules
                 txtTargetduedate.Text = Convert.ToDateTime(assignmentRule.u_assignment_rules_fix_date_param).ToString("d");
             }
             txtDue.Text = assignmentRule.u_assignment_rules_days_param.ToString();
+            ddlDuedaysfrom.SelectedValue = assignmentRule.u_assignment_rules_days_from_param;
 
             txtAssignmentRuleUk.Text = assignmentRule.u_assignment_rules_name_uk_english;
             txtDescriptionUk.Text = assignmentRule.u_assignment_rules_desc_uk_english;

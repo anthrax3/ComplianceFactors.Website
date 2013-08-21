@@ -22,6 +22,19 @@
             $("[id*=divSuccess]").fadeOut(500);
         }
     </script>
+       <script type="text/javascript">
+           $(function () {
+               $('#<%= ddlElement.ClientID %>').change(function () {
+                   if (this.value == 'Assigned' || this.value == 'Enrolled' || this.value == 'Completed' || this.value == 'Passed' || this.value == 'Failed') {
+                       $('#<%=txtValues.ClientID %>,#<%=ddlOperator.ClientID %>').attr("disabled", "disabled");
+                   }
+                   else {
+                       $('#<%=txtValues.ClientID %>,#<%=ddlOperator.ClientID %>').removeAttr("disabled");
+
+                   }
+               });
+           });
+	</script>
     <div id="content">
         <asp:ValidationSummary ID="vs_p_sagp" ValidationGroup="sagp" class="validation_summary_error"
             runat="server" />
@@ -37,7 +50,7 @@
                         <%=LocalResources.GetLabel("app_element_text")%>:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlElement" runat="server" CssClass="ddl_user_advanced_search"
+                        <asp:DropDownList ID="ddlElement" runat="server" CssClass="ddl_user_advanced_search test"
                             DataTextField="e_assignment_element_name" DataValueField="e_assignment_element_id">
                         </asp:DropDownList>
                     </td>
@@ -58,7 +71,7 @@
                             ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>--%>
                     </td>
                     <td>
-                        <%=LocalResources.GetLabel("app_values_text")%>:                        
+                          <%=LocalResources.GetLabel("app_values_text")%>:                       
                     </td>
                     <td>
                         <asp:TextBox ID="txtValues" runat="server" CssClass="textbox_long"></asp:TextBox>                                

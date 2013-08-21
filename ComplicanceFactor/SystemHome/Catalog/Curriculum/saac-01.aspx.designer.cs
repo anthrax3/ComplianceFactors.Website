@@ -211,6 +211,51 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.Label lblApprovalRequired;
         
         /// <summary>
+        /// txtAvailableFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAvailableFrom;
+        
+        /// <summary>
+        /// txtAvailableTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAvailableTo;
+        
+        /// <summary>
+        /// txtEffectiveDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEffectiveDate;
+        
+        /// <summary>
+        /// txtCutOffDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCutOffDate;
+        
+        /// <summary>
+        /// txtCutoffTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCutoffTime;
+        
+        /// <summary>
         /// gvPath control.
         /// </summary>
         /// <remarks>

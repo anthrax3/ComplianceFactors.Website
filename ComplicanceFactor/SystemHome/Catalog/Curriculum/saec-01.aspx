@@ -1464,6 +1464,51 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Available From:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Available To:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                        <td>
+                            Effective Date:
+                        </td>
+                        <td class="align_left">
+                            <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cut-off Date:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Cut-off Time:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div>
         <br />
@@ -2086,8 +2131,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <div class="uploadpopup_header">
@@ -2126,7 +2171,7 @@
     </div>
     <div class="font_normal">
         <asp:Panel ID="pnlCreateNewVersion" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
-            Style="display: none; padding-left: 0px;  padding-right: 0px;">
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">
@@ -2254,7 +2299,7 @@
     </div>
     <div class="font_normal">
         <asp:Panel ID="pnlViewPreviousVersionList" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
-            Style="display: none; padding-left: 0px;  padding-right: 0px;">
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlViewPreviousVersionHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">

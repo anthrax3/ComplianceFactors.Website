@@ -276,18 +276,26 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 string element = DataBinder.Eval(e.Row.DataItem, "u_assignment_group_param_element_id_fk").ToString();
                 string values = DataBinder.Eval(e.Row.DataItem, "u_assignment_group_param_values").ToString();
                 HashEncryption encHash = new HashEncryption();
-                if (element == "u_username_enc" && !string.IsNullOrEmpty(values))
+                if (element == "Assigned" || element == "Enrolled" || element == "Completed" || element == "Passed" || element == "Failed")
                 {
-                    string[] usernames = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString().Split(',');
-                    for (int i = 0; i < usernames.Length; i++)
-                    {
-                        txtValues.Text += encHash.Decrypt(usernames[i], true) + ",";
-                    }
-                    txtValues.Text = txtValues.Text.TrimEnd(',');
+                    ddlOperator.Enabled = false;
+                    txtValues.Enabled = false;
                 }
                 else
                 {
-                    txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();
+                    if (element == "u_username_enc" && !string.IsNullOrEmpty(values))
+                    {
+                        string[] usernames = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString().Split(',');
+                        for (int i = 0; i < usernames.Length; i++)
+                        {
+                            txtValues.Text += encHash.Decrypt(usernames[i], true) + ",";
+                        }
+                        txtValues.Text = txtValues.Text.TrimEnd(',');
+                    }
+                    else
+                    {
+                        txtValues.Text = gvAssignmentGroupParameters.DataKeys[e.Row.RowIndex][2].ToString();
+                    }
                 }
             }
         }

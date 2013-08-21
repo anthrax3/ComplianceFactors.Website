@@ -414,7 +414,15 @@ namespace ComplicanceFactor.BusinessComponent
             Hashtable htParameter = new Hashtable();
             htParameter.Add("@u_assignment_group_id_fk", addparam.u_assignment_group_id_fk);
             htParameter.Add("@u_assignment_group_param_element_id_fk", addparam.u_assignment_group_param_element_id_fk);
-            htParameter.Add("@u_assignment_group_param_operator_id_fk", addparam.u_assignment_group_param_operator_id_fk);
+            if (!string.IsNullOrEmpty(addparam.u_assignment_group_param_operator_id_fk))
+            {
+                htParameter.Add("@u_assignment_group_param_operator_id_fk", addparam.u_assignment_group_param_operator_id_fk);
+            }
+            else
+            {
+                htParameter.Add("@u_assignment_group_param_operator_id_fk", DBNull.Value);
+            }
+           
             if (!string.IsNullOrEmpty(addparam.u_assignment_group_param_values))
             {
                 htParameter.Add("@u_assignment_group_param_values", addparam.u_assignment_group_param_values);

@@ -40,6 +40,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htCreateAssignmentRule.Add("@u_assignment_rules_days_param", DBNull.Value);
             }
+            htCreateAssignmentRule.Add("@u_assignment_rules_days_from_param", assignmentRule.u_assignment_rules_days_from_param);            
 
             htCreateAssignmentRule.Add("@u_assignment_rules_name_uk_english", assignmentRule.u_assignment_rules_name_uk_english);
             htCreateAssignmentRule.Add("@u_assignment_rules_desc_uk_english", assignmentRule.u_assignment_rules_desc_uk_english);
@@ -153,6 +154,8 @@ namespace ComplicanceFactor.BusinessComponent
                     AssignmentRule.u_assignment_rules_days_param = Convert.ToInt16(dtGetAssignmentRules.Rows[0]["u_assignment_rules_days_param"]);
                 }
 
+                AssignmentRule.u_assignment_rules_days_from_param = dtGetAssignmentRules.Rows[0]["u_assignment_rules_days_from_param"].ToString();
+
                 AssignmentRule.u_assignment_rules_name_uk_english = dtGetAssignmentRules.Rows[0]["u_assignment_rules_name_uk_english"].ToString();
                 AssignmentRule.u_assignment_rules_desc_uk_english = dtGetAssignmentRules.Rows[0]["u_assignment_rules_desc_uk_english"].ToString();
                 AssignmentRule.u_assignment_rules_name_ca_french = dtGetAssignmentRules.Rows[0]["u_assignment_rules_name_ca_french"].ToString();
@@ -244,7 +247,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateAssignmentRule.Add("@u_assignment_rules_status_id_fk", assignmentRule.u_assignment_rules_status_id_fk);
             htUpdateAssignmentRule.Add("@u_assignment_rules_required_flag", assignmentRule.u_assignment_rules_required_flag);
             htUpdateAssignmentRule.Add("@u_assignment_rules_due_select_param", assignmentRule.u_assignment_rules_due_select_param);
-            if (!string.IsNullOrEmpty(assignmentRule.u_assignment_rules_fix_date_param.ToString()))
+            if (!string.IsNullOrEmpty(assignmentRule.u_assignment_rules_fix_date_param))
             {
                 htUpdateAssignmentRule.Add("@u_assignment_rules_fix_date_param", assignmentRule.u_assignment_rules_fix_date_param);
             }
@@ -261,6 +264,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateAssignmentRule.Add("@u_assignment_rules_days_param", DBNull.Value);
             }
+            htUpdateAssignmentRule.Add("@u_assignment_rules_days_from_param", assignmentRule.u_assignment_rules_days_from_param);            
 
             htUpdateAssignmentRule.Add("@u_assignment_rules_name_uk_english", assignmentRule.u_assignment_rules_name_uk_english);
             htUpdateAssignmentRule.Add("@u_assignment_rules_desc_uk_english", assignmentRule.u_assignment_rules_desc_uk_english);
@@ -548,12 +552,13 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static DataTable CourseCurriculumAssign(string CourseAssign, string Curriculum, string course_assign_by_id)
+        public static DataTable CourseCurriculumAssign(string CourseAssign, string Curriculum, string course_assign_by_id, string u_assignment_rules_system_id_pk)
         {
             Hashtable htCourseAssignCurriculum = new Hashtable();            
             htCourseAssignCurriculum.Add("@CourseAssign", CourseAssign);
             htCourseAssignCurriculum.Add("@Curriculum", Curriculum);
             htCourseAssignCurriculum.Add("@course_assign_by_id", course_assign_by_id);
+            htCourseAssignCurriculum.Add("@u_assignment_rules_system_id_pk", u_assignment_rules_system_id_pk);
             try
             {
                 return DataProxy.FetchDataTable("s_sp_course_assign_curriculum_assignment_rule", htCourseAssignCurriculum);
@@ -589,6 +594,21 @@ namespace ComplicanceFactor.BusinessComponent
                 return DataProxy.FetchDataSet("e_sp_get_assignment_rule_preview_pdf", htGetAllLearningHistory);
             }
             catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetDaysFromDropdown(string s_ui_locale_name, string s_ui_page_name)
+        {
+            Hashtable htDaysFrom = new Hashtable();
+            htDaysFrom.Add("@s_ui_locale_name", s_ui_locale_name);
+            htDaysFrom.Add("@s_ui_page_name", s_ui_page_name);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_days_from_dropdown", htDaysFrom);
+            }
+            catch (Exception)
             {
                 throw;
             }

@@ -506,7 +506,8 @@
                                              <%=LocalResources.GetLabel("app_days_from_text")%>
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlDuedaysfrom" CssClass="ddl_user_advanced_search" runat="server">
+                                            <asp:DropDownList ID="ddlDuedaysfrom" DataTextField="s_days_from_name" DataValueField="s_days_from_id_pk"
+                                                CssClass="ddl_user_advanced_search" runat="server">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

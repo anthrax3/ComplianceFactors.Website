@@ -16,6 +16,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string u_assignment_rules_due_select_param { get; set; }
         public string u_assignment_rules_fix_date_param { get; set; }
         public int u_assignment_rules_days_param { get; set; }
+        public string u_assignment_rules_days_from_param { get; set; }
 
         public string u_assignment_rules_name_uk_english { get; set; }
         public string u_assignment_rules_desc_uk_english { get; set; }

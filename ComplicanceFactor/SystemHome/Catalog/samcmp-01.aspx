@@ -117,7 +117,9 @@
                             <%=LocalResources.GetLabel("app_manage_assignment_rules_text")%></a>
                     </td>
                     <td>
-                       <a> Manage Audiences</a>
+                       <a href="Audiences/samaudmp-01.aspx">
+                           Manage Audiences</a>
+                      
                     </td>
                 </tr>
                 <tr>

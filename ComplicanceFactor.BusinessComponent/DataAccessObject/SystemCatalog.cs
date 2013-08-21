@@ -27,6 +27,13 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_course_coordinator_id_fk { get; set; }
         public string c_course_active_type_id_fk { get; set; }
         public bool c_course_visible_flag { get; set; }
+
+        public string c_course_available_from_date { get; set; }
+        public string c_course_available_to_date { get; set; }
+        public string c_course_effective_date { get; set; }
+        public string c_course_cut_off_date { get; set; }
+        public string c_course_cut_off_time { get; set; }
+
         public string c_course_custom_01 { get; set; }
         public string c_course_custom_02 { get; set; }
         public string c_course_custom_03 { get; set; }
@@ -79,6 +86,13 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public bool c_delivery_active_flag { get; set; }
         public string c_delivery_active_type_id_fk { get; set; }
         public bool c_delivery_visible_flag { get; set; }
+
+        public string c_delivery_available_from_date { get; set; }
+        public string c_delivery_available_to_date { get; set; }
+        public string c_delivery_effective_date { get; set; }
+        public string c_delivery_cut_off_date { get; set; }
+        public string c_delivery_cut_off_time { get; set; }
+
         public int? c_delivery_min_enroll { get; set; }
         public int? c_delivery_max_enroll { get; set; }
         public int? c_delivery_enroll_threshold { get; set; }

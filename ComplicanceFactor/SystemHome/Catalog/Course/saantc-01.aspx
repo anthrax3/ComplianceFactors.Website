@@ -36,14 +36,32 @@
 
             $("#<%=btnOnwer.ClientID %>").fancybox({
                 'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
                 'showCloseButton': true,
                 'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
                 'helpers': { overlay: { closeClick: false} },
                 'width': 980,
                 'height': 200,
                 'margin': 0,
                 'padding': 0,
-                'href': '/SystemHome/sasumsm-01.aspx?courseowner=true&page=saantc'
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': '/SystemHome/sasumsm-01.aspx?courseowner=true&page=saantc',
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
 
             });
             $("#<%=btnCoordinator.ClientID %>").fancybox({
@@ -103,6 +121,7 @@
 
                         })
                     });
+
                 }
 
             });
@@ -1160,6 +1179,52 @@
                         <asp:DropDownList ID="ddlApprovalRequired" DataTextField="s_approval_workflow_name"
                             DataValueField="s_approval_workflow_system_id_pk" runat="server">
                         </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Available From:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Available To:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        Effective Date:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cut-off Date:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Cut-off Time:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>

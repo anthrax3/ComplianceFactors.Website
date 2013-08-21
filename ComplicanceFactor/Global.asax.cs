@@ -1966,7 +1966,7 @@ namespace ComplicanceFactor
                     }
                 }
                 ConvertDataTables ConvertToXml = new ConvertDataTables();
-                DataTable dtSingleOLTCourseFromCurriculum = SystemMassEnrollmentBLL.EnrollCourseAssignCurriculum(string.Empty, ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid);
+                DataTable dtSingleOLTCourseFromCurriculum = SystemAssignmentRuleBLL.CourseCurriculumAssign(ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid, editassignmentRuleId);
             }
         }
         private void InsertGroupUser(string assignmentGroupId)

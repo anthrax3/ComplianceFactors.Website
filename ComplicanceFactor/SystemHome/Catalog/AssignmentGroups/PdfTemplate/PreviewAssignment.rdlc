@@ -903,18 +903,18 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.28125in</Height>
+              <Height>0.25in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="assignment_group_preview">
+                    <Textbox Name="Textbox4">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!assignment_group_preview.Value</Value>
+                              <Value>=First(Fields!assignment_group_preview.Value, "dsAssignment")</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -923,7 +923,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>assignment_group_preview</rd:DefaultName>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -937,7 +937,6 @@
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -955,15 +954,13 @@
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
-            <TablixMember>
-              <Group Name="Details1" />
-            </TablixMember>
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsAssignment</DataSetName>
         <Top>0.955in</Top>
         <Left>0.14583in</Left>
-        <Height>0.28125in</Height>
+        <Height>0.25in</Height>
         <Width>10.16331in</Width>
         <ZIndex>3</ZIndex>
         <Style>

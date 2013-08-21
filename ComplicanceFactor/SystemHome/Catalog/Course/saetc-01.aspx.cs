@@ -791,6 +791,14 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 CreateCourse.c_course_visible_flag = chkVisible.Checked;
                 CreateCourse.c_course_approval_req = chkApprovalRequired.Checked;
                 CreateCourse.c_course_approval_id_fk = ddlApprovalRequired.SelectedValue;
+
+                //CreateCourse.c_course_available_from_date = txtAvailableFrom.Text;
+                //CreateCourse.c_course_available_to_date = txtAvailableTo.Text;
+                //CreateCourse.c_course_effective_date = txtEffectiveDate.Text;
+                //CreateCourse.c_course_cut_off_date = txtCutOffDate.Text;
+                //CreateCourse.c_course_cut_off_time = txtCutoffTime.Text; 
+
+
                 //recurrance
                 int tempEvery;
                 if (int.TryParse(txtEvery.Text, out tempEvery))
@@ -971,6 +979,13 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 ddlApprovalRequired.Items.Insert(0, liFirstItem);
 
             }
+
+            //txtAvailableFrom.Text = Course.c_course_available_from_date;
+            //txtAvailableTo.Text = Course.c_course_available_to_date;
+            //txtEffectiveDate.Text = Course.c_course_effective_date;
+            //txtCutOffDate.Text = Course.c_course_cut_off_date;
+            //txtCutoffTime.Text = Course.c_course_cut_off_time;
+
             //recurrance
             txtEvery.Text = Convert.ToString(Course.c_course_recurrence_every);
             ddlEvery.SelectedValue = Course.c_course_recurrence_period;

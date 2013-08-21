@@ -319,6 +319,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             //chkVisible.Checked = delivery.c_delivery_active_flag;
             ddlStatus.SelectedValue = delivery.c_delivery_active_type_id_fk;
             chkVisible.Checked = delivery.c_delivery_visible_flag;
+
+            //txtAvailableFrom.Text = delivery.c_delivery_available_from_date;
+            //txtAvailableTo.Text = delivery.c_delivery_available_to_date;
+            //txtEffectiveDate.Text = delivery.c_delivery_effective_date;
+            //txtCutOffDate.Text = delivery.c_delivery_cut_off_date;
+            //txtCutoffTime.Text = delivery.c_delivery_cut_off_time;
+
+
             txtMinEnroll.Text = Convert.ToString(delivery.c_delivery_min_enroll);
             txtMaxEnroll.Text = Convert.ToString(delivery.c_delivery_max_enroll);
             txtEnrollThreshhold.Text = Convert.ToString(delivery.c_delivery_enroll_threshold);
@@ -722,6 +730,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             updateDelivery.c_delivery_active_flag = false;
             updateDelivery.c_delivery_active_type_id_fk = ddlStatus.SelectedValue;
             updateDelivery.c_delivery_visible_flag = chkVisible.Checked;
+
+            //updateDelivery.c_delivery_available_from_date = txtAvailableFrom.Text;
+            //updateDelivery.c_delivery_available_to_date = txtAvailableTo.Text;
+            //updateDelivery.c_delivery_effective_date = txtEffectiveDate.Text;
+            //updateDelivery.c_delivery_cut_off_date = txtCutOffDate.Text;
+            //updateDelivery.c_delivery_cut_off_time = txtCutoffTime.Text; 
+
             updateDelivery.c_delivery_min_enroll = MinEnroll;
             updateDelivery.c_delivery_max_enroll = MaxEnroll;
             updateDelivery.c_delivery_enroll_threshold = EnrollThreshhold;

@@ -1027,6 +1027,51 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Available From:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Available To:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                        <td>
+                            Effective Date:
+                        </td>
+                        <td class="align_left">
+                            <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cut-off Date:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Cut-off Time:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div>
         <br />

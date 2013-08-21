@@ -239,6 +239,52 @@
                         <asp:Label ID="lblApprovalRequired" CssClass="lable_td_width" runat="server"></asp:Label>
                     </td>
                 </tr>
+                <tr>
+                    <td class="text_font_normal">
+                        Available From:
+                    </td>
+                    <td class="align_left">
+                         <asp:TextBox ID="txtAvailableFrom" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="text_font_normal">
+                                   Available To:
+                                </td>
+                                <td class="lable_td_width_1">
+                                    <asp:TextBox ID = "txtAvailableTo" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="text_font_normal">
+                         Effective Date:
+                    </td>
+                    <td class="lable_td_width_1">
+                        <asp:TextBox ID="txtEffectiveDate" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                 <tr>
+                    <td class="text_font_normal">
+                        Cut-off Date:
+                    </td>
+                    <td class="align_left">
+                         <asp:TextBox ID="txtCutOffDate" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="text_font_normal">
+                                  Cut-off Time:
+                                </td>
+                                <td class="lable_td_width_1">
+                                    <asp:TextBox ID = "txtCutoffTime" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>                   
+                </tr>
             </table>
         </div>
         <br />

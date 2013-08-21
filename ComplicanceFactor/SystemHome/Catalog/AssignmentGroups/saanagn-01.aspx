@@ -93,8 +93,6 @@
          $(document).ready(function () {
 
              $(".previewAssignment").click(function () {
-                 //Get the Id of the record to delete
-                 //var record_id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
                  $.fancybox({
                      'type': 'iframe',
                      'titlePosition': 'over',
@@ -246,48 +244,41 @@
                         OnRowCommand="gvAssignmentGroupParameters_RowCommand">
                         <RowStyle CssClass="record"></RowStyle>
                         <Columns>
-                            <asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="gridview_row_width_7" ItemStyle-HorizontalAlign="Left">
                                 <ItemTemplate>
                                     <table>
                                         <tr>
-                                            <td>
+                                            <td class="gridview_row_width_7">
                                                 <%# Eval("u_assignment_group_param_element_id_fk")%>
                                             </td>
                                             <td>
-                                                &nbsp;
-                                            </td>
-                                            <td>
-                                                <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search" DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
+                                                <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"
+                                                    DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
-                                                &nbsp;
+                                            <td style="text-align: right;" class="gridview_row_width_1">
+                                                <%=LocalResources.GetLabel("app_values_text")%>:
                                             </td>
-                                          <td style="text-align:right">
-                                                 <%=LocalResources.GetLabel("app_values_text")%>:
-                                            </td>
-                                            <td>
+                                            <td class="gridview_row_width_1">
                                                 <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                &nbsp;
-                                            </td>
-                                            <td>
-                                                <%--<input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
-                                            class="deleteParam cursor_hand" />--%>
+                                            <td class="gridview_row_width_1">
+                                                <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                    class="deleteParam cursor_hand" />--%>
                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_assignment_group_param_system_id_pk") %>'
-                                                     CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
-                                            </td>
-                                            <td>
-                                                &nbsp;
+                                                    CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                                                    OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td style="text-align: center;">
+                                                --<%=LocalResources.GetLabel("app_and_text")%>--
+                                            </td>
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td colspan="8">
-                                                --<%=LocalResources.GetLabel("app_and_text")%>:--
+                                            <td colspan="3">
+                                                &nbsp;
                                             </td>
                                         </tr>
                                     </table>

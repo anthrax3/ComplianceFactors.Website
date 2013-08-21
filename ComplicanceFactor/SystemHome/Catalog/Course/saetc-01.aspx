@@ -8,32 +8,31 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
-    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" /> 
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/querystring-0.9.0-min.js" type="text/javascript"></script>
     <script src="../../../Scripts/querystring-0.9.0.js" type="text/javascript"></script>
-   <script type="text/javascript">
+    <script type="text/javascript">
 
-       $(document).ready(function () {
-           var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
+        $(document).ready(function () {
+            var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
 
-           $(navigationSelectedValue).addClass('selected');
-           // toggles the slickbox on clicking the noted link  
-           $('.main_menu li a').hover(function () {
+            $(navigationSelectedValue).addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
 
-               $('.main_menu li a').removeClass('selected');
-               $(this).addClass('active');
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
 
-               return false;
-           });
-           $('.main_menu li a').mouseleave(function () {
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
 
-               $(navigationSelectedValue).addClass('selected');
-               return false;
-           });
-       });
+                $(navigationSelectedValue).addClass('selected');
+                return false;
+            });
+        });
 
     </script>
- 
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -774,7 +773,7 @@
             }
 
         }
-</script>
+    </script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -1114,50 +1113,50 @@
             });
         });
     </script>
-            <script type="text/javascript">
-                $(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-                    var editcourseId = $('input#<%=hdCourseId.ClientID %>').val();
-                    $(".copydelivery").click(function () {
+            var editcourseId = $('input#<%=hdCourseId.ClientID %>').val();
+            $(".copydelivery").click(function () {
 
-                        //Get the Id of the record to delete
-                        var record_id = $(this).attr("id");
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
 
-                        //Get the GridView Row reference
-                        var tr_id = $(this).parents("#.record");
-                        $.fancybox({
-                            'type': 'iframe',
-                            'titlePosition': 'over',
-                            'titleShow': true,
-                            'showCloseButton': true,
-                            'scrolling': 'yes',
-                            'autoScale': false,
-                            'autoDimensions': false,
-                            'helpers': { overlay: { closeClick: false} },
-                            'width': 1040,
-                            'height': 200,
-                            'margin': 0,
-                            'padding': 0,
-                            'overlayColor': '#000',
-                            'overlayOpacity': 0.7,
-                            'hideOnOverlayClick': false,
-                            'href': '../Course/Delivery/sand-01.aspx?mode=editcopy&copydelivery=' + record_id + '&editcourseId=' + editcourseId,
-                            'onComplete': function () {
-                                $('#fancybox-frame').load(function () {
-                                    $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                                    var heightPane = $(this).contents().find('#content').height();
-                                    $(this).contents().find('#fancybox-frame').css({
-                                        'height': heightPane + 'px'
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1040,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '../Course/Delivery/sand-01.aspx?mode=editcopy&copydelivery=' + record_id + '&editcourseId=' + editcourseId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
 
-                                    })
-                                });
-
-                            }
-
+                            })
                         });
-                    });
+
+                    }
 
                 });
+            });
+
+        });
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         <Scripts>
@@ -1180,8 +1179,7 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveCourse" ValidationGroup="saetc" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_course_text%>"
-                            OnClick="btnHeaderSaveCourse_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_course_text%>" OnClick="btnHeaderSaveCourse_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
@@ -1386,6 +1384,52 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Available From:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Available To:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        Effective Date:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cut-off Date:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
+                    <td colspan="3">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
+                            <tr>
+                                <td>
+                                    Cut-off Time:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div>
         <br />
@@ -1397,12 +1441,11 @@
             <div>
                 <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_width_95"
                     CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_delivery_system_id_pk"
-                    runat="server" AutoGenerateColumns="False" 
-                    onrowdatabound="gvDeliveries_RowDataBound">
+                    runat="server" AutoGenerateColumns="False" OnRowDataBound="gvDeliveries_RowDataBound">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <table >
+                                <table>
                                     <tr>
                                         <td class="horizontal_line" colspan="3">
                                             <hr>
@@ -1413,8 +1456,8 @@
                                             <%#Eval("c_delivery_type_text")%>
                                         </td>
                                         <td class="gridview_row_width_350 font_12_pixel">
-                                           <%-- <%#Eval("c_delivery_title")%>--%>
-                                            <asp:Label ID="lblSession" runat="server" ></asp:Label>
+                                            <%-- <%#Eval("c_delivery_title")%>--%>
+                                            <asp:Label ID="lblSession" runat="server"></asp:Label>
                                         </td>
                                         <td class="gridview_row_width_300" align="right">
                                             <table>
@@ -1901,8 +1944,7 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveCourse" ValidationGroup="saetc" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_course_text%>"
-                            OnClick="btnFooterSaveCourse_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_course_text%>" OnClick="btnFooterSaveCourse_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnFooterReset" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
@@ -1919,11 +1961,11 @@
         </div>
         <div class="font_normal">
             <asp:Panel ID="pnlCreateNewVersion" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
-                Style="display: none; padding-left: 0px;  padding-right: 0px;">
+                Style="display: none; padding-left: 0px; padding-right: 0px;">
                 <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">
-                             <%=LocalResources.GetLabel("app_create_new_version_text")%>:
+                            <%=LocalResources.GetLabel("app_create_new_version_text")%>:
                         </div>
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                             z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
@@ -2031,11 +2073,11 @@
         </div>
         <div class="font_normal">
             <asp:Panel ID="pnlViewPreviousVersionList" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
-                Style="display: none; padding-left: 0px;  padding-right: 0px;">
+                Style="display: none; padding-left: 0px; padding-right: 0px;">
                 <asp:Panel ID="pnlViewPreviousVersionHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">
-                           <%=LocalResources.GetLabel("app_all_previous_version_text")%>:
+                            <%=LocalResources.GetLabel("app_all_previous_version_text")%>:
                         </div>
                         <asp:ImageButton ID="imgClosePreviousVersionList" CssClass="cursor_hand" Style="top: -15px;
                             right: -15px; z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />

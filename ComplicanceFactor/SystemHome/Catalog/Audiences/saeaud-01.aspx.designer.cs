@@ -7,46 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
+namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
     
     
-    public partial class saanc_01 {
+    public partial class saeaud_01 {
         
         /// <summary>
-        /// vs_saanc control.
+        /// vs_saeaud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_saanc;
-        
-        /// <summary>
-        /// cvRecurranceEvery control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvRecurranceEvery;
-        
-        /// <summary>
-        /// ToolkitScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-        
-        /// <summary>
-        /// divSuccess control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_saeaud;
         
         /// <summary>
         /// divError control.
@@ -58,22 +31,31 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
-        /// hdNav_selected control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// btnHeaderSaveNewCurriculum control.
+        /// hdStopRebind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderSaveNewCurriculum;
+        protected global::System.Web.UI.WebControls.HiddenField hdStopRebind;
+        
+        /// <summary>
+        /// btnHeaderSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHeaderSave;
         
         /// <summary>
         /// btnHeaderReset control.
@@ -94,220 +76,58 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.Button btnHeaderCancel;
         
         /// <summary>
-        /// lblCreatedBy control.
+        /// rfvAssignmentGroupId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCreatedBy;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupId;
         
         /// <summary>
-        /// lblCreatedOn control.
+        /// txtAssignmentGroupId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCreatedOn;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupId;
         
         /// <summary>
-        /// rfvCurriculumId control.
+        /// rfvAssignmentGroupIdName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurriculumId;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupIdName;
         
         /// <summary>
-        /// txtCurriculumId control.
+        /// txtAssignmentGroupName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurriculumId;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName;
         
         /// <summary>
-        /// rfvCurriculumTitle control.
+        /// rfvAssignmentGroupDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurriculumTitle;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupDescription;
         
         /// <summary>
-        /// txtCurriculumTitle control.
+        /// txtAssignmentGroupDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurriculumTitle;
-        
-        /// <summary>
-        /// rfvDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescription;
-        
-        /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
-        
-        /// <summary>
-        /// txtAbstract control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAbstract;
-        
-        /// <summary>
-        /// txtVersion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVersion;
-        
-        /// <summary>
-        /// btnRemove control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRemove;
-        
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// lnkDownload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDownload;
-        
-        /// <summary>
-        /// btnSelectIconUri control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSelectIconUri;
-        
-        /// <summary>
-        /// lblOwner control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOwner;
-        
-        /// <summary>
-        /// btnOnwer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOnwer;
-        
-        /// <summary>
-        /// lblcoordinator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblcoordinator;
-        
-        /// <summary>
-        /// btnCoordinator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCoordinator;
-        
-        /// <summary>
-        /// revcost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revcost;
-        
-        /// <summary>
-        /// txtcost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcost;
-        
-        /// <summary>
-        /// rfvCreditHours control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvCreditHours;
-        
-        /// <summary>
-        /// txtCreditHours control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreditHours;
-        
-        /// <summary>
-        /// rfvCreditUnits control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvCreditUnits;
-        
-        /// <summary>
-        /// txtCreditUnits control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreditUnits;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAssignmentGroupDescription;
         
         /// <summary>
         /// ddlStatus control.
@@ -319,400 +139,688 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
-        /// chkVisible control.
+        /// upnlAssignmentGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkVisible;
+        protected global::System.Web.UI.UpdatePanel upnlAssignmentGroup;
         
         /// <summary>
-        /// chkApprovalRequired control.
+        /// gvAssignmentGroupParameters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkApprovalRequired;
+        protected global::System.Web.UI.WebControls.GridView gvAssignmentGroupParameters;
         
         /// <summary>
-        /// ddlApprovalRequired control.
+        /// btnAddNewParameters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlApprovalRequired;
+        protected global::System.Web.UI.WebControls.Button btnAddNewParameters;
         
         /// <summary>
-        /// txtAvailableFrom control.
+        /// txtAssignmentGroupName_EnglishUk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAvailableFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_EnglishUk;
         
         /// <summary>
-        /// txtAvailableTo control.
+        /// txtDescription_EnglishUk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAvailableTo;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_EnglishUk;
         
         /// <summary>
-        /// txtEffectiveDate control.
+        /// txtAssignmentGroupName_FrenchCa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEffectiveDate;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_FrenchCa;
         
         /// <summary>
-        /// txtCutOffDate control.
+        /// txtDescription_FrenchCa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCutOffDate;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_FrenchCa;
         
         /// <summary>
-        /// txtCutoffTime control.
+        /// txtAssignmentGroupName_FrenchFr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCutoffTime;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_FrenchFr;
         
         /// <summary>
-        /// gvCategory control.
+        /// txtDescription_FrenchFr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCategory;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_FrenchFr;
         
         /// <summary>
-        /// btnAddCategory control.
+        /// txtAssignmentGroupName_SpanishMx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_SpanishMx;
         
         /// <summary>
-        /// gvDomain control.
+        /// txtDescription_SpanishMx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDomain;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_SpanishMx;
         
         /// <summary>
-        /// btnAddDomain control.
+        /// txtAssignmentGroupName_SpanishSp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddDomain;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_SpanishSp;
         
         /// <summary>
-        /// btnAddAudience control.
+        /// txtDescription_SpanishSp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddAudience;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_SpanishSp;
         
         /// <summary>
-        /// rfvEvery control.
+        /// txtAssignmentGroupName_Portuguese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvEvery;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Portuguese;
         
         /// <summary>
-        /// txtEvery control.
+        /// txtDescription_Portuguese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEvery;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Portuguese;
         
         /// <summary>
-        /// ddlEvery control.
+        /// txtAssignmentGroupName_Chinese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEvery;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Chinese;
         
         /// <summary>
-        /// txtGracePreiod control.
+        /// txtDescription_Chinese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGracePreiod;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Chinese;
         
         /// <summary>
-        /// rbtnDate control.
+        /// txtAssignmentGroupName_German control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtnDate;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_German;
         
         /// <summary>
-        /// regexDate control.
+        /// txtDescription_German control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDate;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_German;
         
         /// <summary>
-        /// txtDate control.
+        /// txtAssignmentGroupName_Japanese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Japanese;
         
         /// <summary>
-        /// ceDate control.
+        /// txtDescription_Japanese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ceDate;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Japanese;
         
         /// <summary>
-        /// btnClearRecurrences control.
+        /// txtAssignmentGroupName_Russian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClearRecurrences;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Russian;
         
         /// <summary>
-        /// gvCurriculumAttachments control.
+        /// txtDescription_Russian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCurriculumAttachments;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Russian;
         
         /// <summary>
-        /// btnAddAttachment control.
+        /// txtAssignmentGroupName_Danish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddAttachment;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Danish;
         
         /// <summary>
-        /// btnPrerequisites control.
+        /// txtDescription_Danish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrerequisites;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Danish;
         
         /// <summary>
-        /// gvPrerequisites control.
+        /// txtAssignmentGroupName_Polish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPrerequisites;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Polish;
         
         /// <summary>
-        /// btnEquivalencies control.
+        /// txtDescription_Polish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEquivalencies;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Polish;
         
         /// <summary>
-        /// gvEquivalencies control.
+        /// txtAssignmentGroupName_Swedish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEquivalencies;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Swedish;
         
         /// <summary>
-        /// btnFulfillments control.
+        /// txtDescription_Swedish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFulfillments;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Swedish;
         
         /// <summary>
-        /// gvFulfillments control.
+        /// txtAssignmentGroupName_Finnish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFulfillments;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Finnish;
         
         /// <summary>
-        /// txtCustom01 control.
+        /// txtDescription_Finnish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom01;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Finnish;
         
         /// <summary>
-        /// txtCustom02 control.
+        /// txtAssignmentGroupName_Korean control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom02;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Korean;
         
         /// <summary>
-        /// txtCustom03 control.
+        /// txtDescription_Korean control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom03;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Korean;
         
         /// <summary>
-        /// txtCustom04 control.
+        /// txtAssignmentGroupName_Italian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom04;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Italian;
         
         /// <summary>
-        /// txtCustom05 control.
+        /// txtDescription_Italian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom05;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Italian;
         
         /// <summary>
-        /// txtCustom06 control.
+        /// txtAssignmentGroupName_Dutch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom06;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Dutch;
         
         /// <summary>
-        /// txtCustom07 control.
+        /// txtDescription_Dutch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom07;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Dutch;
         
         /// <summary>
-        /// txtCustom08 control.
+        /// txtAssignmentGroupName_Indonesian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom08;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Indonesian;
         
         /// <summary>
-        /// txtCustom09 control.
+        /// txtDescription_Indonesian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom09;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Indonesian;
         
         /// <summary>
-        /// txtCustom10 control.
+        /// txtAssignmentGroupName_Greek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom10;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Greek;
         
         /// <summary>
-        /// txtCustom11 control.
+        /// txtDescription_Greek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom11;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Greek;
         
         /// <summary>
-        /// txtCustom12 control.
+        /// txtAssignmentGroupName_Hungarian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom12;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Hungarian;
         
         /// <summary>
-        /// txtCustom13 control.
+        /// txtDescription_Hungarian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustom13;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Hungarian;
         
         /// <summary>
-        /// btnFooterSaveNewCurriculum control.
+        /// txtAssignmentGroupName_Norwegian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterSaveNewCurriculum;
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Norwegian;
+        
+        /// <summary>
+        /// txtDescription_Norwegian control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Norwegian;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Turkish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Turkish;
+        
+        /// <summary>
+        /// txtDescription_Turkish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Turkish;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Arabic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Arabic;
+        
+        /// <summary>
+        /// txtDescription_Arabic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Arabic;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom01 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom01;
+        
+        /// <summary>
+        /// txtDescription_Custom01 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom01;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom02 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom02;
+        
+        /// <summary>
+        /// txtDescription_Custom02 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom02;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom03;
+        
+        /// <summary>
+        /// txtDescription_Custom03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom03;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom04 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom04;
+        
+        /// <summary>
+        /// txtDescription_Custom04 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom04;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom05 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom05;
+        
+        /// <summary>
+        /// txtDescription_Custom05 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom05;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom06 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom06;
+        
+        /// <summary>
+        /// txtDescription_Custom06 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom06;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom07 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom07;
+        
+        /// <summary>
+        /// txtDescription_Custom07 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom07;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom08 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom08;
+        
+        /// <summary>
+        /// txtDescription_Custom08 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom08;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom09 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom09;
+        
+        /// <summary>
+        /// txtDescription_Custom09 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom09;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom10;
+        
+        /// <summary>
+        /// txtDescription_Custom10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom10;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom11;
+        
+        /// <summary>
+        /// txtDescription_Custom11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom11;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom12;
+        
+        /// <summary>
+        /// txtDescription_Custom12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom12;
+        
+        /// <summary>
+        /// txtAssignmentGroupName_Custom13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom13;
+        
+        /// <summary>
+        /// txtDescription_Custom13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom13;
+        
+        /// <summary>
+        /// btnFooterSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFooterSave;
         
         /// <summary>
         /// btnFooterReset control.
@@ -731,77 +839,5 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFooterCancel;
-        
-        /// <summary>
-        /// mpeAttachment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpeAttachment;
-        
-        /// <summary>
-        /// hdAttachments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdAttachments;
-        
-        /// <summary>
-        /// pnlUploadFile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUploadFile;
-        
-        /// <summary>
-        /// pnlUploadFileHeading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUploadFileHeading;
-        
-        /// <summary>
-        /// imgClose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgClose;
-        
-        /// <summary>
-        /// FileUpload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
-        /// <summary>
-        /// btnUploadAttachements control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadAttachements;
-        
-        /// <summary>
-        /// btnUploadCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadCancel;
     }
 }

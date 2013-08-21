@@ -629,7 +629,7 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptLocalization="true"
         EnableScriptGlobalization="true">
     </asp:ToolkitScriptManager>
-   <div id="content">
+    <div id="content">
         <div>
             <div class="div_header_1005">
                 <%=LocalResources.GetLabel("app_delivery_text")%>:
@@ -760,6 +760,40 @@
                         </td>
                         <td class="align_left">
                             <asp:CheckBox ID="chkVisible" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Available From:
+                        </td>
+                        <td class="align_left">
+                            <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            Available To:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            Effective Date:
+                        </td>
+                        <td class="align_left">
+                            <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cut-off Date:
+                        </td>
+                        <td class="align_left">
+                            <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            Cut-off Time:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -1260,8 +1294,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <div class="uploadpopup_header">

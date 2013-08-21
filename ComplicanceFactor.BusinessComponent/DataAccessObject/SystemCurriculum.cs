@@ -32,6 +32,13 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         //public bool c_curriculum_active_flag { get; set; }
         public string c_curriculum_active_type_id_fk { get; set; }
         public bool c_curriculum_visible_flag { get; set; }
+
+        public string c_curriculum_available_from_date { get; set; }
+        public string c_curriculum_available_to_date { get; set; }
+        public string c_curriculum_effective_date { get; set; }
+        public string c_curriculum_cut_off_date { get; set; }
+        public string c_curriculum_cut_off_time { get; set; }
+
         public string c_curriculum_custom_01 { get; set; }
         public string c_curriculum_custom_02 { get; set; }
         public string c_curriculum_custom_03 { get; set; }
