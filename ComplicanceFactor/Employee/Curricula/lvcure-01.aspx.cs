@@ -263,7 +263,14 @@ namespace ComplicanceFactor.Employee.Curricula
                     }
                     else
                     {
-                        lblDelivery.Text = "> " + c_delivery_type_text + " (Self-paced - Anytime/Anywhere)";
+                        if (c_delivery_type_text == "OLT")
+                        {
+                            lblDelivery.Text = "> " + c_delivery_type_text + " (Self-paced - Anytime/Anywhere)";
+                        }
+                        else
+                        {
+                            lblDelivery.Text = "> " + c_delivery_type_text + " (No Session)";
+                        }
                     }
 
                 }

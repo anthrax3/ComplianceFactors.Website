@@ -17,7 +17,7 @@
     <style type="text/css">
         body
         {
-            width: 550px;
+            width: 620px;
             height: 350px;
             margin: 0;
         }
@@ -76,7 +76,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <div id="content">
         <div style="margin-right: 10px;">
-            <div class=" div_header_650">
+            <div class=" div_header_600">
                 <asp:Label ID="lblLocaleHeading" runat="server"></asp:Label>
             </div>
             <div class="div_controls font_1">

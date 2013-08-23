@@ -218,6 +218,8 @@ namespace ComplicanceFactor.Employee.Catalog
                     //check if the type is course or curriculum or program
                     if (type == "Course")
                     {
+
+
                         //Get "OLT" delivery 
                         DataSet dsDelivery = new DataSet();
                         dsDelivery = EmployeeCatalogBLL.GetOLT(system_id);
@@ -232,59 +234,80 @@ namespace ComplicanceFactor.Employee.Catalog
                         bool approvDelivery = EmployeeCatalogBLL.GetApprovalDelivery(system_id, dsDelivery.Tables[1]);
                         //get enroll type
                         string strEnrollType = getEnrollDelivery.e_enroll_type_name;
-                        if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && string.IsNullOrEmpty(strEnrollType))
-                        {
-                            btnQuickLunch.Style.Add("display", "inline");
-                        }
-                        else if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && !string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
-                        {
-                            btnDrop.Style.Add("display", "inline");
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnEnroll.Style.Add("display", "none");
-                        }
-                        // Because this course is alredy enrolled and completed. see lerning history
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Completed")
-                        {
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnDrop.Style.Add("display", "none");
-                            btnEnroll.Style.Add("display", "none");
-                        }
-                        // Because this course is alredy enrolled and not completed.
+                        bool isEnroll;
+                        isEnroll = EnrollmentBLL.CheckDeliveryEnrollorNot(system_id, SessionWrapper.u_userid);
+                        //Call the BL for is Enroll            
+                         if (SessionWrapper.isLeraningHistory == false && isEnroll == false)
+                         {
 
-                        if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
-                        {
+                             if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && string.IsNullOrEmpty(strEnrollType))
+                             {
+                                 btnQuickLunch.Style.Add("display", "inline");
+                             }
+                             else if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && !string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
+                             {
+                                 btnDrop.Style.Add("display", "inline");
+                                 lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                 btnEnroll.Style.Add("display", "none");
+                             }
+                             // Because this course is alredy enrolled and completed. see lerning history
+                             else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Completed")
+                             {
+                                 lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                 btnDrop.Style.Add("display", "none");
+                                 btnEnroll.Style.Add("display", "none");
+                             }
+                             // Because this course is alredy enrolled and not completed.
 
-                            btnDrop.Style.Add("display", "inline");
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnEnroll.Style.Add("display", "none");
+                             if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
+                             {
 
-                        }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Assigned")
-                        {
-                            lblAlreadyEnrollMessage.Text = "***Assigned***";
-                            btnDrop.Style.Add("display", "none");
-                            btnEnroll.Style.Add("display", "none");
+                                 btnDrop.Style.Add("display", "inline");
+                                 lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                 btnEnroll.Style.Add("display", "none");
 
-                        }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")//Note:Manager Enroll or other enroll means drop button should not apper
-                        {
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnDrop.Style.Add("display", "none");
-                            btnEnroll.Style.Add("display", "none");
+                             }
+                             else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Assigned")
+                             {
+                                 lblAlreadyEnrollMessage.Text = "***Assigned***";
+                                 btnDrop.Style.Add("display", "none");
+                                 btnEnroll.Style.Add("display", "none");
 
-                        }
-                        else if (!string.IsNullOrEmpty(strEnrollType))
-                        {
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnDrop.Style.Add("display", "none");
-                            btnEnroll.Style.Add("display", "none");
-                        }
+                             }
+                             else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")//Note:Manager Enroll or other enroll means drop button should not apper
+                             {
+                                 lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                 btnDrop.Style.Add("display", "none");
+                                 btnEnroll.Style.Add("display", "none");
 
-                        else if (string.IsNullOrEmpty(strEnrollType))
-                        {
-                            btnDrop.Style.Add("display", "none");
-                            lblAlreadyEnrollMessage.Text = string.Empty;
-                        }
+                             }
+                             else if (!string.IsNullOrEmpty(strEnrollType))
+                             {
+                                 lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                 btnDrop.Style.Add("display", "none");
+                                 btnEnroll.Style.Add("display", "none");
+                             }
+
+                             else if (string.IsNullOrEmpty(strEnrollType))
+                             {
+                                 btnDrop.Style.Add("display", "none");
+                                 lblAlreadyEnrollMessage.Text = string.Empty;
+                             }
+                         }
+
+                         else
+                         {
+                             btnEnroll.Style.Add("display", "inline");
+                             btnEnroll.Text = "Re-Enroll";
+                             //ltlReEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + "  class='enroll cursor_hand' value= " + LocalResources.GetLabel("app_enroll_button_text") + " />";
+
+                             //if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
+                             //{
+
+                             //    ltlReEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + "  class='reenroll cursor_hand' value='Re-Enroll' />";
+
+                             //}
+                         }
                     }
                     else if (type == "Curriculum")
                     {
@@ -389,6 +412,7 @@ namespace ComplicanceFactor.Employee.Catalog
                     assignCurricula.e_curriculum_assign_status_id_fk = "Assigned";
                     assignCurricula.e_curriculum_assign_percent_complete = 0;
                     assignCurricula.e_curriculum_assign_active_flag = true;
+                    assignCurricula.e_enroll_required_flag = false;
                     EnrollmentBLL.AssignCurricula(assignCurricula);
                     Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
                 }

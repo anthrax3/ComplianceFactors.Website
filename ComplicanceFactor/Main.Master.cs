@@ -58,13 +58,16 @@ namespace ComplicanceFactor
             if (string.IsNullOrEmpty(lblPreviewTheme.Text))
             {
                 // Get dyanamic css color
-                User usercss = new User();
-                usercss = UserBLL.GetCss(SessionWrapper.u_userid);
-                HtmlGenericControl style = new HtmlGenericControl();
-                style.TagName = "style";
-                style.Attributes.Add("type", "text/css");
-                style.InnerHtml = usercss.css;
-                Page.Header.Controls.Add(style);
+                if (!string.IsNullOrEmpty(SessionWrapper.u_userid))
+                {
+                    User usercss = new User();
+                    usercss = UserBLL.GetCss(SessionWrapper.u_userid);
+                    HtmlGenericControl style = new HtmlGenericControl();
+                    style.TagName = "style";
+                    style.Attributes.Add("type", "text/css");
+                    style.InnerHtml = usercss.css;
+                    Page.Header.Controls.Add(style);
+                }
             }
             else
             {
@@ -201,7 +204,8 @@ namespace ComplicanceFactor
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\MassCompletions"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\MassEnrollment"
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Waitlist"
-                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\AssignmentRules"                       
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\AssignmentRules"
+                        || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Catalog\\Audiences"                       
                        
 
                         || Path.GetDirectoryName(Request.FilePath) == "\\SystemHome\\Configuration\\Languages"

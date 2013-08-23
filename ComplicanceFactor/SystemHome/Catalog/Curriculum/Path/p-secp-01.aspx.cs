@@ -14,6 +14,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
         private static string editCurriculumPath;
         private static string editCurriculumId;
         private static string lastsectionId;
+        private static int sectioncount;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.QueryString["editCurriculumPathId"]))
@@ -204,7 +205,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
             {
                 string c_curricula_path_section_id_pk = dlSection.DataKeys[dle.Item.ItemIndex].ToString();
 
-                e.Row.Cells[0].Text = "<input id=" + c_curricula_path_section_id_pk + " class='newcourse cursor_hand' type='button' value='" + LocalResources.GetLabel("app_add_course_button_text") + "'/>";
+                e.Row.Cells[0].Text = "<input id=" + c_curricula_path_section_id_pk + " class='newcourse cursor_hand' type='button' value='" + LocalResources.GetLabel("app_add_course_button_text") + "'/><br/><br/>";
 
             }
         }
@@ -256,26 +257,40 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
         }
         protected void btnAddSection_Click(object sender, System.EventArgs e)
         {
-            int result = SystemCurriculumBLL.checkPathsectioncourse(lastsectionId);
+           sectioncount = checkSection();
+           if (sectioncount > 0)
+           {
+               //Add Empth Path Section
+               dsGetPath = SystemCurriculumBLL.GetCurriculumPathCourseSection(editCurriculumId, editCurriculumPath);
+               int c_curricula_path_section_seq_number = dsGetPath.Tables[1].Rows.Count;
+               SystemCurriculumBLL.InsertCurrriculaPathSection(editCurriculumId, editCurriculumPath, c_curricula_path_section_seq_number + 1);
+               BindPathandSection();
+           }
+           else
+           {
+               divError.Style.Add("display", "block");
+           }
 
-            if (result > 0)
+        }
+        private static int checkSection()
+        {
+            sectioncount = SystemCurriculumBLL.checkPathsectioncourse(lastsectionId);
+            return sectioncount;
+        }
+
+        
+        protected void btnSavePath_Click(object sender, System.EventArgs e)
+        {
+            sectioncount = checkSection();
+            if (sectioncount == 0)
             {
-                //Add Empth Path Section
-                dsGetPath = SystemCurriculumBLL.GetCurriculumPathCourseSection(editCurriculumId, editCurriculumPath);
-                int c_curricula_path_section_seq_number = dsGetPath.Tables[1].Rows.Count;
-                SystemCurriculumBLL.InsertCurrriculaPathSection(editCurriculumId, editCurriculumPath, c_curricula_path_section_seq_number + 1);
-                BindPathandSection();
+                divError.Style.Add("display", "block");
             }
             else
             {
-                string str = "<script>alert(\"Please add atleast one course in above section.\");</script>";
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
-            }
-        }
-        protected void btnSavePath_Click(object sender, System.EventArgs e)
-        {
-            UpdatePathCourse();
-          
+                UpdatePathCourse();
+            }         
+             
         }
         private void UpdatePathCourse()
         {

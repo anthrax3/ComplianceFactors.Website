@@ -179,6 +179,7 @@ namespace ComplicanceFactor.Manager.Enroll
             assignCurricula.e_curriculum_assign_status_id_fk = "Assigned";
             assignCurricula.e_curriculum_assign_percent_complete = 0;
             assignCurricula.e_curriculum_assign_active_flag = true;
+            assignCurricula.e_enroll_required_flag = chkRequired.Checked;// Note: for course assign and course enroll . if e_enroll_required_flag true means required false means optional
             EnrollmentBLL.AssignCurricula(assignCurricula);
         }
         protected void btnConfirmAssignment_Click(object sender, EventArgs e)

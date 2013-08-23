@@ -340,6 +340,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htAssignCurricula.Add("@e_curriculum_assign_status_id_fk", assignCurricula.e_curriculum_assign_status_id_fk);
                 htAssignCurricula.Add("@e_curriculum_assign_percent_complete", assignCurricula.e_curriculum_assign_percent_complete);
                 htAssignCurricula.Add("@e_curriculum_assign_active_flag", assignCurricula.e_curriculum_assign_active_flag);
+                htAssignCurricula.Add("@e_enroll_required_flag", assignCurricula.e_enroll_required_flag);
                 return DataProxy.FetchSPOutput("e_sp_assign_curricula", htAssignCurricula);
             }
             catch (Exception)
@@ -762,7 +763,7 @@ namespace ComplicanceFactor.BusinessComponent
                 int res = DataProxy.FetchSPOutput("e_sp_check_re_enroll_or_not", htChecReEnrollorNot);
                 return res == 1 ? true : false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

@@ -1,1 +1,47 @@
 ﻿
+08/23/2013 11:30 AM : lvcure-01.aspx : Divide by zero error encountered.
+
+08/23/2013 11:31 AM : lvcure-01.aspx : Divide by zero error encountered.
+
+08/23/2013 11:32 AM : lvcure-01.aspx : Divide by zero error encountered.
+
+08/23/2013 11:34 AM : lvcure-01.aspx : Divide by zero error encountered.
+
+08/23/2013 11:35 AM : lvcure-01.aspx : Divide by zero error encountered.
+
+08/23/2013 11:49 AM : lvcure-01.aspx : Divide by zero error encountered.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 12:11 PM : p-sacp-01 : Input string was not in a correct format.Couldn't store <> in c_curricula_path_section_complete Column.  Expected type is Int32.
+Input string was not in a correct format.
+
+08/23/2013 02:15 PM : saec-01 : Input string was not in a correct format.
+
+08/23/2013 02:40 PM : saec-01 : Input string was not in a correct format.
+
+08/23/2013 04:52 PM : qscr-01.aspx (RowCommand) : Procedure or function 'e_sp_assign_curricula' expects parameter '@e_enroll_required_flag', which was not supplied.
+
+08/23/2013 05:01 PM : ecolt-01.aspx : Procedure or function e_sp_insert_reenrollment has too many arguments specified.
+
+08/23/2013 05:01 PM : ecolt-01.aspx : Procedure or function e_sp_insert_reenrollment has too many arguments specified.
+

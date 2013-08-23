@@ -45,7 +45,7 @@
                 'autoScale': false,
                 'autoDimensions': false,
                 'helpers': { overlay: { closeClick: false} },
-                'width': 800,
+                'width': 820,
                 'height': 500,
                 'margin': 0,
                 'padding': 0,

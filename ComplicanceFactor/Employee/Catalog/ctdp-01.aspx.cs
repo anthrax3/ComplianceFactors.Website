@@ -138,9 +138,8 @@ namespace ComplicanceFactor.Employee.Catalog
 
                 isEnroll = EnrollmentBLL.CheckDeliveryEnrollorNot(c_course_id_fk, SessionWrapper.u_userid);
                 //
-                //Call the BL for is Enroll
-
-                if (SessionWrapper.isLeraningHistory == false)
+                //Call the BL for is Enroll            
+                 if (SessionWrapper.isLeraningHistory == false && isEnroll == false)
                 {
                     //if (!string.IsNullOrEmpty(strEnrollType))
                     if (isEnroll && string.IsNullOrEmpty(strEnrollType))
@@ -239,7 +238,7 @@ namespace ComplicanceFactor.Employee.Catalog
                     }
                     else
                     {
-                        lblSession.Text = "No Sessions";
+                        lblSession.Text = "(No Sessions)";
                     }
 
                 }

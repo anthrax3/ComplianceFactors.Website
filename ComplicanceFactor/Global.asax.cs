@@ -43,7 +43,7 @@ namespace ComplicanceFactor
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            //BackgroundProcess();
+            BackgroundProcess();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace ComplicanceFactor
         {
             if (HttpContext.Current.Request.Url.ToString() == DummyPageUrl)
             {
-               // BackgroundProcess();
+               BackgroundProcess();
             }
         }
 

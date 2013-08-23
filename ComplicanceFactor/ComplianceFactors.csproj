@@ -394,6 +394,9 @@
     <Content Include="SystemHome\Catalog\AssignmentRules\saanarn-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentRules\saear-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Audiences\saanaudn-01.aspx" />
+    <Content Include="SystemHome\Catalog\Audiences\saeaud-01.aspx" />
+    <Content Include="SystemHome\Catalog\Audiences\samaudmp-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sceci-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-sces-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\p-scesr-01.aspx" />
@@ -2127,6 +2130,27 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx.designer.cs">
       <DependentUpon>samarmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\saanaudn-01.aspx.cs">
+      <DependentUpon>saanaudn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\saanaudn-01.aspx.designer.cs">
+      <DependentUpon>saanaudn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\saeaud-01.aspx.cs">
+      <DependentUpon>saeaud-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\saeaud-01.aspx.designer.cs">
+      <DependentUpon>saeaud-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\samaudmp-01.aspx.cs">
+      <DependentUpon>samaudmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\samaudmp-01.aspx.designer.cs">
+      <DependentUpon>samaudmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Completion\p-sceci-01.aspx.cs">
       <DependentUpon>p-sceci-01.aspx</DependentUpon>

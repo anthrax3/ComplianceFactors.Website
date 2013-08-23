@@ -31,6 +31,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath {
         protected global::System.Web.UI.WebControls.HiddenField hdEditCurriculumPathId;
         
         /// <summary>
+        /// vs_secp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_secp;
+        
+        /// <summary>
+        /// divError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
+        
+        /// <summary>
         /// txtPathName control.
         /// </summary>
         /// <remarks>

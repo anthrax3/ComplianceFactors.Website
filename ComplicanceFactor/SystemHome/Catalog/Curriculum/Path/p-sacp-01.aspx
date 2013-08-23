@@ -11,7 +11,7 @@
     <style type="text/css">
         body
         {
-            width: 885px !important;
+            width: 870px !important;
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
@@ -32,7 +32,7 @@
                     'autoScale': false,
                     'autoDimensions': false,
                     'helpers': { overlay: { closeClick: false} },
-                    'width': 725,
+                    'width': 735,
                     'height': 200,
                     'margin': 0,
                     'padding': 0,
@@ -174,7 +174,10 @@
         }
     </script>
     <div id="content">
-        <div class="div_header_1005">
+        <div id="divError" runat="server" class="msgarea_error" style="display: none;">
+            Section shold not empty;Please add atleast one course.
+        </div>
+        <div class="div_header_870">
             <%=LocalResources.GetLabel("app_curriculum_path_information_text")%>:
         </div>
         <div>
@@ -208,26 +211,17 @@
                 </table>
             </div>
             <div class="div_controls font_1">
-                <table cellpadding="0" cellspacing="0">
+                <table cellpadding="0" cellspacing="0" class="table_td_300">
                     <tr>
-                        <td class="width_200">
-                            <%=LocalResources.GetLabel("app_enforce_sections_sequence_text")%>:
-                        </td>
-                        <td class="align_left">
-                            <asp:CheckBox ID="chkHeaderEnforceSectionsSequence" runat="server" />
+                        <td>
+                            <%=LocalResources.GetLabel("app_enforce_sections_sequence_text")%>:&nbsp;<asp:CheckBox ID="chkHeaderEnforceSectionsSequence" runat="server" />
                         </td>
                         <td>
-                            &nbsp;
-                        </td>
-                        <td class="width_230_bold">
                             <%=LocalResources.GetLabel("app_completed_text")%>&nbsp;<asp:TextBox ID="txtComplete"
-                                runat="server" CssClass="textbox_50" />
-                        </td>
-                        <td class="align_left">
-                            <%=LocalResources.GetLabel("app_out_text")%>&nbsp;<%=LocalResources.GetLabel("app_of_text")%>
+                                runat="server" CssClass="textbox_50" />&nbsp<%=LocalResources.GetLabel("app_out_text")%>&nbsp;<%=LocalResources.GetLabel("app_of_text")%>
                             <asp:Label ID="lblSectionCount" runat="server"></asp:Label>
                             <%=LocalResources.GetLabel("app_sections_text")%>
-                        </td>
+                        </td>                        
                     </tr>
                     <tr>
                         <td colspan="6">
@@ -323,7 +317,7 @@
                 </ItemTemplate>
             </asp:DataList>
             <br />
-            <div class="div_header_1005">
+            <div class="div_header_870">
                 <br />
             </div>
             <br />

@@ -12,7 +12,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
     public partial class p_sacp_01 : System.Web.UI.Page
     {
         private string editCurriculumId;
-        private string lastsectionId;
+        private static int sectioncount;
+        private static string lastsectionId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,8 +28,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
                 {
                     AddEmptyPathSection(SessionWrapper.TempPathSection);
                     SessionWrapper.Active_Popup = "true";
-                }
-                
+                }               
 
             }
             if (!string.IsNullOrEmpty(SessionWrapper.Active_Popup))
@@ -39,8 +39,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
             if (!string.IsNullOrEmpty(Request.QueryString["editCurriculumId"]))
             {
                 editCurriculumId = Request.QueryString["editCurriculumId"];
-
-
             }
         }
         private void BindPathandSection()
@@ -184,6 +182,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
         }
         protected void btnAddSection_Click(object sender, EventArgs e)
         {
+            sectioncount = checkSection();
+            if (sectioncount > 0)
+            {
+                AddEmptyPathSection(SessionWrapper.TempPathSection);
+                BindPathandSection();
+            }
+            else
+            {
+                divError.Style.Add("display", "none");
+            }
+        }
+        private static int checkSection()
+        {
             int count = SessionWrapper.TempPathSection.Rows.Count;
             if (count > 0)
             {
@@ -193,17 +204,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
             DataView dvPathCourse = new DataView(SessionWrapper.TempPathCourse);
             dvPathCourse.RowFilter = "c_curricula_path_section_id_fk= '" + lastsectionId.Trim() + "'";
             dtPathsection = dvPathCourse.ToTable();
-
-            if (dtPathsection.Rows.Count > 0)
-            {
-                AddEmptyPathSection(SessionWrapper.TempPathSection);
-                BindPathandSection();
-            }
-            else
-            {
-                string str = "<script>alert(\"Please add atleast one course in above section\");</script>";
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
-            }
+            sectioncount = dtPathsection.Rows.Count;
+            return sectioncount;
         }
         /// <summary>
         /// Down course
@@ -359,34 +361,43 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
         {
             try
             {
-                SystemCurriculum path = new SystemCurriculum();
-                path.c_curricula_path_system_id_pk = Guid.NewGuid().ToString();
-                path.c_curricula_id_fk = editCurriculumId;
-                path.c_curricula_path_name = txtPathName.Text;
-                path.c_curricula_path_Description = txtDescription.Value;
-                path.c_curricula_path_abstract = txtAbstract.Value;
-                path.c_curricula_path_enforce_section_seq_flag = chkHeaderEnforceSectionsSequence.Checked;
-                path.c_curricula_path_complete = Convert.ToInt32(txtComplete.Text);
-                path.c_curricula_path_sections = Convert.ToInt32(lblSectionCount.Text);
+                sectioncount = checkSection();
+                if (sectioncount == 0)
+                {
+                    divError.Style.Add("display", "block");
+                }
+                else
+                {
+                    SystemCurriculum path = new SystemCurriculum();
+                    path.c_curricula_path_system_id_pk = Guid.NewGuid().ToString();
+                    path.c_curricula_id_fk = editCurriculumId;
+                    path.c_curricula_path_name = txtPathName.Text;
+                    path.c_curricula_path_Description = txtDescription.Value;
+                    path.c_curricula_path_abstract = txtAbstract.Value;
+                    path.c_curricula_path_enforce_section_seq_flag = chkHeaderEnforceSectionsSequence.Checked;
+                    path.c_curricula_path_complete = Convert.ToInt32(txtComplete.Text);
+                    path.c_curricula_path_sections = Convert.ToInt32(lblSectionCount.Text);
 
-                for (int i = 0; i < dlSection.Items.Count; i++)
-                {
-                    TextBox txtCourseComplete = (TextBox)dlSection.Items[i].FindControl("txtCourseComplete");
-                    Label lblCourse = (Label)dlSection.Items[i].FindControl("lblCourse");
-                    CheckBox chkEnforceSectionsSequence = (CheckBox)dlSection.Items[i].FindControl("chkEnforceSectionsSequence");
-                    SessionWrapper.TempPathSection.Rows[i]["c_curricula_path_section_complete"] = txtCourseComplete.Text;
-                    SessionWrapper.TempPathSection.Rows[i]["c_curricula_path_section_courses"] = lblCourse.Text;
-                    SessionWrapper.TempPathSection.Rows[i]["c_curricula_path_section_enforce_seq_flag"] = chkEnforceSectionsSequence.Checked;
-                    SessionWrapper.TempPathSection.AcceptChanges();
-                }
-                path.c_curricula_path_section = ConvertDataTableToXml(SessionWrapper.TempPathSection);
-                path.c_curricula_path_courses = ConvertDataTableToXml(SessionWrapper.TempPathCourse);
-                int result = SystemCurriculumBLL.InsertCurriculaPath(path);
-                //Close fancybox
-                if (result != -1)
-                {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
-                }
+                    for (int i = 0; i < dlSection.Items.Count; i++)
+                    {
+                        TextBox txtCourseComplete = (TextBox)dlSection.Items[i].FindControl("txtCourseComplete");
+                        Label lblCourse = (Label)dlSection.Items[i].FindControl("lblCourse");
+                        CheckBox chkEnforceSectionsSequence = (CheckBox)dlSection.Items[i].FindControl("chkEnforceSectionsSequence");
+                        SessionWrapper.TempPathSection.Rows[i]["c_curricula_path_section_complete"] = txtCourseComplete.Text;
+                        SessionWrapper.TempPathSection.Rows[i]["c_curricula_path_section_courses"] = lblCourse.Text;
+                        SessionWrapper.TempPathSection.Rows[i]["c_curricula_path_section_enforce_seq_flag"] = chkEnforceSectionsSequence.Checked;
+                        SessionWrapper.TempPathSection.AcceptChanges();
+                    }
+                    path.c_curricula_path_section = ConvertDataTableToXml(SessionWrapper.TempPathSection);
+                    path.c_curricula_path_courses = ConvertDataTableToXml(SessionWrapper.TempPathCourse);
+                    int result = SystemCurriculumBLL.InsertCurriculaPath(path);
+                    //Close fancybox
+                    if (result != -1)
+                    {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+                    }
+                } 
+                
             }
             catch (Exception ex)
             {

@@ -255,11 +255,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
 
         protected void btnUpdateValue_Click(object sender, EventArgs e)
         {
-
             foreach (GridViewRow row in gvGradingSchemeValues.Rows)
             {
-
-
                 TextBox txtMinscore = (TextBox)row.FindControl("txtMinscore");
                 TextBox txtMaxscore = (TextBox)row.FindControl("txtMaxscore");
                 TextBox txtGpa = (TextBox)row.FindControl("txtGpa");
@@ -279,10 +276,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
                 }               
                 SessionWrapper.GradingSchemeValues.Rows[indexOfRow]["s_grading_scheme_value_pass_status_id_fk"] = ddlPassingStatus.SelectedValue;
                 SessionWrapper.GradingSchemeValues.AcceptChanges();
-
-
             }
-
+            BindGradingSchemesValues();
         }
 
 

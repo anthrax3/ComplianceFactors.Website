@@ -381,7 +381,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.GradingSchemes
             
             ConvertDataTables convert = new ConvertDataTables();
             string UpdateGradingSchemesValues = convert.ConvertDataTableToXml(dtGetGradingschemeValue);
-            int result = SystemGradingSchemesBLL.UpdateallGradingSchemeValue(UpdateGradingSchemesValues);
+            SystemGradingSchemesBLL.UpdateallGradingSchemeValue(UpdateGradingSchemesValues);
+            BindGradingSchemesValues();
             hdUpdateValue.Value = "0";
         }
 

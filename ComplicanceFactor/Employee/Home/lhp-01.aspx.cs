@@ -451,32 +451,32 @@ namespace ComplicanceFactor
             string t_transcript_course_id_fk = gvLearningHistory.DataKeys[rowIndex][0].ToString();
             string title = gvLearningHistory.DataKeys[rowIndex][1].ToString();
 
-            //bool isEnroll;
+            bool isEnroll;
             if (e.CommandName.Equals("Enroll"))
             {
 
-                Enrollment enroll = new Enrollment();
-                enroll.e_enroll_user_id_fk = SessionWrapper.u_userid;
-                enroll.e_enroll_course_id_fk = t_transcript_course_id_fk;
-                enroll.e_enroll_delivery_id_fk = gvLearningHistory.DataKeys[rowIndex][2].ToString();
-                enroll.e_enroll_type_name = "Self-enroll";
-                enroll.e_enroll_status_name = "Enrolled";
-                enroll.e_enroll_target_due_date = null;
-                int result = EnrollmentBLL.SingleReEnroll(enroll);
-                if (result == -2)
+                //Enrollment enroll = new Enrollment();
+                //enroll.e_enroll_user_id_fk = SessionWrapper.u_userid;
+                //enroll.e_enroll_course_id_fk = t_transcript_course_id_fk;
+                //enroll.e_enroll_delivery_id_fk = gvLearningHistory.DataKeys[rowIndex][2].ToString();
+                //enroll.e_enroll_type_name = "Self-enroll";
+                //enroll.e_enroll_status_name = "Enrolled";
+                //enroll.e_enroll_target_due_date = null;
+                //int result = EnrollmentBLL.SingleReEnroll(enroll);
+                //if (result == -2)
+                //{
+                //    ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", @"alert('Already enrolled')", true);
+                //}
+                isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
+                if (isEnroll == true)
                 {
-                    ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", @"alert('Already enrolled')", true);
+                    SessionWrapper.isLeraningHistory = true;
                 }
-                //isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
-                //if (isEnroll == true)
-                //{
-                //    SessionWrapper.isLeraningHistory = true;
-                //}
-                //else
-                //{
-                //    SessionWrapper.isLeraningHistory = false;
-                //}
-                //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
+                else
+                {
+                    SessionWrapper.isLeraningHistory = false;
+                }
+                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
                 GetAllEmployee();
                 
             }

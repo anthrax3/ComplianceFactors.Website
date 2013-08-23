@@ -17,11 +17,11 @@
     <style type="text/css">
         body
         {
-            width: 700px !important;
+            width: 800px !important;
             margin: 0;
             font-family: Arial, Sans-Serif;
             font-size: 14px;
-            height: 400px;
+            height: 500px;
         }
     </style>
     <script type="text/javascript">
@@ -60,7 +60,7 @@
                     'autoScale': false,
                     'autoDimensions': false,
                     'helpers': { overlay: { closeClick: false} },
-                    'width': 600,
+                    'width': 645,
                     'height': 350,
                     'margin': 0,
                     'padding': 0,
@@ -112,7 +112,7 @@
                     'autoScale': false,
                     'autoDimensions': false,
                     'helpers': { overlay: { closeClick: false} },
-                    'width': 600,
+                    'width': 670,
                     'height': 350,
                     'margin': 0,
                     'padding': 0,

@@ -15,14 +15,16 @@ namespace ComplicanceFactor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Get dyanamic css color
-            User usercss = new User();
-            usercss = UserBLL.GetCss(SessionWrapper.u_userid);
-            HtmlGenericControl style = new HtmlGenericControl();
-            style.TagName = "style";
-            style.Attributes.Add("type", "text/css");
-            style.InnerHtml = usercss.css + usercss.popup_background; 
-            Page.Header.Controls.Add(style);
+            if (!string.IsNullOrEmpty(SessionWrapper.u_userid))
+            {  // Get dyanamic css color
+                User usercss = new User();
+                usercss = UserBLL.GetCss(SessionWrapper.u_userid);
+                HtmlGenericControl style = new HtmlGenericControl();
+                style.TagName = "style";
+                style.Attributes.Add("type", "text/css");
+                style.InnerHtml = usercss.css + usercss.popup_background;
+                Page.Header.Controls.Add(style);
+            }
         }
     }
 }
