@@ -17,11 +17,39 @@
             overflow: hidden;
         }
     </style>
+    <%--<script type="text/javascript">
+        $(function () {
+            $('#<%= ddlElement.ClientID %>').change(function () {  
+
+                if (this.value == 'u_hris_hire_date' || this.value == 'u_hris_last_rehire_date') {
+                    $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
+//Greater than
+//Less than
+//Not Null
+//Contains
+//Before
+//Not Starts with
+//Not Contains
+//After
+//Not Between
+//Starts with
+//Matches
+//Not Matches
+//Between
+//Null
+                }
+                else {
+                    $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
+                }
+            });
+        });      
+    </script>--%>
     <script type="text/javascript">
         function HideMsg() {
             $("[id*=divSuccess]").fadeOut(500);
         }
     </script>
+    
        <script type="text/javascript">
            $(function () {
                $('#<%= ddlElement.ClientID %>').change(function () {

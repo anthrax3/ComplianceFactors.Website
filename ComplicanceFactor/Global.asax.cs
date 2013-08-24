@@ -1971,7 +1971,7 @@ namespace ComplicanceFactor
         }
         private void InsertGroupUser(string assignmentGroupId)
         {
-            DataTable dtUser = SystemAssignmentGroupBLL.GetAssignmentRuleUser(assignmentGroupId);
+            DataTable dtUser = SystemAssignmentGroupBLL.GetAssignmentRuleUser(assignmentGroupId,"us_english");
             ConvertDataTables ConvertXml = new ConvertDataTables();
             if (dtUser.Rows.Count > 0)
             {

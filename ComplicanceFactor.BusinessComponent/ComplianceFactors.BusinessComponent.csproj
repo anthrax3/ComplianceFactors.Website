@@ -112,10 +112,13 @@
     <Compile Include="SysemDeliveryTypesBLL.cs" />
     <Compile Include="SystemApprovalBLL.cs" />
     <Compile Include="SystemApprovalWorkflowBLL.cs" />
-    <Compile Include="SystemAssignmentGroupBLL.cs" />
+    <Compile Include="SystemAssignmentGroupBLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SystemAssignmentRuleBLL.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="SystemAudiencesBLL.cs" />
     <Compile Include="SystemBackgroundJobsBLL.cs" />
     <Compile Include="SystemCategoriesBLL.cs" />
     <Compile Include="SystemCompletionStatusesBLL.cs" />

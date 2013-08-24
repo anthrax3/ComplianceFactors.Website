@@ -530,10 +530,11 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static DataTable GetAssignmentRuleUser(string u_assignment_group_system_id_pk)
+        public static DataTable GetAssignmentRuleUser(string u_assignment_group_system_id_pk,string locale)
         {
             Hashtable htUser = new Hashtable();
             htUser.Add("@u_assignment_group_system_id_pk", u_assignment_group_system_id_pk);
+            htUser.Add("@locale", locale);
             try
             {
                 return DataProxy.FetchDataTable("e_sp_get_get_assignment_group_dynamic_query", htUser);
@@ -546,10 +547,11 @@ namespace ComplicanceFactor.BusinessComponent
 
         //
 
-        public static DataTable GetAssignmentRuleUserDetails(string u_assignment_group_system_id_pk)
+        public static DataTable GetAssignmentRuleUserDetails(string u_assignment_group_system_id_pk, string locale)
         {
             Hashtable htUser = new Hashtable();
             htUser.Add("@u_assignment_group_system_id_pk", u_assignment_group_system_id_pk);
+            htUser.Add("@locale", locale);
             try
             {
                 return DataProxy.FetchDataTable("e_sp_get_assignment_group_user_details", htUser);

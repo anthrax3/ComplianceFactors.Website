@@ -271,7 +271,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             int error = SystemAssignmentGroupBLL.UpdateAssignmentGroup(updateAssignmentGroup);
             if (error != -2)
             {
-                DataTable dtUser = SystemAssignmentGroupBLL.GetAssignmentRuleUser(editAssignmentGroupId);
+                DataTable dtUser = SystemAssignmentGroupBLL.GetAssignmentRuleUser(editAssignmentGroupId,SessionWrapper.CultureName);
                 ConvertDataTables ConvertXml = new ConvertDataTables();
                 if (dtUser.Rows.Count > 0)
                 {

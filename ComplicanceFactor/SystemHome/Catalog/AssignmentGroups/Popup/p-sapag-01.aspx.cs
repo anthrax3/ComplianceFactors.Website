@@ -201,7 +201,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             }
             else
             {
-                gvsearchDetails.DataSource = SystemAssignmentGroupBLL.GetAssignmentRuleUserDetails(editGroupId);
+                gvsearchDetails.DataSource = SystemAssignmentGroupBLL.GetAssignmentRuleUserDetails(editGroupId,SessionWrapper.CultureName);
                 gvsearchDetails.DataBind();
             }
 
