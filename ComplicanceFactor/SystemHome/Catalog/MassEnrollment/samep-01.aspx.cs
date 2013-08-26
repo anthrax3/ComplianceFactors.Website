@@ -88,7 +88,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.MassEnrollment
                     ddlDelivery.Items.Insert(0, liFirstItem);
                     ddlDelivery.SelectedIndex = 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                 }

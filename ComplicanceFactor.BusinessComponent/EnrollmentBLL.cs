@@ -403,7 +403,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htWaitListCount.Add("@e_waitlist_user_id_fk", e_waitlist_user_id_fk);
                 return DataProxy.FetchSPOutput("e_sp_get_waitlist_count", htWaitListCount);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -416,7 +416,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 return DataProxy.FetchDataSet("e_sp_get_all_curricula", htGetAllCurricula);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -455,7 +455,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetToDos.Add("@s_todo_user_id_fk", s_todo_user_id_fk);
                 return DataProxy.FetchDataSet("e_sp_get_all_todo_team_report", htGetToDos);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -601,7 +601,7 @@ namespace ComplicanceFactor.BusinessComponent
                 int res= DataProxy.FetchSPOutput("e_sp_check_delivery_enroll_or_not", htGetDelieryenroll);
                 return res == 1 ? true : false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -622,7 +622,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 return DataProxy.FetchDataSet("e_sp_get_all_Learning_History", htGetAllLearningHistory);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -725,7 +725,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 return DataProxy.FetchDataSet("e_sp_certificate_pdf", htGetCertificatePDF);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

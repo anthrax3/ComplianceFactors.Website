@@ -1,1 +1,25 @@
 ﻿
+08/26/2013 01:41 PM : samagmp-01.aspx : There is no row at position 0.
+
+08/26/2013 02:38 PM : samagmp-01.aspx : There is no row at position 0.
+
+08/26/2013 02:43 PM : samagmp-01.aspx : There is no row at position 0.
+
+08/26/2013 02:45 PM : samagmp-01.aspx : There is no row at position 0.
+
+08/26/2013 06:12 PM : saetc-01 : Object reference not set to an instance of an object.
+
+08/26/2013 06:14 PM : saec-01 : Object reference not set to an instance of an object.
+
+08/26/2013 06:15 PM : saec-01 : Object reference not set to an instance of an object.
+
+08/26/2013 06:26 PM : sasran-01.aspx : A field or property with the name 'app_audience_name_text' was not found on the selected data source.
+
+08/26/2013 06:48 PM : saantc-01 (Save Course) : Could not find prepared statement with handle 7.
+The statement has been terminated.
+
+08/26/2013 06:55 PM : saetc-01 : Object reference not set to an instance of an object.
+
+08/26/2013 07:29 PM : ccasharm-01 : Invalid column name 's_ui_dropdown_'.
+Invalid column name 's_ui_dropdown_'.
+

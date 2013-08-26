@@ -607,6 +607,44 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 {
                     MaxWaitList = null;
                 }
+                //Have to add the newly added columns into this session(session.Deliveries)
+                DateTime? availableFrom = null;
+                DateTime tempavailableFrom;
+                CultureInfo culturenew = new CultureInfo("en-US");
+                if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+                {
+                    availableFrom = tempavailableFrom;
+                }
+
+
+                DateTime? availableTo = null;
+                DateTime tempavailableTo;
+                if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+                {
+                    availableTo = tempavailableTo;
+                }
+
+                DateTime? effectiveDate = null;
+                DateTime tempeffectiveDate;
+                if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+                {
+                    effectiveDate = tempeffectiveDate;
+                }
+
+                DateTime? cuttoffDate = null;
+                DateTime tempcuttoffDate;
+                if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+                {
+                    cuttoffDate = tempcuttoffDate;
+                }
+
+                DateTime? cutofftime = null;
+                DateTime temptimeofday;
+                if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+                {
+                    cutofftime = temptimeofday;
+                }
+
 
                 AddDataToDeliveries(SessionWrapper.c_delivery_system_id_pk, "", txtDeliveyID.Text,
                     ddlDeliveryType.SelectedValue, txtDeliveryTitle.Text, txtDescription.Value,
@@ -615,6 +653,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                     ddlStatus.SelectedValue, chkVisible.Checked, MinEnroll, MaxEnroll,
                     EnrollThreshhold, chkWaitingList.Checked, MaxWaitList, txtVlsUrl.Text, txtScormUrl.Text,
                     txtScromLaunchParameters.Text,
+                    availableFrom.ToString(),
+                    availableTo.ToString(),
+                    effectiveDate.ToString(),
+                    cuttoffDate.ToString(),
+                    cutofftime.ToString(),
                     txtCustom01.Text,
                     txtCustom02.Text,
                     txtCustom03.Text,
@@ -769,6 +812,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                                             string c_vlt_launch_url,
                                             string c_olt_launch_url,
                                             string c_olt_launch_param,
+                                            string availableFrom,
+                                            string availableTo,
+                                            string effectiveDate,
+                                            string cutoffDate,
+                                            string cutoffTime,
                                             string c_delivery_custom_01,
                                             string c_delivery_custom_02,
                                             string c_delivery_custom_03,
@@ -862,6 +910,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             row["c_vlt_launch_url"] = c_vlt_launch_url;
             row["c_olt_launch_url"] = c_olt_launch_url;
             row["c_olt_launch_param"] = c_olt_launch_param;
+
+            row["c_delivery_available_from_date"] = availableFrom;
+            row["c_delivery_available_to_date"] = availableTo;
+            row["c_delivery_effective_date"] = effectiveDate;
+            row["c_delivery_cut_off_date"] = cutoffDate;
+            row["c_delivery_cut_off_time"] = cutoffTime;
+
             row["c_delivery_custom_01"] = c_delivery_custom_01;
             row["c_delivery_custom_02"] = c_delivery_custom_02;
             row["c_delivery_custom_03"] = c_delivery_custom_03;
@@ -1076,6 +1131,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             txtScormUrl.Text = dtCopydeliveries.Rows[0]["c_olt_launch_url"].ToString();
             txtScromLaunchParameters.Text = dtCopydeliveries.Rows[0]["c_olt_launch_param"].ToString();
             txtVlsUrl.Text = dtCopydeliveries.Rows[0]["c_vlt_launch_url"].ToString();
+
+            txtAvailableFrom.Text = dtCopydeliveries.Rows[0]["c_delivery_available_from_date"].ToString();
+            txtAvailableTo.Text = dtCopydeliveries.Rows[0]["c_delivery_available_to_date"].ToString();
+            txtEffectiveDate.Text = dtCopydeliveries.Rows[0]["c_delivery_effective_date"].ToString();
+            txtCutOffDate.Text = dtCopydeliveries.Rows[0]["c_delivery_cut_off_date"].ToString();
+            txtCutoffTime.Text = dtCopydeliveries.Rows[0]["c_delivery_cut_off_time"].ToString();
+
+
             txtCustom01.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_01"].ToString();
             txtCustom02.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_02"].ToString();
             txtCustom03.Text = dtCopydeliveries.Rows[0]["c_delivery_custom_03"].ToString();

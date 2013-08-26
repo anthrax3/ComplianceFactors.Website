@@ -24,8 +24,8 @@ namespace ComplicanceFactor.Manager.Enroll
         private bool check_course_or_curriculum;
         private string waitList;
         private int approvalCount;
-        private int max_enroll;
-        private int enrolled_delivery_count;
+        //private int max_enroll;
+        //private int enrolled_delivery_count;
         protected void Page_Load(object sender, EventArgs e)
         {
             #region

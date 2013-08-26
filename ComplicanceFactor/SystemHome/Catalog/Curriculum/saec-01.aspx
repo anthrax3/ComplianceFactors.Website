@@ -7,6 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
@@ -1224,6 +1226,34 @@
 
         }
     </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=txtCutoffTime.ClientID %>").watermark("HH:MM AM/PM");
+            $("#<%=txtCutoffTime.ClientID %>").click(
+			function () {
+			    $("#<%=txtCutoffTime.ClientID %>")[0].focus();
+			}
+		);
+        });
+    </script>
+    <script type="text/javascript">
+        (function ($) {
+            $(function () {
+                $('#<%=txtCutoffTime.ClientID %>').timepicker({ dropdown: false, timeFormat: 'h:mm p' });
+            });
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+        function DateCheck(sender, args) {
+            var StartDate = document.getElementById('<%=txtAvailableFrom.ClientID %>').value;
+            var EndDate = document.getElementById('<%=txtAvailableTo.ClientID %>').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                args.IsValid = false;
+            }
+        }    
+    </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saec" runat="server"
         ValidationGroup="saec"></asp:ValidationSummary>
     <asp:HiddenField ID="hdCurriculumId" runat="server" />
@@ -1467,8 +1497,14 @@
                 <tr>
                     <td>
                         Available From:
+                        <asp:RegularExpressionValidator ID="regexAvailableFrom" runat="server" ControlToValidate="txtAvailableFrom"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in Available From" Display="Dynamic" ValidationGroup="saec">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
+                        <asp:CalendarExtender ID="ceAvailableFrom" Format="MM/dd/yyyy" TargetControlID="txtAvailableFrom"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="3">
@@ -1476,24 +1512,45 @@
                             <tr>
                                 <td>
                                     Available To:
+                                    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+                                        ValidationGroup="saec" runat="server" ErrorMessage="Please select the Available To date as greater than Available Start date">&nbsp;</asp:CustomValidator>
+                                    <asp:RegularExpressionValidator ID="regexAvailableTo" runat="server" ControlToValidate="txtAvailableTo"
+                                        ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                                        ErrorMessage="Please Enter valid Date in Available To" Display="Dynamic" ValidationGroup="saec">&nbsp;</asp:RegularExpressionValidator>
                                 </td>
                                 <td>
+                                    <asp:CalendarExtender ID="ceAvailableTo" Format="MM/dd/yyyy" TargetControlID="txtAvailableTo"
+                                        runat="server">
+                                    </asp:CalendarExtender>
                                     <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                         </table>
-                        <td>
-                            Effective Date:
-                        </td>
-                        <td class="align_left">
-                            <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
-                        </td>
+                    </td>
+                    <td>
+                        Effective Date:
+                        <asp:RegularExpressionValidator ID="regexEffectiveDate" runat="server" ControlToValidate="txtEffectiveDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in Effective Date" Display="Dynamic" ValidationGroup="saec">&nbsp;</asp:RegularExpressionValidator>
+                    </td>
+                    <td class="align_left">
+                        <asp:CalendarExtender ID="ceEffectiveDate" Format="MM/dd/yyyy" TargetControlID="txtEffectiveDate"
+                            runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         Cut-off Date:
+                        <asp:RegularExpressionValidator ID="regexCutOffDate" runat="server" ControlToValidate="txtCutOffDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in cuttoff Date" Display="Dynamic" ValidationGroup="saec">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
+                        <asp:CalendarExtender ID="ceCutOffDate" Format="MM/dd/yyyy" TargetControlID="txtCutOffDate"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="3">

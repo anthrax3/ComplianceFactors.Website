@@ -173,6 +173,10 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 //Get category
                 gvCategory.DataSource = SystemCategoriesBLL.GetCourseCategory(editCourseId);
                 gvCategory.DataBind();
+                //Get Audiences
+                gvAudience.DataSource = SystemCatalogBLL.GetCourseAudiences(editCourseId);
+                gvAudience.DataBind();
+
                 //using jquery hide the '-or-' in last row
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
                 //Get course locale
@@ -621,7 +625,31 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
         }
 
-
+        //Delete Audience
+        [System.Web.Services.WebMethod]
+        public static void DeleteAudience(string args)
+        {
+            try
+            {                 
+                SystemCatalogBLL.DeleteAudiences(args.Trim(), editCourseId);
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saetc-01 (Remove Audience)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saetc-01 (Remove Audience)", ex.Message);
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Delete Category
         /// </summary>
@@ -791,6 +819,50 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 CreateCourse.c_course_visible_flag = chkVisible.Checked;
                 CreateCourse.c_course_approval_req = chkApprovalRequired.Checked;
                 CreateCourse.c_course_approval_id_fk = ddlApprovalRequired.SelectedValue;
+
+
+                DateTime? availableFrom = null;
+                DateTime tempavailableFrom;
+                CultureInfo culturenew = new CultureInfo("en-US");
+                if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+                {
+                    availableFrom = tempavailableFrom;
+                }
+
+
+                DateTime? availableTo = null;
+                DateTime tempavailableTo;
+                if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+                {
+                    availableTo = tempavailableTo;
+                }
+
+                DateTime? effectiveDate = null;
+                DateTime tempeffectiveDate;
+                if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+                {
+                    effectiveDate = tempeffectiveDate;
+                }
+
+                DateTime? cuttoffDate = null;
+                DateTime tempcuttoffDate;
+                if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+                {
+                    cuttoffDate = tempcuttoffDate;
+                }                
+
+                DateTime? timeofday = null;
+                DateTime temptimeofday;
+                if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+                {
+                    timeofday = temptimeofday;
+                }
+
+                CreateCourse.c_course_available_from_date = availableFrom;
+                CreateCourse.c_course_available_to_date = availableTo;
+                CreateCourse.c_course_effective_date = effectiveDate;
+                CreateCourse.c_course_cut_off_date = cuttoffDate;
+                CreateCourse.c_course_cut_off_time = timeofday; 
 
                 //CreateCourse.c_course_available_from_date = txtAvailableFrom.Text;
                 //CreateCourse.c_course_available_to_date = txtAvailableTo.Text;
@@ -978,6 +1050,30 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 liFirstItem.Value = "0";
                 ddlApprovalRequired.Items.Insert(0, liFirstItem);
 
+            }
+
+
+            if (!string.IsNullOrEmpty(Course.c_course_available_from_date.ToString()))
+            {
+                txtAvailableFrom.Text = Convert.ToDateTime(Course.c_course_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Course.c_course_available_to_date.ToString()))
+            {
+                txtAvailableTo.Text = Convert.ToDateTime(Course.c_course_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Course.c_course_effective_date.ToString()))
+            {
+                txtEffectiveDate.Text = Convert.ToDateTime(Course.c_course_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_date.ToString()))
+            {
+                txtCutOffDate.Text = Convert.ToDateTime(Course.c_course_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
+            {
+                txtCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();
             }
 
             //txtAvailableFrom.Text = Course.c_course_available_from_date;

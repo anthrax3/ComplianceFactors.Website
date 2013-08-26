@@ -7,6 +7,7 @@ using System.Data;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using System.IO;
+using System.Globalization;
 
 
 namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
@@ -191,6 +192,32 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             txtScromLaunchParameters.Text = delivery.c_olt_launch_param;
             ddlScoringScheme.SelectedValue = delivery.c_survey_scoring_scheme_id_fk;
             txtVlsUrl.Text = delivery.c_vlt_launch_url;
+
+            if (!string.IsNullOrEmpty(delivery.c_delivery_available_from_date.ToString()))
+            {
+                txtAvailableFrom.Text = Convert.ToDateTime(delivery.c_delivery_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(delivery.c_delivery_available_to_date.ToString()))
+            {
+                txtAvailableTo.Text = Convert.ToDateTime(delivery.c_delivery_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(delivery.c_delivery_effective_date.ToString()))
+            {
+                txtEffectiveDate.Text = Convert.ToDateTime(delivery.c_delivery_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(delivery.c_delivery_cut_off_date.ToString()))
+            {
+                txtCutOffDate.Text = Convert.ToDateTime(delivery.c_delivery_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(delivery.c_delivery_cut_off_time_string.ToString()))
+            {
+                txtCutoffTime.Text = Convert.ToDateTime(delivery.c_delivery_cut_off_time_string).ToShortTimeString();
+            }
+
+            //Need to add newly added columns columns
+
             txtCustom01.Text = delivery.c_delivery_custom_01;
             txtCustom02.Text = delivery.c_delivery_custom_02;
             txtCustom03.Text = delivery.c_delivery_custom_03;
@@ -741,6 +768,58 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_olt_launch_url"] = txtScormUrl.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_olt_launch_param"] = txtScromLaunchParameters.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_survey_scoring_scheme_id_fk"] = ddlScoringScheme.SelectedValue;
+
+
+            DateTime? availableFrom = null;
+            DateTime tempavailableFrom;
+            CultureInfo culturenew = new CultureInfo("en-US");
+            if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+            {
+                availableFrom = tempavailableFrom;
+            }
+
+
+            DateTime? availableTo = null;
+            DateTime tempavailableTo;
+            if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+            {
+                availableTo = tempavailableTo;
+            }
+
+            DateTime? effectiveDate = null;
+            DateTime tempeffectiveDate;
+            if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+            {
+                effectiveDate = tempeffectiveDate;
+            }
+
+            DateTime? cuttoffDate = null;
+            DateTime tempcuttoffDate;
+            if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+            {
+                cuttoffDate = tempcuttoffDate;
+            }
+
+            DateTime? timeofday = null;
+            DateTime temptimeofday;
+            if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+            {
+                timeofday = temptimeofday;
+            }
+
+            //c_course_available_from_date = availableFrom;
+            //c_course_available_to_date = availableTo;
+            //c_course_effective_date = effectiveDate;
+            //c_course_cut_off_date = cuttoffDate;
+            //c_course_cut_off_time = timeofday; 
+
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_available_from_date"] = availableFrom.ToString();
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_available_to_date"] = availableTo.ToString();
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_effective_date"] = effectiveDate.ToString();
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_cut_off_date"] = cuttoffDate.ToString();            
+            SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_cut_off_time"] = timeofday.ToString();
+
+
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_01"] = txtCustom01.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_02"] = txtCustom02.Text;
             SessionWrapper.Deliveries.Rows[indexOfRow]["c_delivery_custom_03"] = txtCustom03.Text;

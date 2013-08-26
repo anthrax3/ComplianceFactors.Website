@@ -217,6 +217,50 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 CreateCurriculum.c_curriculum_visible_flag = chkVisible.Checked;
                 CreateCurriculum.c_curriculum_approval_req = chkApprovalRequired.Checked;
                 CreateCurriculum.c_curriculum_approval_id_fk = ddlApprovalRequired.SelectedValue;
+
+                DateTime? availableFrom = null;
+                DateTime tempavailableFrom;
+                CultureInfo culturenew = new CultureInfo("en-US");
+                if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+                {
+                    availableFrom = tempavailableFrom;
+                }
+
+
+                DateTime? availableTo = null;
+                DateTime tempavailableTo;
+                if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+                {
+                    availableTo = tempavailableTo;
+                }
+
+                DateTime? effectiveDate = null;
+                DateTime tempeffectiveDate;
+                if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+                {
+                    effectiveDate = tempeffectiveDate;
+                }
+
+                DateTime? cuttoffDate = null;
+                DateTime tempcuttoffDate;
+                if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+                {
+                    cuttoffDate = tempcuttoffDate;
+                }
+
+                DateTime? timeofday = null;
+                DateTime temptimeofday;
+                if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+                {
+                    timeofday = temptimeofday;
+                }
+
+                CreateCurriculum.c_curriculum_available_from_date = availableFrom;
+                CreateCurriculum.c_curriculum_available_to_date = availableTo;
+                CreateCurriculum.c_curriculum_effective_date = effectiveDate;
+                CreateCurriculum.c_curriculum_cut_off_date = cuttoffDate;
+                CreateCurriculum.c_curriculum_cut_off_time = timeofday; 
+
                 //recurrance
                 int tempEvery;
                 if (int.TryParse(txtEvery.Text, out tempEvery))
@@ -937,6 +981,30 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             {
                 txtDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_recurance_date, culture).ToString("MM/dd/yyyy");
             }
+
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_available_from_date.ToString()))
+            {
+                txtAvailableFrom.Text = Convert.ToDateTime(Curriculum.c_curriculum_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_available_to_date.ToString()))
+            {
+                txtAvailableTo.Text = Convert.ToDateTime(Curriculum.c_curriculum_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_effective_date.ToString()))
+            {
+                txtEffectiveDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_date.ToString()))
+            {
+                txtCutOffDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_time_string.ToString()))
+            {
+                txtCutoffTime.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_time_string).ToShortTimeString();
+            }
+
             //custom section
             txtCustom01.Text = Curriculum.c_curriculum_custom_01;
             txtCustom02.Text = Curriculum.c_curriculum_custom_02;

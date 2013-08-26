@@ -234,8 +234,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 DateTime tempStartDate;
                 if (DateTime.TryParseExact(txtStartDate.Text, "MM/dd/yyyy", culture, DateTimeStyles.None, out tempStartDate))
                 {
-                    startDate = DateTime.Parse(strStartDate, culture);
-
+                    startDate = tempStartDate;
                 }
 
                 updateSession.c_session_start_date = startDate;
@@ -250,18 +249,28 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
 
                 DateTime? startTime = null;
                 DateTime tempStartTime;
-                if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtStartTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempStartTime))
+
+                if (DateTime.TryParseExact(txtStartTime.Text, "h:mm tt", culture, DateTimeStyles.None, out tempStartTime))
                 {
                     startTime = tempStartTime;
-
                 }
+                //if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtStartTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempStartTime))
+                //{
+                //    startTime = tempStartTime;
+                //}
                 updateSession.c_session_start_time = startTime;
                 DateTime? endTime = null;
                 DateTime tempEndTime;
-                if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtEndTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempEndTime))
+
+                if (DateTime.TryParseExact(txtEndTime.Text, "h:mm tt", culture, DateTimeStyles.None, out tempEndTime))
                 {
                     endTime = tempEndTime;
                 }
+
+                //if (DateTime.TryParseExact(ConvertStringToTimeFormat(txtEndTime.Text), "MM/dd/yyyy h:mm:ss", culture, DateTimeStyles.None, out tempEndTime))
+                //{
+                //    endTime = tempEndTime;
+                //}
 
                 updateSession.c_sessions_end_time = endTime;
                 DateTime? duration = null;

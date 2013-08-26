@@ -7,6 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
@@ -277,6 +279,40 @@
                 'overlayOpacity': 0.7,
                 'hideOnOverlayClick': false,
                 'href': '../Course/DomainSearch/sasdn-01.aspx?page=saantc',
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+                    $('#fancybox-frame').load(function () {
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+
+            //Audience Saerch Popup
+            $("#<%=btnAddAudience.ClientID %>").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 920,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': '../Course/AudienceSearch/sasan-01.aspx?page=saantc',
                 'onComplete': function () {
                     $.fancybox.showActivity();
                     $('#fancybox-frame').load(function () {
@@ -910,6 +946,48 @@
             });
         });
     </script>
+     <script type="text/javascript">
+
+         $(document).ready(function () {
+
+             $(".deleteaudience").click(function () {
+
+                 //Get the Id of the record to delete
+                 var record_id = $(this).attr("id");
+
+                 //Get the GridView Row reference
+                 var tr_id = $(this).parents("#.record");
+
+                 // Ask user's confirmation before delete records
+                 if (confirm("Do you want to delete this record?")) {
+
+                     $.ajax({
+                         type: "POST",
+
+                         //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
+                         url: "saantc-01.aspx/DeleteAudience",
+
+                         //Pass the selected record id
+                         data: "{'args': '" + record_id + "'}",
+                         contentType: "application/json; charset=utf-8",
+                         dataType: "json",
+                         success: function () {
+
+                             // Do some animation effect
+                             tr_id.fadeOut(500, function () {
+
+                                 //Remove GridView row
+                                 tr_id.remove();
+
+                             });
+                         }
+                     });
+
+                 }
+                 return false;
+             });
+         });
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -953,6 +1031,34 @@
             });
 
         });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=txtCutoffTime.ClientID %>").watermark("HH:MM AM/PM");
+            $("#<%=txtCutoffTime.ClientID %>").click(
+			function () {
+			    $("#<%=txtCutoffTime.ClientID %>")[0].focus();
+			}
+		);
+        });
+    </script>
+    <script type="text/javascript">
+        (function ($) {
+            $(function () {
+                $('#<%=txtCutoffTime.ClientID %>').timepicker({ dropdown: false, timeFormat: 'h:mm p' });
+            });
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+            function DateCheck(sender, args) {
+                var StartDate = document.getElementById('<%=txtAvailableFrom.ClientID %>').value;
+                var EndDate = document.getElementById('<%=txtAvailableTo.ClientID %>').value;
+                var eDate = new Date(EndDate);
+                var sDate = new Date(StartDate);
+                if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                    args.IsValid = false;
+                }
+            }    
     </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saantc" runat="server"
         ValidationGroup="saantc"></asp:ValidationSummary>
@@ -1184,8 +1290,14 @@
                 <tr>
                     <td>
                         Available From:
+                        <asp:RegularExpressionValidator ID="regexAvailableFrom" runat="server" ControlToValidate="txtAvailableFrom"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in Available From" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
+                        <asp:CalendarExtender ID="ceAvailableFrom" Format="MM/dd/yyyy" TargetControlID="txtAvailableFrom"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="3">
@@ -1193,8 +1305,16 @@
                             <tr>
                                 <td>
                                     Available To:
+                                    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+                                        ValidationGroup="saantc" runat="server" ErrorMessage="Please select the Available To date as greater than Available Start date">&nbsp;</asp:CustomValidator>
+                                    <asp:RegularExpressionValidator ID="regexAvailableTo" runat="server" ControlToValidate="txtAvailableTo"
+                                        ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                                        ErrorMessage="Please Enter valid Date in Available To" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                                 </td>
                                 <td>
+                                    <asp:CalendarExtender ID="ceAvailableTo" Format="MM/dd/yyyy" TargetControlID="txtAvailableTo"
+                                        runat="server">
+                                    </asp:CalendarExtender>
                                     <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
@@ -1202,16 +1322,28 @@
                     </td>
                     <td>
                         Effective Date:
+                        <asp:RegularExpressionValidator ID="regexEffectiveDate" runat="server" ControlToValidate="txtEffectiveDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in Effective Date" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
+                        <asp:CalendarExtender ID="ceEffectiveDate" Format="MM/dd/yyyy" TargetControlID="txtEffectiveDate"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <asp:RegularExpressionValidator ID="regexCutOffDate" runat="server" ControlToValidate="txtCutOffDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in cuttoff Date" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                         Cut-off Date:
                     </td>
                     <td class="align_left">
+                        <asp:CalendarExtender ID="ceCutOffDate" Format="MM/dd/yyyy" TargetControlID="txtCutOffDate"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="3">
@@ -1371,6 +1503,40 @@
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_audience_text")%>:
         </div>
+        <div class="div_controls_from_left">
+            <div>
+                <asp:GridView ID="gvAudience" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
+                    CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
+                    AutoGenerateColumns="False">
+                    <RowStyle CssClass="record"></RowStyle>
+                    <Columns>
+                        <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                            <ItemTemplate>
+                                <table class="gridview_row_width_5">
+                                    <tr>
+                                        <td>
+                                            <%#Eval("u_audience_name")%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <%-- <%# "(" + Eval("s_category_id") + ")"%>--%>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
+                            <ItemTemplate>
+                                <input type="button" id='<%# Eval("c_related_audience_id_fk") %>' value='<asp:Literal ID="Literal5" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
+                                    class="deleteaudience cursor_hand" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+
         <br />
         <div class="div_controls font_1">
             <asp:Button ID="btnAddAudience" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_button_text%>" />

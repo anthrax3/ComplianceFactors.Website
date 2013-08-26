@@ -164,6 +164,30 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
 
             lblCreditUnits.Text = Convert.ToString(Curriculum.c_curriculum_credit_units);
             lblCreditHours.Text = Convert.ToString(Curriculum.c_curriculum_credit_hours);
+
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_available_from_date.ToString()))
+            {
+                lblAvailableFrom.Text = Convert.ToDateTime(Curriculum.c_curriculum_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_available_to_date.ToString()))
+            {
+                lblAvailableTo.Text = Convert.ToDateTime(Curriculum.c_curriculum_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_effective_date.ToString()))
+            {
+                lblEffectiveDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_date.ToString()))
+            {               
+                lblCutOffDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_time_string.ToString()))
+            {
+                lblCutoffTime.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_time_string).ToShortTimeString();
+            }
+
             //custom section
             lblCustom01.Text = Curriculum.c_curriculum_custom_01;
             lblCustom02.Text = Curriculum.c_curriculum_custom_02;

@@ -465,7 +465,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="u_audience_id_fk"></param>
         /// <returns></returns>
-        public static DataTable GetAssignmentParameter(string u_audience_id_fk)
+        public static DataTable GetAudienceParameter(string u_audience_id_fk)
         {
             Hashtable htGetAssignmentParameter = new Hashtable();
             htGetAssignmentParameter.Add("@u_audience_id_fk", u_audience_id_fk);
@@ -540,13 +540,14 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="u_audience_system_id_pk"></param>
         /// <returns></returns>
-        public static DataTable GetAudienceUser(string u_audience_system_id_pk)
+        public static DataTable GetAudienceUser(string u_audience_system_id_pk, string u_locale)
         {
             Hashtable htUser = new Hashtable();
             htUser.Add("@u_audience_system_id_pk", u_audience_system_id_pk);
+            htUser.Add("@locale", u_locale);
             try
             {
-                return DataProxy.FetchDataTable("e_sp_get_get_audience_dynamic_query", htUser);
+                return DataProxy.FetchDataTable("e_sp_get_audience_dynamic_query", htUser);
             }
             catch (Exception)
             {
@@ -564,10 +565,11 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="u_audience_system_id_pk"></param>
         /// <returns></returns>
-        public static DataTable GetUserDetails(string u_audience_system_id_pk)
+        public static DataTable GetUserDetails(string u_audience_system_id_pk,string u_locale)
         {
             Hashtable htUser = new Hashtable();
             htUser.Add("@u_audience_system_id_pk", u_audience_system_id_pk);
+            htUser.Add("@locale", u_locale);
             try
             {
                 return DataProxy.FetchDataTable("e_sp_get_audience_user_details", htUser);
@@ -583,14 +585,14 @@ namespace ComplicanceFactor.BusinessComponent
         /// <param name="u_audience_id_fk"></param>
         /// <param name="audience_user"></param>
         /// <returns></returns>
-        public static int InsertUser(string u_audience_id_fk, string audience_user)
+        public static int InsertAudienceUser(string u_audience_id_fk, string audience_user)
         {
             Hashtable htInsertUser = new Hashtable();
             htInsertUser.Add("@u_audience_id_fk", u_audience_id_fk);
             htInsertUser.Add("@audience_user", audience_user);
             try
             {
-                return DataProxy.FetchSPOutput("e_sp_insert_audiences_users", htInsertUser);
+                return DataProxy.FetchSPOutput("e_sp_insert_audience_users", htInsertUser);
             }
             catch (Exception)
             {

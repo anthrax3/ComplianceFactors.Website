@@ -28,11 +28,13 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_course_active_type_id_fk { get; set; }
         public bool c_course_visible_flag { get; set; }
 
-        public string c_course_available_from_date { get; set; }
-        public string c_course_available_to_date { get; set; }
-        public string c_course_effective_date { get; set; }
-        public string c_course_cut_off_date { get; set; }
-        public string c_course_cut_off_time { get; set; }
+        public DateTime? c_course_available_from_date { get; set; }
+        public DateTime? c_course_available_to_date { get; set; }
+        public DateTime? c_course_effective_date { get; set; }
+        public DateTime? c_course_cut_off_date { get; set; }
+        public DateTime? c_course_cut_off_time { get; set; }
+
+        public string c_course_cut_off_time_string { get; set; }
 
         public string c_course_custom_01 { get; set; }
         public string c_course_custom_02 { get; set; }
@@ -87,11 +89,13 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_delivery_active_type_id_fk { get; set; }
         public bool c_delivery_visible_flag { get; set; }
 
-        public string c_delivery_available_from_date { get; set; }
-        public string c_delivery_available_to_date { get; set; }
-        public string c_delivery_effective_date { get; set; }
-        public string c_delivery_cut_off_date { get; set; }
-        public string c_delivery_cut_off_time { get; set; }
+        public DateTime? c_delivery_available_from_date { get; set; }
+        public DateTime? c_delivery_available_to_date { get; set; }
+        public DateTime? c_delivery_effective_date { get; set; }
+        public DateTime? c_delivery_cut_off_date { get; set; }
+        public DateTime? c_delivery_cut_off_time { get; set; }
+
+        public string c_delivery_cut_off_time_string { get; set; }
 
         public int? c_delivery_min_enroll { get; set; }
         public int? c_delivery_max_enroll { get; set; }
@@ -195,6 +199,8 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_course_resources_id_pk { get; set; }
         public string c_course_material_id_pk { get; set; }
         public string c_course_domains { get; set; }
+        //Audience
+        public string c_course_audiences { get; set; }
         public string c_course_category { get; set; }
         public bool c_category { get; set; }
         public string c_new_course_system_id_pk { get; set; }
@@ -225,6 +231,13 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
 
         public string u_hris_employee_id{ get; set; }
         public string c_employee_name { get; set; }
+
+
+        //Audiences
+        public string c_course_audience_system_id_pk { get; set; }
+        public string c_related_audience_id_fk { get; set; }
+        
+
     }
 }
 

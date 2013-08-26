@@ -27,7 +27,7 @@ namespace ComplicanceFactor.Training
         private string todo_system_id_pk;
         private string delivery_id;
         private string e_enroll_user_id_fk;
-        private string e_enroll_course_id_fk;
+        //private string e_enroll_course_id_fk;
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -150,7 +150,7 @@ namespace ComplicanceFactor.Training
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

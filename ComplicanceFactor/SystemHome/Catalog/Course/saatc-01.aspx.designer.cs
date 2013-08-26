@@ -202,49 +202,49 @@ namespace ComplicanceFactor.SystemHome.Catalog {
         protected global::System.Web.UI.WebControls.Label lblApprovalRequired;
         
         /// <summary>
-        /// txtAvailableFrom control.
+        /// lblAvailableFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAvailableFrom;
+        protected global::System.Web.UI.WebControls.Label lblAvailableFrom;
         
         /// <summary>
-        /// txtAvailableTo control.
+        /// lblAvailableTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAvailableTo;
+        protected global::System.Web.UI.WebControls.Label lblAvailableTo;
         
         /// <summary>
-        /// txtEffectiveDate control.
+        /// lblEffectiveDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEffectiveDate;
+        protected global::System.Web.UI.WebControls.Label lblEffectiveDate;
         
         /// <summary>
-        /// txtCutOffDate control.
+        /// lblCutOffDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCutOffDate;
+        protected global::System.Web.UI.WebControls.Label lblCutOffDate;
         
         /// <summary>
-        /// txtCutoffTime control.
+        /// lblCutoffTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCutoffTime;
+        protected global::System.Web.UI.WebControls.Label lblCutoffTime;
         
         /// <summary>
         /// gvDeliveries control.

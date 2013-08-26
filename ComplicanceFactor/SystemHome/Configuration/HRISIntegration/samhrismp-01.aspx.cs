@@ -23,7 +23,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration
         #region "Private Member Variables"
         private string _attachmentpath = "~/SystemHome/Configuration/HRISIntegration/Uploaded/";
         private string _downloadpath = "~/SystemHome/Configuration/HRISIntegration/Sample/";
-        private DateTime start;
+        //private DateTime start;
         private static string hrisId;
         #endregion
         protected void Page_Load(object sender, EventArgs e)

@@ -382,6 +382,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.DropDownList ddlApprovalRequired;
         
         /// <summary>
+        /// regexAvailableFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexAvailableFrom;
+        
+        /// <summary>
+        /// ceAvailableFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceAvailableFrom;
+        
+        /// <summary>
         /// txtAvailableFrom control.
         /// </summary>
         /// <remarks>
@@ -389,6 +407,33 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAvailableFrom;
+        
+        /// <summary>
+        /// cvValidateDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvValidateDate;
+        
+        /// <summary>
+        /// regexAvailableTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexAvailableTo;
+        
+        /// <summary>
+        /// ceAvailableTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceAvailableTo;
         
         /// <summary>
         /// txtAvailableTo control.
@@ -400,6 +445,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.TextBox txtAvailableTo;
         
         /// <summary>
+        /// regexEffectiveDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexEffectiveDate;
+        
+        /// <summary>
+        /// ceEffectiveDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceEffectiveDate;
+        
+        /// <summary>
         /// txtEffectiveDate control.
         /// </summary>
         /// <remarks>
@@ -407,6 +470,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEffectiveDate;
+        
+        /// <summary>
+        /// regexCutOffDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexCutOffDate;
+        
+        /// <summary>
+        /// ceCutOffDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceCutOffDate;
         
         /// <summary>
         /// txtCutOffDate control.

@@ -50,7 +50,7 @@ namespace ComplicanceFactor.Instructor
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

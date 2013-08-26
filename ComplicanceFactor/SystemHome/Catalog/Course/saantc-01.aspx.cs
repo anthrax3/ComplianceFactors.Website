@@ -17,6 +17,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
         #region "Private Member Variables"
         private string _pathIcon = "~/SystemHome/Catalog/Course/Icons/";
         #endregion
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             ///<summary>
@@ -57,6 +58,8 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 SessionWrapper.CourseDomain = TempDataTables.TempDomain();
                 // Add Column in Category Datatable
                 SessionWrapper.CourseCategory = TempDataTables.TempCategory();
+                // Add Column in Audience Datataable
+                SessionWrapper.CourseAudience = TempDataTables.dtTempAudience();
                 //Add column in course selected prerequsites sessoin
                 SessionWrapper.PrerequisiteCourseSelected = Prerequisites();
                 SessionWrapper.EquivalenciesCourseSelected = Equivalencies();
@@ -152,6 +155,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 //Get Category
                 gvCategory.DataSource = SessionWrapper.CourseCategory;
                 gvCategory.DataBind();
+
+                gvAudience.DataSource = SessionWrapper.CourseAudience;
+                gvAudience.DataBind();
                
 
             }
@@ -215,7 +221,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
         {
             DataTable dtTempPrerequisites = new DataTable();
             DataColumn dtTempPrerequisitesColumn;
-
+            
             /// <summary>
             /// temp course id 
             /// <value>auto generate guid.</value>
@@ -577,6 +583,38 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
 
         }
+
+        //Delete Audience
+        [System.Web.Services.WebMethod]
+        public static void DeleteAudience(string args)
+        {
+            try
+            {
+                //Delete previous selected course
+                var rows = SessionWrapper.CourseAudience.Select("c_related_audience_id_fk= '" + args.Trim() + "'");
+                foreach (var row in rows)
+                    row.Delete();
+                SessionWrapper.CourseAudience.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Remove Audience)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Remove Audience)", ex.Message);
+                    }
+                }
+            }
+
+
+        }
         protected void btnHeaderSaveNewCourse_Click(object sender, EventArgs e)
         {
             SaveNewCourse();
@@ -618,6 +656,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
         /// </summary>
         private void SaveNewCourse()
         {
+            //CultureInfo culture = new CultureInfo("en-US");
             try
             {
                 SystemCatalog CreateCourse = new SystemCatalog();
@@ -665,11 +704,49 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 CreateCourse.c_course_approval_req = chkApprovalRequired.Checked;
                 CreateCourse.c_course_approval_id_fk = ddlApprovalRequired.SelectedValue;
 
-                //CreateCourse.c_course_available_from_date = txtAvailableFrom.Text;
-                //CreateCourse.c_course_available_to_date = txtAvailableTo.Text;
-                //CreateCourse.c_course_effective_date = txtEffectiveDate.Text;
-                //CreateCourse.c_course_cut_off_date = txtCutOffDate.Text;
-                //CreateCourse.c_course_cut_off_time = txtCutoffTime.Text; 
+               
+                DateTime? availableFrom = null;
+                DateTime tempavailableFrom;
+                CultureInfo culturenew = new CultureInfo("en-US");
+                if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+                {
+                    availableFrom = tempavailableFrom;
+                }
+
+
+                DateTime? availableTo = null;
+                DateTime tempavailableTo;
+                if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+                {
+                    availableTo = tempavailableTo;
+                }
+
+                DateTime? effectiveDate = null;
+                DateTime tempeffectiveDate;
+                if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+                {
+                    effectiveDate = tempeffectiveDate;
+                }
+
+                DateTime? cuttoffDate = null;
+                DateTime tempcuttoffDate;
+                if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+                {
+                    cuttoffDate = tempcuttoffDate;
+                }              
+
+                DateTime? timeofday = null;
+                DateTime temptimeofday;
+                if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+                {
+                    timeofday = temptimeofday;
+                }
+
+                CreateCourse.c_course_available_from_date = availableFrom;
+                CreateCourse.c_course_available_to_date = availableTo;
+                CreateCourse.c_course_effective_date = effectiveDate;
+                CreateCourse.c_course_cut_off_date = cuttoffDate;
+                CreateCourse.c_course_cut_off_time = timeofday; 
 
 
                 //recurrance
@@ -702,6 +779,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 CreateCourse.c_course_domains = ConvertDataTableToXml(SessionWrapper.CourseDomain);
                 //Category
                 CreateCourse.c_course_category = ConvertDataTableToXml(SessionWrapper.CourseCategory);
+                //Audiences
+                CreateCourse.c_course_audiences = ConvertDataTableToXml(SessionWrapper.CourseAudience);
+
                 //custom section
                 CreateCourse.c_course_custom_01 = txtCustom01.Text;
                 CreateCourse.c_course_custom_02 = txtCustom02.Text;
@@ -933,6 +1013,12 @@ namespace ComplicanceFactor.SystemHome.Catalog
             SessionWrapper.CourseCategory = null;
             SessionWrapper.CourseCategory.Clear();
             SessionWrapper.Reset_Course_Category.Clear();
+
+
+            //clear Category
+            SessionWrapper.CourseAudience = null;
+            SessionWrapper.CourseAudience.Clear();
+            SessionWrapper.Reset_Course_Audience.Clear();
             //clear delivery session
             ClearDeliverySession();
             
@@ -1032,6 +1118,30 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 ddlApprovalRequired.Items.Insert(0, liFirstItem);
 
             }
+
+            if (!string.IsNullOrEmpty(Course.c_course_available_from_date.ToString()))
+            {
+                txtAvailableFrom.Text = Convert.ToDateTime(Course.c_course_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Course.c_course_available_to_date.ToString()))
+            {
+                txtAvailableTo.Text = Convert.ToDateTime(Course.c_course_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Course.c_course_effective_date.ToString()))
+            {
+                txtEffectiveDate.Text = Convert.ToDateTime(Course.c_course_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_date.ToString()))
+            {
+                txtCutOffDate.Text = Convert.ToDateTime(Course.c_course_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
+            {
+                txtCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();
+            }
+
             //txtAvailableFrom.Text = Course.c_course_available_from_date;
             //txtAvailableTo.Text = Course.c_course_available_to_date;
             //txtEffectiveDate.Text = Course.c_course_effective_date;

@@ -16,7 +16,7 @@ namespace ComplicanceFactor.Manager.Catalog
 {
     public partial class qscr_01 : System.Web.UI.Page
     {
-        private string _filePath = "~/SystemHome/Catalog/Documents/Upload/";
+        //private string _filePath = "~/SystemHome/Catalog/Documents/Upload/";
         protected void Page_Load(object sender, EventArgs e)
         {
              //go button

@@ -6800,6 +6800,46 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static DataTable CourseAudience
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CourseAudience"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["CourseAudience"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["CourseAudience"] = value;
+            }
+        }
+        public static DataTable Reset_Course_Audience
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_Course_Audience"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Reset_Course_Audience"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_Course_Audience"] = value;
+            }
+        }
+        //Reset_Course_Audience
+
         public static void clearsession()
         {
             sessionid = "";

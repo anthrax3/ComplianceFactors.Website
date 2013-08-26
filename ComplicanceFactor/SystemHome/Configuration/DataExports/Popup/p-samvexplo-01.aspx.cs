@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.DataExports.Popup
     public partial class p_samvexplo_01 : System.Web.UI.Page
     {
         #region Private member varables
-        private string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
+        //private string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
         private static string logId;
         private static string filename;
         #endregion

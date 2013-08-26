@@ -764,7 +764,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Languages
                 //Show the message successfully inserted
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

@@ -1,9 +1,56 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="samaudmp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Audiences.samaudmp_01" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
+    CodeBehind="samaudmp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Audiences.samaudmp_01" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#app_nav_system').addClass('selected');
+            // toggles the slickbox on clicking the noted link  
+            $('.main_menu li a').hover(function () {
 
-<div class="content_area_long">
+                $('.main_menu li a').removeClass('selected');
+                $(this).addClass('active');
+
+                return false;
+            });
+            $('.main_menu li a').mouseleave(function () {
+
+                $('#app_nav_system').addClass('selected');
+                return false;
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                document.getElementById('<%=btnGosearch.ClientID %>').click();
+                return true;
+
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function resetall() {
+            document.getElementById('<%=txtAssignmentGroupId.ClientID %>').value = '';
+            document.getElementById('<%=txtName.ClientID %>').value = '';
+            document.getElementById('<%=ddlStatus.ClientID %>').selectedIndex = '0';
+            return false;
+        }
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('#<%=gvsearchDetails.ClientID %>')
+			.tablesorter({ headers: { 3: { sorter: false }, 4: { sorter: false }, 5: { sorter: false}} });
+
+        });
+    </script>
+    <div class="content_area_long">
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_advanced_audience_search_results_text")%>:
         </div>
@@ -45,18 +92,18 @@
         </div>
         <br />
         <div>
-        <asp:GridView ID="gvsearchDetails" runat="server"></asp:GridView>
-           <%-- <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
-                runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
-                DataKeyNames="u_assignment_group_system_id_pk" AutoGenerateColumns="False" AllowPaging="true"
-                EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" onrowcommand="gvsearchDetails_RowCommand">
+            <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
+                runat="server" EmptyDataText="No Result Found" DataKeyNames="u_audience_system_id_pk"
+                AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
+                PagerSettings-Visible="false" OnRowCommand="gvsearchDetails_RowCommand">
+                <%--<%$ LabelResourceExpression: app_no_result_found_text %>--%>
                 <Columns>
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_4"
-                        HeaderText="<%$ LabelResourceExpression: app_assignment_group_id_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_group_id_pk"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_audience_id_text %>" HeaderStyle-HorizontalAlign="Center"
+                        DataField="u_audience_id_pk" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
-                        HeaderText="<%$ LabelResourceExpression: app_assignment_group_name_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_group_name"
-                        ItemStyle-HorizontalAlign="Left" />
+                        HeaderText="<%$ LabelResourceExpression: app_audience_name_text %>" HeaderStyle-HorizontalAlign="Center"
+                        DataField="u_audience_name" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center"
                         DataField="status" ItemStyle-HorizontalAlign="Center" />
@@ -64,14 +111,14 @@
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnEdit" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                                CommandName="Edit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />
+                                CommandName="Edit" runat="server" Text="Edit" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnCopy" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                                CommandName="Copy" runat="server" Text="<%$ LabelResourceExpression: app_copy_button_text %>" />
+                                CommandName="Copy" runat="server" Text="Copy" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
@@ -79,11 +126,11 @@
                         <ItemTemplate>
                             <asp:Button ID="btnArchive" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
                                 OnClientClick="return confirm('Are you sure?');" CommandName="Archive" runat="server"
-                                Text="<%$ LabelResourceExpression: app_archive_button_text %>" />
+                                Text="Archive" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-            </asp:GridView>--%>
+            </asp:GridView>
         </div>
         <br />
         <div>
@@ -145,7 +192,7 @@
                         <asp:TextBox ID="txtName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <%=LocalResources.GetLabel("app_status_text")%>: 
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlStatus" DataTextField="s_status_name" DataValueField="s_status_id_pk"
@@ -184,11 +231,10 @@
                     </td>
                     <td class="btncancel_td">
                         <asp:Button ID="btnGosearch" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_go_search_button_text %>"
-                            runat="server"  />
+                            runat="server" />
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-   
 </asp:Content>

@@ -167,6 +167,53 @@ namespace ComplicanceFactor.BusinessComponent
             htNewCourse.Add("@c_course_active_flag", course.c_course_active_flag);
             htNewCourse.Add("@c_course_active_type_id_fk", course.c_course_active_type_id_fk);
             htNewCourse.Add("@c_course_visible_flag", course.c_course_visible_flag);
+
+
+            if (course.c_course_available_from_date != null)
+            {
+                htNewCourse.Add("@c_course_available_from_date", course.c_course_available_from_date);
+            }
+            else
+            {
+                htNewCourse.Add("@c_course_available_from_date", DBNull.Value);
+            }
+
+            if (course.c_course_available_to_date != null)
+            {
+                htNewCourse.Add("@c_course_available_to_date", course.c_course_available_to_date);
+            }
+            else
+            {
+                htNewCourse.Add("@c_course_available_to_date", DBNull.Value);
+            }
+
+            if (course.c_course_effective_date != null)
+            {
+                htNewCourse.Add("@c_course_effective_date", course.c_course_effective_date);
+            }
+            else
+            {
+                htNewCourse.Add("@c_course_effective_date", DBNull.Value);
+            }
+
+            if (course.c_course_cut_off_date != null)
+            {
+                htNewCourse.Add("@c_course_cut_off_date", course.c_course_cut_off_date);
+            }
+            else
+            {
+                htNewCourse.Add("@c_course_cut_off_date", DBNull.Value);
+            }
+
+            if (course.c_course_cut_off_time != null)
+            {
+                htNewCourse.Add("@c_course_cut_off_time", course.c_course_cut_off_time);
+            }
+            else
+            {
+                htNewCourse.Add("@c_course_cut_off_time", DBNull.Value);
+            }
+
             htNewCourse.Add("@c_course_custom_01", course.c_course_custom_01);
             htNewCourse.Add("@c_course_custom_02", course.c_course_custom_02);
             htNewCourse.Add("@c_course_custom_03", course.c_course_custom_03);
@@ -187,6 +234,7 @@ namespace ComplicanceFactor.BusinessComponent
             htNewCourse.Add("@c_cource_equivalencies", course.c_course_Equivalencies);
             htNewCourse.Add("@c_cource_fulfillments", course.c_course_Fulfillments);
             htNewCourse.Add("@c_cource_domains", course.c_course_domains);
+            htNewCourse.Add("@c_course_audiences", course.c_course_audiences);
             htNewCourse.Add("@c_course_category", course.c_course_category);
             if (course.c_course_recurrence_every != null)
             {
@@ -315,6 +363,54 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCourse.Add("@c_course_active_flag", course.c_course_active_flag);
             htUpdateCourse.Add("@c_course_active_type_id_fk", course.c_course_active_type_id_fk);
             htUpdateCourse.Add("@c_course_visible_flag", course.c_course_visible_flag);
+
+
+
+            if (course.c_course_available_from_date != null)
+            {
+                htUpdateCourse.Add("@c_course_available_from_date", course.c_course_available_from_date);
+            }
+            else
+            {
+                htUpdateCourse.Add("@c_course_available_from_date", DBNull.Value);
+            }
+
+            if (course.c_course_available_to_date != null)
+            {
+                htUpdateCourse.Add("@c_course_available_to_date", course.c_course_available_to_date);
+            }
+            else
+            {
+                htUpdateCourse.Add("@c_course_available_to_date", DBNull.Value);
+            }
+
+            if (course.c_course_effective_date != null)
+            {
+                htUpdateCourse.Add("@c_course_effective_date", course.c_course_effective_date);
+            }
+            else
+            {
+                htUpdateCourse.Add("@c_course_effective_date", DBNull.Value);
+            }
+
+            if (course.c_course_cut_off_date != null)
+            {
+                htUpdateCourse.Add("@c_course_cut_off_date", course.c_course_cut_off_date);
+            }
+            else
+            {
+                htUpdateCourse.Add("@c_course_cut_off_date", DBNull.Value);
+            }
+
+            if (course.c_course_cut_off_time != null)
+            {
+                htUpdateCourse.Add("@c_course_cut_off_time", course.c_course_cut_off_time);
+            }
+            else
+            {
+                htUpdateCourse.Add("@c_course_cut_off_time", DBNull.Value);
+            }
+
             htUpdateCourse.Add("@c_course_custom_01", course.c_course_custom_01);
             htUpdateCourse.Add("@c_course_custom_02", course.c_course_custom_02);
             htUpdateCourse.Add("@c_course_custom_03", course.c_course_custom_03);
@@ -538,6 +634,32 @@ namespace ComplicanceFactor.BusinessComponent
                 course.c_course_icon_uri_file_name = dtGetCourse.Rows[0]["c_course_icon_uri_file_name"].ToString();
                 course.c_course_active_type_id_fk = dtGetCourse.Rows[0]["c_course_active_type_id_fk"].ToString();
                 course.c_course_visible_flag = Convert.ToBoolean(dtGetCourse.Rows[0]["c_course_visible_flag"]);
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_available_from_date"].ToString()))
+                {
+                    course.c_course_available_from_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_available_from_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_available_to_date"].ToString()))
+                {
+                    course.c_course_available_to_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_available_to_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_effective_date"].ToString()))
+                {
+                    course.c_course_effective_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_effective_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_cut_off_date"].ToString()))
+                {
+                    course.c_course_cut_off_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_cut_off_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_cut_off_time"].ToString()))
+                {                    
+                    course.c_course_cut_off_time_string = dtGetCourse.Rows[0]["c_course_cut_off_time"].ToString();
+                }
+
                 course.c_course_custom_01 = dtGetCourse.Rows[0]["c_course_custom_01"].ToString();
                 course.c_course_custom_02 = dtGetCourse.Rows[0]["c_course_custom_02"].ToString();
                 course.c_course_custom_03 = dtGetCourse.Rows[0]["c_course_custom_03"].ToString();
@@ -1199,6 +1321,51 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCourseDelivery.Add("@c_olt_launch_url", updateCourseDelivery.c_olt_launch_url);
             htUpdateCourseDelivery.Add("@c_olt_launch_param", updateCourseDelivery.c_olt_launch_param);
 
+            if (updateCourseDelivery.c_delivery_available_from_date != null)
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_available_from_date", updateCourseDelivery.c_delivery_available_from_date);
+            }
+            else
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_available_from_date", DBNull.Value);
+            }
+
+            if (updateCourseDelivery.c_delivery_available_to_date != null)
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_available_to_date", updateCourseDelivery.c_delivery_available_to_date);
+            }
+            else
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_available_to_date", DBNull.Value);
+            }
+
+            if (updateCourseDelivery.c_delivery_effective_date != null)
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_effective_date", updateCourseDelivery.c_delivery_effective_date);
+            }
+            else
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_effective_date", DBNull.Value);
+            }
+
+            if (updateCourseDelivery.c_delivery_cut_off_date != null)
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_cut_off_date", updateCourseDelivery.c_delivery_cut_off_date);
+            }
+            else
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_cut_off_date", DBNull.Value);
+            }
+
+            if (updateCourseDelivery.c_delivery_cut_off_time != null)
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_cut_off_time", updateCourseDelivery.c_delivery_cut_off_time);
+            }
+            else
+            {
+                htUpdateCourseDelivery.Add("@c_delivery_cut_off_time", DBNull.Value);
+            }
+
             htUpdateCourseDelivery.Add("@c_delivery_custom_01", updateCourseDelivery.c_delivery_custom_01);
             htUpdateCourseDelivery.Add("@c_delivery_custom_02", updateCourseDelivery.c_delivery_custom_02);
             htUpdateCourseDelivery.Add("@c_delivery_custom_03", updateCourseDelivery.c_delivery_custom_03);
@@ -1311,6 +1478,32 @@ namespace ComplicanceFactor.BusinessComponent
                 courseDelivery.c_olt_launch_url = dtGetCourseDelivery.Rows[0]["c_olt_launch_url"].ToString();
                 courseDelivery.c_olt_launch_param = dtGetCourseDelivery.Rows[0]["c_olt_launch_param"].ToString();
                 courseDelivery.c_survey_scoring_scheme_id_fk = dtGetCourseDelivery.Rows[0]["c_delivery_grading_scheme_id_fk"].ToString();
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_available_from_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_available_from_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_available_from_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_available_to_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_available_to_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_available_to_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_effective_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_effective_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_effective_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_cut_off_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_time"].ToString()))
+                {
+                    courseDelivery.c_delivery_cut_off_time_string = dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_time"].ToString();
+                }
+
                 courseDelivery.c_delivery_custom_01 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_01"].ToString();
                 courseDelivery.c_delivery_custom_02 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_02"].ToString();
                 courseDelivery.c_delivery_custom_03 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_03"].ToString();
@@ -1533,6 +1726,32 @@ namespace ComplicanceFactor.BusinessComponent
                 courseDelivery.c_vlt_launch_url = dtGetCourseDelivery.Rows[0]["c_vlt_launch_url"].ToString();
                 courseDelivery.c_olt_launch_url = dtGetCourseDelivery.Rows[0]["c_olt_launch_url"].ToString();
                 courseDelivery.c_olt_launch_param = dtGetCourseDelivery.Rows[0]["c_olt_launch_param"].ToString();
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_available_from_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_available_from_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_available_from_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_available_to_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_available_to_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_available_to_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_effective_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_effective_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_effective_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_date"].ToString()))
+                {
+                    courseDelivery.c_delivery_cut_off_date = Convert.ToDateTime(dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_time"].ToString()))
+                {
+                    courseDelivery.c_delivery_cut_off_time_string = dtGetCourseDelivery.Rows[0]["c_delivery_cut_off_time"].ToString();
+                }
+
                 courseDelivery.c_delivery_custom_01 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_01"].ToString();
                 courseDelivery.c_delivery_custom_02 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_02"].ToString();
                 courseDelivery.c_delivery_custom_03 = dtGetCourseDelivery.Rows[0]["c_delivery_custom_03"].ToString();
@@ -2392,6 +2611,51 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static DataTable GetCourseAudiences(string c_course_id_fk)
+        {
+            Hashtable htGetAudience = new Hashtable();
+            htGetAudience.Add("@c_course_id_fk", c_course_id_fk);
+            try
+            {
+                return DataProxy.FetchDataTable("c_sp_get_course_audience", htGetAudience);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int InsertAudience(string c_related_audience_id_fk, string c_course_system_id_pk)
+        {
+            Hashtable htInsertAudience = new Hashtable();
+
+            htInsertAudience.Add("@c_related_audience_id_fk", c_related_audience_id_fk);
+            htInsertAudience.Add("@c_course_system_id_pk", c_course_system_id_pk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("c_course_sp_insert_audience", htInsertAudience);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public static int DeleteAudiences(string c_related_audience_id_fk, string c_course_id_fk)
+        {
+            Hashtable htDeleteAudience = new Hashtable();
+            htDeleteAudience.Add("@c_related_audience_id_fk", c_related_audience_id_fk);
+            htDeleteAudience.Add("@c_course_id_fk", c_course_id_fk);
+            try
+            {
+                return DataProxy.FetchSPOutput("c_cp_delete_course_audience", htDeleteAudience);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

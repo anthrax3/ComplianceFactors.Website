@@ -19,7 +19,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.HRISIntegration.Popup
     {
 
         #region Private member varables
-        private string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
+        //private string _logpath = "~/SystemHome/Configuration/HRISIntegration/Log/";
         private static string logId;
         private static string filename;
         #endregion

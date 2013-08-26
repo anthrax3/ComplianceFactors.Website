@@ -394,6 +394,7 @@
     <Content Include="SystemHome\Catalog\AssignmentRules\saanarn-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentRules\saear-01.aspx" />
     <Content Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Audiences\Popup\p-saap-01.aspx" />
     <Content Include="SystemHome\Catalog\Audiences\saanaudn-01.aspx" />
     <Content Include="SystemHome\Catalog\Audiences\saeaud-01.aspx" />
     <Content Include="SystemHome\Catalog\Audiences\samaudmp-01.aspx" />
@@ -403,6 +404,8 @@
     <Content Include="SystemHome\Catalog\Completion\samcmcp-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\samcsp-01.aspx" />
     <Content Include="SystemHome\Catalog\Completion\samcsrp-01.aspx" />
+    <Content Include="SystemHome\Catalog\Course\AudienceSearch\sasan-01.aspx" />
+    <Content Include="SystemHome\Catalog\Course\AudienceSearch\sasran-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\CategorySearch\sascn-01.aspx" />
     <Content Include="SystemHome\Catalog\Course\CategorySearch\sasrcn-01.aspx" />
     <Content Include="SystemHome\Catalog\Category\saanccn-01.aspx" />
@@ -2131,6 +2134,13 @@
     <Compile Include="SystemHome\Catalog\AssignmentRules\samarmp-01.aspx.designer.cs">
       <DependentUpon>samarmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\Popup\p-saap-01.aspx.cs">
+      <DependentUpon>p-saap-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Audiences\Popup\p-saap-01.aspx.designer.cs">
+      <DependentUpon>p-saap-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Catalog\Audiences\saanaudn-01.aspx.cs">
       <DependentUpon>saanaudn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2193,6 +2203,20 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Completion\samcsrp-01.aspx.designer.cs">
       <DependentUpon>samcsrp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Course\AudienceSearch\sasan-01.aspx.cs">
+      <DependentUpon>sasan-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Course\AudienceSearch\sasan-01.aspx.designer.cs">
+      <DependentUpon>sasan-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Course\AudienceSearch\sasran-01.aspx.cs">
+      <DependentUpon>sasran-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Course\AudienceSearch\sasran-01.aspx.designer.cs">
+      <DependentUpon>sasran-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Course\CategorySearch\sascn-01.aspx.cs">
       <DependentUpon>sascn-01.aspx</DependentUpon>

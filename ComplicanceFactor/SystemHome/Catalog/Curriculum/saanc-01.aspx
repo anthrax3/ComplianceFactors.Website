@@ -6,8 +6,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.watermark.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
@@ -806,6 +807,34 @@
 
         }
     </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=txtCutoffTime.ClientID %>").watermark("HH:MM AM/PM");
+            $("#<%=txtCutoffTime.ClientID %>").click(
+			function () {
+			    $("#<%=txtCutoffTime.ClientID %>")[0].focus();
+			}
+		);
+        });
+    </script>
+    <script type="text/javascript">
+        (function ($) {
+            $(function () {
+                $('#<%=txtCutoffTime.ClientID %>').timepicker({ dropdown: false, timeFormat: 'h:mm p' });
+            });
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+        function DateCheck(sender, args) {
+            var StartDate = document.getElementById('<%=txtAvailableFrom.ClientID %>').value;
+            var EndDate = document.getElementById('<%=txtAvailableTo.ClientID %>').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                args.IsValid = false;
+            }
+        }    
+    </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanc" runat="server"
         ValidationGroup="saanc"></asp:ValidationSummary>
     <asp:CustomValidator ID="cvRecurranceEvery" EnableClientScript="true" ClientValidationFunction="RecurranceEvery"
@@ -826,7 +855,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNewCurriculum" ValidationGroup="saanc" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_curriculum_button_text%>" OnClick="btnHeaderSaveNewCurriculum_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_curriculum_button_text%>"
+                            OnClick="btnHeaderSaveNewCurriculum_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnHeaderReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
@@ -841,14 +871,16 @@
         </div>
         <br />
         <div class="div_header_long">
-             <%=LocalResources.GetLabel("app_curriculum_information_text")%>:
+            <%=LocalResources.GetLabel("app_curriculum_information_text")%>:
         </div>
         <br />
+        <div class="clear">
+        </div>
         <div class="div_controls font_1">
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                       <%=LocalResources.GetLabel("app_created_by_text")%>:
+                        <%=LocalResources.GetLabel("app_created_by_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCreatedBy" runat="server"></asp:Label>
@@ -863,7 +895,7 @@
                         &nbsp;
                     </td>
                     <td>
-                       <%=LocalResources.GetLabel("app_created_on_text")%>:
+                        <%=LocalResources.GetLabel("app_created_on_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCreatedOn" runat="server"></asp:Label>
@@ -874,7 +906,8 @@
                         <asp:RequiredFieldValidator ID="rfvCurriculumId" runat="server" ValidationGroup="saanc"
                             ControlToValidate="txtCurriculumId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty%>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_curriculum_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_curriculum_id_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCurriculumId" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -892,7 +925,8 @@
                         <asp:RequiredFieldValidator ID="rfvCurriculumTitle" runat="server" ValidationGroup="saanc"
                             ControlToValidate="txtCurriculumTitle" ErrorMessage="<%$ TextResourceExpression: app_title_error_empty%>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_curriculum_title_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_curriculum_title_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCurriculumTitle" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -903,7 +937,8 @@
                         <asp:RequiredFieldValidator ID="rfvDescription" runat="server" ValidationGroup="saanc"
                             ControlToValidate="txtDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty%>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtDescription" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -911,7 +946,7 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                       <%=LocalResources.GetLabel("app_abstract_text")%>:
+                        <%=LocalResources.GetLabel("app_abstract_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
                         <textarea id="txtAbstract" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -956,7 +991,7 @@
                     <td colspan="3" class="align_left">
                         <asp:Label ID="lblOwner" CssClass="font_normal cursor_hand" runat="server"></asp:Label>
                         <asp:Button ID="btnOnwer" runat="server" CausesValidation="false" CssClass="cursor_hand"
-                           Text="<%$ LabelResourceExpression: app_select_button_text%>" />
+                            Text="<%$ LabelResourceExpression: app_select_button_text%>" />
                     </td>
                     <td colspan="3" class="align_right">
                         <%=LocalResources.GetLabel("app_coordinator_text")%>
@@ -968,7 +1003,7 @@
                     <td>
                         <asp:RegularExpressionValidator ID="revcost" runat="server" ErrorMessage="<%$ TextResourceExpression: app_cost_error_wrong%>"
                             ControlToValidate="txtcost" ValidationGroup="saanc" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                       <%=LocalResources.GetLabel("app_cost_text")%>:
+                        <%=LocalResources.GetLabel("app_cost_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtcost" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -979,7 +1014,7 @@
                                 <td>
                                     <asp:RegularExpressionValidator ID="rfvCreditHours" runat="server" ErrorMessage="<%$ TextResourceExpression: app_credit_hours_error_wrong%>"
                                         ControlToValidate="txtCreditHours" ValidationGroup="saanc" ValidationExpression="^[0-9]+$">&nbsp;</asp:RegularExpressionValidator>
-                                   <%=LocalResources.GetLabel("app_credit_hours_text")%>:
+                                    <%=LocalResources.GetLabel("app_credit_hours_text")%>:
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtCreditHours" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -998,7 +1033,7 @@
                 </tr>
                 <tr>
                     <td>
-                       <%=LocalResources.GetLabel("app_status_text")%>:
+                        <%=LocalResources.GetLabel("app_status_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlStatus" DataTextField="c_curriculum_status_name" DataValueField="c_curriculum_status_id_pk"
@@ -1018,7 +1053,7 @@
                         </table>
                     </td>
                     <td colspan="2">
-                       <%=LocalResources.GetLabel("app_approval_required_text")%>:
+                        <%=LocalResources.GetLabel("app_approval_required_text")%>:
                         <asp:CheckBox ID="chkApprovalRequired" runat="server" />
                     </td>
                     <td colspan="2">
@@ -1030,33 +1065,62 @@
                 <tr>
                     <td>
                         Available From:
+                        <asp:RegularExpressionValidator ID="regexAvailableFrom" runat="server" ControlToValidate="txtAvailableFrom"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in Available From" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
-                    <td class="align_left">
-                        <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    <td>
+                        <div class="clear">
+                            <asp:TextBox ID="txtAvailableFrom" CssClass="textbox_long" runat="server"></asp:TextBox>
+                            <asp:CalendarExtender ID="ceAvailableFrom" Format="MM/dd/yyyy" TargetControlID="txtAvailableFrom"
+                                runat="server">
+                            </asp:CalendarExtender>
+                        </div>
                     </td>
                     <td colspan="3">
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
                                     Available To:
+                                    <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
+                                        ValidationGroup="saanc" runat="server" ErrorMessage="Please select the Available To date as greater than Available Start date">&nbsp;</asp:CustomValidator>
+                                    <asp:RegularExpressionValidator ID="regexAvailableTo" runat="server" ControlToValidate="txtAvailableTo"
+                                        ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                                        ErrorMessage="Please Enter valid Date in Available To" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                                 </td>
                                 <td>
+                                    <asp:CalendarExtender ID="ceAvailableTo" Format="MM/dd/yyyy" TargetControlID="txtAvailableTo"
+                                        runat="server">
+                                    </asp:CalendarExtender>
                                     <asp:TextBox ID="txtAvailableTo" CssClass="textbox_long" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                         </table>
-                        <td>
-                            Effective Date:
-                        </td>
-                        <td class="align_left">
-                            <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
-                        </td>
+                    </td>
+                    <td>
+                        Effective Date:
+                        <asp:RegularExpressionValidator ID="regexEffectiveDate" runat="server" ControlToValidate="txtEffectiveDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in Effective Date" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
+                    </td>
+                    <td class="align_left">
+                        <asp:CalendarExtender ID="ceEffectiveDate" Format="MM/dd/yyyy" TargetControlID="txtEffectiveDate"
+                            runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtEffectiveDate" CssClass="textbox_long" runat="server"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         Cut-off Date:
+                        <asp:RegularExpressionValidator ID="regexCutOffDate" runat="server" ControlToValidate="txtCutOffDate"
+                            ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                            ErrorMessage="Please Enter valid Date in cuttoff Date" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
+                        <asp:CalendarExtender ID="ceCutOffDate" Format="MM/dd/yyyy" TargetControlID="txtCutOffDate"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtCutOffDate" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="3">
@@ -1076,7 +1140,7 @@
         </div>
         <br />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_category_text")%>:
+            <%=LocalResources.GetLabel("app_category_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1117,7 +1181,7 @@
         </div>
         <br />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_domain_text")%>:
+            <%=LocalResources.GetLabel("app_domain_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1166,7 +1230,7 @@
         </div>
         <br />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_Recurrance_text")%>:
+            <%=LocalResources.GetLabel("app_Recurrance_text")%>:
         </div>
         <br />
         <div class="default_font_size ">
@@ -1182,7 +1246,7 @@
                             <asp:ListItem Text="Months" Value="months"></asp:ListItem>
                             <asp:ListItem Text="Years" Value="years"></asp:ListItem>
                         </asp:DropDownList>
-                       <%=LocalResources.GetLabel("app_grace_period_text")%>:
+                        <%=LocalResources.GetLabel("app_grace_period_text")%>:
                         <asp:TextBox ID="txtGracePreiod" runat="server" Width="50px"></asp:TextBox>
                     </td>
                     <td valign="top">
@@ -1199,7 +1263,8 @@
                     <td valign="top">
                         <asp:RegularExpressionValidator ID="regexDate" runat="server" ControlToValidate="txtDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong%>" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_date_error_wrong%>" Display="Dynamic"
+                            ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                         <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="ceDate" Format="MM/dd/yyyy" TargetControlID="txtDate" runat="server">
                         </asp:CalendarExtender>
@@ -1211,7 +1276,7 @@
         </div>
         <br />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_attachments_text")%>:
+            <%=LocalResources.GetLabel("app_attachments_text")%>:
         </div>
         <br />
         <div class="div_controls_from_left">
@@ -1250,8 +1315,10 @@
                 </asp:GridView>
             </div>
         </div>
-        <div class="div_controls font_1">
-            <asp:Button ID="btnAddAttachment" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_attachment_button_text%>" />
+        <div>
+            <div class="div_controls font_1">
+                <asp:Button ID="btnAddAttachment" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_attachment_button_text%>" />
+            </div>
         </div>
         <br />
         <div class="div_header_long">
@@ -1408,7 +1475,7 @@
         </div>
         <br />
         <div class="div_header_long">
-             <%=LocalResources.GetLabel("app_custom_fields_text")%>:
+            <%=LocalResources.GetLabel("app_custom_fields_text")%>:
         </div>
         <br />
         <div class="div_controls font_1 ">
@@ -1427,7 +1494,7 @@
                         <asp:TextBox ID="txtCustom02" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                       <%=LocalResources.GetLabel("app_custom_03_text")%>:
+                        <%=LocalResources.GetLabel("app_custom_03_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom03" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -1455,7 +1522,7 @@
                 </tr>
                 <tr>
                     <td>
-                       <%=LocalResources.GetLabel("app_custom_07_text")%>:
+                        <%=LocalResources.GetLabel("app_custom_07_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom07" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -1475,7 +1542,7 @@
                 </tr>
                 <tr>
                     <td>
-                       <%=LocalResources.GetLabel("app_custom_10_text")%>:
+                        <%=LocalResources.GetLabel("app_custom_10_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom10" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -1487,7 +1554,7 @@
                         <asp:TextBox ID="txtCustom11" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                       <%=LocalResources.GetLabel("app_custom_12_text")%>:
+                        <%=LocalResources.GetLabel("app_custom_12_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtCustom12" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
@@ -1520,7 +1587,8 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveNewCurriculum" ValidationGroup="saanc" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_curriculum_button_text%>" OnClick="btnFooterSaveNewCurriculum_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_curriculum_button_text%>"
+                            OnClick="btnFooterSaveNewCurriculum_Click" />
                     </td>
                     <td align="left">
                         <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text%>"
@@ -1541,8 +1609,8 @@
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <div class="uploadpopup_header">
@@ -1568,8 +1636,8 @@
                     <br />
                     <br />
                     <div class="uploadbutton">
-                        <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text%>" OnClick="btnUploadattachments_Click"
-                            CssClass="cursor_hand" />
+                        <asp:Button ID="btnUploadAttachements" runat="server" Text="<%$ LabelResourceExpression: app_upload_button_text%>"
+                            OnClick="btnUploadattachments_Click" CssClass="cursor_hand" />
                     </div>
                     <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text%>" />
                 </div>

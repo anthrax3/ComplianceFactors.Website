@@ -19,7 +19,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports.Popup
     {
 
         #region Private member varables
-        private string _logpath = "~/SystemHome/Configuration/Data Imports/TempLogFiles/";
+        //private string _logpath = "~/SystemHome/Configuration/Data Imports/TempLogFiles/";
         private static string logId;
         private static string filename;
         #endregion

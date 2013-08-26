@@ -237,7 +237,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         /// </summary>
         private void UpdateSession(DataTable dtSessions)
         {
-
+            CultureInfo culture = new CultureInfo("en-US");
             var rows = dtSessions.Select("c_session_system_id_pk= '" + editSession + "'");
             var indexOfRow = dtSessions.Rows.IndexOf(rows[0]);
             dtSessions.Rows[indexOfRow]["c_session_id_pk"] = txtId.Text;
@@ -246,8 +246,23 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             dtSessions.Rows[indexOfRow]["c_sessions_desc"] = txtDescription.Value;
             dtSessions.Rows[indexOfRow]["c_session_start_date"] = txtStartDate.Text;
             dtSessions.Rows[indexOfRow]["c_session_end_date"] = txtEndDate.Text;
-            dtSessions.Rows[indexOfRow]["c_session_start_time"] = Convert.ToDateTime(txtStartTime.Text);
-            dtSessions.Rows[indexOfRow]["c_sessions_end_time"] = Convert.ToDateTime(txtEndTime.Text);
+
+            DateTime? startTime = null;
+            DateTime tempStartTime;
+            if (DateTime.TryParseExact(txtStartTime.Text, "h:mm tt", culture, DateTimeStyles.None, out tempStartTime))
+            {
+                startTime = tempStartTime;
+            }
+
+            dtSessions.Rows[indexOfRow]["c_session_start_time"] = startTime;
+            DateTime? endTime = null;
+            DateTime tempEndTime;
+            if (DateTime.TryParseExact(txtEndTime.Text, "h:mm tt", culture, DateTimeStyles.None, out tempEndTime))
+            {
+                endTime = tempEndTime;
+            }
+
+            dtSessions.Rows[indexOfRow]["c_sessions_end_time"] = endTime;
             dtSessions.Rows[indexOfRow]["c_session_duration"] = Convert.ToDateTime(txtDuration.Text);
             if (!string.IsNullOrEmpty(SessionWrapper.c_session_location_id_fk))
             {

@@ -5,7 +5,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>    <script type="text/javascript">
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
 
         $(document).ready(function () {
             var navigationSelectedValue = document.getElementById('<%=hdNav_selected.ClientID %>').value
@@ -247,46 +248,46 @@
                         Available From:
                     </td>
                     <td class="align_left">
-                         <asp:TextBox ID="txtAvailableFrom" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblAvailableFrom" CssClass="lable_td_width" runat="server"></asp:Label>
                     </td>
                     <td colspan="3">
                         <table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="text_font_normal">
-                                   Available To:
+                                    Available To:
                                 </td>
                                 <td class="lable_td_width_1">
-                                    <asp:TextBox ID = "txtAvailableTo" runat="server"></asp:TextBox>
+                                    <asp:Label ID="lblAvailableTo" CssClass="lable_td_width" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                     </td>
                     <td class="text_font_normal">
-                         Effective Date:
+                        Effective Date:
                     </td>
                     <td class="lable_td_width_1">
-                        <asp:TextBox ID="txtEffectiveDate" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblEffectiveDate" CssClass="lable_td_width" runat="server"></asp:Label>
                     </td>
                 </tr>
-                 <tr>
+                <tr>
                     <td class="text_font_normal">
                         Cut-off Date:
                     </td>
                     <td class="align_left">
-                         <asp:TextBox ID="txtCutOffDate" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblCutOffDate" CssClass="lable_td_width" runat="server"></asp:Label>
                     </td>
                     <td colspan="3">
                         <table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="text_font_normal">
-                                  Cut-off Time:
+                                    Cut-off Time:
                                 </td>
                                 <td class="lable_td_width_1">
-                                    <asp:TextBox ID = "txtCutoffTime" runat="server"></asp:TextBox>
+                                    <asp:Label ID="lblCutoffTime" CssClass="lable_td_width" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </table>
-                    </td>                   
+                    </td>
                 </tr>
             </table>
         </div>

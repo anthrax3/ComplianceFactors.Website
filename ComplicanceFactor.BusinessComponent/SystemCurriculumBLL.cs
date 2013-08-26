@@ -214,6 +214,52 @@ namespace ComplicanceFactor.BusinessComponent
             htNewCurriculum.Add("@c_curriculum_active_flag", curriculum.c_curriculum_active_flag);
             htNewCurriculum.Add("@c_curriculum_active_type_id_fk", curriculum.c_curriculum_active_type_id_fk);
             htNewCurriculum.Add("@c_curriculum_visible_flag", curriculum.c_curriculum_visible_flag);
+
+            if (curriculum.c_curriculum_available_from_date != null)
+            {
+                htNewCurriculum.Add("@c_curriculum_available_from_date", curriculum.c_curriculum_available_from_date);
+            }
+            else
+            {
+                htNewCurriculum.Add("@c_curriculum_available_from_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_available_to_date != null)
+            {
+                htNewCurriculum.Add("@c_curriculum_available_to_date", curriculum.c_curriculum_available_to_date);
+            }
+            else
+            {
+                htNewCurriculum.Add("@c_curriculum_available_to_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_effective_date != null)
+            {
+                htNewCurriculum.Add("@c_curriculum_effective_date", curriculum.c_curriculum_effective_date);
+            }
+            else
+            {
+                htNewCurriculum.Add("@c_curriculum_effective_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_cut_off_date != null)
+            {
+                htNewCurriculum.Add("@c_curriculum_cut_off_date", curriculum.c_curriculum_cut_off_date);
+            }
+            else
+            {
+                htNewCurriculum.Add("@c_curriculum_cut_off_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_cut_off_time != null)
+            {
+                htNewCurriculum.Add("@c_curriculum_cut_off_time", curriculum.c_curriculum_cut_off_time);
+            }
+            else
+            {
+                htNewCurriculum.Add("@c_curriculum_cut_off_time", DBNull.Value);
+            }
+
             htNewCurriculum.Add("@c_curriculum_custom_01", curriculum.c_curriculum_custom_01);
             htNewCurriculum.Add("@c_curriculum_custom_02", curriculum.c_curriculum_custom_02);
             htNewCurriculum.Add("@c_curriculum_custom_03", curriculum.c_curriculum_custom_03);
@@ -375,6 +421,52 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCurriculum.Add("@c_curriculum_active_flag", curriculum.c_curriculum_active_flag);
             htUpdateCurriculum.Add("@c_curriculum_active_type_id_fk", curriculum.c_curriculum_active_type_id_fk);
             htUpdateCurriculum.Add("@c_curriculum_visible_flag", curriculum.c_curriculum_visible_flag);
+
+            if (curriculum.c_curriculum_available_from_date != null)
+            {
+                htUpdateCurriculum.Add("@c_curriculum_available_from_date", curriculum.c_curriculum_available_from_date);
+            }
+            else
+            {
+                htUpdateCurriculum.Add("@c_curriculum_available_from_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_available_to_date != null)
+            {
+                htUpdateCurriculum.Add("@c_curriculum_available_to_date", curriculum.c_curriculum_available_to_date);
+            }
+            else
+            {
+                htUpdateCurriculum.Add("@c_curriculum_available_to_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_effective_date != null)
+            {
+                htUpdateCurriculum.Add("@c_curriculum_effective_date", curriculum.c_curriculum_effective_date);
+            }
+            else
+            {
+                htUpdateCurriculum.Add("@c_curriculum_effective_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_cut_off_date != null)
+            {
+                htUpdateCurriculum.Add("@c_curriculum_cut_off_date", curriculum.c_curriculum_cut_off_date);
+            }
+            else
+            {
+                htUpdateCurriculum.Add("@c_curriculum_cut_off_date", DBNull.Value);
+            }
+
+            if (curriculum.c_curriculum_cut_off_time != null)
+            {
+                htUpdateCurriculum.Add("@c_curriculum_cut_off_time", curriculum.c_curriculum_cut_off_time);
+            }
+            else
+            {
+                htUpdateCurriculum.Add("@c_curriculum_cut_off_time", DBNull.Value);
+            }
+            
             htUpdateCurriculum.Add("@c_curriculum_custom_01", curriculum.c_curriculum_custom_01);
             htUpdateCurriculum.Add("@c_curriculum_custom_02", curriculum.c_curriculum_custom_02);
             htUpdateCurriculum.Add("@c_curriculum_custom_03", curriculum.c_curriculum_custom_03);
@@ -625,6 +717,36 @@ namespace ComplicanceFactor.BusinessComponent
                 curriculum.c_curriculum_icon_uri_file_name = dtGetCurriculum.Rows[0]["c_curriculum_icon_uri_file_name"].ToString();
                 curriculum.c_curriculum_active_type_id_fk = dtGetCurriculum.Rows[0]["c_curriculum_active_type_id_fk"].ToString();
                 curriculum.c_curriculum_visible_flag = Convert.ToBoolean(dtGetCurriculum.Rows[0]["c_curriculum_visible_flag"]);
+
+                if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_available_from_date"].ToString()))
+                {
+                    curriculum.c_curriculum_available_from_date = Convert.ToDateTime(dtGetCurriculum.Rows[0]["c_curriculum_available_from_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_available_to_date"].ToString()))
+                {
+                    curriculum.c_curriculum_available_to_date = Convert.ToDateTime(dtGetCurriculum.Rows[0]["c_curriculum_available_to_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_effective_date"].ToString()))
+                {
+                    curriculum.c_curriculum_effective_date = Convert.ToDateTime(dtGetCurriculum.Rows[0]["c_curriculum_effective_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_cut_off_date"].ToString()))
+                {
+                    curriculum.c_curriculum_cut_off_date = Convert.ToDateTime(dtGetCurriculum.Rows[0]["c_curriculum_cut_off_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCurriculum.Rows[0]["c_curriculum_cut_off_time"].ToString()))
+                {
+                    //DateTime temprecurancedate;
+                    //DateTime.TryParseExact(dtGetCurriculum.Rows[0]["c_curriculum_cut_off_time"].ToString(), "h:mm tt", culture, DateTimeStyles.None, out temprecurancedate);
+                    //curriculum.c_curriculum_cut_off_time = temprecurancedate;
+                    curriculum.c_curriculum_cut_off_time_string = dtGetCurriculum.Rows[0]["c_curriculum_cut_off_time"].ToString();
+                }
+
+
                 curriculum.c_curriculum_custom_01 = dtGetCurriculum.Rows[0]["c_curriculum_custom_01"].ToString();
                 curriculum.c_curriculum_custom_02 = dtGetCurriculum.Rows[0]["c_curriculum_custom_02"].ToString();
                 curriculum.c_curriculum_custom_03 = dtGetCurriculum.Rows[0]["c_curriculum_custom_03"].ToString();

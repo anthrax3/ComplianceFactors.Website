@@ -17,7 +17,9 @@
                 <tr>
                     <td>
                         <asp:Button ID="btnHeaderSave" ValidationGroup="saanaudn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_audience_button_text %>" />
+                            runat="server" 
+                            Text="<%$ LabelResourceExpression: app_save_new_audience_button_text %>" 
+                            onclick="btnHeaderSave_Click" />
                     </td>
                     <td class="btnsave_new_user_td">
                         &nbsp;
@@ -27,7 +29,7 @@
                     </td>
                     <td>
                         <asp:Button ID="btnHeaderReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
-                            runat="server" />
+                            runat="server" onclick="btnHeaderReset_Click" />
                     </td>
                     <td align="center" class="btnreset_td">
                         &nbsp;
@@ -39,7 +41,7 @@
                     </td>
                     <td>
                         <asp:Button ID="btnHeaderCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
-                            runat="server" />
+                            runat="server" onclick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -57,10 +59,10 @@
                         <%=LocalResources.GetLabel("app_audience_id_text")%>:
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvAssignmentGroupId" runat="server" ValidationGroup="saanaudn"
-                            ControlToValidate="txtAssignmentGroupId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
+                        <asp:RequiredFieldValidator ID="rfvAudienceId" runat="server" ValidationGroup="saanaudn"
+                            ControlToValidate="txtAudienceId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        <asp:TextBox ID="txtAssignmentGroupId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceId" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;
@@ -69,25 +71,25 @@
                         &nbsp;
                     </td>
                     <td colspan="2">
-                        <asp:RequiredFieldValidator ID="rfvAssignmentGroupIdName" runat="server" ValidationGroup="saanaudn"
-                            ControlToValidate="txtAssignmentGroupName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
+                        <asp:RequiredFieldValidator ID="rfvAudienceIdName" runat="server" ValidationGroup="saanaudn"
+                            ControlToValidate="txtAudienceName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvAssignmentGroupDescription" runat="server" ValidationGroup="saanaudn"
-                            ControlToValidate="txtAssignmentGroupDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
+                        <asp:RequiredFieldValidator ID="rfvAudienceDescription" runat="server" ValidationGroup="saanaudn"
+                            ControlToValidate="txtAudienceDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *<%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="6">
-                        <textarea id="txtAssignmentGroupDescription" runat="server" class="txtInput_long"
+                        <textarea id="txtAudienceDescription" runat="server" class="txtInput_long"
                             rows="3" cols="100"></textarea>
                     </td>
                 </tr>
@@ -109,11 +111,13 @@
         </div>
         <br />
         <div class="div_controls_from_left">
-            <asp:UpdatePanel ID="upnlAssignmentGroup" runat="server" UpdateMode="Conditional">
+            <asp:UpdatePanel ID="upnlAudience" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <asp:GridView ID="gvAssignmentGroupParameters" RowStyle-CssClass="record" GridLines="None"
+                    <asp:GridView ID="gvAudienceParameters" RowStyle-CssClass="record" GridLines="None"
                         CssClass="gridview_width_9" CellPadding="0" CellSpacing="0" ShowHeader="false"
-                        runat="server" DataKeyNames=" " AutoGenerateColumns="false">
+                        runat="server" DataKeyNames="u_audiences_param_system_id_pk,u_audiences_param_operator_id_fk,u_audiences_param_values"
+                        AutoGenerateColumns="false" OnRowDataBound="gvAudienceParameters_RowDataBound"
+                        OnRowCommand="gvAudienceParameters_RowCommand">
                         <RowStyle CssClass="record"></RowStyle>
                         <Columns>
                             <asp:TemplateField>
@@ -121,7 +125,7 @@
                                     <table>
                                         <tr>
                                             <td>
-                                                <%# Eval("u_audience_param_element_id_fk")%>
+                                                <%# Eval("u_audiences_param_element_id_fk")%>
                                             </td>
                                             <td>
                                                 &nbsp;
@@ -135,7 +139,8 @@
                                                 &nbsp;
                                             </td>
                                             <td style="text-align: right">
-                                                <%=LocalResources.GetLabel("app_values_text")%>:
+                                                <%--<%=LocalResources.GetLabel("app_values_text")%>:--%>
+                                                Values:
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -146,8 +151,8 @@
                                             <td>
                                                 <%--<input type="button" id='<%# Eval("u_audience_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
                                             class="deleteParam cursor_hand" />--%>
-                                                <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_audience_param_system_id_pk") %>'
-                                                    CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                                                <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_audiences_param_system_id_pk") %>'
+                                                    CommandName="Remove" Text="Remove"
                                                     OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                             </td>
                                             <td>
@@ -159,7 +164,8 @@
                                                 &nbsp;
                                             </td>
                                             <td colspan="8">
-                                                --<%=LocalResources.GetLabel("app_and_text")%>:--
+                                                <%----<%=LocalResources.GetLabel("app_and_text")%>:----%>
+                                                -- and --
                                             </td>
                                         </tr>
                                     </table>
@@ -175,11 +181,12 @@
                 <tr>
                     <td style="padding-left: 80px;">
                         <asp:Button ID="btnAddNewParameters" ValidationGroup="saanaudn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"
+                            runat="server" 
+                            Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" onclick="btnAddNewParameters_Click"
                              />
                     </td>
                     <td style="padding-left: 450px;">
-                        <input type="button" id="btnpReviewAssignmentGroup" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_audience_button_text %>" />'
+                        <input type="button" id="btnpReviewAudience" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_audience_button_text %>" />'
                             class="previewAssignment cursor_hand" />
                     </td>
                 </tr>
@@ -197,7 +204,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_EnglishUk" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_EnglishUk" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -230,7 +237,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_FrenchCa" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_FrenchCa" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -263,7 +270,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_FrenchFr" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_FrenchFr" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -296,7 +303,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_SpanishMx" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_SpanishMx" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -329,7 +336,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_SpanishSp" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_SpanishSp" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -362,7 +369,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Portuguese" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Portuguese" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -395,7 +402,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Chinese" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Chinese" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -427,7 +434,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_German" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_German" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -460,7 +467,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Japanese" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Japanese" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -494,7 +501,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Russian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Russian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -526,7 +533,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Danish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Danish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -558,7 +565,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Polish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Polish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -590,7 +597,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Swedish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Swedish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -622,7 +629,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Finnish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Finnish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -654,7 +661,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Korean" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Korean" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -686,7 +693,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Italian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Italian" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -718,7 +725,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Dutch" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Dutch" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -750,7 +757,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Indonesian" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Indonesian" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -783,7 +790,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Greek" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Greek" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -815,7 +822,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Hungarian" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Hungarian" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -848,7 +855,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Norwegian" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Norwegian" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -881,7 +888,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Turkish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Turkish" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -913,7 +920,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Arabic" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAudienceName_Arabic" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
                     </td>
@@ -945,7 +952,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom01" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom01" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -978,7 +985,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom02" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom02" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1011,7 +1018,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom03" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom03" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1044,7 +1051,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom04" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom04" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1077,7 +1084,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom05" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom05" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1110,7 +1117,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom06" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom06" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1143,7 +1150,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom07" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom07" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1176,7 +1183,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom08" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom08" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1209,7 +1216,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom09" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom09" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1242,7 +1249,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom10" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom10" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1275,7 +1282,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom11" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom11" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1308,7 +1315,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom12" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom12" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1341,7 +1348,7 @@
                         <%=LocalResources.GetLabel("app_audience_name_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtAssignmentGroupName_Custom13" CssClass="textbox_manage_user"
+                        <asp:TextBox ID="txtAudienceName_Custom13" CssClass="textbox_manage_user"
                             runat="server"></asp:TextBox>
                     </td>
                     <td colspan="2">
@@ -1372,7 +1379,7 @@
                 <tr>
                     <td>
                         <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_new_audience_button_text %>"
-                            ValidationGroup="saanaudn" />
+                            ValidationGroup="saanaudn" onclick="btnFooterSave_Click" />
                     </td>
                     <td colspan="2" class="btnsave_new_user_td">
                         &nbsp;
@@ -1381,7 +1388,7 @@
                     </td>
                     <td align="center" class="btnreset_td">
                         <asp:Button ID="btnFooterReset" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
-                            runat="server" />
+                            runat="server" onclick="btnFooterReset_Click" />
                     </td>
                     <td>
                         &nbsp;
@@ -1393,7 +1400,7 @@
                     </td>
                     <td>
                         <asp:Button ID="btnFooterCancel" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
-                            runat="server" />
+                            runat="server" onclick="btnFooterCancel_Click" />
                     </td>
                 </tr>
             </table>

@@ -335,6 +335,30 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             txtScormUrl.Text = delivery.c_olt_launch_url;
             txtScromLaunchParameters.Text = delivery.c_olt_launch_param;
             txtVlsUrl.Text = delivery.c_vlt_launch_url;
+
+            if (!string.IsNullOrEmpty(delivery.c_delivery_available_from_date.ToString()))
+            {
+                txtAvailableFrom.Text = Convert.ToDateTime(delivery.c_delivery_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(delivery.c_delivery_available_to_date.ToString()))
+            {
+                txtAvailableTo.Text = Convert.ToDateTime(delivery.c_delivery_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(delivery.c_delivery_effective_date.ToString()))
+            {
+                txtEffectiveDate.Text = Convert.ToDateTime(delivery.c_delivery_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(delivery.c_delivery_cut_off_date.ToString()))
+            {
+                txtCutOffDate.Text = Convert.ToDateTime(delivery.c_delivery_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(delivery.c_delivery_cut_off_time_string))
+            {
+                txtCutoffTime.Text = Convert.ToDateTime(delivery.c_delivery_cut_off_time_string).ToShortTimeString();
+            }
+
             txtCustom01.Text = delivery.c_delivery_custom_01;
             txtCustom02.Text = delivery.c_delivery_custom_02;
             txtCustom03.Text = delivery.c_delivery_custom_03;
@@ -731,11 +755,48 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             updateDelivery.c_delivery_active_type_id_fk = ddlStatus.SelectedValue;
             updateDelivery.c_delivery_visible_flag = chkVisible.Checked;
 
-            //updateDelivery.c_delivery_available_from_date = txtAvailableFrom.Text;
-            //updateDelivery.c_delivery_available_to_date = txtAvailableTo.Text;
-            //updateDelivery.c_delivery_effective_date = txtEffectiveDate.Text;
-            //updateDelivery.c_delivery_cut_off_date = txtCutOffDate.Text;
-            //updateDelivery.c_delivery_cut_off_time = txtCutoffTime.Text; 
+            DateTime? availableFrom = null;
+            DateTime tempavailableFrom;
+            CultureInfo culturenew = new CultureInfo("en-US");
+            if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+            {
+                availableFrom = tempavailableFrom;
+            }
+
+
+            DateTime? availableTo = null;
+            DateTime tempavailableTo;
+            if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+            {
+                availableTo = tempavailableTo;
+            }
+
+            DateTime? effectiveDate = null;
+            DateTime tempeffectiveDate;
+            if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+            {
+                effectiveDate = tempeffectiveDate;
+            }
+
+            DateTime? cuttoffDate = null;
+            DateTime tempcuttoffDate;
+            if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+            {
+                cuttoffDate = tempcuttoffDate;
+            }            
+
+            DateTime? cutofftime = null;
+            DateTime temptimeofday;
+            if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+            {
+                cutofftime = temptimeofday;
+            }
+
+            updateDelivery.c_delivery_available_from_date = availableFrom;
+            updateDelivery.c_delivery_available_to_date = availableTo;
+            updateDelivery.c_delivery_effective_date = effectiveDate;
+            updateDelivery.c_delivery_cut_off_date = cuttoffDate;
+            updateDelivery.c_delivery_cut_off_time = cutofftime; 
 
             updateDelivery.c_delivery_min_enroll = MinEnroll;
             updateDelivery.c_delivery_max_enroll = MaxEnroll;

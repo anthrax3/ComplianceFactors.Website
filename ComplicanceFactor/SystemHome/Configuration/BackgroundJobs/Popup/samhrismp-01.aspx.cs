@@ -18,7 +18,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.BackgroundJobs.Popup
         #region "Private Member Variables"
         private string _attachmentpath = "~/SystemHome/Configuration/HRISIntegration/Uploaded/";
         private string _downloadpath = "~/SystemHome/Configuration/HRISIntegration/Sample/";
-        private DateTime start;
+        //private DateTime start;
         #endregion
         private static string hrisId;
         protected void Page_Load(object sender, EventArgs e)

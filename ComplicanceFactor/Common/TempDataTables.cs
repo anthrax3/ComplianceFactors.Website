@@ -689,6 +689,33 @@ namespace ComplicanceFactor.Common
             dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
 
 
+            //Newly added columns Aug 22,2013
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.String");
+            dtTempDeliverysColumn.ColumnName = "c_delivery_available_from_date";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.String");
+            dtTempDeliverysColumn.ColumnName = "c_delivery_available_to_date";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.String");
+            dtTempDeliverysColumn.ColumnName = "c_delivery_effective_date";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.String");
+            dtTempDeliverysColumn.ColumnName = "c_delivery_cut_off_date";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.String");
+            dtTempDeliverysColumn.ColumnName = "c_delivery_cut_off_time";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
+
             //c_delivery_custom_01
             dtTempDeliverysColumn = new DataColumn();
             dtTempDeliverysColumn.DataType = Type.GetType("System.String");
@@ -1723,5 +1750,62 @@ namespace ComplicanceFactor.Common
 
             return dt;
         }
+
+        /// <summary>
+        /// Add temp columns for Audience
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable dtTempAudience()
+        {
+            DataTable dtTempAudience = new DataTable();
+            DataColumn dtTempAudienceColumn;
+
+            /// <summary>
+            /// temp u_audience_system_id_pk 
+
+
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "c_related_audience_id_fk";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+
+            /// <summary>
+            /// u_audience_id_pk
+
+
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "u_audience_id_pk";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+
+            /// <summary>
+            /// u_audience_name
+
+
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "u_audience_name";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+
+
+
+            //c_course_id_pk
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "c_course_id_fk";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+
+            /// <summary>
+            /// u_audience_desc
+
+            //dtTempAudienceColumn = new DataColumn();
+            //dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            //dtTempAudienceColumn.ColumnName = "u_audience_desc";
+            //dtTempAudience.Columns.Add(dtTempAudienceColumn);
+
+            return dtTempAudience;
+
+        }
     }
+
 }

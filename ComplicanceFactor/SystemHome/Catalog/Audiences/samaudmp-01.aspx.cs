@@ -4,14 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using ComplicanceFactor.Common.Languages;
+using ComplicanceFactor.BusinessComponent;
+using ComplicanceFactor.BusinessComponent.DataAccessObject;
+using ComplicanceFactor.Common;
 namespace ComplicanceFactor.SystemHome.Catalog.Audiences
 {
     public partial class samaudmp_01 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Manage Audiences" + "</a>";
+                //Get Search Result
+                SearchResult();
+                //Bind Status
+                ddlStatus.DataSource = SystemAudiencesBLL.GetAllStatus(SessionWrapper.CultureName, "sasup-01");
+                
+                ddlStatus.DataBind();
+                ddlStatus.SelectedValue = "app_ddl_all_text";
+            }
         }
 
         protected void btnAddNewCurriculum_Click(object sender, EventArgs e)
@@ -183,7 +197,135 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
 
         private void SearchResult()
         {
-        }
+            try
+            {
+                SystemAudiences audience = new SystemAudiences();
+                if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
+                {
 
+                    audience.u_audience_id_pk = txtAssignmentGroupId.Text;
+                    audience.u_audience_name = txtName.Text;
+                    if (ddlStatus.SelectedValue == "app_ddl_all_text")
+                    {
+                        audience.u_audience_status_id_fk = "0";
+                    }
+                    else
+                    {
+                        audience.u_audience_status_id_fk = ddlStatus.SelectedValue;
+                    }
+
+                }
+                else
+                {
+                    audience.u_audience_id_pk = txtAssignmentGroupId.Text;
+                    audience.u_audience_name = txtName.Text;
+                    audience.u_audience_status_id_fk = "0";
+                }
+                gvsearchDetails.DataSource = SystemAudiencesBLL.GetSearchAudience(audience);
+                gvsearchDetails.DataBind();
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samagmp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samagmp-01.aspx", ex.Message);
+                    }
+                }
+            }
+
+            if (gvsearchDetails.Rows.Count == 0)
+            {
+                disable_enable(false);
+            }
+            else
+            {
+                disable_enable(true);
+            }
+            if (gvsearchDetails.Rows.Count > 0)
+            {
+                gvsearchDetails.UseAccessibleHeader = true;
+                if (gvsearchDetails.HeaderRow != null)
+                {
+                    //This will tell ASP.NET to render the <thead> for the header row
+                    //using instead of the simple <tr>
+                    gvsearchDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
+            }
+        }
+        private void disable_enable(bool status)
+        {
+            btnHeaderFirst.Visible = status;
+            btnHeaderPrevious.Visible = status;
+            btnHeaderNext.Visible = status;
+            btnHeaderLast.Visible = status;
+
+            btnFooterFirst.Visible = status;
+            btnFooterPrevious.Visible = status;
+            btnFooterNext.Visible = status;
+            btnFooterLast.Visible = status;
+
+            ddlHeaderResultPerPage.Visible = status;
+            ddlFooterResultPerPage.Visible = status;
+
+            txtHeaderPage.Visible = status;
+            lblHeaderPage.Visible = status;
+
+            txtFooterPage.Visible = status;
+            lblFooterPage.Visible = status;
+
+            btnHeaderGoto.Visible = status;
+            btnFooterGoto.Visible = status;
+
+            lblHeaderResultPerPage.Visible = status;
+            lblFooterResultPerPage.Visible = status;
+
+            lblFooterPageOf.Visible = status;
+            lblHeaderPageOf.Visible = status;
+        }
+        protected void gvsearchDetails_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rowIndex = Convert.ToInt16((e.CommandArgument).ToString());
+            if (e.CommandName.Equals("Edit"))
+            {
+                Response.Redirect("/SystemHome/Catalog/Audiences/saeaud-01.aspx?id=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex][0].ToString()));
+            }
+            else if (e.CommandName.Equals("Copy"))
+            {
+                Response.Redirect("/SystemHome/Catalog/Audiences/saanaudn-01.aspx?copy=" + SecurityCenter.EncryptText(gvsearchDetails.DataKeys[rowIndex][0].ToString()));
+            }
+            else if (e.CommandName.Equals("Archive"))
+            {
+                string assignmentGroupId = gvsearchDetails.DataKeys[rowIndex][0].ToString();
+                try
+                {
+                    int result = SystemAssignmentGroupBLL.UpdateAssignmentGrouptatus(assignmentGroupId);
+                    SearchResult();
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Show user friendly error here
+                    //Log here
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("samagmp-01", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("samagmp-01", ex.Message);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

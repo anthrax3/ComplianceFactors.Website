@@ -140,6 +140,32 @@ namespace ComplicanceFactor.SystemHome.Catalog
             lblCreditUnits.Text = Convert.ToString(Course.c_course_credit_units);
             lblCreditHours.Text = Convert.ToString(Course.c_course_credit_hours);
             //custom section
+
+            if (!string.IsNullOrEmpty(Course.c_course_available_from_date.ToString()))
+            {
+                lblAvailableFrom.Text = Convert.ToDateTime(Course.c_course_available_from_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Course.c_course_available_to_date.ToString()))
+            {
+                lblAvailableTo.Text = Convert.ToDateTime(Course.c_course_available_to_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Course.c_course_effective_date.ToString()))
+            {
+                lblEffectiveDate.Text = Convert.ToDateTime(Course.c_course_effective_date).ToShortDateString();
+            }
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_date.ToString()))
+            {
+                lblCutOffDate.Text = Convert.ToDateTime(Course.c_course_cut_off_date).ToShortDateString();
+            }
+
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
+            {
+                lblCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();
+            }
+
+
+
             lblCustom01.Text = Course.c_course_custom_01;
             lblCustom02.Text = Course.c_course_custom_02;
             lblCustom03.Text = Course.c_course_custom_03;

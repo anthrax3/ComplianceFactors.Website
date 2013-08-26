@@ -585,7 +585,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 return DataProxy.FetchDataSet("e_sp_get_assignment_preview_pdf", htGetAllLearningHistory);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

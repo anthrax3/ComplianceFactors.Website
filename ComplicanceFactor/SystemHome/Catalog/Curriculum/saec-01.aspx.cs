@@ -299,6 +299,34 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     btnSelectIconUri.Style.Add("display", "none");
 
                 }
+
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_recurance_date.ToString()))
+                {
+                    txtDate.Text = Convert.ToDateTime(curriculum.c_curriculum_recurance_date, culture).ToString("MM/dd/yyyy");
+                }
+
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_available_from_date.ToString()))
+                {
+                    txtAvailableFrom.Text = Convert.ToDateTime(curriculum.c_curriculum_available_from_date).ToShortDateString();
+                }
+
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_available_to_date.ToString()))
+                {
+                    txtAvailableTo.Text = Convert.ToDateTime(curriculum.c_curriculum_available_to_date).ToShortDateString();
+                }
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_effective_date.ToString()))
+                {
+                    txtEffectiveDate.Text = Convert.ToDateTime(curriculum.c_curriculum_effective_date).ToShortDateString();
+                }
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_cut_off_date.ToString()))
+                {
+                    txtCutOffDate.Text = Convert.ToDateTime(curriculum.c_curriculum_cut_off_date).ToShortDateString();
+                }
+
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_cut_off_time_string.ToString()))
+                {
+                    txtCutoffTime.Text = Convert.ToDateTime(curriculum.c_curriculum_cut_off_time_string).ToShortTimeString();
+                }
                 
                 //custom section
                 txtCustom01.Text = curriculum.c_curriculum_custom_01;
@@ -427,6 +455,49 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     recurancedate = temprecurancedate;
                 }
                 UpdateCurriculum.c_curriculum_recurance_date = recurancedate;
+
+                DateTime? availableFrom = null;
+                DateTime tempavailableFrom;
+                CultureInfo culturenew = new CultureInfo("en-US");
+                if (DateTime.TryParseExact(txtAvailableFrom.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableFrom))
+                {
+                    availableFrom = tempavailableFrom;
+                }
+
+
+                DateTime? availableTo = null;
+                DateTime tempavailableTo;
+                if (DateTime.TryParseExact(txtAvailableTo.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempavailableTo))
+                {
+                    availableTo = tempavailableTo;
+                }
+
+                DateTime? effectiveDate = null;
+                DateTime tempeffectiveDate;
+                if (DateTime.TryParseExact(txtEffectiveDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempeffectiveDate))
+                {
+                    effectiveDate = tempeffectiveDate;
+                }
+
+                DateTime? cuttoffDate = null;
+                DateTime tempcuttoffDate;
+                if (DateTime.TryParseExact(txtCutOffDate.Text, "MM/dd/yyyy", culturenew, DateTimeStyles.None, out tempcuttoffDate))
+                {
+                    cuttoffDate = tempcuttoffDate;
+                }
+
+                DateTime? timeofday = null;
+                DateTime temptimeofday;
+                if (DateTime.TryParseExact(txtCutoffTime.Text, "h:mm tt", culturenew, DateTimeStyles.None, out temptimeofday))
+                {
+                    timeofday = temptimeofday;
+                }
+
+                UpdateCurriculum.c_curriculum_available_from_date = availableFrom;
+                UpdateCurriculum.c_curriculum_available_to_date = availableTo;
+                UpdateCurriculum.c_curriculum_effective_date = effectiveDate;
+                UpdateCurriculum.c_curriculum_cut_off_date = cuttoffDate;
+                UpdateCurriculum.c_curriculum_cut_off_time = timeofday; 
                 //custom section
                 UpdateCurriculum.c_curriculum_custom_01 = txtCustom01.Text;
                 UpdateCurriculum.c_curriculum_custom_02 = txtCustom02.Text;

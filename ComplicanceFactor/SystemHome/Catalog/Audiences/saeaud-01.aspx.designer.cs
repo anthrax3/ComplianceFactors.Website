@@ -13,13 +13,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
     public partial class saeaud_01 {
         
         /// <summary>
-        /// vs_saeaud control.
+        /// vs_saeag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_saeaud;
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_saeag;
+        
+        /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
         /// divError control.
@@ -31,13 +40,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divError;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// divSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
+        
+        /// <summary>
+        /// hdEditAssignmentId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdEditAssignmentId;
         
         /// <summary>
         /// hdStopRebind control.
@@ -76,58 +94,58 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.WebControls.Button btnHeaderCancel;
         
         /// <summary>
-        /// rfvAssignmentGroupId control.
+        /// rfvAudienceId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupId;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAudienceId;
         
         /// <summary>
-        /// txtAssignmentGroupId control.
+        /// txtAudienceId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupId;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceId;
         
         /// <summary>
-        /// rfvAssignmentGroupIdName control.
+        /// rfvAudienceIdName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupIdName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAudienceIdName;
         
         /// <summary>
-        /// txtAssignmentGroupName control.
+        /// txtAudienceName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName;
         
         /// <summary>
-        /// rfvAssignmentGroupDescription control.
+        /// rfvAudienceDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAssignmentGroupDescription;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAudienceDescription;
         
         /// <summary>
-        /// txtAssignmentGroupDescription control.
+        /// txtAudienceDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAssignmentGroupDescription;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAudienceDescription;
         
         /// <summary>
         /// ddlStatus control.
@@ -139,40 +157,31 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
-        /// upnlAssignmentGroup control.
+        /// upnlAudience control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlAssignmentGroup;
+        protected global::System.Web.UI.UpdatePanel upnlAudience;
         
         /// <summary>
-        /// gvAssignmentGroupParameters control.
+        /// gvAudienceParameters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAssignmentGroupParameters;
+        protected global::System.Web.UI.WebControls.GridView gvAudienceParameters;
         
         /// <summary>
-        /// btnAddNewParameters control.
+        /// txtAudienceName_EnglishUk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNewParameters;
-        
-        /// <summary>
-        /// txtAssignmentGroupName_EnglishUk control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_EnglishUk;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_EnglishUk;
         
         /// <summary>
         /// txtDescription_EnglishUk control.
@@ -184,13 +193,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_EnglishUk;
         
         /// <summary>
-        /// txtAssignmentGroupName_FrenchCa control.
+        /// txtAudienceName_FrenchCa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_FrenchCa;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_FrenchCa;
         
         /// <summary>
         /// txtDescription_FrenchCa control.
@@ -202,13 +211,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_FrenchCa;
         
         /// <summary>
-        /// txtAssignmentGroupName_FrenchFr control.
+        /// txtAudienceName_FrenchFr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_FrenchFr;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_FrenchFr;
         
         /// <summary>
         /// txtDescription_FrenchFr control.
@@ -220,13 +229,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_FrenchFr;
         
         /// <summary>
-        /// txtAssignmentGroupName_SpanishMx control.
+        /// txtAudienceName_SpanishMx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_SpanishMx;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_SpanishMx;
         
         /// <summary>
         /// txtDescription_SpanishMx control.
@@ -238,13 +247,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_SpanishMx;
         
         /// <summary>
-        /// txtAssignmentGroupName_SpanishSp control.
+        /// txtAudienceName_SpanishSp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_SpanishSp;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_SpanishSp;
         
         /// <summary>
         /// txtDescription_SpanishSp control.
@@ -256,13 +265,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_SpanishSp;
         
         /// <summary>
-        /// txtAssignmentGroupName_Portuguese control.
+        /// txtAudienceName_Portuguese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Portuguese;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Portuguese;
         
         /// <summary>
         /// txtDescription_Portuguese control.
@@ -274,13 +283,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Portuguese;
         
         /// <summary>
-        /// txtAssignmentGroupName_Chinese control.
+        /// txtAudienceName_Chinese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Chinese;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Chinese;
         
         /// <summary>
         /// txtDescription_Chinese control.
@@ -292,13 +301,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Chinese;
         
         /// <summary>
-        /// txtAssignmentGroupName_German control.
+        /// txtAudienceName_German control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_German;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_German;
         
         /// <summary>
         /// txtDescription_German control.
@@ -310,13 +319,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_German;
         
         /// <summary>
-        /// txtAssignmentGroupName_Japanese control.
+        /// txtAudienceName_Japanese control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Japanese;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Japanese;
         
         /// <summary>
         /// txtDescription_Japanese control.
@@ -328,13 +337,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Japanese;
         
         /// <summary>
-        /// txtAssignmentGroupName_Russian control.
+        /// txtAudienceName_Russian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Russian;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Russian;
         
         /// <summary>
         /// txtDescription_Russian control.
@@ -346,13 +355,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Russian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Danish control.
+        /// txtAudienceName_Danish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Danish;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Danish;
         
         /// <summary>
         /// txtDescription_Danish control.
@@ -364,13 +373,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Danish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Polish control.
+        /// txtAudienceName_Polish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Polish;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Polish;
         
         /// <summary>
         /// txtDescription_Polish control.
@@ -382,13 +391,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Polish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Swedish control.
+        /// txtAudienceName_Swedish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Swedish;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Swedish;
         
         /// <summary>
         /// txtDescription_Swedish control.
@@ -400,13 +409,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Swedish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Finnish control.
+        /// txtAudienceName_Finnish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Finnish;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Finnish;
         
         /// <summary>
         /// txtDescription_Finnish control.
@@ -418,13 +427,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Finnish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Korean control.
+        /// txtAudienceName_Korean control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Korean;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Korean;
         
         /// <summary>
         /// txtDescription_Korean control.
@@ -436,13 +445,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Korean;
         
         /// <summary>
-        /// txtAssignmentGroupName_Italian control.
+        /// txtAudienceName_Italian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Italian;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Italian;
         
         /// <summary>
         /// txtDescription_Italian control.
@@ -454,13 +463,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Italian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Dutch control.
+        /// txtAudienceName_Dutch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Dutch;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Dutch;
         
         /// <summary>
         /// txtDescription_Dutch control.
@@ -472,13 +481,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Dutch;
         
         /// <summary>
-        /// txtAssignmentGroupName_Indonesian control.
+        /// txtAudienceName_Indonesian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Indonesian;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Indonesian;
         
         /// <summary>
         /// txtDescription_Indonesian control.
@@ -490,13 +499,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Indonesian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Greek control.
+        /// txtAudienceName_Greek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Greek;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Greek;
         
         /// <summary>
         /// txtDescription_Greek control.
@@ -508,13 +517,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Greek;
         
         /// <summary>
-        /// txtAssignmentGroupName_Hungarian control.
+        /// txtAudienceName_Hungarian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Hungarian;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Hungarian;
         
         /// <summary>
         /// txtDescription_Hungarian control.
@@ -526,13 +535,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Hungarian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Norwegian control.
+        /// txtAudienceName_Norwegian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Norwegian;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Norwegian;
         
         /// <summary>
         /// txtDescription_Norwegian control.
@@ -544,13 +553,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Norwegian;
         
         /// <summary>
-        /// txtAssignmentGroupName_Turkish control.
+        /// txtAudienceName_Turkish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Turkish;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Turkish;
         
         /// <summary>
         /// txtDescription_Turkish control.
@@ -562,13 +571,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Turkish;
         
         /// <summary>
-        /// txtAssignmentGroupName_Arabic control.
+        /// txtAudienceName_Arabic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Arabic;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Arabic;
         
         /// <summary>
         /// txtDescription_Arabic control.
@@ -580,13 +589,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Arabic;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom01 control.
+        /// txtAudienceName_Custom01 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom01;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom01;
         
         /// <summary>
         /// txtDescription_Custom01 control.
@@ -598,13 +607,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom01;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom02 control.
+        /// txtAudienceName_Custom02 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom02;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom02;
         
         /// <summary>
         /// txtDescription_Custom02 control.
@@ -616,13 +625,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom02;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom03 control.
+        /// txtAudienceName_Custom03 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom03;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom03;
         
         /// <summary>
         /// txtDescription_Custom03 control.
@@ -634,13 +643,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom03;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom04 control.
+        /// txtAudienceName_Custom04 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom04;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom04;
         
         /// <summary>
         /// txtDescription_Custom04 control.
@@ -652,13 +661,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom04;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom05 control.
+        /// txtAudienceName_Custom05 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom05;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom05;
         
         /// <summary>
         /// txtDescription_Custom05 control.
@@ -670,13 +679,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom05;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom06 control.
+        /// txtAudienceName_Custom06 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom06;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom06;
         
         /// <summary>
         /// txtDescription_Custom06 control.
@@ -688,13 +697,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom06;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom07 control.
+        /// txtAudienceName_Custom07 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom07;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom07;
         
         /// <summary>
         /// txtDescription_Custom07 control.
@@ -706,13 +715,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom07;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom08 control.
+        /// txtAudienceName_Custom08 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom08;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom08;
         
         /// <summary>
         /// txtDescription_Custom08 control.
@@ -724,13 +733,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom08;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom09 control.
+        /// txtAudienceName_Custom09 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom09;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom09;
         
         /// <summary>
         /// txtDescription_Custom09 control.
@@ -742,13 +751,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom09;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom10 control.
+        /// txtAudienceName_Custom10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom10;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom10;
         
         /// <summary>
         /// txtDescription_Custom10 control.
@@ -760,13 +769,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom10;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom11 control.
+        /// txtAudienceName_Custom11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom11;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom11;
         
         /// <summary>
         /// txtDescription_Custom11 control.
@@ -778,13 +787,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom11;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom12 control.
+        /// txtAudienceName_Custom12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom12;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom12;
         
         /// <summary>
         /// txtDescription_Custom12 control.
@@ -796,13 +805,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription_Custom12;
         
         /// <summary>
-        /// txtAssignmentGroupName_Custom13 control.
+        /// txtAudienceName_Custom13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAssignmentGroupName_Custom13;
+        protected global::System.Web.UI.WebControls.TextBox txtAudienceName_Custom13;
         
         /// <summary>
         /// txtDescription_Custom13 control.

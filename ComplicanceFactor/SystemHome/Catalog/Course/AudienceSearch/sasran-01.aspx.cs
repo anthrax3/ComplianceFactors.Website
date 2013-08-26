@@ -5,87 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ComplicanceFactor.Common;
-using ComplicanceFactor.BusinessComponent.DataAccessObject;
-using ComplicanceFactor.BusinessComponent;
 using System.Data;
-using System.Text;
-using System.Net.Mail;
-using System.Configuration;
-namespace ComplicanceFactor.Manager.Enroll
+using System.Collections;
+using ComplicanceFactor.BusinessComponent;
+using ComplicanceFactor.BusinessComponent.DataAccessObject;
+
+namespace ComplicanceFactor.SystemHome.Catalog.Course.AudienceSearch
 {
-    public partial class mese_01 : System.Web.UI.Page
+    public partial class sasran_01 : System.Web.UI.Page
     {
-        #region
-        private string courseId;
-        private string deliveryId;
-        private string deliveryType;
-        //private string waitList;
-        private bool c_course_approval;
-        private bool c_delivery_approval;
-        private bool isTrue;
-        private string curriculumId;
-        private string course_id_or_curriculum_id;
-        //private bool c_check;
-        #endregion
-        
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                curriculumId = Request.QueryString["id"];
-                courseId = Request.QueryString["courseid"];
-                if (Request.QueryString["check"] == "1")
-                {
-                    isTrue = true;
-                    course_id_or_curriculum_id = courseId;
-                }
-                else
-                {
-                    isTrue = false;
-                    course_id_or_curriculum_id = curriculumId;
-                }
-                if (!string.IsNullOrEmpty(Request.QueryString["ctype"]))
-                {
-                    //curriculumId = Request.QueryString["id"];
-                    if (!string.IsNullOrEmpty(Request.QueryString["ca"]))
-                    {
-                        c_course_approval = Convert.ToBoolean(Request.QueryString["ca"]);
-                    }
-                    else
-                    {
-                        c_course_approval = false;
-                    }
-                    if (!string.IsNullOrEmpty(Request.QueryString["da"]))
-                    {
-                        c_delivery_approval = Convert.ToBoolean(Request.QueryString["da"]);
-                    }
-                    else
-                    {
-                        c_delivery_approval = false;
-                    }
-                }
-                else
-                {
-                    //courseId = Request.QueryString["courseid"];
-                    deliveryId = Request.QueryString["id"];
-                    deliveryType = Request.QueryString["type"];
-                    if (!string.IsNullOrEmpty(Request.QueryString["ca"]))
-                    {
-                        c_course_approval = Convert.ToBoolean(Request.QueryString["ca"]);
-                    }
-                    else
-                    {
-                        c_course_approval = false;
-                    }
-                    if (!string.IsNullOrEmpty(Request.QueryString["approval"]))
-                    {
-                        c_delivery_approval = Convert.ToBoolean(Request.QueryString["approval"]);
-                    }
-                    else
-                    {
-                        c_delivery_approval = false;
-                    }
-                }
                 if (!IsPostBack)
                 {
                     SearchResult();
@@ -102,113 +34,142 @@ namespace ComplicanceFactor.Manager.Enroll
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("mese-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("mese-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message);
                     }
                 }
             }
         }
+
         protected void btnHeaderFirst_Click(object sender, EventArgs e)
         {
             gvsearchDetails.PageIndex = 0;
             SearchResult();
+
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnHeaderPrevious_Click(object sender, EventArgs e)
         {
             int i = gvsearchDetails.PageCount;
             if (gvsearchDetails.PageIndex > 0)
                 gvsearchDetails.PageIndex = gvsearchDetails.PageIndex - 1;
+
             SearchResult();
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnHeaderNext_Click(object sender, EventArgs e)
         {
             int i = gvsearchDetails.PageIndex + 1;
             if (i <= gvsearchDetails.PageCount)
                 gvsearchDetails.PageIndex = i;
+
+
             SearchResult();
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnHeaderLast_Click(object sender, EventArgs e)
         {
             gvsearchDetails.PageIndex = gvsearchDetails.PageCount;
+
             SearchResult();
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnHeaderGoto_Click1(object sender, EventArgs e)
         {
             gvsearchDetails.PageIndex = Int32.Parse(txtHeaderPage.Text) - 1;
+
             SearchResult();
+
             txtFooterPage.Text = txtHeaderPage.Text;
         }
+
+
+
+        protected void btnFooterGoto_Click1(object sender, EventArgs e)
+        {
+            gvsearchDetails.PageIndex = Int32.Parse(txtFooterPage.Text) - 1;
+
+            SearchResult();
+
+            txtHeaderPage.Text = txtFooterPage.Text;
+        }
+
         protected void btnFooterFirst_Click(object sender, EventArgs e)
         {
             gvsearchDetails.PageIndex = 0;
             SearchResult();
+
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnFooterPrevious_Click(object sender, EventArgs e)
         {
             int i = gvsearchDetails.PageCount;
             if (gvsearchDetails.PageIndex > 0)
                 gvsearchDetails.PageIndex = gvsearchDetails.PageIndex - 1;
+
             SearchResult();
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnFooterNext_Click(object sender, EventArgs e)
         {
             int i = gvsearchDetails.PageIndex + 1;
             if (i <= gvsearchDetails.PageCount)
                 gvsearchDetails.PageIndex = i;
+
+
             SearchResult();
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void btnFooterLast_Click(object sender, EventArgs e)
         {
             gvsearchDetails.PageIndex = gvsearchDetails.PageCount;
+
             SearchResult();
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
-        protected void btnFooterGoto_Click1(object sender, EventArgs e)
-        {
-            gvsearchDetails.PageIndex = Int32.Parse(txtFooterPage.Text) - 1;
-            SearchResult();
-            txtHeaderPage.Text = txtFooterPage.Text;
-        }
+
         protected void btnGosearch_Click(object sender, EventArgs e)
         {
             //search
+
             ViewState["SearchResult"] = "true";
             gvsearchDetails.PageIndex = 0;
             SearchResult();
+
             txtFooterPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
@@ -216,22 +177,10 @@ namespace ComplicanceFactor.Manager.Enroll
             ddlFooterResultPerPage.SelectedIndex = 0;
             ddlHeaderResultPerPage.SelectedIndex = 0;
         }
-        protected void btnSaveSelected_Click(object sender, EventArgs e)
+        protected void dlstDomainSelected_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            if (string.IsNullOrEmpty(Request.QueryString["ctype"]))
-            {
-                AddEmployee(SessionWrapper.Employee);
-                //Close popup
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
-                Response.Redirect("~/Manager/Enroll/mesc-01.aspx?courseid=" + courseId + "&deliveryid=" + deliveryId + "&deliveryType=" + deliveryType + "&ca=" + c_course_approval + "&da=" + c_delivery_approval);
-            }
-            else
-            {
-                AddEmployee(SessionWrapper.Employee);
-                //close popup
-                Response.Redirect("~/Manager/Enroll/mescurr-01.aspx?id=" + curriculumId + "&ctype=" + Request.QueryString["ctype"] + "&ca=" + c_course_approval + "&da=" + c_delivery_approval);
-            }
         }
+
         protected void ddlHeaderResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlHeaderResultPerPage.SelectedValue == "Show All")
@@ -254,6 +203,7 @@ namespace ComplicanceFactor.Manager.Enroll
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void ddlFooterResultPerPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlFooterResultPerPage.SelectedValue == "Show All")
@@ -276,57 +226,59 @@ namespace ComplicanceFactor.Manager.Enroll
             txtHeaderPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
         }
+
         protected void gvsearchDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvsearchDetails.PageIndex = e.NewPageIndex;
 
             SearchResult();
         }
-        /// <summary>
-        /// Search employee
-        /// </summary>
         private void SearchResult()
         {
             try
             {
-               
+                SystemAudiences audience = new SystemAudiences();
+
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
                 {
-                    gvsearchDetails.DataSource = EmployeeBLL.GetEmployeeByManager(SessionWrapper.u_userid, txtEmployeeName.Text, course_id_or_curriculum_id, isTrue);
-                    gvsearchDetails.DataBind();
+                    audience.u_audience_id_pk = txtAudienceId.Text;
+                    audience.u_audience_name = txtAudienceName.Text;
+                    audience.u_audience_status_id_fk = "0";
                 }
                 else
                 {
-                    string strName = string.Empty;
-                    if(!string.IsNullOrEmpty(Request.QueryString["search"]))
-                    {
-                    strName = Request.QueryString["search"];
-                    }
-                    gvsearchDetails.DataSource = EmployeeBLL.GetEmployeeByManager(SessionWrapper.u_userid, strName, course_id_or_curriculum_id, isTrue);
-                    gvsearchDetails.DataBind();
+                    audience.u_audience_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"]);
+                    audience.u_audience_name = SecurityCenter.DecryptText(Request.QueryString["name"]);
+                    audience.u_audience_status_id_fk = "0";
                 }
+                gvsearchDetails.DataSource = SystemAudiencesBLL.GetSearchAudience(audience);
+                gvsearchDetails.DataBind();
 
+                //gvsearchDetails is empty then visible false for save selected button
+                if (gvsearchDetails.Rows.Count == 0)
+                {
+                    btnSaveSelected.Visible = false;
+                }
             }
             catch (Exception ex)
             {
+                //TODO: Show user friendly error here
                 //Log here
                 if (ConfigurationWrapper.LogErrors == true)
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("mese-01.aspx (SearchResult) Error", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("mese-01.aspx (SearchResult) Error", ex.Message);
+                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message);
                     }
                 }
             }
             if (gvsearchDetails.Rows.Count == 0)
             {
-
                 disable_enable(false);
-
             }
             else
             {
@@ -343,8 +295,11 @@ namespace ComplicanceFactor.Manager.Enroll
                 }
             }
 
-
         }
+        /// <summary>
+        /// Disable/Enable Buttons
+        /// </summary>
+        /// <param name="status"></param>
         private void disable_enable(bool status)
         {
             btnHeaderFirst.Visible = status;
@@ -375,107 +330,159 @@ namespace ComplicanceFactor.Manager.Enroll
 
             lblFooterPageOf.Visible = status;
             lblHeaderPageOf.Visible = status;
-            btnSaveSelected.Visible = status;
 
         }
-        private void AddEmployeeRow(string u_user_id_fk, string c_course_id_fk, string c_delivery_id_fk, string u_first_name, string u_last_name, string u_employee_number, DataTable dtEmployee)
-        {
-            // Add Category functiong
-            DataRow row;
-            row = dtEmployee.NewRow();
-            row["u_user_id_fk"] = u_user_id_fk;
-            row["id"] = c_course_id_fk;
-            row["c_delivery_id_fk"] = c_delivery_id_fk;
-            row["u_first_name"] = u_first_name;
-            row["u_last_name"] = u_last_name;
-            row["u_employee_number"] = u_employee_number;
-            dtEmployee.Rows.Add(row);
-        }
-        /// <summary>
-        /// add category
-        /// </summary>
-        /// <param name="dtEmployee"></param>
-        /// <param name="s_category_system_id_pk"></param>
-        /// <returns></returns>
-        private DataTable AddEmployee(DataTable dtEmployee)
-        {
 
-            foreach (GridViewRow grdCategoryRow in gvsearchDetails.Rows)
+        protected void btnSaveSelected_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saantc")
             {
-                CheckBox chkSelect = (CheckBox)(grdCategoryRow.Cells[1].FindControl("chkSelect"));
+                AudienceAddEditMode(SessionWrapper.CourseAudience, string.Empty);
+            }
+            else if (!string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saetc")
+            {
+
+                string editCourseId = Request.QueryString["editCourseId"];
+                DataTable dtAudience = new DataTable();
+                dtAudience = dtTempAudience();
+                dtAudience = AudienceAddEditMode(dtAudience, editCourseId);
+                try
+                {
+                    SystemCatalogBLL.InsertAudience(ConvertDataTableToXml(dtAudience), editCourseId);
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Show user friendly error here
+                    //Log here
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("sasran-01", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("sasran-01", ex.Message);
+                        }
+                    }
+                }
+
+            }
+            //Close popup
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
+        }
+
+        private DataTable AudienceAddEditMode(DataTable dtAudience, string c_course_system_id_pk)
+        {
+            foreach (GridViewRow grdAudienceRow in gvsearchDetails.Rows)
+            {
+                CheckBox chkSelect = (CheckBox)(grdAudienceRow.Cells[1].FindControl("chkSelect"));
+
                 if (chkSelect.Checked == true)
                 {
-                    if (string.IsNullOrEmpty(Request.QueryString["ctype"]))
-                    {
-                        AddEmployeeRow(gvsearchDetails.DataKeys[grdCategoryRow.RowIndex].Values[0].ToString(), courseId, deliveryId, grdCategoryRow.Cells[0].Text, grdCategoryRow.Cells[1].Text, string.Empty, dtEmployee);
-                    }
-                    else
-                    {
-                        AddEmployeeRow(gvsearchDetails.DataKeys[grdCategoryRow.RowIndex].Values[0].ToString(), curriculumId, string.Empty, grdCategoryRow.Cells[0].Text, grdCategoryRow.Cells[1].Text, string.Empty, dtEmployee);
-                    }
+                    AddDataToAudience(gvsearchDetails.DataKeys[grdAudienceRow.RowIndex].Values[0].ToString(), grdAudienceRow.Cells[1].Text, grdAudienceRow.Cells[0].Text, c_course_system_id_pk, dtAudience);
                 }
             }
-            //Remove duplicate employee
-            ConvertDataTables removeDuplicateRows = new ConvertDataTables();
-            dtEmployee = removeDuplicateRows.RemoveDuplicateRows(dtEmployee, "u_user_id_fk");
-            return dtEmployee;
+
+            //Remove duplicate Audience
+            dtAudience = RemoveDuplicateRows(dtAudience, "c_related_audience_id_fk");
+            return dtAudience;
 
         }
-
-        protected void gvsearchDetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        private void AddDataToAudience(string c_related_audience_id_fk, string u_audience_id_pk, string u_audience_name, string c_course_id_fk, DataTable dtTempAudience)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            // Add Audience function
+            DataRow row;
+            row = dtTempAudience.NewRow();
+            row["c_related_audience_id_fk"] = c_related_audience_id_fk;
+            row["u_audience_id_pk"] = u_audience_id_pk;
+            row["u_audience_name"] = u_audience_name;
+            if (!string.IsNullOrEmpty(c_course_id_fk))
             {
-                string type = DataBinder.Eval(e.Row.DataItem, "type").ToString();
-                if (type == "course")
-                {
-                    string enrollStatus = DataBinder.Eval(e.Row.DataItem, "enrollStatus").ToString();
-                    string wailtListStatus = DataBinder.Eval(e.Row.DataItem, "wailtListStatus").ToString();
-                    string assignStatus = DataBinder.Eval(e.Row.DataItem, "assignStatus").ToString();
-                    if (enrollStatus == "Y")
-                    {
-                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
-                        lblStatus.Visible = true;
-                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
-                        lblStatus.Text = "Already Enrolled";
-                        chkSelect.Visible = false;
+                row["c_course_id_fk"] = c_course_id_fk;
 
-                    }
-                    if (wailtListStatus == "Y")
-                    {
-                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
-                        lblStatus.Visible = true;
-                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
-                        lblStatus.Text = "Already Waitlisted";
-                        chkSelect.Visible = false;
-
-                    }
-                    if (assignStatus == "Y")
-                    {
-                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
-                        lblStatus.Visible = true;
-                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
-                        lblStatus.Text = "Already Assigned";
-                        chkSelect.Visible = false;
-
-                    }
-                }
-                else if (type == "curriculum")
-                {
-                    string curriculaStatus = DataBinder.Eval(e.Row.DataItem, "curriculaStatus").ToString();
-                    if (curriculaStatus == "Y")
-                    {
-                        Label lblStatus = (Label)e.Row.FindControl("lblStatus");
-                        lblStatus.Visible = true;
-                        CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
-                        lblStatus.Text = "Already Assigned";
-                        chkSelect.Visible = false;
-
-                    }
-                }
-                
             }
+            else
+            {
+                row["c_course_id_fk"] = DBNull.Value;
+            }
+            dtTempAudience.Rows.Add(row);
         }
-        
+        public DataTable RemoveDuplicateRows(DataTable dTable, string colName)
+        {
+            Hashtable hTable = new Hashtable();
+            ArrayList duplicateList = new ArrayList();
+
+            foreach (DataRow drow in dTable.Rows)
+            {
+                if (hTable.Contains(drow[colName]))
+                    duplicateList.Add(drow);
+                else
+                    hTable.Add(drow[colName], string.Empty);
+            }
+
+            foreach (DataRow dRow in duplicateList)
+                dTable.Rows.Remove(dRow);
+
+            return dTable;
+        }
+        /// <summary>
+        /// Add temp columns for Audience
+        /// </summary>
+        /// <returns></returns>
+        private DataTable dtTempAudience()
+        {
+            DataTable dtTempAudience = new DataTable();
+            DataColumn dtTempAudienceColumn;
+            /// <summary>
+            /// temp u_audience_system_id_pk 
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "c_related_audience_id_fk";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+            /// <summary>
+            /// u_audience_id_pk
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "u_audience_id_pk";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+            /// <summary>
+            /// u_audience_name
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "u_audience_name";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+            //c_course_id_pk
+            dtTempAudienceColumn = new DataColumn();
+            dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempAudienceColumn.ColumnName = "c_course_id_fk";
+            dtTempAudience.Columns.Add(dtTempAudienceColumn);
+            /// <summary>
+            /// u_audience_desc
+            //dtTempAudienceColumn = new DataColumn();
+            //dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            //dtTempAudienceColumn.ColumnName = "u_audience_desc";
+            //dtTempAudience.Columns.Add(dtTempAudienceColumn);
+            return dtTempAudience;
+
+        }
+        ///<summary>
+        /// This method is used to convert the DataTable into string XML format.
+        ///
+        /// DataTable to be converted./// (string) XML form of the DataTable.
+        /// </summary>
+        public string ConvertDataTableToXml(DataTable dtBuildSql)
+        {
+            DataSet dsBuildSql = new DataSet("DataSet");
+
+            dsBuildSql.Tables.Add(dtBuildSql.Copy());
+            dsBuildSql.Tables[0].TableName = "Table";
+
+            foreach (DataColumn col in dsBuildSql.Tables[0].Columns)
+            {
+                col.ColumnMapping = MappingType.Attribute;
+            }
+            return dsBuildSql.GetXml().ToString();
+        }
     }
 }
