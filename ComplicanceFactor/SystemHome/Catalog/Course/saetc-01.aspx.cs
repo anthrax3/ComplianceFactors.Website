@@ -1071,7 +1071,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 txtCutOffDate.Text = Convert.ToDateTime(Course.c_course_cut_off_date).ToShortDateString();
             }
 
-            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string))
             {
                 txtCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();
             }
@@ -1165,6 +1165,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
             createCourseDelivery.c_delivery_system_id_pk = string.Empty;
             createCourseDelivery.c_related_domain_id_fk = ConvertDataTableToXml(SessionWrapper.Reset_Course_Domain);
             createCourseDelivery.c_course_category = ConvertDataTableToXml(SessionWrapper.Reset_Course_Category);
+            createCourseDelivery.c_course_audiences = ConvertDataTableToXml(SessionWrapper.Reset_Course_Audience);
             createCourseDelivery.s_course_locale = ConvertDataTableToXml(SessionWrapper.Reset_Course_Locales);
             createCourseDelivery.s_delivery_locale = ConvertDataTableToXml(SessionWrapper.Reset_Delivery_Locales);
             try
@@ -1319,6 +1320,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
             SessionWrapper.Reset_Course_Locales = dsCourseRelatedData.Tables[9];
             //delivery locale
             SessionWrapper.Reset_Delivery_Locales = dsCourseRelatedData.Tables[10];
+            //Audiences
+            SessionWrapper.Reset_Course_Audience = dsCourseRelatedData.Tables[11];
+
         }
         protected void btnSaveNewVersion_Click(object sender, EventArgs e)
         {

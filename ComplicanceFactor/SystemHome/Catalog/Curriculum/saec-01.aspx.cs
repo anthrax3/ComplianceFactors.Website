@@ -162,6 +162,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 //Bind Domian
                 gvDomain.DataSource = SystemCurriculumBLL.GetCurriculumDomain(editCurriculumId);
                 gvDomain.DataBind();
+                //Bind Audience
+                gvAudience.DataSource = SystemCurriculumBLL.GetCurriculumAudiences(editCurriculumId);
+                gvAudience.DataBind();
                 //Get Prerequisites
                 gvPrerequisites.DataSource = dsprerequisiteEquivalenciesFullfillments.Tables[3];
                 gvPrerequisites.DataBind();
@@ -323,7 +326,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     txtCutOffDate.Text = Convert.ToDateTime(curriculum.c_curriculum_cut_off_date).ToShortDateString();
                 }
 
-                if (!string.IsNullOrEmpty(curriculum.c_curriculum_cut_off_time_string.ToString()))
+                if (!string.IsNullOrEmpty(curriculum.c_curriculum_cut_off_time_string))
                 {
                     txtCutoffTime.Text = Convert.ToDateTime(curriculum.c_curriculum_cut_off_time_string).ToShortTimeString();
                 }
@@ -1247,6 +1250,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             SessionWrapper.Reset_Curricula_Recert_Sections = dsCurriculumDate.Tables[9];
             //Curriculum Recert Path Courses
             SessionWrapper.Reset_Curricula_Recert_Courses = dsCurriculumDate.Tables[10];
+            //Curriculum Audiences
+            SessionWrapper.Reset_Curriculum_Audience = dsCurriculumDate.Tables[11];
 
             
         }
@@ -1281,6 +1286,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             Createcurriculum.c_curriculum_category = ConvertDataTableToXml(SessionWrapper.Reset_Curriculum_Category);
             //Domain
             Createcurriculum.c_curriculum_domain = ConvertDataTableToXml(SessionWrapper.Reset_Curriculum_Domain);
+            //Audiences
+            Createcurriculum.c_curriculum_audience = ConvertDataTableToXml(SessionWrapper.Reset_Curriculum_Audience);
             //Locale
             Createcurriculum.s_curriculum_locale = ConvertDataTableToXml(SessionWrapper.Reset_Curriculum_Locales);
             //Path
@@ -1504,6 +1511,32 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
         protected void btnFooterReset_Click(object sender, EventArgs e)
         {
             Reset(editCurriculumId);
+        }
+
+        //Delete Audience
+        [System.Web.Services.WebMethod]
+        public static void DeleteAudience(string args)
+        {
+            try
+            {
+                SystemCurriculumBLL.DeleteAudiences(args.Trim(), editCurriculumId);
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saec-01 (Remove Audience)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saec-01 (Remove Audience)", ex.Message);
+                    }
+                }
+            }
         }
     }
 }

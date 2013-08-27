@@ -1073,6 +1073,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
             SessionWrapper.Reset_Course_DeliveryMaterial = null;
             SessionWrapper.Reset_Course_DeliveryInstructor = null;
             SessionWrapper.Reset_Course_Domain = null;
+            SessionWrapper.Reset_Course_Audience = null;
             SessionWrapper.Reset_Course_Category = null;
 
 
@@ -1137,7 +1138,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 txtCutOffDate.Text = Convert.ToDateTime(Course.c_course_cut_off_date).ToShortDateString();
             }
 
-            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string))
             {
                 txtCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();
             }
@@ -1306,6 +1307,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
             // Get Domain
             DataTable dtDomain = new DataTable();
             dtDomain = dsCourseRelatedData.Tables[7];
+            //Get Audience
+            DataTable dtAudience = new DataTable();
+            dtAudience = dsCourseRelatedData.Tables[11];
             // Get Category
             DataTable dtCategory = new DataTable();
             dtCategory = dsCourseRelatedData.Tables[8];
@@ -1450,6 +1454,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
             //Session domain
             SessionWrapper.Reset_Course_Domain = dtDomain;
             SessionWrapper.CourseDomain = dtDomain;
+            //Session Audience
+            SessionWrapper.CourseAudience = dtAudience;
+            SessionWrapper.Reset_Course_Audience = dtAudience;
             //session Category
             SessionWrapper.Reset_Course_Category = dtCategory;
             SessionWrapper.CourseCategory = dtCategory;

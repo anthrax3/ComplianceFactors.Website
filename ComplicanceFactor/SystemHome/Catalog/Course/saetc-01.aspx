@@ -1725,7 +1725,7 @@
                     <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
                         <ItemTemplate>
                             <input type="button" id='<%# Eval("c_related_audience_id_fk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" />'
-                                class="deletedomain cursor_hand" />
+                                class="deleteaudience cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

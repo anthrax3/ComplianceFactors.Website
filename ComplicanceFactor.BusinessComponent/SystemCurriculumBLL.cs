@@ -279,6 +279,7 @@ namespace ComplicanceFactor.BusinessComponent
             htNewCurriculum.Add("@c_curriculum_equivalencies", curriculum.c_curriculum_Equivalencies);
             htNewCurriculum.Add("@c_curriculum_fulfillments", curriculum.c_curriculum_Fulfillments);
             htNewCurriculum.Add("@c_curriculum_domain", curriculum.c_curriculum_domain);
+            htNewCurriculum.Add("@c_curriculum_audience", curriculum.c_curriculum_audience);
             htNewCurriculum.Add("@c_curriculum_category", curriculum.c_curriculum_category);
             htNewCurriculum.Add("@c_curriculum_attachment", curriculum.c_curriculum_attachment);
             
@@ -1369,6 +1370,16 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htResetCurriculum.Add("@c_curriculum_domain", DBNull.Value);
             }
+
+            if (!string.IsNullOrEmpty(resetCurriculum.c_curriculum_audience))
+            {
+                htResetCurriculum.Add("@c_curriculum_audience", resetCurriculum.c_curriculum_audience);
+            }
+            else
+            {
+                htResetCurriculum.Add("@c_curriculum_audience", DBNull.Value);
+            }
+
             if (!string.IsNullOrEmpty(resetCurriculum.s_curriculum_locale))
             {
                 htResetCurriculum.Add("@s_curriculum_locale", resetCurriculum.s_curriculum_locale);
@@ -2469,7 +2480,51 @@ namespace ComplicanceFactor.BusinessComponent
             }
 
         }
+        public static int InsertAudience(string c_related_audience_id_fk, string c_curriculum_system_id_pk)
+        {
+            Hashtable htInsertAudience = new Hashtable();
 
+            htInsertAudience.Add("@c_related_audience_id_fk", c_related_audience_id_fk);
+            htInsertAudience.Add("@c_curriculum_system_id_pk", c_curriculum_system_id_pk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("c_curriculum_sp_insert_audience", htInsertAudience);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetCurriculumAudiences(string c_curriculum_id_fk)
+        {
+            Hashtable htGetAudience = new Hashtable();
+            htGetAudience.Add("@c_curriculum_id_fk", c_curriculum_id_fk);
+            try
+            {
+                return DataProxy.FetchDataTable("c_sp_get_curriculum_audience", htGetAudience);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int DeleteAudiences(string c_related_audience_id_fk, string c_curriculum_id_fk)
+        {
+            Hashtable htDeleteAudience = new Hashtable();
+            htDeleteAudience.Add("@c_related_audience_id_fk", c_related_audience_id_fk);
+            htDeleteAudience.Add("@c_curriculum_id_fk", c_curriculum_id_fk);
+            try
+            {
+                return DataProxy.FetchSPOutput("c_sp_delete_curriculum_audience", htDeleteAudience);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

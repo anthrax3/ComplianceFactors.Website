@@ -51,6 +51,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     SessionWrapper.CurriculumCategory = TempDataTables.TempCurriculumCategory();
                     //Add Domain Column
                     SessionWrapper.CurriculumDomain = TempDataTables.TempCurriculumDomain();
+                    //Add Audience Column
+                    SessionWrapper.CurriculumAudience = TempDataTables.dtTempCurriculumAudience();
+
                     //Add column in curriculum selected prerequsites sessoin
                     SessionWrapper.PrerequisiteCurriculumSelected = Prerequisites();
                     SessionWrapper.EquivalenciesCurriculumSelected = Equivalencies();
@@ -139,6 +142,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 //Bind Domain
                 gvDomain.DataSource = SessionWrapper.CurriculumDomain;
                 gvDomain.DataBind();
+                //Bind Audience
+                gvAudience.DataSource = SessionWrapper.CurriculumAudience;
+                gvAudience.DataBind();
                 //Get Prerequisites session
                 gvPrerequisites.DataSource = SessionWrapper.TempCurriculumPrerequisite;
                 gvPrerequisites.DataBind();
@@ -289,6 +295,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 CreateCurriculum.c_curriculum_Fulfillments = ConvertDataTableToXml(SessionWrapper.FulfillmentsCurriculumSelected);
                 //Domain
                 CreateCurriculum.c_curriculum_domain = ConvertDataTableToXml(SessionWrapper.CurriculumDomain);
+                //Audience
+                CreateCurriculum.c_curriculum_audience = ConvertDataTableToXml(SessionWrapper.CurriculumAudience);
                 //Category
                 CreateCurriculum.c_curriculum_category = ConvertDataTableToXml(SessionWrapper.CurriculumCategory);
                 //Attchments
@@ -1000,7 +1008,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 txtCutOffDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_date).ToShortDateString();
             }
 
-            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_time_string.ToString()))
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_time_string))
             {
                 txtCutoffTime.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_time_string).ToShortTimeString();
             }
@@ -1134,6 +1142,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             // Get Domain
             DataTable dtDomain = new DataTable();
             dtDomain = dsCurriculumRelatedData.Tables[2];
+
+            DataTable dtAudience = new DataTable();
+            dtAudience = dsCurriculumRelatedData.Tables[11];
             //Attchments
             DataTable dtAttachments = new DataTable();
             dtAttachments = dsCurriculumRelatedData.Tables[3];
@@ -1146,6 +1157,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             //Session attchments
             SessionWrapper.Reset_Curriculum_Attachments = dtAttachments;
             SessionWrapper.TempCurriculumAttachments = dtAttachments;
+            //Audiences
+            SessionWrapper.CurriculumAudience = dtAudience;
+            SessionWrapper.Reset_Curriculum_Audience = dtAudience;
         }
 
         protected void btnHeaderReset_Click(object sender, EventArgs e)
@@ -1206,12 +1220,37 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 }
             }
         }
+        //Delete Audience
+        [System.Web.Services.WebMethod]
+        public static void DeleteAudience(string args)
+        {
+            try
+            {
+                //Delete previous selected course
+                var rows = SessionWrapper.CurriculumAudience.Select("c_related_audience_id_fk= '" + args.Trim() + "'");
+                foreach (var row in rows)
+                    row.Delete();
+                SessionWrapper.CurriculumAudience.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Remove Audience)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saantc-01 (Remove Audience)", ex.Message);
+                    }
+                }
+            }
 
 
-
-
-
-
+        }
     }
 }
 

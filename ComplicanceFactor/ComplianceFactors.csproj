@@ -451,6 +451,8 @@
     <Content Include="SystemHome\Catalog\Curriculum\Attachments\e5f7c7e4-703e-4a30-8935-ad186e365f60.gif" />
     <Content Include="SystemHome\Catalog\Curriculum\Attachments\eb561fbd-aa15-49c3-bd7f-62f2cfae289b.jpg" />
     <Content Include="SystemHome\Catalog\Curriculum\Attachments\f34f51ca-6ac1-48f2-aabf-db28c8ecb2e5.jpg" />
+    <Content Include="SystemHome\Catalog\Curriculum\AudienceSearch\sasan-01.aspx" />
+    <Content Include="SystemHome\Catalog\Curriculum\AudienceSearch\sasran-01.aspx" />
     <Content Include="SystemHome\Catalog\Curriculum\CategorySearch\sascn-01.aspx" />
     <Content Include="SystemHome\Catalog\Curriculum\CategorySearch\sasrcn-01.aspx" />
     <Content Include="SystemHome\Catalog\Curriculum\CourseSearch\p-spcs-01.aspx" />
@@ -2287,6 +2289,20 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Course\Delivery\Locale\saeloc-01.aspx.designer.cs">
       <DependentUpon>saeloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Curriculum\AudienceSearch\sasan-01.aspx.cs">
+      <DependentUpon>sasan-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Curriculum\AudienceSearch\sasan-01.aspx.designer.cs">
+      <DependentUpon>sasan-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Curriculum\AudienceSearch\sasran-01.aspx.cs">
+      <DependentUpon>sasran-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\Curriculum\AudienceSearch\sasran-01.aspx.designer.cs">
+      <DependentUpon>sasran-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Curriculum\CategorySearch\sascn-01.aspx.cs">
       <DependentUpon>sascn-01.aspx</DependentUpon>

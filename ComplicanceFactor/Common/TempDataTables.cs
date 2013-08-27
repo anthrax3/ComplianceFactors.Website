@@ -1060,6 +1060,44 @@ namespace ComplicanceFactor.Common
             return dtTempDomain;
 
         }
+
+        public static DataTable dtTempCurriculumAudience()
+        {
+            DataTable dtTempCurrAudience = new DataTable();
+            DataColumn dtTempCurrAudienceColumn;
+            /// <summary>
+            /// temp u_audience_system_id_pk 
+            dtTempCurrAudienceColumn = new DataColumn();
+            dtTempCurrAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempCurrAudienceColumn.ColumnName = "c_related_audience_id_fk";
+            dtTempCurrAudience.Columns.Add(dtTempCurrAudienceColumn);
+            /// <summary>
+            /// u_audience_id_pk
+            dtTempCurrAudienceColumn = new DataColumn();
+            dtTempCurrAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempCurrAudienceColumn.ColumnName = "u_audience_id_pk";
+            dtTempCurrAudience.Columns.Add(dtTempCurrAudienceColumn);
+            /// <summary>
+            /// u_audience_name
+            dtTempCurrAudienceColumn = new DataColumn();
+            dtTempCurrAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempCurrAudienceColumn.ColumnName = "u_audience_name";
+            dtTempCurrAudience.Columns.Add(dtTempCurrAudienceColumn);
+            //c_course_id_pk
+            dtTempCurrAudienceColumn = new DataColumn();
+            dtTempCurrAudienceColumn.DataType = Type.GetType("System.String");
+            dtTempCurrAudienceColumn.ColumnName = "c_curriculum_id_fk";
+            dtTempCurrAudience.Columns.Add(dtTempCurrAudienceColumn);
+            /// <summary>
+            /// u_audience_desc
+            //dtTempAudienceColumn = new DataColumn();
+            //dtTempAudienceColumn.DataType = Type.GetType("System.String");
+            //dtTempAudienceColumn.ColumnName = "u_audience_desc";
+            //dtTempAudience.Columns.Add(dtTempAudienceColumn);
+            return dtTempCurrAudience;
+
+        }
+
         public static DataTable TempCurriculumCategory()
         {
             DataTable dtTempCategory = new DataTable();

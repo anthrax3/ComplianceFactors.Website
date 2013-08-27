@@ -1020,6 +1020,15 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htInsertDelivery.Add("@s_delivery_locale", DBNull.Value);
             }
+            if (!string.IsNullOrEmpty(insertDeliverySession.c_course_audiences))
+            {
+                htInsertDelivery.Add("@c_course_audiences", insertDeliverySession.c_course_audiences);
+            }
+            else
+            {
+                htInsertDelivery.Add("@c_course_audiences", DBNull.Value);
+            }
+
             htInsertDelivery.Add("@c_course_reset", c_course_reset);
             try
             {
@@ -2649,7 +2658,7 @@ namespace ComplicanceFactor.BusinessComponent
             htDeleteAudience.Add("@c_course_id_fk", c_course_id_fk);
             try
             {
-                return DataProxy.FetchSPOutput("c_cp_delete_course_audience", htDeleteAudience);
+                return DataProxy.FetchSPOutput("c_sp_delete_course_audience", htDeleteAudience);
             }
             catch (Exception)
             {

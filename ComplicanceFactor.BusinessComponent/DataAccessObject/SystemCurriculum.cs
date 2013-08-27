@@ -84,6 +84,11 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         //domain
         public string c_curriculum_domain { get; set; }
         public string c_domain_id_fk { get; set; }
+
+        //Audience
+        public string c_curriculum_audience { get; set; }
+        public string c_audience_id_fk { get; set; }
+
         //Cousre Category
         public string c_curriculum_category { get; set; }
         public string c_related_category_id_fk { get; set; }

@@ -6838,6 +6838,45 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["Reset_Course_Audience"] = value;
             }
         }
+        public static DataTable CurriculumAudience
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CurriculumAudience"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["CurriculumAudience"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["CurriculumAudience"] = value;
+            }
+        }
+
+        public static DataTable Reset_Curriculum_Audience
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_Curriculum_Audience"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Reset_Curriculum_Audience"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_Curriculum_Audience"] = value;
+            }
+        }
         //Reset_Course_Audience
 
         public static void clearsession()
