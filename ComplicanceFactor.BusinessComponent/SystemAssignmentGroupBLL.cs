@@ -345,7 +345,15 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateAssignmentGroup.Add("@u_assignment_group_desc_custom_12", updateAssignmentGroup.u_assignment_group_desc_custom_12);
             htUpdateAssignmentGroup.Add("@u_assignment_group_name_custom_13", updateAssignmentGroup.u_assignment_group_name_custom_13);
             htUpdateAssignmentGroup.Add("@u_assignment_group_desc_custom_13", updateAssignmentGroup.u_assignment_group_desc_custom_13);
-            htUpdateAssignmentGroup.Add("@assignment_parameters", updateAssignmentGroup.assignment_parameters);
+            if (!string.IsNullOrEmpty(updateAssignmentGroup.assignment_parameters))
+            {
+                htUpdateAssignmentGroup.Add("@assignment_parameters", updateAssignmentGroup.assignment_parameters);
+            }
+            else
+            {
+                htUpdateAssignmentGroup.Add("@assignment_parameters", DBNull.Value);
+            }
+            
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_update_assignment_group", htUpdateAssignmentGroup);

@@ -345,7 +345,16 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateAudience.Add("@u_audience_desc_custom_12", updateAudience.u_audience_desc_custom_12);
             htUpdateAudience.Add("@u_audience_name_custom_13", updateAudience.u_audience_name_custom_13);
             htUpdateAudience.Add("@u_audience_desc_custom_13", updateAudience.u_audience_desc_custom_13);
-            htUpdateAudience.Add("@audiences_parameters", updateAudience.audiences_parameters);
+
+            if (!string.IsNullOrEmpty(updateAudience.audiences_parameters))
+            {
+                htUpdateAudience.Add("@audiences_parameters", updateAudience.audiences_parameters);
+            }
+            else
+            {
+                htUpdateAudience.Add("@audiences_parameters", DBNull.Value);
+            }
+
             try
             {
                 return DataProxy.FetchSPOutput("e_sp_update_audience", htUpdateAudience);

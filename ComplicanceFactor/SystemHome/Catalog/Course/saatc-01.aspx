@@ -296,7 +296,7 @@
             <%=LocalResources.GetLabel("app_delivery_(ies)_text")%>:
         </div>
         <br />
-        <div>
+        <div class="div_controls_from_left">
             <asp:GridView ID="gvDeliveries" RowStyle-CssClass="record" GridLines="None" CellPadding="0"
                 DataKeyNames="c_delivery_system_id_pk" CellSpacing="0" ShowHeader="false" ShowFooter="false"
                 runat="server" AutoGenerateColumns="False" OnRowDataBound="gvDeliveries_RowDataBound">
@@ -338,7 +338,7 @@
             <%=LocalResources.GetLabel("app_category_text")%>:
         </div>
         <br />
-        <div>
+       <div class="div_controls_from_left">
             <asp:GridView ID="gvCategory" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
@@ -370,7 +370,7 @@
             <%=LocalResources.GetLabel("app_domain_text")%>:
         </div>
         <br />
-        <div>
+       <div class="div_controls_from_left">
             <asp:GridView ID="gvDomain" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
@@ -402,6 +402,31 @@
             <%=LocalResources.GetLabel("app_audience_text")%>:
         </div>
         <br />
+         <div class="div_controls_from_left">
+            <asp:GridView ID="gvAudience" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
+                CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
+                AutoGenerateColumns="False">
+                <RowStyle CssClass="record"></RowStyle>
+                <Columns>
+                    <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                        <ItemTemplate>
+                            <table class="gridview_row_width_5">
+                                <tr>
+                                    <td>
+                                        <%#Eval("u_audience_name")%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <%-- <%# "(" + Eval("u_domain_id_pk") + ")"%>--%>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
         <div class="div_controls_from_left">
         </div>
         <br />

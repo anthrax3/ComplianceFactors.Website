@@ -232,11 +232,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("samagmp-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("samaudmp-01.aspx (Search Result)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("samagmp-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("samaudmp-01.aspx (Search Result)", ex.Message);
                     }
                 }
             }
@@ -303,10 +303,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
             }
             else if (e.CommandName.Equals("Archive"))
             {
-                string assignmentGroupId = gvsearchDetails.DataKeys[rowIndex][0].ToString();
+                string audienceId = gvsearchDetails.DataKeys[rowIndex][0].ToString();
                 try
                 {
-                    int result = SystemAssignmentGroupBLL.UpdateAssignmentGrouptatus(assignmentGroupId);
+                    int result = SystemAudiencesBLL.UpdateAudiencestatus(audienceId);
                     SearchResult();
                 }
                 catch (Exception ex)
@@ -317,11 +317,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("samagmp-01", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("samaudmp-01 (Row Command)", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("samagmp-01", ex.Message);
+                            Logger.WriteToErrorLog("samaudmp-01 (Row Command)", ex.Message);
                         }
                     }
                 }

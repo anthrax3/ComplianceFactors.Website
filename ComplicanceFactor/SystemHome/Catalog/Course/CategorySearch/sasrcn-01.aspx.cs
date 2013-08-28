@@ -405,7 +405,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.CatalogPopup
             row = dtTempCategory.NewRow();
             row["CategoryID"] = CategoryID;
             row["s_category_id"] = s_category_id;
-            row["s_category_name"] = s_category_name;
+            row["s_category_name_us_english"] = s_category_name;
             //row["s_category_description"] = s_category_description;
             if (!string.IsNullOrEmpty(Program_Curriculum_CourseID))
             {
@@ -470,7 +470,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.CatalogPopup
 
             dtTempCategoryColumn = new DataColumn();
             dtTempCategoryColumn.DataType = Type.GetType("System.String");
-            dtTempCategoryColumn.ColumnName = "s_category_name";
+            dtTempCategoryColumn.ColumnName = "s_category_name_us_english";
             dtTempCategory.Columns.Add(dtTempCategoryColumn);
 
 

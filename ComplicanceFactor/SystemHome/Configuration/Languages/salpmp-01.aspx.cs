@@ -764,9 +764,20 @@ namespace ComplicanceFactor.SystemHome.Configuration.Languages
                 //Show the message successfully inserted
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("salpmp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("salpmp-01.aspx", ex.Message);
+                    }
+                }
             }
             
         }

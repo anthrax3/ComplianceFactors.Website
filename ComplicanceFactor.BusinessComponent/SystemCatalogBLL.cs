@@ -692,7 +692,6 @@ namespace ComplicanceFactor.BusinessComponent
                 course.c_course_approval_name = dtGetCourse.Rows[0]["s_approval_workflow_name"].ToString();
                 course.c_course_recurrences_text = dtGetCourse.Rows[0]["c_course_recurrences_text"].ToString();
                 course.c_course_approval_req_text = dtGetCourse.Rows[0]["c_course_approval_req_text"].ToString();
-                course.c_course_approval_req_text = dtGetCourse.Rows[0]["c_course_approval_req_text"].ToString();
                 course.c_created_name = dtGetCourse.Rows[0]["c_created_name"].ToString();
                 course.c_delivery_type_id = dtGetCourse.Rows[0]["c_delivery_type"].ToString();
 
@@ -705,6 +704,27 @@ namespace ComplicanceFactor.BusinessComponent
                 {
                     course.c_course_cert_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_cert_date"], culture);
                 }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_available_from_date"].ToString()))
+                {
+                    course.c_course_available_from_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_available_from_date"], culture);  
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_available_to_date"].ToString()))
+                {
+                    course.c_course_available_to_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_available_to_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_effective_date"].ToString()))
+                {
+                    course.c_course_effective_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_effective_date"], culture);
+                }
+
+                if (!string.IsNullOrEmpty(dtGetCourse.Rows[0]["c_course_cut_off_date"].ToString()))
+                {
+                    course.c_course_cut_off_date = Convert.ToDateTime(dtGetCourse.Rows[0]["c_course_cut_off_date"], culture);
+                }
+                
 
                 return course;
 

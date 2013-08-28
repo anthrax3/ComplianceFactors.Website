@@ -161,7 +161,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
 
             if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
             {
-                lblCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();
+                lblCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();                
             }
 
 
@@ -200,6 +200,9 @@ namespace ComplicanceFactor.SystemHome.Catalog
             //Get Category
             gvCategory.DataSource = SystemCategoriesBLL.GetCourseCategory(courseId);
             gvCategory.DataBind();
+            //Get Audiences
+            gvAudience.DataSource = SystemCatalogBLL.GetCourseAudiences(courseId);
+            gvAudience.DataBind();
             //using jquery hide the '-or-' in last row
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
 

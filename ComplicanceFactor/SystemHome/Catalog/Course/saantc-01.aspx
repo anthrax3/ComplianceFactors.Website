@@ -1434,7 +1434,7 @@
                                 <table class="gridview_row_width_5">
                                     <tr>
                                         <td>
-                                            <%#Eval("s_category_name")%>
+                                            <%#Eval("s_category_name_us_english")%>
                                         </td>
                                     </tr>
                                     <tr>

@@ -27,7 +27,6 @@
     <script type="text/javascript">
         function showParameterPopup(status) {
             if (status == "true") {
-                alert("hai");
                 document.getElementById('<%=hdStopRebind.ClientID %>').value = "0";
             }
             var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;

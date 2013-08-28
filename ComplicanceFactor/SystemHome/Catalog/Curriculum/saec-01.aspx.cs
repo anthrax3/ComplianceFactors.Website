@@ -554,7 +554,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                     //Show error message 
                     divSuccess.Style.Add("display", "none");
                     divError.Style.Add("display", "block");
-                    LocalResources.GetText("app_curriculum_id_already_exist_error_wrong");
+                    divError.InnerHtml= LocalResources.GetText("app_curriculum_id_already_exist_error_wrong");
 
                 }
 

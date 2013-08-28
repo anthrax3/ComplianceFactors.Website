@@ -952,7 +952,7 @@ namespace ComplicanceFactor.Common
 
             dtTempCategoryColumn = new DataColumn();
             dtTempCategoryColumn.DataType = Type.GetType("System.String");
-            dtTempCategoryColumn.ColumnName = "s_category_name";
+            dtTempCategoryColumn.ColumnName = "s_category_name_us_english";
             dtTempCategory.Columns.Add(dtTempCategoryColumn);
 
 

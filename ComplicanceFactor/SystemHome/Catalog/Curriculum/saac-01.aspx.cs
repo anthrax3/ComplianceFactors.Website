@@ -183,7 +183,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 lblCutOffDate.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_date).ToShortDateString();
             }
 
-            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_time_string.ToString()))
+            if (!string.IsNullOrEmpty(Curriculum.c_curriculum_cut_off_time_string))
             {
                 lblCutoffTime.Text = Convert.ToDateTime(Curriculum.c_curriculum_cut_off_time_string).ToShortTimeString();
             }
@@ -230,6 +230,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
             DataSet dsCurriculumRecertPath = SystemCurriculumBLL.GetCurriculumRecertPathCourseSection(CurriculumId, string.Empty);
             gvRecertPath.DataSource = dsCurriculumRecertPath.Tables[0];
             gvRecertPath.DataBind();
+            //Audiencr
+            gvAudience.DataSource = SystemCurriculumBLL.GetCurriculumAudiences(CurriculumId);
+            gvAudience.DataBind();
             //using jquery hide the '-or-' in last row
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Equivalencies", "lastEquivalenciesrow();", true);
 

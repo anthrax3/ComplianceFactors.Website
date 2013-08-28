@@ -419,6 +419,31 @@
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_audience_text")%>:
         </div>
+        <div class="div_controls_from_left">
+            <asp:GridView ID="gvAudience" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
+                CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
+                AutoGenerateColumns="False">
+                <RowStyle CssClass="record"></RowStyle>
+                <Columns>
+                    <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                        <ItemTemplate>
+                            <table class="gridview_row_width_5">
+                                <tr>
+                                    <td>
+                                        <%#Eval("u_audience_name")%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <%-- <%# "(" + Eval("u_domain_id_pk") + ")"%>--%>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
         <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_Recurrance_text")%>:
