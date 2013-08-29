@@ -13,13 +13,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
     public partial class saeaud_01 {
         
         /// <summary>
-        /// vs_saeag control.
+        /// vs_saeaud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_saeag;
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_saeaud;
         
         /// <summary>
         /// ToolkitScriptManager1 control.
@@ -49,13 +49,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSuccess;
         
         /// <summary>
-        /// hdEditAssignmentId control.
+        /// hdEditAudienceId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdEditAssignmentId;
+        protected global::System.Web.UI.WebControls.HiddenField hdEditAudienceId;
         
         /// <summary>
         /// hdStopRebind control.

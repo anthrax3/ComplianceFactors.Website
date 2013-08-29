@@ -15,14 +15,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
 {
     public partial class p_sapag_01 : System.Web.UI.Page
     {
-        private static string editGroupId;
+        private static string editId;
+        private static string filenameOfPDFandEXCEL;
+        private static string previewTille;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if(!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
-                    editGroupId = Request.QueryString["id"].ToString();
+                    editId = Request.QueryString["id"].ToString();
                 }
                 SearchResult();
             }
@@ -196,15 +198,26 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
         {
             if (!string.IsNullOrEmpty(Request.QueryString["page"]))
             {
-                gvsearchDetails.DataSource = SystemAssignmentRuleBLL.GetUsersDetailsAssignmentRule(editGroupId);
-                gvsearchDetails.DataBind();
+                if (Request.QueryString["page"].ToString() == "rule")
+                {
+                    lblPreviewTitle.Text = "Assignment Rule Preview:";
+                    gvsearchDetails.DataSource = SystemAssignmentRuleBLL.GetUsersDetailsAssignmentRule(editId);
+                    gvsearchDetails.DataBind();
+                }
+                else if (Request.QueryString["page"].ToString() == "group")
+                {
+                    lblPreviewTitle.Text = "Assignment Group Preview:";
+                    gvsearchDetails.DataSource = SystemAssignmentGroupBLL.GetUsersDetailsAssignmentGroup(editId, SessionWrapper.CultureName);
+                    gvsearchDetails.DataBind();
+                }
+                else if (Request.QueryString["page"].ToString() == "audience")
+                {
+                    lblPreviewTitle.Text = "Audience Preview:";
+                    gvsearchDetails.DataSource = SystemAudiencesBLL.GetUsersDetailsAudience(editId, SessionWrapper.CultureName);
+                    gvsearchDetails.DataBind(); 
+                }
             }
-            else
-            {
-                gvsearchDetails.DataSource = SystemAssignmentGroupBLL.GetAssignmentRuleUserDetails(editGroupId,SessionWrapper.CultureName);
-                gvsearchDetails.DataBind();
-            }
-
+    
             gvsearchDetails.UseAccessibleHeader = true;
             if (gvsearchDetails.HeaderRow != null)
             {
@@ -277,15 +290,26 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             DataSet dsEmployee = new DataSet();
             try
             {
-
+                
                 if (!string.IsNullOrEmpty(Request.QueryString["page"]))
                 {
-                    dsEmployee = SystemAssignmentRuleBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
+                    if (Request.QueryString["page"].ToString() == "rule")
+                    {
+                        dsEmployee = SystemAssignmentRuleBLL.GetUserPDFExcel(editId, SessionWrapper.CultureName);
+                        filenameOfPDFandEXCEL = "AssignmentRule";
+                    }
+                    else if (Request.QueryString["page"].ToString() == "group")
+                    {
+                        dsEmployee = SystemAssignmentGroupBLL.GetUserPDFExcel(editId, SessionWrapper.CultureName);
+                        filenameOfPDFandEXCEL = "AssignmentGroup";
+                    }
+                    else if (Request.QueryString["page"].ToString() == "audience")
+                    {
+                        dsEmployee = SystemAudiencesBLL.GetUserPDFExcel(editId, SessionWrapper.CultureName);
+                        filenameOfPDFandEXCEL = "Audience";
+                    }
                 }
-                else
-                {
-                    dsEmployee = SystemAssignmentGroupBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
-                }
+
             }
             catch (Exception ex)
             {
@@ -306,7 +330,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             }
             if (dsEmployee.Tables[0].Rows.Count > 0)
             {
-                exportDataTableToCsv(dsEmployee.Tables[1], dsEmployee.Tables[2]);
+                exportDataTableToCsv(dsEmployee.Tables[1], dsEmployee.Tables[2], filenameOfPDFandEXCEL);
             }
         }
 
@@ -315,16 +339,31 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             rvAssignmentUser.LocalReport.DataSources.Clear();
             DataSet dsAssignentUser = new DataSet();
             DataSet dsHeaderFooter = new DataSet();
+ 
             try
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["page"]))
                 {
-                    dsAssignentUser = SystemAssignmentRuleBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
+                    if (Request.QueryString["page"].ToString() == "rule")
+                    {
+                        dsAssignentUser = SystemAssignmentRuleBLL.GetUserPDFExcel(editId, SessionWrapper.CultureName);
+                        filenameOfPDFandEXCEL = "AssignmentRule";
+                        previewTille = "Assignment Rule Preview";
+                    }
+                    else if (Request.QueryString["page"].ToString() == "group")
+                    {
+                        dsAssignentUser = SystemAssignmentGroupBLL.GetUserPDFExcel(editId, SessionWrapper.CultureName);
+                        filenameOfPDFandEXCEL = "AssignmentGroup";
+                        previewTille = "Assignment Group Preview";
+                    }
+                    else if (Request.QueryString["page"].ToString() == "audience")
+                    {
+                        dsAssignentUser = SystemAudiencesBLL.GetUserPDFExcel(editId, SessionWrapper.CultureName);
+                        filenameOfPDFandEXCEL = "Audience";
+                        previewTille = "Audience Preview";
+                    }
                 }
-                else
-                {
-                    dsAssignentUser = SystemAssignmentGroupBLL.GetUserPDFExcel(editGroupId, SessionWrapper.CultureName);
-                }
+
             }
             catch (Exception ex)
             {
@@ -377,6 +416,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
                 param.Add(new ReportParameter("s_theme_css_tag_table_head_text_hex_value", "#" + userTheme.s_theme_css_tag_table_head_text_hex_value));
                 param.Add(new ReportParameter("s_theme_css_tag_table_border_hex_value", "#" + userTheme.s_theme_css_tag_table_border_hex_value));
                 param.Add(new ReportParameter("s_theme_css_tag_body_text_hex_value", "#" + userTheme.s_theme_css_tag_body_text_hex_value));
+                param.Add(new ReportParameter("header_title", previewTille));
                 this.rvAssignmentUser.LocalReport.SetParameters(param);
 
                 byte[] bytes = rvAssignmentUser.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
@@ -384,7 +424,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
                 Response.Clear();
                 Response.ClearHeaders();
                 Response.ContentType = mimeType;
-                Response.AddHeader("content-disposition", "attachment; filename=\"" + "PreviewAssignment" + ".pdf" + "\"");
+                Response.AddHeader("content-disposition", "attachment; filename=\"" + filenameOfPDFandEXCEL + ".pdf" + "\"");
                 Response.BinaryWrite(bytes); // create the file     
                 Response.Flush(); // send it to the client to download  
                 Response.End();
@@ -392,12 +432,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             }
         }
 
-        private void exportDataTableToCsv(DataTable dt, DataTable dtCourseColumnName)
+        private void exportDataTableToCsv(DataTable dt, DataTable dtCourseColumnName, string filenameOfPDFandEXCEL)
         {
             Response.Clear();
             Response.ContentType = "application/csv";
             Response.Charset = "";
-            Response.AddHeader("Content-Disposition", "attachment;filename=PreviewAssignment.csv");
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + filenameOfPDFandEXCEL);
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
             for (int k = 0; k < dtCourseColumnName.Rows.Count; k++)

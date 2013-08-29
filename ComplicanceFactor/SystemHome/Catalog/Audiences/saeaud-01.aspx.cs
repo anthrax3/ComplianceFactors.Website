@@ -15,8 +15,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
     public partial class saeaud_01 : System.Web.UI.Page
     {
         private static string editAudienceId;
-        private static DataTable dtResetAssignmentParameter;
-        private static DataTable dtAssignmentParam;
+        private static DataTable dtResetAudienceParameter;
+        private static DataTable dtAudienceParam;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,35 +24,39 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                 //<summary>
                 ///Hide validation on postback (if user select AudienceValues)
                 ///</summary>
-                vs_saeag.Style.Add("display", "none");
+                vs_saeaud.Style.Add("display", "none");
 
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Audiences/samaudmp-01.aspx>" + "Manage Audiences" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Edit Audience" + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Audiences/samaudmp-01.aspx>" + LocalResources.GetLabel("app_manage_audiences_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_edit_audiences_text") + "</a>";
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     //TO-DO SHOW THE MESSAGE WHETHER 'SUCCESSFULLY INSERTED OR UPDATED IN A MESSAGE DIV'
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = "Audience Inserted Successfully";
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
                     //divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
                 }
                 if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     editAudienceId = SecurityCenter.DecryptText(Request.QueryString["id"]);
-                    hdEditAssignmentId.Value = editAudienceId;
+                    hdEditAudienceId.Value = editAudienceId;
                 }
                 //Bind status
                 ddlStatus.DataSource = SystemAudiencesBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
-                ddlStatus.DataBind();
-                //Using For rest
-                dtResetAssignmentParameter = SystemAudiencesBLL.GetAudienceParameter(editAudienceId);
+                ddlStatus.DataBind();               
                 //Populate audience
                 PopulateAudience(editAudienceId);
+                
                 if (!string.IsNullOrEmpty(Request.QueryString["popup"]))
                 {
                     if (Convert.ToBoolean(Request.QueryString["popup"].ToString()) == true)
                     {
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup('false');", true);//note:Popup will open from create page to edit page
-                    }
+                    }                    
+                }
+                if (string.IsNullOrEmpty(Request.QueryString["reset"]))
+                {
+                    //Using For rest
+                    dtResetAudienceParameter = SystemAudiencesBLL.GetAudienceParameter(editAudienceId);
                 }
                 //Bind Parameter   //Because of using Row_Command
                 BindAudienceParams();
@@ -60,8 +64,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
             if (hdStopRebind.Value == "0")
             {
                 BindAudienceParams();
-                hdStopRebind.Value = string.Empty;
-            }
+                hdStopRebind.Value = string.Empty;                
+            }                       
             //using jquery hide the '-or-' in last row
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Audience", "lastEquivalenciesrow();", true);
         }
@@ -78,7 +82,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
 
         protected void btnHeaderCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/SystemHome/Catalog/Audiences/samagmp-01.aspx");
+            Response.Redirect("~/SystemHome/Catalog/Audiences/samaudmp-01.aspx");
         }
 
         protected void btnFooterSave_Click(object sender, EventArgs e)
@@ -93,7 +97,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
 
         protected void btnFooterCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/SystemHome/Catalog/Audiences/samagmp-01.aspx");
+            Response.Redirect("~/SystemHome/Catalog/Audiences/samaudmp-01.aspx");
         }
         private void PopulateAudience(string gradingSchemeId)
         {
@@ -179,8 +183,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
         }
         private void BindAudienceParams()
         {
-            dtAssignmentParam = SystemAudiencesBLL.GetAudienceParameter(editAudienceId);
-            gvAudienceParameters.DataSource = dtAssignmentParam;
+            dtAudienceParam = SystemAudiencesBLL.GetAudienceParameter(editAudienceId);
+            gvAudienceParameters.DataSource = dtAudienceParam;
             gvAudienceParameters.DataBind();
         }
         protected void gvAudienceParameters_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -227,11 +231,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                 DropDownList ddlOperator = (DropDownList)row.FindControl("ddlOperator");
                 TextBox txtValues = (TextBox)row.FindControl("txtValues");
                 string u_audience_param_system_id_pk = gvAudienceParameters.DataKeys[row.RowIndex][0].ToString();
-                var rows = dtAssignmentParam.Select("u_audiences_param_system_id_pk='" + u_audience_param_system_id_pk + "'");
-                var indexRow = dtAssignmentParam.Rows.IndexOf(rows[0]);
-                dtAssignmentParam.Rows[indexRow]["u_audiences_param_operator_id_fk"] = ddlOperator.SelectedValue;
+                var rows = dtAudienceParam.Select("u_audiences_param_system_id_pk='" + u_audience_param_system_id_pk + "'");
+                var indexRow = dtAudienceParam.Rows.IndexOf(rows[0]);
+                dtAudienceParam.Rows[indexRow]["u_audiences_param_operator_id_fk"] = ddlOperator.SelectedValue;
 
-                if (dtAssignmentParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "u_username_enc" && !string.IsNullOrEmpty(txtValues.Text))
+                if (dtAudienceParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "u_username_enc" && !string.IsNullOrEmpty(txtValues.Text))
                 {
                     /// Hash encryption for username and password
                     /// </summary>
@@ -243,17 +247,17 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                         encryptstring += (encHash.GenerateHashvalue(usernames[i], true) + ",").ToString();
 
                     }
-                    dtAssignmentParam.Rows[indexRow]["u_audiences_param_values"] = encryptstring.TrimEnd(',');
+                    dtAudienceParam.Rows[indexRow]["u_audiences_param_values"] = encryptstring.TrimEnd(',');
                 }
                 else if (!string.IsNullOrEmpty(txtValues.Text))
                 {
-                    dtAssignmentParam.Rows[indexRow]["u_audiences_param_values"] = txtValues.Text;
+                    dtAudienceParam.Rows[indexRow]["u_audiences_param_values"] = txtValues.Text;
                 }
                 else
                 {
-                    dtAssignmentParam.Rows[indexRow]["u_audiences_param_values"] = DBNull.Value;
+                    dtAudienceParam.Rows[indexRow]["u_audiences_param_values"] = DBNull.Value;
                 }
-                dtAssignmentParam.AcceptChanges();
+                dtAudienceParam.AcceptChanges();
             }
         }
 
@@ -272,7 +276,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
         private void ResetAudiences()
         {
             ConvertDataTables ConvertXml = new ConvertDataTables();
-            SystemAudiencesBLL.ResetAssignmentParameter(ConvertXml.ConvertDataTableToXml(dtResetAssignmentParameter), editAudienceId);
+            SystemAudiencesBLL.ResetAssignmentParameter(ConvertXml.ConvertDataTableToXml(dtResetAudienceParameter), editAudienceId);
             Response.Redirect(Request.RawUrl);
         }
 
@@ -356,11 +360,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
             updateAudience.u_audience_desc_custom_12 = txtDescription_Custom12.Value;
             updateAudience.u_audience_name_custom_13 = txtAudienceName_Custom13.Text;
             updateAudience.u_audience_desc_custom_13 = txtDescription_Custom13.Value;
-            if (dtAssignmentParam.Rows.Count > 0)
+            if (dtAudienceParam.Rows.Count > 0)
             {
                 UpdateAssignmentParameter();
                 ConvertDataTables Convertxml = new ConvertDataTables();
-                updateAudience.audiences_parameters = Convertxml.ConvertDataTableToXml(dtAssignmentParam);
+                updateAudience.audiences_parameters = Convertxml.ConvertDataTableToXml(dtAudienceParam);
             }
 
             int error = SystemAudiencesBLL.UpdateAudience(updateAudience);
@@ -375,16 +379,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                 //TO-DO show div with success message
                 divSuccess.Style.Add("display", "block");
                 divError.Style.Add("display", "none");
-                divSuccess.InnerHtml = "Successfully updated";
+                divSuccess.InnerHtml = LocalResources.GetText("app_succ_update_text");
                 //divSuccess.InnerHtml = LocalResources.GetText("app_succ_update_text");
             }
             else
             {
                 //TO-DO show div with error message
                 divSuccess.Style.Add("display", "none");
-                divError.Style.Add("display", "block");
-                divError.InnerHtml = "Audiences Id already exists; Please change the Audience Id";
-                //divError.InnerHtml = LocalResources.GetText("app_audience_id_already_exist_error_wrong");
+                divError.Style.Add("display", "block");                
+                divError.InnerHtml = LocalResources.GetText("app_audience_id_already_exist_error_wrong");
 
             }
         }

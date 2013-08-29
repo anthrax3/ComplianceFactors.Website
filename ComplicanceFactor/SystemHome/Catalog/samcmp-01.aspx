@@ -118,7 +118,7 @@
                     </td>
                     <td>
                        <a href="Audiences/samaudmp-01.aspx">
-                           Manage Audiences</a>
+                           <%=LocalResources.GetLabel("app_manage_audiences_text")%></a>
                       
                     </td>
                 </tr>

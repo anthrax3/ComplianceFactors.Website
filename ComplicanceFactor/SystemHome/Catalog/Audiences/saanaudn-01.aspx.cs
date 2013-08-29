@@ -17,10 +17,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
         public static DataTable dtAudienceParam;
         protected void Page_Load(object sender, EventArgs e)
         {
+            ///<summary>
+            ///Hide validation on postback (if user select add parameter)
+            ///</summary>
+            vs_saanaudn.Style.Add("display", "none");
             if (!IsPostBack)
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Audiences/samaudmp-01.aspx>" + "Maange Audiences" + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + "Create Audience" + "</a>";
+                lblBreadCrumb.Text = "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_system") + "</a>&nbsp;" + " >&nbsp;" + "<a href=/SystemHome/Catalog/Audiences/samaudmp-01.aspx>" + LocalResources.GetLabel("app_manage_audiences_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_audience_text") + "</a>";
                 //Bind Status
                 ddlStatus.DataSource = SystemAudiencesBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
                 ddlStatus.DataBind();
@@ -172,8 +176,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
             else
             {
                 divError.Style.Add("display", "block");
-                //divError.InnerText = LocalResources.GetText("app_audience_id_already_exist_error_wrong");
-                divError.InnerText = "Audience id already exist.Please enter new audience id";
+                divError.InnerText = LocalResources.GetText("app_audience_id_already_exist_error_wrong");
             }
         }
 

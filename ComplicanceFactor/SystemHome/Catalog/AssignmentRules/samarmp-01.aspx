@@ -100,10 +100,10 @@
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_4"
                         HeaderText="<%$ LabelResourceExpression: app_assignment_rule_id_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_rules_id_pk"
                         ItemStyle-HorizontalAlign="Left" />
-                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4_1" ItemStyle-CssClass="gridview_row_width_4_1"
                         HeaderText="<%$ LabelResourceExpression: app_assignment_rule_name_text %>" HeaderStyle-HorizontalAlign="Center" DataField="u_assignment_rules_name"
                         ItemStyle-HorizontalAlign="Left" />
-                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                    <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                         HeaderText="<%$ LabelResourceExpression: app_status_text %>" HeaderStyle-HorizontalAlign="Center" DataField="s_status_name"
                         ItemStyle-HorizontalAlign="Center" />
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"

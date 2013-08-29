@@ -555,7 +555,7 @@ namespace ComplicanceFactor.BusinessComponent
 
         //
 
-        public static DataTable GetAssignmentRuleUserDetails(string u_assignment_group_system_id_pk, string locale)
+        public static DataTable GetUsersDetailsAssignmentGroup(string u_assignment_group_system_id_pk, string locale)
         {
             Hashtable htUser = new Hashtable();
             htUser.Add("@u_assignment_group_system_id_pk", u_assignment_group_system_id_pk);
@@ -591,7 +591,7 @@ namespace ComplicanceFactor.BusinessComponent
             htGetAllLearningHistory.Add("@s_locale_culture", s_locale_culture);
             try
             {
-                return DataProxy.FetchDataSet("e_sp_get_assignment_preview_pdf", htGetAllLearningHistory);
+                return DataProxy.FetchDataSet("e_sp_get_assignment_group_preview_pdf", htGetAllLearningHistory);
             }
             catch (Exception)
             {

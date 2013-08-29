@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
     CodeBehind="saanaudn-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Catalog.Audiences.saanaudn_01" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-
         $(document).ready(function () {
             $('#app_nav_system').addClass('selected');
             // toggles the slickbox on clicking the noted link  
@@ -22,23 +22,26 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        function lastEquivalenciesrow() {
+            $('#<%=gvAudienceParameters.ClientID %> tr:last').eq(-1).css("display", "none");
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanaudn" runat="server"
         ValidationGroup="saanaudn"></asp:ValidationSummary>
-    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
-    </div>
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
+    </asp:ToolkitScriptManager>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
     <asp:HiddenField ID="hdStopRebind" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td>
-                        <asp:Button ID="btnHeaderSave" ValidationGroup="saanaudn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_audience_button_text %>"
-                            OnClick="btnHeaderSave_Click" />
+                        <asp:Button ID="btnHeaderSave" ValidationGroup="saanaudn" CssClass="cursor_hand" runat="server"
+                            Text="<%$ LabelResourceExpression: app_save_audience_button_text %>" OnClick="btnHeaderSave_Click" />
                     </td>
                     <td class="btnsave_new_user_td">
                         &nbsp;
@@ -77,7 +80,7 @@
                         *
                         <%=LocalResources.GetLabel("app_audience_id_text")%>:
                     </td>
-                    <td>  
+                    <td>
                         <asp:RequiredFieldValidator ID="rfvAudienceId" runat="server" ValidationGroup="saanaudn"
                             ControlToValidate="txtAudienceId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
@@ -101,7 +104,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td> 
+                    <td>
                         <asp:RequiredFieldValidator ID="rfvAudienceDescription" runat="server" ValidationGroup="saanaudn"
                             ControlToValidate="txtAudienceDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
@@ -140,50 +143,40 @@
                         <RowStyle CssClass="record"></RowStyle>
                         <Columns>
                             <asp:TemplateField>
-                                <ItemTemplate>
+                                 <ItemTemplate>
                                     <table>
                                         <tr>
-                                            <td>
+                                            <td class="gridview_row_width_7">
                                                 <%# Eval("u_audiences_param_element_id_fk")%>
-                                            </td>
-                                            <td>
-                                                &nbsp;
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"
                                                     DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
-                                                &nbsp;
+                                            <td style="text-align: right;" class="gridview_row_width_1">
+                                               <%=LocalResources.GetLabel("app_values_text")%>:
                                             </td>
-                                            <td style="text-align: right">
-                                                <%--<%=LocalResources.GetLabel("app_values_text")%>:--%>
-                                                Values:
-                                            </td>
-                                            <td>
+                                            <td class="gridview_row_width_1">
                                                 <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                &nbsp;
-                                            </td>
-                                            <td>
-                                                <%--<input type="button" id='<%# Eval("u_audience_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
-                                            class="deleteParam cursor_hand" />--%>
+                                            <td class="gridview_row_width_1">
+                                                <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                    class="deleteParam cursor_hand" />--%>
                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_audiences_param_system_id_pk") %>'
-                                                    CommandName="Remove" Text="Remove" OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
-                                            </td>
-                                            <td>
-                                                &nbsp;
+                                                    CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                                                    OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td style="text-align: center;">
+                                               --<%=LocalResources.GetLabel("app_and_text")%>--
+                                            </td>
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td colspan="8">
-                                                <%----<%=LocalResources.GetLabel("app_and_text")%>:----%>
-                                                -- and --
+                                            <td colspan="3">
+                                                &nbsp;
                                             </td>
                                         </tr>
                                     </table>
@@ -198,13 +191,15 @@
             <table>
                 <tr>
                     <td style="padding-left: 80px;">
-                        <asp:Button ID="btnAddNewParameters" ValidationGroup="saanaudn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"
-                            OnClick="btnAddNewParameters_Click" />
+                        <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
+                            onclick="javascript:showParameterPopup('true')" class="cursor_hand" />
+                        <%--<asp:Button ID="btnAddNewParameters" ValidationGroup="saanaudn" CssClass="cursor_hand"  
+                           runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"
+                           />--%>
                     </td>
                     <td style="padding-left: 450px;">
                         <input type="button" id="btnpReviewAudience" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_audience_button_text %>" />'
-                            class="previewAssignment cursor_hand" />
+                            class="previewAudience cursor_hand" />
                     </td>
                 </tr>
             </table>
@@ -1372,7 +1367,7 @@
             <table>
                 <tr>
                     <td>
-                        <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_new_audience_button_text %>"
+                        <asp:Button ID="btnFooterSave" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_save_audience_button_text %>"
                             ValidationGroup="saanaudn" OnClick="btnFooterSave_Click" />
                     </td>
                     <td colspan="2" class="btnsave_new_user_td">

@@ -40,9 +40,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 }
                 //Bind status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");
-                ddlStatus.DataBind();
-                //Using For rest
-                dtResetAssignmentParameter = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
+                ddlStatus.DataBind();                
                 //Populate assignment groups
                 PopulateAssignmentGroup(editAssignmentGroupId);
                 if (!string.IsNullOrEmpty(Request.QueryString["popup"]))
@@ -51,6 +49,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                         {
                                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", "showParameterPopup('false');", true);//note:Popup will open from create page to edit page
                         }
+                }
+                if (string.IsNullOrEmpty(Request.QueryString["reset"]))
+                {
+                    //Using For rest
+                    dtResetAssignmentParameter = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
                 }
                 //Bind Parameter   //Because of using Row_Command
                 BindAssignmentParams();

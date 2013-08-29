@@ -48,7 +48,7 @@
                 'hideOnOverlayClick': false,
                 'afterClose': function () {
                     //window.location.reload(); note:when i close popup then reload page
-                    window.location.replace("../AssignmentGroups/saeag-01.aspx?popup=false");
+                    window.location.replace("../AssignmentGroups/saeag-01.aspx?popup=false&reset=true");
                 },
                 'href': 'Popup/p-sagp-01.aspx?id=' + id,
                 'onComplete': function () {
@@ -88,7 +88,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': 'Popup/p-sapag-01.aspx?id=' + record_id,
+                    'href': 'Popup/p-sapag-01.aspx?id=' + record_id+'&page=group',
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);

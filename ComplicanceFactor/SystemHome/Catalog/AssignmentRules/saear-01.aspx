@@ -3,9 +3,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
@@ -198,7 +196,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '../AssignmentGroups/Popup/p-sapag-01.aspx?page=rule&id=' + record_id,  //?id=' + record_id,
+                    'href': '../AssignmentGroups/Popup/p-sapag-01.aspx?id=' + record_id + '&page=rule',  //?id=' + record_id,
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -226,10 +224,12 @@
             $('#<%=gvAssignmentGroups.ClientID %> tr:last').eq(-1).css("display", "none");
         }
     </script>
-    <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
-    </div>
-    <div id="divError" runat="server" class="msgarea_error" style="display: none;">
-    </div>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <asp:ValidationSummary class="validation_summary_error" ID="vs_saear" runat="server"
+        ValidationGroup="saear"></asp:ValidationSummary>
+    <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;"/>    
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;"/>    
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:HiddenField ID="hdnEditAssignmentRule" runat="server" />

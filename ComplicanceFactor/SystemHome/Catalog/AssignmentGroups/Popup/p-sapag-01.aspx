@@ -31,7 +31,8 @@
      <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager> 
     <div class="div_header_long">
-       <%=LocalResources.GetLabel("app_assignment_group_preview_text")%>
+      <%-- <%=LocalResources.GetLabel("app_assignment_group_preview_text")%>--%>
+       <asp:Label ID="lblPreviewTitle" runat="server"></asp:Label>
         <div class="right div_padding_10">
             <asp:Button ID="btnPrintPdf" runat="server" Text="<%$ LabelResourceExpression: app_print_to_PDF_button_text %>"
                 onclick="btnPrintPdf_Click"/>

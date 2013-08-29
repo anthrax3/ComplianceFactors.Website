@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
-    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />    
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
             $('#app_nav_system').addClass('selected');
@@ -29,7 +29,8 @@
             if (status == "true") {
                 document.getElementById('<%=hdStopRebind.ClientID %>').value = "0";
             }
-            var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+
+            var id = document.getElementById('<%=hdEditAudienceId.ClientID %>').value;
             $.fancybox({
                 'type': 'iframe',
                 'titlePosition': 'over',
@@ -48,7 +49,7 @@
                 'hideOnOverlayClick': false,
                 'afterClose': function () {
                     //window.location.reload(); note:when i close popup then reload page
-                    window.location.replace("../Audiences/saeaud-01.aspx?popup=false");
+                    window.location.replace("../Audiences/saeaud-01.aspx?popup=false&reset=true");
                 },
                 'href': 'Popup/p-saap-01.aspx?id=' + id,
                 'onComplete': function () {
@@ -69,9 +70,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $(".previewAssignment").click(function () {
+            $(".previewAudience").click(function () {
                 //Get the Id of the record to delete
-                var record_id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+                var record_id = document.getElementById('<%=hdEditAudienceId.ClientID %>').value;
                 $.fancybox({
                     'type': 'iframe',
                     'titlePosition': 'over',
@@ -88,7 +89,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': 'Popup/p-sapag-01.aspx?id=' + record_id,
+                    'href': '/SystemHome/Catalog/AssignmentGroups/Popup/p-sapag-01.aspx?id=' + record_id+'&page=audience',
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -124,14 +125,15 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ValidationSummary class="validation_summary_error" ID="vs_saeag" runat="server"
-        ValidationGroup="saeag"></asp:ValidationSummary>
+    <asp:ValidationSummary class="validation_summary_error" ID="vs_saeaud" runat="server"
+        ValidationGroup="saeaud"></asp:ValidationSummary>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ToolkitScriptManager>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
-    <asp:HiddenField ID="hdEditAssignmentId" runat="server" />
+    <asp:HiddenField ID="hdEditAudienceId" runat="server" />
     <asp:HiddenField ID="hdStopRebind" runat="server" />
+
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table>
@@ -240,50 +242,40 @@
                         <RowStyle CssClass="record"></RowStyle>
                         <Columns>
                             <asp:TemplateField>
-                                <ItemTemplate>
+                                 <ItemTemplate>
                                     <table>
                                         <tr>
-                                            <td>
+                                            <td class="gridview_row_width_7">
                                                 <%# Eval("u_audiences_param_element_id_fk")%>
-                                            </td>
-                                            <td>
-                                                &nbsp;
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"
                                                     DataTextField="e_assignment_operator_name" DataValueField="e_assignment_operator_id">
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
-                                                &nbsp;
+                                            <td style="text-align: right;" class="gridview_row_width_1">
+                                               <%=LocalResources.GetLabel("app_values_text")%>:
                                             </td>
-                                            <td style="text-align: right">
-                                                Values:
-                                            </td>
-                                            <td>
+                                            <td class="gridview_row_width_1">
                                                 <asp:TextBox ID="txtValues" CssClass="textbox_long" runat="server"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                &nbsp;
-                                            </td>
-                                            <td>
-                                                <%--<input type="button" id='<%# Eval("u_audience_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
-                                            class="deleteParam cursor_hand" />--%>
+                                            <td class="gridview_row_width_1">
+                                                <%-- <input type="button" id='<%# Eval("u_assignment_group_param_system_id_pk") %>' value='<asp:Literal ID="Literal1" runat="server" Text="Remove" />'
+                                                    class="deleteParam cursor_hand" />--%>
                                                 <asp:Button ID="btnRemove" runat="server" CommandArgument='<%# Eval("u_audiences_param_system_id_pk") %>'
-                                                    CommandName="Remove" Text="Remove"
+                                                    CommandName="Remove" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
                                                     OnClientClick="return ConfirmRemove();" CssClass="cursor_hand" />
-                                            </td>
-                                            <td>
-                                                &nbsp;
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td style="text-align: center;">
+                                                --<%=LocalResources.GetLabel("app_and_text")%>--
+                                            </td>
                                             <td>
                                                 &nbsp;
                                             </td>
-                                            <td colspan="8">
-                                                <%----<%=LocalResources.GetLabel("app_and_text")%>:----%>
-                                                -- and --
+                                            <td colspan="3">
+                                                &nbsp;
                                             </td>
                                         </tr>
                                     </table>
@@ -306,7 +298,7 @@
                     </td>
                     <td style="padding-left: 450px;">
                         <input type="button" id="btnpReviewAudience" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_audience_button_text %>" />'
-                            class="previewAssignment cursor_hand" />
+                            class="previewAudience cursor_hand" />
                     </td>
                 </tr>
             </table>

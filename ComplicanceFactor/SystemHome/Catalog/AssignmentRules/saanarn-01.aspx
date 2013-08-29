@@ -3,8 +3,6 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -110,20 +108,22 @@
             $('#<%=gvAssignmentGroups.ClientID %> tr:last').eq(-1).css("display", "none");
         }
     </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ValidationSummary class="validation_summary_error" ID="vs_saanarn" runat="server"
+        ValidationGroup="saanarn"></asp:ValidationSummary>
     <asp:HiddenField ID="hdnIsDeleteCatalog" runat="server" />
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <asp:ValidationSummary class="validation_summary_error" ID="vs_saanarn" runat="server"
-        ValidationGroup="saanarn"></asp:ValidationSummary>
+    <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
     <div class="content_area_long">
-        <div id="divError" runat="server" class="msgarea_error" style="display: none;">
-        </div>
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td colspan="2" class="btnsave_new_user_td" align="left">
                         <asp:Button ID="btnHeaderSave" ValidationGroup="saanarn" CssClass="cursor_hand" runat="server"
-                            Text="<%$ LabelResourceExpression: app_save_new_assignment_rule_button_text %>" OnClick="btnHeaderSave_Click" />
+                            Text="<%$ LabelResourceExpression: app_save_new_assignment_rule_button_text %>"
+                            OnClick="btnHeaderSave_Click" />
                     </td>
                     <td>
                         &nbsp;
@@ -154,7 +154,7 @@
         <br />
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_assignment_rule_information_english_us_text")%>:
+            <%=LocalResources.GetLabel("app_assignment_rule_information_english_us_text")%>:
         </div>
         <br />
         <div>
@@ -162,7 +162,8 @@
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <td class="align_right">
-                            * <%=LocalResources.GetLabel("app_assignment_rule_id_text")%>:
+                            *
+                            <%=LocalResources.GetLabel("app_assignment_rule_id_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:RequiredFieldValidator ID="rfvAssignmentRuleId" runat="server" ValidationGroup="saanarn"
@@ -177,7 +178,8 @@
                             &nbsp;
                         </td>
                         <td class="align_right">
-                            * <%=LocalResources.GetLabel("app_assignment_rule_name_text")%>:
+                            *
+                            <%=LocalResources.GetLabel("app_assignment_rule_name_text")%>:
                         </td>
                         <td class="align_left">
                             <asp:RequiredFieldValidator ID="rfvAssignmentRuleName" runat="server" ValidationGroup="saanarn"
@@ -213,7 +215,7 @@
             </div>
             <br />
             <div class="div_header_long">
-               <%=LocalResources.GetLabel("app_assignment_rule_catalog_item_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_catalog_item_text")%>:
             </div>
             <br />
             <div>
@@ -239,7 +241,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="align_center">
-                                                 --<%=LocalResources.GetLabel("app_and_text")%>--
+                                                --<%=LocalResources.GetLabel("app_and_text")%>--
                                             </td>
                                         </tr>
                                     </table>
@@ -254,7 +256,8 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Button ID="btnCatalogItems" runat="server" Text="<%$ LabelResourceExpression: app_add_new_items_button_text %>" OnClick="btnCatalogItems_Click" />
+                            <asp:Button ID="btnCatalogItems" runat="server" Text="<%$ LabelResourceExpression: app_add_new_items_button_text %>"
+                                OnClick="btnCatalogItems_Click" />
                         </td>
                     </tr>
                 </table>
@@ -302,7 +305,8 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Button ID="btnNewGroups" runat="server" Text="<%$ LabelResourceExpression: app_add_new_groups_button_text %>" OnClick="btnNewGroups_Click" />
+                            <asp:Button ID="btnNewGroups" runat="server" Text="<%$ LabelResourceExpression: app_add_new_groups_button_text %>"
+                                OnClick="btnNewGroups_Click" />
                         </td>
                     </tr>
                 </table>
@@ -328,7 +332,8 @@
                                     <td class="align_left width_180">
                                         <input id="rbtTagetduedate" type="radio" name="group1" runat="server" />
                                         <%-- <asp:RadioButton ID="rbtTagetduedate"  runat="server" />--%>
-                                        &nbsp; <%=LocalResources.GetLabel("app_target_due_text")%>:
+                                        &nbsp;
+                                        <%=LocalResources.GetLabel("app_target_due_text")%>:
                                     </td>
                                     <td>
                                         <asp:CalendarExtender ID="ceDueDate" runat="server" Format="MM/dd/yyyy" TargetControlID="txtTargetduedate">
@@ -368,13 +373,14 @@
                                         <%-- <asp:RadioButton ID="rbtDue" runat="server" />--%>
                                     </td>
                                     <td>
-                                       <%=LocalResources.GetLabel("app_due_text")%>:
+                                        <%=LocalResources.GetLabel("app_due_text")%>:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtDue" runat="server"></asp:TextBox>
                                     </td>
                                     <td>
-                                      : <%=LocalResources.GetLabel("app_days_from_text")%>
+                                        :
+                                        <%=LocalResources.GetLabel("app_days_from_text")%>
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlDuedaysfrom" DataTextField="s_days_from_name" DataValueField="s_days_from_id_pk"
@@ -389,14 +395,14 @@
             </div>
             <br />
             <div class="div_header_long">
-                 <%=LocalResources.GetLabel("app_assignment_rule_information_english_uk_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_english_uk_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                           <%=LocalResources.GetLabel("app_assignment_rule_name_text")%>:
+                            <%=LocalResources.GetLabel("app_assignment_rule_name_text")%>:
                         </td>
                         <td>
                             <asp:TextBox ID="txtAssignmentRuleUk" CssClass="textbox_long" runat="server"></asp:TextBox>
@@ -1201,7 +1207,7 @@
             </div>
             <br />
             <div class="div_header_long">
-               <%=LocalResources.GetLabel("app_assignment_rule_information_custom_01_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_01_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1236,7 +1242,7 @@
             </div>
             <br />
             <div class="div_header_long">
-              <%=LocalResources.GetLabel("app_assignment_rule_information_custom_02_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_02_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1270,7 +1276,7 @@
                 </table>
             </div>
             <div class="div_header_long">
-               <%=LocalResources.GetLabel("app_assignment_rule_information_custom_03_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_03_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1305,7 +1311,7 @@
             </div>
             <br />
             <div class="div_header_long">
-              <%=LocalResources.GetLabel("app_assignment_rule_information_custom_04_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_04_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1340,7 +1346,7 @@
             </div>
             <br />
             <div class="div_header_long">
-              <%=LocalResources.GetLabel("app_assignment_rule_information_custom_05_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_05_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1375,7 +1381,7 @@
             </div>
             <br />
             <div class="div_header_long">
-               <%=LocalResources.GetLabel("app_assignment_rule_information_custom_06_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_06_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1445,7 +1451,7 @@
             </div>
             <br />
             <div class="div_header_long">
-               <%=LocalResources.GetLabel("app_assignment_rule_information_custom_08_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_08_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1550,7 +1556,7 @@
             </div>
             <br />
             <div class="div_header_long">
-               <%=LocalResources.GetLabel("app_assignment_rule_information_custom_11_text")%>:
+                <%=LocalResources.GetLabel("app_assignment_rule_information_custom_11_text")%>:
             </div>
             <br />
             <div class="div_controls font_1">
@@ -1664,7 +1670,8 @@
                 <tr>
                     <td colspan="2" class="btnsave_new_user_td" align="left">
                         <asp:Button ID="btnFooterSaveNewAssignmentRule" ValidationGroup="saanarn" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_assignment_rule_button_text %>" OnClick="btnFooterSaveNewAssignmentRule_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_new_assignment_rule_button_text %>"
+                            OnClick="btnFooterSaveNewAssignmentRule_Click" />
                     </td>
                     <td>
                         &nbsp;

@@ -13,6 +13,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules {
     public partial class saanarn_01 {
         
         /// <summary>
+        /// vs_saanarn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_saanarn;
+        
+        /// <summary>
         /// hdnIsDeleteCatalog control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentRules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-        
-        /// <summary>
-        /// vs_saanarn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_saanarn;
         
         /// <summary>
         /// divError control.

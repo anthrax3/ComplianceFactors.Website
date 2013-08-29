@@ -574,7 +574,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// </summary>
         /// <param name="u_audience_system_id_pk"></param>
         /// <returns></returns>
-        public static DataTable GetUserDetails(string u_audience_system_id_pk,string u_locale)
+        public static DataTable GetUsersDetailsAudience(string u_audience_system_id_pk, string u_locale)
         {
             Hashtable htUser = new Hashtable();
             htUser.Add("@u_audience_system_id_pk", u_audience_system_id_pk);
@@ -614,7 +614,7 @@ namespace ComplicanceFactor.BusinessComponent
         /// <param name="u_audience_system_id_pk"></param>
         /// <param name="s_locale_culture"></param>
         /// <returns></returns>
-        public static DataSet GetAudienceUserPDFExcel(string u_audience_system_id_pk, string s_locale_culture)
+        public static DataSet GetUserPDFExcel(string u_audience_system_id_pk, string s_locale_culture)
         {
             Hashtable htGetAudience = new Hashtable();
             htGetAudience.Add("@u_audience_system_id_pk", u_audience_system_id_pk);
