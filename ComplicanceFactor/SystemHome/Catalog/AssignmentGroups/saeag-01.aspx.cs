@@ -299,6 +299,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
             dtAssignmentParam = SystemAssignmentGroupBLL.GetAssignmentParameter(editAssignmentGroupId);
             gvAssignmentGroupParameters.DataSource = dtAssignmentParam;
             gvAssignmentGroupParameters.DataBind();
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "test", "test();", true);
         }
 
         ////Delete Param

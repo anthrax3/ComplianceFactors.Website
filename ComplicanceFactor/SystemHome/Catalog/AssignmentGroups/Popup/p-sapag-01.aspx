@@ -84,8 +84,9 @@
         <asp:GridView ID="gvsearchDetails" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
             runat="server" EmptyDataText="No result found." 
             AutoGenerateColumns="False" AllowPaging="true"
-            EmptyDataRowStyle-CssClass="empty_row" DataKeyNames="u_user_id_pk"
-            PagerSettings-Visible="false" PageSize="10">
+            EmptyDataRowStyle-CssClass="empty_row" DataKeyNames="u_user_id_pk,u_username_enc"
+            PagerSettings-Visible="false" PageSize="5" 
+            onrowdatabound="gvsearchDetails_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_3" ItemStyle-CssClass="gridview_row_width_3"
                     HeaderText="<%$ LabelResourceExpression: app_last_name_text %>" DataField="u_last_name"
@@ -96,9 +97,20 @@
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
                     HeaderText="<%$ LabelResourceExpression: app_middle_name_text %>" DataField="u_middle_name"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
-                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_username_text %>" DataField=""
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                 
+
+
+                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
+                        HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" HeaderText="<%$ LabelResourceExpression: app_username_text %>">
+                        <ItemTemplate>
+                           <asp:Label ID="lblUsername" runat="server" Text='<%# Eval("u_username_enc") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+
+                 <%--<asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
+                    HeaderText="<%$ LabelResourceExpression: app_username_text %>" DataField="u_username_enc"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />--%>
                  <asp:BoundField HeaderStyle-CssClass="gridview_row_width_4" ItemStyle-CssClass="gridview_row_width_4"
                     HeaderText="<%$ LabelResourceExpression: app_employee_id_text %>" DataField="u_hris_employee_id"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />

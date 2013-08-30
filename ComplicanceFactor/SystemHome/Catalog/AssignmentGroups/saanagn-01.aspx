@@ -22,58 +22,6 @@
             });
         });
     </script>
-    <%--<script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $(".deleteParam").click(function () {
-
-                //Get the Id of the record to delete
-                var record_id = $(this).attr("id");
-
-                //Get the GridView Row reference
-                var tr_id = $(this).parents("#.record");
-
-                // Ask user's confirmation before delete records
-                if (confirm("Do you want to delete this record?")) {
-
-                    $.ajax({
-                        type: "POST",
-
-                        //saetc-01.aspx is the page name and DeleteUser is the server side method to delete records in saetc-01.aspx.cs
-                        url: "saanagn-01.aspx/DeleteParam",
-
-                        //Pass the selected record id
-                        data: "{'args': '" + record_id + "'}",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function () {
-
-                            // Do some animation effect
-                            tr_id.fadeOut(500, function () {
-
-                                //Remove GridView row
-                                tr_id.remove();
-                                $('#<%=gvAssignmentGroupParameters.ClientID %> tr:last').eq(-1).css("display", "none");
-                            });
-                        }
-                    });
-
-                }
-                return false;
-            });
-        });
-    </script>--%>
-<%--    <script type="text/javascript">
-        $(document).ready(function () {
-            function lastEquivalenciesrow() {
-            $('#<%=gvAssignmentGroupParameters.ClientID %> tr:last').eq(-1).css("display", "none");
-             }
-            //function stop_rebind() {
-            //document.getElementById('<%=hdStopRebind.ClientID %>').value = '0';
-            //}
-        });
-    </script>--%>
     <script type="text/javascript">
         function lastEquivalenciesrow() {
             $('#<%=gvAssignmentGroupParameters.ClientID %> tr:last').eq(-1).css("display", "none");
@@ -127,6 +75,40 @@
 
          });
      </script>
+     <script type="text/javascript">
+         $(function () {
+             var gridView = document.getElementById('<%= gvAssignmentGroupParameters.ClientID %>');
+             for (var i = 0; i < gridView.rows.length; i++) {
+                 var element = gridView.rows[i].cells[0].getElementsByTagName("span");
+                 var dropdowns = gridView.getElementsByTagName('select');
+                 if (element[0].innerHTML == 'u_hris_hire_date' || element[0].innerHTML == 'u_hris_last_rehire_date') {
+                     $(dropdowns.item(i) + "option[value='Between']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Not Between']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Starts with']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Not Starts with']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Contains']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Not Contains']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Less than']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Greater than ']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Before']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='After']").removeAttr("disabled", "disabled");
+
+                 }
+                 else {
+                     $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Starts with']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Contains']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Not Contains']").removeAttr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Less than']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
+                     $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                 }
+             }
+         });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanagn" runat="server"
@@ -249,7 +231,7 @@
                                     <table>
                                         <tr>
                                             <td class="gridview_row_width_7">
-                                                <%# Eval("u_assignment_group_param_element_id_fk")%>
+                                               <span><%# Eval("u_assignment_group_param_element_id_fk")%></span>
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"

@@ -111,14 +111,14 @@
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnEdit" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                                CommandName="Edit" runat="server" Text="Edit" />
+                                CommandName="Edit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Button ID="btnCopy" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                                CommandName="Copy" runat="server" Text="Copy" />
+                                CommandName="Copy" runat="server" Text="<%$ LabelResourceExpression: app_copy_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
@@ -126,7 +126,7 @@
                         <ItemTemplate>
                             <asp:Button ID="btnArchive" CssClass="cursor_hand" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
                                 OnClientClick="return confirm('Are you sure?');" CommandName="Archive" runat="server"
-                                Text="Archive" />
+                                Text="<%$ LabelResourceExpression: app_archive_button_text %>" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

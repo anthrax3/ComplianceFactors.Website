@@ -34,19 +34,61 @@
                });
            });
 	</script>
+    <script type="text/javascript">
+        $(function () {
+
+                    $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Less than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Before']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='After']").attr("disabled", "disabled");
+
+            $('#<%= ddlElement.ClientID %>').change(function () {
+                if (this.value == 'u_hris_hire_date' || this.value == 'u_hris_last_rehire_date') {
+
+                    $("#<%= ddlOperator.ClientID %> option[value='Between']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Between']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Starts with']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Starts with']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Contains']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Less than']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than ']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Before']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='After']").removeAttr("disabled", "disabled");
+                }
+                else {
+                    $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Less than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Before']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='After']").attr("disabled", "disabled");
+                }
+
+            });
+        });      
+    </script>
     <div id="content">
-        <asp:ValidationSummary ID="vs_p_sagp" ValidationGroup="sagp" class="validation_summary_error"
-            runat="server" />
         <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
         <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
         <div class="div_header_800">
-            Add Parameter:
+            <%=LocalResources.GetLabel("app_add_parameter_text")%>:
         </div>
         <div class="div_controls font_1">
             <table>
                 <tr>
                     <td>
-                        Element:
+                        <%=LocalResources.GetLabel("app_element_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlElement" runat="server" CssClass="ddl_user_advanced_search test"
@@ -57,7 +99,7 @@
                         &nbsp;
                     </td>
                     <td>
-                       Operator:
+                       <%=LocalResources.GetLabel("app_operator_text")%>:
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"
@@ -65,12 +107,10 @@
                         </asp:DropDownList>
                     </td>
                     <td>
-                        &nbsp;
-                        <%--<asp:RequiredFieldValidator ID="rfvValues" runat="server" ValidationGroup="sagp"
-                            ControlToValidate="txtValues" ErrorMessage="Please enter values.">&nbsp;</asp:RequiredFieldValidator>--%>
+                        &nbsp;                        
                     </td>
                     <td>
-                          Values:                       
+                        <%=LocalResources.GetLabel("app_values_text")%>:                             
                     </td>
                     <td>
                         <asp:TextBox ID="txtValues" runat="server" CssClass="textbox_long"></asp:TextBox>                                
@@ -86,14 +126,14 @@
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Button ID="btnAddParameter" runat="server" ValidationGroup="sagp" Text="Save and Add Parameter"
+                        <asp:Button ID="btnAddParameter" runat="server"  Text="<%$ LabelResourceExpression: app_save_and_add_new_parameter_button_text %>"
                             OnClick="btnAddParameter_Click" />
                     </td>
                     <td colspan="5">
                         &nbsp;
                     </td>
                     <td>
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel"
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClientClick="javascript:document.forms[0].submit();parent.jQuery.fancybox.close();"
                             OnClick="btnCancel_Click" />
                     </td>

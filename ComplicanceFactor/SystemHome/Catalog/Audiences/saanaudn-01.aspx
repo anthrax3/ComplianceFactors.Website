@@ -27,6 +27,40 @@
             $('#<%=gvAudienceParameters.ClientID %> tr:last').eq(-1).css("display", "none");
         }
     </script>
+    <script type="text/javascript">
+        $(function () {
+            var gridView = document.getElementById('<%= gvAudienceParameters.ClientID %>');
+            for (var i = 0; i < gridView.rows.length; i++) {
+                var element = gridView.rows[i].cells[0].getElementsByTagName("span");
+                var dropdowns = gridView.getElementsByTagName('select');
+                if (element[0].innerHTML == 'u_hris_hire_date' || element[0].innerHTML == 'u_hris_last_rehire_date') {
+                    $(dropdowns.item(i) + "option[value='Between']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Between']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Starts with']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Starts with']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Contains']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Contains']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Less than']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Greater than ']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Before']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='After']").removeAttr("disabled", "disabled");
+
+                }
+                else {
+                    $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Contains']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Less than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                }
+            }
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saanaudn" runat="server"
@@ -191,11 +225,9 @@
             <table>
                 <tr>
                     <td style="padding-left: 80px;">
-                        <input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
-                            onclick="javascript:showParameterPopup('true')" class="cursor_hand" />
-                        <%--<asp:Button ID="btnAddNewParameters" ValidationGroup="saanaudn" CssClass="cursor_hand"  
-                           runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"
-                           />--%>
+                        <%--<input type="button" id="btnAddNewParameters" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>" />'
+                            onclick="javascript:showParameterPopup('true')" class="cursor_hand" />--%>
+                        <asp:Button ID="btnAddNewParameters" ValidationGroup="saanaudn" CssClass="cursor_hand" runat="server" OnClick="btnAddNewParameters_Click" Text="<%$ LabelResourceExpression: app_add_new_parameter_button_text %>"/>
                     </td>
                     <td style="padding-left: 450px;">
                         <input type="button" id="btnpReviewAudience" value='<asp:Literal runat="server" Text="<%$ LabelResourceExpression: app_preview_audience_button_text %>" />'

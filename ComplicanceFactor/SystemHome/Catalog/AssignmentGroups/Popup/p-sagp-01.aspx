@@ -17,33 +17,50 @@
             overflow: hidden;
         }
     </style>
-    <%--<script type="text/javascript">
+    <script type="text/javascript">
         $(function () {
-            $('#<%= ddlElement.ClientID %>').change(function () {  
 
-                if (this.value == 'u_hris_hire_date' || this.value == 'u_hris_last_rehire_date') {
                     $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
-//Greater than
-//Less than
-//Not Null
-//Contains
-//Before
-//Not Starts with
-//Not Contains
-//After
-//Not Between
-//Starts with
-//Matches
-//Not Matches
-//Between
-//Null
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Less than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Before']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='After']").attr("disabled", "disabled");
+
+            $('#<%= ddlElement.ClientID %>').change(function () {
+                if (this.value == 'u_hris_hire_date' || this.value == 'u_hris_last_rehire_date') {
+
+                    $("#<%= ddlOperator.ClientID %> option[value='Between']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Between']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Starts with']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Starts with']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Contains']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Less than']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than ']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Before']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='After']").removeAttr("disabled", "disabled");
                 }
                 else {
                     $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Between']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Less than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Before']").attr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='After']").attr("disabled", "disabled");
                 }
+
             });
         });      
-    </script>--%>
+    </script>
     <script type="text/javascript">
         function HideMsg() {
             $("[id*=divSuccess]").fadeOut(500);

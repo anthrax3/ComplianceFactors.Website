@@ -1,17 +1,1 @@
 ﻿
-
-08/29/2013 11:27 AM : saetc-01 : Procedure or function 'c_course_sp_delete_icon_uri' expects parameter '@c_course_system_id_pk', which was not supplied.
-
-08/29/2013 04:14 PM : Global.asax : A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Shared Memory Provider, error: 0 - The handle is invalid.)
-
-08/29/2013 06:17 PM : saear-01 : Thread was being aborted.
-
-08/29/2013 06:41 PM : p-sapag-01.aspx : Could not find stored procedure 'e_sp_get_assignment_preview_pdf'.
-
-08/29/2013 06:48 PM : p-sapag-01.aspx : Could not find stored procedure 'e_sp_get_assignment_preview_pdf'.
-
-08/29/2013 06:54 PM : p-sapag-01.aspx : Could not find stored procedure 'e_sp_get_assignment_group_preview_pdf'.
-
-08/29/2013 07:05 PM : p-sapag-01.aspx : An insufficient number of arguments were supplied for the procedure or function dbo.GetDyamicQuery.
-An insufficient number of arguments were supplied for the procedure or function dbo.GetDyamicQuery.
-

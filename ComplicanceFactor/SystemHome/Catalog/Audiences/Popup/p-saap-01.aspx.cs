@@ -72,16 +72,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences.Popup
             {
                 divSuccess.Style.Add("display", "block");
                 divError.Style.Add("display", "none");
-                divSuccess.InnerText = "Inserted successfully";
-                //divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
+                divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", "HideMsg();", true);
             }
             else
             {
                 divError.Style.Add("display", "block");
                 divSuccess.Style.Add("display", "none");
-                divError.InnerText = "Parameter was not inseterd";
-                //divError.InnerText = LocalResources.GetText("app_date_not_inserted_error_wrong");
+                divError.InnerText = LocalResources.GetText("app_date_not_inserted_error_wrong");
             }
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
 
