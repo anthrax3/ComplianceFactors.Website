@@ -1139,10 +1139,10 @@
                 </tr>
                 <tr>
                     <td>
-                        Available From:
+                         <%=LocalResources.GetLabel("app_available_from_text")%>:
                         <asp:RegularExpressionValidator ID="regexAvailableFrom" runat="server" ControlToValidate="txtAvailableFrom"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please Enter valid Date in Available From" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_available_from_date_error_wrong%>" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td>
                         <div class="clear">
@@ -1156,12 +1156,12 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
-                                    Available To:
+                                     <%=LocalResources.GetLabel("app_available_to_text")%>:
                                     <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
-                                        ValidationGroup="saanc" runat="server" ErrorMessage="Please select the Available To date as greater than Available Start date">&nbsp;</asp:CustomValidator>
+                                        ValidationGroup="saanc" runat="server" ErrorMessage="<%$ TextResourceExpression: app_check_from_and_to_date_error_wrong%>">&nbsp;</asp:CustomValidator>
                                     <asp:RegularExpressionValidator ID="regexAvailableTo" runat="server" ControlToValidate="txtAvailableTo"
                                         ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                                        ErrorMessage="Please Enter valid Date in Available To" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
+                                        ErrorMessage="<%$ TextResourceExpression: app_available_to_date_error_wrong%>" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                                 </td>
                                 <td>
                                     <asp:CalendarExtender ID="ceAvailableTo" Format="MM/dd/yyyy" TargetControlID="txtAvailableTo"
@@ -1173,10 +1173,10 @@
                         </table>
                     </td>
                     <td>
-                        Effective Date:
+                        <%=LocalResources.GetLabel("app_effective_date_text")%>:
                         <asp:RegularExpressionValidator ID="regexEffectiveDate" runat="server" ControlToValidate="txtEffectiveDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please Enter valid Date in Effective Date" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_effective_date_error_wrong%>" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
                         <asp:CalendarExtender ID="ceEffectiveDate" Format="MM/dd/yyyy" TargetControlID="txtEffectiveDate"
@@ -1187,10 +1187,10 @@
                 </tr>
                 <tr>
                     <td>
-                        Cut-off Date:
+                       <%=LocalResources.GetLabel("app_cut_off_date_text")%>:
                         <asp:RegularExpressionValidator ID="regexCutOffDate" runat="server" ControlToValidate="txtCutOffDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please Enter valid Date in cuttoff Date" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_cut_off_date_error_wrong%>" Display="Dynamic" ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
                         <asp:CalendarExtender ID="ceCutOffDate" Format="MM/dd/yyyy" TargetControlID="txtCutOffDate"
@@ -1202,7 +1202,11 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
-                                    Cut-off Time:
+                                   <%=LocalResources.GetLabel("app_cut_off_time_text")%>:
+                                    <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCutoffTime"
+                                    ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
+                                    ErrorMessage="<%$ TextResourceExpression: app_cut_off_time_error_wrong%>" Display="Dynamic"
+                                    ValidationGroup="saanc">&nbsp;</asp:RegularExpressionValidator>--%>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>

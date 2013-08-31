@@ -14,7 +14,7 @@ namespace ComplicanceFactor.SystemHome
             {
                 try
                 {
-                    ddlSearchUserStatus.DataSource = UserBLL.GetUserAllStatusList(SessionWrapper.CultureName,"sasumsm-01");
+                    ddlSearchUserStatus.DataSource = UserBLL.GetUserAllStatusList(SessionWrapper.CultureName, "sasumsm-01");
                     ddlSearchUserStatus.DataBind();
                     ddlSearchUserStatus.SelectedValue = "app_ddl_all_text";
                     //ListItem lstStatus = new ListItem();
@@ -27,6 +27,8 @@ namespace ComplicanceFactor.SystemHome
 
                     ddlSearchUserTypes.DataSource = UserBLL.GetAllUserTypes(SessionWrapper.CultureName, "sasumsm-01");
                     ddlSearchUserTypes.DataBind();
+                    ddlSearchUserTypes.SelectedValue = "app_ddl_all_text";
+
                     ddlSearchUserDomain.DataSource = UserBLL.GetUserDomains();
                     ddlSearchUserDomain.DataBind();
 

@@ -104,7 +104,7 @@ namespace ComplicanceFactor.Employee.Catalog
             try
             {
 
-                gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]));
+                gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]),SessionWrapper.u_userid);
                 gvsearchDetails.DataBind();
             }
             catch (Exception ex)
@@ -149,13 +149,14 @@ namespace ComplicanceFactor.Employee.Catalog
                     catalog.c_type = ddlType.SelectedValue;
                     catalog.c_delivery_id_fk = ddlDelivery.SelectedValue;
                     catalog.c_language = ddlLanguage.SelectedValue;
+                    catalog.c_course_user_id_pk = SessionWrapper.u_userid;
                     gvsearchDetails.DataSource = EmployeeCatalogBLL.SearchCatalog(catalog);
                     gvsearchDetails.DataBind();
 
                 }
                 else
                 {
-                    gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]));
+                    gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]),SessionWrapper.u_userid);
                     gvsearchDetails.DataBind();
                 }
 
@@ -218,7 +219,8 @@ namespace ComplicanceFactor.Employee.Catalog
                     //check if the type is course or curriculum or program
                     if (type == "Course")
                     {
-
+                        DataRowView drvIsEnrollButton = (DataRowView)e.Row.DataItem;
+                        bool isEnrollButton = Convert.ToBoolean(drvIsEnrollButton["isenrollbutton"]);
 
                         //Get "OLT" delivery 
                         DataSet dsDelivery = new DataSet();
@@ -292,6 +294,12 @@ namespace ComplicanceFactor.Employee.Catalog
                              {
                                  btnDrop.Style.Add("display", "none");
                                  lblAlreadyEnrollMessage.Text = string.Empty;
+                             }
+
+                             if (isEnrollButton == false)
+                             {
+                                 btnEnroll.Style.Add("display", "none");
+                                 btnDrop.Style.Add("display", "none");
                              }
                          }
 

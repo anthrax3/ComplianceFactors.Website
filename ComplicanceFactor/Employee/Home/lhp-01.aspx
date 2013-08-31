@@ -371,7 +371,7 @@
                     <ItemTemplate>
                         <asp:Button ID="btnViewDetail" CommandArgument='<%#Eval("e_curriculum_assign_curriculum_id_fk")%>'
                             CommandName="View" runat="server" Text="<%$LabelResourceExpression: app_view_details_button_text %>"
-                            class="" />
+                            CssClass="cursor_hand" />
                         <%--   <input type="button" id='<%# Eval("e_curriculum_assign_curriculum_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="View Details" />'--%>
                         <%-- class="curriculumviewdetails cursor_hand" />--%>
                     </ItemTemplate>
@@ -380,7 +380,8 @@
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("e_curriculum_assign_curriculum_id_fk")%>'
-                            CommandName="Enroll" runat="server" Text="<%$LabelResourceExpression: app_enroll_button_text %>" />
+                            CommandName="Enroll" runat="server" Text="<%$LabelResourceExpression: app_enroll_button_text %>"
+                            CssClass="cursor_hand" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -428,8 +429,6 @@
                         <asp:Button ID="btnReview" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
                             CommandName="Review" runat="server" Text="<%$ LabelResourceExpression:app_review_button_text %>"
                             Style="display: none;" />
-                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                            Style="display: none;" runat="server" CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>" />
                         <%--<asp:Button ID="btnViewDetails" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
                             Style="display: none;" runat="server" CommandName="View" Text="<%$LabelResourceExpression: app_view_details_button_text %>" />--%>
                         <asp:Literal ID="ltlViewDetails" runat="server"></asp:Literal>
@@ -438,8 +437,15 @@
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
+                        <asp:Button ID="btnEnroll" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
+                            runat="server" CommandName="Enroll" Text="Re-Enroll" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
                         <asp:Button ID="btnCertificate" CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'
-                            CommandName="Certificate" Style="display: none;" runat="server" Text="<%$LabelResourceExpression: app_certificate_button_text %>" /> 
+                            CommandName="Certificate" Style="display: none;" runat="server" Text="<%$LabelResourceExpression: app_certificate_button_text %>" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -459,17 +465,17 @@
     <rsweb:ReportViewer ID="rvLearningHistory" runat="server" Style="display: none;"
         DocumentMapCollapsed="true" ShowDocumentMapButton="false">
     </rsweb:ReportViewer>
-
     <asp:Button ID="btnSplash" runat="server" Style="display: none;" />
-    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900 modal_popup_background" Style="display: none;
-        padding-left: 0px;  padding-right: 0px;">
+    <asp:Panel ID="pnlSplashPage" runat="server" CssClass="modalPopup_width_900 modal_popup_background"
+        Style="display: none; padding-left: 0px; padding-right: 0px;">
         <asp:Panel ID="pnlSplashPageHeading" runat="server" CssClass="drag">
             <div>
                 <div class="div_header_900">
-                    <span class="font_1" style="color:Black;">Splash Preview:</span>
+                    <span class="font_1" style="color: Black;">Splash Preview:</span>
                 </div>
                 <asp:ImageButton ID="ibtnCloseSplash" CssClass="cursor_hand" Style="top: -15px; right: -15px;
-                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" OnClick="ibtnCloseSplash_Click" />
+                    z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png"
+                    OnClick="ibtnCloseSplash_Click" />
             </div>
         </asp:Panel>
         <br />

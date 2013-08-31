@@ -43,7 +43,7 @@ namespace ComplicanceFactor
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            BackgroundProcess();
+            //BackgroundProcess();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace ComplicanceFactor
         {
             if (HttpContext.Current.Request.Url.ToString() == DummyPageUrl)
             {
-               BackgroundProcess();
+               //BackgroundProcess();
             }
         }
 
@@ -155,11 +155,14 @@ namespace ComplicanceFactor
 
                                             //Assign the course and curriculum from assignment groups.
                                             SystemAssignmentRules rule = new SystemAssignmentRules();
+                                            rule.u_assignment_rules_id_pk = string.Empty;
+                                            rule.u_assignment_rules_name = string.Empty;
+                                            rule.u_assignment_rules_status_id_fk = "0";
                                             DataTable dtAssignmentRule = SystemAssignmentRuleBLL.SearchAssignmentRule(rule);
 
                                             for (int k = 0; k < dtAssignmentRule.Rows.Count; k++)
                                             {
-                                                //AssignCourseCurriculum(dtAssignmentRule.Rows[k]["u_assignment_rules_system_id_pk"].ToString());
+                                                AssignCourseCurriculum(dtAssignmentRule.Rows[k]["u_assignment_rules_system_id_pk"].ToString());
                                             }
                                         }
                                     }
@@ -1921,6 +1924,8 @@ namespace ComplicanceFactor
 
             rule = SystemAssignmentRuleBLL.GetAssignmentRule(editassignmentRuleId);
 
+            string assign_user_id_pk = UserBLL.GetSystemUser("SystemUser");
+
             DataTable dtCatalogItems = new DataTable();
             DataTable dtGroupUsers = new DataTable();
 
@@ -1966,7 +1971,7 @@ namespace ComplicanceFactor
                     }
                 }
                 ConvertDataTables ConvertToXml = new ConvertDataTables();
-                DataTable dtSingleOLTCourseFromCurriculum = SystemAssignmentRuleBLL.CourseCurriculumAssign(ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid, editassignmentRuleId);
+                DataTable dtSingleOLTCourseFromCurriculum = SystemAssignmentRuleBLL.CourseCurriculumAssign(ConvertToXml.ConvertDataTableToXml(dtCourse), ConvertToXml.ConvertDataTableToXml(dtCurriculum), assign_user_id_pk, editassignmentRuleId);
             }
         }
         private void InsertGroupUser(string assignmentGroupId)

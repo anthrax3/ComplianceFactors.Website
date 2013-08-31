@@ -245,7 +245,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Available From:
+                        <%=LocalResources.GetLabel("app_available_from_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblAvailableFrom" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -254,7 +254,7 @@
                         <table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="text_font_normal">
-                                    Available To:
+                                    <%=LocalResources.GetLabel("app_available_to_text")%>:
                                 </td>
                                 <td class="lable_td_width_1">
                                     <asp:Label ID="lblAvailableTo" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -263,7 +263,7 @@
                         </table>
                     </td>
                     <td class="text_font_normal">
-                        Effective Date:
+                        <%=LocalResources.GetLabel("app_effective_date_text")%>:
                     </td>
                     <td class="lable_td_width_1">
                         <asp:Label ID="lblEffectiveDate" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -271,7 +271,7 @@
                 </tr>
                 <tr>
                     <td class="text_font_normal">
-                        Cut-off Date:
+                        <%=LocalResources.GetLabel("app_cut_off_date_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblCutOffDate" CssClass="lable_td_width" runat="server"></asp:Label>
@@ -280,7 +280,7 @@
                         <table cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="text_font_normal">
-                                    Cut-off Time:
+                                    <%=LocalResources.GetLabel("app_cut_off_time_text")%>:
                                 </td>
                                 <td class="lable_td_width_1">
                                     <asp:Label ID="lblCutoffTime" CssClass="lable_td_width" runat="server"></asp:Label>

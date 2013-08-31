@@ -11,11 +11,12 @@ namespace ComplicanceFactor.BusinessComponent
 {
     public class EmployeeCatalogBLL
     {
-        public static DataTable QuickSearchResult(string keyWord)
+        public static DataTable QuickSearchResult(string keyWord,string u_user_id_pk)
         {
 
             Hashtable htQuickSearchResult = new Hashtable();
             htQuickSearchResult.Add("@Search", keyWord);
+            htQuickSearchResult.Add("@u_user_id_pk", u_user_id_pk);
             try
             {
                 return DataProxy.FetchDataTable("c_sp_catalog_quick_search", htQuickSearchResult);
@@ -102,6 +103,15 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htSearchCatalog.Add("@c_language", catalog.c_language);
             }
+            if (string.IsNullOrEmpty(catalog.c_course_user_id_pk)) 
+            {
+                htSearchCatalog.Add("@u_user_id_pk", DBNull.Value);
+            }
+            else
+            {
+                htSearchCatalog.Add("@u_user_id_pk", catalog.c_course_user_id_pk);
+            }
+            
 
             try
             {
@@ -171,10 +181,11 @@ namespace ComplicanceFactor.BusinessComponent
         //    }
 
         //}
-        public static DataTable GetBrowseCatalogResult(string categoryid)
+        public static DataTable GetBrowseCatalogResult(string categoryid,string u_user_id_pk)
         {
             Hashtable htBrowseCatalogResult = new Hashtable();
             htBrowseCatalogResult.Add("@categoryid", categoryid);
+            htBrowseCatalogResult.Add("@u_user_id_pk", u_user_id_pk);
             try
             {
                 return DataProxy.FetchDataTable("c_sp_get_browse_catalog_result", htBrowseCatalogResult);

@@ -105,7 +105,7 @@ namespace ComplicanceFactor.Manager.Catalog
             try
             {
 
-                gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]));
+                gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]),SessionWrapper.u_userid);
                 gvsearchDetails.DataBind();
             }
             catch (Exception ex)
@@ -156,7 +156,7 @@ namespace ComplicanceFactor.Manager.Catalog
                 }
                 else
                 {
-                    gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]));
+                    gvsearchDetails.DataSource = EmployeeCatalogBLL.QuickSearchResult(SecurityCenter.DecryptText(Request.QueryString["Keyword"]),SessionWrapper.u_userid);
                     gvsearchDetails.DataBind();
                 }
 
@@ -198,7 +198,7 @@ namespace ComplicanceFactor.Manager.Catalog
 
         }
         protected void gvsearchDetails_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
+        {             
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 try
@@ -228,6 +228,19 @@ namespace ComplicanceFactor.Manager.Catalog
                       
                         Button btnEnroll = (Button)e.Row.FindControl("btnEnroll");
                         btnEnroll.Style.Add("display", "inline");
+
+                        //DateTime? dtcutOffDate;
+                        //DateTime? dtcutOffTime;
+
+                        DataRowView drvIsEnrollButton = (DataRowView)e.Row.DataItem;
+                        bool isEnrollButton = Convert.ToBoolean(drvIsEnrollButton["isenrollbutton"]);
+
+                        //To hide enroll button. 
+                        if (isEnrollButton == false)
+                        {
+                            btnEnroll.Style.Add("display", "none");
+                        }
+
                         ////get if "OLT" delivery exist or not
                         //EmployeeCatalog getOLTDelivery = new EmployeeCatalog();
                         //getOLTDelivery = EmployeeCatalogBLL.GetSingleOLTDelivery(system_id, dsDelivery.Tables[0]);

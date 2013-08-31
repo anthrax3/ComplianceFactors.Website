@@ -441,7 +441,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
             Response.Clear();
             Response.ContentType = "application/csv";
             Response.Charset = "";
-            Response.AddHeader("Content-Disposition", "attachment;filename=" + filenameOfPDFandEXCEL);
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + filenameOfPDFandEXCEL + ".csv");
             Response.ContentEncoding = Encoding.Unicode;
             StringBuilder sb = new StringBuilder();
             for (int k = 0; k < dtCourseColumnName.Rows.Count; k++)

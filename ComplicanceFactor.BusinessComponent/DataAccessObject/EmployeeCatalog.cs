@@ -23,5 +23,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
        public bool c_delivery_approval_req { get; set; }
        public int c_delivery_count { get; set; }
        public string c_delivery_waitlist_flag { get; set; }
+
+       public string c_course_user_id_pk { get; set; } 
     }
 }

@@ -1559,5 +1559,25 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static string GetSystemUser(string u_first_name)
+        {
+            Hashtable htGetSystemUser = new Hashtable();
+            htGetSystemUser.Add("@u_first_name", u_first_name);
+            try
+            {
+                string u_user_id_pk = string.Empty;
+                DataTable dt = DataProxy.FetchDataTable("u_sp_get_system_user", htGetSystemUser);
+                if (dt.Rows.Count > 0)
+                {
+                    u_user_id_pk = dt.Rows[0]["u_user_id_pk"].ToString();
+                }
+                return u_user_id_pk;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

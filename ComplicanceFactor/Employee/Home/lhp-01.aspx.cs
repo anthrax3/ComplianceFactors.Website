@@ -421,26 +421,32 @@ namespace ComplicanceFactor
                 string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
                 if (status == "Completed")
                 {
-                    
+                    ltlViewDetails.Text = "<input type='button' id=" + t_transcript_course_id_fk + ',' + SessionWrapper.u_userid + " value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='ViewLearningdetails' />";
                     btnReview.Style.Add("display", "inline");
                     btnCertificate.Style.Add("display", "none");
                 }
                 else if (status == "Passed")
                 {
+                    //btnEnroll.Style.Add("display", "Block");
                     ltlViewDetails.Text = "<input type='button' id=" + t_transcript_course_id_fk+','+SessionWrapper.u_userid +" value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='ViewLearningdetails' />";
                     btnCertificate.Style.Add("display", "Block");
                 }
                 else if (status == "Failed" && reEnroll == "reenroll")
                 {
-                    btnEnroll.Style.Add("display", "Block");
+                    ltlViewDetails.Text = "<input type='button' id=" + t_transcript_course_id_fk + ',' + SessionWrapper.u_userid + " value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='ViewLearningdetails' />";
+                    //btnEnroll.Style.Add("display", "Block");
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
+
+                }
+                else if (status == "Failed")
+                {                    
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                     e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                 }
-                else if (status == "Failed" && reEnroll == "enrolled")
+                if (reEnroll == "enrolled")
                 {
                     btnEnroll.Style.Add("display", "none");
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                    e.Row.Cells[3].ForeColor = System.Drawing.Color.Red;
                 }
             }
         }

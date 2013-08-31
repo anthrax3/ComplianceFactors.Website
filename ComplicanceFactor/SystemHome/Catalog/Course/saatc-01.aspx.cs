@@ -159,7 +159,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 lblCutOffDate.Text = Convert.ToDateTime(Course.c_course_cut_off_date).ToShortDateString();
             }
 
-            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string.ToString()))
+            if (!string.IsNullOrEmpty(Course.c_course_cut_off_time_string))
             {
                 lblCutoffTime.Text = Convert.ToDateTime(Course.c_course_cut_off_time_string).ToShortTimeString();                
             }

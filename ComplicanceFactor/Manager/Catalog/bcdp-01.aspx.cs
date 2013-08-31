@@ -129,14 +129,12 @@ namespace ComplicanceFactor.Manager.Catalog
             {
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
 
-                gvsearchDetails.DataSource = EmployeeCatalogBLL.GetBrowseCatalogResult(SecurityCenter.DecryptText(Request.QueryString["id"]));
+                gvsearchDetails.DataSource = EmployeeCatalogBLL.GetBrowseCatalogResult(SecurityCenter.DecryptText(Request.QueryString["id"]),SessionWrapper.u_userid);
                 gvsearchDetails.DataBind();
 
                 if (gvsearchDetails.Rows.Count == 0)
                 {
-
                     disable_enable(false);
-
                 }
                 else
                 {
@@ -170,14 +168,13 @@ namespace ComplicanceFactor.Manager.Catalog
 
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
                 {
-
-
                     catalog.c_course_title = txtTitle.Text;
                     catalog.c_course_id_pk = txtId.Text;
                     catalog.keyword = txtKeyword.Text;
                     catalog.c_type = ddlType.SelectedValue;
                     catalog.c_delivery_id_fk = ddlDelivery.SelectedValue;
                     catalog.c_language = ddlLanguage.SelectedValue;
+                    catalog.c_course_user_id_pk = SessionWrapper.u_userid;
                     gvsearchDetails.DataSource = EmployeeCatalogBLL.SearchCatalog(catalog);
                     gvsearchDetails.DataBind();
 
@@ -199,6 +196,7 @@ namespace ComplicanceFactor.Manager.Catalog
                         catalog.c_delivery_id_fk = SecurityCenter.DecryptText(Request.QueryString["deliverytype"]);
                         //language
                         catalog.c_language = SecurityCenter.DecryptText(Request.QueryString["language"]);
+                        catalog.c_course_user_id_pk = SessionWrapper.u_userid;
                         gvsearchDetails.DataSource = EmployeeCatalogBLL.SearchCatalog(catalog);
                         gvsearchDetails.DataBind();
 
@@ -267,6 +265,9 @@ namespace ComplicanceFactor.Manager.Catalog
                     //check if the type is course or curriculum or program
                     if (type == "course")
                     {
+                        DataRowView drvIsEnrollButton = (DataRowView)e.Row.DataItem;
+                        bool isEnrollButton = Convert.ToBoolean(drvIsEnrollButton["isenrollbutton"]);
+
                         //Get "OLT" delivery 
                         DataSet dsDelivery = new DataSet();
                         dsDelivery = EmployeeCatalogBLL.GetOLT(system_id);
@@ -281,29 +282,50 @@ namespace ComplicanceFactor.Manager.Catalog
                         bool approvDelivery = EmployeeCatalogBLL.GetApprovalDelivery(system_id, dsDelivery.Tables[1]);
                         //get enroll type
                         string strEnrollType = getEnrollDelivery.e_enroll_type_name;
-                       // if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && string.IsNullOrEmpty(strEnrollType))
-                       // {
+
+                        bool isEnroll;
+                        isEnroll = EnrollmentBLL.CheckDeliveryEnrollorNot(system_id, SessionWrapper.u_userid);
+
+                        if (SessionWrapper.isLeraningHistory == false && isEnroll == false)
+                        {
+                            //Manager doesn't have quick launch button
+
+                            // if (strDeliveryType == "OLT" && approvalCourse == "False" && approvDelivery == false && getOLTDelivery.c_delivery_count == 1 && string.IsNullOrEmpty(strEnrollType))
+                            // {
                             //btnQuickLunch.Style.Add("display", "inline");
-                       // }
-                        if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
-                        {
+                            // }
 
-                           // btnDrop.Style.Add("display", "inline");
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            btnEnroll.Style.Add("display", "none");
+                            if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")
+                            {
 
+                                // btnDrop.Style.Add("display", "inline");
+                                lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                btnEnroll.Style.Add("display", "none");
+
+                            }
+                            else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
+                            {
+                                lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                                //btnDrop.Style.Add("display", "none");
+                                btnEnroll.Style.Add("display", "none");
+
+                            }
+                            else if (string.IsNullOrEmpty(strEnrollType))
+                            {
+                                // btnDrop.Style.Add("display", "none");
+                                lblAlreadyEnrollMessage.Text = string.Empty;
+                            }
+
+                            if (isEnrollButton == false)
+                            {
+                                btnEnroll.Style.Add("display", "none");
+                                //btnDrop.Style.Add("display", "none");
+                            }
                         }
-                        else if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType != "Self-enroll")
+                        else
                         {
-                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
-                            //btnDrop.Style.Add("display", "none");
-                            btnEnroll.Style.Add("display", "none");
-
-                        }
-                        else if (string.IsNullOrEmpty(strEnrollType))
-                        {
-                           // btnDrop.Style.Add("display", "none");
-                            lblAlreadyEnrollMessage.Text = string.Empty;
+                            btnEnroll.Style.Add("display", "inline");
+                            btnEnroll.Text = "Re-Enroll";
                         }
                     }
                     else if (type == "curriculum")

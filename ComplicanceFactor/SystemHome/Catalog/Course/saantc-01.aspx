@@ -946,47 +946,47 @@
             });
         });
     </script>
-     <script type="text/javascript">
+    <script type="text/javascript">
 
-         $(document).ready(function () {
+        $(document).ready(function () {
 
-             $(".deleteaudience").click(function () {
+            $(".deleteaudience").click(function () {
 
-                 //Get the Id of the record to delete
-                 var record_id = $(this).attr("id");
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
 
-                 //Get the GridView Row reference
-                 var tr_id = $(this).parents("#.record");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
 
-                 // Ask user's confirmation before delete records
-                 if (confirm("Do you want to delete this record?")) {
+                // Ask user's confirmation before delete records
+                if (confirm("Do you want to delete this record?")) {
 
-                     $.ajax({
-                         type: "POST",
+                    $.ajax({
+                        type: "POST",
 
-                         //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
-                         url: "saantc-01.aspx/DeleteAudience",
+                        //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
+                        url: "saantc-01.aspx/DeleteAudience",
 
-                         //Pass the selected record id
-                         data: "{'args': '" + record_id + "'}",
-                         contentType: "application/json; charset=utf-8",
-                         dataType: "json",
-                         success: function () {
+                        //Pass the selected record id
+                        data: "{'args': '" + record_id + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
 
-                             // Do some animation effect
-                             tr_id.fadeOut(500, function () {
+                            // Do some animation effect
+                            tr_id.fadeOut(500, function () {
 
-                                 //Remove GridView row
-                                 tr_id.remove();
+                                //Remove GridView row
+                                tr_id.remove();
 
-                             });
-                         }
-                     });
+                            });
+                        }
+                    });
 
-                 }
-                 return false;
-             });
-         });
+                }
+                return false;
+            });
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -1050,15 +1050,15 @@
         })(jQuery);
     </script>
     <script type="text/javascript">
-            function DateCheck(sender, args) {
-                var StartDate = document.getElementById('<%=txtAvailableFrom.ClientID %>').value;
-                var EndDate = document.getElementById('<%=txtAvailableTo.ClientID %>').value;
-                var eDate = new Date(EndDate);
-                var sDate = new Date(StartDate);
-                if (StartDate != '' && StartDate != '' && sDate > eDate) {
-                    args.IsValid = false;
-                }
-            }    
+        function DateCheck(sender, args) {
+            var StartDate = document.getElementById('<%=txtAvailableFrom.ClientID %>').value;
+            var EndDate = document.getElementById('<%=txtAvailableTo.ClientID %>').value;
+            var eDate = new Date(EndDate);
+            var sDate = new Date(StartDate);
+            if (StartDate != '' && StartDate != '' && sDate > eDate) {
+                args.IsValid = false;
+            }
+        }    
     </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saantc" runat="server"
         ValidationGroup="saantc"></asp:ValidationSummary>
@@ -1289,10 +1289,11 @@
                 </tr>
                 <tr>
                     <td>
-                        Available From:
+                        <%=LocalResources.GetLabel("app_available_from_text")%>:
                         <asp:RegularExpressionValidator ID="regexAvailableFrom" runat="server" ControlToValidate="txtAvailableFrom"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please Enter valid Date in Available From" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_available_from_date_error_wrong%>"
+                            Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
                         <asp:CalendarExtender ID="ceAvailableFrom" Format="MM/dd/yyyy" TargetControlID="txtAvailableFrom"
@@ -1304,12 +1305,13 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
-                                    Available To:
+                                    <%=LocalResources.GetLabel("app_available_to_text")%>:
                                     <asp:CustomValidator ID="cvValidateDate" EnableClientScript="true" ClientValidationFunction="DateCheck"
-                                        ValidationGroup="saantc" runat="server" ErrorMessage="Please select the Available To date as greater than Available Start date">&nbsp;</asp:CustomValidator>
+                                        ValidationGroup="saantc" runat="server" ErrorMessage="<%$ TextResourceExpression: app_check_from_and_to_date_error_wrong%>">&nbsp;</asp:CustomValidator>
                                     <asp:RegularExpressionValidator ID="regexAvailableTo" runat="server" ControlToValidate="txtAvailableTo"
                                         ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                                        ErrorMessage="Please Enter valid Date in Available To" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
+                                        ErrorMessage="<%$ TextResourceExpression: app_available_to_date_error_wrong%>"
+                                        Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                                 </td>
                                 <td>
                                     <asp:CalendarExtender ID="ceAvailableTo" Format="MM/dd/yyyy" TargetControlID="txtAvailableTo"
@@ -1321,10 +1323,11 @@
                         </table>
                     </td>
                     <td>
-                        Effective Date:
+                        <%=LocalResources.GetLabel("app_effective_date_text")%>:
                         <asp:RegularExpressionValidator ID="regexEffectiveDate" runat="server" ControlToValidate="txtEffectiveDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please Enter valid Date in Effective Date" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
+                            ErrorMessage="<%$ TextResourceExpression: app_effective_date_error_wrong%>" Display="Dynamic"
+                            ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
                     </td>
                     <td class="align_left">
                         <asp:CalendarExtender ID="ceEffectiveDate" Format="MM/dd/yyyy" TargetControlID="txtEffectiveDate"
@@ -1337,8 +1340,9 @@
                     <td>
                         <asp:RegularExpressionValidator ID="regexCutOffDate" runat="server" ControlToValidate="txtCutOffDate"
                             ValidationExpression="^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$"
-                            ErrorMessage="Please Enter valid Date in cuttoff Date" Display="Dynamic" ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
-                        Cut-off Date:
+                            ErrorMessage="<%$ TextResourceExpression: app_cut_off_date_error_wrong%>" Display="Dynamic"
+                            ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>
+                        <%=LocalResources.GetLabel("app_cut_off_date_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:CalendarExtender ID="ceCutOffDate" Format="MM/dd/yyyy" TargetControlID="txtCutOffDate"
@@ -1350,9 +1354,13 @@
                         <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 38px;">
                             <tr>
                                 <td>
-                                    Cut-off Time:
+                                    <%=LocalResources.GetLabel("app_cut_off_time_text")%>:
                                 </td>
                                 <td>
+                                    <%--<asp:RegularExpressionValidator ID="regexEndTime" runat="server" ControlToValidate="txtCutoffTime"
+                                        ValidationExpression="^(1|01|2|02|3|03|4|04|5|05|6|06|7|07|8|08|9|09|10|11|12{1,2}):(([0-5]{1}[0-9]{1}\s{0,1})([AM|PM|am|pm]{2,2}))\W{0}$"
+                                        ErrorMessage="<%$ TextResourceExpression: app_cut_off_time_error_wrong%>" Display="Dynamic"
+                                        ValidationGroup="saantc">&nbsp;</asp:RegularExpressionValidator>--%>
                                     <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
@@ -1536,7 +1544,6 @@
                 </asp:GridView>
             </div>
         </div>
-
         <br />
         <div class="div_controls font_1">
             <asp:Button ID="btnAddAudience" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_button_text%>" />
