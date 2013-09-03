@@ -21,7 +21,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             try
             {
                 //Hide validation summary on other popup appear
-                //vs_sand.Style.Add("display", "none");
+                vs_sasw.Style.Add("display", "none"); 
                 if (!IsPostBack)
                 {
                     //clear session 
@@ -48,22 +48,22 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 //Bind instructor
                 if (Request.QueryString["page"].ToString() == "sasw")
                 {
-                    if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+                    if (hdValue.Value != "0" || string.IsNullOrEmpty(hdValue.Value))
                     {
                         gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
                         gvInstructor.DataBind();
-                        hdValue.Value = null;
+                        hdValue.Value = string.Empty;
                     }
                 }
-                else
-                {
-                    if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value) && !string.IsNullOrEmpty(Request.QueryString["editcourseid"].ToString()))
-                    {
-                        gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
-                        gvInstructor.DataBind();
-                        hdValue.Value = null;
-                    }
-                }
+                //else
+                //{
+                //    if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value) && !string.IsNullOrEmpty(Request.QueryString["editcourseid"].ToString()))
+                //    {
+                //        gvInstructor.DataSource = SessionWrapper.TempDeliveryInstructor;
+                //        gvInstructor.DataBind();
+                //        hdValue.Value = null;
+                //    }
+                //}
 
             }
             catch (Exception ex)

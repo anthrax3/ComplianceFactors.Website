@@ -1548,10 +1548,10 @@
                             <tr>
                                 <td>
                                     <%=LocalResources.GetLabel("app_cut_off_time_text")%>:
-                                    <%--<asp:RegularExpressionValidator ID="regexEndTime" runat="server" ControlToValidate="txtCutoffTime"
-                                        ValidationExpression="^(1|01|2|02|3|03|4|04|5|05|6|06|7|07|8|08|9|09|10|11|12{1,2}):(([0-5]{1}[0-9]{1}\s{0,1})([AM|PM|am|pm]{2,2}))\W{0}$"
+                                    <asp:RegularExpressionValidator ID="regexEndTime" runat="server" ControlToValidate="txtCutoffTime"
+                                        ValidationExpression="^(1|01|2|02|3|03|4|04|5|05|6|06|7|07|8|08|9|09|10|11|12{1,2}):(([0-5]{1}[0-9]{1}\s{0,1})([AM|PM|am|pm]{2,2}))\W{0}$"                                        
                                         ErrorMessage="<%$ TextResourceExpression: app_cut_off_time_error_wrong%>" Display="Dynamic"
-                                        ValidationGroup="saetc">&nbsp;</asp:RegularExpressionValidator>--%>
+                                        ValidationGroup="saetc">&nbsp;</asp:RegularExpressionValidator>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtCutoffTime" CssClass="textbox_long" runat="server"></asp:TextBox>

@@ -34,11 +34,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.AudienceSearch
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("(Curriculum) sasran-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("(Curriculum) sasran-01.aspx", ex.Message);
                     }
                 }
             }
@@ -268,11 +268,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.AudienceSearch
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("(Curriculum) sasran-01.aspx", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sasran-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("(Curriculum) sasran-01.aspx", ex.Message);
                     }
                 }
             }
@@ -358,11 +358,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.AudienceSearch
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("sasran-01", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("(Curriculum) sasran-01", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("sasran-01", ex.Message);
+                            Logger.WriteToErrorLog("(Curriculum) sasran-01", ex.Message);
                         }
                     }
                 }

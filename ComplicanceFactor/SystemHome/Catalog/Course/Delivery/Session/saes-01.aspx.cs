@@ -93,7 +93,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
         {
             DataView dvInstructors = new DataView(dtInstructor);
             dvInstructors.RowFilter = "c_session_id_fk= '" + editSession + "'";
-            if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+            if (hdValue.Value != "0" || string.IsNullOrEmpty(hdValue.Value))
             {
                 gvInstructor.DataSource = dvInstructors.ToTable();
                 gvInstructor.DataBind();

@@ -31,6 +31,7 @@
             }
 
             var id = document.getElementById('<%=hdEditAudienceId.ClientID %>').value;
+            alert(id);
             $.fancybox({
                 'type': 'iframe',
                 'titlePosition': 'over',

@@ -520,7 +520,7 @@ namespace ComplicanceFactor.BusinessComponent
         {
             try
             {
-                return DataProxy.FetchDataTable("e_sp_get_assignment_element");
+                return DataProxy.FetchDataTable("e_sp_get_audience_element");
             }
 
             catch (Exception)
@@ -628,6 +628,6 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-
+        
     }
 }

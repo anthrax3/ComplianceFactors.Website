@@ -30,6 +30,7 @@
                 document.getElementById('<%=hdStopRebind.ClientID %>').value = "0";
             }
             var id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+            var encryptid = document.getElementById('<%=hdEncryptAssignmentId.ClientID %>').value;
             $.fancybox({
                 'type': 'iframe',
                 'titlePosition': 'over',
@@ -48,7 +49,7 @@
                 'hideOnOverlayClick': false,
                 'afterClose': function () {
                     //window.location.reload(); note:when i close popup then reload page
-                    window.location.replace("../AssignmentGroups/saeag-01.aspx?popup=false&reset=true");
+                    window.location.replace("../AssignmentGroups/saeag-01.aspx?popup=false&reset=true&id="+encryptid);
                 },
                 'href': 'Popup/p-sagp-01.aspx?id=' + id,
                 'onComplete': function () {
@@ -72,6 +73,7 @@
             $(".previewAssignment").click(function () {
                 //Get the Id of the record to delete
                 var record_id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
+                alert(record_id);
                 $.fancybox({
                     'type': 'iframe',
                     'titlePosition': 'over',
@@ -166,6 +168,7 @@
     <div id="divError" runat="server" class="msgarea_error" style="display: none;" />
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
     <asp:HiddenField ID="hdEditAssignmentId" runat="server" />
+    <asp:HiddenField ID="hdEncryptAssignmentId" runat="server" />
     <asp:HiddenField ID="hdStopRebind" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
@@ -202,7 +205,7 @@
             <br />
         </div>
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_assignment_group_information_english_us_text")%>:
+            <%=LocalResources.GetLabel("app_assignment_group_information_english_us_text")%>:                       
         </div>
         <br />
         <div class="div_controls font_1">

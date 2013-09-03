@@ -304,9 +304,6 @@
             if (id == "ContentPlaceHolder1_btnSaveSessionInformation") {
                 document.getElementById('<%=hdValue.ClientID %>').value = "0";
             }
-            else {
-                document.getElementById('<%=hdValue.ClientID %>').value = "1";
-            }
         }
     </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">

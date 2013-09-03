@@ -545,7 +545,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUser.Add("@locale", locale);
             try
             {
-                return DataProxy.FetchDataTable("e_sp_get_get_assignment_group_dynamic_query", htUser);
+                return DataProxy.FetchDataTable("e_sp_get_assignment_group_dynamic_query", htUser);
             }
             catch (Exception)
             {

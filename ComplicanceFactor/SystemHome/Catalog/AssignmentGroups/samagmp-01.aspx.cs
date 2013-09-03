@@ -25,6 +25,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetAllStatus(SessionWrapper.CultureName,"sasup-01");
                 ddlStatus.DataBind();
                 ddlStatus.SelectedValue = "app_ddl_all_text";
+                //count page of page in search result
+                lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+                lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             }
         }
         protected void btnHeaderFirst_Click(object sender, EventArgs e)

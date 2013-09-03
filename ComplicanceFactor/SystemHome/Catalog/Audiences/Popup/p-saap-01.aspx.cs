@@ -24,7 +24,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences.Popup
                     groupId = Request.QueryString["id"].ToString();
                 }
                 //Bind Elementd
-                ddlElement.DataSource = SystemAssignmentGroupBLL.GetAssignmentElement();
+                ddlElement.DataSource = SystemAudiencesBLL.GetAudienceElement();
                 ddlElement.DataBind();
                 //Bind Operator
                 ddlOperator.DataSource = SystemAssignmentGroupBLL.GetAssignmentOperator();

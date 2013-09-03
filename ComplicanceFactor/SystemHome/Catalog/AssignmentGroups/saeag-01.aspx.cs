@@ -37,6 +37,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 {
                     editAssignmentGroupId = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     hdEditAssignmentId.Value = editAssignmentGroupId;
+                    hdEncryptAssignmentId.Value = SecurityCenter.EncryptText(editAssignmentGroupId);
                 }
                 //Bind status
                 ddlStatus.DataSource = SystemAssignmentGroupBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");

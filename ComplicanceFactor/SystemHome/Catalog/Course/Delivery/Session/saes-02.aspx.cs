@@ -62,7 +62,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     SessionWrapper.TempAddDeliveryInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
                 }
                 SessionWrapper.TempAddDeliveryInstructor = RemoveDuplicateRows(SessionWrapper.TempAddDeliveryInstructor, "c_user_id_fk");
-                if (hdValue.Value == "1" || string.IsNullOrEmpty(hdValue.Value))
+                if (hdValue.Value != "0" || string.IsNullOrEmpty(hdValue.Value))
                 {
                     gvInstructor.DataSource = SessionWrapper.TempAddDeliveryInstructor;
                     gvInstructor.DataBind();

@@ -468,16 +468,12 @@
     
     </script>
     <script type="text/javascript">
-        function stop_rebind_for_instructor(id) {
-            if (id == "ContentPlaceHolder1_btnGenerateSession") {
-                
+        function stop_rebind_for_instructor(id) {                   
+            if (id == "ContentPlaceHolder1_btnGenerateSession") {                
                 document.getElementById('<%=hdValue.ClientID %>').value = "0";
-            }
-            else {
-                document.getElementById('<%=hdValue.ClientID %>').value = "1";
-            }
+            }           
         }
-    </script>
+    </script>    
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sasw" runat="server"
@@ -717,7 +713,7 @@
                 </asp:GridView>
             </div>
             <br />
-            <asp:Button ID="btnAddInstructor" runat="server" Text="<%$ LabelResourceExpression: app_add_instructor_button_text %>" />
+            <asp:Button ID="btnAddInstructor"  runat="server" Text="<%$ LabelResourceExpression: app_add_instructor_button_text %>" />
         </div>
         <br />
         <div class="div_header_940">
@@ -938,9 +934,9 @@
             <table>
                 <tr>
                     <td align="left"> 
-                        <asp:Button ID="btnGenerateSession"  CssClass="cursor_hand" ValidationGroup="sasw"
+                        <asp:Button ID="btnGenerateSession"  CssClass="cursor_hand" ValidationGroup="sasw" Onclientclick="javascript:stop_rebind_for_instructor(this.id)"
                             runat="server" Text="<%$ LabelResourceExpression: app_generatr_session_button_text %>"
-                             Onclientclick="javascript:stop_rebind_for_instructor(this.id)" OnClick="btnGenerateSession_Click"/>
+                              OnClick="btnGenerateSession_Click"/>
                     </td>
                     <td class="textbox_long">
                         &nbsp;

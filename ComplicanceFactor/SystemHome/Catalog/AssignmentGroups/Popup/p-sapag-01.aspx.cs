@@ -23,11 +23,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
         {
             if (!IsPostBack)
             {
-                if(!string.IsNullOrEmpty(Request.QueryString["id"]))
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     editId = Request.QueryString["id"].ToString();
                 }
                 SearchResult();
+                //count page of page in search result
+                lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
+                lblHeaderPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();
             }
         }
         protected void btnHeaderFirst_Click(object sender, EventArgs e)
