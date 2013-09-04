@@ -39,6 +39,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                 {
                     editAudienceId = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     hdEditAudienceId.Value = editAudienceId;
+                    hdEncryptAudienceId.Value = SecurityCenter.EncryptText(editAudienceId);
                 }
                 //Bind status
                 ddlStatus.DataSource = SystemAudiencesBLL.GetStatus(SessionWrapper.CultureName, "sasup-01");

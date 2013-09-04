@@ -72,8 +72,7 @@
 
             $(".previewAssignment").click(function () {
                 //Get the Id of the record to delete
-                var record_id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;
-                alert(record_id);
+                var record_id = document.getElementById('<%=hdEditAssignmentId.ClientID %>').value;                
                 $.fancybox({
                     'type': 'iframe',
                     'titlePosition': 'over',
@@ -142,7 +141,37 @@
                     $(dropdowns.item(i) + "option[value='Greater than ']").removeAttr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Before']").removeAttr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='After']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").removeAttr("disabled", "disabled");
 
+                }
+                else if (element[0].innerHTML == 'u_country_id_fk' || element[0].innerHTML == 'u_locale_id_fk' || element[0].innerHTML == 'u_timezone_fk') {
+                    $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Contains']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Less than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").attr("disabled", "disabled");
+                }
+                else if (element[0].innerHTML == 'u_sr_is_manager' || element[0].innerHTML == 'u_sr_is_instructor' || element[0].innerHTML == 'u_sr_is_compliance' || element[0].innerHTML == 'u_sr_is_training' || element[0].innerHTML == 'u_sr_is_administrator') {
+                    $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Starts with']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Starts with']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Contains']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Contains']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Less than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").attr("disabled", "disabled");
                 }
                 else {
                     $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
@@ -155,11 +184,13 @@
                     $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").removeAttr("disabled", "disabled");
                 }
             }
         });
     </script>
-</asp:Content>
+ </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saeag" runat="server"
         ValidationGroup="saeag"></asp:ValidationSummary>

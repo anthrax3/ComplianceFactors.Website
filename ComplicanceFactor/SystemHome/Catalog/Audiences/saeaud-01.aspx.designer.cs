@@ -67,6 +67,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences {
         protected global::System.Web.UI.WebControls.HiddenField hdStopRebind;
         
         /// <summary>
+        /// hdEncryptAudienceId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdEncryptAudienceId;
+        
+        /// <summary>
         /// btnHeaderSave control.
         /// </summary>
         /// <remarks>

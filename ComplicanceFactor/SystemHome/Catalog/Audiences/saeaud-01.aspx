@@ -31,7 +31,7 @@
             }
 
             var id = document.getElementById('<%=hdEditAudienceId.ClientID %>').value;
-            alert(id);
+            var encryptid = document.getElementById('<%=hdEncryptAudienceId.ClientID %>').value;
             $.fancybox({
                 'type': 'iframe',
                 'titlePosition': 'over',
@@ -50,7 +50,7 @@
                 'hideOnOverlayClick': false,
                 'afterClose': function () {
                     //window.location.reload(); note:when i close popup then reload page
-                    window.location.replace("../Audiences/saeaud-01.aspx?popup=false&reset=true");
+                    window.location.replace("../Audiences/saeaud-01.aspx?popup=false&reset=true&id=" + encryptid);
                 },
                 'href': 'Popup/p-saap-01.aspx?id=' + id,
                 'onComplete': function () {
@@ -141,7 +141,37 @@
                     $(dropdowns.item(i) + "option[value='Greater than ']").removeAttr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Before']").removeAttr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='After']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").removeAttr("disabled", "disabled");
 
+                }
+                else if (element[0].innerHTML == 'u_country_id_fk' || element[0].innerHTML == 'u_locale_id_fk' || element[0].innerHTML == 'u_timezone_fk') {
+                    $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Starts with']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Starts with']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Contains']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Contains']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Less than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").attr("disabled", "disabled");
+                }
+                else if (element[0].innerHTML == 'u_sr_is_manager' || element[0].innerHTML == 'u_sr_is_instructor' || element[0].innerHTML == 'u_sr_is_compliance' || element[0].innerHTML == 'u_sr_is_training' || element[0].innerHTML == 'u_sr_is_administrator') {
+                    $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Starts with']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Starts with']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Contains']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Contains']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Less than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").attr("disabled", "disabled");
                 }
                 else {
                     $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
@@ -154,6 +184,8 @@
                     $(dropdowns.item(i) + "option[value='Greater than']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Before']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='After']").attr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Null']").removeAttr("disabled", "disabled");
+                    $(dropdowns.item(i) + "option[value='Not Null']").removeAttr("disabled", "disabled");
                 }
             }
         });
@@ -168,7 +200,7 @@
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;" />
     <asp:HiddenField ID="hdEditAudienceId" runat="server" />
     <asp:HiddenField ID="hdStopRebind" runat="server" />
-
+    <asp:HiddenField ID="hdEncryptAudienceId" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table>
