@@ -398,6 +398,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups
                 else
                 {
                     dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_values"] = DBNull.Value;
+                }                
+                if (dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "Assigned" || dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "Enrolled" || dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "Completed" || dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "Passed" || dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_element_id_fk"].ToString() == "Failed")
+                {
+                    dtAssignmentParam.Rows[indexRow]["u_assignment_group_param_operator_id_fk"] = DBNull.Value; //Because u_assignment_group_param_element_id_fk is eqaul to Assigned,Enrolled,Completed,Passed and Failed
                 }
                 dtAssignmentParam.AcceptChanges();
             }

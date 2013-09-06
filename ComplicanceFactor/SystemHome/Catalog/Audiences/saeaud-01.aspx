@@ -126,11 +126,11 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            var gridView = document.getElementById('<%= gvAudienceParameters.ClientID %>');
+            var gridView = document.getElementById('<%= gvAssignmentGroupParameters.ClientID %>');
             for (var i = 0; i < gridView.rows.length; i++) {
                 var element = gridView.rows[i].cells[0].getElementsByTagName("span");
                 var dropdowns = gridView.getElementsByTagName('select');
-                if (element[0].innerHTML == 'u_hris_hire_date' || element[0].innerHTML == 'u_hris_last_rehire_date') {
+                if (element[0].innerHTML == 'Hire Date' || element[0].innerHTML == 'Rehire Date') {
                     $(dropdowns.item(i) + "option[value='Between']").removeAttr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Not Between']").removeAttr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Starts with']").attr("disabled", "disabled");
@@ -145,7 +145,7 @@
                     $(dropdowns.item(i) + "option[value='Not Null']").removeAttr("disabled", "disabled");
 
                 }
-                else if (element[0].innerHTML == 'u_country_id_fk' || element[0].innerHTML == 'u_locale_id_fk' || element[0].innerHTML == 'u_timezone_fk') {
+                else if (element[0].innerHTML == 'Country' || element[0].innerHTML == 'Locale' || element[0].innerHTML == 'Timezone') {
                     $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Starts with']").removeAttr("disabled", "disabled");
@@ -159,7 +159,7 @@
                     $(dropdowns.item(i) + "option[value='Null']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Not Null']").attr("disabled", "disabled");
                 }
-                else if (element[0].innerHTML == 'u_sr_is_manager' || element[0].innerHTML == 'u_sr_is_instructor' || element[0].innerHTML == 'u_sr_is_compliance' || element[0].innerHTML == 'u_sr_is_training' || element[0].innerHTML == 'u_sr_is_administrator') {
+                else if (element[0].innerHTML == 'Is Manager' || element[0].innerHTML == 'Is Instructor' || element[0].innerHTML == 'Is Compliance' || element[0].innerHTML == 'Is Training' || element[0].innerHTML == 'Is Administrator') {
                     $(dropdowns.item(i) + "option[value='Between']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Not Between']").attr("disabled", "disabled");
                     $(dropdowns.item(i) + "option[value='Starts with']").attr("disabled", "disabled");
@@ -313,7 +313,7 @@
                                     <table>
                                         <tr>
                                             <td class="gridview_row_width_7">
-                                               <span><%# Eval("u_audiences_param_element_id_fk")%></span>
+                                               <span><%# Eval("e_audiences_element_name")%></span>
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlOperator" runat="server" CssClass="ddl_user_advanced_search"

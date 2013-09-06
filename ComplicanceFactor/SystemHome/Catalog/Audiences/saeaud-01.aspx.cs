@@ -258,6 +258,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
                 {
                     dtAudienceParam.Rows[indexRow]["u_audiences_param_values"] = DBNull.Value;
                 }
+                if (dtAudienceParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "Assigned" || dtAudienceParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "Enrolled" || dtAudienceParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "Completed" || dtAudienceParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "Passed" || dtAudienceParam.Rows[indexRow]["u_audiences_param_element_id_fk"].ToString() == "Failed")
+                {
+                    dtAudienceParam.Rows[indexRow]["u_audiences_param_operator_id_fk"] = DBNull.Value; //Because u_assignment_group_param_element_id_fk is eqaul to Assigned,Enrolled,Completed,Passed and Failed
+                }
                 dtAudienceParam.AcceptChanges();
             }
         }
