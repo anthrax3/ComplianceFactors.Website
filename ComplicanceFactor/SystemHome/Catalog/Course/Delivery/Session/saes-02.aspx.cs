@@ -35,7 +35,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     //Get session
                     GetDeliverySessions(editSession, SystemCatalogBLL.GetSessions(editSession));
                     RevertBack();
-                }
+ }
                 //Get instructor
 
 
@@ -45,7 +45,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     SessionWrapper.TempDeliveryInstructor = null;
                     SessionWrapper.TempDeliveryInstructor = TempDataTables.TempDeliveryInstructors();
                 }
-
 
                 //DataTable dtTempInstructor = SessionWrapper.TempDeliveryInstructor;
                 DataTable dtInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);

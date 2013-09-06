@@ -302,7 +302,10 @@
     <script type="text/javascript">
         function stop_rebind_for_instructor(id) {
             if (id == "ContentPlaceHolder1_btnSaveSessionInformation") {
-                document.getElementById('<%=hdValue.ClientID %>').value = "0";
+                var gridView = document.getElementById('<%= gvInstructor.ClientID %>');
+                if (gridView.rows.length > 0) {
+                    document.getElementById('<%=hdValue.ClientID %>').value = "0";
+                }
             }
         }
     </script>

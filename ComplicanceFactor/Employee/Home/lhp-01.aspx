@@ -37,7 +37,7 @@
             $('#<%=gvCurriculum.ClientID %>')
 			.tablesorter({ headers: { 4: { sorter: false }, 5: { sorter: false}} });
             $('#<%=gvLearningHistory.ClientID %>')
-			.tablesorter({ headers: { 5: { sorter: false }, 6: { sorter: false}} });
+			.tablesorter({ headers: { 5: { sorter: false }, 5: { sorter: false }, 6: { sorter: false }, 7: { sorter: false}} });
 
         });
 

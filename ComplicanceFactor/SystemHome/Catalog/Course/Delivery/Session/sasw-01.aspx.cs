@@ -414,14 +414,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
         }
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["Copy"]))
-            {
-
-            }
-            else
+            if (string.IsNullOrEmpty(Request.QueryString["Copy"]))
             {
                 ClearSession();
-            }
+            }           
             Response.Redirect(Request.RawUrl);
         }
         protected void btnCancel_Click(object sender, EventArgs e)
