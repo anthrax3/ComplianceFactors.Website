@@ -126,7 +126,7 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            var gridView = document.getElementById('<%= gvAssignmentGroupParameters.ClientID %>');
+            var gridView = document.getElementById('<%= gvAudienceParameters.ClientID %>');
             for (var i = 0; i < gridView.rows.length; i++) {
                 var element = gridView.rows[i].cells[0].getElementsByTagName("span");
                 var dropdowns = gridView.getElementsByTagName('select');

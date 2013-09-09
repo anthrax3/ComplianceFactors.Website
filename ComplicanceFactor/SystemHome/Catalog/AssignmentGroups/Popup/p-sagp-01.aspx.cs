@@ -61,8 +61,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.AssignmentGroups.Popup
                 else
                 {
                     assignparam.u_assignment_group_param_values = txtValues.Text;
-                }               
-                
+                }
+                assignparam.u_assignment_group_param_operator_id_fk = ddlOperator.SelectedValue;
             }
             assignparam.u_assignment_group_param_element_id_fk = ddlElement.SelectedValue;
             

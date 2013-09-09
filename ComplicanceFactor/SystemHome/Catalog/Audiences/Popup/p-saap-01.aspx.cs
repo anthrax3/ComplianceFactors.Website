@@ -37,15 +37,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences.Popup
             //Add parameter
             divError.Style.Add("display", "none");
             divSuccess.Style.Add("display", "none");
-            SystemAudiences assignparam = new SystemAudiences();
+            SystemAudiences audienceparam = new SystemAudiences();
             /// Hash encryption for username and password
             /// </summary>
             HashEncryption encHash = new HashEncryption();
-            assignparam.u_audience_id_fk = groupId;
+            audienceparam.u_audience_id_fk = groupId;
             if (ddlElement.SelectedValue == "Assigned" || ddlElement.SelectedValue == "Enrolled" || ddlElement.SelectedValue == "Completed" || ddlElement.SelectedValue == "Passed" || ddlElement.SelectedValue == "Failed")
             {
-                assignparam.u_audience_param_values = null;
-                assignparam.u_audience_param_operator_id_fk = null;
+                audienceparam.u_audience_param_values = null;
+                audienceparam.u_audience_param_operator_id_fk = null;
             }
             else
             {
@@ -55,19 +55,20 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences.Popup
                     string[] usernames = txtValues.Text.Split(',');
                     for (int i = 0; i < usernames.Length; i++)
                     {
-                        assignparam.u_audience_param_values += encHash.GenerateHashvalue(usernames[i], true) + ",";
+                        audienceparam.u_audience_param_values += encHash.GenerateHashvalue(usernames[i], true) + ",";
                     }
-                    assignparam.u_audience_param_values = assignparam.u_audience_param_values.TrimEnd(',');
+                    audienceparam.u_audience_param_values = audienceparam.u_audience_param_values.TrimEnd(',');
                 }
                 else
                 {
-                    assignparam.u_audience_param_values = txtValues.Text;
+                    audienceparam.u_audience_param_values = txtValues.Text;
                 }
-                assignparam.u_audience_param_operator_id_fk = ddlOperator.SelectedValue;
+                audienceparam.u_audience_param_operator_id_fk = ddlOperator.SelectedValue;
+                
             }
-            assignparam.u_audience_param_element_id_fk = ddlElement.SelectedValue;
+            audienceparam.u_audience_param_element_id_fk = ddlElement.SelectedValue;
 
-            int error = SystemAudiencesBLL.AddAudienceParameter(assignparam);
+            int error = SystemAudiencesBLL.AddAudienceParameter(audienceparam);
             if (error != -1)
             {
                 divSuccess.Style.Add("display", "block");

@@ -34,8 +34,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                     SessionWrapper.TempDeliveryInstructor = TempDataTables.TempDeliveryInstructors();
                     //Get session
                     GetDeliverySessions(editSession, SystemCatalogBLL.GetSessions(editSession));
-                    RevertBack();
- }
+                    //RevertBack();
+                }
                 //Get instructor
 
 
@@ -57,14 +57,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                    //SessionWrapper.TempAddDeliveryInstructor;
                 }
                 else
-                {
-                    SessionWrapper.TempAddDeliveryInstructor = SystemCatalogBLL.GetSessionInstructor(editSession);
+                {                    
+                    SessionWrapper.TempAddDeliveryInstructor=SystemCatalogBLL.GetSessionInstructor(editSession);
                 }
                 SessionWrapper.TempAddDeliveryInstructor = RemoveDuplicateRows(SessionWrapper.TempAddDeliveryInstructor, "c_user_id_fk");
                 if (hdValue.Value != "0" || string.IsNullOrEmpty(hdValue.Value))
                 {
                     gvInstructor.DataSource = SessionWrapper.TempAddDeliveryInstructor;
                     gvInstructor.DataBind();
+                    //RevertBack();
                 }
                 //Set id for c_session_system_id_pk
                 SessionWrapper.c_session_system_id_pk = editSession;
@@ -121,10 +122,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 //Delete selected instructor in database
                 SystemCatalogBLL.DeleteSessionInstructor(args.Trim());
                 //Delete selected instructor in session
-                var rows = SessionWrapper.TempDeliveryInstructor.Select("c_instructor_system_id_pk= '" + args.Trim() + "'");
+                var rows = SessionWrapper.TempAddDeliveryInstructor.Select("c_instructor_system_id_pk= '" + args.Trim() + "'");
                 foreach (var row in rows)
                     row.Delete();
-                SessionWrapper.TempDeliveryInstructor.AcceptChanges();
+                SessionWrapper.TempAddDeliveryInstructor.AcceptChanges();
             }
             catch (Exception ex)
             {
@@ -305,8 +306,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                             Logger.WriteToErrorLog("saes-02.aspx", ex.Message);
                         }
                     }
-                }
-
+                }                
                 //Close fancybox
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
             }
