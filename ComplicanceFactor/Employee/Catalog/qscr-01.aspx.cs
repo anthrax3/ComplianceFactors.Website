@@ -303,10 +303,23 @@ namespace ComplicanceFactor.Employee.Catalog
                              }
                          }
 
+                         else if (SessionWrapper.isLeraningHistory == false && isEnroll == true)
+                         {
+                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                             btnDrop.Style.Add("display", "inline");
+                             btnEnroll.Style.Add("display", "none");
+                         }
+                         else if (SessionWrapper.isLeraningHistory == true && isEnroll == true)
+                         {
+                             lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                             btnDrop.Style.Add("display", "none");
+                             btnEnroll.Style.Add("display", "none");
+                         }
                          else
                          {
                              btnEnroll.Style.Add("display", "inline");
                              btnEnroll.Text = "Re-Enroll";
+                             SessionWrapper.isLeraningHistory = false;
                              //ltlReEnroll.Text = "<input type=button id=" + e_enroll_delivery_id_fk + "," + strDeliveryType + "," + c_course_id_fk + "," + c_delivery_waitlist_flag + "," + approvalDelivery + "," + c_course_approve + "  class='enroll cursor_hand' value= " + LocalResources.GetLabel("app_enroll_button_text") + " />";
 
                              //if (!string.IsNullOrEmpty(strEnrollType) && strEnrollType == "Self-enroll")

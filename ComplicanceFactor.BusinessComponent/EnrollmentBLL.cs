@@ -133,77 +133,92 @@ namespace ComplicanceFactor.BusinessComponent
             try
             {
                 Hashtable htConfirmEnroll = new Hashtable();
-                htConfirmEnroll.Add("@e_enroll_user_id_fk", Enroll.e_enroll_user_id_fk);
-                htConfirmEnroll.Add("@e_enroll_course_id_fk", Enroll.e_enroll_course_id_fk);
-                htConfirmEnroll.Add("@e_enroll_delivery_id_fk", Enroll.e_enroll_delivery_id_fk);
-                htConfirmEnroll.Add("@e_enroll_required_flag", Enroll.e_enroll_required_flag);
-                htConfirmEnroll.Add("@e_enroll_approval_required_flag", Enroll.e_enroll_approval_required_flag);
-                htConfirmEnroll.Add("@e_enroll_type_name", Enroll.e_enroll_type_name);
-                htConfirmEnroll.Add("@e_enroll_approval_status_name", Enroll.e_enroll_approval_status_name);
-                htConfirmEnroll.Add("@e_enroll_status_name", Enroll.e_enroll_status_name);
-                htConfirmEnroll.Add("@e_check_enroll", e_check_enroll);
-                htConfirmEnroll.Add("@e_enroll_level_1_req_flag", Enroll.e_enroll_level_1_req_flag);
-                htConfirmEnroll.Add("@e_enroll_approver_1_type", Enroll.e_enroll_approver_1_type);
-                if (Enroll.e_enroll_target_due_date != null)
-                {
-                    htConfirmEnroll.Add("@e_enroll_target_due_date", Enroll.e_enroll_target_due_date);
-                }
-                else
-                {
-                    htConfirmEnroll.Add("@e_enroll_target_due_date", DBNull.Value);
-                }
-                if (!string.IsNullOrEmpty(Enroll.e_enroll_approver_1_id_fk))
-                {
-                    htConfirmEnroll.Add("@e_enroll_approver_1_id_fk", Enroll.e_enroll_approver_1_id_fk);
-                }
-                else
-                {
-                    htConfirmEnroll.Add("@e_enroll_approver_1_id_fk", DBNull.Value);
-                }
+                Hashtable htReEnroll = new Hashtable();
 
-                htConfirmEnroll.Add("@e_enroll_approver_1_decision_flag", Enroll.e_enroll_approver_1_decision_flag);
-                htConfirmEnroll.Add("@e_enroll_approver_1_decision_date", Enroll.e_enroll_approver_1_decision_date);
-                htConfirmEnroll.Add("@e_enroll_level_2_req_flag", Enroll.e_enroll_level_2_req_flag);
-                htConfirmEnroll.Add("@e_enroll_approver_2_type", Enroll.e_enroll_approver_2_type);
-                if (!string.IsNullOrEmpty(Enroll.e_enroll_approver_2_id_fk))
-                {
-                    htConfirmEnroll.Add("@e_enroll_approver_2_id_fk", Enroll.e_enroll_approver_2_id_fk);
-                }
-                else
-                {
-                    htConfirmEnroll.Add("@e_enroll_approver_2_id_fk", DBNull.Value);
-                }
-                htConfirmEnroll.Add("@e_enroll_approver_2_decision_flag", Enroll.e_enroll_approver_2_decision_flag);
-                htConfirmEnroll.Add("@e_enroll_approver_2_decision_date", Enroll.e_enroll_approver_2_decision_date);
-                htConfirmEnroll.Add("@e_enroll_level_3_req_flag", Enroll.e_enroll_level_3_req_flag);
-                htConfirmEnroll.Add("@e_enroll_approver_3_type", Enroll.e_enroll_approver_3_type);
-                if (!string.IsNullOrEmpty(Enroll.e_enroll_approver_3_id_fk))
-                {
-                    htConfirmEnroll.Add("@e_enroll_approver_3_id_fk", Enroll.e_enroll_approver_3_id_fk);
-                }
-                else
-                {
-                    htConfirmEnroll.Add("@e_enroll_approver_3_id_fk", DBNull.Value);
-                }
-                htConfirmEnroll.Add("@e_enroll_approver_3_decision_flag", Enroll.e_enroll_approver_3_decision_flag);
-                htConfirmEnroll.Add("@e_enroll_approver_3_decision_date", Enroll.e_enroll_approver_3_decision_date);
-                htConfirmEnroll.Add("@e_enroll_approval_final_decision_date", Enroll.e_enroll_approval_final_decision_date);
-                htConfirmEnroll.Add("@e_check_course_approval", Enroll.e_check_course_approval);
-                htConfirmEnroll.Add("@e_check_delivery_approval", Enroll.e_check_delivery_approval);
-                if (!string.IsNullOrEmpty(Enroll.e_enroll_manger_id_fk))
-                {
-                    htConfirmEnroll.Add("@e_enroll_manger_id_fk", Enroll.e_enroll_manger_id_fk);
-                }
-                else
-                {
-                    htConfirmEnroll.Add("@e_enroll_manger_id_fk", DBNull.Value);
-                }
                 if (Enroll.e_re_enroll == true)
                 {
-                    return DataProxy.FetchSPOutput("e_sp_insert_reenrollment", htConfirmEnroll);
+                    htReEnroll.Add("@e_enroll_user_id_fk", Enroll.e_enroll_user_id_fk);
+                    htReEnroll.Add("@e_enroll_course_id_fk", Enroll.e_enroll_course_id_fk);
+                    htReEnroll.Add("@e_enroll_delivery_id_fk", Enroll.e_enroll_delivery_id_fk);
+                    htReEnroll.Add("@e_enroll_type_name", Enroll.e_enroll_type_name);
+                    htReEnroll.Add("@e_enroll_status_name", Enroll.e_enroll_status_name);
+                    if (Enroll.e_enroll_target_due_date != null)
+                    {
+                        htReEnroll.Add("@e_enroll_target_due_date", Enroll.e_enroll_target_due_date);
+                    }
+                    else
+                    {
+                        htReEnroll.Add("@e_enroll_target_due_date", DBNull.Value);
+                    }
+                    return DataProxy.FetchSPOutput("e_sp_insert_reenrollment", htReEnroll);
                 }
                 else
                 {
+                    htConfirmEnroll.Add("@e_enroll_user_id_fk", Enroll.e_enroll_user_id_fk);
+                    htConfirmEnroll.Add("@e_enroll_course_id_fk", Enroll.e_enroll_course_id_fk);
+                    htConfirmEnroll.Add("@e_enroll_delivery_id_fk", Enroll.e_enroll_delivery_id_fk);
+                    htConfirmEnroll.Add("@e_enroll_required_flag", Enroll.e_enroll_required_flag);
+                    htConfirmEnroll.Add("@e_enroll_approval_required_flag", Enroll.e_enroll_approval_required_flag);
+                    htConfirmEnroll.Add("@e_enroll_type_name", Enroll.e_enroll_type_name);
+                    htConfirmEnroll.Add("@e_enroll_approval_status_name", Enroll.e_enroll_approval_status_name);
+                    htConfirmEnroll.Add("@e_enroll_status_name", Enroll.e_enroll_status_name);
+                    htConfirmEnroll.Add("@e_check_enroll", e_check_enroll);
+                    htConfirmEnroll.Add("@e_enroll_level_1_req_flag", Enroll.e_enroll_level_1_req_flag);
+                    htConfirmEnroll.Add("@e_enroll_approver_1_type", Enroll.e_enroll_approver_1_type);
+                    if (Enroll.e_enroll_target_due_date != null)
+                    {
+                        htConfirmEnroll.Add("@e_enroll_target_due_date", Enroll.e_enroll_target_due_date);
+                    }
+                    else
+                    {
+                        htConfirmEnroll.Add("@e_enroll_target_due_date", DBNull.Value);
+                    }
+                    if (!string.IsNullOrEmpty(Enroll.e_enroll_approver_1_id_fk))
+                    {
+                        htConfirmEnroll.Add("@e_enroll_approver_1_id_fk", Enroll.e_enroll_approver_1_id_fk);
+                    }
+                    else
+                    {
+                        htConfirmEnroll.Add("@e_enroll_approver_1_id_fk", DBNull.Value);
+                    }
+
+                    htConfirmEnroll.Add("@e_enroll_approver_1_decision_flag", Enroll.e_enroll_approver_1_decision_flag);
+                    htConfirmEnroll.Add("@e_enroll_approver_1_decision_date", Enroll.e_enroll_approver_1_decision_date);
+                    htConfirmEnroll.Add("@e_enroll_level_2_req_flag", Enroll.e_enroll_level_2_req_flag);
+                    htConfirmEnroll.Add("@e_enroll_approver_2_type", Enroll.e_enroll_approver_2_type);
+                    if (!string.IsNullOrEmpty(Enroll.e_enroll_approver_2_id_fk))
+                    {
+                        htConfirmEnroll.Add("@e_enroll_approver_2_id_fk", Enroll.e_enroll_approver_2_id_fk);
+                    }
+                    else
+                    {
+                        htConfirmEnroll.Add("@e_enroll_approver_2_id_fk", DBNull.Value);
+                    }
+                    htConfirmEnroll.Add("@e_enroll_approver_2_decision_flag", Enroll.e_enroll_approver_2_decision_flag);
+                    htConfirmEnroll.Add("@e_enroll_approver_2_decision_date", Enroll.e_enroll_approver_2_decision_date);
+                    htConfirmEnroll.Add("@e_enroll_level_3_req_flag", Enroll.e_enroll_level_3_req_flag);
+                    htConfirmEnroll.Add("@e_enroll_approver_3_type", Enroll.e_enroll_approver_3_type);
+                    if (!string.IsNullOrEmpty(Enroll.e_enroll_approver_3_id_fk))
+                    {
+                        htConfirmEnroll.Add("@e_enroll_approver_3_id_fk", Enroll.e_enroll_approver_3_id_fk);
+                    }
+                    else
+                    {
+                        htConfirmEnroll.Add("@e_enroll_approver_3_id_fk", DBNull.Value);
+                    }
+                    htConfirmEnroll.Add("@e_enroll_approver_3_decision_flag", Enroll.e_enroll_approver_3_decision_flag);
+                    htConfirmEnroll.Add("@e_enroll_approver_3_decision_date", Enroll.e_enroll_approver_3_decision_date);
+                    htConfirmEnroll.Add("@e_enroll_approval_final_decision_date", Enroll.e_enroll_approval_final_decision_date);
+                    htConfirmEnroll.Add("@e_check_course_approval", Enroll.e_check_course_approval);
+                    htConfirmEnroll.Add("@e_check_delivery_approval", Enroll.e_check_delivery_approval);
+                    if (!string.IsNullOrEmpty(Enroll.e_enroll_manger_id_fk))
+                    {
+                        htConfirmEnroll.Add("@e_enroll_manger_id_fk", Enroll.e_enroll_manger_id_fk);
+                    }
+                    else
+                    {
+                        htConfirmEnroll.Add("@e_enroll_manger_id_fk", DBNull.Value);
+                    }
                     return DataProxy.FetchSPOutput("e_sp_insert_enrollment", htConfirmEnroll);
                 }
 

@@ -341,10 +341,29 @@ namespace ComplicanceFactor.Employee.Catalog
                                 //btnDrop.Style.Add("display", "none");
                             }
                         }
+                        //else /*Hide for reenroll Sep-10-13*/
+                        //{
+                        //    btnEnroll.Style.Add("display", "inline");
+                        //    btnEnroll.Text = "Re-Enroll";
+                        //    SessionWrapper.isLeraningHistory = false;
+                        //}
+                        else if (SessionWrapper.isLeraningHistory == false && isEnroll == true)
+                        {
+                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                            btnDrop.Style.Add("display", "inline");
+                            btnEnroll.Style.Add("display", "none");
+                        }
+                        else if (SessionWrapper.isLeraningHistory == true && isEnroll == true)
+                        {
+                            lblAlreadyEnrollMessage.Text = "***Already Enrolled***";
+                            btnDrop.Style.Add("display", "none");
+                            btnEnroll.Style.Add("display", "none");
+                        }
                         else
                         {
                             btnEnroll.Style.Add("display", "inline");
                             btnEnroll.Text = "Re-Enroll";
+                            SessionWrapper.isLeraningHistory = false;                            
                         }
                         
                     }

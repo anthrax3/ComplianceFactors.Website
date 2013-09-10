@@ -17,15 +17,21 @@
             height: 575px;
         }
     </style>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".allownumeric").keypress(function (e) {
-                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                    return false;
-                }
-            });
-        });
-    </script>
+      <script type="text/javascript">
+          $(document).ready(function () {
+              alert(1);
+              $(".allownumeric").keypress(function (e) {
+                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                      return false;
+                  }
+              });
+              $(".allowalpha").keypress(function (e) {
+                  if (e.which < 97 /* a */ || e.which > 122 /* z */) {
+                      e.preventDefault();
+                  }
+              });
+          });
+    </script>  
     <script type="text/javascript">
         function validateMinMaxPercentage(sender, args) {
             var minPercentage = document.getElementById('<%=txtMinScore_InPercentage.ClientID %>').value;
@@ -128,7 +134,7 @@
                         <%=LocalResources.GetLabel("app_grade_letters_text")%>:
                     </td>
                     <td class="text_align">
-                        <asp:TextBox ID="txtGrade" runat="server" CssClass="textbox_75"></asp:TextBox>
+                        <asp:TextBox ID="txtGrade" runat="server" CssClass="textbox_75 allowalpha"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
