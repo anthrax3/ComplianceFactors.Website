@@ -1197,9 +1197,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum
                 curriculum.c_path = chkPaths.Checked;
                 curriculum.c_recert_path = chkRecertification.Checked;
                 curriculum.c_curriculum_created_by_id_fk = SessionWrapper.u_userid;
+                int error = SystemCurriculumBLL.CreateCurriculumNewVersion(curriculum);             
 
-                SystemCurriculumBLL.CreateCurriculumNewVersion(curriculum);
-                Response.Redirect("~/SystemHome/Catalog/Curriculum/saec-01.aspx?id=" + SecurityCenter.EncryptText(curriculum.c_new_curriculum_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true") , false);
+                if (error != -2)
+                {
+                    divVersion.Style.Add("display", "none");
+                    Response.Redirect("~/SystemHome/Catalog/Curriculum/saec-01.aspx?id=" + SecurityCenter.EncryptText(curriculum.c_new_curriculum_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true"), false);
+                }
+                else
+                {
+                    mpeCreateNewVersion.Show();
+                    divVersion.Style.Add("display", "block");
+                    divVersion.InnerText = LocalResources.GetText("app_version_id_already_exist_error_wrong");
+                }
             }
             catch (Exception ex)
             {

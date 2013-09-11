@@ -1341,8 +1341,18 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 course.c_fulfillment = chkFulfillments.Checked;
                 course.c_delivery = chkDeliveries.Checked;
                 course.c_course_created_by_id_fk = SessionWrapper.u_userid;
-                SystemCatalogBLL.CreateCourseNewVersion(course);
-                Response.Redirect("~/SystemHome/Catalog/Course/saetc-01.aspx?id=" + SecurityCenter.EncryptText(course.c_new_course_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true"), false);
+                int error = SystemCatalogBLL.CreateCourseNewVersion(course);
+                if (error != -2)
+                {
+                    divVersion.Style.Add("display", "none");
+                    Response.Redirect("~/SystemHome/Catalog/Course/saetc-01.aspx?id=" + SecurityCenter.EncryptText(course.c_new_course_system_id_pk) + "&succ=" + SecurityCenter.EncryptText("true"), false);
+                }
+                else
+                {                    
+                    mpeCreateNewVersion.Show();
+                    divVersion.Style.Add("display", "block");
+                    divVersion.InnerText = LocalResources.GetText("app_version_id_already_exist_error_wrong");
+                }
             }
             catch (Exception ex)
             {

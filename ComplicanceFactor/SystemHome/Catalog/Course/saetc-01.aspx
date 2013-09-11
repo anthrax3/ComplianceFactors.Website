@@ -1265,12 +1265,16 @@
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saetc" runat="server"
         ValidationGroup="saetc"></asp:ValidationSummary>
+    <asp:ValidationSummary class="validation_summary_error" ID="vs_saantc" runat="server"
+                        ValidationGroup="vsIcon"></asp:ValidationSummary>
     <asp:CustomValidator ID="cvRecurranceEvery" EnableClientScript="true" ClientValidationFunction="RecurranceEvery"
         ValidationGroup="saetc" runat="server" ErrorMessage="<%$ TextResourceExpression: app_recurrance_error_empty%>">&nbsp;</asp:CustomValidator>
+
     <div id="divSuccess" runat="server" class="msgarea_success" style="display: none;">
     </div>
     <div id="divError" runat="server" class="msgarea_error" style="display: none;">
     </div>
+
     <asp:HiddenField ID="hdNav_selected" runat="server" />
     <asp:HiddenField ID="hdCourseId" runat="server" />
     <div class="content_area_long">
@@ -2125,10 +2129,11 @@
             <asp:Panel ID="pnlCreateNewVersion" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
                 Style="display: none; padding-left: 0px; padding-right: 0px;">
                 <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
+                 <div id="divVersion" runat="server" class="validation_summary_error_popup"  style="display: none;width: 575px;"/>
                     <div>
-                        <div class="div_header_620">
+                        <div class="div_header_620">                       
                             <%=LocalResources.GetLabel("app_create_new_version_text")%>:
-                        </div>
+                        </div>                        
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
                             z-index: 1103; position: absolute;" runat="server" ImageUrl="~/Images/Zoom/fancy_close.png" />
                     </div>

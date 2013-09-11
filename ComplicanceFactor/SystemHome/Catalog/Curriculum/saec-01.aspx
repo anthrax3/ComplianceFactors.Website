@@ -2341,6 +2341,7 @@
         <asp:Panel ID="pnlCreateNewVersion" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
             Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlCreateNewCersionHeading" runat="server" CssClass="drag">
+            <div id="divVersion" runat="server" class="validation_summary_error_popup"  style="display: none;width: 575px;"/>
                 <div>
                     <div class="div_header_620">
                         <%=LocalResources.GetLabel("app_create_new_version_text")%>:

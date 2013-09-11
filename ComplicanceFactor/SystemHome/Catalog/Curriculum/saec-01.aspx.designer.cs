@@ -1012,6 +1012,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum {
         protected global::System.Web.UI.WebControls.Panel pnlCreateNewCersionHeading;
         
         /// <summary>
+        /// divVersion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divVersion;
+        
+        /// <summary>
         /// ImageButton1 control.
         /// </summary>
         /// <remarks>

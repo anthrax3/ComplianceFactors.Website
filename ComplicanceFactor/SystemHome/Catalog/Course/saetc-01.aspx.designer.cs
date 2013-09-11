@@ -31,6 +31,15 @@ namespace ComplicanceFactor.SystemHome.Catalog {
         protected global::System.Web.UI.WebControls.ValidationSummary vs_saetc;
         
         /// <summary>
+        /// vs_saantc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vs_saantc;
+        
+        /// <summary>
         /// cvRecurranceEvery control.
         /// </summary>
         /// <remarks>
@@ -893,6 +902,15 @@ namespace ComplicanceFactor.SystemHome.Catalog {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlCreateNewCersionHeading;
+        
+        /// <summary>
+        /// divVersion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divVersion;
         
         /// <summary>
         /// imgClose control.
