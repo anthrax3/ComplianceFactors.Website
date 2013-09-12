@@ -375,11 +375,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Audiences
             int error = SystemAudiencesBLL.UpdateAudience(updateAudience);
             if (error != -2)
             {
-                DataTable dtUser = SystemAudiencesBLL.GetAudienceUser(editAudienceId, SessionWrapper.CultureName);
-                ConvertDataTables ConvertXml = new ConvertDataTables();
-                if (dtUser.Rows.Count > 0)
+                if (dtAudienceParam.Rows.Count > 0)
                 {
-                    int result = SystemAudiencesBLL.InsertAudienceUser(editAudienceId, ConvertXml.ConvertDataTableToXml(dtUser));
+                    DataTable dtUser = SystemAudiencesBLL.GetAudienceUser(editAudienceId, SessionWrapper.CultureName);
+                    ConvertDataTables ConvertXml = new ConvertDataTables();
+                    if (dtUser.Rows.Count > 0)
+                    {
+                        int result = SystemAudiencesBLL.InsertAudienceUser(editAudienceId, ConvertXml.ConvertDataTableToXml(dtUser));
+                    }                    
                 }
                 //TO-DO show div with success message
                 divSuccess.Style.Add("display", "block");
