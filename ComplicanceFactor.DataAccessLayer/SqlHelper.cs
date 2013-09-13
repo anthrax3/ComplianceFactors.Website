@@ -177,6 +177,7 @@ namespace ComplicanceFactor.DataAccessLayer
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
                     DataSet ds = new DataSet();
+                    command.CommandTimeout = 0;
                     //// Fill the DataSet using default values for DataTable names, etc
                     adapter.Fill(ds);
                     //// Detach the SqlParameters from the command object, so they can be used again
