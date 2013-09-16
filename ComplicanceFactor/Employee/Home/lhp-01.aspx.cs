@@ -292,13 +292,13 @@ namespace ComplicanceFactor
                 {
                     btnEnroll.Style.Add("display", "inline");
                 }
-                else if (status == "Enrolled" && deliveryType == "OLT") 
+                else if ( (status == "Enrolled" || status == "Incomplete") && deliveryType == "OLT") 
                 {
                     btnLaunch.Style.Add("display", "inline");
                     string url = "/LMS/CoursePlayer.aspx?eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx"; //In future add url dynamic using (Request.Url.Host.ToLower())
                     btnLaunch.OnClientClick = "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1');";
                 }
-                else if(status == "Enrolled")
+                else if ((status == "Enrolled" || status == "Incomplete"))
                 {
                     if (enrollType == "Self-enroll")
                     {
