@@ -58,7 +58,7 @@
                     $("#<%= ddlOperator.ClientID %> option[value='Contains']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Less than']").removeAttr("disabled", "disabled");
-                    $("#<%= ddlOperator.ClientID %> option[value='Greater than ']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than']").removeAttr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Before']").removeAttr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='After']").removeAttr("disabled", "disabled");
                 }

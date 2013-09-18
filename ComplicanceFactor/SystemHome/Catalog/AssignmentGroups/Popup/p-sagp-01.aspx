@@ -33,7 +33,6 @@
 
             $('#<%= ddlElement.ClientID %>').change(function () {
                 if (this.value == 'u_hris_hire_date' || this.value == 'u_hris_last_rehire_date') {
-
                     $("#<%= ddlOperator.ClientID %> option[value='Between']").removeAttr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Not Between']").removeAttr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Starts with']").attr("disabled", "disabled");
@@ -41,7 +40,7 @@
                     $("#<%= ddlOperator.ClientID %> option[value='Contains']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Not Contains']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Less than']").removeAttr("disabled", "disabled");
-                    $("#<%= ddlOperator.ClientID %> option[value='Greater than ']").removeAttr("disabled", "disabled");
+                    $("#<%= ddlOperator.ClientID %> option[value='Greater than']").removeAttr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Before']").removeAttr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='After']").removeAttr("disabled", "disabled");
                 }
@@ -58,9 +57,9 @@
                     $("#<%= ddlOperator.ClientID %> option[value='After']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Null']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Not Null']").attr("disabled", "disabled");
-                }            
+                }
 
-                else if (this.value == 'u_sr_is_manager' || this.value == 'u_sr_is_instructor' || this.value == 'u_sr_is_compliance' ||  this.value == 'u_sr_is_training' ||  this.value == 'u_sr_is_administrator') {
+                else if (this.value == 'u_sr_is_manager' || this.value == 'u_sr_is_instructor' || this.value == 'u_sr_is_compliance' || this.value == 'u_sr_is_training' || this.value == 'u_sr_is_administrator') {
                     $("#<%= ddlOperator.ClientID %> option[value='Between']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Not Between']").attr("disabled", "disabled");
                     $("#<%= ddlOperator.ClientID %> option[value='Starts with']").attr("disabled", "disabled");
