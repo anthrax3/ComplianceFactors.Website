@@ -164,7 +164,7 @@
                             <%=LocalResources.GetLabel("app_manage_notifications_text")%></a>
                     </td>
                     <td>
-                        <a href="#">
+                        <a href="Reports/samrmp-01.aspx">
                             <%=LocalResources.GetLabel("app_manage_reports_text")%></a>
                     </td>
                     <td>

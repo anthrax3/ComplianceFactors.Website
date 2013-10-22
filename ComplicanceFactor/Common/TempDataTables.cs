@@ -1844,6 +1844,294 @@ namespace ComplicanceFactor.Common
             return dtTempAudience;
 
         }
+
+        public static DataTable TempReportLocale()
+        {
+            DataTable dtTempLocale = new DataTable();
+            DataColumn dtTempLocaleColumn;
+            //s_resource_locale_sort column
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.Int32");
+            dtTempLocaleColumn.ColumnName = "s_locale_sort";
+            dtTempLocaleColumn.AutoIncrement = true;
+            dtTempLocaleColumn.AutoIncrementSeed = 1;
+            dtTempLocaleColumn.AutoIncrementStep = 1;
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_resource_locales_system_id_pk column
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_system_id_pk";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_locale_id_fk
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_id_pk";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_resource_locale_name
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_title";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_resource_locale_description
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_description";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_resource_locale_text
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_text";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_course_locale_abstract
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_abstract";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_locale_aicc_url
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_aicc_url";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_locale_scorm_url
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_scorm_url";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            //s_delivery_system_id_fk
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_delivery_system_id_fk";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+           
+
+            //s_locale_file_guid
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_file_guid";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+
+            //s_locale_file_name
+            dtTempLocaleColumn = new DataColumn();
+            dtTempLocaleColumn.DataType = Type.GetType("System.String");
+            dtTempLocaleColumn.ColumnName = "s_locale_file_name";
+            dtTempLocale.Columns.Add(dtTempLocaleColumn);
+            return dtTempLocale;
+        }
+        public static DataTable TempReportParam()
+        {
+            DataTable dtTempReportParam = new DataTable();
+            DataColumn dtTempReportParamColumn;
+           
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.Int32");
+            dtTempReportParamColumn.ColumnName = "s_report_param_sort";
+            dtTempReportParamColumn.AutoIncrement = true;
+            dtTempReportParamColumn.AutoIncrementSeed = 1;
+            dtTempReportParamColumn.AutoIncrementStep = 1;
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+          
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_system_id_pk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+           
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_system_id_fk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+          
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_id_pk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+           
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_name";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+          
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_description";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+            
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_type_id_fk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+            
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.Boolean");
+            dtTempReportParamColumn.ColumnName = "s_report_param_visible_flag";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+            
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_table_id_pk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+           
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_field_id_pk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_label_name";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_label_locale_system_id_pk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_locale_id_fk";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+
+            dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_label";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+
+           
+           
+            return dtTempReportParam;
+        }
+        public static DataTable TempReportColumn()
+        {
+            DataTable dtTempReportColumn = new DataTable();
+            DataColumn dtTempReportCColumn;
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.Int32");
+            dtTempReportCColumn.ColumnName = "s_report_column_sort";
+            dtTempReportCColumn.AutoIncrement = true;
+            dtTempReportCColumn.AutoIncrementSeed = 1;
+            dtTempReportCColumn.AutoIncrementStep = 1;
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_system_id_pk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_system_id_fk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_id_pk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_name";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_description";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_type_id_fk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.Boolean");
+            dtTempReportCColumn.ColumnName = "s_report_column_visible_flag";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_table_id_pk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_field_id_pk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+            //s_report_param_label_name
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_column_label_name";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_label_locale_system_id_pk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_locale_id_fk";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            dtTempReportCColumn = new DataColumn();
+            dtTempReportCColumn.DataType = Type.GetType("System.String");
+            dtTempReportCColumn.ColumnName = "s_report_label";
+            dtTempReportColumn.Columns.Add(dtTempReportCColumn);
+
+            return dtTempReportColumn;
+        }
+
+        public static DataTable TempReportLabelLocale()
+        {
+            DataTable dtTempReportLabelLocale = new DataTable();
+            DataColumn dtTempReportLabelocaleColumn;
+
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.Int32");
+            dtTempReportLabelocaleColumn.ColumnName = "s_report_param_sort";
+            dtTempReportLabelocaleColumn.AutoIncrement = true;
+            dtTempReportLabelocaleColumn.AutoIncrementSeed = 1;
+            dtTempReportLabelocaleColumn.AutoIncrementStep = 1;
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+        
+
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.String");
+            dtTempReportLabelocaleColumn.ColumnName = "s_report_system_id_fk";
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+           
+
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.String");
+            dtTempReportLabelocaleColumn.ColumnName = "s_report_param_name";
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+         
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.String");
+            dtTempReportLabelocaleColumn.ColumnName = "s_report_param_label_name";
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.String");
+            dtTempReportLabelocaleColumn.ColumnName = "s_locale_description";
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.String");
+            dtTempReportLabelocaleColumn.ColumnName = "s_locale_id_pk";
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+            dtTempReportLabelocaleColumn = new DataColumn();
+            dtTempReportLabelocaleColumn.DataType = Type.GetType("System.String");
+            dtTempReportLabelocaleColumn.ColumnName = "s_report_label";
+            dtTempReportLabelLocale.Columns.Add(dtTempReportLabelocaleColumn);
+
+            
+
+            return dtTempReportLabelLocale;
+        }
     }
 
 }

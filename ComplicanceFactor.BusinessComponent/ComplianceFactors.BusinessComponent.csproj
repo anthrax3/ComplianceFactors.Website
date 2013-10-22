@@ -71,6 +71,10 @@
     <Compile Include="DataAccessObject\SystemHRISIntegration.cs" />
     <Compile Include="DataAccessObject\SystemMassEnrollment.cs" />
     <Compile Include="DataAccessObject\SystemNotification.cs" />
+    <Compile Include="DataAccessObject\SystemReport.cs" />
+    <Compile Include="DataAccessObject\SystemReportColumn.cs" />
+    <Compile Include="DataAccessObject\SystemReportLocale.cs" />
+    <Compile Include="DataAccessObject\SystemReportParam.cs" />
     <Compile Include="DataAccessObject\SystemSplashPage.cs" />
     <Compile Include="DataAccessObject\SystemThemes.cs" />
     <Compile Include="DataAccessObject\SystemTranscripts.cs" />
@@ -147,6 +151,7 @@
     <Compile Include="SystemMaterialBLL.cs" />
     <Compile Include="SystemMaterialTypeBLL.cs" />
     <Compile Include="SystemNotificationBLL.cs" />
+    <Compile Include="SystemReportBLL.cs" />
     <Compile Include="SystemResourceBLL.cs" />
     <Compile Include="SystemResourceTypeBLL.cs" />
     <Compile Include="SystemRoomBLL.cs" />

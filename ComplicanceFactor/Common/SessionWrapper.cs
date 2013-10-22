@@ -6877,6 +6877,74 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["Reset_Curriculum_Audience"] = value;
             }
         }
+
+
+        /// <summary>
+        /// ReportParam
+        /// </summary>
+        public static DataTable ReportParam
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ReportParam"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["ReportParam"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["ReportParam"] = value;
+            }
+        }
+        /// <summary>
+        /// ReportParam
+        /// </summary>
+        public static DataTable ReportColumn
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ReportColumn"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["ReportColumn"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["ReportColumn"] = value;
+            }
+        }
+        /// <summary>
+        /// ReportParam
+        /// </summary>
+        public static DataTable ReportLabelLocale
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ReportLabelLocale"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["ReportLabelLocale"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["ReportLabelLocale"] = value;
+            }
+        }
         //Reset_Course_Audience
 
         public static void clearsession()
