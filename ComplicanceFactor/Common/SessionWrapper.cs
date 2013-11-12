@@ -5493,6 +5493,26 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["TempEmployeelist_delivery"] = value;
             }
         }
+        public static DataTable TempEmployeelist_mail
+        {
+            get
+            {
+                if (HttpContext.Current.Session["TempEmployeelist_mail"] != null)
+                {
+
+                    return (DataTable)HttpContext.Current.Session["TempEmployeelist_mail"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["TempEmployeelist_mail"] = value;
+            }
+        }
         public static string selecteduserId_OLT
         {
             get

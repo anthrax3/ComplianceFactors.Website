@@ -710,5 +710,20 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable GetReportFields(string s_report_param_field_id_pk)
+        {
+            Hashtable htReport = new Hashtable();
+            htReport.Add("@s_report_param_field_id_pk", s_report_param_field_id_pk);
+           
+
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_report_table_field", htReport);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

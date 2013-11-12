@@ -168,19 +168,7 @@ namespace ComplicanceFactor.SystemHome
                 dtReports.Rows.Add(drReports);
             }
 
-            gvMyReports.DataSource = dtReports;
-            gvMyReports.DataBind();
-
-            if (gvMyReports.Rows.Count > 0)
-            {
-                gvMyReports.UseAccessibleHeader = true;
-                if (gvMyReports.HeaderRow != null)
-                {
-                    //This will tell ASP.NET to render the <thead> for the header row
-                    //using instead of the simple <tr>
-                    gvMyReports.HeaderRow.TableSection = TableRowSection.TableHeader;
-                }
-            }
+         
         }
 
         protected void gvSplashPages_RowCommand(object sender, GridViewCommandEventArgs e)

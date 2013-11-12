@@ -1544,7 +1544,43 @@ namespace ComplicanceFactor.Common
             return dtTempEmployee;
 
         }
+        public static DataTable TempUser()
+        {
+            DataTable dtTempUser = new DataTable();
+            DataColumn dtTempUserColumn;
 
+            dtTempUserColumn = new DataColumn();
+            dtTempUserColumn.DataType = Type.GetType("System.String");
+            dtTempUserColumn.ColumnName = "u_user_id_pk";
+            dtTempUser.Columns.Add(dtTempUserColumn);
+
+            dtTempUserColumn = new DataColumn();
+            dtTempUserColumn.DataType = Type.GetType("System.String");
+            dtTempUserColumn.ColumnName = "u_first_name";
+            dtTempUser.Columns.Add(dtTempUserColumn);
+
+            dtTempUserColumn = new DataColumn();
+            dtTempUserColumn.DataType = Type.GetType("System.String");
+            dtTempUserColumn.ColumnName = "u_last_name";
+            dtTempUser.Columns.Add(dtTempUserColumn);
+
+            dtTempUserColumn = new DataColumn();
+            dtTempUserColumn.DataType = Type.GetType("System.String");
+            dtTempUserColumn.ColumnName = "u_hris_employee_id";
+            dtTempUser.Columns.Add(dtTempUserColumn);
+
+            dtTempUserColumn = new DataColumn();
+            dtTempUserColumn.DataType = Type.GetType("System.String");
+            dtTempUserColumn.ColumnName = "u_email_address";
+            dtTempUser.Columns.Add(dtTempUserColumn);
+
+            dtTempUserColumn = new DataColumn();
+            dtTempUserColumn.DataType = Type.GetType("System.String");
+            dtTempUserColumn.ColumnName = "s_report_users_mailto_system_id_pk";
+            dtTempUser.Columns.Add(dtTempUserColumn);
+            return dtTempUser;
+
+        }
         public static DataTable TempCompletionCourse()
         {
             DataTable dtTempCompletionCourse = new DataTable();

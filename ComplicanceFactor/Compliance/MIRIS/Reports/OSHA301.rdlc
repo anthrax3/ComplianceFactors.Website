@@ -1,0 +1,2613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="OSHADataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>d3c93932-a7ac-40de-aca3-641fb9233992</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields>
+        <Field Name="c_case_id_pk">
+          <DataField>c_case_id_pk</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="c_case_number">
+          <DataField>c_case_number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_case_title">
+          <DataField>c_case_title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_case_category_fk">
+          <DataField>c_case_category_fk</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_case_type_fk">
+          <DataField>c_case_type_fk</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_case_status">
+          <DataField>c_case_status</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_employee_name">
+          <DataField>c_employee_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_employee_dob">
+          <DataField>c_employee_dob</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_employee_hire_date">
+          <DataField>c_employee_hire_date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_employee_id">
+          <DataField>c_employee_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_ssn">
+          <DataField>c_ssn</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_supervisor">
+          <DataField>c_supervisor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_incident_location">
+          <DataField>c_incident_location</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_incident_date">
+          <DataField>c_incident_date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="incident_HH">
+          <DataField>incident_HH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="incident_MM">
+          <DataField>incident_MM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_incident_time">
+          <DataField>c_incident_time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="c_employee_report_location">
+          <DataField>c_employee_report_location</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_note">
+          <DataField>c_note</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_root_cause_analysic_info">
+          <DataField>c_root_cause_analysic_info</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_corrective_action_info">
+          <DataField>c_corrective_action_info</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_300_case_outcome">
+          <DataField>c_osha_300_case_outcome</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_300_days_away_from_work">
+          <DataField>c_osha_300_days_away_from_work</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_300_days_of_restriction">
+          <DataField>c_osha_300_days_of_restriction</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_300_date_of_death">
+          <DataField>c_osha_300_date_of_death</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_300_type_of_illness">
+          <DataField>c_osha_300_type_of_illness</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_300_info">
+          <DataField>c_osha_300_info</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_worker_gender">
+          <DataField>c_osha_301_worker_gender</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="workstart_HH">
+          <DataField>workstart_HH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="workstart_MM">
+          <DataField>workstart_MM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_work_start_time">
+          <DataField>c_osha_301_work_start_time</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_physician">
+          <DataField>c_osha_301_physician</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_treatment_facilities">
+          <DataField>c_osha_301_treatment_facilities</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_emergency_room_text">
+          <DataField>c_osha_301_emergency_room_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_hospitalized_text">
+          <DataField>c_osha_301_hospitalized_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_emergency_room">
+          <DataField>c_osha_301_emergency_room</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_hospitalized">
+          <DataField>c_osha_301_hospitalized</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_address1">
+          <DataField>c_osha_301_address1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_address2">
+          <DataField>c_osha_301_address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_address3">
+          <DataField>c_osha_301_address3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_city">
+          <DataField>c_osha_301_city</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_state">
+          <DataField>c_osha_301_state</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_zip">
+          <DataField>c_osha_301_zip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_info_1">
+          <DataField>c_osha_301_info_1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_info_2">
+          <DataField>c_osha_301_info_2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_info_3">
+          <DataField>c_osha_301_info_3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_osha_301_info_4">
+          <DataField>c_osha_301_info_4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_01">
+          <DataField>c_custom_01</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_02">
+          <DataField>c_custom_02</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_03">
+          <DataField>c_custom_03</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_04">
+          <DataField>c_custom_04</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_05">
+          <DataField>c_custom_05</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_06">
+          <DataField>c_custom_06</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_07">
+          <DataField>c_custom_07</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_08">
+          <DataField>c_custom_08</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_09">
+          <DataField>c_custom_09</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_10">
+          <DataField>c_custom_10</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_11">
+          <DataField>c_custom_11</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_12">
+          <DataField>c_custom_12</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_custom_13">
+          <DataField>c_custom_13</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_case_date">
+          <DataField>c_case_date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_creation_date">
+          <DataField>c_creation_date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_creation_date_order">
+          <DataField>c_creation_date_order</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="c_case_category_text">
+          <DataField>c_case_category_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_case_type_text">
+          <DataField>c_case_type_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_status_text">
+          <DataField>c_status_text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_timezone_id_fk">
+          <DataField>c_timezone_id_fk</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Jobtransfer">
+          <DataField>Jobtransfer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AwayFromWork">
+          <DataField>AwayFromWork</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Death">
+          <DataField>Death</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Other">
+          <DataField>Other</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OtherIllness">
+          <DataField>OtherIllness</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HearingLoss">
+          <DataField>HearingLoss</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Poisoining">
+          <DataField>Poisoining</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RespiratoryCondition">
+          <DataField>RespiratoryCondition</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SkinDisorder">
+          <DataField>SkinDisorder</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Injury">
+          <DataField>Injury</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="c_illness_type_name">
+          <DataField>c_illness_type_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>OSHADataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>OSHADataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Work\ASC\ComplianceFactors.Website\ComplicanceFactor\Compliance\MIRIS\Reports\OSHADataSet.xsd</rd:SchemaPath>
+        <rd:TableName>DataTable1</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>DataTable1TableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>This </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Injury and Illness Incident Repor</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>t is one of the first forms you must fill out when a recordable work-related injury or illness has occurred.  Together with the </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Log of Work-Related injuries and Illnesses</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> and the accompanying </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Summary</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>, these forms help the employer and OSHA develop a picture of the extent and severity of work-related incidents.                                            </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>       Within 7 calendar days after you receive information that a recordable work-related injury or illness has occurred, you must fill out this form or an equivalent.  Some state workers' compensation, insurance, or other reports may be acceptable substitutes.  To be considered an equivalent form, any substitute must contain all the information asked for on this form.</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>       According to Public Law 91-596 and 29 CFR 1904, OSHA's recordkeeping rule, you must keep this form on file for 5 years following the year to which it pertains</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>       If you need additional copies of this form, you may photocopy and use as many as you need.</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>0.20153in</Top>
+        <Left>0.02792in</Left>
+        <Height>4.63542in</Height>
+        <Width>3.51043in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Information about the employee</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox19</rd:DefaultName>
+        <Top>0.20153in</Top>
+        <Left>3.66333in</Left>
+        <Height>0.25in</Height>
+        <Width>2.61458in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox20">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>1) Full Name</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>0.62514in</Top>
+        <Left>3.66333in</Left>
+        <Height>0.26374in</Height>
+        <Width>0.86807in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line4">
+        <Top>0.78486in</Top>
+        <Left>4.5314in</Left>
+        <Height>0in</Height>
+        <Width>2.40262in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox21">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>2) Street</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>0.99999in</Top>
+        <Left>3.66333in</Left>
+        <Height>0.25in</Height>
+        <Width>0.625in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line5">
+        <Top>1.1493in</Top>
+        <Left>4.23972in</Left>
+        <Height>0in</Height>
+        <Width>2.6943in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox22">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>City</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>1.38541in</Top>
+        <Left>3.80917in</Left>
+        <Height>0.26042in</Height>
+        <Width>0.375in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox23">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Zip</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>1.40972in</Top>
+        <Left>6.36458in</Left>
+        <Height>0.25in</Height>
+        <Width>0.25in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox24">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>State</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>1.39583in</Top>
+        <Left>5.14597in</Left>
+        <Height>0.25in</Height>
+        <Width>0.42708in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line6">
+        <Top>1.56125in</Top>
+        <Left>4.12861in</Left>
+        <Height>0in</Height>
+        <Width>0.875in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line7">
+        <Top>1.56125in</Top>
+        <Left>5.64249in</Left>
+        <Height>0in</Height>
+        <Width>0.63542in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line8">
+        <Top>1.56125in</Top>
+        <Left>6.59027in</Left>
+        <Height>0in</Height>
+        <Width>0.44792in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox25">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>3) Date of birth</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>1.86806in</Top>
+        <Left>3.66344in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line9">
+        <Top>2.01737in</Top>
+        <Left>4.67381in</Left>
+        <Height>0in</Height>
+        <Width>2.40263in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>4) Date hired</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>2.23264in</Top>
+        <Left>3.66343in</Left>
+        <Height>0.25in</Height>
+        <Width>0.83333in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line10">
+        <Top>2.37847in</Top>
+        <Left>4.54886in</Left>
+        <Height>0in</Height>
+        <Width>2.52763in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox28">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Completed by</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>6.64251in</Top>
+        <Left>0.02792in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox29">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Title</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>6.96195in</Top>
+        <Left>0.02792in</Left>
+        <Height>0.25in</Height>
+        <Width>0.36458in</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox30">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Date</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>7.29181in</Top>
+        <Left>1.88361in</Left>
+        <Height>0.23958in</Height>
+        <Width>0.38722in</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox31">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Phone</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>7.28139in</Top>
+        <Left>0.02792in</Left>
+        <Height>0.25in</Height>
+        <Width>0.46875in</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line11">
+        <Top>6.86473in</Top>
+        <Left>0.96194in</Left>
+        <Height>0in</Height>
+        <Width>2.5764in</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line12">
+        <Top>7.13556in</Top>
+        <Left>0.3925in</Left>
+        <Height>0in</Height>
+        <Width>3.14584in</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line13">
+        <Top>7.49667in</Top>
+        <Left>0.49667in</Left>
+        <Height>0in</Height>
+        <Width>1.34375in</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line14">
+        <Top>7.49667in</Top>
+        <Left>2.26042in</Left>
+        <Height>0in</Height>
+        <Width>1.27793in</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox32">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Male</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox32</rd:DefaultName>
+        <Top>2.50361in</Top>
+        <Left>3.80922in</Left>
+        <Height>0.25in</Height>
+        <Width>0.68749in</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox33">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Female</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox33</rd:DefaultName>
+        <Top>2.71889in</Top>
+        <Left>3.80917in</Left>
+        <Height>0.25in</Height>
+        <Width>0.68749in</Width>
+        <ZIndex>25</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox34">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>6) Name of physician or other health care professional</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox34</rd:DefaultName>
+        <Top>3.09736in</Top>
+        <Left>3.74665in</Left>
+        <Height>0.25in</Height>
+        <Width>3.32972in</Width>
+        <ZIndex>26</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line16">
+        <Top>3.64583in</Top>
+        <Left>3.74665in</Left>
+        <Height>0in</Height>
+        <Width>3.32974in</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line15">
+        <Top>3.9375in</Top>
+        <Left>3.74665in</Left>
+        <Height>0in</Height>
+        <Width>3.32974in</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox35">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>7) If treatment was given away from the worksite, where was it given?</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox34</rd:DefaultName>
+        <Top>4.17368in</Top>
+        <Left>3.74663in</Left>
+        <Height>0.38542in</Height>
+        <Width>3.32972in</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox36">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Facility</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>4.68764in</Top>
+        <Left>3.77097in</Left>
+        <Height>0.25in</Height>
+        <Width>0.51735in</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line17">
+        <Top>4.90986in</Top>
+        <Left>4.23972in</Left>
+        <Height>0in</Height>
+        <Width>2.83666in</Width>
+        <ZIndex>31</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox37">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Street</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>5.0243in</Top>
+        <Left>3.77097in</Left>
+        <Height>0.25in</Height>
+        <Width>0.51735in</Width>
+        <ZIndex>32</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line18">
+        <Top>5.18764in</Top>
+        <Left>4.23972in</Left>
+        <Height>0in</Height>
+        <Width>2.83666in</Width>
+        <ZIndex>33</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox38">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>City</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>5.39944in</Top>
+        <Left>3.77097in</Left>
+        <Height>0.25in</Height>
+        <Width>0.375in</Width>
+        <ZIndex>34</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox39">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Zip</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>5.39944in</Top>
+        <Left>6.32638in</Left>
+        <Height>0.27431in</Height>
+        <Width>0.25in</Width>
+        <ZIndex>35</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox40">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>State</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>5.40986in</Top>
+        <Left>5.14597in</Left>
+        <Height>0.25in</Height>
+        <Width>0.42708in</Width>
+        <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line19">
+        <Top>5.56527in</Top>
+        <Left>4.12861in</Left>
+        <Height>0in</Height>
+        <Width>0.94792in</Width>
+        <ZIndex>37</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line20">
+        <Top>5.56527in</Top>
+        <Left>6.59027in</Left>
+        <Height>0in</Height>
+        <Width>0.48607in</Width>
+        <ZIndex>38</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line21">
+        <Top>5.56527in</Top>
+        <Left>5.56596in</Left>
+        <Height>0in</Height>
+        <Width>0.71195in</Width>
+        <ZIndex>39</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox41">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>8) Was employee treated in an emergency room?</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox34</rd:DefaultName>
+        <Top>5.77444in</Top>
+        <Left>3.80917in</Left>
+        <Height>0.25in</Height>
+        <Width>3.32972in</Width>
+        <ZIndex>40</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox48">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Yes</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox48</rd:DefaultName>
+        <Top>6.09389in</Top>
+        <Left>3.94458in</Left>
+        <Height>0.25in</Height>
+        <Width>0.38542in</Width>
+        <ZIndex>41</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox49">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>No</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox48</rd:DefaultName>
+        <Top>6.39944in</Top>
+        <Left>3.94458in</Left>
+        <Height>0.25in</Height>
+        <Width>0.38542in</Width>
+        <ZIndex>42</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox42">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>9) Was employee hospitalized overnight as an in-patient?</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox34</rd:DefaultName>
+        <Top>6.71889in</Top>
+        <Left>3.80917in</Left>
+        <Height>0.41667in</Height>
+        <Width>3.32971in</Width>
+        <ZIndex>43</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox50">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Yes</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox48</rd:DefaultName>
+        <Top>7.12167in</Top>
+        <Left>3.94458in</Left>
+        <Height>0.25in</Height>
+        <Width>0.38542in</Width>
+        <ZIndex>44</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox51">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>No</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox48</rd:DefaultName>
+        <Top>7.42722in</Top>
+        <Left>3.94458in</Left>
+        <Height>0.25in</Height>
+        <Width>0.38542in</Width>
+        <ZIndex>45</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox43">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Information about the case</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox19</rd:DefaultName>
+        <Top>0.20153in</Top>
+        <Left>7.18237in</Left>
+        <Height>0.25in</Height>
+        <Width>2.61458in</Width>
+        <ZIndex>46</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox56">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>10) Case number from the Log</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox56</rd:DefaultName>
+        <Top>0.53486in</Top>
+        <Left>7.18237in</Left>
+        <Height>0.25in</Height>
+        <Width>1.8907in</Width>
+        <ZIndex>47</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line32">
+        <Top>0.70069in</Top>
+        <Left>9.07307in</Left>
+        <Height>0in</Height>
+        <Width>0.47388in</Width>
+        <ZIndex>48</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox57">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>(Transfer the case number from the Log after you record the case.)</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox57</rd:DefaultName>
+        <Top>0.53486in</Top>
+        <Left>9.55223in</Left>
+        <Height>0.25in</Height>
+        <Width>3.54167in</Width>
+        <ZIndex>49</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox58">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>11) Date of injury or illness</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox56</rd:DefaultName>
+        <Top>0.91319in</Top>
+        <Left>7.18238in</Left>
+        <Height>0.25in</Height>
+        <Width>1.69278in</Width>
+        <ZIndex>50</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line33">
+        <Top>1.07861in</Top>
+        <Left>8.90127in</Left>
+        <Height>0in</Height>
+        <Width>0.63013in</Width>
+        <ZIndex>51</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox59">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>12) Time employee began work</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox56</rd:DefaultName>
+        <Top>1.29875in</Top>
+        <Left>7.18237in</Left>
+        <Height>0.25in</Height>
+        <Width>2.08846in</Width>
+        <ZIndex>52</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line34">
+        <Top>1.45028in</Top>
+        <Left>9.16682in</Left>
+        <Height>0in</Height>
+        <Width>0.875in</Width>
+        <ZIndex>53</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox60">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>AM/PM</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox60</rd:DefaultName>
+        <Top>1.2557in</Top>
+        <Left>10.28139in</Left>
+        <Height>0.25in</Height>
+        <Width>0.61458in</Width>
+        <ZIndex>54</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox61">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>13) Time of event</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox56</rd:DefaultName>
+        <Top>1.65972in</Top>
+        <Left>7.19444in</Left>
+        <Height>0.25in</Height>
+        <Width>1.10929in</Width>
+        <ZIndex>55</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line35">
+        <Top>1.81903in</Top>
+        <Left>8.27099in</Left>
+        <Height>0in</Height>
+        <Width>0.63013in</Width>
+        <ZIndex>56</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox62">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>AM/PM</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox60</rd:DefaultName>
+        <Top>1.65972in</Top>
+        <Left>8.91682in</Left>
+        <Height>0.25in</Height>
+        <Width>0.61458in</Width>
+        <ZIndex>57</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox63">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Check if time cannot be determined</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox63</rd:DefaultName>
+        <Top>1.67361in</Top>
+        <Left>9.65639in</Left>
+        <Height>0.25in</Height>
+        <Width>2.27083in</Width>
+        <ZIndex>58</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox64">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>14) What was the employee doing just before the incident occurred?  </Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Describe the activity, as well as the tools, equipment or material the employee was using.  Be specific.  Examples:  "climbing a ladder while carrying roofing materials"; "spraying chlorine from hand sprayer"; "daily computer key-entry."</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox64</rd:DefaultName>
+        <Top>2.0243in</Top>
+        <Left>7.18237in</Left>
+        <Height>0.69792in</Height>
+        <Width>5.6407in</Width>
+        <ZIndex>59</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox65">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>15) What happened? </Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Tell us how the injury occurred. Examples: "When ladder slipped on wet floor, worker fell 20 feet"; "Worker was sprayed with chlorine when gasket broke during replacement"; "Worker developed soreness in wrist over time."</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox64</rd:DefaultName>
+        <Top>3.09736in</Top>
+        <Left>7.18238in</Left>
+        <Height>0.69792in</Height>
+        <Width>5.6407in</Width>
+        <ZIndex>60</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox66">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>16) What was the injury or illness? </Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Tell us the part of the body that was affected and how it was affected; be more specific than "hurt", "pain", or "sore." Examples: "strained back"; "chemical burn, hand"; "carpal tunnel syndrome."</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox64</rd:DefaultName>
+        <Top>4.36472in</Top>
+        <Left>7.18238in</Left>
+        <Height>0.69792in</Height>
+        <Width>5.6407in</Width>
+        <ZIndex>61</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox67">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>17) What object or substance directly harmed the employee?  </Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Examples: "concrete floor"; "chlorine"; "radial arm saw." If this question does not apply to the incident, leave it blank.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox64</rd:DefaultName>
+        <Top>5.66319in</Top>
+        <Left>7.19444in</Left>
+        <Height>0.69792in</Height>
+        <Width>5.6407in</Width>
+        <ZIndex>62</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox68">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>18) If the employee died, when did death occur?</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>  Date of death</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox68</rd:DefaultName>
+        <Top>6.84736in</Top>
+        <Left>7.19444in</Left>
+        <Height>0.25in</Height>
+        <Width>5.6407in</Width>
+        <ZIndex>63</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_employee_name.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.53486in</Top>
+        <Left>4.73278in</Left>
+        <Height>0.20833in</Height>
+        <Width>1.54513in</Width>
+        <ZIndex>64</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_osha_301_address1.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>0.8543in</Top>
+        <Left>4.5314in</Left>
+        <Height>0.23944in</Height>
+        <Width>2.20818in</Width>
+        <ZIndex>65</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_osha_301_city.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>1.32972in</Top>
+        <Left>4.25361in</Left>
+        <Height>0.20833in</Height>
+        <Width>0.75in</Width>
+        <ZIndex>66</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_osha_301_state.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.28486in</Top>
+        <Left>5.64249in</Left>
+        <Height>0.22084in</Height>
+        <Width>0.53124in</Width>
+        <ZIndex>67</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_osha_301_zip.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>1.31612in</Top>
+        <Left>6.65292in</Left>
+        <Height>0.23124in</Height>
+        <Width>0.42342in</Width>
+        <ZIndex>68</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_employee_dob.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox7</rd:DefaultName>
+        <Top>1.71528in</Top>
+        <Left>4.93417in</Left>
+        <Height>0.26043in</Height>
+        <Width>1in</Width>
+        <ZIndex>69</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_employee_hire_date.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox11</rd:DefaultName>
+        <Top>2.08681in</Top>
+        <Left>4.719in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>70</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox14">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!workstart_HH.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Top>1.20028in</Top>
+        <Left>9.16682in</Left>
+        <Height>0.20833in</Height>
+        <Width>0.875in</Width>
+        <ZIndex>71</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox15">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!c_incident_date.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>0.82653in</Top>
+        <Left>8.9446in</Left>
+        <Height>0.22431in</Height>
+        <Width>1in</Width>
+        <ZIndex>72</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>7.80222in</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
+  </Body>
+  <Width>13.12182in</Width>
+  <Page>
+    <PageHeader>
+      <Height>1.43055in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox6">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Injuries and Illnesses Incident Report</Value>
+                  <Style>
+                    <FontSize>22pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox6</rd:DefaultName>
+          <Top>0.62846in</Top>
+          <Height>0.35417in</Height>
+          <Width>6.73958in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox8">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>OSHA's Form 301</Value>
+                  <Style>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>0.28124in</Top>
+          <Height>0.36458in</Height>
+          <Width>2.52083in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox9">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>(Rev. 01/2004)</Value>
+                  <Style>
+                    <FontSize>14pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>0.29166in</Top>
+          <Left>2.56959in</Left>
+          <Height>0.35417in</Height>
+          <Width>1.51042in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Attention: </Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value> This form contains information relating to employee health and must be used in a manner that protects the confidentiality of employees to the extent possible while the information is being used for occupational safety and health purposes.</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox10</rd:DefaultName>
+          <Top>0.04166in</Top>
+          <Left>6.86458in</Left>
+          <Height>0.94792in</Height>
+          <Width>2.40625in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox12">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>U.S. Department of Labor</Value>
+                  <Style>
+                    <FontSize>12pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox12</rd:DefaultName>
+          <Top>0.54167in</Top>
+          <Left>10.77264in</Left>
+          <Height>0.23958in</Height>
+          <Width>2.0625in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox13">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Occupational Safety and Health Administration</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox13</rd:DefaultName>
+          <Top>0.85069in</Top>
+          <Left>9.93765in</Left>
+          <Height>0.25in</Height>
+          <Width>2.89749in</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line3">
+          <Top>1.375in</Top>
+          <Left>0.02792in</Left>
+          <Height>0in</Height>
+          <Width>13.0939in</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+              <Width>6pt</Width>
+            </Border>
+          </Style>
+        </Line>
+        <Image Name="Image1">
+          <Source>Embedded</Source>
+          <Value>reportTitle</Value>
+          <Sizing>FitProportional</Sizing>
+          <Left>12.32307in</Left>
+          <Height>0.5in</Height>
+          <Width>0.5in</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>0.96875in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox27">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Public reporting burden for this collection of information is estimated to average 22 minutes per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information.  Persons are not required to respond to the collection of information unless it displays a current valid OMB control number.  If you have any comments about this estimate or any other aspects of this data collection, including suggestions for reducing this burden, contact:  US Department of Labor, OSHA Office of Statistics, Room N-3644, 200 Constitution Ave, NW, Washington, DC 20210.  Do not send the completed forms to this office.</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox27</rd:DefaultName>
+          <Top>0.13889in</Top>
+          <Left>0.04in</Left>
+          <Height>0.69458in</Height>
+          <Width>13.0539in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line22">
+          <Top>0.06944in</Top>
+          <Height>0in</Height>
+          <Width>13.0939in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+              <Width>6pt</Width>
+            </Border>
+          </Style>
+        </Line>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>16.54in</PageWidth>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Untitled">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="reportTitle">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportID>1a908510-6078-42fb-b322-6c3ed5d3273e</rd:ReportID>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+</Report>

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -14,6 +15,15 @@
     <AssemblyName>ComplicanceFactor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,6 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PrecompileBeforePublish>true</PrecompileBeforePublish>
+    <UseMerge>false</UseMerge>
+    <WDPMergeOption>DonotMerge</WDPMergeOption>
+    <ContentAssemblyName>
+    </ContentAssemblyName>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,23 +55,23 @@
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CF Code\compliancefactors.com\wwwroot\ComplianceSystem\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Open XML SDK\V2.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CF Code\compliancefactors.com\wwwroot\ComplianceSystem\bin\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Extensions, Version=2.1.3842.36318, Culture=neutral, PublicKeyToken=bebd372c505097f2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\DocumentFormat.OpenXml.Extensions.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CF Code\compliancefactors.com\wwwroot\ComplianceSystem\bin\DocumentFormat.OpenXml.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="EventCalendar">
-      <HintPath>C:\Users\PIXEL\Desktop\Apr24\OLD\EventCalendar\EventCalendar.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CF Code\compliancefactors.com\wwwroot\ComplianceSystem\bin\EventCalendar.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\Ionic.Zip.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CF Code\compliancefactors.com\wwwroot\ComplianceSystem\bin\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -83,7 +100,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="TimePicker">
-      <HintPath>..\..\..\ComplianceFactorV0.2\ComplianceFactor\ComplicanceFactor\bin\TimePicker.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CF Code\compliancefactors.com\wwwroot\ComplianceSystem\bin\TimePicker.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -114,6 +131,81 @@
     <Content Include="Compliance\HARM\ccasharm-01.aspx" />
     <Content Include="Compliance\HARM\Images\1.jpg" />
     <Content Include="Compliance\HARM\Images\Penguins.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\0824a3bb-93e2-4895-a05e-6002972b7205.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\09cff986-01c0-4aa8-a030-b6849c7efce3.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\0abb8ac6-c7cd-4c2f-84b2-c0c8f8193754.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\0f75c4db-6b7e-4d10-b949-3713b4495a16.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\0f916783-42a7-48d6-a93f-620647614daf.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\17861257-4a7e-40e5-b277-63f569c888b8.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\19d310f5-dfc5-4858-9f2c-a90d782c79bc.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\1dfa0d1f-28d5-4fe4-8b1a-0199fc1421f4.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\20f8abf6-d66b-41b4-8ddd-323d2c1455e7.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\395e3378-6c77-442f-a049-b27facfcaf8f.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\4bcf3e22-dfc4-4ceb-9c2d-3c3babcefa30.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\63b72cba-af93-40c1-9b2d-c502fc1524f0.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\6a50b227-5ad4-4625-9f3c-e16788a3e03b.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\6bedfa5d-3402-4d1d-9595-587019645eaa.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\788ee073-2fe8-4f32-8f42-154645d4e9df.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\a876fff3-e883-478f-9b31-c161edf854ce.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\ac9d7fe6-dff4-40ae-95c1-fa1a1e59a9b7.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\b8d3f9d5-79af-4fa0-93f0-2ee18aefdf1b.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\b96a0ef0-6857-45f2-8745-3fd138ee3031.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\bd0fba55-b798-401d-bd16-90190a7bd5c2.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\ce70e34b-286a-4230-b1ec-80fdbef29cf9.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\db3ca952-41e5-42e8-830b-55a1ff0e0379.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\dbb069e1-885c-4cc6-93c7-ea8b94322b46.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\ddbe37d4-eab2-4eb4-be94-c83ffb7fa599.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\e0124bf4-4469-495a-932b-e6f0139a224a.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\e48c6e54-8bd1-4bdb-87f6-4a82bf7b485d.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\e7d3a847-81ff-425d-9dab-a40f8dcace99.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\e7f65d71-635b-4872-8e4c-75202f9530d2.jpg" />
+    <Content Include="Compliance\HARM\Upload\CustomCustomer\f35a8df3-2569-41eb-bc38-7ae48f77973c.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\037c8abf-c7ad-4e57-939a-c05aa52e7999.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\0e53a48f-60be-45ea-8b73-42d3d53332a6.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\14910045-a3bb-453c-8bb3-645b2240dca9.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\2a4b2bf0-6734-49f2-aace-951ecd10f1fe.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\322dd3d4-7ba5-4cfc-9f3f-95e422435549.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\3502c6a5-76e5-4cee-9674-6d69223813cc.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\367d876b-9458-474e-b03b-45928738f297.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\5b62f1cb-a65c-4860-bb16-11d2e77caefa.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\687b354a-5bbf-463f-83a1-2a0d90cf1cb3.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\74d8287a-9f76-4e71-869d-f91bc6f704c6.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\898a5c1d-81cd-4bdb-a3c5-5cd56cffa885.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\998b9c1e-eb22-4485-b512-9350d4b62ce1.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\a4806057-ad2f-4289-87a0-272efb654e4d.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\ab73dac3-89b4-490d-83c2-8bb7a2bc3fca.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\c44f6ced-02bc-415c-9f5d-66aa9b0d9078.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\c657a7be-44b4-4879-8b0d-be2cd2dc1423.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\c703c22f-4825-4b6f-9a94-9277423e1b4e.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\cc28fbc5-561b-4614-9bbc-3092542c955e.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\d7832e03-cb5a-43d7-9b8d-e2d2faa35d4a.jpg" />
+    <Content Include="Compliance\HARM\Upload\EmployeeInterview\ef9617d2-8a57-41cd-bfb5-2d3a3196ca60.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\4a8fd85b-ec3e-4f24-b3e6-16499191a890.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\669922aa-017f-499e-929b-37c6022b0b67.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\6c2b3508-4da0-4570-b0f4-516fe057df18.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\7bf7da39-4551-46f3-b876-40ae43f7bbc1.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\a1c4d7fd-8f84-44d8-84c8-c3f191fcad74.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\bad3d725-cd53-472d-98f0-883ece7899c2.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\dd4077eb-2955-4577-9754-92360cff099f.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\e810aee0-7c84-4033-96a2-f18da076a1fd.jpg" />
+    <Content Include="Compliance\HARM\Upload\ExtenuatingCondtion\f76029ee-dcf1-44cf-b5ea-fe0f68b843b7.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\091feccf-a268-43a6-b43a-ad6be6549560.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\10d50a5c-8809-4b69-a97e-7b89129cfa18.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\794511ff-1efe-4c9c-8b26-bd268c7eabbb.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\7f345b53-1cfd-435a-a32f-6864691ac297.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\9c744b25-9fc0-499c-9dac-fbaa7fb4e805.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\b3996b78-20fd-481e-84a8-189d86cd3b52.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\bc2053e1-ca3a-4130-b2bf-913c5c743030.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\c0347f8d-bdfd-4bcb-ab58-dfd9c5d339a3.jpg" />
+    <Content Include="Compliance\HARM\Upload\Photo\de16886a-e4ac-4155-a7e3-d2dfc4f4f04f.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\125035c8-fb74-4dad-91aa-d913f400b072.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\6c5277a8-81b2-4dad-9a93-ccf9c6a57d00.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\8ad88d26-0cb0-4f44-999d-5aa5a1e6086f.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\aac4e9d6-c1f1-4bb6-9f39-297bdefd66b6.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\c28123d3-240d-44db-9966-29e0ff08d44e.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\e955e6d0-25b7-4dc0-bdaf-e6f17cdb00a0.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\ebff22bb-85f4-4dbd-a0ba-8feb126bd582.jpg" />
+    <Content Include="Compliance\HARM\Upload\sceneSketch\ffc95f31-74a3-473c-8d13-ca7a5ff4bd29.jpg" />
     <Content Include="Compliance\IRIS\ccasip-01.aspx" />
     <Content Include="Compliance\HARM\cccharm-01.aspx" />
     <Content Include="Compliance\MIRIS\cccmiris-01.aspx" />
@@ -127,6 +219,50 @@
     <Content Include="Compliance\MIRIS\cvoi-01.aspx" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\coi.htm" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\cvmv.htm" />
+    <Content Include="Compliance\MIRIS\Reports\dynamicsearch.ascx" />
+    <Content Include="Compliance\MIRIS\Reports\mrp-01.ascx" />
+    <Content Include="Compliance\MIRIS\Reports\osha300a.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\osha300_condition.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\osha301.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\osha300.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\p-sces-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\p-scesr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\reemp-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\resch-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\saressr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\0ccdcba3-ddda-41b8-8a5d-99c4dddb387c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\0d602977-07dd-4c5e-8f5d-384517a164b3.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\11815821-8d4d-4929-a6a4-e13711df4df9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\13f77fcf-3ff1-427a-ab19-c8c4a7f8a4da.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\16cd0545-75de-4256-87e0-c4f31e8d6824.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\19d1ea45-9d9e-471a-9020-9046cbba8839.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\1b305119-192f-407b-b7f0-43899b61a222.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\2460dcfe-0a6d-4318-bd34-56e404e9bc9b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\30129782-6465-4fe6-998c-6ed4dccbc2a9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\3c5988ef-9a4d-4ce8-b902-28c682a0b01f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\606b0606-692b-4c1a-bf49-576b2f919ad4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\61e417cc-bc44-4636-9d83-1332d3e23c47.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\6cb850e7-bca2-448e-ae6b-ec9314a52954.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\79ffa323-2b42-42ff-a047-dda0b2850b61.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\7ca3ad73-42a9-4660-a13e-91a37c3ab832.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\7cbf5db7-bc36-4b5c-84d1-3badb99a6f1b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\805a3535-17f9-4b4e-88ed-e276d5ce6ca4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\95336b63-dbc6-4ee0-8c30-67dabfa2d16f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\95ffe01c-29c0-454c-a473-f905f59d5111.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\9aa1260d-dc3a-4cd3-8204-06e74b67b3e2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\b2a2c9a4-910e-48fb-845f-8fd10ccfd4cd.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\b4217085-31bb-4817-beec-ea97865dd94c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\c69d5e68-f351-4be0-b020-b28b5e304b97.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\c70fdfb0-8702-4bca-954c-a0fcb780e74c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\d7c7557c-8553-4bf0-a27f-0fe5bc88620a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\db99fbf8-2544-4ac4-9d80-2b3c1d4d0590.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\e6e57542-674d-4caf-9b67-8f46ac856c94.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\ec04a932-bef4-4b1e-8c4c-c922de102e0f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\edf18a83-ea64-4982-88de-ad87150e37ae.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\f0602781-c62c-4c41-875c-64fead9cb815.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\f94b6e74-7316-4fc3-8609-c2ec4e5a2534.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\f9bb088c-548c-487f-9580-e062581bbf72.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\EmployeeInterview\fba35f31-42d9-4454-a3cf-d73923101df0.jpg" />
     <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\00b46f82-c8a7-4bd9-87d7-4cb974c3a070.jpg" />
     <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\00d110f8-86fb-4ab5-aa80-dcce44653d19.jpg" />
     <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\10405cc9-32b4-480b-89cc-83463799a932.jpg" />
@@ -156,6 +292,34 @@
     <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\e7d3f07c-af45-4c9f-9858-63422add2e51.jpg" />
     <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\f266b387-f895-45f9-a7f3-d93fc03a7073.jpg" />
     <Content Include="Compliance\MIRIS\Upload\EmployeeStatement\fa1f3ad1-103a-40af-bf09-82205b4d075b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\0cf2ea12-42d3-4303-bb59-dca3deceb19f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\3d7bf9b1-f365-4280-bcc4-3400c433df20.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\4f157c6f-f61a-47ae-9d60-623f62c36c43.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\508c3558-b021-47c5-a1c2-c676cb67dc5e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\523b9ff4-fc96-4182-ad8d-e8a3a40513b8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\52fcd6c5-176d-46ac-b2b3-573d7fb99b86.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\540b1952-77da-4da3-8d9b-89fca98c76e0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\56789336-76ca-4709-bc22-cd4fe0945960.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\625513e0-3dce-47d5-9926-299c79017f62.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\671e347b-29ab-4fa1-ad31-88b33ae2fa34.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\681d7997-234a-4a50-8487-859b93630ae6.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\6eba4b7b-6ffa-4378-bc5a-121e4fb5ad10.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\6fc14fdd-84d4-453a-8dce-7f746e13cf53.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\7a55f1e7-1d9a-43a7-b44c-88d4fdb7a4c7.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\7f08de45-9d25-46cc-b229-84efae91eb3e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\8025f8b2-9efb-449b-8839-c15c195ccd8c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\86b40153-b0f8-44a4-a251-21dfc83ed4a3.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\9466ecff-cb20-4546-a673-9be21f0591cd.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\9861e90b-a500-4c2a-97fd-d7229ff500ca.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\9a3eb2b4-b3e9-4ca4-af75-cb1818fa0a2a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\accf37a4-692f-49df-aded-e9d57e4917e0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\ad5470b1-6810-49b5-8b2a-e52e0a2115bd.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\be86facb-35f3-4c94-b637-957aaf4ef590.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\ecf6d49a-5415-482d-9efb-fcb326f7ced1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\edc13351-16d6-43d2-a8e1-46b9e56a1c39.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\fb251ec5-c839-4488-a216-7374b82c3c74.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\fc43629a-5817-4aee-b5da-5ca4f947a108.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\fe7d451c-a8f9-4f61-88f4-fc88cf0169b5.jpg" />
     <Content Include="Compliance\MIRIS\Upload\IncidentHistory\01aafcb8-f808-4715-8b9f-d24a356093c8.jpg" />
     <Content Include="Compliance\MIRIS\Upload\IncidentHistory\22674571-7480-499d-af2e-450d6d58ca94.jpg" />
     <Content Include="Compliance\MIRIS\Upload\IncidentHistory\361af106-50fe-4bd4-b387-d663dd8531c8.jpg" />
@@ -179,6 +343,83 @@
     <Content Include="Compliance\MIRIS\Upload\Observation\96820ab5-003f-48fa-8c28-176da01951ac.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Observation\9e073ff2-d648-48f8-bd7e-a2fe9c2c6b61.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Observation\bf5bc6a8-77a1-44bb-a9f5-5f68e8764107.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\02241fb6-aa0d-4835-b235-72c725fc5760.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\02ea6944-b676-4ae0-8a34-8b0d57da2f87.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\098ccd6c-25a4-4422-9947-43b83978d625.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\0cefb3f7-eed2-40dc-bfbf-019808ef275a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\0d755381-2415-457f-9050-c18b5b404bf8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\0eb29c34-e80c-4f56-bb8c-68c98811cace.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\11ec8b9c-d6ed-42e8-a3e9-75f5de5ccd49.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\3122922a-ca42-4c1b-9ffd-c25d047a2987.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\3523380b-9094-446d-8274-c48d7f7aa9ac.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\3f7b61b5-c869-4c60-b7a8-ac88785d25d9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\4429dec2-39b0-4cc2-aa6d-898de1a02423.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\4487b551-7cc1-4587-9d7e-4bef142e9cc0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\45dd6e92-7f76-48e1-9424-ff4e12107e4a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\4a766f36-da2d-478f-9418-0f6767ec3858.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\5cf29a23-d103-4283-815d-d188e736a124.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\69bb39e8-ba88-4d07-97e1-4c84e3b49262.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\7205138b-df45-4bce-b176-f6d7c7a193cb.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\7c906d16-71a4-402c-8c24-3618da9ba175.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\7ec38d89-12f3-4b4b-8a08-d52cc723a8f2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\7ef69074-b9bf-492e-a82f-205e07e682ce.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\8c8294a3-33b0-4cb7-b28a-d2e60783bfaa.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\965ce5dd-9c59-44f7-a427-d171e042a60f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\9a4e1bce-a198-4e46-83b1-3f866df91aa2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\9a76f2fe-bdcc-49fe-990a-5f1fcfea68c8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\a958a4d0-5012-499a-93f4-a4ee6735b09b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\b0a789dc-036f-4866-b4f9-f3e947269b69.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\b47a434e-8b58-4e34-b77e-e61ebb711332.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\ceed99fc-de23-4bb9-897b-678478b59859.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\cf724f2f-3797-4b27-88d8-d59181ce5b93.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\d6ee0f11-6ede-4595-ad2d-59eb61b5ce4f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\df0a735e-c69e-4f44-8628-32944c01254b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\e3d1edc0-d8b5-4aa4-8b99-333ff9b43e2a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\e62b8e02-a332-4a41-8e76-aeb8007a727d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Photo\fb1ecbad-4af6-412b-b1b1-51e82eefc2a9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\0996f699-046d-4246-9798-13b3f29a73e6.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\1182994c-9be3-4cef-9e59-f5786b590d22.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\11a2996e-2768-4bb1-82e7-bd222558fa93.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\16592ece-4988-43c3-869c-8f1d064287f1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\1a4566aa-d172-408d-9e36-9a25338524b8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\1f43d31d-0dc0-423e-bbb0-12b31836f589.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\1fc0279f-20a9-4fa0-a19e-badb76336cba.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\281473cc-2c7e-4cac-a720-7621ea9ef300.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\365409a5-29e7-4fc8-a73c-1e92ab7c1fea.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\3716c793-d1bc-4a6a-ab1f-a80bfc4cf1ef.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\3d3d2b89-0177-4b58-82c6-ad982b148cb5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\3f245546-8296-4072-a821-a307a5979bd2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\45be9853-bc51-47b4-9725-eedb995938ff.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\4ba33432-c928-416c-b132-8cfca8ea8183.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\576ff609-d02a-4c6e-979d-3f283e70bde2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\5a8e787e-aee8-4cbf-b673-fd549629677d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\5cd64408-e028-46d9-9401-b79725db891f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\6e9d52bd-c8c1-4318-a5c8-2157293e8c77.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\7d654ca3-691a-43d3-9ffc-ecb323822039.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\831883a7-54c9-4b85-916d-a381a42706ad.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\84673439-242e-4df0-9255-d01fbb9615db.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\8a0c8a41-f9f7-4da9-9597-d5b043a5118e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\920833be-1778-47ef-8787-1f0e26d77507.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\96ee5687-c24c-4c8f-8450-3b7f906ed7f8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\9ebb830f-f0ed-4a9a-90a7-d346ba5121eb.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\a0878594-7d49-4204-97aa-dfcaf5e2cd54.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\b2ef30e8-7e6f-4ac9-8a2c-d8d668f4dafe.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\b890aafa-7698-4c5e-b1ca-03ca107cc7f1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\c1682bfb-7718-4469-88c5-1629e4e9a4d6.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\c304c991-3078-44d6-bcdb-ba985352c586.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\c518d6c3-91b9-4f57-9b10-5792363fe737.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\c975ba27-765d-4aab-b4b4-a9976da76777.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\cac56470-8a28-4a80-a5a8-ed1c89329bf2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\cad159b0-0f8e-4d6e-884a-edf7ae0bb490.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\cc362c99-5aef-4056-9778-cc837123a51a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\cd768f90-7ef3-41c0-84d2-fa8363fab272.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\cf50172f-85d3-464c-a06e-3aa75846b10a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\d00c62b6-981b-45f9-990d-9be4399fe90a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\e1e6c5ff-753a-4157-ac25-698869a05bb9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\ea34311e-3152-4289-84e6-36747b6f58df.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\eba07983-45df-4310-a1d0-09d3d4cac6ef.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\f150c8a5-ea07-4928-821c-6977fb50b215.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Police\f3328e40-c1f9-40d0-b3ee-e311de80ea43.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Policies\2f0fc672-f3a3-44dd-aa52-7d7174ab7601.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Policies\36832e22-6fb1-4f9c-b06f-50dc051f6251.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Policies\39fdcf14-394c-46e0-a1f2-751e6c0a2f04.png" />
@@ -190,6 +431,24 @@
     <Content Include="Compliance\MIRIS\Upload\Policies\c87b7566-240a-42af-8c63-12841f84727c.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Policies\dc215ef4-8399-4922-8c43-1d93b7fb08d9.jpg" />
     <Content Include="Compliance\MIRIS\Upload\Policies\ec1595b4-6740-4080-b16d-daacce6ef9e0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\0431bab3-da53-42d3-80d4-9e2d397e4abf.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\10a51e83-6fcc-47ac-916e-6431ac1f3548.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\161cfff6-e5f5-476b-97d3-ff6541dd6ca0.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\1963cfb6-e0aa-40b0-b06a-78fc851153f7.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\26da2c3a-17a3-4e7c-8f88-87e26edbdee2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\53a79090-dab8-4488-8c9a-7cf3484d141b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\58c08c66-eb86-4ea0-a979-7ce00c364b0d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\595319d5-4bf3-49aa-a9c1-bc8e019af367.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\66a6c6b8-8f32-4c60-bf9c-f435cbe555e7.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\756e11b8-458b-4713-8f80-9956aa9925c1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\98563374-de42-46c4-9c17-81740102178d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\9b3060ed-d038-42d4-bea8-54e109d20e73.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\a05b8699-1d0f-4994-9933-9d8963042568.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\a56e1cee-b4ef-4d1d-89ae-40280d138b34.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\b1e68acf-bd20-41a3-a4df-51aaaa35ec26.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\ba0d8c33-2557-4fad-93a3-fbb48831fadb.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\ccd5c8da-7be0-45b1-a131-5fb6ccfea9a9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\sceneSketch\f57c2700-883f-4fc6-b8c3-3839f7b38b54.jpg" />
     <Content Include="Compliance\MIRIS\Upload\TrainingHistory\146c55d8-453b-43c9-b288-fa83697c293e.jpg" />
     <Content Include="Compliance\MIRIS\Upload\TrainingHistory\225eefab-f480-46cd-88b6-e38937c024a2.jpg" />
     <Content Include="Compliance\MIRIS\Upload\TrainingHistory\3b56c1ce-8a48-436e-a688-0ce1a8b0a0cf.jpg" />
@@ -201,6 +460,135 @@
     <Content Include="Compliance\MIRIS\Upload\TrainingHistory\c2dcd9f7-41cc-4f58-b8da-f205de566c63.jpg" />
     <Content Include="Compliance\MIRIS\Upload\TrainingHistory\dda645b5-d717-4d2c-96f0-4574253c87bb.jpg" />
     <Content Include="Compliance\MIRIS\Upload\TrainingHistory\ebe07742-2b9c-4fde-83ff-a2fae32de9e4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\03d3fdfe-6e2d-45e1-99c2-73a034a8099d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\03d79e5b-8dfd-46ce-b78d-f240478fe796.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\0c1f3601-d46f-4151-8549-71718d039f1f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\106756c7-e1f7-4bea-9b48-cb82eb20adb9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\1261360d-5a3b-4b95-b951-79323db96f52.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\133f1c9b-67b6-4200-b019-16fe4832cf94.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\1400bc03-78d3-43ea-81fb-9f83b40b1303.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\153b373d-422d-4d88-b719-95c65fddc62c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\16cf14a0-fa76-4733-a63c-9b9268a95208.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\17a77bc1-e64d-4c39-994e-7649d6fc8df4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\18905625-21b5-44d6-8a10-6a7046b41f5a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\1d2bf575-e7e8-48ff-8fd4-88ec06d6377c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\20052f63-cf05-4a68-ae50-887620baddc2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\22d5868d-227c-4120-ae43-2475570d0e78.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\25788876-ee5b-4f7e-96b2-c7c735a04c74.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\26cfd3c3-99d2-406c-b8eb-15b8e1657c6e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\292758d7-7993-42e5-b466-85c130d95222.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\2c00a02a-8504-4909-93cf-16ff241d1d5e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\2da13df4-4cff-44e4-b1a6-fcf24a95cdd5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\2ef0c791-48f9-409c-9c6e-c2b0f237765c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\313d43dc-e84f-4046-896f-bab7a394d845.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\31ac1cfe-4ab8-4990-9848-134d4f84b841.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\32ee984d-66f1-4d8e-8c4c-4d1eec9137b2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\3439d382-5794-4013-9aff-1146d79ac254.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\349a87a3-fa3e-44be-a7c4-b919cfd519f5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\34ac02ca-65d6-4f89-a76b-8de812f7c97a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\3594246e-7c1d-4a0d-b5de-f3b016c22325.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\3c23925d-1a79-459a-bd58-41a3dde3cd3d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\3e18bc30-a77c-4850-acb2-c2c85b00931e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\3e65ae10-db56-4d78-b719-4fb1ffcb5b92.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\3f0e9118-3c85-425f-80ba-720def46bf18.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\40d46f4f-d617-44fd-b164-6c2bd0ff8c0c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\45f106cd-cd9c-4664-9963-a46a5721bb64.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\460fd66a-1541-46c1-a7f5-3e8894ddc72d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\46dc96ee-997a-4ff5-b358-5141b5a6fbd9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\48c91315-7f90-4937-918e-5203c5169010.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\48f8c3fb-665d-4e05-857a-8d93488b556d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\50f5f9b8-8f28-4b57-9d88-bec3847418e8.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\54754f8a-9b24-4bb2-b7b3-506daf42bc74.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\5623aeba-d610-4aa7-8607-fe8c10ac089f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\575c23e2-d1d8-441d-9515-f04d2caa3004.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\59cf1d21-70dc-4dc2-9f70-d328da9fe716.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\5b788a56-b038-4b55-9492-6b338e862c47.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\5b8ceea6-c555-4ce3-8b01-dd15260e3f41.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\625bfe7f-5f17-4a59-920e-bb4877e27092.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\63270566-8dd9-4ea6-ad67-cb378a63ca6a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\6380509d-1b76-453b-bda4-be8e81a5e32d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\6573a816-c2d5-4487-be30-66847c879daa.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\660eabf8-4845-4787-9c4e-60f6865da629.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\673d8925-910d-4fdc-b8bf-675a2c954cbb.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\687eb41f-0413-46d1-b584-71d32d4d0825.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\6dc99e62-ee70-4e7b-a8f7-be505f345c75.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\709c3fc3-053b-40ef-b093-279f64967f6a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\742e52d4-3f9e-4184-893c-bfdd083591ca.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\75098d1e-a4e2-4967-95d9-c08837cc7277.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\7a0a53fa-9bf8-4a85-a721-4a5d5c532203.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\7ad539f0-5e59-4057-954f-6591007ee267.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\7bdb8c50-4c9d-44c1-aa47-9e3164950434.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\8003b9b6-0ef8-403e-878c-37f4d49da2a7.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\851ce85a-138b-4c42-af73-e6f53b9b6858.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\88752cf7-1cf0-4c00-beb8-0f2c7baeac49.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\8a37f6c0-c3b3-4034-a087-e7927685ac80.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\8d57f0a0-7a79-40fc-bc55-9f76329db6b9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\8d818006-4670-4f99-a79f-9686a2dea92d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\92f60ae2-c530-48ab-b7c1-e2764dfa3c50.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\94eba60f-fbe5-4fba-9d5c-def536de55ca.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\95627437-21e4-42ca-9fa6-1f44edb705ed.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\9762a421-b36e-465c-b214-c745cd2eaa20.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\98d1f8ac-734e-439a-9d1f-6d00355df0f3.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\9b4b07a6-26ac-4df8-bab5-ff0672832ec9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\9ef4ef37-325c-4c1e-905d-02c53a75f7f3.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\9fb53c41-bf11-4ad7-97a9-d3623dfdca76.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\a40e9a09-dc79-4659-9b72-4552a1fc254d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\a64723c4-6016-4d7d-a4b6-d95f9ed4af8d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\acab7b0b-0ad8-4a32-9d04-4f33df4bded4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\adb09bfc-8ee8-4cf9-b8e3-b1081a444568.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b0619c95-32ad-4619-8bb4-4a920cedf108.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b0eb2bf6-cc54-4e07-8bf3-201e9749054e.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b21e6ffd-1bfc-4f35-8f55-6bf11a9a4dfd.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b271580c-af68-48a1-b8c4-64019395d31a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b384246b-72d9-4a5f-af92-23fd0520e3c5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b3de937c-e02f-4399-a3d9-e8c01832c836.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b5d74673-fc95-4539-a460-4bacd049dbaa.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\b924554e-b991-412f-a336-25bdc1a32ce5.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\bd6192b8-9a61-45dd-b3bd-69df8ce4866d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\c0741819-7ce3-4326-b23e-3b742211b059.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\c375afb2-efdf-4b57-af14-ded3831292cc.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\c5f69642-0031-43be-8060-d20322166069.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\c900dc49-6697-4ffd-be74-18925a717641.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\c9f0776a-dd84-4418-b647-03c240e4ff6b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\ca038f60-dbdc-43cc-857d-1e5fb4c869e9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\ca15f3e5-87fd-4c29-aa75-73d2bd7a8916.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\ca419123-2335-4f8a-b99a-33a5b67bec63.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cc464ab2-71f1-4911-b60b-cc8a5909a802.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cc70f74f-f79e-4754-8284-e415255d738a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cc7e9c15-aad0-44c3-8813-2b1d639ab080.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cc877df2-3693-4f46-97ae-e2b35855dd56.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cd1ce92a-c635-4b18-80dd-7febdd72e753.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cd213c3b-70ec-4da9-96e6-06cbac7f89a4.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\cf016c40-8b07-4f4a-bfef-415362378774.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\d033f6bb-9cde-492b-8de5-fba30c9a230b.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\d1ba9b16-3021-4c58-8df7-62cd1840bdd1.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\d23f0c0f-36d4-4b86-86c2-102a63eaef6f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\d52066a0-3684-4fb3-bfd8-a0be7163a111.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\d55ad43c-e48a-448d-b72e-a80d3c7fb85c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\d77e7981-f91f-452b-a55c-29621da044f9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\db34e44d-927a-42ae-8631-992d069f6349.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\dba87030-2c64-4982-9b8a-f0f5af19402a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\e371f0f4-57dd-45b8-ada9-66e466ee6826.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\e5e02132-3045-42ad-aadf-4abe6e7ab5dc.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\e70a740a-78ce-4ece-aa97-279c563cc0b9.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\edf93231-3c21-4d2a-b45a-ed8f6c4fab9a.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\eea232a0-b5ac-4f48-a5ae-270f778b868c.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\eee548d5-8743-4244-a1ca-3410e2f77889.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\ef177a5e-eaae-4a88-a69f-82a9f4cf80c6.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\efef7459-7eea-4b94-82e5-32e5703ff1c2.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f122499d-15f8-42e9-949f-d68f8e2b8824.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f472f734-75ae-4b9e-af3d-f08867eecab7.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f5cf3bcf-9014-42c0-9d87-da94f75619d6.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f7a98dfc-08b2-4712-8ba4-9d3657996f5f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f89c62ba-bc1e-49f0-bc71-83d16ab82c89.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f8a0e27b-1ebb-4102-9e72-9e23942cbc16.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f90fd586-167b-4dc7-b96f-973b15adc5fc.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\f954d5a5-a6a1-41ea-a357-41533d23998d.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\fa8648e3-cf16-4a0d-a429-fbab2ad09a94.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\fb5bae93-f2b1-4eca-8f8e-4bbf7a2c224f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\fb67ff29-5453-4c9e-9c97-0dbf679095ca.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\feb99188-0b49-4c0a-88b2-5f6632b84f1f.jpg" />
+    <Content Include="Compliance\MIRIS\Upload\Witness\ff8f76cb-4804-4d62-96aa-a26b0701df5c.jpg" />
     <Content Include="Compliance\MyLicenses\ccaslp-01.aspx" />
     <Content Include="Compliance\MySurveys\ccassp-01.aspx" />
     <Content Include="Compliance\MIRIS\ccamiris-01.aspx" />
@@ -306,6 +694,9 @@
     <Content Include="Images\ComplianceFactorsLogo.jpg" />
     <Content Include="Images\contentCloseButton.png" />
     <Content Include="Images\desc.gif" />
+    <Content Include="Images\FancyBox\blank.gif" />
+    <Content Include="Images\FancyBox\fancybox_loading.gif" />
+    <Content Include="Images\FancyBox\fancybox_sprite.png" />
     <Content Include="Images\Zoom\blank.gif" />
     <Content Include="Images\Zoom\fancybox-x.png" />
     <Content Include="Images\Zoom\fancybox-y.png" />
@@ -692,6 +1083,54 @@
     <Content Include="SystemHome\Catalog\Materials\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\saal-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\savloc-01.aspx" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\0306dbaa-2a36-477e-a948-6272588762bf.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\11f1366a-504f-4f90-906a-02cfc7dbb650.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\17f72fd8-d894-477e-ab11-f818304eae1f.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\2290275c-474e-486b-8ac8-5f0ec5966e81.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\28638d5d-0ff3-43a6-ae31-3e4d35c36fde.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\2cc1b6ab-d4b2-44ab-ad0d-16b2698ebff1.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\2f363b78-cca1-4215-b528-41fe83951a13.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\316357ef-08ed-4162-ae77-736a7b758bff.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\3b8ce13b-543b-4b29-b484-fa81ad63de0d.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\407a92d9-a722-495e-9010-63961b7183f6.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\46640b2a-a7b2-4de9-bce7-fe529a495a42.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\53320fe9-94cc-4191-ab1e-8b0a7873e370.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\54136ef9-83ba-40c9-810c-9ad123931b98.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\561af064-0f8c-4101-81e9-1832372e869f.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\5a5ac09c-9394-4287-a1f8-2edee7262089.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\667ed072-302e-494b-858c-edbac661abc4.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\6c7f3755-d653-4d2b-8e8f-b5da09cddc8a.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\6d0fd802-3708-4112-be00-eaee9f7ea294.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\760b4661-8924-4ee0-95b0-f10600778888.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\77dd0896-7b7a-4e56-b5f7-1baf413eb5ad.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\794e0b0b-e434-4c24-9263-a4bf8e3c37d2.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\7b60abc5-f029-4c84-ba21-8a867772de71.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\7f764bc0-2046-451f-a2dc-f3336a5a0076.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\866e18b9-cd01-4e86-af88-722ab0958309.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\88092560-a379-4f41-96ea-32d14ae78e79.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\968baa9e-9b55-4497-af0c-c02602655934.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\9b99b12b-3f5a-451a-8181-e11f39ea82f5.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\9ee6bbd2-faa5-461b-a66d-de25e01181f5.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\a2656b99-88a1-48e9-bf93-7a0fcc38e85d.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\a2991752-4221-433c-a909-cda977832ce2.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\a4198be8-196d-4636-bd8d-5fe70272f6ff.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\ae0c618b-edf1-4250-b987-df5dd594cd03.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\bc38cc56-6b54-499d-b966-2ac744cc278d.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\befd6c87-e725-4ad5-9031-b741f5286b4b.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\c7cc7798-5161-420f-8f68-65a3ed6a09bb.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\cb817965-c3e0-433f-976d-0a13036adb01.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\d0870539-f002-44ed-834c-ed3f58627ef5.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\d70dedfc-015a-47c6-9cd4-43b3273edb56.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\dc6b9b88-732f-48da-97ad-27b7d5b1f4df.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\dde2b9f0-9359-49d5-8597-fcc4f67497c5.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\e415ebd0-f72b-40b2-80ea-bb535b91e2cd.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\e643d476-292f-4fa7-8bdc-6f40fdb82e60.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\e75c98c0-1f50-4a15-81ed-7ba24a52f59f.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\e846a20b-6b52-4a6b-a98b-7461d0352950.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\f810a09a-0ab0-4b3d-88db-b684ed42d3e4.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\f97ddeda-6e4e-41f3-9b58-ebdf74995d70.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\fb4c061e-019b-4aac-b451-1fca50c581fe.jpg" />
+    <Content Include="SystemHome\Catalog\Materials\Upload\ffafe3c0-a508-4442-b764-34e13466e05f.jpg" />
     <Content Include="SystemHome\Catalog\Resources\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Resources\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Catalog\Resources\Locale\savloc-01.aspx" />
@@ -808,6 +1247,67 @@
     <Content Include="SystemHome\Configuration\Notifications\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Configuration\Notifications\saent-01.aspx" />
     <Content Include="SystemHome\Configuration\Notifications\samntmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\Files\Desert.jpg" />
+    <Content Include="SystemHome\Configuration\Reports\Files\Hydrangeas.jpg" />
+    <Content Include="SystemHome\Configuration\Reports\Files\Tulips.jpg" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\saaloc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\saeloc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\savloc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\highlight.js" />
+    <None Include="Compliance\MIRIS\Reports\OSHADataSet.xsc">
+      <DependentUpon>OSHADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Compliance\MIRIS\Reports\OSHADataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OSHADataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Compliance\MIRIS\Reports\OSHADataSet.xss">
+      <DependentUpon>OSHADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SystemHome\Catalog\Documents\Upload\4c5f4dc1-203d-44d5-bb4e-e2220d66ff40.xlsx" />
+    <None Include="SystemHome\Catalog\Documents\Upload\590a10de-ff28-4806-a821-b485148b061c.docx" />
+    <None Include="SystemHome\Catalog\Documents\Upload\e42944af-19ff-4f92-8c27-85c5fc51152b.docx" />
+    <None Include="SystemHome\Catalog\Documents\Upload\ea052973-a1a1-4523-9c37-417a12b883e9.docx" />
+    <None Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.1.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.1.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.2.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.4.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.7.2.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.fancybox.css" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.fancybox.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.tablesorter.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.timepicker.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.watermark.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\JQuery.Zoom.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\JQuery.Zoom.Style.css" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\querystring-0.9.0-min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\querystring-0.9.0.js" />
+    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\spin.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\saerp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\samrmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\sarpc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\sarpl-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\sarpp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\highlight.js" />
+    <None Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.1.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.1.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.2.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.4.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.7.2.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.fancybox.css" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.fancybox.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.tablesorter.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.timepicker.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.watermark.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\JQuery.Zoom.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\JQuery.Zoom.Style.css" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\querystring-0.9.0-min.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\querystring-0.9.0.js" />
+    <Content Include="SystemHome\Configuration\Reports\Scripts\spin.min.js" />
+    <Content Include="SystemHome\Configuration\Reports\WebForm1.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\saanrtn-01.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\saertn-01.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\samrtmp-01.aspx" />
@@ -821,6 +1321,7 @@
     <Content Include="SystemHome\Configuration\Splash Pages\saanspn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\saespn-01.aspx" />
     <Content Include="SystemHome\Configuration\Splash Pages\samspmp-01.aspx" />
+    <None Include="Properties\PublishProfiles\ComplianceFactors.pubxml" />
     <None Include="SystemHome\Catalog\AssignmentGroups\PdfTemplate\PreviewAssignmentGroups.xsc">
       <DependentUpon>PreviewAssignmentGroups.xsd</DependentUpon>
     </None>
@@ -1184,6 +1685,9 @@
     <Compile Include="Compliance\MIRIS\cvoi-01.aspx.designer.cs">
       <DependentUpon>cvoi-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISDataset.cs">
+      <DependentUpon>MIRISDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVDataset.cs">
       <DependentUpon>MIRISMVDataset.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -1191,7 +1695,97 @@
     <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVDataset.Designer.cs">
       <DependentUpon>MIRISMVDataset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIDataset.Designer.cs" />
+    <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIDataset1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MIRISOIDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\dynamicsearch.ascx.cs">
+      <DependentUpon>dynamicsearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\dynamicsearch.ascx.designer.cs">
+      <DependentUpon>dynamicsearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\mrp-01.ascx.cs">
+      <DependentUpon>mrp-01.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\mrp-01.ascx.designer.cs">
+      <DependentUpon>mrp-01.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha300a.aspx.cs">
+      <DependentUpon>osha300a.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha300a.aspx.designer.cs">
+      <DependentUpon>osha300a.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha300_condition.aspx.cs">
+      <DependentUpon>osha300_condition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha300_condition.aspx.designer.cs">
+      <DependentUpon>osha300_condition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha301.aspx.cs">
+      <DependentUpon>osha301.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha301.aspx.designer.cs">
+      <DependentUpon>osha301.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\OSHADataSet.cs">
+      <DependentUpon>OSHADataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\OSHADataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OSHADataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha300.aspx.cs">
+      <DependentUpon>osha300.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\osha300.aspx.designer.cs">
+      <DependentUpon>osha300.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\p-sces-01.aspx.cs">
+      <DependentUpon>p-sces-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\p-sces-01.aspx.designer.cs">
+      <DependentUpon>p-sces-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\p-scesr-01.aspx.cs">
+      <DependentUpon>p-scesr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\p-scesr-01.aspx.designer.cs">
+      <DependentUpon>p-scesr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\reemp-01.aspx.cs">
+      <DependentUpon>reemp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\reemp-01.aspx.designer.cs">
+      <DependentUpon>reemp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\resch-01.aspx.cs">
+      <DependentUpon>resch-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\resch-01.aspx.designer.cs">
+      <DependentUpon>resch-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\saressr-01.aspx.cs">
+      <DependentUpon>saressr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\saressr-01.aspx.designer.cs">
+      <DependentUpon>saressr-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compliance\MyLicenses\ccaslp-01.aspx.cs">
       <DependentUpon>ccaslp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1523,8 +2117,21 @@
     <Compile Include="Instructor\itdl-01.aspx.designer.cs">
       <DependentUpon>itdl-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Instructor\PdfTemplate\MyInstructor.Designer.cs" />
-    <Compile Include="Instructor\PdfTemplate\SignUpSheet.Designer.cs" />
+    <Compile Include="Instructor\PdfTemplate\MyCalendar1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyCalendar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\PdfTemplate\MyInstructor1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyInstructor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\PdfTemplate\SignUpSheet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignUpSheet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Instructor\tiddv-01.aspx.cs">
       <DependentUpon>tiddv-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3628,6 +4235,69 @@
     <Compile Include="SystemHome\Configuration\Notifications\samntmp-01.aspx.designer.cs">
       <DependentUpon>samntmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\Locale\saaloc-01.aspx.cs">
+      <DependentUpon>saaloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\Locale\saaloc-01.aspx.designer.cs">
+      <DependentUpon>saaloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\Locale\saeloc-01.aspx.cs">
+      <DependentUpon>saeloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\Locale\saeloc-01.aspx.designer.cs">
+      <DependentUpon>saeloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\Locale\savloc-01.aspx.cs">
+      <DependentUpon>savloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\Locale\savloc-01.aspx.designer.cs">
+      <DependentUpon>savloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\saerp-01.aspx.cs">
+      <DependentUpon>saerp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\saerp-01.aspx.designer.cs">
+      <DependentUpon>saerp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\samrmp-01.aspx.cs">
+      <DependentUpon>samrmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\samrmp-01.aspx.designer.cs">
+      <DependentUpon>samrmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\sarpc-01.aspx.cs">
+      <DependentUpon>sarpc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\sarpc-01.aspx.designer.cs">
+      <DependentUpon>sarpc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\sarpl-01.aspx.cs">
+      <DependentUpon>sarpl-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\sarpl-01.aspx.designer.cs">
+      <DependentUpon>sarpl-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\sarpp-01.aspx.cs">
+      <DependentUpon>sarpp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\sarpp-01.aspx.designer.cs">
+      <DependentUpon>sarpp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Reports\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\ResourceTypes\saanrtn-01.aspx.cs">
       <DependentUpon>saanrtn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3966,6 +4636,11 @@
       <DependentUpon>sasur-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Training\PdfTemplate\MyCourses.Designer.cs" />
+    <Compile Include="Training\PdfTemplate\MyCourses1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyCourses.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Training\Popup\PdfTemplate\MyDeliveries.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4105,23 +4780,10 @@
     <Folder Include="bin\App_GlobalResources\Language\FallBack\" />
     <Folder Include="bin\App_GlobalResources\Language\Italian\" />
     <Folder Include="Compliance\HARM\tempHarmFiles\" />
-    <Folder Include="Compliance\HARM\Upload\CustomCustomer\" />
-    <Folder Include="Compliance\HARM\Upload\EmployeeInterview\" />
-    <Folder Include="Compliance\HARM\Upload\ExtenuatingCondtion\" />
-    <Folder Include="Compliance\HARM\Upload\Photo\" />
-    <Folder Include="Compliance\HARM\Upload\sceneSketch\" />
     <Folder Include="Compliance\MIRIS\tempCaseFiles\" />
-    <Folder Include="Compliance\MIRIS\Upload\EmployeeInterview\" />
-    <Folder Include="Compliance\MIRIS\Upload\ExtenuatingCondtion\" />
-    <Folder Include="Compliance\MIRIS\Upload\Photo\" />
-    <Folder Include="Compliance\MIRIS\Upload\Police\" />
-    <Folder Include="Compliance\MIRIS\Upload\sceneSketch\" />
-    <Folder Include="Compliance\MIRIS\Upload\Witness\" />
     <Folder Include="Controls\" />
     <Folder Include="SystemHome\Catalog\Course\Delivery\Attachments\" />
     <Folder Include="SystemHome\Catalog\Course\Icons\" />
-    <Folder Include="SystemHome\Catalog\Documents\Upload\" />
-    <Folder Include="SystemHome\Catalog\Materials\Upload\" />
     <Folder Include="SystemHome\Configuration\Data Imports\TempLogFiles\" />
     <Folder Include="SystemHome\Configuration\DataExports\Export_CSV\" />
     <Folder Include="SystemHome\Configuration\DataExports\TempLogFiles\" />
@@ -4303,6 +4965,10 @@
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISReport.rdlc" />
+    <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA.rdlc" />
+    <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA300.rdlc" />
+    <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA300A.rdlc" />
+    <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA301.rdlc" />
     <EmbeddedResource Include="Employee\Course\PdfTemplate\MyCourses.rdlc" />
     <EmbeddedResource Include="Employee\Curricula\PdfTemplate\MyCurricula.rdlc" />
     <EmbeddedResource Include="Employee\LearningHistory\PdfTemplate\MyCertificate.rdlc" />
@@ -4316,15 +4982,20 @@
     <EmbeddedResource Include="Training\PdfTemplate\MyCourse.rdlc" />
     <EmbeddedResource Include="Training\Popup\PdfTemplate\MyDeliveries.rdlc" />
   </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59207</DevelopmentServerPort>
+          <DevelopmentServerPort>56609</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

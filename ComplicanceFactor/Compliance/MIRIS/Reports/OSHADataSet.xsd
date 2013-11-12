@@ -1,0 +1,759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OSHADataSet" targetNamespace="http://tempuri.org/OSHADataSet.xsd" xmlns:mstns="http://tempuri.org/OSHADataSet.xsd" xmlns="http://tempuri.org/OSHADataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ComplianceFactorsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ComplianceFactorsConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ComplianceFactorsConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ComplianceFactorsConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     dbo.c_tb_miris_master.c_case_id_pk, dbo.c_tb_miris_master.c_case_number, dbo.c_tb_miris_master.c_case_title, dbo.c_tb_miris_master.c_case_category_fk, 
+                      dbo.c_tb_miris_master.c_case_type_fk, dbo.c_tb_miris_master.c_case_status, dbo.c_tb_miris_master.c_employee_name, CONVERT(varchar, 
+                      dbo.c_tb_miris_master.c_employee_dob, 101) AS c_employee_dob, CONVERT(varchar, dbo.c_tb_miris_master.c_employee_hire_date, 101) 
+                      AS c_employee_hire_date, dbo.c_tb_miris_master.c_employee_id, dbo.c_tb_miris_master.c_ssn, dbo.c_tb_miris_master.c_supervisor, 
+                      dbo.c_tb_miris_master.c_incident_location, CONVERT(varchar, dbo.c_tb_miris_master.c_incident_date, 101) AS c_incident_date, 
+                      RIGHT(LTRIM(RIGHT(CONVERT(varchar, DATENAME(HOUR, dbo.c_tb_miris_master.c_incident_time), 100), 8)), 8) AS incident_HH, 
+                      RIGHT(LTRIM(RIGHT(CONVERT(varchar, DATENAME(MINUTE, dbo.c_tb_miris_master.c_incident_time), 100), 8)), 8) AS incident_MM, 
+                      dbo.c_tb_miris_master.c_incident_time, dbo.c_tb_miris_master.c_employee_report_location, dbo.c_tb_miris_master.c_note, 
+                      dbo.c_tb_miris_master.c_root_cause_analysic_info, dbo.c_tb_miris_master.c_corrective_action_info, dbo.c_tb_miris_master.c_osha_300_case_outcome, 
+                      dbo.c_tb_miris_master.c_osha_300_days_away_from_work, dbo.c_tb_miris_master.c_osha_300_days_of_restriction, CONVERT(varchar, 
+                      dbo.c_tb_miris_master.c_osha_300_date_of_death, 101) AS c_osha_300_date_of_death, dbo.c_tb_miris_master.c_osha_300_type_of_illness, 
+                      dbo.c_tb_miris_master.c_osha_300_info, dbo.c_tb_miris_master.c_osha_301_worker_gender, RIGHT(LTRIM(RIGHT(CONVERT(varchar, DATENAME(HOUR, 
+                      dbo.c_tb_miris_master.c_osha_301_work_start_time), 100), 8)), 8) AS workstart_HH, RIGHT(LTRIM(RIGHT(CONVERT(varchar, DATENAME(MINUTE, 
+                      dbo.c_tb_miris_master.c_osha_301_work_start_time), 100), 8)), 8) AS workstart_MM, dbo.c_tb_miris_master.c_osha_301_work_start_time, 
+                      dbo.c_tb_miris_master.c_osha_301_physician, dbo.c_tb_miris_master.c_osha_301_treatment_facilities,
+                          (SELECT     (CASE WHEN ISNULL(c_osha_301_emergency_room, 0) = 0 THEN '' ELSE 'X' END) AS Expr1) AS c_osha_301_emergency_room_text,
+                          (SELECT     (CASE WHEN ISNULL(c_osha_301_hospitalized, 0) = 0 THEN '' ELSE 'X' END) AS Expr1) AS c_osha_301_hospitalized_text, 
+                      ISNULL(dbo.c_tb_miris_master.c_osha_301_emergency_room, 0) AS c_osha_301_emergency_room, ISNULL(dbo.c_tb_miris_master.c_osha_301_hospitalized, 0) 
+                      AS c_osha_301_hospitalized, dbo.c_tb_miris_master.c_osha_301_address1, dbo.c_tb_miris_master.c_osha_301_address2, 
+                      dbo.c_tb_miris_master.c_osha_301_address3, dbo.c_tb_miris_master.c_osha_301_city, dbo.c_tb_miris_master.c_osha_301_state, 
+                      dbo.c_tb_miris_master.c_osha_301_zip, dbo.c_tb_miris_master.c_osha_301_info_1, dbo.c_tb_miris_master.c_osha_301_info_2, 
+                      dbo.c_tb_miris_master.c_osha_301_info_3, dbo.c_tb_miris_master.c_osha_301_info_4, dbo.c_tb_miris_master.c_custom_01, dbo.c_tb_miris_master.c_custom_02, 
+                      dbo.c_tb_miris_master.c_custom_03, dbo.c_tb_miris_master.c_custom_04, dbo.c_tb_miris_master.c_custom_05, dbo.c_tb_miris_master.c_custom_06, 
+                      dbo.c_tb_miris_master.c_custom_07, dbo.c_tb_miris_master.c_custom_08, dbo.c_tb_miris_master.c_custom_09, dbo.c_tb_miris_master.c_custom_10, 
+                      dbo.c_tb_miris_master.c_custom_11, dbo.c_tb_miris_master.c_custom_12, dbo.c_tb_miris_master.c_custom_13, CONVERT(varchar, 
+                      dbo.c_tb_miris_master.c_case_date, 101) AS c_case_date, CONVERT(varchar, dbo.c_tb_miris_master.c_case_date, 101) AS c_creation_date, 
+                      dbo.c_tb_miris_master.c_creation_date AS c_creation_date_order, category.s_ui_dropdown_us_english AS c_case_category_text, 
+                      type.s_ui_dropdown_us_english AS c_case_type_text, status.s_ui_dropdown_us_english AS c_status_text, dbo.c_tb_miris_master.c_timezone_id_fk, 
+                      (case when dbo.c_tb_miris_case_outcome.c_outcome_name='Remained at work (Transfer)' or dbo.c_tb_miris_case_outcome.c_outcome_name='Remained at work (Restriction)' then 'Yes' else '' end) as Jobtransfer, 
+                      (case when dbo.c_tb_miris_case_outcome.c_outcome_name='Away From Work' then 'Yes' else '' end) as AwayFromWork, 
+                      (case when dbo.c_tb_miris_case_outcome.c_outcome_name='Death' then 'Yes' else '' end) as Death, 
+                      (case when dbo.c_tb_miris_case_outcome.c_outcome_name='Remained at work (Other)' then 'Yes' else '' end) as Other, 
+                      
+                       (case when dbo.c_tb_miris_illness_type.c_illness_type_name='Other Illness' then 'Yes' else '' end) as OtherIllness, 
+                      (case when dbo.c_tb_miris_illness_type.c_illness_type_name='Hearing Loss' then 'Yes' else '' end) as HearingLoss, 
+                      (case when dbo.c_tb_miris_illness_type.c_illness_type_name='Poisoining' then 'Yes' else '' end) as Poisoining, 
+                       (case when dbo.c_tb_miris_illness_type.c_illness_type_name='RespiratoryCondition' then 'Yes' else '' end) as RespiratoryCondition, 
+                      (case when dbo.c_tb_miris_illness_type.c_illness_type_name='Skin Disorder' then 'Yes' else '' end) as SkinDisorder, 
+                      (case when dbo.c_tb_miris_illness_type.c_illness_type_name='Injury' then 'Yes' else '' end) as Injury, 
+                      
+                      dbo.c_tb_miris_illness_type.c_illness_type_name
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id LEFT OUTER JOIN
+                      dbo.s_tb_ui_dropdown AS category ON category.s_ui_dropdown_name = dbo.c_tb_miris_master.c_case_category_fk LEFT OUTER JOIN
+                      dbo.s_tb_ui_dropdown AS type ON type.s_ui_dropdown_name = dbo.c_tb_miris_master.c_case_type_fk LEFT OUTER JOIN
+                      dbo.s_tb_ui_dropdown AS status ON status.s_ui_dropdown_name = dbo.c_tb_miris_master.c_case_status</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="c_case_id_pk" DataSetColumn="c_case_id_pk" />
+              <Mapping SourceColumn="c_case_number" DataSetColumn="c_case_number" />
+              <Mapping SourceColumn="c_case_title" DataSetColumn="c_case_title" />
+              <Mapping SourceColumn="c_case_category_fk" DataSetColumn="c_case_category_fk" />
+              <Mapping SourceColumn="c_case_type_fk" DataSetColumn="c_case_type_fk" />
+              <Mapping SourceColumn="c_case_status" DataSetColumn="c_case_status" />
+              <Mapping SourceColumn="c_employee_name" DataSetColumn="c_employee_name" />
+              <Mapping SourceColumn="c_employee_dob" DataSetColumn="c_employee_dob" />
+              <Mapping SourceColumn="c_employee_hire_date" DataSetColumn="c_employee_hire_date" />
+              <Mapping SourceColumn="c_employee_id" DataSetColumn="c_employee_id" />
+              <Mapping SourceColumn="c_ssn" DataSetColumn="c_ssn" />
+              <Mapping SourceColumn="c_supervisor" DataSetColumn="c_supervisor" />
+              <Mapping SourceColumn="c_incident_location" DataSetColumn="c_incident_location" />
+              <Mapping SourceColumn="c_incident_date" DataSetColumn="c_incident_date" />
+              <Mapping SourceColumn="incident_HH" DataSetColumn="incident_HH" />
+              <Mapping SourceColumn="incident_MM" DataSetColumn="incident_MM" />
+              <Mapping SourceColumn="c_incident_time" DataSetColumn="c_incident_time" />
+              <Mapping SourceColumn="c_employee_report_location" DataSetColumn="c_employee_report_location" />
+              <Mapping SourceColumn="c_note" DataSetColumn="c_note" />
+              <Mapping SourceColumn="c_root_cause_analysic_info" DataSetColumn="c_root_cause_analysic_info" />
+              <Mapping SourceColumn="c_corrective_action_info" DataSetColumn="c_corrective_action_info" />
+              <Mapping SourceColumn="c_osha_300_case_outcome" DataSetColumn="c_osha_300_case_outcome" />
+              <Mapping SourceColumn="c_osha_300_days_away_from_work" DataSetColumn="c_osha_300_days_away_from_work" />
+              <Mapping SourceColumn="c_osha_300_days_of_restriction" DataSetColumn="c_osha_300_days_of_restriction" />
+              <Mapping SourceColumn="c_osha_300_date_of_death" DataSetColumn="c_osha_300_date_of_death" />
+              <Mapping SourceColumn="c_osha_300_type_of_illness" DataSetColumn="c_osha_300_type_of_illness" />
+              <Mapping SourceColumn="c_osha_300_info" DataSetColumn="c_osha_300_info" />
+              <Mapping SourceColumn="c_osha_301_worker_gender" DataSetColumn="c_osha_301_worker_gender" />
+              <Mapping SourceColumn="workstart_HH" DataSetColumn="workstart_HH" />
+              <Mapping SourceColumn="workstart_MM" DataSetColumn="workstart_MM" />
+              <Mapping SourceColumn="c_osha_301_work_start_time" DataSetColumn="c_osha_301_work_start_time" />
+              <Mapping SourceColumn="c_osha_301_physician" DataSetColumn="c_osha_301_physician" />
+              <Mapping SourceColumn="c_osha_301_treatment_facilities" DataSetColumn="c_osha_301_treatment_facilities" />
+              <Mapping SourceColumn="c_osha_301_emergency_room_text" DataSetColumn="c_osha_301_emergency_room_text" />
+              <Mapping SourceColumn="c_osha_301_hospitalized_text" DataSetColumn="c_osha_301_hospitalized_text" />
+              <Mapping SourceColumn="c_osha_301_emergency_room" DataSetColumn="c_osha_301_emergency_room" />
+              <Mapping SourceColumn="c_osha_301_hospitalized" DataSetColumn="c_osha_301_hospitalized" />
+              <Mapping SourceColumn="c_osha_301_address1" DataSetColumn="c_osha_301_address1" />
+              <Mapping SourceColumn="c_osha_301_address2" DataSetColumn="c_osha_301_address2" />
+              <Mapping SourceColumn="c_osha_301_address3" DataSetColumn="c_osha_301_address3" />
+              <Mapping SourceColumn="c_osha_301_city" DataSetColumn="c_osha_301_city" />
+              <Mapping SourceColumn="c_osha_301_state" DataSetColumn="c_osha_301_state" />
+              <Mapping SourceColumn="c_osha_301_zip" DataSetColumn="c_osha_301_zip" />
+              <Mapping SourceColumn="c_osha_301_info_1" DataSetColumn="c_osha_301_info_1" />
+              <Mapping SourceColumn="c_osha_301_info_2" DataSetColumn="c_osha_301_info_2" />
+              <Mapping SourceColumn="c_osha_301_info_3" DataSetColumn="c_osha_301_info_3" />
+              <Mapping SourceColumn="c_osha_301_info_4" DataSetColumn="c_osha_301_info_4" />
+              <Mapping SourceColumn="c_custom_01" DataSetColumn="c_custom_01" />
+              <Mapping SourceColumn="c_custom_02" DataSetColumn="c_custom_02" />
+              <Mapping SourceColumn="c_custom_03" DataSetColumn="c_custom_03" />
+              <Mapping SourceColumn="c_custom_04" DataSetColumn="c_custom_04" />
+              <Mapping SourceColumn="c_custom_05" DataSetColumn="c_custom_05" />
+              <Mapping SourceColumn="c_custom_06" DataSetColumn="c_custom_06" />
+              <Mapping SourceColumn="c_custom_07" DataSetColumn="c_custom_07" />
+              <Mapping SourceColumn="c_custom_08" DataSetColumn="c_custom_08" />
+              <Mapping SourceColumn="c_custom_09" DataSetColumn="c_custom_09" />
+              <Mapping SourceColumn="c_custom_10" DataSetColumn="c_custom_10" />
+              <Mapping SourceColumn="c_custom_11" DataSetColumn="c_custom_11" />
+              <Mapping SourceColumn="c_custom_12" DataSetColumn="c_custom_12" />
+              <Mapping SourceColumn="c_custom_13" DataSetColumn="c_custom_13" />
+              <Mapping SourceColumn="c_case_date" DataSetColumn="c_case_date" />
+              <Mapping SourceColumn="c_creation_date" DataSetColumn="c_creation_date" />
+              <Mapping SourceColumn="c_creation_date_order" DataSetColumn="c_creation_date_order" />
+              <Mapping SourceColumn="c_case_category_text" DataSetColumn="c_case_category_text" />
+              <Mapping SourceColumn="c_case_type_text" DataSetColumn="c_case_type_text" />
+              <Mapping SourceColumn="c_status_text" DataSetColumn="c_status_text" />
+              <Mapping SourceColumn="c_timezone_id_fk" DataSetColumn="c_timezone_id_fk" />
+              <Mapping SourceColumn="Jobtransfer" DataSetColumn="Jobtransfer" />
+              <Mapping SourceColumn="AwayFromWork" DataSetColumn="AwayFromWork" />
+              <Mapping SourceColumn="Death" DataSetColumn="Death" />
+              <Mapping SourceColumn="Other" DataSetColumn="Other" />
+              <Mapping SourceColumn="OtherIllness" DataSetColumn="OtherIllness" />
+              <Mapping SourceColumn="HearingLoss" DataSetColumn="HearingLoss" />
+              <Mapping SourceColumn="Poisoining" DataSetColumn="Poisoining" />
+              <Mapping SourceColumn="RespiratoryCondition" DataSetColumn="RespiratoryCondition" />
+              <Mapping SourceColumn="SkinDisorder" DataSetColumn="SkinDisorder" />
+              <Mapping SourceColumn="Injury" DataSetColumn="Injury" />
+              <Mapping SourceColumn="c_illness_type_name" DataSetColumn="c_illness_type_name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable2TableAdapter" GeneratorDataComponentClassName="DataTable2TableAdapter" Name="DataTable2" UserDataComponentName="DataTable2TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ComplianceFactorsConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>
+select CountOfAwayFromWork,CountOfDeath,CountOfJobtransfer,CountOfOther,CountOfOtherIllness,
+CountOfHearingLoss,CountOfPoisoining,CountOfRespiratoryCondition,CountOfSkinDisorder,
+CountOfInjury,SumOfDayAwayFromWork from (
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfAwayFromWork,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_case_outcome.c_outcome_name = 'Away From Work') as a-- and c_case_date ='2013-1-1'
+inner join 
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfDeath,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_case_outcome.c_outcome_name = 'Death') as d on a.id=d.id    
+inner join                       
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfJobtransfer,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_case_outcome.c_outcome_name = 'Remained at work (Transfer)' OR
+                      dbo.c_tb_miris_case_outcome.c_outcome_name = 'Remained at work (Restriction)') as j on a.id=j.id
+inner join                       
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfOther,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_case_outcome.c_outcome_name = 'Remained at work (Other)'  ) as o on a.id=o.id
+inner join                      
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfOtherIllness,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_illness_type.c_illness_type_name = 'Other Illness') as oi on a.id=oi.id-- and c_case_date ='2013-1-1'
+inner join 
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfHearingLoss,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_illness_type.c_illness_type_name = 'Hearing Loss') as hl on a.id=hl.id    
+inner join                       
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfPoisoining,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_illness_type.c_illness_type_name = 'Poisoining') as po on a.id=po.id
+inner join                       
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfRespiratoryCondition,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_illness_type.c_illness_type_name = 'RespiratoryCondition'  ) as rc on a.id=rc.id
+inner join 
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfSkinDisorder,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_illness_type.c_illness_type_name = 'Skin Disorder') as sd on a.id=sd.id    
+inner join                       
+(SELECT     count(dbo.c_tb_miris_master.c_case_id_pk) as CountOfInjury,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      where dbo.c_tb_miris_illness_type.c_illness_type_name = 'Injury') as inj on a.id=inj.id                           
+ inner join                       
+(SELECT     (case when sum(c_osha_300_days_away_from_work) is null then '' else sum(c_osha_300_days_away_from_work) end) as SumOfDayAwayFromWork,'guid' as id
+FROM         dbo.c_tb_miris_master LEFT OUTER JOIN
+                      dbo.c_tb_miris_illness_type ON dbo.c_tb_miris_master.c_osha_300_type_of_illness = dbo.c_tb_miris_illness_type.c_illness_type_id LEFT OUTER JOIN
+                      dbo.c_tb_miris_case_outcome ON dbo.c_tb_miris_master.c_osha_300_case_outcome = dbo.c_tb_miris_case_outcome.c_outcome_id
+                      ) as da on a.id=da.id                             
+)              </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CountOfAwayFromWork" DataSetColumn="CountOfAwayFromWork" />
+              <Mapping SourceColumn="CountOfDeath" DataSetColumn="CountOfDeath" />
+              <Mapping SourceColumn="CountOfJobtransfer" DataSetColumn="CountOfJobtransfer" />
+              <Mapping SourceColumn="CountOfOther" DataSetColumn="CountOfOther" />
+              <Mapping SourceColumn="CountOfOtherIllness" DataSetColumn="CountOfOtherIllness" />
+              <Mapping SourceColumn="CountOfHearingLoss" DataSetColumn="CountOfHearingLoss" />
+              <Mapping SourceColumn="CountOfPoisoining" DataSetColumn="CountOfPoisoining" />
+              <Mapping SourceColumn="CountOfRespiratoryCondition" DataSetColumn="CountOfRespiratoryCondition" />
+              <Mapping SourceColumn="CountOfSkinDisorder" DataSetColumn="CountOfSkinDisorder" />
+              <Mapping SourceColumn="CountOfInjury" DataSetColumn="CountOfInjury" />
+              <Mapping SourceColumn="SumOfDayAwayFromWork" DataSetColumn="SumOfDayAwayFromWork" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OSHADataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="OSHADataSet" msprop:Generator_UserDSName="OSHADataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="c_case_id_pk" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnc_case_id_pk" msprop:Generator_ColumnPropNameInRow="c_case_id_pk" msprop:Generator_ColumnPropNameInTable="c_case_id_pkColumn" msprop:Generator_UserColumnName="c_case_id_pk" type="xs:string" />
+              <xs:element name="c_case_number" msprop:Generator_ColumnVarNameInTable="columnc_case_number" msprop:Generator_ColumnPropNameInRow="c_case_number" msprop:Generator_ColumnPropNameInTable="c_case_numberColumn" msprop:Generator_UserColumnName="c_case_number" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_case_title" msprop:Generator_ColumnVarNameInTable="columnc_case_title" msprop:Generator_ColumnPropNameInRow="c_case_title" msprop:Generator_ColumnPropNameInTable="c_case_titleColumn" msprop:Generator_UserColumnName="c_case_title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_case_category_fk" msprop:Generator_ColumnVarNameInTable="columnc_case_category_fk" msprop:Generator_ColumnPropNameInRow="c_case_category_fk" msprop:Generator_ColumnPropNameInTable="c_case_category_fkColumn" msprop:Generator_UserColumnName="c_case_category_fk" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_case_type_fk" msprop:Generator_ColumnVarNameInTable="columnc_case_type_fk" msprop:Generator_ColumnPropNameInRow="c_case_type_fk" msprop:Generator_ColumnPropNameInTable="c_case_type_fkColumn" msprop:Generator_UserColumnName="c_case_type_fk" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_case_status" msprop:Generator_ColumnVarNameInTable="columnc_case_status" msprop:Generator_ColumnPropNameInRow="c_case_status" msprop:Generator_ColumnPropNameInTable="c_case_statusColumn" msprop:Generator_UserColumnName="c_case_status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_employee_name" msprop:Generator_ColumnVarNameInTable="columnc_employee_name" msprop:Generator_ColumnPropNameInRow="c_employee_name" msprop:Generator_ColumnPropNameInTable="c_employee_nameColumn" msprop:Generator_UserColumnName="c_employee_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_employee_dob" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_employee_dob" msprop:Generator_ColumnPropNameInRow="c_employee_dob" msprop:Generator_ColumnPropNameInTable="c_employee_dobColumn" msprop:Generator_UserColumnName="c_employee_dob" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_employee_hire_date" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_employee_hire_date" msprop:Generator_ColumnPropNameInRow="c_employee_hire_date" msprop:Generator_ColumnPropNameInTable="c_employee_hire_dateColumn" msprop:Generator_UserColumnName="c_employee_hire_date" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_employee_id" msprop:Generator_ColumnVarNameInTable="columnc_employee_id" msprop:Generator_ColumnPropNameInRow="c_employee_id" msprop:Generator_ColumnPropNameInTable="c_employee_idColumn" msprop:Generator_UserColumnName="c_employee_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_ssn" msprop:Generator_ColumnVarNameInTable="columnc_ssn" msprop:Generator_ColumnPropNameInRow="c_ssn" msprop:Generator_ColumnPropNameInTable="c_ssnColumn" msprop:Generator_UserColumnName="c_ssn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_supervisor" msprop:Generator_ColumnVarNameInTable="columnc_supervisor" msprop:Generator_ColumnPropNameInRow="c_supervisor" msprop:Generator_ColumnPropNameInTable="c_supervisorColumn" msprop:Generator_UserColumnName="c_supervisor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_incident_location" msprop:Generator_ColumnVarNameInTable="columnc_incident_location" msprop:Generator_ColumnPropNameInRow="c_incident_location" msprop:Generator_ColumnPropNameInTable="c_incident_locationColumn" msprop:Generator_UserColumnName="c_incident_location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_incident_date" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_incident_date" msprop:Generator_ColumnPropNameInRow="c_incident_date" msprop:Generator_ColumnPropNameInTable="c_incident_dateColumn" msprop:Generator_UserColumnName="c_incident_date" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="incident_HH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnincident_HH" msprop:Generator_ColumnPropNameInRow="incident_HH" msprop:Generator_ColumnPropNameInTable="incident_HHColumn" msprop:Generator_UserColumnName="incident_HH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="incident_MM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnincident_MM" msprop:Generator_ColumnPropNameInRow="incident_MM" msprop:Generator_ColumnPropNameInTable="incident_MMColumn" msprop:Generator_UserColumnName="incident_MM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_incident_time" msprop:Generator_ColumnVarNameInTable="columnc_incident_time" msprop:Generator_ColumnPropNameInRow="c_incident_time" msprop:Generator_ColumnPropNameInTable="c_incident_timeColumn" msprop:Generator_UserColumnName="c_incident_time" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="c_employee_report_location" msprop:Generator_ColumnVarNameInTable="columnc_employee_report_location" msprop:Generator_ColumnPropNameInRow="c_employee_report_location" msprop:Generator_ColumnPropNameInTable="c_employee_report_locationColumn" msprop:Generator_UserColumnName="c_employee_report_location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_note" msprop:Generator_ColumnVarNameInTable="columnc_note" msprop:Generator_ColumnPropNameInRow="c_note" msprop:Generator_ColumnPropNameInTable="c_noteColumn" msprop:Generator_UserColumnName="c_note" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_root_cause_analysic_info" msprop:Generator_ColumnVarNameInTable="columnc_root_cause_analysic_info" msprop:Generator_ColumnPropNameInRow="c_root_cause_analysic_info" msprop:Generator_ColumnPropNameInTable="c_root_cause_analysic_infoColumn" msprop:Generator_UserColumnName="c_root_cause_analysic_info" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_corrective_action_info" msprop:Generator_ColumnVarNameInTable="columnc_corrective_action_info" msprop:Generator_ColumnPropNameInRow="c_corrective_action_info" msprop:Generator_ColumnPropNameInTable="c_corrective_action_infoColumn" msprop:Generator_UserColumnName="c_corrective_action_info" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_300_case_outcome" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnc_osha_300_case_outcome" msprop:Generator_ColumnPropNameInRow="c_osha_300_case_outcome" msprop:Generator_ColumnPropNameInTable="c_osha_300_case_outcomeColumn" msprop:Generator_UserColumnName="c_osha_300_case_outcome" type="xs:string" minOccurs="0" />
+              <xs:element name="c_osha_300_days_away_from_work" msprop:Generator_ColumnVarNameInTable="columnc_osha_300_days_away_from_work" msprop:Generator_ColumnPropNameInRow="c_osha_300_days_away_from_work" msprop:Generator_ColumnPropNameInTable="c_osha_300_days_away_from_workColumn" msprop:Generator_UserColumnName="c_osha_300_days_away_from_work" type="xs:int" minOccurs="0" />
+              <xs:element name="c_osha_300_days_of_restriction" msprop:Generator_ColumnVarNameInTable="columnc_osha_300_days_of_restriction" msprop:Generator_ColumnPropNameInRow="c_osha_300_days_of_restriction" msprop:Generator_ColumnPropNameInTable="c_osha_300_days_of_restrictionColumn" msprop:Generator_UserColumnName="c_osha_300_days_of_restriction" type="xs:int" minOccurs="0" />
+              <xs:element name="c_osha_300_date_of_death" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_osha_300_date_of_death" msprop:Generator_ColumnPropNameInRow="c_osha_300_date_of_death" msprop:Generator_ColumnPropNameInTable="c_osha_300_date_of_deathColumn" msprop:Generator_UserColumnName="c_osha_300_date_of_death" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_300_type_of_illness" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnc_osha_300_type_of_illness" msprop:Generator_ColumnPropNameInRow="c_osha_300_type_of_illness" msprop:Generator_ColumnPropNameInTable="c_osha_300_type_of_illnessColumn" msprop:Generator_UserColumnName="c_osha_300_type_of_illness" type="xs:string" minOccurs="0" />
+              <xs:element name="c_osha_300_info" msprop:Generator_ColumnVarNameInTable="columnc_osha_300_info" msprop:Generator_ColumnPropNameInRow="c_osha_300_info" msprop:Generator_ColumnPropNameInTable="c_osha_300_infoColumn" msprop:Generator_UserColumnName="c_osha_300_info" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_worker_gender" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_worker_gender" msprop:Generator_ColumnPropNameInRow="c_osha_301_worker_gender" msprop:Generator_ColumnPropNameInTable="c_osha_301_worker_genderColumn" msprop:Generator_UserColumnName="c_osha_301_worker_gender" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="workstart_HH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnworkstart_HH" msprop:Generator_ColumnPropNameInRow="workstart_HH" msprop:Generator_ColumnPropNameInTable="workstart_HHColumn" msprop:Generator_UserColumnName="workstart_HH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="workstart_MM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnworkstart_MM" msprop:Generator_ColumnPropNameInRow="workstart_MM" msprop:Generator_ColumnPropNameInTable="workstart_MMColumn" msprop:Generator_UserColumnName="workstart_MM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_work_start_time" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_work_start_time" msprop:Generator_ColumnPropNameInRow="c_osha_301_work_start_time" msprop:Generator_ColumnPropNameInTable="c_osha_301_work_start_timeColumn" msprop:Generator_UserColumnName="c_osha_301_work_start_time" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="c_osha_301_physician" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_physician" msprop:Generator_ColumnPropNameInRow="c_osha_301_physician" msprop:Generator_ColumnPropNameInTable="c_osha_301_physicianColumn" msprop:Generator_UserColumnName="c_osha_301_physician" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_treatment_facilities" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_treatment_facilities" msprop:Generator_ColumnPropNameInRow="c_osha_301_treatment_facilities" msprop:Generator_ColumnPropNameInTable="c_osha_301_treatment_facilitiesColumn" msprop:Generator_UserColumnName="c_osha_301_treatment_facilities" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_emergency_room_text" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_emergency_room_text" msprop:Generator_ColumnPropNameInRow="c_osha_301_emergency_room_text" msprop:Generator_ColumnPropNameInTable="c_osha_301_emergency_room_textColumn" msprop:Generator_UserColumnName="c_osha_301_emergency_room_text" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_hospitalized_text" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_hospitalized_text" msprop:Generator_ColumnPropNameInRow="c_osha_301_hospitalized_text" msprop:Generator_ColumnPropNameInTable="c_osha_301_hospitalized_textColumn" msprop:Generator_UserColumnName="c_osha_301_hospitalized_text" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_emergency_room" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_emergency_room" msprop:Generator_ColumnPropNameInRow="c_osha_301_emergency_room" msprop:Generator_ColumnPropNameInTable="c_osha_301_emergency_roomColumn" msprop:Generator_UserColumnName="c_osha_301_emergency_room" type="xs:boolean" minOccurs="0" />
+              <xs:element name="c_osha_301_hospitalized" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_hospitalized" msprop:Generator_ColumnPropNameInRow="c_osha_301_hospitalized" msprop:Generator_ColumnPropNameInTable="c_osha_301_hospitalizedColumn" msprop:Generator_UserColumnName="c_osha_301_hospitalized" type="xs:boolean" minOccurs="0" />
+              <xs:element name="c_osha_301_address1" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_address1" msprop:Generator_ColumnPropNameInRow="c_osha_301_address1" msprop:Generator_ColumnPropNameInTable="c_osha_301_address1Column" msprop:Generator_UserColumnName="c_osha_301_address1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_address2" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_address2" msprop:Generator_ColumnPropNameInRow="c_osha_301_address2" msprop:Generator_ColumnPropNameInTable="c_osha_301_address2Column" msprop:Generator_UserColumnName="c_osha_301_address2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_address3" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_address3" msprop:Generator_ColumnPropNameInRow="c_osha_301_address3" msprop:Generator_ColumnPropNameInTable="c_osha_301_address3Column" msprop:Generator_UserColumnName="c_osha_301_address3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_city" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_city" msprop:Generator_ColumnPropNameInRow="c_osha_301_city" msprop:Generator_ColumnPropNameInTable="c_osha_301_cityColumn" msprop:Generator_UserColumnName="c_osha_301_city" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_state" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_state" msprop:Generator_ColumnPropNameInRow="c_osha_301_state" msprop:Generator_ColumnPropNameInTable="c_osha_301_stateColumn" msprop:Generator_UserColumnName="c_osha_301_state" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_zip" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_zip" msprop:Generator_ColumnPropNameInRow="c_osha_301_zip" msprop:Generator_ColumnPropNameInTable="c_osha_301_zipColumn" msprop:Generator_UserColumnName="c_osha_301_zip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_info_1" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_info_1" msprop:Generator_ColumnPropNameInRow="c_osha_301_info_1" msprop:Generator_ColumnPropNameInTable="c_osha_301_info_1Column" msprop:Generator_UserColumnName="c_osha_301_info_1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_info_2" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_info_2" msprop:Generator_ColumnPropNameInRow="c_osha_301_info_2" msprop:Generator_ColumnPropNameInTable="c_osha_301_info_2Column" msprop:Generator_UserColumnName="c_osha_301_info_2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_info_3" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_info_3" msprop:Generator_ColumnPropNameInRow="c_osha_301_info_3" msprop:Generator_ColumnPropNameInTable="c_osha_301_info_3Column" msprop:Generator_UserColumnName="c_osha_301_info_3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_osha_301_info_4" msprop:Generator_ColumnVarNameInTable="columnc_osha_301_info_4" msprop:Generator_ColumnPropNameInRow="c_osha_301_info_4" msprop:Generator_ColumnPropNameInTable="c_osha_301_info_4Column" msprop:Generator_UserColumnName="c_osha_301_info_4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_01" msprop:Generator_ColumnVarNameInTable="columnc_custom_01" msprop:Generator_ColumnPropNameInRow="c_custom_01" msprop:Generator_ColumnPropNameInTable="c_custom_01Column" msprop:Generator_UserColumnName="c_custom_01" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_02" msprop:Generator_ColumnVarNameInTable="columnc_custom_02" msprop:Generator_ColumnPropNameInRow="c_custom_02" msprop:Generator_ColumnPropNameInTable="c_custom_02Column" msprop:Generator_UserColumnName="c_custom_02" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_03" msprop:Generator_ColumnVarNameInTable="columnc_custom_03" msprop:Generator_ColumnPropNameInRow="c_custom_03" msprop:Generator_ColumnPropNameInTable="c_custom_03Column" msprop:Generator_UserColumnName="c_custom_03" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_04" msprop:Generator_ColumnVarNameInTable="columnc_custom_04" msprop:Generator_ColumnPropNameInRow="c_custom_04" msprop:Generator_ColumnPropNameInTable="c_custom_04Column" msprop:Generator_UserColumnName="c_custom_04" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_05" msprop:Generator_ColumnVarNameInTable="columnc_custom_05" msprop:Generator_ColumnPropNameInRow="c_custom_05" msprop:Generator_ColumnPropNameInTable="c_custom_05Column" msprop:Generator_UserColumnName="c_custom_05" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_06" msprop:Generator_ColumnVarNameInTable="columnc_custom_06" msprop:Generator_ColumnPropNameInRow="c_custom_06" msprop:Generator_ColumnPropNameInTable="c_custom_06Column" msprop:Generator_UserColumnName="c_custom_06" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_07" msprop:Generator_ColumnVarNameInTable="columnc_custom_07" msprop:Generator_ColumnPropNameInRow="c_custom_07" msprop:Generator_ColumnPropNameInTable="c_custom_07Column" msprop:Generator_UserColumnName="c_custom_07" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_08" msprop:Generator_ColumnVarNameInTable="columnc_custom_08" msprop:Generator_ColumnPropNameInRow="c_custom_08" msprop:Generator_ColumnPropNameInTable="c_custom_08Column" msprop:Generator_UserColumnName="c_custom_08" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_09" msprop:Generator_ColumnVarNameInTable="columnc_custom_09" msprop:Generator_ColumnPropNameInRow="c_custom_09" msprop:Generator_ColumnPropNameInTable="c_custom_09Column" msprop:Generator_UserColumnName="c_custom_09" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_10" msprop:Generator_ColumnVarNameInTable="columnc_custom_10" msprop:Generator_ColumnPropNameInRow="c_custom_10" msprop:Generator_ColumnPropNameInTable="c_custom_10Column" msprop:Generator_UserColumnName="c_custom_10" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_11" msprop:Generator_ColumnVarNameInTable="columnc_custom_11" msprop:Generator_ColumnPropNameInRow="c_custom_11" msprop:Generator_ColumnPropNameInTable="c_custom_11Column" msprop:Generator_UserColumnName="c_custom_11" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_12" msprop:Generator_ColumnVarNameInTable="columnc_custom_12" msprop:Generator_ColumnPropNameInRow="c_custom_12" msprop:Generator_ColumnPropNameInTable="c_custom_12Column" msprop:Generator_UserColumnName="c_custom_12" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_custom_13" msprop:Generator_ColumnVarNameInTable="columnc_custom_13" msprop:Generator_ColumnPropNameInRow="c_custom_13" msprop:Generator_ColumnPropNameInTable="c_custom_13Column" msprop:Generator_UserColumnName="c_custom_13" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_case_date" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_case_date" msprop:Generator_ColumnPropNameInRow="c_case_date" msprop:Generator_ColumnPropNameInTable="c_case_dateColumn" msprop:Generator_UserColumnName="c_case_date" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_creation_date" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnc_creation_date" msprop:Generator_ColumnPropNameInRow="c_creation_date" msprop:Generator_ColumnPropNameInTable="c_creation_dateColumn" msprop:Generator_UserColumnName="c_creation_date" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_creation_date_order" msprop:Generator_ColumnVarNameInTable="columnc_creation_date_order" msprop:Generator_ColumnPropNameInRow="c_creation_date_order" msprop:Generator_ColumnPropNameInTable="c_creation_date_orderColumn" msprop:Generator_UserColumnName="c_creation_date_order" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="c_case_category_text" msprop:Generator_ColumnVarNameInTable="columnc_case_category_text" msprop:Generator_ColumnPropNameInRow="c_case_category_text" msprop:Generator_ColumnPropNameInTable="c_case_category_textColumn" msprop:Generator_UserColumnName="c_case_category_text" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_case_type_text" msprop:Generator_ColumnVarNameInTable="columnc_case_type_text" msprop:Generator_ColumnPropNameInRow="c_case_type_text" msprop:Generator_ColumnPropNameInTable="c_case_type_textColumn" msprop:Generator_UserColumnName="c_case_type_text" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_status_text" msprop:Generator_ColumnVarNameInTable="columnc_status_text" msprop:Generator_ColumnPropNameInRow="c_status_text" msprop:Generator_ColumnPropNameInTable="c_status_textColumn" msprop:Generator_UserColumnName="c_status_text" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_timezone_id_fk" msprop:Generator_ColumnVarNameInTable="columnc_timezone_id_fk" msprop:Generator_ColumnPropNameInRow="c_timezone_id_fk" msprop:Generator_ColumnPropNameInTable="c_timezone_id_fkColumn" msprop:Generator_UserColumnName="c_timezone_id_fk" type="xs:int" minOccurs="0" />
+              <xs:element name="Jobtransfer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnJobtransfer" msprop:Generator_ColumnPropNameInRow="Jobtransfer" msprop:Generator_ColumnPropNameInTable="JobtransferColumn" msprop:Generator_UserColumnName="Jobtransfer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AwayFromWork" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAwayFromWork" msprop:Generator_ColumnPropNameInRow="AwayFromWork" msprop:Generator_ColumnPropNameInTable="AwayFromWorkColumn" msprop:Generator_UserColumnName="AwayFromWork" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Death" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDeath" msprop:Generator_ColumnPropNameInRow="Death" msprop:Generator_ColumnPropNameInTable="DeathColumn" msprop:Generator_UserColumnName="Death" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Other" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOther" msprop:Generator_ColumnPropNameInRow="Other" msprop:Generator_ColumnPropNameInTable="OtherColumn" msprop:Generator_UserColumnName="Other" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OtherIllness" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOtherIllness" msprop:Generator_ColumnPropNameInRow="OtherIllness" msprop:Generator_ColumnPropNameInTable="OtherIllnessColumn" msprop:Generator_UserColumnName="OtherIllness" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HearingLoss" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHearingLoss" msprop:Generator_ColumnPropNameInRow="HearingLoss" msprop:Generator_ColumnPropNameInTable="HearingLossColumn" msprop:Generator_UserColumnName="HearingLoss" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Poisoining" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPoisoining" msprop:Generator_ColumnPropNameInRow="Poisoining" msprop:Generator_ColumnPropNameInTable="PoisoiningColumn" msprop:Generator_UserColumnName="Poisoining" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RespiratoryCondition" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRespiratoryCondition" msprop:Generator_ColumnPropNameInRow="RespiratoryCondition" msprop:Generator_ColumnPropNameInTable="RespiratoryConditionColumn" msprop:Generator_UserColumnName="RespiratoryCondition" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SkinDisorder" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSkinDisorder" msprop:Generator_ColumnPropNameInRow="SkinDisorder" msprop:Generator_ColumnPropNameInTable="SkinDisorderColumn" msprop:Generator_UserColumnName="SkinDisorder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Injury" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnInjury" msprop:Generator_ColumnPropNameInRow="Injury" msprop:Generator_ColumnPropNameInTable="InjuryColumn" msprop:Generator_UserColumnName="Injury" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="c_illness_type_name" msprop:Generator_ColumnVarNameInTable="columnc_illness_type_name" msprop:Generator_ColumnPropNameInRow="c_illness_type_name" msprop:Generator_ColumnPropNameInTable="c_illness_type_nameColumn" msprop:Generator_UserColumnName="c_illness_type_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_RowClassName="DataTable2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CountOfAwayFromWork" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfAwayFromWork" msprop:Generator_ColumnPropNameInRow="CountOfAwayFromWork" msprop:Generator_ColumnPropNameInTable="CountOfAwayFromWorkColumn" msprop:Generator_UserColumnName="CountOfAwayFromWork" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfDeath" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfDeath" msprop:Generator_ColumnPropNameInRow="CountOfDeath" msprop:Generator_ColumnPropNameInTable="CountOfDeathColumn" msprop:Generator_UserColumnName="CountOfDeath" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfJobtransfer" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfJobtransfer" msprop:Generator_ColumnPropNameInRow="CountOfJobtransfer" msprop:Generator_ColumnPropNameInTable="CountOfJobtransferColumn" msprop:Generator_UserColumnName="CountOfJobtransfer" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfOther" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfOther" msprop:Generator_ColumnPropNameInRow="CountOfOther" msprop:Generator_ColumnPropNameInTable="CountOfOtherColumn" msprop:Generator_UserColumnName="CountOfOther" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfOtherIllness" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfOtherIllness" msprop:Generator_ColumnPropNameInRow="CountOfOtherIllness" msprop:Generator_ColumnPropNameInTable="CountOfOtherIllnessColumn" msprop:Generator_UserColumnName="CountOfOtherIllness" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfHearingLoss" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfHearingLoss" msprop:Generator_ColumnPropNameInRow="CountOfHearingLoss" msprop:Generator_ColumnPropNameInTable="CountOfHearingLossColumn" msprop:Generator_UserColumnName="CountOfHearingLoss" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfPoisoining" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfPoisoining" msprop:Generator_ColumnPropNameInRow="CountOfPoisoining" msprop:Generator_ColumnPropNameInTable="CountOfPoisoiningColumn" msprop:Generator_UserColumnName="CountOfPoisoining" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfRespiratoryCondition" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfRespiratoryCondition" msprop:Generator_ColumnPropNameInRow="CountOfRespiratoryCondition" msprop:Generator_ColumnPropNameInTable="CountOfRespiratoryConditionColumn" msprop:Generator_UserColumnName="CountOfRespiratoryCondition" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfSkinDisorder" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfSkinDisorder" msprop:Generator_ColumnPropNameInRow="CountOfSkinDisorder" msprop:Generator_ColumnPropNameInTable="CountOfSkinDisorderColumn" msprop:Generator_UserColumnName="CountOfSkinDisorder" type="xs:int" minOccurs="0" />
+              <xs:element name="CountOfInjury" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCountOfInjury" msprop:Generator_ColumnPropNameInRow="CountOfInjury" msprop:Generator_ColumnPropNameInTable="CountOfInjuryColumn" msprop:Generator_UserColumnName="CountOfInjury" type="xs:int" minOccurs="0" />
+              <xs:element name="SumOfDayAwayFromWork" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSumOfDayAwayFromWork" msprop:Generator_ColumnPropNameInRow="SumOfDayAwayFromWork" msprop:Generator_ColumnPropNameInTable="SumOfDayAwayFromWorkColumn" msprop:Generator_UserColumnName="SumOfDayAwayFromWork" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

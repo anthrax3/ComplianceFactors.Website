@@ -411,7 +411,74 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable SearchCaseOSHA(ComplianceDAO miris)
+        {
+            Hashtable htSearchCase = new Hashtable();
+            htSearchCase.Add("@c_case_number", miris.c_case_number);
+            htSearchCase.Add("@c_case_title", miris.c_case_title);
+            if (!string.IsNullOrEmpty(miris.c_case_date.ToString()))
+            {
+                htSearchCase.Add("@c_case_date", miris.c_case_date);
+            }
+            else
+            {
+                htSearchCase.Add("@c_case_date", DBNull.Value);
+            }
+            if (miris.c_case_category_fk == "0")
+                htSearchCase.Add("@c_case_category_fk", DBNull.Value);
+            else
+                htSearchCase.Add("@c_case_category_fk", miris.c_case_category_fk);
 
+            if (miris.c_case_type_fk == "0")
+                htSearchCase.Add("@c_case_type_fk", DBNull.Value);
+            else
+                htSearchCase.Add("@c_case_type_fk", miris.c_case_type_fk);
+
+            if (miris.c_case_status == "0")
+                htSearchCase.Add("@c_case_status", DBNull.Value);
+            else
+                htSearchCase.Add("@c_case_status", miris.c_case_status);
+            try
+            {
+                return DataProxy.FetchDataTable("c_miris_osha_sp_search_case", htSearchCase);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static DataTable SearchCaseOSHA300A(string condition)
+        {
+            Hashtable htSearchCase = new Hashtable();
+            if (string.IsNullOrEmpty(condition))
+            {
+                condition = " 1=1 ";
+            }
+            htSearchCase.Add("@condition", condition.Replace("#","'"));
+            try
+            {
+                return DataProxy.FetchDataTable("c_miris_osha_300a_sp_search_case", htSearchCase);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static DataTable SearchCaseByEmp(string c_employee_name, string c_case_title)
+        {
+            Hashtable htSearchCase = new Hashtable();
+            htSearchCase.Add("@c_employee_name", c_employee_name);
+            htSearchCase.Add("@c_case_title", c_case_title);
+
+            try
+            {
+                return DataProxy.FetchDataTable("c_miris_osha_sp_search_case_emp", htSearchCase);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         //witness
         public static int InsertWitness(ComplianceDAO miris)
         {

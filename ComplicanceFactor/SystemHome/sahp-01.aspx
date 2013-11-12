@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true"
     CodeBehind="sahp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.sahp_01"
     MaintainScrollPositionOnPostback="true" %>
-
+<%@ Register Src="~/Compliance/MIRIS/Reports/mrp-01.ascx" TagName="mrp" TagPrefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+   
     <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -31,8 +31,7 @@
 			.tablesorter({ headers: { 3: { sorter: false }, 4: { sorter: false}} });
                 $('#<%=gvThemes.ClientID %>')
 			.tablesorter({ headers: { 3: { sorter: false }, 4: { sorter: false}} });
-                $('#<%=gvMyReports.ClientID %>')
-			.tablesorter({ headers: { 3: { sorter: false }, 4: { sorter: false }, 5: { sorter: false }, 6: { sorter: false}} });
+           
             });
         });
     </script>
@@ -223,39 +222,7 @@
     </div>
     <br />
     <div class="div_padding_10" id="div_MyReports" runat="server">
-        <asp:GridView ID="gvMyReports" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
-            runat="server" EmptyDataText="No Result Found" GridLines="None" DataKeyNames=""
-            AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
-            <Columns>
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_report_name_with_id_text %>" DataField="ReportName"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField="Type" HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField="Created"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnViewLast" CommandArgument='' CommandName="" runat="server" Text="<%$ LabelResourceExpression: app_view_last_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnSchedule" CommandArgument='' CommandName="" runat="server" Text="<%$ LabelResourceExpression: app_schedule_it_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnGenerate" CommandArgument='' CommandName="" runat="server" Text="<%$ LabelResourceExpression: app_generate_it_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
+        <uc1:mrp ID="mrp1" runat="server" />
         <b>
             <asp:LinkButton ID="btnViewAllReports" Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>"
                 runat="server" OnClick="btnViewAllReports_Click" CssClass="body_link"></asp:LinkButton></b>

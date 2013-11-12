@@ -48,7 +48,9 @@
     <Compile Include="DataAccessObject\CurriculumStatuses.cs" />
     <Compile Include="DataAccessObject\Employee.cs" />
     <Compile Include="DataAccessObject\Enrollment.cs" />
+    <Compile Include="DataAccessObject\MyReport.cs" />
     <Compile Include="DataAccessObject\Navigation.cs" />
+    <Compile Include="DataAccessObject\ReportLastGenerate.cs" />
     <Compile Include="DataAccessObject\SiteViewFieldNotes.cs" />
     <Compile Include="DataAccessObject\SiteViewInspection.cs" />
     <Compile Include="DataAccessObject\SiteViewInspectionTemplate.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="DataAccessObject\SystemRoomType.cs" />
     <Compile Include="DataAccessObject\TimeZoneDAO.cs" />
     <Compile Include="EmployeeCatalogBLL.cs" />
+    <Compile Include="MyReportBLL.cs" />
     <Compile Include="NavigationBLL.cs" />
     <Compile Include="SiteViewFieldNotesBLL.cs" />
     <Compile Include="SiteViewInspectionBLL.cs" />

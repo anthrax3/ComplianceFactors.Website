@@ -33,9 +33,9 @@
     <br />
     <center>
         <b>
-            <%=LocalResources.GetLocaleResourceText("wp_aupcv_pagename")%>
+            <%=LocalResources.GetText("wp_aupcv_pagename")%>
             -
-            <%=LocalResources.GetLocaleResourceText("app_coming_soon")%>
+            <%=LocalResources.GetText("app_coming_soon")%>
         </b>
     </center>
     <br />

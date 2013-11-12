@@ -66,7 +66,7 @@ namespace ComplicanceFactor.Compliance
                 gvharmDetails.AllowPaging = true;
                 gvMyGiris.AllowPaging = true;
                 gvMyToDo.AllowPaging = true;
-                gvMyReports.AllowPaging = true;
+            
 
                 if (SessionWrapper.u_profile_my_comp_todos_display_pref == 0)
                 {
@@ -86,14 +86,7 @@ namespace ComplicanceFactor.Compliance
                     gvharmDetails.PageSize = SessionWrapper.u_profile_my_comp_harm_display_pref;
                 }
 
-                if (SessionWrapper.u_profile_my_comp_reports_display_pref == 0)
-                {
-                    gvMyReports.AllowPaging = false;
-                }
-                else
-                {
-                    gvMyReports.PageSize = SessionWrapper.u_profile_my_comp_reports_display_pref;
-                }
+              
 
                 if (SessionWrapper.u_profile_my_comp_giris_display_pref == 0)
                 {
@@ -193,8 +186,46 @@ namespace ComplicanceFactor.Compliance
                 //using instead of the simple <tr>
                 gvMyGiris.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
+            BindReportGrid();
         }
+        private void BindReportGrid()
+        {
 
+            SystemReport report = new SystemReport();
+            report.s_report_id_pk = "";
+            report.s_report_name = "";
+            report.s_report_type_id_fk = "";
+            try
+            {
+                DataTable dtReport = new DataTable();
+                report.s_report_on_off_flag = true;
+                dtReport = SystemReportBLL.SearchReport(report);
+                dtReport.Columns.Add("s_report_name_id");
+                foreach (DataRow row in dtReport.Rows)
+                {
+                    row["s_report_name_id"] = row["s_report_name"] + " (" + row["s_report_id_pk"] + ")";
+                }
+
+             
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("cchp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("cchp-01.aspx", ex.Message);
+                    }
+                }
+            }
+        }
+       
         protected void gvharmDetails_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Edit")

@@ -1578,6 +1578,21 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable GetUsers(string u_first_name, string u_hris_employee_id)
+        {
+            try
+            {
+                Hashtable htGetEmployee = new Hashtable();
+                htGetEmployee.Add("@u_first_name", u_first_name);
+                htGetEmployee.Add("@u_hris_employee_id", u_hris_employee_id);
 
+
+                return DataProxy.FetchDataTable("app_sp_get_user_by_firstname", htGetEmployee);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

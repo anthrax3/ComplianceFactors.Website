@@ -59,18 +59,11 @@ namespace ComplicanceFactor.Instructor
                 }
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/Instructor/tihp-01.aspx>" + LocalResources.GetGlobalLabel("app_instructor_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
-                gvMyReports.AllowPaging = true;
+              
                 gvMyRosters.AllowPaging = true;
                 gvMyToDo.AllowPaging = true;
 
-                if (SessionWrapper.u_profile_my_inst_reports_display_pref == 0)
-                {
-                    gvMyReports.AllowPaging = false;
-                }
-                else
-                {
-                    gvMyReports.PageSize = SessionWrapper.u_profile_my_inst_reports_display_pref;
-                }
+               
 
                 if (SessionWrapper.u_profile_my_inst_rosters_display_pref == 0)
                 {

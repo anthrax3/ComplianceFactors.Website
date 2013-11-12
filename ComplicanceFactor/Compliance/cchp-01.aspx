@@ -1,11 +1,13 @@
 ﻿<%@ Page Title="ComplicanceFactor&#0153 - Compliance Home" Language="C#" MasterPageFile="~/Main.Master"
     AutoEventWireup="true" CodeBehind="cchp-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.cchp_01" %>
-
+<%@ Register Src="MIRIS/Reports/mrp-01.ascx" TagName="mrp" TagPrefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>    
+    <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>   
+     <link href="../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" /> 
+      <script src="../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -28,86 +30,133 @@
         $(function () {
             $('#<%=gvMyToDo.ClientID %>')
 			.tablesorter({ headers: { 4: { sorter: false }, 5: { sorter: false}} });
-            $('#<%=gvMyReports.ClientID %>')
-			.tablesorter({ headers: { 5: { sorter: false }, 6: { sorter: false}} });
+          
             $('#<%=gvMyGiris.ClientID %>')
 			.tablesorter({ headers: { 3: { sorter: false }, 8: { sorter: false}} });
             $('#<%=gvharmDetails.ClientID %>').tablesorter({ headers: { 3: { sorter: false }, 7: { sorter: false}} });
 
         });
+        $(".generate").click(function (e) {
+            var record_id = $(this).attr("id");
+            var h = '';
+            var width = 1000;
+            var height = 600;
+            if (record_id == 'CF-STD-OSHA-300') {
+                h = "MIRIS/Reports/osha300_condition.aspx?page=300";
+
+            } else if (record_id == 'CF-STD-OSHA-301') {
+                h = "MIRIS/Reports/reemp-01.aspx";
+            } else {
+                h = "MIRIS/Reports/osha300_condition.aspx?page=300a";
+            }
+            $.fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': width,
+                'height': height,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': h,
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+
+                    $('#fancybox-frame').load(function () {
+
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 120);
+                        var heightPane = $(this).contents().find('#content').height() + 100;
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+        });
     });
 
-        function expandDetailsInMyToDo(_this) {
-            var div_MyToDo = document.getElementById('<%=this.div_MyToDo.ClientID %>');
-            var id = _this.id;
-            var imgelem = document.getElementById(_this.id);
-            if (imgelem.alt == "plus") {
-                imgelem.src = "../../Images/addminus-sm.gif"
-                imgelem.alt = "minus";
-                div_MyToDo.style.display = 'block';
-            }
-            else {
-                imgelem.src = "../../Images/addplus-sm.gif"
-                imgelem.alt = "plus";
-                div_MyToDo.style.display = 'none';
-            }
-            return false;
+    function expandDetailsInMyToDo(_this) {
+        var div_MyToDo = document.getElementById('<%=this.div_MyToDo.ClientID %>');
+        var id = _this.id;
+        var imgelem = document.getElementById(_this.id);
+        if (imgelem.alt == "plus") {
+            imgelem.src = "../../Images/addminus-sm.gif"
+            imgelem.alt = "minus";
+            div_MyToDo.style.display = 'block';
+        }
+        else {
+            imgelem.src = "../../Images/addplus-sm.gif"
+            imgelem.alt = "plus";
+            div_MyToDo.style.display = 'none';
+        }
+        return false;
+    }
+
+    function expandDetailsInMyHarm(_this) {
+        var div_MyHarm = document.getElementById('<%= this.div_MyHarm.ClientID %>');
+        var id = _this.id;
+        var imgelem = document.getElementById(_this.id);
+        if (imgelem.alt == "plus") {
+            imgelem.src = "../../Images/addminus-sm.gif"
+            imgelem.alt = "minus"
+            div_MyHarm.style.display = 'block';
+        }
+        else {
+            imgelem.src = "../../Images/addplus-sm.gif"
+            imgelem.alt = "plus"
+            div_MyHarm.style.display = 'none';
         }
 
-        function expandDetailsInMyHarm(_this) {
-            var div_MyHarm = document.getElementById('<%= this.div_MyHarm.ClientID %>');
-            var id = _this.id;
-            var imgelem = document.getElementById(_this.id);
-            if (imgelem.alt == "plus") {
-                imgelem.src = "../../Images/addminus-sm.gif"
-                imgelem.alt = "minus"
-                div_MyHarm.style.display = 'block';
-            }
-            else {
-                imgelem.src = "../../Images/addplus-sm.gif"
-                imgelem.alt = "plus"
-                div_MyHarm.style.display = 'none';
-            }
+        return false;
 
-            return false;
-
+    }
+    function expandDetailsInMyGiris(_this) {
+        var div_MyGiris = document.getElementById('<%= this.div_MyGiris.ClientID %>');
+        var id = _this.id;
+        var imgelem = document.getElementById(_this.id);
+        if (imgelem.alt == "plus") {
+            imgelem.src = "../../Images/addminus-sm.gif"
+            imgelem.alt = "minus"
+            div_MyGiris.style.display = 'block';
         }
-        function expandDetailsInMyGiris(_this) {
-            var div_MyGiris = document.getElementById('<%= this.div_MyGiris.ClientID %>');
-            var id = _this.id;
-            var imgelem = document.getElementById(_this.id);
-            if (imgelem.alt == "plus") {
-                imgelem.src = "../../Images/addminus-sm.gif"
-                imgelem.alt = "minus"
-                div_MyGiris.style.display = 'block';
-            }
-            else {
-                imgelem.src = "../../Images/addplus-sm.gif"
-                imgelem.alt = "plus"
-                div_MyGiris.style.display = 'none';
-            }
-
-            return false;
-
+        else {
+            imgelem.src = "../../Images/addplus-sm.gif"
+            imgelem.alt = "plus"
+            div_MyGiris.style.display = 'none';
         }
-        function expandDetailsInMyReport(_this) {
-            var div_MyReports = document.getElementById('<%= this.div_MyReports.ClientID %>');
-            var id = _this.id;
-            var imgelem = document.getElementById(_this.id);
-            if (imgelem.alt == "plus") {
-                imgelem.src = "../../Images/addminus-sm.gif"
-                imgelem.alt = "minus"
-                div_MyReports.style.display = 'block';
-            }
-            else {
-                imgelem.src = "../../Images/addplus-sm.gif"
-                imgelem.alt = "plus"
-                div_MyReports.style.display = 'none';
-            }
 
-            return false;
+        return false;
 
+    }
+    function expandDetailsInMyReport(_this) {
+        var div_MyReports = document.getElementById('<%= this.div_MyReports.ClientID %>');
+        var id = _this.id;
+        var imgelem = document.getElementById(_this.id);
+        if (imgelem.alt == "plus") {
+            imgelem.src = "../../Images/addminus-sm.gif"
+            imgelem.alt = "minus"
+            div_MyReports.style.display = 'block';
         }
+        else {
+            imgelem.src = "../../Images/addplus-sm.gif"
+            imgelem.alt = "plus"
+            div_MyReports.style.display = 'none';
+        }
+
+        return false;
+
+    }
 
     </script>
 </asp:Content>
@@ -291,37 +340,7 @@
     </div>
     <br />
     <div class="div_padding_10" id="div_MyReports" runat="server">
-        <asp:GridView ID="gvMyReports" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>" GridLines="None" DataKeyNames=""
-            AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false">
-            <Columns>
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_report_name_with_id_text %>" DataField='' HeaderStyle-HorizontalAlign="Center"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField='' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField='' HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnViewLast" CommandArgument='' CommandName="" runat="server" Text="<%$ LabelResourceExpression: app_view_last_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnScheduleIt" CommandArgument='' CommandName="" runat="server" Text="<%$ LabelResourceExpression: app_schedule_it_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnGenerateIt" CommandArgument='' CommandName="" runat="server" Text="<%$ LabelResourceExpression: app_generate_it_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
+        <uc1:mrp ID="mrp1" runat="server" />
         <b>
             <asp:LinkButton ID="lnkViewAllMyReports" runat="server" 
             Text="<%$ LabelResourceExpression: app_view_all_my_report_button_text %>" 

@@ -57,7 +57,7 @@ namespace ComplicanceFactor.Administrator
 
                 gvMyToDo.AllowPaging = true;
                 gvMyCourses.AllowPaging = true;
-                gvMyReports.AllowPaging = true;
+             
                 if (SessionWrapper.u_profile_my_admin_todos_display_pref == 0)
                 {
                     gvMyToDo.AllowPaging = false;
@@ -74,15 +74,7 @@ namespace ComplicanceFactor.Administrator
                 {
                     gvMyCourses.PageSize = SessionWrapper.u_profile_my_admin_courses_display_pref;
                 }
-                if (SessionWrapper.u_profile_my_admin_reports_display_pref == 0)
-                {
-                    gvMyReports.AllowPaging = false;
-                }
-                else
-                {
-                    gvMyReports.PageSize = SessionWrapper.u_profile_my_admin_reports_display_pref;
-                }
-
+               
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 lblBreadCrumb.Text = "<a href=/Administrator/tahp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_admin") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>";
                 if (SessionWrapper.u_profile_my_admin_todos_collapse_pref == "app_ddl_collapsed")
