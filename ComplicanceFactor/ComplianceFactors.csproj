@@ -1307,7 +1307,6 @@
     <Content Include="SystemHome\Configuration\Reports\Scripts\querystring-0.9.0-min.js" />
     <Content Include="SystemHome\Configuration\Reports\Scripts\querystring-0.9.0.js" />
     <Content Include="SystemHome\Configuration\Reports\Scripts\spin.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\WebForm1.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\saanrtn-01.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\saertn-01.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\samrtmp-01.aspx" />
@@ -1685,20 +1684,12 @@
     <Compile Include="Compliance\MIRIS\cvoi-01.aspx.designer.cs">
       <DependentUpon>cvoi-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISDataset.cs">
-      <DependentUpon>MIRISDataset.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVDataset.cs">
       <DependentUpon>MIRISMVDataset.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVDataset.Designer.cs">
       <DependentUpon>MIRISMVDataset.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIDataset1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MIRISOIDataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\Reports\dynamicsearch.ascx.cs">
       <DependentUpon>dynamicsearch.ascx</DependentUpon>
@@ -2116,21 +2107,6 @@
     </Compile>
     <Compile Include="Instructor\itdl-01.aspx.designer.cs">
       <DependentUpon>itdl-01.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\PdfTemplate\MyCalendar1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyCalendar.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\PdfTemplate\MyInstructor1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyInstructor.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Instructor\PdfTemplate\SignUpSheet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SignUpSheet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Instructor\tiddv-01.aspx.cs">
       <DependentUpon>tiddv-01.aspx</DependentUpon>
@@ -4291,13 +4267,6 @@
     <Compile Include="SystemHome\Configuration\Reports\sarpp-01.aspx.designer.cs">
       <DependentUpon>sarpp-01.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemHome\Configuration\Reports\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SystemHome\Configuration\Reports\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SystemHome\Configuration\ResourceTypes\saanrtn-01.aspx.cs">
       <DependentUpon>saanrtn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4636,11 +4605,6 @@
       <DependentUpon>sasur-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Training\PdfTemplate\MyCourses.Designer.cs" />
-    <Compile Include="Training\PdfTemplate\MyCourses1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyCourses.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Training\Popup\PdfTemplate\MyDeliveries.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
