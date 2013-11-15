@@ -698,7 +698,7 @@ namespace ComplicanceFactor.Employee.Enroll
 
                     string approvalTextEmployee = string.Empty;
                     approvalTextEmployee = notification.s_notification_email_text;
-                    approvalTextEmployee = approvalTextEmployee.Replace("@$&User First Name&$@", Course.c_created_name);
+                    approvalTextEmployee = approvalTextEmployee.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
                     approvalTextEmployee = approvalTextEmployee.Replace("@$&Course Name&$@(@$&Course ID&$@)", Course.c_course_list);
 
                     sbNotification.Append(approvalTextEmployee);
@@ -780,7 +780,7 @@ namespace ComplicanceFactor.Employee.Enroll
                             string sbConfirmOLT = string.Empty;
                             sbConfirmOLT = notification.s_notification_email_text;
 
-                            sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            sbConfirmOLT = sbConfirmOLT.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
                             sbConfirmOLT = sbConfirmOLT.Replace("@$&Course Name&$@", Course.c_course_title);
                             sbConfirmOLT = sbConfirmOLT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
 
@@ -842,7 +842,7 @@ namespace ComplicanceFactor.Employee.Enroll
                             string confirmILT = string.Empty;
                             confirmILT = notificationILT.s_notification_email_text;
 
-                            confirmILT = confirmILT.Replace("@$&User First Name&$@", Course.c_created_name);
+                            confirmILT = confirmILT.Replace("@$&User First Name&$@", SessionWrapper.u_firstname);
                             confirmILT = confirmILT.Replace("@$&Course Name&$@", Course.c_course_title);
                             confirmILT = confirmILT.Replace("@$&Course ID&$@", Course.c_course_id_pk);
                             confirmILT = confirmILT.Replace("@$&delivery_location&$@", Course.c_session_location_names);
