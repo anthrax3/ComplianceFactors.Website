@@ -57,7 +57,7 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 if (!string.IsNullOrEmpty(Request.QueryString["succ"]) && SecurityCenter.DecryptText(Request.QueryString["succ"]) == "true")
                 {
                     divSuccess.Style.Add("display", "block");
-                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_insert_text");
+                    divSuccess.InnerHtml = LocalResources.GetText("app_succ_add_course");
                 }
                 try
                 {
