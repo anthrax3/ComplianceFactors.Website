@@ -423,10 +423,10 @@
         $(function () {
             $("#<%=txtCutoffTime.ClientID %>").watermark("HH:MM AM/PM");
             $("#<%=txtCutoffTime.ClientID %>").click(
-			function () {
-			    $("#<%=txtCutoffTime.ClientID %>")[0].focus();
-			}
-		);
+                function () {
+                    $("#<%=txtCutoffTime.ClientID %>")[0].focus();
+                }
+            );
         });
     </script>
     <script type="text/javascript">
@@ -447,6 +447,20 @@
             }
         }    
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            reOrderSections(document.getElementById("ContentPlaceHolder1_ddlDeliveryType"));
+        });
+        function reOrderSections(ddlId) {
+            var ControlName = document.getElementById(ddlId.id);
+            if (ControlName.value == "50B85BF4-B9E3-46EA-9560-7AA1F21A13E5") {
+                $("#olt_section").insertBefore("#session_section");
+            }
+            else {
+                $("#olt_section").insertAfter("#materials_section");
+            }
+        }
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:ValidationSummary CssClass="validation_summary_error" ID="vs_sand" runat="server"
@@ -466,7 +480,8 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlDeliveryType" DataValueField="s_delivery_type_system_id_pk"
-                                DataTextField="s_delivery_type_name" CssClass="textbox_long" runat="server">
+                                DataTextField="s_delivery_type_name" CssClass="textbox_long" runat="server"
+                                onchange="reOrderSections(this);">
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -685,6 +700,7 @@
                 </table>
             </div>
             <br />
+            <div id="session_section">
             <div class="div_header_1005">
                 <%=LocalResources.GetLabel("app_session_text")%>:
             </div>
@@ -737,6 +753,8 @@
                 <asp:Button ID="btnOpenSessionWizard" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_open_session_wizard_button_text%>" />
             </div>
             <br />
+            </div>
+            <div id="resources_section">
             <div class="div_header_1005">
                 <%=LocalResources.GetLabel("app_resources_text")%>:
             </div>
@@ -766,7 +784,7 @@
                                             </td>
                                             <%--  <td class="gridview_row_width_1" align="center">
                                             <input type="button" id='<%# Eval("c_resource_system_id_pk") %>' value='<asp:Literal ID="Literal3" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" />'
-                                                class="editresource cursor_hand" />
+                                            ;2    class="editresource cursor_hand" />
                                         </td>--%>
                                             <td class="gridview_row_width_1" align="center">
                                                 <input type="button" id='<%# Eval("c_resource_system_id_pk") %>' value='<asp:Literal ID="Literal4" runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>" />'
@@ -785,6 +803,8 @@
                 <asp:Button ID="btnAddResources" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_resources_button_text%>" />
             </div>
             <br />
+            </div>
+            <div id="materials_section">
             <div class="div_header_1005">
                 <%=LocalResources.GetLabel("app_materials_text")%>:
             </div>
@@ -828,6 +848,8 @@
                 <asp:Button ID="btnAddMaterials" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_add_material_button_text%>" />
             </div>
             <br />
+            </div>
+            <div id="olt_section">
             <div class="div_header_1005">
                 <%=LocalResources.GetLabel("app_non_conformant_aicc_text")%>:
             </div>
@@ -885,6 +907,8 @@
                 </table>
             </div>
             <br />
+            </div>
+            
             <div class="div_header_1005">
                 <%=LocalResources.GetLabel("app_vls_text")%>:
             </div>
