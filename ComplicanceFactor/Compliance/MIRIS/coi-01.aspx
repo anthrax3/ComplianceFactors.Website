@@ -7,6 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+       <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -24,6 +26,74 @@
                 $('#app_nav_compliance').addClass('selected');
                 return false;
             });
+            $("#btnAddEstablishment").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 950,
+                'height': 250,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': '../../SystemHome/Configuration/Establishment/Popup/saanen-01.aspx',
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+            $(".addEmployee").click(function () {
+
+                $(".addEmployee").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 733,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'Popup/sasumsm-01.aspx',
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+
+                            })
+                        });
+
+                    }
+
+                });
+
+            });
+
         });
 
     </script>
@@ -786,6 +856,8 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                                <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
+                Text="Select Employee" />
                     </td>
                     <td>
                         *
@@ -935,13 +1007,16 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="coi"
-                            ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
+                            ControlToValidate="ddlIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_incident_location_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                     <asp:DropDownList ID="ddlIncidentLocation" DataValueField="c_type_id" DataTextField="c_type_name"
+                            CssClass="ddl_user_advanced_search" runat="server">
+                        </asp:DropDownList>
+                  
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="coi"
@@ -977,13 +1052,16 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvEmployeeReportLocation" runat="server" ValidationGroup="coi"
-                            ControlToValidate="txtEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
+                            ControlToValidate="ddlEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtEmployeeReportLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
+                            CssClass="ddl_user_advanced_search" runat="server">
+                        </asp:DropDownList>
+                     
                     </td>
                     <td>
                         *
@@ -1005,6 +1083,22 @@
                         <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
+                 <tr id="trAddEstablishment" runat="server"  Visible = "false">
+                <td>
+                  
+                </td>
+                <td>
+                  <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
                 <tr>
                     <td>
                         <asp:RegularExpressionValidator ID="revTimeDateNotified" runat="server" ValidationGroup="coi"

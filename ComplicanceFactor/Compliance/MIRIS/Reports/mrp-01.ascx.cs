@@ -45,8 +45,13 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 dtReport.Columns.Add("s_report_users_when_to_run_text");
                 foreach (DataRow row in dtReport.Rows)
                 {
+                  
+                    row["s_report_name_id"] = row["s_report_name"] + " (" + row["s_report_id_pk"] + ")";
                     switch (row["s_report_users_when_to_run"].ToString())
-                    {
+                    { 
+                        case "-1":
+                            row["s_report_users_when_to_run_text"] = "";
+                            break;
                         case "0":
                             row["s_report_users_when_to_run_text"] = "Every Day";
                             break;
@@ -59,8 +64,9 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                         case "3":
                             row["s_report_users_when_to_run_text"] = "Every Year";
                             break;
+                        default:
+                            break;
                     }
-                    row["s_report_name_id"] = row["s_report_name"] + " (" + row["s_report_id_pk"] + ")";
                 }
 
                 gvMyReports.DataSource = dtReport;
@@ -106,7 +112,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 {
                     case "CF-STD-OSHA-301":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
-                  "javascript:lastview('/Compliance/MIRIS/Reports/osha301.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
+                  "javascript:lastview('/Compliance/MIRIS/Reports/saressr-01.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
                         break;
                     case "CF-STD-OSHA-300A":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
@@ -159,15 +165,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 {
                     case "CF-STD-OSHA-301":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
-                 "javascript:schedule('/Compliance/MIRIS/Reports/resch-01.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "&name=" + reportName + "');", true);
+                 "javascript:schedule('/Compliance/MIRIS/Reports/resch-01.aspx?pagetype=" + ((Button)e.CommandSource).Text.ToLower().Trim() + "&id=" + reportSystemId + "&suid=" + reportUserId + "&name=" + reportName + "');", true);
                         break;
                     case "CF-STD-OSHA-300A":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
-                "javascript:schedule('/Compliance/MIRIS/Reports/resch-01.aspx?page=300a&id=" + reportSystemId + "&suid=" + reportUserId + "&name=" + reportName + "');", true);
+                "javascript:schedule('/Compliance/MIRIS/Reports/resch-01.aspx?pagetype=" + ((Button)e.CommandSource).Text.ToLower().Trim() + "&page=300a&id=" + reportSystemId + "&suid=" + reportUserId + "&name=" + reportName + "');", true);
                         break;
                     case "CF-STD-OSHA-300":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
-                  "javascript:schedule('/Compliance/MIRIS/Reports/resch-01.aspx?page=300&id=" + reportSystemId + "&suid=" + reportUserId + "&name=" + reportName + "');", true);
+                  "javascript:schedule('/Compliance/MIRIS/Reports/resch-01.aspx?pagetype=" + ((Button)e.CommandSource).Text.ToLower().Trim() + "&page=300&id=" + reportSystemId + "&suid=" + reportUserId + "&name=" + reportName + "');", true);
                         break;
                     default:
                         break;
@@ -181,23 +187,24 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Button viewbutton = (Button)e.Row.FindControl("btnViewLast");
+                Button schedulebutton = (Button)e.Row.FindControl("btnSchedule");
+                string myReportId = DataBinder.Eval(e.Row.DataItem, "s_report_users_system_id_pk").ToString();
 
-                string id = DataBinder.Eval(e.Row.DataItem, "s_report_users_system_id_pk").ToString();
-                string reportSystemId = DataBinder.Eval(e.Row.DataItem, "s_report_system_id_pk").ToString();
-
-                DataTable dtLastGenerate = MyReportBLL.SearchLastGenerate(id, reportSystemId);
-
-                if (dtLastGenerate != null)
+                if (string.IsNullOrEmpty(myReportId))
                 {
-                    if (dtLastGenerate.Rows.Count > 0)
-                    {
-                        viewbutton.Style.Add("display", "inline");
-                    }
+                    schedulebutton.Text = "Schedule It";
+                    viewbutton.Style.Add("display", "none");
+                }
+                else
+                {
+                    schedulebutton.Text = "Edit";
+                    viewbutton.Style.Add("display", "inline");
                 }
 
-
+             
             }
         }
+        
 
     }
 }

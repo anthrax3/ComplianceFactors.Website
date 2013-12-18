@@ -13,6 +13,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports {
     public partial class resch_01 {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// pnlDefault control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports {
         protected global::System.Web.UI.WebControls.TextBox txtReportName;
         
         /// <summary>
+        /// dynamicsearch1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ComplicanceFactor.Compliance.MIRIS.Reports.dynamicsearch dynamicsearch1;
+        
+        /// <summary>
         /// gvsearchDetails control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,42 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
+        
+        /// <summary>
+        /// txtLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLastName;
+        
+        /// <summary>
+        /// txtFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFirstName;
+        
+        /// <summary>
+        /// txtMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMail;
+        
+        /// <summary>
+        /// btnSaveNewUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveNewUsers;
         
         /// <summary>
         /// btnAddUsers control.
@@ -58,22 +112,40 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports {
         protected global::System.Web.UI.WebControls.DropDownList ddlWhentorun;
         
         /// <summary>
-        /// dynamicsearch1 control.
+        /// txtDateFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::ComplicanceFactor.Compliance.MIRIS.Reports.dynamicsearch dynamicsearch1;
+        protected global::System.Web.UI.WebControls.TextBox txtDateFrom;
         
         /// <summary>
-        /// btnSchedule control.
+        /// ceDateFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSchedule;
+        protected global::AjaxControlToolkit.CalendarExtender ceDateFrom;
+        
+        /// <summary>
+        /// txtDateTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateTo;
+        
+        /// <summary>
+        /// ceDateTp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDateTp;
         
         /// <summary>
         /// btnScheduleNew control.
@@ -83,6 +155,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnScheduleNew;
+        
+        /// <summary>
+        /// btnDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
         /// btnCancel control.

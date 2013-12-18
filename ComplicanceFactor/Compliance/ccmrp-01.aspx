@@ -6,6 +6,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../Scripts/jquery.timepicker.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function reloadPage() {
+
+
+            $.ajax({
+                type: "POST",
+
+                //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
+                url: "ccmrp-01.aspx/Reload",
+                data: "{ 'args': ''}",
+
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function () {
+
+                  
+                }
+            });
+
+
+            return false;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content_area">

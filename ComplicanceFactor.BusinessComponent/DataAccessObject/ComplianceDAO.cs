@@ -365,7 +365,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_case_status_value { get; set; }
         public string c_osha_300_case_outcome_value { get; set; }
         public string c_osha_300_type_of_illness_value { get; set; }
-
+        public string c_establishment { get; set; }
 
 
 

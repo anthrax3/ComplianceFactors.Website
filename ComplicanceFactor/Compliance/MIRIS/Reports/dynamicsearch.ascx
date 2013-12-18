@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="dynamicsearch.ascx.cs"
     Inherits="ComplicanceFactor.Compliance.MIRIS.Reports.dynamicsearch" %>
+
 <tr style="display: none;">
     <td>
     </td>

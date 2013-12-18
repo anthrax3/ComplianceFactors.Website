@@ -251,7 +251,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertNewUser.Add("@u_custom_13", user.Custom_13);
             htInsertNewUser.Add("@u_lastPassword_enc", user.LastPassword_enc);
             htInsertNewUser.Add("@u_hris_is_rehire", user.u_hris_is_rehire);
-
+            htInsertNewUser.Add("@u_social_security_no", user.u_social_security_no);
             try
             {
                 return DataProxy.FetchSPOutput("u_sp_insert_add_new_user", htInsertNewUser);
@@ -654,7 +654,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateUserInfo.Add("@u_custom_13", user.Custom_13);
             htUpdateUserInfo.Add("@u_lastPassword_enc", user.LastPassword_enc);
             htUpdateUserInfo.Add("@u_hris_is_rehire", user.u_hris_is_rehire); ;
-
+            htUpdateUserInfo.Add("@u_social_security_no", user.u_social_security_no); ;
             try
             {
                 return DataProxy.FetchSPOutput("u_sp_update_user_info", htUpdateUserInfo);
@@ -736,7 +736,7 @@ namespace ComplicanceFactor.BusinessComponent
                 userInfo.Hris_job_title = dtUser.Rows[0]["u_hris_job_title_fk"].ToString();
                 userInfo.Hris_job_position = dtUser.Rows[0]["u_hris_job_position_fk"].ToString();
                 userInfo.Hris_pay_grade = dtUser.Rows[0]["u_hris_pay_grade_fk"].ToString();
-
+                userInfo.u_social_security_no = dtUser.Rows[0]["u_social_security_no"].ToString();
 
                 //questions
                 //id
@@ -1003,6 +1003,7 @@ namespace ComplicanceFactor.BusinessComponent
                 // userInfo.LastPassword_enc = rijndaelKey.Encrypt(txtPassword_login.Text);
                 userInfo.u_hris_is_rehire = Convert.ToBoolean(dtUser.Rows[0]["u_hris_is_rehire"]);
                 userInfo.u_hris_is_rehire_text = dtUser.Rows[0]["u_hris_is_rehire_text"].ToString();
+                userInfo.u_social_security_no = dtUser.Rows[0]["u_social_security_no"].ToString();
                 return userInfo;
             }
             catch (Exception)

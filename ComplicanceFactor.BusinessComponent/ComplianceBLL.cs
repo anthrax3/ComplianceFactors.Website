@@ -4145,7 +4145,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_osha_300_type_of_illness_value = dtGetCase.Rows[0]["c_osha_300_type_of_illness_value"].ToString();
                 miris.c_osha_300_case_outcome_value = dtGetCase.Rows[0]["c_osha_300_case_outcome_value"].ToString();
 
-
+                miris.c_establishment = dtGetCase.Rows[0]["c_establishment"].ToString();
 
                 miris.c_employee_dob = Convert.ToDateTime(dtGetCase.Rows[0]["c_employee_dob"], culture);
                 miris.c_employee_hire_date = Convert.ToDateTime(dtGetCase.Rows[0]["c_employee_hire_date"], culture);
@@ -4883,6 +4883,7 @@ namespace ComplicanceFactor.BusinessComponent
 
             htUpdateCase.Add("@c_case_desc_was_fatality", miris.c_case_desc_was_fatality);
             htUpdateCase.Add("@c_case_desc_public_vehicle_involved", miris.c_case_desc_public_vehicle_involved);
+            htUpdateCase.Add("@c_establishment", miris.c_establishment);
 
             htUpdateCase.Add("@c_pub_vehicle_driver_name", miris.c_pub_vehicle_driver_name);
             htUpdateCase.Add("@c_pub_vehicle_driver_address", miris.c_pub_vehicle_driver_address);

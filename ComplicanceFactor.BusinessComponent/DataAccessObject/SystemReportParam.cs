@@ -18,5 +18,6 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_report_param_table_id_pk { get; set; }
         public string s_report_param_field_id_pk { get; set; }
         public string s_report_param_label_name { get; set; }
+        public string s_report_param_items { get; set; }
     }
 }

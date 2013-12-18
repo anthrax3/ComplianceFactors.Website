@@ -7,6 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -23,6 +25,36 @@
 
                 $('#app_nav_compliance').addClass('selected');
                 return false;
+            });
+            $("#btnAddEstablishment").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 950,
+                'height': 250,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': '../../SystemHome/Configuration/Establishment/Popup/saanen-01.aspx',
+                'onComplete': function () {
+                    $('#fancybox-frame').load(function () {
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
             });
         });
 
@@ -545,35 +577,35 @@
             }
         }
     </script>
-     <script type="text/javascript">
-         function checkhiredate() {
-             var year = $('#' + '<% =ddlHireYear.ClientID %>').val();
-             var month = $('#' + '<% =ddlHireMonth.ClientID %>').val();
-             if ((year != 0) && (month != 0)) {
-                 var lastday = 32 - new Date(year, month - 1, 32).getDate();
-                 var selected_day = $('#' + '<% =doh_hire_day.ClientID %>').val();
+    <script type="text/javascript">
+        function checkhiredate() {
+            var year = $('#' + '<% =ddlHireYear.ClientID %>').val();
+            var month = $('#' + '<% =ddlHireMonth.ClientID %>').val();
+            if ((year != 0) && (month != 0)) {
+                var lastday = 32 - new Date(year, month - 1, 32).getDate();
+                var selected_day = $('#' + '<% =doh_hire_day.ClientID %>').val();
 
-                 // Change selected day if it is greater than the number of days in current month
-                 if (selected_day > lastday) {
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + selected_day + ']').attr('selected', false);
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + lastday + ']').attr('selected', true);
-                 }
+                // Change selected day if it is greater than the number of days in current month
+                if (selected_day > lastday) {
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + selected_day + ']').attr('selected', false);
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + lastday + ']').attr('selected', true);
+                }
 
-                 // Remove possibly offending days
-                 for (var i = lastday + 1; i < 32; i++) {
-                     //$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').remove();
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'none');
-                 }
+                // Remove possibly offending days
+                for (var i = lastday + 1; i < 32; i++) {
+                    //$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').remove();
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'none');
+                }
 
-                 // Add possibly missing days
-                 for (var i = 29; i < lastday + 1; i++) {
-                     //if (!$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').length) {
-                     //$('#' + '<% =dob_day.ClientID %>').append($("<option></option>").attr("value", i).text(i));
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'block');
-                     //}
-                 }
-             }
-         }
+                // Add possibly missing days
+                for (var i = 29; i < lastday + 1; i++) {
+                    //if (!$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').length) {
+                    //$('#' + '<% =dob_day.ClientID %>').append($("<option></option>").attr("value", i).text(i));
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'block');
+                    //}
+                }
+            }
+        }
     </script>
     <script type="text/javascript">
 
@@ -906,13 +938,14 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="ceoi"
-                            ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
+                            ControlToValidate="ddlIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_incident_location_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                      <asp:DropDownList ID="ddlIncidentLocation" CssClass="ddl_user_advanced_search" runat="server">
+                    </asp:DropDownList>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="ceoi"
@@ -948,13 +981,15 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvEmployeeReportLocation" runat="server" ValidationGroup="ceoi"
-                            ControlToValidate="txtEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
+                            ControlToValidate="ddlEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtEmployeeReportLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+               <asp:DropDownList ID="ddlEmployeeReportLocation" CssClass="ddl_user_advanced_search"
+                        runat="server">
+                    </asp:DropDownList>
                     </td>
                     <td>
                         *
@@ -974,6 +1009,21 @@
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr id="trAddEstablishment" runat="server" visible="false">
+                    <td>
+                    </td>
+                    <td>
+                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
                     </td>
                 </tr>
                 <tr>
@@ -1441,7 +1491,7 @@
                 </tr>
             </table>
         </div>
-         <br />
+        <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_additional_information_text")%>:
         </div>
@@ -1937,7 +1987,7 @@
             <table>
                 <tr>
                     <td valign="top" class="font_1">
-                        <%=LocalResources.GetLabel("app_observation_text")%>: 
+                        <%=LocalResources.GetLabel("app_observation_text")%>:
                     </td>
                     <td class="align_left" valign="top">
                         <asp:Button ID="btnAddObservation" OnClientClick="Showpopup(this.id);" runat="server"
@@ -2266,8 +2316,8 @@
             <asp:HiddenField ID="hdObservation" runat="server" />
             <asp:HiddenField ID="hdIncidentHistory" runat="server" />
             <asp:Button ID="btnUploadFile" runat="server" CssClass="cursor_hand" Style="display: none;" />
-            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-                padding-left: 0px;  padding-right: 0px;">
+            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+                Style="display: none; padding-left: 0px; padding-right: 0px;">
                 <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                     <div>
                         <div class="uploadpopup_header">
@@ -2371,12 +2421,12 @@
             </asp:Panel>
             <asp:Button ID="btnpnlCompleteCase" runat="server" Style="display: none;" />
             <div class="font_normal">
-                <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
-                    padding-left: 0px;  padding-right: 0px;">
+                <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+                    Style="display: none; padding-left: 0px; padding-right: 0px;">
                     <asp:Panel ID="pnlCompleteCasePageHeading" runat="server" CssClass="drag">
                         <div>
                             <div class="div_header_620">
-                                <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>: 
+                                <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>:
                             </div>
                             <div class="right">
                                 <asp:ImageButton ID="imgCloseCompleteCase" CssClass="cursor_hand" Style="top: -15px;

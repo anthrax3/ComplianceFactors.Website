@@ -558,6 +558,12 @@
                                         <%#Eval("s_report_param_label_name")%>
                                     </td>
                                     <td>
+                                        <%#Eval("s_report_param_table_id_pk")%>
+                                    </td>
+                                     <td>
+                                        <%#Eval("s_report_param_field_id_pk")%>
+                                    </td>
+                                    <td>
                                         Visible: <asp:CheckBox ID="chkVisible" runat="server"  Checked='<%# Eval("s_report_param_visible_flag")%>'/>
                                     </td>
                                 </tr>

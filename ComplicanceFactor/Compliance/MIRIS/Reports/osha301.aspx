@@ -22,6 +22,11 @@
             display: none;
         }
     </style>
+    <script type="text/javascript">
+        window.onunload = function () {
+            parent.parent.window.location.reload();
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">

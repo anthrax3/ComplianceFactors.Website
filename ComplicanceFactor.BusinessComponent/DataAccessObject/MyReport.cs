@@ -12,6 +12,10 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_report_id_fk { get; set; }
         public string s_report_users_report_name { get; set; }
         public string s_report_users_when_to_run { get; set; }
+        public string s_report_users_when_to_run_from { get; set; }
+        public string s_report_users_when_to_run_to { get; set; }
+        public string s_report_users_mails { get; set; }
         public string s_report_users_mailto { get; set; }
+        public string s_report_users_params { get; set; }
     }
 }

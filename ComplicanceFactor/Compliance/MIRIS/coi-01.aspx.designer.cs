@@ -193,6 +193,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.TextBox txtEmployeeName;
         
         /// <summary>
+        /// btnAddEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddEmployee;
+        
+        /// <summary>
         /// ddlMonth control.
         /// </summary>
         /// <remarks>
@@ -310,13 +319,13 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIncidentLocation;
         
         /// <summary>
-        /// txtIncidentLocation control.
+        /// ddlIncidentLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIncidentLocation;
+        protected global::System.Web.UI.WebControls.DropDownList ddlIncidentLocation;
         
         /// <summary>
         /// rfvUserIncidentDate control.
@@ -391,13 +400,13 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmployeeReportLocation;
         
         /// <summary>
-        /// txtEmployeeReportLocation control.
+        /// ddlEmployeeReportLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmployeeReportLocation;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmployeeReportLocation;
         
         /// <summary>
         /// upnlTimeZone control.
@@ -425,6 +434,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNote;
+        
+        /// <summary>
+        /// trAddEstablishment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trAddEstablishment;
         
         /// <summary>
         /// revTimeDateNotified control.

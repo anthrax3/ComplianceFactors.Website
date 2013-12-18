@@ -38,6 +38,10 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
                     ReportId = SecurityCenter.DecryptText(Request.QueryString["id"]);
 
                 }
+                ddlField.DataTextField = "columnName";
+                ddlField.DataValueField = "columnName";
+                ddlField.DataSource = SystemReportBLL.GetReportFields(ddlTable.SelectedValue);
+                ddlField.DataBind();
               
             }
 
@@ -48,14 +52,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
             {
                 s_report_param_system_id_pk = Guid.NewGuid().ToString(),
                 s_report_param_description = txtDescription.InnerText,
-                s_report_param_field_id_pk = "",
+                s_report_param_field_id_pk = ddlField.SelectedValue,
                 s_report_param_id_pk = "",
                 s_report_param_name = txtParameterName.Text,
-                s_report_param_table_id_pk = "",
+                s_report_param_table_id_pk = ddlTable.SelectedValue,
                 s_report_param_type_id_fk = ddlType.SelectedValue,
                 s_report_param_visible_flag = chkVisible.Checked,
                  s_report_param_label_name =txtLabelId.Text,
-                
+                  s_report_param_items = txtItems.Text,
                 s_report_system_id_fk = ReportId
             };
             try
@@ -103,10 +107,9 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
             row["s_report_param_type_id_fk"] = ddlType.SelectedValue;
             row["s_report_param_visible_flag"] = chkVisible.Checked;            
             row["s_report_param_label_name"] = txtLabelId.Text;
-            //row["s_report_param_table_id_pk"] = s_locale_name;
-            // row["s_report_param_field_id_pk"] = s_locale_description;
-            // row["s_report_param_description"] = s_locale_text;
-            //row["s_report_param_id_pk"] = s_locale_name;
+            row["s_report_param_table_id_pk"] = ddlTable.SelectedValue;
+            row["s_report_param_field_id_pk"] = ddlField.SelectedValue;
+            row["s_report_param_items"] = txtItems.Text;
             SessionWrapper.ReportParam.Rows.Add(row);
         }
 

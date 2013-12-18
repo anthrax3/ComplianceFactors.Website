@@ -54,7 +54,11 @@ namespace ComplicanceFactor.Compliance.MIRIS
         {
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
             lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>&nbsp;" + " >&nbsp;<a href=/Compliance/MIRIS/cccmiris-01.aspx>" + LocalResources.GetGlobalLabel("app_giris_text") + "</a>&nbsp;" + ">&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_create_new_occupational_injury_text") + "</a>";
+            if (Convert.ToBoolean(SessionWrapper.u_sr_is_compliance_approver) == true)
+            {
+                trAddEstablishment.Visible = true;
 
+            }
             if (!IsPostBack)
             {
                 PopulateYearDropDown();
@@ -400,7 +404,16 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     }
                 }
             }
-
+            if (Session["Case_Employee"] != null)
+            {
+                User user = (User)Session["Case_Employee"];
+                txtEmployeeName.Text = user.Lastname;
+                if (!string.IsNullOrEmpty(user.u_social_security_no))
+                {
+                    txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
+                }
+                Session["Case_Employee"] = null;
+            }
         }
         protected void btnCancel_header_Click(object sender, EventArgs e)
         {
@@ -2086,10 +2099,10 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_employee_id = txtEmployeeId.Text;
                 insertCase.c_ssn = txtLastFourDigitOfSSN.Text;
                 insertCase.c_supervisor = txtSupervisor.Text;
-                insertCase.c_incident_location = txtIncidentLocation.Text;
+                insertCase.c_incident_location = ddlIncidentLocation.SelectedValue;
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
-                insertCase.c_employee_report_location = txtEmployeeReportLocation.Text;
+                insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 insertCase.c_note = txtNote.Text;
                 insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
@@ -2266,11 +2279,35 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtEmployeeId.Text = miris.c_employee_id;
                 txtLastFourDigitOfSSN.Text = miris.c_ssn;
                 txtSupervisor.Text = miris.c_supervisor;
-                txtIncidentLocation.Text = miris.c_incident_location;
+                ddlIncidentLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                {
+                    s_establishment_id_pk = "",
+                    s_establishment_city = "",
+                    s_establishment_name = "",
+                    s_establishment_status_id_fk = "0"
+                });
+
+                ddlIncidentLocation.DataTextField = "s_establishment_name";
+                ddlIncidentLocation.DataValueField = "s_establishment_system_id_pk";
+                ddlIncidentLocation.DataBind();
+                ddlIncidentLocation.Items.Insert(0, new ListItem("", ""));
+                ddlIncidentLocation.SelectedValue = miris.c_incident_location;
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date, culture).ToString("MM/dd/yyyy");
                 IncidentTime.Date = miris.c_incident_time;
                 IncidentTime.SetTime(miris.incident_HH, miris.incident_MM, IncidentTime.AmPm);
-                txtEmployeeReportLocation.Text = miris.c_employee_report_location;
+                ddlEmployeeReportLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                {
+                    s_establishment_id_pk = "",
+                    s_establishment_city = "",
+                    s_establishment_name = "",
+                    s_establishment_status_id_fk = "0"
+                });
+
+                ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
+                ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
+                ddlEmployeeReportLocation.DataBind();
+                ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
+                ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
                 txtNote.Text = miris.c_note;
                 txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
                 txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
@@ -2458,10 +2495,10 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_employee_id = txtEmployeeId.Text;
                 insertCase.c_ssn = txtLastFourDigitOfSSN.Text;
                 insertCase.c_supervisor = txtSupervisor.Text;
-                insertCase.c_incident_location = txtIncidentLocation.Text;
+                insertCase.c_incident_location = ddlIncidentLocation.SelectedValue;
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
-                insertCase.c_employee_report_location = txtEmployeeReportLocation.Text;
+                insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 insertCase.c_note = txtNote.Text;
                 insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;

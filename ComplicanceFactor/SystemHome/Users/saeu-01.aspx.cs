@@ -276,6 +276,7 @@ namespace ComplicanceFactor.SystemHome
                 txtCustom12.Text = edituser.Custom_12;
                 txtCustom13.Text = edituser.Custom_13;
                 chkRehire.Checked = edituser.u_hris_is_rehire;
+                txtSocialSecurityNo.Text = edituser.u_social_security_no;
                 // addnewuser.LastPassword_enc = rijndaelKey.Encrypt(txtPassword_login.Text);
 
             }
@@ -422,7 +423,7 @@ namespace ComplicanceFactor.SystemHome
             updateuser.LastPassword_enc = rijndaelKey.Encrypt(txtPassword_login.Value);
 
             updateuser.u_hris_is_rehire = chkRehire.Checked;
-
+            updateuser.u_social_security_no = txtSocialSecurityNo.Text; ;
            
             try
             {

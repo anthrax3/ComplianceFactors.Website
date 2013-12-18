@@ -24,7 +24,23 @@ namespace ComplicanceFactor.BusinessComponent
             htReport.Add("@s_report_id_fk", report.s_report_id_fk);
             htReport.Add("@s_report_users_report_name", report.s_report_users_report_name);
             htReport.Add("@s_report_users_when_to_run", report.s_report_users_when_to_run);
-
+            htReport.Add("@s_report_users_mails", report.s_report_users_mails);           
+            if (!string.IsNullOrEmpty(report.s_report_users_when_to_run_from))
+            {
+                htReport.Add("@s_report_users_when_to_run_from", report.s_report_users_when_to_run_from);
+            }
+            else
+            {
+                htReport.Add("@s_report_users_when_to_run_from", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(report.s_report_users_when_to_run_to))
+            {
+                htReport.Add("@s_report_users_when_to_run_to", report.s_report_users_when_to_run_to);
+            }
+            else
+            {
+                htReport.Add("@s_report_users_when_to_run_to", DBNull.Value);
+            }
             if (!string.IsNullOrEmpty(report.s_report_users_mailto))
             {
                 htReport.Add("@s_report_users_mailto", report.s_report_users_mailto);
@@ -33,7 +49,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htReport.Add("@s_report_users_mailto", DBNull.Value);
             }
-           
+            if (!string.IsNullOrEmpty(report.s_report_users_params))
+            {
+                htReport.Add("@s_report_users_params", report.s_report_users_params);
+            }
+            else
+            {
+                htReport.Add("@s_report_users_params", DBNull.Value);
+            }
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_my_report", htReport);
@@ -50,7 +73,23 @@ namespace ComplicanceFactor.BusinessComponent
          
             htReport.Add("@s_report_users_report_name", report.s_report_users_report_name);
             htReport.Add("@s_report_users_when_to_run", report.s_report_users_when_to_run);
-
+            htReport.Add("@s_report_users_mails", report.s_report_users_mails);           
+            if (!string.IsNullOrEmpty(report.s_report_users_when_to_run_from))
+            {
+                htReport.Add("@s_report_users_when_to_run_from", report.s_report_users_when_to_run_from);
+            }
+            else
+            {
+                htReport.Add("@s_report_users_when_to_run_from", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(report.s_report_users_when_to_run_to))
+            {
+                htReport.Add("@s_report_users_when_to_run_to", report.s_report_users_when_to_run_to);
+            }
+            else
+            {
+                htReport.Add("@s_report_users_when_to_run_to", DBNull.Value);
+            }
             if (!string.IsNullOrEmpty(report.s_report_users_mailto))
             {
                 htReport.Add("@s_report_users_mailto", report.s_report_users_mailto);
@@ -58,6 +97,14 @@ namespace ComplicanceFactor.BusinessComponent
             else
             {
                 htReport.Add("@s_report_users_mailto", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(report.s_report_users_params))
+            {
+                htReport.Add("@s_report_users_params", report.s_report_users_params);
+            }
+            else
+            {
+                htReport.Add("@s_report_users_params", DBNull.Value);
             }
 
             try
@@ -83,7 +130,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static MyReport SearchReportById(string s_report_users_system_id_pk,out DataTable dtMailUsers)
+        public static MyReport SearchReportById(string s_report_users_system_id_pk,out DataTable dtMailUsers,out DataTable dtParams)
         {
             Hashtable htReport = new Hashtable();
             htReport.Add("@s_report_users_system_id_pk", s_report_users_system_id_pk);
@@ -93,15 +140,32 @@ namespace ComplicanceFactor.BusinessComponent
                 DataSet dsMyReport =  DataProxy.FetchDataSet("s_sp_search_my_report_by_id", htReport);
                 DataTable dtMyReport = dsMyReport.Tables[0];
                 dtMailUsers = dsMyReport.Tables[1];
+                dtParams = dsMyReport.Tables[2];
                 MyReport myReport = new MyReport()
                 {
                     s_report_id_fk = dtMyReport.Rows[0]["s_report_id_fk"].ToString(),
                     s_report_users_report_name = dtMyReport.Rows[0]["s_report_users_report_name"].ToString(),
                     s_report_users_system_id_pk = dtMyReport.Rows[0]["s_report_users_system_id_pk"].ToString(),
                     s_report_users_when_to_run = dtMyReport.Rows[0]["s_report_users_when_to_run"].ToString(),
-                    u_user_id_fk = dtMyReport.Rows[0]["u_user_id_fk"].ToString()
+                    u_user_id_fk = dtMyReport.Rows[0]["u_user_id_fk"].ToString(),
+                    s_report_users_when_to_run_from = dtMyReport.Rows[0]["s_report_users_when_to_run_from"].ToString(),
+                    s_report_users_when_to_run_to = dtMyReport.Rows[0]["s_report_users_when_to_run_to"].ToString(),
+                    s_report_users_mails = dtMyReport.Rows[0]["s_report_users_mails"].ToString(),
                 };
                 return myReport;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static int DeleteByMyReportId(string s_report_users_system_id_pk)
+        {
+            Hashtable htReport = new Hashtable();
+            htReport.Add("@s_report_users_system_id_pk", s_report_users_system_id_pk);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_delete_report_user", htReport);
             }
             catch (Exception)
             {

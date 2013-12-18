@@ -769,6 +769,15 @@ namespace ComplicanceFactor.SystemHome {
         protected global::System.Web.UI.WebControls.TextBox txtPayGrade;
         
         /// <summary>
+        /// txtSocialSecurityNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSocialSecurityNo;
+        
+        /// <summary>
         /// txtCustom01 control.
         /// </summary>
         /// <remarks>

@@ -151,44 +151,50 @@
             }
 
         });
+
     }
-    </script>
-      <asp:GridView ID="gvMyReports" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
-            runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
-            DataKeyNames="s_report_id_pk,s_report_users_system_id_pk,s_report_system_id_pk,s_report_name"
-            AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
-            PagerSettings-Visible="false" PageSize="5" OnRowDataBound="gvMyReports_RowDataBound"
-            OnRowCommand="gvMyReports_RowCommand">
-            <Columns>
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    DataField='s_report_system_id_pk' HeaderStyle-HorizontalAlign="Center" Visible="false"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    DataField='s_report_id_pk' HeaderStyle-HorizontalAlign="Center" Visible="false"
-                    ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    DataField='s_report_users_system_id_pk' HeaderStyle-HorizontalAlign="Center"
-                    Visible="false" ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_report_name_with_id_text %>" DataField='s_report_name_id'
-                    HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField='s_report_type_id_fk'
-                    HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField='s_report_users_when_to_run_text'
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
-                    <ItemTemplate>
-                        <asp:Button ID="btnViewLast" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                            CommandName="viewlast" Style="display: none;" CssClass="lastview cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_view_last_button_text %>" />
-                        <asp:Button ID="btnSchedule" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                            CommandName="schedule" runat="server" Text="<%$ LabelResourceExpression: app_schedule_it_button_text %>" />
-                        <asp:Button ID="btnGenerate" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                            CommandName="generate" runat="server" Text="<%$ LabelResourceExpression: app_generate_it_button_text %>" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
+
+  
+</script>
+<asp:GridView ID="gvMyReports" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
+    runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
+    DataKeyNames="s_report_id_pk,s_report_users_system_id_pk,s_report_system_id_pk,s_report_name"
+    AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
+    PagerSettings-Visible="false" PageSize="100" OnRowDataBound="gvMyReports_RowDataBound"
+    OnRowCommand="gvMyReports_RowCommand">
+    <Columns>
+        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+            DataField='s_report_system_id_pk' HeaderStyle-HorizontalAlign="Center" Visible="false"
+            ItemStyle-HorizontalAlign="Left" />
+        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+            DataField='s_report_id_pk' HeaderStyle-HorizontalAlign="Center" Visible="false"
+            ItemStyle-HorizontalAlign="Left" />
+        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+            DataField='s_report_users_system_id_pk' HeaderStyle-HorizontalAlign="Center"
+            Visible="false" ItemStyle-HorizontalAlign="Left" />
+        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+            HeaderText="<%$ LabelResourceExpression: app_report_name_with_id_text %>" DataField='s_report_name_id'
+            HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_3"
+            HeaderText="<%$ LabelResourceExpression: app_type_text %>" DataField='s_report_type_id_fk'
+            HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+        <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+            HeaderText="Recurrence" DataField='s_report_users_when_to_run_text'
+            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+            HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField='s_report_users_when_to_run'
+            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+        <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
+            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+            <ItemTemplate>
+                <asp:Button ID="btnViewLast" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                    CommandName="viewlast" Style="display: none;" CssClass="lastview cursor_hand"
+                    runat="server" Text="<%$ LabelResourceExpression: app_view_last_button_text %>" />
+                <asp:Button ID="btnSchedule" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                    CommandName="schedule" runat="server" Text="<%$ LabelResourceExpression: app_schedule_it_button_text %>" />
+                <asp:Button ID="btnGenerate" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                    CommandName="generate" runat="server" Text="<%$ LabelResourceExpression: app_generate_it_button_text %>" />
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>

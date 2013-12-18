@@ -21,7 +21,11 @@ namespace ComplicanceFactor.Compliance
        
           
         }
-        
+        [System.Web.Services.WebMethod]
+        public static void Reload(string args)
+        {
+            HttpContext.Current.Response.Redirect(HttpContext.Current.Request.Url.ToString());
+        }
 
       
 

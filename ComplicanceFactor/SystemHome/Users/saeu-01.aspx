@@ -954,6 +954,26 @@
                                 <asp:TextBox ID="txtPayGrade" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                             </td>
                         </tr>
+                          <tr>
+                            <td>
+                                <%=LocalResources.GetLabel("app_social_security_no_text")%>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtSocialSecurityNo" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                            
+                            </td>
+                            <td>
+                      
+                            </td>
+                            <td>
+                          
+                            </td>
+                            <td>
+                     
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="6">
                                 <br />

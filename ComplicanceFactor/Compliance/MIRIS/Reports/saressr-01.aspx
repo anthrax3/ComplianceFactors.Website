@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Empty.Master" CodeBehind="saressr-01.aspx.cs"
     Inherits="ComplicanceFactor.Compliance.MIRIS.Reports.saressr_01" %>
     <%@ Register Src="dynamicsearch.ascx" TagName="dynamicsearch" TagPrefix="uc1" %>
+        <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="TimePicker" Namespace="MKB.TimePicker" TagPrefix="MKB" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -129,6 +131,8 @@
             });
         });
     </script>
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
     <div id="content">
         <%-- Location search result--%>
         <div>

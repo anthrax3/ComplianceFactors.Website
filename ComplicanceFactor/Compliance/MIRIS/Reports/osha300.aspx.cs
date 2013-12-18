@@ -26,12 +26,12 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
 
                 rvMIRIS.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", searchResult()));
 
-                if (Session["ReportConditions"] != null)
-                {
-                    dynamicsearch dySearch = new dynamicsearch();
-                    dySearch.RecordLastGenerate((DataTable)Session["ReportConditions"], "", Request.Params["id"].ToString(),Request.Params["suid"].ToString());
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.window.location.reload();", true);
-                }
+                //if (Session["ReportConditions"] != null)
+                //{
+                //    dynamicsearch dySearch = new dynamicsearch();
+                //    dySearch.RecordLastGenerate((DataTable)Session["ReportConditions"], "", Request.Params["id"].ToString(),Request.Params["suid"].ToString());
+                //    //Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.window.location.reload();", true);
+                //}
             }
           
         }

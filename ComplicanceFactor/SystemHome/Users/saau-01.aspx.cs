@@ -233,7 +233,7 @@ namespace ComplicanceFactor.SystemHome
             addnewuser.Custom_13 = txtCustom13.Text;
             addnewuser.LastPassword_enc = rijndaelKey.Encrypt(txtPassword_login.Text);
             addnewuser.u_hris_is_rehire = chkRehire.Checked;
-
+            addnewuser.u_social_security_no = txtSocialSecurityNo.Text;
             try
             {
                 int result = UserBLL.insert_new_user(addnewuser);
@@ -490,7 +490,7 @@ namespace ComplicanceFactor.SystemHome
                 chkSystemadmin.Checked = copyUser.sr_is_system_admin;
                 chkComplianceApprover.Checked = copyUser.sr_is_compliance_approver;
                 chkRehire.Checked = copyUser.u_hris_is_rehire;
-
+                txtSocialSecurityNo.Text = copyUser.u_social_security_no;
                 txtCustom01.Text = copyUser.Custom_01;
                 txtCustom02.Text = copyUser.Custom_02;
                 txtCustom03.Text = copyUser.Custom_03;

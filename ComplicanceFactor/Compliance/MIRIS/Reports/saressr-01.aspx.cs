@@ -230,8 +230,34 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     string strConditions = "";
                     foreach (DataRow row in dtParams.Rows)
                     {
-                      strConditions += row["s_report_param_field_id_pk"].ToString() +" like '%"+
-                            row["s_report_param_value"].ToString() + "%' and "; 
+                        switch (row["s_report_param_type_id_fk"].ToString())
+                        {
+                            case "Varchar":
+
+                                if (string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
+                                {
+                                    strConditions += "(" + row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' or "
+                                    + row["s_report_param_field_id_pk"].ToString() + " is null) and ";
+                                }
+                                else
+                                {
+                                    strConditions += row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' and ";
+                                }
+                                break;
+                            case "Date":
+                                if (row["s_report_param_name"].ToString().ToLower().IndexOf("start") != -1 ||
+                                    row["s_report_param_name"].ToString().ToLower().IndexOf("from") != -1)
+                                {
+                                    strConditions += row["s_report_param_field_id_pk"].ToString() + " >=#" + row["s_report_param_value"] + "# and ";
+                                }
+                                else
+                                {
+                                    strConditions += row["s_report_param_field_id_pk"].ToString() + " <=#" + row["s_report_param_value"] + "# and ";
+                                }
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     strConditions = strConditions.Substring(0, strConditions.Length - 4);
                     DataRow[] rows = dtCases.Select(strConditions);

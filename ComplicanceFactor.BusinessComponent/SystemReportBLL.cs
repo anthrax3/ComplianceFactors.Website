@@ -260,7 +260,7 @@ namespace ComplicanceFactor.BusinessComponent
             htParam.Add("@s_report_param_table_id_pk", param.s_report_param_table_id_pk);
             htParam.Add("@s_report_param_field_id_pk", param.s_report_param_field_id_pk);
             htParam.Add("@s_report_param_label_name", param.s_report_param_label_name);
-           
+            htParam.Add("@s_report_param_items", param.s_report_param_items);
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_report_param", htParam);

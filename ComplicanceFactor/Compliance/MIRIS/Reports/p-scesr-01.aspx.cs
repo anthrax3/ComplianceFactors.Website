@@ -13,7 +13,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
         {
             if (!IsPostBack)
             {
-                SessionWrapper.TempEmployeelist_mail = TempDataTables.TempUser();
+             
                 SearchResult();
 
                 lblFooterPageOf.Text = "of " + (gvsearchDetails.PageCount).ToString();

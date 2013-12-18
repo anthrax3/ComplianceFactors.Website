@@ -14,10 +14,33 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
 {
     public partial class dynamicsearch : System.Web.UI.UserControl
     {
+        public DataTable dtResult;
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["ReportConditions"] = null;
             LoadConditions();
+        }
+        private string GetValues(string id)
+        {
+            if (dtResult != null)
+            {
+                if (dtResult.Rows.Count > 0)
+                {
+                    DataRow[] rows = dtResult.Select("s_report_users_params_param_id_fk = '" + id + "'");
+                    if (rows.Length > 0)
+                        return dtResult.Select("s_report_users_params_param_id_fk = '" + id + "'")[0][3].ToString();
+                    else
+                        return "";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            else
+            {
+                return "";
+            }
         }
         private void LoadConditions()
         {
@@ -28,32 +51,94 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
             {
                 if (row["s_report_param_type_id_fk"].ToString() != "Date")
                 {
-                    Label lbl = new Label();
-                    lbl.Text = row["s_report_param_name"].ToString() + ":";
-
-                    HtmlTableCell cell1 = new HtmlTableCell();
-                    cell1.Controls.Add(lbl);
-                    r.Cells.Add(cell1);
-
-                    TextBox txt = new TextBox();
-                    txt.CssClass = "textbox_long";
-                    txt.ID = row["s_report_param_system_id_pk"].ToString();
-
-
-                    HtmlTableCell cell2 = new HtmlTableCell();
-                    cell2.Controls.Add(txt);
-                    r.Cells.Add(cell2);
-
-                    if (i % 2 != 0)
+                    if (row["s_report_param_type_id_fk"].ToString() != "System Drop-down")
                     {
-                        phConditions.Controls.Add(r);
-                        r = new HtmlTableRow();
+                        Label lbl = new Label();
+                        lbl.Text = row["s_report_param_name"].ToString() + ":";
+
+                        HtmlTableCell cell1 = new HtmlTableCell();
+
+                        cell1.Controls.Add(lbl);
+                        r.Cells.Add(cell1);
+
+                        TextBox txt = new TextBox();
+                        txt.CssClass = "textbox_long";
+                        txt.ID = row["s_report_param_system_id_pk"].ToString();
+                        txt.Text = GetValues(txt.ID);
+
+                        HtmlTableCell cell2 = new HtmlTableCell();
+                        cell2.Controls.Add(txt);
+                        r.Cells.Add(cell2);
+
+                        if (i % 2 != 0)
+                        {
+                            phConditions.Controls.Add(r);
+                            r = new HtmlTableRow();
+                        }
+                        else
+                        {
+                            if (i + 1 == dtParams.Select("s_report_param_type_id_fk <>'Date'").Count())
+                            {
+                                phConditions.Controls.Add(r);
+                            }
+                        }
                     }
                     else
                     {
-                        if (i + 1 == dtParams.Select("s_report_param_type_id_fk <>'Date'").Count())
+                        Label lbl = new Label();
+                        lbl.Text = row["s_report_param_name"].ToString() + ":";
+
+                        HtmlTableCell cell1 = new HtmlTableCell();
+
+                        cell1.Controls.Add(lbl);
+                        r.Cells.Add(cell1);
+
+                        DropDownList ddl = new DropDownList();
+                        ddl.CssClass = "textbox_long";
+                        ddl.ID = row["s_report_param_system_id_pk"].ToString();
+                        if (row["s_report_param_field_id_pk"].ToString() == "c_incident_location" ||
+                            row["s_report_param_field_id_pk"].ToString() == "c_employee_report_location")
+                        {
+                            ddl.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                            {
+                                s_establishment_id_pk = "",
+                                s_establishment_city = "",
+                                s_establishment_name = "",
+                                s_establishment_status_id_fk = "0"
+                            });
+
+                            ddl.DataTextField = "s_establishment_name";
+                            ddl.DataValueField = "s_establishment_system_id_pk";
+                            ddl.DataBind();
+                            ddl.Items.Insert(0, new ListItem("", ""));
+                            ddl.SelectedValue = GetValues(ddl.ID);
+                        }
+                        else
+                        {
+                            string[] items = row["s_report_param_items"].ToString().Split(new char[] { ';' });
+                            ddl.Items.Add(new ListItem(""));
+                            foreach (string item in items)
+                            {
+                                ListItem li = new ListItem(item);
+                                ddl.Items.Add(li);
+                            }
+                            ddl.Text = GetValues(ddl.ID);
+                        }
+                        HtmlTableCell cell2 = new HtmlTableCell();
+                        cell2.Controls.Add(ddl);
+                        r.Cells.Add(cell2);
+
+                        if (i % 2 != 0)
                         {
                             phConditions.Controls.Add(r);
+                            r = new HtmlTableRow();
+                        }
+                        else
+                        {
+                            if (i + 1 == dtParams.Select("s_report_param_type_id_fk <>'Date'").Count())
+                            {
+                                phConditions.Controls.Add(r);
+                            }
                         }
                     }
 
@@ -80,7 +165,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     txt.ID = row["s_report_param_system_id_pk"].ToString();
                     CalendarExtender ce = new CalendarExtender();
                     ce.TargetControlID = txt.ID;
-                  
+                    txt.Text = GetValues(txt.ID);
                     HtmlTableCell cell2 = new HtmlTableCell();
                     cell2.Controls.Add(ce);
                     cell2.Controls.Add(txt);
@@ -123,6 +208,17 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     case "Date":
                         row["s_report_param_value"] = ((TextBox)phConditions.FindControl(row["s_report_param_system_id_pk"].ToString())).Text;
                         break;
+                    case "System Drop-down":
+                        if (row["s_report_param_field_id_pk"].ToString() == "c_incident_location" ||
+                         row["s_report_param_field_id_pk"].ToString() == "c_employee_report_location")
+                        {
+                            row["s_report_param_value"] = ((DropDownList)phConditions.FindControl(row["s_report_param_system_id_pk"].ToString())).SelectedValue;
+                        }
+                        else
+                        {
+                            row["s_report_param_value"] = ((DropDownList)phConditions.FindControl(row["s_report_param_system_id_pk"].ToString())).Text;
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -141,7 +237,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 switch (row["s_report_param_type_id_fk"].ToString())
                 {
                     case "Varchar":
-                        strCondition += row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' and ";
+                        if (string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
+                        {
+                            strCondition += "("+row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' or "                            
+                            +row["s_report_param_field_id_pk"].ToString() + " is null) and ";
+                        }
+                        else
+                        {
+                            strCondition += row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' and ";
+                        }
                         break;
                     case "Date":
                         if (row["s_report_param_name"].ToString().ToLower().IndexOf("start") != -1 ||
@@ -152,6 +256,17 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                         else
                         {
                             strCondition += row["s_report_param_field_id_pk"].ToString() + " <=#" + row["s_report_param_value"] + "# and ";
+                        }
+                        break;
+                    case "System Drop-down":
+                        if (string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
+                        {
+                            strCondition += "(" + row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' or "
+                            + row["s_report_param_field_id_pk"].ToString() + " is null) and ";
+                        }
+                        else
+                        {
+                            strCondition += row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' and ";
                         }
                         break;
                     default:
