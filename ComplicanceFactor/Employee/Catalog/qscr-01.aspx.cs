@@ -454,7 +454,7 @@ namespace ComplicanceFactor.Employee.Catalog
                     int result = EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
                     if (result == 0)
                     {
-                        string url = "/LMS/CoursePlayer.aspx?eid=" + enrollOLT.e_enroll_system_id_pk + "&AICC_SID=" + enrollOLT.e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                        string url = "/LMS/CoursePlayer.aspx?eid=" + enrollOLT.e_enroll_system_id_pk + "&AICC_SID=" + enrollOLT.e_enroll_system_id_pk + "&AICC_URL=" + HttpContext.Current.Request.Url.Host + "/LMS/HACP_Handler.aspx";
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "windowopen", "window.open('" + url + "','_blank','height=' + screen.height + ',width=' + screen.width + ',location=0,menubar=0,status=0,toolbar=0,resizable=1')", true);
                     }
                     //Response.Redirect(Request.RawUrl);
