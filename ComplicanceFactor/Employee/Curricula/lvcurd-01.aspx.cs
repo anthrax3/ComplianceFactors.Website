@@ -299,7 +299,8 @@ namespace ComplicanceFactor.Employee.Curricula
                 else if (status == "Enrolled" && deliveryType == "OLT")
                 {
                     btnLaunch.Style.Add("display", "inline");
-                    string url = "http://compliancefactors.com.lavender.arvixe.com/LMS/CoursePlayer.aspx?&eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=compliancefactors.com.lavender.arvixe.com/LMS/HACP_Handler.aspx";
+                    string host = HttpContext.Current.Request.Url.Host + ":" + HttpContext.Current.Request.Url.Port.ToString();
+                    string url = "http://" + host + "/LMS/CoursePlayer.aspx?eid=" + e_enroll_system_id_pk + "&AICC_SID=" + e_enroll_system_id_pk + "&AICC_URL=" + host + "/LMS/HACP_Handler.aspx";
                     btnLaunch.OnClientClick = "window.open('" + url + "','_blank'); return true;";
                 }
                 else if (status == "Enrolled")
