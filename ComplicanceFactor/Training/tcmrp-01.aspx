@@ -6,6 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <script src="../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+     <script src="../Scripts/jquery.tablesorter.min.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <script type="text/javascript">

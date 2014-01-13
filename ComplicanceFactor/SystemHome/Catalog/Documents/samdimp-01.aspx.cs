@@ -17,7 +17,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
                 navigationText = BreadCrumb.GetCurrentBreadCrumb(SessionWrapper.navigationText);
                 hdNav_selected.Value = "#" + SessionWrapper.navigationText;
-                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_documents_text") + "</a>";
+                lblBreadCrumb.Text = navigationText + "&nbsp;" + " >&nbsp;" +
+                    "<a href=/SystemHome/sahp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;>&nbsp;" +
+                    "<a href=/SystemHome/Catalog/samcmp-01.aspx>" + LocalResources.GetGlobalLabel("app_manage_training_text") + "</a>&nbsp;>&nbsp;" +
+                    "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_manage_documents_text") + "</a>";
 
                 // bind the status
                 ddlStatus.DataSource = SystemDocumentsBLL.GetAllStatus(SessionWrapper.CultureName, "samdimp-01");

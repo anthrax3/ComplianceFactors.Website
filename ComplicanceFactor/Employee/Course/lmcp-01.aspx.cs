@@ -227,7 +227,7 @@ namespace ComplicanceFactor.Employee.Course
                 {
                     btnEnroll.Style.Add("display", "inline");
                 }
-                else if ((status == "Enrolled" || status == "Incomplete") && deliveryType == "OLT")
+                else if ((status == "Enrolled" || status == "Incomplete" || status == "Completed") && deliveryType == "OLT")
                 {
                     btnLaunch.Style.Add("display", "inline");
                     string host = HttpContext.Current.Request.Url.Host + ":" + HttpContext.Current.Request.Url.Port.ToString();
