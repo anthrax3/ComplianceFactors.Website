@@ -31,5 +31,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public bool s_copy_locale { get; set; }
         public string s_new_document_system_id_pk { get; set; }
 
+        public string s_document_category { get; set; }
+
     }
 }

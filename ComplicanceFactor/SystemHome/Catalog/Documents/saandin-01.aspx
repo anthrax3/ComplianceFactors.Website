@@ -8,10 +8,10 @@
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <link href="../../../Styles/Main.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        input[type=button],input[type=submit]
+        input[type=button], input[type=submit]
         {
-           cursor:pointer;
-            }
+            cursor: pointer;
+        }
     </style>
     <script type="text/javascript">
 
@@ -66,6 +66,81 @@
                 }
 
             });
+
+            $("#<%=btnAddCategory.ClientID %>").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 920,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false, 
+                'href': 'CategorySearch/sascn-01.aspx?page=saandin',
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+                    $('#fancybox-frame').load(function () {
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
+
+                        })
+                    });
+
+                }
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".deleteCategory").click(function () {
+
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+
+                // Ask user's confirmation before delete records
+                if (confirm("Do you want to delete this record?")) {
+
+                    $.ajax({
+                        type: "POST",
+
+                        //saantc-01.aspx is the page name and DeleteUser is the server side method to delete records in saantc-01.aspx.cs
+                        url: "saandin-01.aspx/DeleteCategory",
+
+                        //Pass the selected record id
+                        data: "{'args': '" + record_id + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
+
+                            // Do some animation effect
+                            tr_id.fadeOut(500, function () {
+
+                                //Remove GridView row
+                                tr_id.remove();
+
+                            });
+                        }
+                    });
+
+                }
+                return false;
+            });
         });
     </script>
     <script type="text/javascript">
@@ -107,30 +182,30 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-</asp:ToolkitScriptManager>
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_saedin" runat="server"
         ValidationGroup="saedin"></asp:ValidationSummary>
-        <asp:HiddenField ID="hdNav_selected" runat="server" />
+    <asp:HiddenField ID="hdNav_selected" runat="server" />
     <div class="content_area_long">
         <div class="div_controls font_1">
             <table class="table_td_300">
                 <tr>
                     <td>
-                        <asp:Button ID="btnHeaderSave" ValidationGroup="saedin" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_save_new_document_button_text %>" onclick="btnHeaderSave_Click" />
+                        <asp:Button ID="btnHeaderSave" ValidationGroup="saedin" runat="server" Text="<%$ LabelResourceExpression: app_save_new_document_button_text %>"
+                            OnClick="btnHeaderSave_Click" />
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnHeaderReset" CssClass="align_right" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_reset_button_text %>" onclick="btnHeaderReset_Click" />
+                        <asp:Button ID="btnHeaderReset" CssClass="align_right" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            OnClick="btnHeaderReset_Click" />
                     </td>
                     <td>
                     </td>
                     <td class="align_right">
-                        <asp:Button ID="btnHeaderCancel" CssClass="align_right" runat="server" 
-                            Text="<%$ LabelResourceExpression: app_cancel_button_text %>" onclick="btnHeaderCancel_Click" />
+                        <asp:Button ID="btnHeaderCancel" CssClass="align_right" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                            OnClick="btnHeaderCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -144,39 +219,42 @@
             <table cellpadding="5" cellspacing="10">
                 <tr>
                     <td valign="top">
-                        * <%=LocalResources.GetLabel("app_document_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_document_id_text")%>:
                     </td>
                     <td style="text-align: left">
                         <asp:TextBox ID="txtDocumentId" CssClass="textbox_long" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvDocumentId" runat="server" style=" display:none" ValidationGroup="saedin"
-                            ControlToValidate="txtDocumentId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvDocumentId" runat="server" Style="display: none"
+                            ValidationGroup="saedin" ControlToValidate="txtDocumentId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                     </td>
                     <td class="align_right" valign="top">
-                        * <%=LocalResources.GetLabel("app_document_name_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_document_name_text")%>:
                     </td>
                     <td style="text-align: right">
                         <asp:TextBox ID="txtDocumentName" CssClass="textbox_long" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvDocumentName" runat="server" style=" display:none"  ValidationGroup="saedin"
-                            ControlToValidate="txtDocumentName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvDocumentName" runat="server" Style="display: none"
+                            ValidationGroup="saedin" ControlToValidate="txtDocumentName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        * <%=LocalResources.GetLabel("app_description_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td colspan="5">
                         <asp:TextBox ID="txtDescription" TextMode="MultiLine" Rows="7" Width="800px" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvDescription" runat="server" style=" display:none"  ValidationGroup="saedin"
-                            ControlToValidate="txtDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvDescription" runat="server" Style="display: none"
+                            ValidationGroup="saedin" ControlToValidate="txtDescription" ErrorMessage="<%$ TextResourceExpression: app_description_error_empty %>"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <%=LocalResources.GetLabel("app_version_text")%>:
                     </td>
-                    <td style=" text-align:left">
+                    <td style="text-align: left">
                         <asp:TextBox ID="txtVersion" CssClass="textbox_long" runat="server"></asp:TextBox>
                     </td>
                 </tr>
@@ -187,13 +265,13 @@
                     <td class="align_left" colspan="4">
                         <asp:Button ID="btnUploadDocument" runat="server" Text="<%$ LabelResourceExpression: app_upload_file_button_text %>" />
                         <br />
-                        <asp:LinkButton ID="lnkFileName" runat="server" CssClass="cursor_hand" 
-                            onclick="lnkFileName_Click"></asp:LinkButton>
-                        <asp:Button ID="btnView" runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" 
-                            onclick="btnView_Click" />
-                        <asp:Button ID="btnEdit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                        <asp:LinkButton ID="lnkFileName" runat="server" CssClass="cursor_hand" OnClick="lnkFileName_Click"></asp:LinkButton>
+                        <asp:Button ID="btnView" runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>"
+                            CssClass="cursor_hand" OnClick="btnView_Click" />
+                        <asp:Button ID="btnEdit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>"
+                            CssClass="cursor_hand" />
                         <asp:Button ID="btnRemove" runat="server" OnClientClick="return confirmremove();"
-                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand"/>
+                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
                     </td>
                 </tr>
                 <tr>
@@ -211,8 +289,8 @@
                         <%=LocalResources.GetLabel("app_document_type_text")%>:
                     </td>
                     <td style="text-align: left">
-                        <asp:DropDownList ID="ddlDocumentType" CssClass="ddl_user_advanced_search" runat="server" DataTextField="s_document_type_name"
-                            DataValueField="s_document_type_system_id_pk">
+                        <asp:DropDownList ID="ddlDocumentType" CssClass="ddl_user_advanced_search" runat="server"
+                            DataTextField="s_document_type_name" DataValueField="s_document_type_system_id_pk">
                             <%--                            <asp:ListItem>Standard Operating Procedure(SOP)</asp:ListItem>
                             <asp:ListItem>Material Safety Data Sheet(MSDS)</asp:ListItem>
                             <asp:ListItem>Best Practices</asp:ListItem>
@@ -227,47 +305,89 @@
         </div>
         <br />
         <div class="div_header_long">
+            Category:
+        </div>
+        <br />
+        <div class="div_controls_from_left">
+            <div>
+                <asp:GridView ID="gvCategory" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
+                    CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
+                    AutoGenerateColumns="False">
+                    <RowStyle CssClass="record"></RowStyle>
+                    <Columns>
+                        <asp:TemplateField ItemStyle-CssClass="gridview_row_width_5" ItemStyle-HorizontalAlign="Left">
+                            <ItemTemplate>
+                                <table class="gridview_row_width_5">
+                                    <tr>
+                                        <td>
+                                            <%#Eval("s_category_name_us_english")%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <%-- <%# "(" + Eval("s_category_id") + ")"%>--%>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-CssClass="gridview_row_width_1" ItemStyle-HorizontalAlign="Right">
+                            <ItemTemplate>
+                                <input type="button" id='<%# Eval("CategoryID") %>' value='<asp:Literal ID="Literal4" runat="server" Text="delete" />'
+                                    class="deleteCategory cursor_hand" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+        <div class="div_controls font_1">
+            <asp:Button ID="btnAddCategory" runat="server" CssClass="cursor_hand" Text="Add" />
+        </div>
+        <br />
+        <div class="div_header_long">
             <br />
         </div>
         <br />
         <table class="table_td_300">
             <tr>
                 <td>
-                    <asp:Button ID="btnFooterSave" ValidationGroup="saedin" runat="server" 
-                        Text="<%$ LabelResourceExpression: app_save_new_document_button_text %>" onclick="btnHeaderSave_Click" />
+                    <asp:Button ID="btnFooterSave" ValidationGroup="saedin" runat="server" Text="<%$ LabelResourceExpression: app_save_new_document_button_text %>"
+                        OnClick="btnHeaderSave_Click" />
                 </td>
                 <td>
                 </td>
                 <td class="align_right">
-                    <asp:Button ID="btnFooterReset" CssClass="align_right" runat="server" 
-                        Text="<%$ LabelResourceExpression: app_reset_button_text %>" onclick="btnHeaderReset_Click" />
+                    <asp:Button ID="btnFooterReset" CssClass="align_right" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                        OnClick="btnHeaderReset_Click" />
                 </td>
                 <td>
                 </td>
                 <td class="align_right">
-                    <asp:Button ID="btnFooterCancel" CssClass="align_right" runat="server" 
-                        Text="<%$ LabelResourceExpression: app_cancel_button_text %>" onclick="btnHeaderCancel_Click" />
+                    <asp:Button ID="btnFooterCancel" CssClass="align_right" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                        OnClick="btnHeaderCancel_Click" />
                 </td>
             </tr>
         </table>
     </div>
     <asp:ModalPopupExtender ID="mpeAddAttachment" TargetControlID="btnUploadDocument"
-        BackgroundCssClass="transparent_class" PopupControlID="pnlAddAttachment" OkControlID="imgClose" 
-        DropShadow="false" PopupDragHandleControlID="pnlUploadFileHeading" OnCancelScript="cleartext()" CancelControlID="btnCancel"
-        OnOkScript="cleartext()" runat="server">
+        BackgroundCssClass="transparent_class" PopupControlID="pnlAddAttachment" OkControlID="imgClose"
+        DropShadow="false" PopupDragHandleControlID="pnlUploadFileHeading" OnCancelScript="cleartext()"
+        CancelControlID="btnCancel" OnOkScript="cleartext()" runat="server">
     </asp:ModalPopupExtender>
     <asp:ModalPopupExtender ID="mpeEditAttachment" runat="server" TargetControlID="btnEdit"
         PopupControlID="pnlAddAttachment" BackgroundCssClass="transparent_class" DropShadow="false"
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
     </asp:ModalPopupExtender>
-    <asp:Panel ID="pnlAddAttachment" Style="display: none;  padding-left: 0px;
-        padding-right: 0px" runat="server" CssClass="modalPopup_upload modal_popup_background">
+    <asp:Panel ID="pnlAddAttachment" Style="display: none; padding-left: 0px; padding-right: 0px"
+        runat="server" CssClass="modalPopup_upload modal_popup_background">
         <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
             <div>
                 <div class="uploadpopup_header">
                     <div class="left">
-                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>" runat="server"></asp:Label>
+                        <asp:Label ID="lblHeading" Text="<%$ LabelResourceExpression: app_add_attachement_text %>"
+                            runat="server"></asp:Label>
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;
@@ -285,7 +405,8 @@
                 <asp:ValidationSummary class="validation_summary_error_popup" ID="vsFileUpload" runat="server"
                     ValidationGroup="vs_documentUpload" />
                 <asp:CustomValidator ValidationGroup="vs_documentUpload" ID="cvFileUpload" runat="server"
-                    EnableClientScript="true" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
+                    EnableClientScript="true" ErrorMessage="<%$ TextResourceExpression: app_select_file_error_empty %>"
+                    ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
                 <div class="div_controls">
                     <table cellpadding="0" cellspacing="0">
                         <tr>
@@ -303,7 +424,8 @@
                 <br />
                 <div class="multiple_button">
                     <asp:Button ID="btnUploadAttachment" runat="server" ValidationGroup="vs_documentUpload"
-                        OnClick="btnUploadDocument_Click" Text="<%$ LabelResourceExpression: app_upload_button_text %>" CssClass="cursor_hand" />
+                        OnClick="btnUploadDocument_Click" Text="<%$ LabelResourceExpression: app_upload_button_text %>"
+                        CssClass="cursor_hand" />
                 </div>
                 <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
             </div>

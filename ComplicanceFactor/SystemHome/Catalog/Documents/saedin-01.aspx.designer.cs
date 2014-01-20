@@ -238,6 +238,24 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents {
         protected global::System.Web.UI.WebControls.DropDownList ddlDocumentType;
         
         /// <summary>
+        /// gvCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCategory;
+        
+        /// <summary>
+        /// btnAddCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddCategory;
+        
+        /// <summary>
         /// btnFooterSave control.
         /// </summary>
         /// <remarks>

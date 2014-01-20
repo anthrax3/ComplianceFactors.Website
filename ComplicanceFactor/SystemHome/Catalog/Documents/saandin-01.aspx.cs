@@ -41,6 +41,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 ddlStatus.DataBind();
                 ddlStatus.SelectedValue = "app_ddl_active_text";
 
+
+                SessionWrapper.DocumentCategory = TempDataTables.TempDocumentCategory();
+
                 //bind Document type
                 ddlDocumentType.DataSource = SystemDocumentsBLL.GetDocumentTypes(SessionWrapper.CultureName);
                 ddlDocumentType.DataBind();
@@ -53,6 +56,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 }
                 Attachment();
             }
+            gvCategory.DataSource = SessionWrapper.DocumentCategory;
+            gvCategory.DataBind();
         }
         private void PopulateDocument(string documentId)
         {
@@ -70,6 +75,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 SessionWrapper.Attachment_guid = document.s_documnet_attachment_file_guid;
                 SessionWrapper.Attachment_file_name = document.s_document_attachment_file_name;
                 SessionWrapper.Locale = dsDocument.Tables[1];
+                //SessionWrapper.DocumentCategory = dsDocument.Tables[2];
             }
             catch (Exception ex)
             {
@@ -174,6 +180,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             createDocument.s_documnet_attachment_file_guid = SessionWrapper.Attachment_guid;
             createDocument.s_document_attachment_file_name = SessionWrapper.Attachment_file_name;
             createDocument.s_document_locale = ConvertDataTableToXml(SessionWrapper.Locale);
+            createDocument.s_document_category = ConvertDataTableToXml(SessionWrapper.DocumentCategory);
             try
             {
                 int result = SystemDocumentsBLL.CreateNewDocument(createDocument);
@@ -329,6 +336,40 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 default:
                     return "application/octet-stream";
             }
+        }
+        //Delete Category
+        [System.Web.Services.WebMethod]
+        public static void DeleteCategory(string args)
+        {
+            try
+            {
+                //Delete previous selected course
+                var rows = SessionWrapper.DocumentCategory.Select("CategoryID= '" + args.Trim() + "'");
+                foreach (var row in rows)
+                    row.Delete();
+                SessionWrapper.CourseCategory.AcceptChanges();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saandin-01 (Remove Category)", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saandin-01 (Remove Category)", ex.Message);
+                    }
+                }
+            }
+
+
         }
     }
 }

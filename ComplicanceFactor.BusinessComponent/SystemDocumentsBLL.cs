@@ -134,6 +134,35 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+
+        public static int ResetCategory(string s_document_system_id_pk, string s_document_category)
+        {
+            Hashtable htDeleteLocale = new Hashtable();
+            if (!string.IsNullOrEmpty(s_document_system_id_pk))
+            {
+                htDeleteLocale.Add("@s_document_system_id_pk", s_document_system_id_pk);
+            }
+            else
+            {
+                htDeleteLocale.Add("@s_document_system_id_pk", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(s_document_category))
+            {
+                htDeleteLocale.Add("@s_document_category", s_document_category);
+            }
+            else
+            {
+                htDeleteLocale.Add("@s_document_category", DBNull.Value);
+            }
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_reset_document_category", htDeleteLocale);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public static SystemDocuments GetSingleDocumentLocale(string s_locale_system_id_pk)
         {
             SystemDocuments resLocale;
@@ -234,11 +263,13 @@ namespace ComplicanceFactor.BusinessComponent
             htCreateDocument.Add("@s_document_id_pk", createDocument.s_document_id_pk);
             htCreateDocument.Add("@s_document_name", createDocument.s_document_name);
             htCreateDocument.Add("@s_document_description", createDocument.s_document_description);
-            htCreateDocument.Add("@s_document_version",createDocument.s_document_version);
+            htCreateDocument.Add("@s_document_version", createDocument.s_document_version);
             htCreateDocument.Add("@s_document_status_id_fk", createDocument.s_document_status_id_fk);
             htCreateDocument.Add("@s_document_type_fk", createDocument.s_document_type_fk);
             htCreateDocument.Add("@s_documnet_attachment_file_guid", createDocument.s_documnet_attachment_file_guid);
             htCreateDocument.Add("@s_document_attachment_file_name", createDocument.s_document_attachment_file_name);
+
+
             if (!string.IsNullOrEmpty(createDocument.s_document_locale))
             {
                 htCreateDocument.Add("@s_document_locale", createDocument.s_document_locale);
@@ -247,6 +278,16 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htCreateDocument.Add("@s_document_locale", DBNull.Value);
             }
+
+            if (!string.IsNullOrEmpty(createDocument.s_document_category))
+            {
+                htCreateDocument.Add("@s_document_category", createDocument.s_document_category);
+            }
+            else
+            {
+                htCreateDocument.Add("@s_document_category", DBNull.Value);
+            }
+
             try
             {
                 return DataProxy.FetchSPOutput("s_sp_insert_document", htCreateDocument);
@@ -381,7 +422,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static DataTable GetDocumentTypeNamedocument(string s_document_type_id,string s_locale)
+        public static DataTable GetDocumentTypeNamedocument(string s_document_type_id, string s_locale)
         {
             try
             {
@@ -390,7 +431,8 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetDocumentType.Add("@s_locale", s_locale);
                 return DataProxy.FetchDataTable("s_sp_get_document_type_name", htGetDocumentType);
             }
-            catch(Exception) {
+            catch (Exception)
+            {
                 throw;
             }
         }
@@ -423,6 +465,63 @@ namespace ComplicanceFactor.BusinessComponent
 
             }
             catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Get CourseCategory
+        /// </summary>
+        /// <param name="c_course_system_id_pk"></param>
+        /// <returns></returns>
+        public static DataTable GetDocumentCategory(string s_document_system_id_pk)
+        {
+            Hashtable htGetCourseCategory = new Hashtable();
+            htGetCourseCategory.Add("@s_document_system_id_pk", s_document_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_document_sp_get_categories", htGetCourseCategory);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Delete Category
+        /// </summary>
+        public static int DeleteCategory(string c_document_system_id_pk)
+        {
+            Hashtable htDeleteCategory = new Hashtable();
+            htDeleteCategory.Add("@c_document_system_id_pk", c_document_system_id_pk);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_delete_document_category", htDeleteCategory);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Insert Category
+        /// </summary>
+        public static int InsertCategory(string s_document_category, string c_document_id_fk)
+        {
+            Hashtable htInsertCategory = new Hashtable();
+
+            htInsertCategory.Add("@s_document_category", s_document_category);
+            htInsertCategory.Add("@c_document_id_fk", c_document_id_fk);
+
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_insert_document_categories", htInsertCategory);
+            }
+            catch
             {
                 throw;
             }

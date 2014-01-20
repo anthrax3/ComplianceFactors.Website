@@ -56,6 +56,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                         divSuccess.InnerText = LocalResources.GetText("app_succ_insert_text");
                     }
                 }
+
+                gvCategory.DataSource = SystemDocumentsBLL.GetDocumentCategory(editDocument);
+                gvCategory.DataBind();
             }
             catch (Exception ex)
             {
@@ -94,6 +97,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 //for reset to store resource locale in session
                 SessionWrapper.TempLocale = TempDataTables.TempLocale();
                 SessionWrapper.TempLocale = dsDocument.Tables[1];
+                SessionWrapper.Reset_DocumentCategory = dsDocument.Tables[2];
             }
             catch (Exception ex)
             {
@@ -311,6 +315,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             try
             {
                 SystemDocumentsBLL.DeleteDocumentLocale(editDocument, ConvertDataTableToXml(SessionWrapper.TempLocale), string.Empty);
+                ResetCategories();
             }
             catch (Exception ex)
             {
@@ -328,6 +333,33 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 }
             }
         }
+        /// <summary>
+        /// ResetCategories()
+        /// </summary>
+        private void ResetCategories()
+        {
+            try
+            {
+                //SystemDocumentsBLL.ResetCategory(editDocument, ConvertDataTableToXml(SessionWrapper.Reset_DocumentCategory));                
+            }
+            catch (Exception ex)
+            {
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saedin-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saedin-01.aspx", ex.Message);
+                    }
+                }
+            }
+        }
+
+
         public string ConvertDataTableToXml(DataTable dtBuildSql)
         {
             DataSet dsBuildSql = new DataSet("DataSet");
@@ -415,6 +447,37 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 lnkViewVersion.OnClientClick = "window.open('saad-01.aspx?id=" + SecurityCenter.EncryptText(gvVersionList.DataKeys[e.Row.RowIndex][0].ToString()) +"&type="+ SecurityCenter.EncryptText( ddlDocumentType.SelectedItem.Text)+ "','',''); return false;";
                 btnViewVersion.OnClientClick = "window.open('saad-01.aspx?id=" + SecurityCenter.EncryptText(gvVersionList.DataKeys[e.Row.RowIndex][0].ToString()) + "&type=" + SecurityCenter.EncryptText( ddlDocumentType.SelectedItem.Text) + "','',''); return false;";
             }
+        }
+
+        /// <summary>
+        /// Delete Category
+        /// </summary>
+        /// <param name="args"></param>
+        [System.Web.Services.WebMethod]
+        public static void DeleteCategory(string args)
+        {
+            try
+            {
+                SystemDocumentsBLL.DeleteCategory(args.Trim());
+            }
+            catch (Exception ex)
+            {
+                //TODO: Show user friendly error here
+                //Log here
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("saetc-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("saetc-01", ex.Message);
+                    }
+                }
+            }
+
+
         }
 
 

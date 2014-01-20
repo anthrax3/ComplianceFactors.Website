@@ -2168,6 +2168,59 @@ namespace ComplicanceFactor.Common
 
             return dtTempReportLabelLocale;
         }
+
+        public static DataTable TempDocumentCategory()
+        {
+            DataTable dtTempCategory = new DataTable();
+            DataColumn dtTempCategoryColumn;
+
+            /// <summary>
+            /// temp s_category_system_id_pk 
+
+
+            dtTempCategoryColumn = new DataColumn();
+            dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            dtTempCategoryColumn.ColumnName = "CategoryID";
+            dtTempCategory.Columns.Add(dtTempCategoryColumn);
+
+            /// <summary>
+            /// s_category_id
+
+
+            dtTempCategoryColumn = new DataColumn();
+            dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            dtTempCategoryColumn.ColumnName = "s_category_id";
+            dtTempCategory.Columns.Add(dtTempCategoryColumn);
+
+            /// <summary>
+            /// s_category_name
+
+
+            dtTempCategoryColumn = new DataColumn();
+            dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            dtTempCategoryColumn.ColumnName = "s_category_name_us_english";
+            dtTempCategory.Columns.Add(dtTempCategoryColumn);
+
+
+
+            //c_course_id_pk
+            dtTempCategoryColumn = new DataColumn();
+            dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            dtTempCategoryColumn.ColumnName = "c_document_id_fk";
+            dtTempCategory.Columns.Add(dtTempCategoryColumn);
+
+            /// <summary>
+            /// s_category_description
+
+            //dtTempCategoryColumn = new DataColumn();
+            //dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            //dtTempCategoryColumn.ColumnName = "s_category_description";
+            //dtTempCategory.Columns.Add(dtTempCategoryColumn);
+
+
+            return dtTempCategory;
+
+        }
     }
 
 }

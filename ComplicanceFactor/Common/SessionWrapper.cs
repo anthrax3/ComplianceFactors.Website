@@ -6967,6 +6967,58 @@ namespace ComplicanceFactor.Common
         }
         //Reset_Course_Audience
 
+
+
+        //Document Category
+
+        /// <summary>
+        /// Document category
+        /// </summary>
+        public static DataTable DocumentCategory
+        {
+            get
+            {
+                if (HttpContext.Current.Session["DocumentCategory"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["DocumentCategory"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["DocumentCategory"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Course category
+        /// </summary>
+        public static DataTable Reset_DocumentCategory
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Reset_DocumentCategory"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Reset_DocumentCategory"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["Reset_DocumentCategory"] = value;
+            }
+        }
+
         public static void clearsession()
         {
             sessionid = "";

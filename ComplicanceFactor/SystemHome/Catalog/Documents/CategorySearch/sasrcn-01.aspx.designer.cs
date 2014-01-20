@@ -7,325 +7,253 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ComplicanceFactor.SystemHome.Catalog.Documents {
+namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch {
     
     
-    public partial class saandin_01 {
+    public partial class sasrcn_01 {
         
         /// <summary>
-        /// ToolkitScriptManager1 control.
+        /// btnHeaderFirst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        protected global::System.Web.UI.WebControls.Button btnHeaderFirst;
         
         /// <summary>
-        /// vs_saedin control.
+        /// btnHeaderPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vs_saedin;
+        protected global::System.Web.UI.WebControls.Button btnHeaderPrevious;
         
         /// <summary>
-        /// hdNav_selected control.
+        /// btnHeaderNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdNav_selected;
+        protected global::System.Web.UI.WebControls.Button btnHeaderNext;
         
         /// <summary>
-        /// btnHeaderSave control.
+        /// btnHeaderLast control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderSave;
+        protected global::System.Web.UI.WebControls.Button btnHeaderLast;
         
         /// <summary>
-        /// btnHeaderReset control.
+        /// lblHeaderResultPerPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderReset;
+        protected global::System.Web.UI.WebControls.Label lblHeaderResultPerPage;
         
         /// <summary>
-        /// btnHeaderCancel control.
+        /// ddlHeaderResultPerPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHeaderCancel;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHeaderResultPerPage;
         
         /// <summary>
-        /// txtDocumentId control.
+        /// lblHeaderPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDocumentId;
+        protected global::System.Web.UI.WebControls.Label lblHeaderPage;
         
         /// <summary>
-        /// rfvDocumentId control.
+        /// txtHeaderPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDocumentId;
+        protected global::System.Web.UI.WebControls.TextBox txtHeaderPage;
         
         /// <summary>
-        /// txtDocumentName control.
+        /// lblHeaderPageOf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDocumentName;
+        protected global::System.Web.UI.WebControls.Label lblHeaderPageOf;
         
         /// <summary>
-        /// rfvDocumentName control.
+        /// btnHeaderGoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDocumentName;
+        protected global::System.Web.UI.WebControls.Button btnHeaderGoto;
         
         /// <summary>
-        /// txtDescription control.
+        /// gvsearchDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        protected global::System.Web.UI.WebControls.GridView gvsearchDetails;
         
         /// <summary>
-        /// rfvDescription control.
+        /// btnSaveSelected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescription;
+        protected global::System.Web.UI.WebControls.Button btnSaveSelected;
         
         /// <summary>
-        /// txtVersion control.
+        /// btnFooterFirst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVersion;
+        protected global::System.Web.UI.WebControls.Button btnFooterFirst;
         
         /// <summary>
-        /// btnUploadDocument control.
+        /// btnFooterPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadDocument;
+        protected global::System.Web.UI.WebControls.Button btnFooterPrevious;
         
         /// <summary>
-        /// lnkFileName control.
+        /// btnFooterNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkFileName;
+        protected global::System.Web.UI.WebControls.Button btnFooterNext;
         
         /// <summary>
-        /// btnView control.
+        /// btnFooterLast control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnView;
+        protected global::System.Web.UI.WebControls.Button btnFooterLast;
         
         /// <summary>
-        /// btnEdit control.
+        /// lblFooterResultPerPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
+        protected global::System.Web.UI.WebControls.Label lblFooterResultPerPage;
         
         /// <summary>
-        /// btnRemove control.
+        /// ddlFooterResultPerPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRemove;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFooterResultPerPage;
         
         /// <summary>
-        /// ddlStatus control.
+        /// lblFooterPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        protected global::System.Web.UI.WebControls.Label lblFooterPage;
         
         /// <summary>
-        /// ddlDocumentType control.
+        /// txtFooterPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDocumentType;
+        protected global::System.Web.UI.WebControls.TextBox txtFooterPage;
         
         /// <summary>
-        /// gvCategory control.
+        /// lblFooterPageOf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCategory;
+        protected global::System.Web.UI.WebControls.Label lblFooterPageOf;
         
         /// <summary>
-        /// btnAddCategory control.
+        /// btnFooterGoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddCategory;
+        protected global::System.Web.UI.WebControls.Button btnFooterGoto;
         
         /// <summary>
-        /// btnFooterSave control.
+        /// pnlDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterSave;
+        protected global::System.Web.UI.WebControls.Panel pnlDefault;
         
         /// <summary>
-        /// btnFooterReset control.
+        /// txtCategoryName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterReset;
+        protected global::System.Web.UI.WebControls.TextBox txtCategoryName;
         
         /// <summary>
-        /// btnFooterCancel control.
+        /// txtCategoryId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFooterCancel;
+        protected global::System.Web.UI.WebControls.TextBox txtCategoryId;
         
         /// <summary>
-        /// mpeAddAttachment control.
+        /// btnGosearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpeAddAttachment;
+        protected global::System.Web.UI.WebControls.Button btnGosearch;
         
         /// <summary>
-        /// mpeEditAttachment control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpeEditAttachment;
-        
-        /// <summary>
-        /// pnlAddAttachment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlAddAttachment;
-        
-        /// <summary>
-        /// pnlUploadFileHeading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUploadFileHeading;
-        
-        /// <summary>
-        /// lblHeading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeading;
-        
-        /// <summary>
-        /// imgClose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgClose;
-        
-        /// <summary>
-        /// vsFileUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vsFileUpload;
-        
-        /// <summary>
-        /// cvFileUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvFileUpload;
-        
-        /// <summary>
-        /// fupFiles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fupFiles;
-        
-        /// <summary>
-        /// btnUploadAttachment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadAttachment;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
         /// btnCancel control.
