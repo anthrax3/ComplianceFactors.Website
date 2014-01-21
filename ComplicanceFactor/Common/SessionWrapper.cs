@@ -7018,6 +7018,46 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["Reset_DocumentCategory"] = value;
             }
         }
+        public static DataTable Enrollment_courses_from_user
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Enrollment_courses_from_user"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Enrollment_courses_from_user"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session["Enrollment_courses_from_user"] = value;
+            }
+        }
+
+        public static DataTable Enrollment_curriculum_from_user
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Enrollment_curriculum_from_user"] != null)
+                {
+                    return (DataTable)HttpContext.Current.Session["Enrollment_curriculum_from_user"];
+                }
+                else
+                {
+                    DataTable dtnull = new DataTable();
+                    return dtnull;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["Enrollment_curriculum_from_user"] = value;
+            }
+        }
 
         public static void clearsession()
         {

@@ -29,6 +29,7 @@ namespace ComplicanceFactor.SystemHome
             vs_saeu.Style.Add("display", "none");
 
             userid = SecurityCenter.DecryptText(Request.QueryString["id"]);
+            hdEditID.Value = userid;
 
           
             if (!IsPostBack)

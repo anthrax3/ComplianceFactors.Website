@@ -152,9 +152,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             lnkFileName.Text = string.Empty;
             Attachment();
         }
+        /// <summary>
+        /// Attachment Download
+        /// </summary>
         private void AttachmentDownload()
         {
-
             string filePath = Server.MapPath(_filePath + SessionWrapper.Attachment_guid);
 
             if (System.IO.File.Exists(filePath))
@@ -255,6 +257,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
         {
             UpdateDocument();
         }
+        /// <summary>
+        /// Update Document
+        /// </summary>
         private void UpdateDocument()
         {
             SystemDocuments updateDocument = new SystemDocuments();
@@ -294,6 +299,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 }
             }
         }
+        /// <summary>
+        /// Attachment
+        /// </summary>
+        /// <returns></returns>
         private DataTable tempAttachment()
         {
             DataTable dtTempAttachment = new DataTable();
@@ -310,6 +319,9 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             dtTempAttachment.Columns.Add(dtTempAttachmentColumn);
             return dtTempAttachment;
         }
+        /// <summary>
+        /// Reset 
+        /// </summary>
         private void Reset()
         {
             try
@@ -340,7 +352,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
         {
             try
             {
-                //SystemDocumentsBLL.ResetCategory(editDocument, ConvertDataTableToXml(SessionWrapper.Reset_DocumentCategory));                
+                SystemDocumentsBLL.ResetCategory(editDocument, ConvertDataTableToXml(SessionWrapper.Reset_DocumentCategory));                
             }
             catch (Exception ex)
             {
@@ -359,7 +371,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             }
         }
 
-
+        /// <summary>
+        /// Convert DataTable To Xml
+        /// </summary>
+        /// <param name="dtBuildSql"></param>
+        /// <returns></returns>
         public string ConvertDataTableToXml(DataTable dtBuildSql)
         {
             DataSet dsBuildSql = new DataSet("DataSet");

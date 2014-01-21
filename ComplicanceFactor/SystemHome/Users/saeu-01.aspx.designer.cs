@@ -67,6 +67,15 @@ namespace ComplicanceFactor.SystemHome {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl error_msg;
         
         /// <summary>
+        /// hdEditID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdEditID;
+        
+        /// <summary>
         /// hdNav_selected control.
         /// </summary>
         /// <remarks>
@@ -227,6 +236,60 @@ namespace ComplicanceFactor.SystemHome {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnResetNotify;
+        
+        /// <summary>
+        /// btnAddCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddCourses;
+        
+        /// <summary>
+        /// btnAddCurriculum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddCurriculum;
+        
+        /// <summary>
+        /// btnAddCompletion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddCompletion;
+        
+        /// <summary>
+        /// btnManageCourse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnManageCourse;
+        
+        /// <summary>
+        /// btnManageCurriculum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnManageCurriculum;
+        
+        /// <summary>
+        /// btnManageLearningHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnManageLearningHistory;
         
         /// <summary>
         /// txtEmailAddress control.

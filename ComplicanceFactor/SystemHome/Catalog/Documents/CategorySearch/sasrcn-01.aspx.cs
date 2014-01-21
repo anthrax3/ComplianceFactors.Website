@@ -34,11 +34,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sasrcn-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sasrcn-01.aspx(Document)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sasrcn-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("sasrcn-01.aspx(Document)", ex.Message);
                     }
                 }
             }
@@ -175,9 +175,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
             ddlHeaderResultPerPage.SelectedIndex = 0;
         }
 
-
-
-
         protected void btnSaveSelected_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saandin")
@@ -185,8 +182,32 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
                 CategoryAddEditMode(SessionWrapper.DocumentCategory, string.Empty);
             }
             else if (!string.IsNullOrEmpty(Request.QueryString["page"]) && Request.QueryString["page"] == "saedin")
-            {                
-
+            {
+                string editDocumentId = Request.QueryString["editDocumentId"];
+                DataTable dtCategory = new DataTable();
+                dtCategory = dtTempCategory();
+                dtCategory = CategoryAddEditMode(dtCategory, editDocumentId);
+                try
+                {
+                    SystemDocumentsBLL.InsertCategory(ConvertDataTableToXml(dtCategory), editDocumentId);
+                    //SystemCategoriesBLL.InsertCategory(ConvertDataTableToXml(dtCategory), editDocumentId);
+                }
+                catch (Exception ex)
+                {
+                    //TODO: Show user friendly error here
+                    //Log here
+                    if (ConfigurationWrapper.LogErrors == true)
+                    {
+                        if (ex.InnerException != null)
+                        {
+                            Logger.WriteToErrorLog("sasrcn-01(Document)", ex.Message, ex.InnerException.Message);
+                        }
+                        else
+                        {
+                            Logger.WriteToErrorLog("sasrcn-01(Document)", ex.Message);
+                        }
+                    }
+                }
             }
             //Close popup
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
@@ -250,7 +271,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
         {
             try
             {
-
                 SystemCategories categories = new SystemCategories();
 
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
@@ -259,8 +279,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
                     categories.s_category_name_us_english = txtCategoryName.Text;
                     categories.s_category_status_id_fk = null;
                     categories.s_parent_category_id = null;
-
-
                 }
                 else
                 {
@@ -268,39 +286,30 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
                     categories.s_category_name_us_english = SecurityCenter.DecryptText(Request.QueryString["name"]);
                     categories.s_category_status_id_fk = "0";
                     categories.s_parent_category_id = "0";
-
-
-
                 }
 
                 gvsearchDetails.DataSource = SystemCategoriesBLL.SearchCategories(categories);
                 gvsearchDetails.DataBind();
-
-
-
             }
             catch (Exception ex)
             {
-
                 //TODO: Show user friendly error here
                 //Log here
                 if (ConfigurationWrapper.LogErrors == true)
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sasrcn-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sasrcn-01.aspx(Document)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sasrcn-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("sasrcn-01.aspx(Document)", ex.Message);
                     }
                 }
             }
             if (gvsearchDetails.Rows.Count == 0)
             {
-
                 disable_enable(false);
-
             }
             else
             {
@@ -316,10 +325,11 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
                     gvsearchDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
             }
-
-
         }
-
+        /// <summary>
+        /// disable_enable
+        /// </summary>
+        /// <param name="status"></param>
         private void disable_enable(bool status)
         {
             btnHeaderFirst.Visible = status;
@@ -344,17 +354,20 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
             btnHeaderGoto.Visible = status;
             btnFooterGoto.Visible = status;
 
-
             lblHeaderResultPerPage.Visible = status;
             lblFooterResultPerPage.Visible = status;
 
             lblFooterPageOf.Visible = status;
             lblHeaderPageOf.Visible = status;
             btnSaveSelected.Visible = status;
-
         }
 
-
+        /// <summary>
+        /// Category Add Edit Mode
+        /// </summary>
+        /// <param name="dtCategory"></param>
+        /// <param name="s_category_system_id_pk"></param>
+        /// <returns></returns>
         private DataTable CategoryAddEditMode(DataTable dtCategory, string s_category_system_id_pk)
         {
             foreach (GridViewRow grdCategoryRow in gvsearchDetails.Rows)
@@ -373,11 +386,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
             return dtCategory;
 
         }
-
+        /// <summary>
+        /// Add Category function 
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <param name="s_category_id"></param>
+        /// <param name="s_category_name"></param>
+        /// <param name="c_document_id_fk"></param>
+        /// <param name="dtTempCategory"></param>
         private void AddDataToCategory(string CategoryID, string s_category_id, string s_category_name, string c_document_id_fk, DataTable dtTempCategory)
-        {
-            // Add Category functiong
-
+        {          
             DataRow row;
             row = dtTempCategory.NewRow();
             row["CategoryID"] = CategoryID;
@@ -387,7 +405,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
             if (!string.IsNullOrEmpty(c_document_id_fk))
             {
                 row["c_document_id_fk"] = c_document_id_fk;
-
             }
             else
             {
@@ -395,6 +412,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
             }
             dtTempCategory.Rows.Add(row);
         }
+        /// <summary>
+        /// Remove Duplicate Rows
+        /// </summary>
+        /// <param name="dTable"></param>
+        /// <param name="colName"></param>
+        /// <returns></returns>
         public DataTable RemoveDuplicateRows(DataTable dTable, string colName)
         {
             Hashtable hTable = new Hashtable();
@@ -422,11 +445,8 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
         {
             DataTable dtTempCategory = new DataTable();
             DataColumn dtTempCategoryColumn;
-
             /// <summary>
             /// temp s_category_system_id_pk 
-
-
             dtTempCategoryColumn = new DataColumn();
             dtTempCategoryColumn.DataType = Type.GetType("System.String");
             dtTempCategoryColumn.ColumnName = "CategoryID";
@@ -434,8 +454,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
 
             /// <summary>
             /// s_category_id
-
-
             dtTempCategoryColumn = new DataColumn();
             dtTempCategoryColumn.DataType = Type.GetType("System.String");
             dtTempCategoryColumn.ColumnName = "s_category_id";
@@ -443,14 +461,10 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
 
             /// <summary>
             /// s_category_name
-
-
             dtTempCategoryColumn = new DataColumn();
             dtTempCategoryColumn.DataType = Type.GetType("System.String");
             dtTempCategoryColumn.ColumnName = "s_category_name_us_english";
             dtTempCategory.Columns.Add(dtTempCategoryColumn);
-
-
 
             //c_course_id_pk
             dtTempCategoryColumn = new DataColumn();
@@ -460,15 +474,12 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents.CategorySearch
 
             /// <summary>
             /// s_category_description
-
             //dtTempCategoryColumn = new DataColumn();
             //dtTempCategoryColumn.DataType = Type.GetType("System.String");
             //dtTempCategoryColumn.ColumnName = "s_category_description";
             //dtTempCategory.Columns.Add(dtTempCategoryColumn);
 
-
             return dtTempCategory;
-
         }
         ///<summary>
         /// This method is used to convert the DataTable into string XML format.
