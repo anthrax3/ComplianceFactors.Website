@@ -1389,6 +1389,12 @@
     <Content Include="SystemHome\Configuration\Domains\samdmp-01.aspx" />
     <Content Include="SystemHome\Profile\tappp-01.aspx" />
     <Content Include="SystemHome\samrp-01.aspx" />
+    <Content Include="SystemHome\Users\AddCourses\p-mcsc-01.aspx" />
+    <Content Include="SystemHome\Users\AddCourses\p-mcsr-01.aspx" />
+    <Content Include="SystemHome\Users\AddCourses\sauatc-01.aspx" />
+    <Content Include="SystemHome\Users\AddCurriculum\p-mcsc-01.aspx" />
+    <Content Include="SystemHome\Users\AddCurriculum\p-mcsr-01.aspx" />
+    <Content Include="SystemHome\Users\AddCurriculum\sauac-01.aspx" />
     <Content Include="SystemHome\Users\ChangePassword\sacpu-01.aspx" />
     <Content Include="SystemHome\Users\saau-01.aspx" />
     <Content Include="SystemHome\Users\sacmu-01.aspx" />
@@ -4546,6 +4552,48 @@
     <Compile Include="SystemHome\samrp-01.aspx.designer.cs">
       <DependentUpon>samrp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Users\AddCourses\p-mcsc-01.aspx.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCourses\p-mcsc-01.aspx.designer.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCourses\p-mcsr-01.aspx.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCourses\p-mcsr-01.aspx.designer.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCourses\sauatc-01.aspx.cs">
+      <DependentUpon>sauatc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCourses\sauatc-01.aspx.designer.cs">
+      <DependentUpon>sauatc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCurriculum\p-mcsc-01.aspx.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCurriculum\p-mcsc-01.aspx.designer.cs">
+      <DependentUpon>p-mcsc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCurriculum\p-mcsr-01.aspx.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCurriculum\p-mcsr-01.aspx.designer.cs">
+      <DependentUpon>p-mcsr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCurriculum\sauac-01.aspx.cs">
+      <DependentUpon>sauac-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCurriculum\sauac-01.aspx.designer.cs">
+      <DependentUpon>sauac-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Users\ChangePassword\sacpu-01.aspx.cs">
       <DependentUpon>sacpu-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4797,6 +4845,10 @@
     <Folder Include="SystemHome\Configuration\HRISIntegration\Uploaded\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
+    <Folder Include="SystemHome\Users\AddCompletion\" />
+    <Folder Include="SystemHome\Users\ManageCourse\" />
+    <Folder Include="SystemHome\Users\ManageCurriculum\" />
+    <Folder Include="SystemHome\Users\ManageLearningHistory\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Administrator\PdfTemplate\AdminCourse.xsc">

@@ -751,4 +751,59 @@
 
 10/09/2013 12:42 AM : Global.asax : A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
 
-10/09/2013 04:59 AM : Global.asax : A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+10/09/2013 04:59 AM : Global.asax : A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)01/21/2014 10:45 AM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 11:02 AM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 11:57 AM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 11:58 AM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:00 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:02 PM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 12:03 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:08 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:12 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:13 PM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 12:13 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:16 PM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 12:17 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:21 PM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 12:21 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:39 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 12:40 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 03:40 PM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 03:41 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 03:47 PM : ccmrp-01.aspx : Could not find stored procedure 's_sp_search_my_report'.
+
+01/21/2014 03:49 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 03:51 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 03:55 PM : lvcure-01.aspx (Mass Enrollment) : Object reference not set to an instance of an object.
+
+01/21/2014 04:18 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 04:19 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 04:21 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 04:22 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+
+01/21/2014 04:23 PM : saeu-01 : Column 'u_social_security_no' does not belong to table .
+

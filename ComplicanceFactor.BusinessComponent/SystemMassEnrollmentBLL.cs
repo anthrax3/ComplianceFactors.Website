@@ -53,10 +53,6 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-
-
-
-
         public static DataTable GetSingleCurriculaPathCourse(string c_curricula_id_fk, string c_curricula_path_id_fk)
         {
             Hashtable htEnrollGetSingleCurriculaPathCourse = new Hashtable();
@@ -66,6 +62,69 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 return DataProxy.FetchDataTable("s_sp_single_curricula_path_course_for_mass_enrollment", htEnrollGetSingleCurriculaPathCourse);
 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        //Newly added
+        public static DataTable SearchCourse(string courseid, string coursetitle)
+        {
+            Hashtable htSearchCourse = new Hashtable();
+            htSearchCourse.Add("@c_course_id_pk", courseid);
+            htSearchCourse.Add("@c_course_title", coursetitle);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_search_course_mass_enrollment_from_user", htSearchCourse);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable SearchCurriculum(string curriculumid, string curriculumtitle)
+        {
+            Hashtable htSearchCourse = new Hashtable();
+            htSearchCourse.Add("@c_curriculum_id_pk", curriculumid);
+            htSearchCourse.Add("@c_curriculum_title", curriculumtitle);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_search_curriculum_mass_enrollment_from_user", htSearchCourse);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        //s_sp_course_enroll_assign_mass_enrollment_from_user
+
+        public static DataTable Course_Enroll_Assign(string CourseEnroll, string CourseAssign, string course_assign_by_id)
+        {
+            Hashtable htEnrollCourseAssign = new Hashtable();
+            htEnrollCourseAssign.Add("@CourseEnroll", CourseEnroll);
+            htEnrollCourseAssign.Add("@CourseAssign", CourseAssign);
+            htEnrollCourseAssign.Add("@course_assign_by_id", course_assign_by_id);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_course_enroll_assign_mass_enrollment_from_user", htEnrollCourseAssign);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable Curriculum_Assign(string Curriculum, string course_assign_by_id)
+        {
+            Hashtable htCurriculumAssign = new Hashtable();
+            htCurriculumAssign.Add("@Curriculum", Curriculum);
+            htCurriculumAssign.Add("@course_assign_by_id", course_assign_by_id);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_curriculum_assign_mass_enrollment_from_user", htCurriculumAssign);
             }
             catch (Exception)
             {

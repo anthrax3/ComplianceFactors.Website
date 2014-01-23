@@ -208,11 +208,71 @@
 
                             })
                         });
+                    }
+                });
+                var userId = document.getElementById('<%=hdNav_selected.ClientID %>').value
+                //btnAddCourses
+                $("#<%=btnAddCourses.ClientID %>").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 980,
+                    'height': 500,
+                    'margin': 0,
+                    'padding': 5,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'AddCourses/sauatc-01.aspx?userId=' + userId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
 
                     }
 
                 });
 
+                $("#<%=btnAddCurriculum.ClientID %>").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 980,
+                    'height': 500,
+                    'margin': 0,
+                    'padding': 5,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'AddCurriculum/sauac-01.aspx?userId=' + userId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
 
 
                 //Alternate manager
@@ -409,6 +469,7 @@
         <%=LocalResources.GetText("app_date_not_updated_error_wrong")%>
     </div>
     <div class="content_area_long">
+        <asp:HiddenField ID="hdEditID" runat="server" />
         <asp:HiddenField ID="hdNav_selected" runat="server" />
         <div class="div_controls">
             <table class="div_table">
@@ -545,6 +606,45 @@
                 </tr>
             </table>
         </div>
+        <br />
+        <div class="div_header_long">
+            Training Management
+        </div>
+        <br />
+        <div class="div_controls font_1">
+            <table>
+                <tr>
+                    <td align="center" class="td_width_200">
+                        <asp:Button ID="btnAddCourses" runat="server" CssClass="cursor_hand" Text="Add Courses" />
+                    </td>                   
+                    <td align="center" style="width:350px;" >
+                        <asp:Button ID="btnAddCurriculum" runat="server" CssClass="cursor_hand" Text="Add Curriculum(curricula)" />
+                    </td> 
+                     <td>
+                        &nbsp;
+                    </td>                    
+                    <td align="center">
+                        <asp:Button ID="btnAddCompletion" runat="server" CssClass="cursor_hand" Text="Add Completion" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" class="td_width_200">
+                        <asp:Button ID="btnManageCourse" runat="server" CssClass="cursor_hand" Text="Manage Courses" />
+                    </td>
+                    
+                    <td align="center" style="width:350px;" >
+                        <asp:Button ID="btnManageCurriculum" runat="server" CssClass="cursor_hand" Text="Manage Curriculum(curricula)" />
+                    </td>                     
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td align="center">
+                        <asp:Button ID="btnManageLearningHistory" runat="server" CssClass="cursor_hand" Text="Manage Learning History" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_contact_information_text")%>
         </div>
@@ -954,24 +1054,19 @@
                                 <asp:TextBox ID="txtPayGrade" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                             </td>
                         </tr>
-                          <tr>
+                        <tr>
                             <td>
-                                <%=LocalResources.GetLabel("app_social_security_no_text")%>
                             </td>
                             <td>
                                 <asp:TextBox ID="txtSocialSecurityNo" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
                             </td>
                             <td>
-                            
                             </td>
                             <td>
-                      
                             </td>
                             <td>
-                          
                             </td>
                             <td>
-                     
                             </td>
                         </tr>
                         <tr>
@@ -1117,8 +1212,8 @@
     </div>
     <div>
         <asp:Button ID="btnRemove" runat="server" Style="display: none;" />
-        <asp:Panel ID="pnlRemove" runat="server" CssClass="modalPopupInner_remove modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlRemove" runat="server" CssClass="modalPopupInner_remove modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlRemoveHeading" runat="server" CssClass="drag">
                 <div class="headerControl-jaha">
                     <div class="manage_user_header_popup">
