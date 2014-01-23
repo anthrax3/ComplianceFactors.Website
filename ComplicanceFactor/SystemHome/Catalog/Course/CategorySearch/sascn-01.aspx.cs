@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ComplicanceFactor.Common;
 
 namespace ComplicanceFactor.SystemHome.Catalog.CatalogPopup

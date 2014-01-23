@@ -122,6 +122,10 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
                   "javascript:lastview('/Compliance/MIRIS/Reports/osha300.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
                         break;
+                    case "CF-STD-COURSE-COMP":
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
+                  "javascript:lastview('/Compliance/MIRIS/Reports/CompletionofCourses.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
+                        break;
                     default:
                         break;
                 }
@@ -147,6 +151,10 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     case "CF-STD-OSHA-300":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
                   "javascript:generate('/Compliance/MIRIS/Reports/osha300_condition.aspx?page=300&id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
+                        break;
+                    case "CF-STD-COURSE-COMP":
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
+                  "javascript:generate('/Compliance/MIRIS/Reports/osha300_condition.aspx?page=completionCourse&id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
                         break;
                     default:
                         break;

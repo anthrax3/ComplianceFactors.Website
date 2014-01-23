@@ -28,6 +28,9 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 case "300a":
                     Response.Redirect("~/Compliance/MIRIS/Reports/osha300a.aspx?id=" + Request.Params["id"].ToString() + "&suid=" + Request.Params["suid"].ToString());
                     break;
+                case "completionCourse":
+                    Response.Redirect("~/Compliance/MIRIS/Reports/CompletionofCourses.aspx?id=" + Request.Params["id"].ToString() + "&suid=" + Request.Params["suid"].ToString());
+                    break;
                 default:
                     break;
             }

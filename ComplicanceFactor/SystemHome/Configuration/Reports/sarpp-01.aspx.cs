@@ -52,7 +52,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
             {
                 s_report_param_system_id_pk = Guid.NewGuid().ToString(),
                 s_report_param_description = txtDescription.InnerText,
-                s_report_param_field_id_pk = ddlField.SelectedValue,
+               // s_report_param_field_id_pk = ddlField.SelectedValue,
                 s_report_param_id_pk = "",
                 s_report_param_name = txtParameterName.Text,
                 s_report_param_table_id_pk = ddlTable.SelectedValue,
@@ -62,6 +62,14 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
                   s_report_param_items = txtItems.Text,
                 s_report_system_id_fk = ReportId
             };
+            if (ddlTable.SelectedValue == "c_tb_miris_master")
+            {
+                param.s_report_param_field_id_pk = ddlField.SelectedValue;
+            }
+            else
+            {
+                param.s_report_param_field_id_pk = ddlCourseField.SelectedValue;
+            }
             try
             {
                 if (Request.Params["mode"].ToString() == "create")

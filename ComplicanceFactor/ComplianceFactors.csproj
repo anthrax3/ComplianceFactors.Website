@@ -55,7 +55,7 @@
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\GuruPraveen\Projects\PixelCompliance\trunk\Dotnet\Client\PixelCompliance\PixelCompliance\bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>D:\Work\ASC\ComplianceFactors.Website\ComplicanceFactor\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -64,14 +64,14 @@
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Extensions, Version=2.1.3842.36318, Culture=neutral, PublicKeyToken=bebd372c505097f2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Google Talk Received Files\bin-1\DocumentFormat.OpenXml.Extensions.dll</HintPath>
+      <HintPath>D:\Work\ASC\ComplianceFactors.Website\ComplicanceFactor\bin\DocumentFormat.OpenXml.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="EventCalendar">
-      <HintPath>..\..\..\Google Talk Received Files\bin\EventCalendar.dll</HintPath>
+      <HintPath>D:\Work\ASC\ComplianceFactors.Website\ComplicanceFactor\bin\EventCalendar.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Google Talk Received Files\bin\Ionic.Zip.dll</HintPath>
+      <HintPath>D:\Work\ASC\ComplianceFactors.Website\ComplicanceFactor\bin\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -100,7 +100,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="TimePicker">
-      <HintPath>..\..\..\Google Talk Received Files\bin\TimePicker.dll</HintPath>
+      <HintPath>D:\Work\ASC\ComplianceFactors.Website\ComplicanceFactor\bin\TimePicker.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -219,6 +219,9 @@
     <Content Include="Compliance\MIRIS\cvoi-01.aspx" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\coi.htm" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\cvmv.htm" />
+    <Content Include="Compliance\MIRIS\Popup\sasumsm-01.aspx" />
+    <Content Include="Compliance\MIRIS\Popup\sasumsmr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\CompletionofCourses.aspx" />
     <Content Include="Compliance\MIRIS\Reports\dynamicsearch.ascx" />
     <Content Include="Compliance\MIRIS\Reports\mrp-01.ascx" />
     <Content Include="Compliance\MIRIS\Reports\osha300a.aspx" />
@@ -1256,6 +1259,13 @@
     <Content Include="SystemHome\Configuration\Reports\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\Locale\savloc-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\highlight.js" />
+    <None Include="Compliance\MIRIS\Reports\CompletionofCoursesDataSet.xsc">
+      <DependentUpon>CompletionofCoursesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Compliance\MIRIS\Reports\CompletionofCoursesDataSet.xsd" />
+    <None Include="Compliance\MIRIS\Reports\CompletionofCoursesDataSet.xss">
+      <DependentUpon>CompletionofCoursesDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Compliance\MIRIS\Reports\OSHADataSet.xsc">
       <DependentUpon>OSHADataSet.xsd</DependentUpon>
     </None>
@@ -1693,6 +1703,28 @@
     <Compile Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVDataset.Designer.cs">
       <DependentUpon>MIRISMVDataset.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compliance\MIRIS\Popup\sasumsm-01.aspx.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Popup\sasumsm-01.aspx.designer.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Popup\sasumsmr-01.aspx.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Popup\sasumsmr-01.aspx.designer.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\CompletionofCourses.aspx.cs">
+      <DependentUpon>CompletionofCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\CompletionofCourses.aspx.designer.cs">
+      <DependentUpon>CompletionofCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\CompletionofCoursesDataSet.Designer.cs" />
     <Compile Include="Compliance\MIRIS\Reports\dynamicsearch.ascx.cs">
       <DependentUpon>dynamicsearch.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2325,7 +2357,6 @@
     </Compile>
     <Compile Include="Manager\mascp-01.aspx.cs">
       <DependentUpon>mascp-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\mascp-01.aspx.designer.cs">
       <DependentUpon>mascp-01.aspx</DependentUpon>
@@ -2431,7 +2462,6 @@
     </Compile>
     <Compile Include="Resources\rlpepa-01.aspx.cs">
       <DependentUpon>rlpepa-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpepa-01.aspx.designer.cs">
       <DependentUpon>rlpepa-01.aspx</DependentUpon>
@@ -2452,28 +2482,24 @@
     </Compile>
     <Compile Include="Resources\rlpiso-01.aspx.cs">
       <DependentUpon>rlpiso-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpiso-01.aspx.designer.cs">
       <DependentUpon>rlpiso-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\rlpjcaho-01.aspx.cs">
       <DependentUpon>rlpjcaho-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpjcaho-01.aspx.designer.cs">
       <DependentUpon>rlpjcaho-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\rlposha-01.aspx.cs">
       <DependentUpon>rlposha-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlposha-01.aspx.designer.cs">
       <DependentUpon>rlposha-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\rlpsec-01.aspx.cs">
       <DependentUpon>rlpsec-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpsec-01.aspx.designer.cs">
       <DependentUpon>rlpsec-01.aspx</DependentUpon>
@@ -3276,14 +3302,12 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrs-01.aspx.cs">
       <DependentUpon>safrmrs-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrs-01.aspx.designer.cs">
       <DependentUpon>safrmrs-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrsr-01.aspx.cs">
       <DependentUpon>safrmrsr-01.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrsr-01.aspx.designer.cs">
       <DependentUpon>safrmrsr-01.aspx</DependentUpon>
@@ -4945,6 +4969,7 @@
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISMVReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISReport.rdlc" />
+    <EmbeddedResource Include="Compliance\MIRIS\Reports\CompletionofCourses.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA300.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA300A.rdlc" />

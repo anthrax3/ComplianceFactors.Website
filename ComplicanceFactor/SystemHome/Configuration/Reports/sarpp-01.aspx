@@ -38,7 +38,16 @@
                 $("#trItems").show();
             } else {
                 $("#trItems").hide();
-               
+
+            }
+        }
+        function changeTable() {
+            if ($("#<%=ddlTable.ClientID %>").val() == "c_tb_miris_master") {
+                $("#<%=ddlField.ClientID %>").show();
+                $("#<%=ddlCourseField.ClientID %>").hide();
+            } else {
+                $("#<%=ddlField.ClientID %>").hide();
+                $("#<%=ddlCourseField.ClientID %>").show();
             }
         }
     </script>
@@ -84,7 +93,8 @@
                             <%=LocalResources.GetLabel("app_report_type")%>:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlType" CssClass="ddl_user_advanced_search" runat="server" onchange = "changeType()">
+                            <asp:DropDownList ID="ddlType" CssClass="ddl_user_advanced_search" runat="server"
+                                onchange="changeType()">
                                 <asp:ListItem Text="Varchar" Value="Varchar"></asp:ListItem>
                                 <asp:ListItem Text="Date" Value="Date"></asp:ListItem>
                                 <asp:ListItem Text="Int" Value="Int"></asp:ListItem>
@@ -93,11 +103,11 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr style="display: none" id ="trItems">
+                    <tr style="display: none" id="trItems">
                         <td>
                             items:
                         </td>
-                        <td colspan="3" style=" text-align:left;">
+                        <td colspan="3" style="text-align: left;">
                             <asp:TextBox ID="txtItems" CssClass="textbox_long" runat="server" Width="100%"></asp:TextBox>
                         </td>
                     </tr>
@@ -106,8 +116,9 @@
                             Table:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlTable" CssClass="ddl_user_advanced_search" runat="server">
-                                <asp:ListItem Text="c_tb_miris_master" Value="c_tb_miris_master"></asp:ListItem>
+                            <asp:DropDownList ID="ddlTable" CssClass="ddl_user_advanced_search" runat="server"  onchange="changeTable()">
+                                <asp:ListItem Text="c_tb_miris_master" Value="c_tb_miris_master" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="e_sp_get_all_completion_courses" Value="e_sp_get_all_completion_courses"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -115,6 +126,17 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlField" CssClass="ddl_user_advanced_search" runat="server">
+                            </asp:DropDownList>
+                            <asp:DropDownList ID="ddlCourseField" CssClass="ddl_user_advanced_search" runat="server"
+                                Style="display: none;">
+                                <asp:ListItem Text="u_first_name" Value="u_first_name" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="u_last_name" Value="u_last_name"></asp:ListItem>
+                                <asp:ListItem Text="title" Value="title"  ></asp:ListItem>
+                                <asp:ListItem Text="completeddate" Value="completeddate"></asp:ListItem>
+                                <asp:ListItem Text="score" Value="score" ></asp:ListItem>                                
+                                  <asp:ListItem Text="status" Value="status"></asp:ListItem>
+                                   <asp:ListItem Text="deliveryType" Value="deliveryType"></asp:ListItem>
+                                <asp:ListItem Text="t_transcript_time_spent" Value="t_transcript_time_spent"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>

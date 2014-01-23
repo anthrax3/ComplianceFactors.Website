@@ -2031,7 +2031,10 @@ namespace ComplicanceFactor.Common
             dtTempReportParamColumn.ColumnName = "s_report_label";
             dtTempReportParam.Columns.Add(dtTempReportParamColumn);
 
-           
+             dtTempReportParamColumn = new DataColumn();
+            dtTempReportParamColumn.DataType = Type.GetType("System.String");
+            dtTempReportParamColumn.ColumnName = "s_report_param_items";
+            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
            
             return dtTempReportParam;
         }

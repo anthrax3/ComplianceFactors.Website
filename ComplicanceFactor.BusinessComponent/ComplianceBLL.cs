@@ -5383,6 +5383,28 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable SearchCompletionofCourses(string e_user_id_fk)
+        {
+            Hashtable htSearchCase = new Hashtable();
+           
+            if (!string.IsNullOrEmpty(e_user_id_fk))
+            {
+                htSearchCase.Add("@e_user_id_fk", e_user_id_fk);
+            }
+            else
+            {
+                htSearchCase.Add("@e_user_id_fk", DBNull.Value);
+            }
+            
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_all_completion_courses", htSearchCase);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
 

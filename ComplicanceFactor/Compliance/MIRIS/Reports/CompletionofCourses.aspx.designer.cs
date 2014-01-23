@@ -10,7 +10,7 @@
 namespace ComplicanceFactor.Compliance.MIRIS.Reports {
     
     
-    public partial class osha301 {
+    public partial class CompletionofCourses {
         
         /// <summary>
         /// Head1 control.
@@ -40,12 +40,12 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports {
         protected global::System.Web.UI.ScriptManager aa;
         
         /// <summary>
-        /// rvMIRIS control.
+        /// rvCourses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer rvMIRIS;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rvCourses;
     }
 }

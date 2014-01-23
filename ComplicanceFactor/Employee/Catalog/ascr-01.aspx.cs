@@ -107,6 +107,7 @@ namespace ComplicanceFactor.Employee.Catalog
                 }
                 else
                 {
+                   
                     catalog.c_course_title = SecurityCenter.DecryptText(Request.QueryString["title"]);
                     catalog.c_course_id_pk = SecurityCenter.DecryptText(Request.QueryString["id"]);
                     catalog.keyword  = SecurityCenter.DecryptText(Request.QueryString["keyword"]);
@@ -119,11 +120,30 @@ namespace ComplicanceFactor.Employee.Catalog
                         catalog.c_type = SecurityCenter.DecryptText(Request.QueryString["type"]);
                     }
                     catalog.c_delivery_id_fk = SecurityCenter.DecryptText(Request.QueryString["deliverytype"]);
+                     ddlDelivery.SelectedValue = catalog.c_delivery_id_fk;
                     //language
                     catalog.c_language = SecurityCenter.DecryptText(Request.QueryString["language"]);
                 }
-                gvsearchDetails.DataSource = EmployeeCatalogBLL.SearchCatalog(catalog);
-                gvsearchDetails.DataBind();
+                DataTable dt_Catalog = EmployeeCatalogBLL.SearchCatalog(catalog);
+                if (ddlDelivery.SelectedItem.Text.Trim() == "All")
+                {
+                    gvsearchDetails.DataSource = dt_Catalog;
+                    gvsearchDetails.DataBind();
+                }
+                else
+                {
+
+
+                    DataRow[] rows = dt_Catalog.Select("c_delivery_type like '%" + ddlDelivery.SelectedItem.Text + "%'");
+                    DataTable newDt = dt_Catalog.Clone();
+                    foreach (DataRow row in rows)
+                    {
+                        newDt.Rows.Add(row.ItemArray);
+                    }
+                    gvsearchDetails.DataSource = newDt;
+                    gvsearchDetails.DataBind();
+                    ddlDelivery.SelectedIndex = 0;
+                }
 
             }
             catch (Exception ex)

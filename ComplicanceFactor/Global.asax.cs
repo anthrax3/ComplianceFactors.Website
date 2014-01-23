@@ -36,8 +36,8 @@ namespace ComplicanceFactor
         public static string ERROR_LOG_FILE_PATH = LOGGER_APP_PATH + "ErrorLog.txt";
         public static string NEW_LINE = "\r\n";
         private const string DummyCacheItemKey = "Background";
-        private static readonly string DummyPageUrl = "http://compliancefactors.com.lavender.arvixe.com/SystemHome/sahp-01.aspx"; //"~/Default2.aspx";
-        //private static readonly string DummyPageUrl = HttpContext.Current.Server.MapPath("~/SystemHome/sahp-01.aspx");
+       // private static readonly string DummyPageUrl = "http://compliancefactors.com.lavender.arvixe.com/SystemHome/sahp-01.aspx"; //"~/Default2.aspx";
+        private static readonly string DummyPageUrl = HttpContext.Current.Server.MapPath("~/SystemHome/sahp-01.aspx");
         private string passPhrase = "Pas5pr@ej";      // can be any string
         private string initVector = "@1B2c3D4e5F6g7H8"; // must be 16 bytes
 
