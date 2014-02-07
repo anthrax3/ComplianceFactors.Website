@@ -490,6 +490,23 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        public static DataTable GetDocumentCategory_Copy(string s_document_system_id_pk)
+        {
+            Hashtable htGetCourseCategory = new Hashtable();
+            htGetCourseCategory.Add("@c_document_id_fk", s_document_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_document_category_for_copy", htGetCourseCategory);
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        
+
         /// <summary>
         /// Delete Category
         /// </summary>

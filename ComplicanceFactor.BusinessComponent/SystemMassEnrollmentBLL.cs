@@ -117,14 +117,14 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
-        public static DataTable Curriculum_Assign(string Curriculum, string course_assign_by_id)
+        public static DataSet Curriculum_Assign(string Curriculum, string course_assign_by_id)
         {
             Hashtable htCurriculumAssign = new Hashtable();
             htCurriculumAssign.Add("@Curriculum", Curriculum);
             htCurriculumAssign.Add("@course_assign_by_id", course_assign_by_id);
             try
             {
-                return DataProxy.FetchDataTable("s_sp_curriculum_assign_mass_enrollment_from_user", htCurriculumAssign);
+                return DataProxy.FetchDataSet("s_sp_curriculum_assign_mass_enrollment_from_user", htCurriculumAssign);
             }
             catch (Exception)
             {

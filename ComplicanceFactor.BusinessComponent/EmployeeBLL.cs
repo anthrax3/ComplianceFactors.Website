@@ -78,6 +78,28 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        //Newly added functions
+        public static DataSet GetAllEmployeeFromUser(string user_id_fk)
+        {
+            try
+            {
+                Hashtable htGetAllEmployee = new Hashtable();
+
+                if (user_id_fk != null)
+                {
+                    htGetAllEmployee.Add("@e_user_id_fk", user_id_fk);
+                }
+                else
+                {
+                    htGetAllEmployee.Add("@e_user_id_fk", DBNull.Value);
+                }
+                return DataProxy.FetchDataSet("s_sp_get_course_curriculum_learnhistory_for_user", htGetAllEmployee);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

@@ -176,7 +176,6 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
         {
             try
             {
-
                 string courseid = string.Empty;
                 string coursetitle = string.Empty;
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
@@ -200,19 +199,17 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sacsr-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sacsr-01.aspx(User - Course)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sacsr-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("sacsr-01.aspx(User - Course)", ex.Message);
                     }
                 }
             }
             if (gvsearchDetails.Rows.Count == 0)
             {
-
                 disable_enable(false);
-
             }
             else
             {

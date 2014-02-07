@@ -2031,10 +2031,7 @@ namespace ComplicanceFactor.Common
             dtTempReportParamColumn.ColumnName = "s_report_label";
             dtTempReportParam.Columns.Add(dtTempReportParamColumn);
 
-             dtTempReportParamColumn = new DataColumn();
-            dtTempReportParamColumn.DataType = Type.GetType("System.String");
-            dtTempReportParamColumn.ColumnName = "s_report_param_items";
-            dtTempReportParam.Columns.Add(dtTempReportParamColumn);
+           
            
             return dtTempReportParam;
         }
@@ -2224,6 +2221,54 @@ namespace ComplicanceFactor.Common
             return dtTempCategory;
 
         }
+
+        public static DataTable TempUpdateMyCourse()
+        {
+            DataTable dtTempUpdateMyCourse = new DataTable();
+            DataColumn dtUpdateMyCourseColumn;
+
+            dtUpdateMyCourseColumn = new DataColumn();
+            dtUpdateMyCourseColumn.DataType = Type.GetType("System.String");
+            dtUpdateMyCourseColumn.ColumnName = "course_id";
+            dtTempUpdateMyCourse.Columns.Add(dtUpdateMyCourseColumn);
+
+            dtUpdateMyCourseColumn = new DataColumn();
+            dtUpdateMyCourseColumn.DataType = Type.GetType("System.String");
+            dtUpdateMyCourseColumn.ColumnName = "user_id";
+            dtTempUpdateMyCourse.Columns.Add(dtUpdateMyCourseColumn);
+
+            dtUpdateMyCourseColumn = new DataColumn();
+            dtUpdateMyCourseColumn.DataType = Type.GetType("System.Boolean");
+            dtUpdateMyCourseColumn.ColumnName = "required";
+            dtTempUpdateMyCourse.Columns.Add(dtUpdateMyCourseColumn);
+
+            //c_course_id_pk
+            dtUpdateMyCourseColumn = new DataColumn();
+            dtUpdateMyCourseColumn.DataType = Type.GetType("System.String");
+            dtUpdateMyCourseColumn.ColumnName = "duedate";
+            dtTempUpdateMyCourse.Columns.Add(dtUpdateMyCourseColumn);            
+
+            return dtTempUpdateMyCourse;
+        }
+
+        public static DataTable TempRemoveCourse()
+        {
+            DataTable dtTempUpdateMyCourse = new DataTable();
+            DataColumn dtTempCategoryColumn;
+
+            dtTempCategoryColumn = new DataColumn();
+            dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            dtTempCategoryColumn.ColumnName = "course_id";
+            dtTempUpdateMyCourse.Columns.Add(dtTempCategoryColumn);
+
+            dtTempCategoryColumn = new DataColumn();
+            dtTempCategoryColumn.DataType = Type.GetType("System.String");
+            dtTempCategoryColumn.ColumnName = "user_id";
+            dtTempUpdateMyCourse.Columns.Add(dtTempCategoryColumn);
+
+            return dtTempUpdateMyCourse;
+        }
+
     }
 
 }

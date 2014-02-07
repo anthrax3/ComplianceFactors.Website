@@ -1082,6 +1082,7 @@
     <Content Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsm-01.aspx" />
     <Content Include="SystemHome\Catalog\MassEnrollment\Popup\sasumsmr-01.aspx" />
     <Content Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx" />
+    <Content Include="SystemHome\Catalog\MassRemoval\samremp-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\GenerateFile\iframe.js" />
     <Content Include="SystemHome\Catalog\Materials\Locale\GenerateFile\sagf-01.aspx" />
     <Content Include="SystemHome\Catalog\Materials\Locale\saaloc-01.aspx" />
@@ -1223,6 +1224,13 @@
     <Content Include="SystemHome\Configuration\EmployeeTypes\saanetn-01.aspx" />
     <Content Include="SystemHome\Configuration\EmployeeTypes\saeetn-01.aspx" />
     <Content Include="SystemHome\Configuration\EmployeeTypes\sametmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\Locale\saaloc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\Locale\saeloc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\Locale\savloc-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\Popup\saanen-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\saanen-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\saeen-01.aspx" />
+    <Content Include="SystemHome\Configuration\Establishment\samemp-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\saanftn-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\saeftn-01.aspx" />
     <Content Include="SystemHome\Configuration\FacilityTypes\samftmp-01.aspx" />
@@ -1252,13 +1260,9 @@
     <Content Include="SystemHome\Configuration\Notifications\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Configuration\Notifications\saent-01.aspx" />
     <Content Include="SystemHome\Configuration\Notifications\samntmp-01.aspx" />
-    <Content Include="SystemHome\Configuration\Reports\Files\Desert.jpg" />
-    <Content Include="SystemHome\Configuration\Reports\Files\Hydrangeas.jpg" />
-    <Content Include="SystemHome\Configuration\Reports\Files\Tulips.jpg" />
     <Content Include="SystemHome\Configuration\Reports\Locale\saaloc-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\Locale\saeloc-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\Locale\savloc-01.aspx" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\highlight.js" />
     <None Include="Compliance\MIRIS\Reports\CompletionofCoursesDataSet.xsc">
       <DependentUpon>CompletionofCoursesDataSet.xsd</DependentUpon>
     </None>
@@ -1281,44 +1285,11 @@
     <None Include="SystemHome\Catalog\Documents\Upload\590a10de-ff28-4806-a821-b485148b061c.docx" />
     <None Include="SystemHome\Catalog\Documents\Upload\e42944af-19ff-4f92-8c27-85c5fc51152b.docx" />
     <None Include="SystemHome\Catalog\Documents\Upload\ea052973-a1a1-4523-9c37-417a12b883e9.docx" />
-    <None Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.1.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.1.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.2.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.4.4.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery-1.7.2.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.fancybox.css" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.fancybox.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.tablesorter.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.timepicker.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\jquery.watermark.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\JQuery.Zoom.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\JQuery.Zoom.Style.css" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\querystring-0.9.0-min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\querystring-0.9.0.js" />
-    <Content Include="SystemHome\Configuration\Reports\Locale\Scripts\spin.min.js" />
     <Content Include="SystemHome\Configuration\Reports\saerp-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\samrmp-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\sarpc-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\sarpl-01.aspx" />
     <Content Include="SystemHome\Configuration\Reports\sarpp-01.aspx" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\highlight.js" />
-    <None Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.1.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.1.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.2.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.4.4.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery-1.7.2.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.fancybox.css" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.fancybox.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.tablesorter.min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.timepicker.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\jquery.watermark.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\JQuery.Zoom.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\JQuery.Zoom.Style.css" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\querystring-0.9.0-min.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\querystring-0.9.0.js" />
-    <Content Include="SystemHome\Configuration\Reports\Scripts\spin.min.js" />
     <Content Include="SystemHome\Configuration\ResourceTypes\saanrtn-01.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\saertn-01.aspx" />
     <Content Include="SystemHome\Configuration\ResourceTypes\samrtmp-01.aspx" />
@@ -1389,6 +1360,7 @@
     <Content Include="SystemHome\Configuration\Domains\samdmp-01.aspx" />
     <Content Include="SystemHome\Profile\tappp-01.aspx" />
     <Content Include="SystemHome\samrp-01.aspx" />
+    <Content Include="SystemHome\Users\AddCompletion\p-samcp-01.aspx" />
     <Content Include="SystemHome\Users\AddCourses\p-mcsc-01.aspx" />
     <Content Include="SystemHome\Users\AddCourses\p-mcsr-01.aspx" />
     <Content Include="SystemHome\Users\AddCourses\sauatc-01.aspx" />
@@ -1396,6 +1368,11 @@
     <Content Include="SystemHome\Users\AddCurriculum\p-mcsr-01.aspx" />
     <Content Include="SystemHome\Users\AddCurriculum\sauac-01.aspx" />
     <Content Include="SystemHome\Users\ChangePassword\sacpu-01.aspx" />
+    <Content Include="SystemHome\Users\ManageCourse\p-mcp-01.aspx" />
+    <Content Include="SystemHome\Users\ManageCourse\Popup\p-cmcp-01.aspx" />
+    <Content Include="SystemHome\Users\ManageCurriculum\p-mcup-01.aspx" />
+    <Content Include="SystemHome\Users\ManageCurriculum\Popup\p-mcuccs-01.aspx" />
+    <Content Include="SystemHome\Users\ManageLearningHistory\p-mlhp-01.aspx" />
     <Content Include="SystemHome\Users\saau-01.aspx" />
     <Content Include="SystemHome\Users\sacmu-01.aspx" />
     <Content Include="SystemHome\Users\sacmuc-01.aspx" />
@@ -2363,6 +2340,7 @@
     </Compile>
     <Compile Include="Manager\mascp-01.aspx.cs">
       <DependentUpon>mascp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Manager\mascp-01.aspx.designer.cs">
       <DependentUpon>mascp-01.aspx</DependentUpon>
@@ -2468,6 +2446,7 @@
     </Compile>
     <Compile Include="Resources\rlpepa-01.aspx.cs">
       <DependentUpon>rlpepa-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpepa-01.aspx.designer.cs">
       <DependentUpon>rlpepa-01.aspx</DependentUpon>
@@ -2488,24 +2467,28 @@
     </Compile>
     <Compile Include="Resources\rlpiso-01.aspx.cs">
       <DependentUpon>rlpiso-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpiso-01.aspx.designer.cs">
       <DependentUpon>rlpiso-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\rlpjcaho-01.aspx.cs">
       <DependentUpon>rlpjcaho-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpjcaho-01.aspx.designer.cs">
       <DependentUpon>rlpjcaho-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\rlposha-01.aspx.cs">
       <DependentUpon>rlposha-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlposha-01.aspx.designer.cs">
       <DependentUpon>rlposha-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Resources\rlpsec-01.aspx.cs">
       <DependentUpon>rlpsec-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Resources\rlpsec-01.aspx.designer.cs">
       <DependentUpon>rlpsec-01.aspx</DependentUpon>
@@ -3308,12 +3291,14 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrs-01.aspx.cs">
       <DependentUpon>safrmrs-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrs-01.aspx.designer.cs">
       <DependentUpon>safrmrs-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrsr-01.aspx.cs">
       <DependentUpon>safrmrsr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemHome\Catalog\Facilities\Room\Resource\safrmrsr-01.aspx.designer.cs">
       <DependentUpon>safrmrsr-01.aspx</DependentUpon>
@@ -3499,6 +3484,13 @@
     </Compile>
     <Compile Include="SystemHome\Catalog\MassEnrollment\samep-01.aspx.designer.cs">
       <DependentUpon>samep-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassRemoval\samremp-01.aspx.cs">
+      <DependentUpon>samremp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Catalog\MassRemoval\samremp-01.aspx.designer.cs">
+      <DependentUpon>samremp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Catalog\Materials\Locale\GenerateFile\sagf-01.aspx.cs">
       <DependentUpon>sagf-01.aspx</DependentUpon>
@@ -4053,6 +4045,55 @@
     <Compile Include="SystemHome\Configuration\EmployeeTypes\sametmp-01.aspx.designer.cs">
       <DependentUpon>sametmp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Locale\saaloc-01.aspx.cs">
+      <DependentUpon>saaloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Locale\saaloc-01.aspx.designer.cs">
+      <DependentUpon>saaloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Locale\saeloc-01.aspx.cs">
+      <DependentUpon>saeloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Locale\saeloc-01.aspx.designer.cs">
+      <DependentUpon>saeloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Locale\savloc-01.aspx.cs">
+      <DependentUpon>savloc-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Locale\savloc-01.aspx.designer.cs">
+      <DependentUpon>savloc-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Popup\saanen-01.aspx.cs">
+      <DependentUpon>saanen-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\Popup\saanen-01.aspx.designer.cs">
+      <DependentUpon>saanen-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\saanen-01.aspx.cs">
+      <DependentUpon>saanen-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\saanen-01.aspx.designer.cs">
+      <DependentUpon>saanen-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\saeen-01.aspx.cs">
+      <DependentUpon>saeen-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\saeen-01.aspx.designer.cs">
+      <DependentUpon>saeen-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\samemp-01.aspx.cs">
+      <DependentUpon>samemp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\Establishment\samemp-01.aspx.designer.cs">
+      <DependentUpon>samemp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Configuration\FacilityTypes\saanftn-01.aspx.cs">
       <DependentUpon>saanftn-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4552,6 +4593,13 @@
     <Compile Include="SystemHome\samrp-01.aspx.designer.cs">
       <DependentUpon>samrp-01.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemHome\Users\AddCompletion\p-samcp-01.aspx.cs">
+      <DependentUpon>p-samcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\AddCompletion\p-samcp-01.aspx.designer.cs">
+      <DependentUpon>p-samcp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemHome\Users\AddCourses\p-mcsc-01.aspx.cs">
       <DependentUpon>p-mcsc-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4600,6 +4648,41 @@
     </Compile>
     <Compile Include="SystemHome\Users\ChangePassword\sacpu-01.aspx.designer.cs">
       <DependentUpon>sacpu-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCourse\p-mcp-01.aspx.cs">
+      <DependentUpon>p-mcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCourse\p-mcp-01.aspx.designer.cs">
+      <DependentUpon>p-mcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCourse\Popup\p-cmcp-01.aspx.cs">
+      <DependentUpon>p-cmcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCourse\Popup\p-cmcp-01.aspx.designer.cs">
+      <DependentUpon>p-cmcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCurriculum\p-mcup-01.aspx.cs">
+      <DependentUpon>p-mcup-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCurriculum\p-mcup-01.aspx.designer.cs">
+      <DependentUpon>p-mcup-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCurriculum\Popup\p-mcuccs-01.aspx.cs">
+      <DependentUpon>p-mcuccs-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageCurriculum\Popup\p-mcuccs-01.aspx.designer.cs">
+      <DependentUpon>p-mcuccs-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageLearningHistory\p-mlhp-01.aspx.cs">
+      <DependentUpon>p-mlhp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Users\ManageLearningHistory\p-mlhp-01.aspx.designer.cs">
+      <DependentUpon>p-mlhp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Users\saau-01.aspx.cs">
       <DependentUpon>saau-01.aspx</DependentUpon>
@@ -4845,10 +4928,7 @@
     <Folder Include="SystemHome\Configuration\HRISIntegration\Uploaded\" />
     <Folder Include="SystemHome\Configuration\Languages\Import\" />
     <Folder Include="SystemHome\Configuration\Notifications\Attachments\" />
-    <Folder Include="SystemHome\Users\AddCompletion\" />
-    <Folder Include="SystemHome\Users\ManageCourse\" />
-    <Folder Include="SystemHome\Users\ManageCurriculum\" />
-    <Folder Include="SystemHome\Users\ManageLearningHistory\" />
+    <Folder Include="SystemHome\Configuration\Reports\Files\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Administrator\PdfTemplate\AdminCourse.xsc">

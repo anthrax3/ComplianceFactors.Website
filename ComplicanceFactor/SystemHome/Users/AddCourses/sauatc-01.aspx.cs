@@ -66,11 +66,11 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
                     {
                         if (ex.InnerException != null)
                         {
-                            Logger.WriteToErrorLog("sauatc-01 (Remove Course)", ex.Message, ex.InnerException.Message);
+                            Logger.WriteToErrorLog("sauatc-01", ex.Message, ex.InnerException.Message);
                         }
                         else
                         {
-                            Logger.WriteToErrorLog("sauatc-01 (Remove Course)", ex.Message);
+                            Logger.WriteToErrorLog("sauatc-01", ex.Message);
                         }
                     }
                 }
@@ -113,10 +113,14 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
             if (SessionWrapper.Enrollment_courses_from_user.Rows.Count > 0)
             {//Enrollment_courses_curriculum
                 divSuccess.Style.Add("display", "block");
-                divSuccess.InnerText = LocalResources.GetText("app_succ_processed_text");
+                divSuccess.InnerText = "Courses Was Added Successfully";
             }
         }
 
+        /// <summary>
+        /// Temp datatable for Enroll Data Datable
+        /// </summary>
+        /// <returns></returns>
         private DataTable TempCourseEnrollDatatable()
         {
             DataTable dt = new DataTable();
@@ -161,6 +165,10 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
             return dt;
         }
 
+        /// <summary>
+        /// Temp Data Table for Course Assign
+        /// </summary>
+        /// <returns></returns>
         private DataTable TempCourseAssignDatatable()
         {
             DataTable dt = new DataTable();
@@ -205,6 +213,9 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
             return DateTime.TryParse(text, out date) ? date : (DateTime?)null;
         }
 
+        /// <summary>
+        /// Enroll Course
+        /// </summary>
         private void EnrollCourse()
         {
             DataTable dtCourseEnroll = TempCourseEnrollDatatable();
@@ -242,8 +253,25 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
 
             }
             ConvertDataTables ConvertToXml = new ConvertDataTables();
-
-            DataTable dtSingleOLTCourseFromCurriculum = SystemMassEnrollmentBLL.Course_Enroll_Assign(ConvertToXml.ConvertDataTableToXml(dtCourseEnroll), ConvertToXml.ConvertDataTableToXml(dtCourseAssign), SessionWrapper.u_userid);
+            DataTable dtSingleOLTCourseFromCurriculum = new DataTable();
+            try
+            {
+                dtSingleOLTCourseFromCurriculum = SystemMassEnrollmentBLL.Course_Enroll_Assign(ConvertToXml.ConvertDataTableToXml(dtCourseEnroll), ConvertToXml.ConvertDataTableToXml(dtCourseAssign), SessionWrapper.u_userid);
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("sauatc-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("sauatc-01", ex.Message);
+                    }
+                }
+            }
             SystemCatalog Course = new SystemCatalog();
             User edituser = new User();
             StringBuilder sbConfirmEnrollment = new StringBuilder();
@@ -457,7 +485,7 @@ namespace ComplicanceFactor.SystemHome.Users.AddCourses
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SystemHome/Catalog/samcmp-01.aspx");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
     }
 }

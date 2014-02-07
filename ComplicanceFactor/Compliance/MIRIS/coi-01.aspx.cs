@@ -96,7 +96,21 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     //Compliance Approver
                     ddlComplianceApprover.DataSource = UserBLL.GetComplianceApproverList();
                     ddlComplianceApprover.DataBind();
+                  
+              
 
+                    ddlEmployeeReportLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                    {
+                        s_establishment_id_pk = "",
+                        s_establishment_city = "",
+                        s_establishment_name = "",
+                        s_establishment_status_id_fk = "app_ddl_active_text"
+                    });
+
+                    ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
+                    ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
+                    ddlEmployeeReportLocation.DataBind();
+                    ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                     //case outcome
                     //ddlCaseOutCome.DataSource = ComplianceBLL.GetMirisCaseOutCome();
                     //ddlCaseOutCome.DataBind();
@@ -2099,7 +2113,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_employee_id = txtEmployeeId.Text;
                 insertCase.c_ssn = txtLastFourDigitOfSSN.Text;
                 insertCase.c_supervisor = txtSupervisor.Text;
-                insertCase.c_incident_location = ddlIncidentLocation.SelectedValue;
+                insertCase.c_incident_location = txtIncidentLocation.Text;
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
@@ -2279,19 +2293,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtEmployeeId.Text = miris.c_employee_id;
                 txtLastFourDigitOfSSN.Text = miris.c_ssn;
                 txtSupervisor.Text = miris.c_supervisor;
-                ddlIncidentLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
-                {
-                    s_establishment_id_pk = "",
-                    s_establishment_city = "",
-                    s_establishment_name = "",
-                    s_establishment_status_id_fk = "0"
-                });
-
-                ddlIncidentLocation.DataTextField = "s_establishment_name";
-                ddlIncidentLocation.DataValueField = "s_establishment_system_id_pk";
-                ddlIncidentLocation.DataBind();
-                ddlIncidentLocation.Items.Insert(0, new ListItem("", ""));
-                ddlIncidentLocation.SelectedValue = miris.c_incident_location;
+                txtIncidentLocation.Text = miris.c_incident_location;
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date, culture).ToString("MM/dd/yyyy");
                 IncidentTime.Date = miris.c_incident_time;
                 IncidentTime.SetTime(miris.incident_HH, miris.incident_MM, IncidentTime.AmPm);
@@ -2300,7 +2302,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     s_establishment_id_pk = "",
                     s_establishment_city = "",
                     s_establishment_name = "",
-                    s_establishment_status_id_fk = "0"
+                    s_establishment_status_id_fk = "app_ddl_active_text"
                 });
 
                 ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
@@ -2495,7 +2497,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_employee_id = txtEmployeeId.Text;
                 insertCase.c_ssn = txtLastFourDigitOfSSN.Text;
                 insertCase.c_supervisor = txtSupervisor.Text;
-                insertCase.c_incident_location = ddlIncidentLocation.SelectedValue;
+                insertCase.c_incident_location = txtIncidentLocation.Text;
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;

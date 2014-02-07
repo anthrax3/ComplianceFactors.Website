@@ -153,6 +153,7 @@
     <Compile Include="SystemLocationBLL.cs" />
     <Compile Include="SystemMassCompletionBLL.cs" />
     <Compile Include="SystemMassEnrollmentBLL.cs" />
+    <Compile Include="SystemMassRemovalBLL.cs" />
     <Compile Include="SystemMaterialBLL.cs" />
     <Compile Include="SystemMaterialTypeBLL.cs" />
     <Compile Include="SystemNotificationBLL.cs" />

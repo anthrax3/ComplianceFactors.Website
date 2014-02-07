@@ -827,5 +827,62 @@ namespace ComplicanceFactor.BusinessComponent
             }
             
         }
+
+        //Newly added functions
+        public static int UpdateCourseDetailsFromUser(string s_update_course_details)
+        {
+            Hashtable htUpdateCourse = new Hashtable();
+            htUpdateCourse.Add("@s_update_course_details", s_update_course_details);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_courses_from_user", htUpdateCourse);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int DropCourseFromUser(string s_drop_course)
+        {
+            Hashtable htUpdateCourse = new Hashtable();
+            htUpdateCourse.Add("@s_drop_course", s_drop_course);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_drop_course_from_user", htUpdateCourse);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int UpdateCurriculumDetailsFromUser(string s_update_curriculum_details)
+        {
+            Hashtable htUpdateCurriculum= new Hashtable();
+            htUpdateCurriculum.Add("@s_update_curriculum_details", s_update_curriculum_details);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_curriculum_from_user", htUpdateCurriculum);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int DropCurriculumFromUser(string s_drop_curriculum_details)
+        {
+            Hashtable htdropCurriculum = new Hashtable();
+            htdropCurriculum.Add("@s_drop_curriculum_details", s_drop_curriculum_details);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_drop_curriculum_from_user", htdropCurriculum);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }   
 }

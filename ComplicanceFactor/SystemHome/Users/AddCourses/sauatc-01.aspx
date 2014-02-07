@@ -73,7 +73,7 @@
                     $.ajax({
                         type: "POST",
                         //sasw-01.aspx is the page name and delete locale is the server side method to delete records in sacatvml-01.aspx.cs
-                        url: "samep-01.aspx/DeleteCourse",
+                        url: "sauatc-01.aspx/DeleteCourse",
                         //Pass the selected record id
                         data: "{'args': '" + record_id + "'}",
                         contentType: "application/json; charset=utf-8",
@@ -183,7 +183,7 @@
     <asp:CustomValidator ID="cvValidateCourse" EnableClientScript="true" ClientValidationFunction="validateCourse"
         ValidateEmptyText="true" ValidationGroup="samep_course" runat="server" ErrorMessage="Please select Course">&nbsp;</asp:CustomValidator>
     <asp:CustomValidator ID="cvValidateEnrollment" EnableClientScript="true" ClientValidationFunction="validateRequired"
-        ValidateEmptyText="true" ValidationGroup="samep_required" runat="server" ErrorMessage="Date Error Empty">&nbsp;</asp:CustomValidator>
+        ValidateEmptyText="true" ValidationGroup="samep_required" runat="server" ErrorMessage="Please select target date">&nbsp;</asp:CustomValidator>
     <asp:HiddenField ID="hdCheckdelivery" runat="server" />
     <div class="div_header_long">
         Add Courses:

@@ -210,7 +210,8 @@
                         });
                     }
                 });
-                var userId = document.getElementById('<%=hdNav_selected.ClientID %>').value
+                var userId = document.getElementById('<%=hdEditID.ClientID %>').value
+                //alert(userId);
                 //btnAddCourses
                 $("#<%=btnAddCourses.ClientID %>").fancybox({
                     'type': 'iframe',
@@ -274,6 +275,129 @@
 
                 });
 
+                $("#<%=btnAddCompletion.ClientID %>").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 980,
+                    'height': 430,
+                    'margin': 0,
+                    'padding': 5,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'AddCompletion/p-samcp-01.aspx?userId=' + userId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+
+                $("#<%=btnManageCourse.ClientID %>").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1040,
+                    'height': 500,
+                    'margin': 0,
+                    'padding': 5,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'ManageCourse/p-mcp-01.aspx?id=' + userId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+
+                $("#<%=btnManageCurriculum.ClientID %>").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1040,
+                    'height': 500,
+                    'margin': 0,
+                    'padding': 5,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'ManageCurriculum/p-mcup-01.aspx?id=' + userId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
+
+                $("#<%=btnManageLearningHistory.ClientID %>").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 1040,
+                    'height': 500,
+                    'margin': 0,
+                    'padding': 5,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'ManageLearningHistory/p-mlhp-01.aspx?id=' + userId,
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
 
                 //Alternate manager
                 $("#<%=btnAltManager.ClientID %>").fancybox({

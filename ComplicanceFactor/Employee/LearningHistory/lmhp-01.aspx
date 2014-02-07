@@ -201,6 +201,9 @@
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
                     HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
+                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
+                    HeaderText="<%$ LabelResourceExpression: app_delivery_text %>" DataField='deliveryType'
+                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
                     HeaderText="<%$ LabelResourceExpression: app_completion_date_text %>" DataField='date'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
@@ -210,9 +213,7 @@
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
                     HeaderText="<%$ LabelResourceExpression: app_score_text %>" DataField='score'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
-                <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-                    HeaderText="<%$ LabelResourceExpression: app_delivery_text %>" DataField='deliveryType'
-                    HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+           
                 <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>

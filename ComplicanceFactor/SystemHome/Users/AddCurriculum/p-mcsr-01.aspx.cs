@@ -175,7 +175,6 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
         {
             try
             {
-
                 string curriculumid = string.Empty;
                 string curriculumtitle = string.Empty;
                 if (!string.IsNullOrEmpty((string)ViewState["SearchResult"]))
@@ -199,19 +198,17 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("sacsr-01.aspx", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sacsr-01.aspx(user- Curriculum)", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("sacsr-01.aspx", ex.Message);
+                        Logger.WriteToErrorLog("sacsr-01.aspx(user - Curriculum)", ex.Message);
                     }
                 }
             }
             if (gvsearchDetails.Rows.Count == 0)
             {
-
                 disable_enable(false);
-
             }
             else
             {
@@ -227,8 +224,6 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
                     gvsearchDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
             }
-
-
         }
         private void disable_enable(bool status)
         {
@@ -254,7 +249,6 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
             btnHeaderGoto.Visible = status;
             btnFooterGoto.Visible = status;
 
-
             lblHeaderResultPerPage.Visible = status;
             lblFooterResultPerPage.Visible = status;
 
@@ -264,7 +258,6 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
             btnSaveSelected.Visible = status;
 
         }
-
         protected void gvsearchDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvsearchDetails.PageIndex = e.NewPageIndex;
@@ -285,16 +278,12 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
                 if (chkSelect.Checked == true)
                 {
                     AddDataToCompletionCourse(gvsearchDetails.DataKeys[grdResourceRow.RowIndex].Values[0].ToString(), grdResourceRow.Cells[0].Text, grdResourceRow.Cells[1].Text, grdResourceRow.Cells[2].Text, SessionWrapper.Enrollment_curriculum_from_user);
-
                 }
             }
             //SystemInstructorBLL.InsertInstructorCourse(ConvertDataTableToXml(dtInstructorCourse));
-
             //Close fancybox
             Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
-            //Remove duplicate resource
-            //dtInstructorCourse = RemoveDuplicateRows(dtInstructorCourse, "s_resource_system_id_pk");
-
+            //Remove duplicate resource             
         }
         /// This method is used to convert the DataTable into string XML format.
         ///
@@ -352,7 +341,6 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
             row["title"] = title;
             row["type"] = type;
             dtTempCourseCurriculum.Rows.Add(row);
-
         }
     }
 }

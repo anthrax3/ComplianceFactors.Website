@@ -332,7 +332,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     s_establishment_id_pk = "",
                     s_establishment_city = "",
                     s_establishment_name = "",
-                    s_establishment_status_id_fk = "0"
+                    s_establishment_status_id_fk = "app_ddl_active_text"
                 });
 
                 ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
@@ -349,7 +349,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     s_establishment_id_pk = "",
                     s_establishment_city = "",
                     s_establishment_name = "",
-                    s_establishment_status_id_fk = "0"
+                    s_establishment_status_id_fk = "app_ddl_active_text"
                 });
 
                 ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
@@ -2304,7 +2304,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_employee_id = txtEmployeeId.Text;
                 updateCase.c_ssn = txtLastFourDigitOfSSN.Text;
                 updateCase.c_supervisor = txtSupervisor.Text;
-                updateCase.c_incident_location = ddlIncidentLocation.SelectedValue;
+                updateCase.c_incident_location = txtIncidentLocation.Text;
                 updateCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 updateCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 updateCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;

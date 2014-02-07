@@ -80,11 +80,11 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
                 {
                     if (ex.InnerException != null)
                     {
-                        Logger.WriteToErrorLog("samep-01 (Remove Course/Curriculum)", ex.Message, ex.InnerException.Message);
+                        Logger.WriteToErrorLog("sausc-01", ex.Message, ex.InnerException.Message);
                     }
                     else
                     {
-                        Logger.WriteToErrorLog("samep-01 (Remove Course/Curriculum)", ex.Message);
+                        Logger.WriteToErrorLog("sausc-01", ex.Message);
                     }
                 }
             }
@@ -95,13 +95,17 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
         {
 
             AssignCurriculum();
-            if (SessionWrapper.Enrollment_curriculum_from_user.Rows.Count > 0 && SessionWrapper.MassEnrollment_employees.Rows.Count > 0)
+            if (SessionWrapper.Enrollment_curriculum_from_user.Rows.Count > 0)
             {
                 divSuccess.Style.Add("display", "block");
-                divSuccess.InnerText = LocalResources.GetText("app_succ_processed_text");
+                divSuccess.InnerText = "Curriculum Was Added Successfully";
             }
         }
 
+        /// <summary>
+        /// Temp Datatable for Curriculum
+        /// </summary>
+        /// <returns></returns>
         private DataTable TempCurriculumDatatable()
         {
             DataTable dt = new DataTable();
@@ -138,6 +142,9 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
             return DateTime.TryParse(text, out date) ? date : (DateTime?)null;
         }
 
+        /// <summary>
+        /// Assign Curriculum process
+        /// </summary>
         private void AssignCurriculum()
         {
             DataTable dtCurriculum = TempCurriculumDatatable();
@@ -155,10 +162,29 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
                 }
             }
             ConvertDataTables ConvertToXml = new ConvertDataTables();
-            DataTable dtSingleOLTCourseFromCurriculum = SystemMassEnrollmentBLL.Curriculum_Assign(ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid);
+            DataSet dsSingleOLTCourseFromCurriculum = new DataSet();
+            try
+            {
+                dsSingleOLTCourseFromCurriculum = SystemMassEnrollmentBLL.Curriculum_Assign(ConvertToXml.ConvertDataTableToXml(dtCurriculum), SessionWrapper.u_userid);
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("sausc-01", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("sausc-01", ex.Message);
+                    }
+                }
+            }
             SystemCatalog Course = new SystemCatalog();
             User edituser = new User();
             StringBuilder sbConfirmEnrollment = new StringBuilder();
+            DataTable dtSingleOLTCourseFromCurriculum = dsSingleOLTCourseFromCurriculum.Tables[dsSingleOLTCourseFromCurriculum.Tables.Count-1];
             if (dtSingleOLTCourseFromCurriculum.Rows.Count > 0)
             {
                 for (int i = 0; i <= dtSingleOLTCourseFromCurriculum.Rows.Count - 1; i++)
@@ -225,16 +251,15 @@ namespace ComplicanceFactor.SystemHome.Users.AddCurriculum
                                     Utility.SendSms(toPhoneNumber, username, passwd, messagetext);
                                 }
                             }
-
                         }
                     }
                 }
-            }
+            }             
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SystemHome/Catalog/samcmp-01.aspx");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose", "javascript:parent.document.forms[0].submit();parent.jQuery.fancybox.close();", true);
         }
     }
 }

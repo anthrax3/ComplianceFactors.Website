@@ -1074,14 +1074,13 @@
             <tr>
                 <td>
                     <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="cemv"
-                        ControlToValidate="ddlIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
+                        ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
                     </asp:RequiredFieldValidator>
                     *
                     <%=LocalResources.GetLabel("app_incident_location_text")%>:
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlIncidentLocation" CssClass="ddl_user_advanced_search" runat="server">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="cemv"

@@ -126,5 +126,36 @@ namespace ComplicanceFactor.BusinessComponent
             }
         }
 
+        //Newly added Functions
+        public static DataTable GetCourseDetails(string c_course_system_id_pk)
+        {
+            Hashtable htCourseDetails = new Hashtable();
+            htCourseDetails.Add("@c_course_system_id_pk", c_course_system_id_pk);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_course_details", htCourseDetails);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static int UpdateLearningHistory(string s_update_learning_history_details)
+        {
+            Hashtable htLearningHistory = new Hashtable();
+            htLearningHistory.Add("@s_update_learning_history_details", s_update_learning_history_details);
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_update_learning_history_from_user", htLearningHistory);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        
+
     }
 }

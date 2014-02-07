@@ -1007,15 +1007,13 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="coi"
-                            ControlToValidate="ddlIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
+                            ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_incident_location_text")%>:
                     </td>
                     <td>
-                     <asp:DropDownList ID="ddlIncidentLocation" DataValueField="c_type_id" DataTextField="c_type_name"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                        </asp:DropDownList>
+                       <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
                   
                     </td>
                     <td>
