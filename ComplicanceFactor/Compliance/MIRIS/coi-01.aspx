@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-       <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
@@ -93,7 +93,10 @@
                 });
 
             });
+            $("#<%=txtIncidentDate.ClientID%>").change(function () {
 
+                $("#<%=lblDateofIncident.ClientID%>").html($("#<%=txtIncidentDate.ClientID%>").val());
+            });
         });
 
     </script>
@@ -856,8 +859,8 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
-                                <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
-                Text="Select Employee" />
+                        <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
+                            Text="Select Employee" />
                     </td>
                     <td>
                         *
@@ -1013,8 +1016,7 @@
                         <%=LocalResources.GetLabel("app_incident_location_text")%>:
                     </td>
                     <td>
-                       <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
-                  
+                        <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="coi"
@@ -1056,10 +1058,9 @@
                         <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
                     </td>
                     <td>
-                    <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
+                        <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
-                     
                     </td>
                     <td>
                         *
@@ -1081,22 +1082,21 @@
                         <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
-                 <tr id="trAddEstablishment" runat="server"  Visible = "false">
-                <td>
-                  
-                </td>
-                <td>
-                  <input type="button" id="btnAddEstablishment" value='Add Establishment' />
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-            </tr>
+                <tr id="trAddEstablishment" runat="server" visible="false">
+                    <td>
+                    </td>
+                    <td>
+                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <asp:RegularExpressionValidator ID="revTimeDateNotified" runat="server" ValidationGroup="coi"
@@ -1483,33 +1483,42 @@
                         <asp:TextBox ID="txtDART" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>--%>
                     <td>
+                        Date of Incident:
+                    </td>
+                    <td>
+                        <asp:Label ID="lblDateofIncident" runat="server" Text=""></asp:Label>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_first_day_of_days_away_text")%>:
+                    </td>
+                    <td>
+                        <asp:CalendarExtender ID="ceFirstDayofDaysAway" Format="MM/dd/yyyy" TargetControlID="txtFirstDayofDaysAway"
+                            runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtFirstDayofDaysAway" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_first_days_restricted_tranferred_text")%>:
+                    </td>
+                    <td>
+                        <asp:CalendarExtender ID="ceFirstdayRestrictedorTransferred" Format="MM/dd/yyyy"
+                            TargetControlID="txtFirstdayRestrictedorTransferred" runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtFirstdayRestrictedorTransferred" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <%=LocalResources.GetLabel("app_esr_lwds_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtEstLWDs" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
-                        &nbsp;
-                    </td>
-                    <td colspan="2">
                         <%=LocalResources.GetLabel("app_actual_lwd_and_osha_lwd_text")%>:
                     </td>
                     <td>
                         <asp:TextBox ID="txtActualLWDandOSHA" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <%=LocalResources.GetLabel("app_light_duty_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtLightDuty" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_est_ld_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtEstLD" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
                         <%=LocalResources.GetLabel("app_actual_ld_and_osha_restricted_text")%>:
@@ -1523,19 +1532,19 @@
                         <%=LocalResources.GetLabel("app_restricted_transferred_text")%>:
                     </td>
                     <td>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_restricted_transferred_text")%>:
+                    </td>
+                    <td>
                         <asp:TextBox ID="txtRestrictedorTransferred" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
-                        <%=LocalResources.GetLabel("app_first_day_of_days_away_text")%>:
+                        <%=LocalResources.GetLabel("app_light_duty_text")%>:
                     </td>
                     <td>
-                        <asp:TextBox ID="txtFirstDayofDaysAway" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_first_days_restricted_tranferred_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtFirstdayRestrictedorTransferred" runat="server" CssClass="textbox_width"></asp:TextBox>
+                        <asp:TextBox ID="txtLightDuty" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -1543,16 +1552,50 @@
                         <%=LocalResources.GetLabel("app_last_day_of_days_away_text")%>:
                     </td>
                     <td>
+                        <asp:CalendarExtender ID="ceLastDatDaysAway" Format="MM/dd/yyyy" TargetControlID="txtLastDatDaysAway"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtLastDatDaysAway" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
-                        &nbsp;
-                    </td>
-                    <td colspan="2">
                         <%=LocalResources.GetLabel("app_last_days_restricted_transferred_text")%>:
                     </td>
                     <td>
+                        <asp:CalendarExtender ID="ceLastDayRestrictedorTransferred" Format="MM/dd/yyyy" TargetControlID="txtLastDayRestrictedorTransferred"
+                            runat="server">
+                        </asp:CalendarExtender>
                         <asp:TextBox ID="txtLastDayRestrictedorTransferred" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_est_ld_text")%>:
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtEstLD" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Short Term Disability:
+                    </td>
+                    <td>
+                        <asp:RadioButtonList ID="rblShortTerm" RepeatDirection="Horizontal" runat="server">
+                            <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                            <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </td>
+                    <td>
+                        Long Term Disability:
+                    </td>
+                    <td>
+                        <asp:RadioButtonList ID="rblLongTerm" RepeatDirection="Horizontal" runat="server">
+                            <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                            <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    
                     </td>
                 </tr>
                 <tr>
@@ -2057,7 +2100,7 @@
             <table>
                 <tr>
                     <td valign="top" class="font_1">
-                        <%=LocalResources.GetLabel("app_observation_text")%>: 
+                        <%=LocalResources.GetLabel("app_observation_text")%>:
                     </td>
                     <td class="align_left" valign="top">
                         <asp:Button ID="btnAddObservation" OnClientClick="Showpopup(this.id);" runat="server"
@@ -2384,8 +2427,8 @@
             <asp:HiddenField ID="hdObservation" runat="server" />
             <asp:HiddenField ID="hdIncidentHistory" runat="server" />
             <asp:Button ID="btnUploadFile" runat="server" CssClass="cursor_hand" Style="display: none;" />
-            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-                padding-left: 0px;  padding-right: 0px;">
+            <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+                Style="display: none; padding-left: 0px; padding-right: 0px;">
                 <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                     <div>
                         <div class="uploadpopup_header">
@@ -2489,12 +2532,12 @@
             </asp:Panel>
             <asp:Button ID="btnpnlCompleteCase" runat="server" Style="display: none;" />
             <div class="font_normal">
-                <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
-                    padding-left: 0px;  padding-right: 0px;">
+                <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+                    Style="display: none; padding-left: 0px; padding-right: 0px;">
                     <asp:Panel ID="pnlCompleteCasePageHeading" runat="server" CssClass="drag">
                         <div>
                             <div class="div_header_620">
-                                <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>: 
+                                <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>:
                             </div>
                             <div class="right">
                                 <asp:ImageButton ID="imgCloseCompleteCase" CssClass="cursor_hand" Style="top: -15px;

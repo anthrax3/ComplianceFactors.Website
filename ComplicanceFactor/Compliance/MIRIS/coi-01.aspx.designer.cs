@@ -688,6 +688,51 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtTreatmentdescription;
         
         /// <summary>
+        /// lblDateofIncident control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateofIncident;
+        
+        /// <summary>
+        /// ceFirstDayofDaysAway control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceFirstDayofDaysAway;
+        
+        /// <summary>
+        /// txtFirstDayofDaysAway control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFirstDayofDaysAway;
+        
+        /// <summary>
+        /// ceFirstdayRestrictedorTransferred control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceFirstdayRestrictedorTransferred;
+        
+        /// <summary>
+        /// txtFirstdayRestrictedorTransferred control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFirstdayRestrictedorTransferred;
+        
+        /// <summary>
         /// txtEstLWDs control.
         /// </summary>
         /// <remarks>
@@ -706,24 +751,6 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.TextBox txtActualLWDandOSHA;
         
         /// <summary>
-        /// txtLightDuty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLightDuty;
-        
-        /// <summary>
-        /// txtEstLD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEstLD;
-        
-        /// <summary>
         /// txtActualLDandOSHA control.
         /// </summary>
         /// <remarks>
@@ -731,6 +758,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtActualLDandOSHA;
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// txtRestrictedorTransferred control.
@@ -742,22 +778,22 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.TextBox txtRestrictedorTransferred;
         
         /// <summary>
-        /// txtFirstDayofDaysAway control.
+        /// txtLightDuty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFirstDayofDaysAway;
+        protected global::System.Web.UI.WebControls.TextBox txtLightDuty;
         
         /// <summary>
-        /// txtFirstdayRestrictedorTransferred control.
+        /// ceLastDatDaysAway control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFirstdayRestrictedorTransferred;
+        protected global::AjaxControlToolkit.CalendarExtender ceLastDatDaysAway;
         
         /// <summary>
         /// txtLastDatDaysAway control.
@@ -769,6 +805,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.TextBox txtLastDatDaysAway;
         
         /// <summary>
+        /// ceLastDayRestrictedorTransferred control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceLastDayRestrictedorTransferred;
+        
+        /// <summary>
         /// txtLastDayRestrictedorTransferred control.
         /// </summary>
         /// <remarks>
@@ -776,6 +821,33 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLastDayRestrictedorTransferred;
+        
+        /// <summary>
+        /// txtEstLD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEstLD;
+        
+        /// <summary>
+        /// rblShortTerm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblShortTerm;
+        
+        /// <summary>
+        /// rblLongTerm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblLongTerm;
         
         /// <summary>
         /// btnAddWitness control.

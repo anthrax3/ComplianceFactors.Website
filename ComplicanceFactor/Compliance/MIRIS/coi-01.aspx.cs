@@ -2179,6 +2179,10 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     insertCase.c_company_owned = false;
                 }
+                if (rblLongTerm.SelectedValue == "Yes")
+                { 
+                
+                }
                 //insertCase.c_privacy_case = Convert.ToBoolean(Convert.ToInt16(rblPrivacyCase.SelectedValue));
                 //insertCase.c_company_owned = Convert.ToBoolean(Convert.ToInt16(rblCompanyOwned.SelectedValue));
                 insertCase.c_location_description = txtLocationDescription.InnerText;

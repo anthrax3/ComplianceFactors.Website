@@ -207,6 +207,47 @@
 
                 });
 
+
+            });
+            $(".ViewCurrLearningdetails").click(function () {
+                //Get the Id of the record to delete
+                var record_id = $(this).attr("id");
+                //Get the GridView Row reference
+                var tr_id = $(this).parents("#.record");
+                var element = $(this).attr("id").split(",");
+                $.fancybox({
+
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 732,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': '/Employee/Curricula/lvcurd-01.aspx?id=' + element[0],
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+                            })
+                        });
+
+                    }
+
+                });
             });
 
 
@@ -409,17 +450,17 @@
         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>"
             GridLines="None" AutoGenerateColumns="False" EmptyDataRowStyle-CssClass="empty_row"
-            DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk" PagerSettings-Visible="false"
+            DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk,deliveryType" PagerSettings-Visible="false"
             OnRowCommand="gvLearningHistory_RowCommand" OnRowDataBound="gvLearningHistory_RowDataBound">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$LabelResourceExpression: app_course_title_with_id_text%>" DataField='title'
+                    HeaderText="Courst Title (ID) / Curriculae Title (ID)" DataField='title'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                     <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
                     HeaderText="<%$LabelResourceExpression: app_delivery_text %>" DataField='deliveryType'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_4"
-                    HeaderText="<%$LabelResourceExpression: app_completion_date_text%>" DataField='date'
+                    HeaderText="<%$LabelResourceExpression: app_completion_date_text%>" DataField='date' DataFormatString="{0:MM/dd/yyyy}"
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
                     HeaderText="<%$LabelResourceExpression: app_status_text %>" DataField='status'

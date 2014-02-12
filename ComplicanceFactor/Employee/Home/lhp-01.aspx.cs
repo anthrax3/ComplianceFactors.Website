@@ -426,6 +426,13 @@ namespace ComplicanceFactor
                     btnReview.Style.Add("display", "inline");
                     btnCertificate.Style.Add("display", "none");
                 }
+                else if (status == "Acquired")
+                {
+                    //   Response.Redirect("~/Employee/Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
+                    ltlViewDetails.Text = "<input type='button' onclick='window.location=\"../Curricula/lvcurd-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk) + "\"' id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk) + ',' + SessionWrapper.u_userid + " value='" + LocalResources.GetLabel("app_view_details_button_text") + "' class='ViewCurrLearningdetails' />";
+                    btnReview.Style.Add("display", "none");
+                    btnCertificate.Style.Add("display", "none");
+                }
                 else if (status == "Passed")
                 {
                     //btnEnroll.Style.Add("display", "Block");
@@ -456,6 +463,7 @@ namespace ComplicanceFactor
         {
             int rowIndex = int.Parse(e.CommandArgument.ToString());
             string t_transcript_course_id_fk = gvLearningHistory.DataKeys[rowIndex][0].ToString();
+            string deliveryType = gvLearningHistory.DataKeys[rowIndex][3].ToString();
             string title = gvLearningHistory.DataKeys[rowIndex][1].ToString();
 
             bool isEnroll;
@@ -474,17 +482,25 @@ namespace ComplicanceFactor
                 //{
                 //    ScriptManager.RegisterClientScriptBlock(this, GetType(), "Alert", @"alert('Already enrolled')", true);
                 //}
-                isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
-                if (isEnroll == true)
+                if (deliveryType == "CURR")
                 {
-                    SessionWrapper.isLeraningHistory = true;
+                    Response.Redirect("~/Employee/Curricula/lvcure-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
                 }
                 else
                 {
-                    SessionWrapper.isLeraningHistory = false;
+                    isEnroll = EnrollmentBLL.ChecReEnrollorNot(t_transcript_course_id_fk, SessionWrapper.u_userid);
+                    if (isEnroll == true)
+                    {
+                        SessionWrapper.isLeraningHistory = true;
+                    }
+                    else
+                    {
+                        SessionWrapper.isLeraningHistory = false;
+                    }
+                    Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
+                    GetAllEmployee();
                 }
-                Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(t_transcript_course_id_fk), false);
-                GetAllEmployee();
+               
                 
             }
             else if (e.CommandName.Equals("Certificate"))

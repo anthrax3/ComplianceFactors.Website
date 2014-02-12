@@ -64,6 +64,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 imgBicycleIncident.AlternateText = "plus";
                 imgfixedobject.AlternateText = "plus";
                 imganimalincident.AlternateText = "plus";
+                imgadditionalinfo.AlternateText = "plus";
+                imgcustomfilds.AlternateText = "plus";
                 //clear session
                 copyCaseId = string.Empty;
                 SessionWrapper.session_witness = null;

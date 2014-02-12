@@ -17,6 +17,13 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
         private static int sectioncount;
         protected void Page_Load(object sender, EventArgs e)
         {
+            SessionWrapper.TempPathSection = TempDataTables.TempPathSection();
+            
+            if (SessionWrapper.TempPathSection.Rows.Count == 0)
+            {
+                AddEmptyPathSection(SessionWrapper.TempPathSection);
+                SessionWrapper.Active_Popup = "true";
+            }       
             if (!string.IsNullOrEmpty(Request.QueryString["editCurriculumPathId"]))
             {
                 editCurriculumPath = Request.QueryString["editCurriculumPathId"];
@@ -90,11 +97,16 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
             GetPathSection();
             //Bind curriculum path section
             int count = dsGetPath.Tables[1].Rows.Count;
-            //if (count > 0)
-            //{
+            if (count > 0)
+            {
                 lastsectionId = dsGetPath.Tables[1].Rows[count - 1]["c_curricula_path_section_id_pk"].ToString();
-            //}
-            dlSection.DataSource = dsGetPath.Tables[1];
+                 dlSection.DataSource = dsGetPath.Tables[1];
+            }
+            else
+            {
+                dlSection.DataSource = SessionWrapper.TempPathSection;
+            }
+            
             dlSection.DataBind();
             txtComplete.Text = Convert.ToString(dlSection.Items.Count);
             lblSectionCount.Text = Convert.ToString(dlSection.Items.Count);
@@ -209,6 +221,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
 
             }
         }
+        /// <summary>
+        /// Show Add course button if path section is empty
+        /// </summary>
+        /// <param name="dtEmptyPathSection"></param>
+        private void AddEmptyPathSection(DataTable dtEmptyPathSection)
+        {
+            DataRow drEmptyPathSection;
+            drEmptyPathSection = dtEmptyPathSection.NewRow();
+            drEmptyPathSection["c_curricula_path_section_id_pk"] = Guid.NewGuid().ToString();
+            dtEmptyPathSection.Rows.Add(drEmptyPathSection);
+            dtEmptyPathSection.AcceptChanges();
+
+        }
         protected void gvCourse_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName.Equals("Remove"))
@@ -274,8 +299,15 @@ namespace ComplicanceFactor.SystemHome.Catalog.Curriculum.CurriculumPath
         }
         private static int checkSection()
         {
-            sectioncount = SystemCurriculumBLL.checkPathsectioncourse(lastsectionId);
-            return sectioncount;
+            if (!string.IsNullOrEmpty(lastsectionId))
+            {
+                sectioncount = SystemCurriculumBLL.checkPathsectioncourse(lastsectionId);
+                return sectioncount;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         

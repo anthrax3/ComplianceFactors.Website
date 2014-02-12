@@ -1858,6 +1858,24 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtPhysicalPropertyDesc;
         
         /// <summary>
+        /// imgadditionalinfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgadditionalinfo;
+        
+        /// <summary>
+        /// div_additional_info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_additional_info;
+        
+        /// <summary>
         /// btnAddWitness control.
         /// </summary>
         /// <remarks>
@@ -1966,22 +1984,22 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.GridView gvEmployeeInterview;
         
         /// <summary>
-        /// txtRootCauseAnalysisDetails control.
+        /// imgcustomfilds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRootCauseAnalysisDetails;
+        protected global::System.Web.UI.WebControls.ImageButton imgcustomfilds;
         
         /// <summary>
-        /// txtCorrectiveActionDetails control.
+        /// div_custom_filds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorrectiveActionDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_custom_filds;
         
         /// <summary>
         /// txtCustom01 control.
@@ -2099,6 +2117,24 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustom13;
+        
+        /// <summary>
+        /// txtRootCauseAnalysisDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRootCauseAnalysisDetails;
+        
+        /// <summary>
+        /// txtCorrectiveActionDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCorrectiveActionDetails;
         
         /// <summary>
         /// btnSaveNewCase_footer control.

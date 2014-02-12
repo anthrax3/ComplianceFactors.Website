@@ -195,11 +195,11 @@
     <div class="div_padding_10" id="div_course" runat="server">
         <asp:GridView ID="gvLearningHistory" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="No result found." GridLines="None" AutoGenerateColumns="False"
-            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk"
+            EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" DataKeyNames="t_transcript_course_id_fk,title,t_transcript_delivery_id_fk,deliveryType"
             OnRowDataBound="gvLearningHistory_RowDataBound" OnRowCommand="gvLearningHistory_RowCommand">
             <Columns>
                 <asp:BoundField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
-                    HeaderText="<%$ LabelResourceExpression: app_course_title_with_id_text %>" DataField='title'
+                    HeaderText="Courst Title (ID) / Curriculae Title (ID)" DataField='title'
                     HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" />
                          <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
                     HeaderText="<%$ LabelResourceExpression: app_delivery_text %>" DataField='deliveryType'

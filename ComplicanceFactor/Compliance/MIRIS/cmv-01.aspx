@@ -9,7 +9,7 @@
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.watermark.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
-         <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
@@ -254,6 +254,55 @@
             var imgelem = document.getElementById(_this.id);
 
             var currowid = id.replace("imgfixedobject", "div_fixed_object_incident") //GETTING THE ID OF SUMMARY ROW
+
+            var rowdetelemid = currowid;
+
+            var rowdetelem = document.getElementById(rowdetelemid);
+            if (imgelem.alt == "plus") {
+                imgelem.src = "../../Images/addminus-sm.gif"
+                imgelem.alt = "minus"
+                rowdetelem.style.display = 'block';
+            }
+            else {
+                imgelem.src = "../../Images/addplus-sm.gif"
+                imgelem.alt = "plus"
+                rowdetelem.style.display = 'none';
+            }
+
+            return false;
+
+        }
+        function expandDetailsAdditionalInfo(_this) {
+
+            var id = _this.id;
+            var imgelem = document.getElementById(_this.id);
+
+            var currowid = id.replace("imgadditionalinfo", "div_additional_info") //GETTING THE ID OF SUMMARY ROW
+
+            var rowdetelemid = currowid;
+
+            var rowdetelem = document.getElementById(rowdetelemid);
+            if (imgelem.alt == "plus") {
+                imgelem.src = "../../Images/addminus-sm.gif"
+                imgelem.alt = "minus"
+                rowdetelem.style.display = 'block';
+            }
+            else {
+                imgelem.src = "../../Images/addplus-sm.gif"
+                imgelem.alt = "plus"
+                rowdetelem.style.display = 'none';
+            }
+
+            return false;
+
+        }
+        //expandDetailsCustomFilds
+        function expandDetailsCustomFilds(_this) {
+
+            var id = _this.id;
+            var imgelem = document.getElementById(_this.id);
+
+            var currowid = id.replace("imgcustomfilds", "div_custom_filds") //GETTING THE ID OF SUMMARY ROW
 
             var rowdetelemid = currowid;
 
@@ -724,35 +773,35 @@
             }
         }
     </script>
-     <script type="text/javascript">
-         function checkhiredate() {
-             var year = $('#' + '<% =ddlHireYear.ClientID %>').val();
-             var month = $('#' + '<% =ddlHireMonth.ClientID %>').val();
-             if ((year != 0) && (month != 0)) {
-                 var lastday = 32 - new Date(year, month - 1, 32).getDate();
-                 var selected_day = $('#' + '<% =doh_hire_day.ClientID %>').val();
+    <script type="text/javascript">
+        function checkhiredate() {
+            var year = $('#' + '<% =ddlHireYear.ClientID %>').val();
+            var month = $('#' + '<% =ddlHireMonth.ClientID %>').val();
+            if ((year != 0) && (month != 0)) {
+                var lastday = 32 - new Date(year, month - 1, 32).getDate();
+                var selected_day = $('#' + '<% =doh_hire_day.ClientID %>').val();
 
-                 // Change selected day if it is greater than the number of days in current month
-                 if (selected_day > lastday) {
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + selected_day + ']').attr('selected', false);
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + lastday + ']').attr('selected', true);
-                 }
+                // Change selected day if it is greater than the number of days in current month
+                if (selected_day > lastday) {
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + selected_day + ']').attr('selected', false);
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + lastday + ']').attr('selected', true);
+                }
 
-                 // Remove possibly offending days
-                 for (var i = lastday + 1; i < 32; i++) {
-                     //$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').remove();
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'none');
-                 }
+                // Remove possibly offending days
+                for (var i = lastday + 1; i < 32; i++) {
+                    //$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').remove();
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'none');
+                }
 
-                 // Add possibly missing days
-                 for (var i = 29; i < lastday + 1; i++) {
-                     //if (!$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').length) {
-                     //$('#' + '<% =dob_day.ClientID %>').append($("<option></option>").attr("value", i).text(i));
-                     $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'block');
-                     //}
-                 }
-             }
-         }
+                // Add possibly missing days
+                for (var i = 29; i < lastday + 1; i++) {
+                    //if (!$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').length) {
+                    //$('#' + '<% =dob_day.ClientID %>').append($("<option></option>").attr("value", i).text(i));
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'block');
+                    //}
+                }
+            }
+        }
     </script>
     <script type="text/javascript">
 
@@ -933,8 +982,8 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
-                             <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
-                Text="Select Employee" />
+                        <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
+                            Text="Select Employee" />
                     </td>
                     <td>
                         *
@@ -1090,7 +1139,7 @@
                         <%=LocalResources.GetLabel("app_incident_location_text")%>:
                     </td>
                     <td>
-                <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                        <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="cmv"
@@ -1132,7 +1181,7 @@
                         <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
                     </td>
                     <td>
-                         <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
+                        <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
@@ -1156,22 +1205,21 @@
                         <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
-                <tr id="trAddEstablishment" runat="server"  Visible = "false">
-                <td>
-                  
-                </td>
-                <td>
-                  <input type="button" id="btnAddEstablishment" value='Add Establishment' />
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-            </tr>
+                <tr id="trAddEstablishment" runat="server" visible="false">
+                    <td>
+                    </td>
+                    <td>
+                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
                 <tr>
                     <td colspan="6">
                         &nbsp;
@@ -1511,7 +1559,8 @@
                             &nbsp;
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddl" CssClass="ddl_user_advanced_search" style="display:none;" runat="server">
+                            <asp:DropDownList ID="ddl" CssClass="ddl_user_advanced_search" Style="display: none;"
+                                runat="server">
                                 <asp:ListItem Text="Dawn" Value="Dawn"></asp:ListItem>
                                 <asp:ListItem Text="Daylight" Value="Daylight"></asp:ListItem>
                                 <asp:ListItem Text="Overcast/Rain" Value="Overcast/Rain"></asp:ListItem>
@@ -1746,7 +1795,7 @@
                             <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 0px;">
                                 <tr>
                                     <td class="align_right">
-                                         <%=LocalResources.GetLabel("app_was_there_a_fatality_text")%>:
+                                        <%=LocalResources.GetLabel("app_was_there_a_fatality_text")%>:
                                     </td>
                                     <td>
                                         <asp:RadioButtonList ID="rblFatality" RepeatDirection="Horizontal" runat="server">
@@ -1969,7 +2018,7 @@
                             <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 0px;">
                                 <tr>
                                     <td class="align_right">
-                                       <%=LocalResources.GetLabel("app_public_vehicle_involved_text")%>:
+                                        <%=LocalResources.GetLabel("app_public_vehicle_involved_text")%>:
                                     </td>
                                     <td>
                                         <asp:RadioButtonList ID="rblPublicVehicleInvolved" RepeatDirection="Horizontal" runat="server">
@@ -2734,378 +2783,363 @@
             </div>
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_additional_Information_text")%>:
+                <div class="right div_padding_10">
+                    <asp:ImageButton OnClientClick="expandDetailsAdditionalInfo(this);return false;"
+                        runat="server" ID="imgadditionalinfo" ImageUrl="~/Images/addplus-sm.gif" />
+                </div>
             </div>
             <br />
-            <div class="div_controls_from_left">
-                <table>
-                    <tr>
-                        <td valign="top" class="font_1">
-                            <%=LocalResources.GetLabel("app_witness(es)_text")%>:
-                        </td>
-                        <td class="align_left" valign="top">
-                            <asp:Button ID="btnAddWitness" runat="server" OnClientClick="Showpopup(this.id);"
-                                CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_witness_button_text%>" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div_padding_135">
-                <asp:GridView ID="gvAddWitness" GridLines="None" CssClass="grid_table_850" CellPadding="0"
-                    CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name,c_name,c_contact_info"
-                    runat="server" AutoGenerateColumns="False" OnRowCommand="gvAddWitness_RowCommand"
-                    OnRowEditing="gvAddWitness_RowEditing">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="width_230" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <%=LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
-                                    <%#Eval("c_name") %></b>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_300" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <%=LocalResources.GetLabel("app_contact_information_text")%>:&nbsp;&nbsp; &nbsp;
-                                <b>
-                                    <%#Eval("c_contact_info") %></b>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnViewWitnessFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnEditWitnessFiles" OnClientClick="Showeditpopup('witness');" CommandName="Edit"
-                                    CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
-                                    Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnRemoveWitnessFiles" OnClientClick="return confirmremove();" CommandName="Remove"
-                                    CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
-                                    Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <div class="div_controls_from_left">
-                <table>
-                    <tr>
-                        <td valign="top" class="font_1">
-                            <%=LocalResources.GetLabel("app_police_reports(s)_text")%>:
-                        </td>
-                        <td valign="top">
-                            <asp:Button ID="btnAddPoliceReport" OnClientClick="Showpopup(this.id);" runat="server"
-                                Text="<%$ LabelResourceExpression: app_add_police_report_button_text %>" CssClass="cursor_hand" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div_padding_135">
-                <asp:GridView ID="gvPoliceReport" GridLines="None" CssClass="grid_table_850" CellPadding="0"
-                    CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name"
-                    runat="server" AutoGenerateColumns="False" OnRowCommand="gvPoliceReport_RowCommand"
-                    OnRowEditing="gvPoliceReport_RowEditing">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="width_740" ItemStyle-HorizontalAlign="Left">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnViewPoliceReportFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnEditPoliceReportFiles" OnClientClick="Showeditpopup('policereport');"
-                                    CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnRemovePoliceReportFiles" OnClientClick="return confirmremove();"
-                                    CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+            <div class="div_controls font_1 msg_display" id="div_additional_info" runat="server">
+                <div class="div_controls font_1 ">
+                    <table>
+                        <tr>
+                            <td valign="top" class="font_1">
+                                <%=LocalResources.GetLabel("app_witness(es)_text")%>:
+                            </td>
+                            <td class="align_left" valign="top">
+                                <asp:Button ID="btnAddWitness" runat="server" OnClientClick="Showpopup(this.id);"
+                                    CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_add_witness_button_text%>" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="div_padding_135">
+                    <asp:GridView ID="gvAddWitness" GridLines="None" CssClass="grid_table_850" CellPadding="0"
+                        CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name,c_name,c_contact_info"
+                        runat="server" AutoGenerateColumns="False" OnRowCommand="gvAddWitness_RowCommand"
+                        OnRowEditing="gvAddWitness_RowEditing">
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="width_230" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <%=LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
+                                        <%#Eval("c_name") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_300" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <%=LocalResources.GetLabel("app_contact_information_text")%>:&nbsp;&nbsp; &nbsp;
+                                    <b>
+                                        <%#Eval("c_contact_info") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewWitnessFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditWitnessFiles" OnClientClick="Showeditpopup('witness');" CommandName="Edit"
+                                        CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
+                                        Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRemoveWitnessFiles" OnClientClick="return confirmremove();" CommandName="Remove"
+                                        CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
+                                        Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="div_controls_from_left">
+                    <table>
+                        <tr>
+                            <td valign="top" class="font_1">
+                                <%=LocalResources.GetLabel("app_police_reports(s)_text")%>:
+                            </td>
+                            <td valign="top">
+                                <asp:Button ID="btnAddPoliceReport" OnClientClick="Showpopup(this.id);" runat="server"
+                                    Text="<%$ LabelResourceExpression: app_add_police_report_button_text %>" CssClass="cursor_hand" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="div_padding_135">
+                    <asp:GridView ID="gvPoliceReport" GridLines="None" CssClass="grid_table_850" CellPadding="0"
+                        CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name"
+                        runat="server" AutoGenerateColumns="False" OnRowCommand="gvPoliceReport_RowCommand"
+                        OnRowEditing="gvPoliceReport_RowEditing">
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="width_740" ItemStyle-HorizontalAlign="Left">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewPoliceReportFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditPoliceReportFiles" OnClientClick="Showeditpopup('policereport');"
+                                        CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRemovePoliceReportFiles" OnClientClick="return confirmremove();"
+                                        CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                                        CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="div_controls_from_left">
+                    <table>
+                        <tr>
+                            <td valign="top" class="font_1">
+                                <%=LocalResources.GetLabel("app_photo(s)_text")%>:
+                            </td>
+                            <td class="align_left" valign="top">
+                                <asp:Button ID="btnAddPhoto" OnClientClick="Showpopup(this.id);" runat="server" CssClass="cursor_hand"
+                                    Text="<%$ LabelResourceExpression: app_add_photo_button_text%>" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="div_padding_135">
+                    <asp:GridView ID="gvPhoto" GridLines="None" CssClass="grid_table_850" CellPadding="0"
+                        CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name"
+                        runat="server" AutoGenerateColumns="False" OnRowCommand="gvPhoto_RowCommand"
+                        OnRowEditing="gvPhoto_RowEditing">
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="width_740" ItemStyle-HorizontalAlign="Left">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewPhotoFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditPhotoFiles" CommandName="Edit" OnClientClick="Showeditpopup('photo');"
+                                        CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
+                                        Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRemovePhotoFiles" OnClientClick="return confirmremove();" CommandName="Remove"
+                                        CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
+                                        Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="div_controls_from_left">
+                    <table>
+                        <tr>
+                            <td valign="top" class="font_1">
+                                <%=LocalResources.GetLabel("app_scene_sketch(es)_text")%>:
+                            </td>
+                            <td valign="top">
+                                <asp:Button ID="btnAddSceneSketch" OnClientClick="Showpopup(this.id);" runat="server"
+                                    Text="<%$ LabelResourceExpression: app_add_scene_sketch_text%>" CssClass="cursor_hand" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="div_padding_135">
+                    <asp:GridView ID="gvSceneSketch" GridLines="None" CssClass="grid_table_850" CellPadding="0"
+                        CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name"
+                        runat="server" AutoGenerateColumns="False" OnRowCommand="gvSceneSketch_RowCommand"
+                        OnRowEditing="gvSceneSketch_RowEditing">
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="width_740" ItemStyle-HorizontalAlign="Left">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewSceneSketchFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditSceneSketchFiles" OnClientClick="Showeditpopup('scenesketch');"
+                                        CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRemoveSceneSketchFiles" OnClientClick="return confirmremove();"
+                                        CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                                        CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="div_controls_from_left">
+                    <table>
+                        <tr>
+                            <td valign="top" class="font_1">
+                                <%=LocalResources.GetLabel("app_extenuating_condition(s)_text")%>:
+                            </td>
+                            <td valign="top">
+                                <asp:Button ID="btnAddExtenuatingCondition" OnClientClick="Showpopup(this.id);" runat="server"
+                                    Text="<%$ LabelResourceExpression: app_add_extenuating_condition_button_text%>"
                                     CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <div class="div_controls_from_left">
-                <table>
-                    <tr>
-                        <td valign="top" class="font_1">
-                            <%=LocalResources.GetLabel("app_photo(s)_text")%>:
-                        </td>
-                        <td class="align_left" valign="top">
-                            <asp:Button ID="btnAddPhoto" OnClientClick="Showpopup(this.id);" runat="server" CssClass="cursor_hand"
-                                Text="<%$ LabelResourceExpression: app_add_photo_button_text%>" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div_padding_135">
-                <asp:GridView ID="gvPhoto" GridLines="None" CssClass="grid_table_850" CellPadding="0"
-                    CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name"
-                    runat="server" AutoGenerateColumns="False" OnRowCommand="gvPhoto_RowCommand"
-                    OnRowEditing="gvPhoto_RowEditing">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="width_740" ItemStyle-HorizontalAlign="Left">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnViewPhotoFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnEditPhotoFiles" CommandName="Edit" OnClientClick="Showeditpopup('photo');"
-                                    CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
-                                    Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnRemovePhotoFiles" OnClientClick="return confirmremove();" CommandName="Remove"
-                                    CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' runat="server"
-                                    Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <div class="div_controls_from_left">
-                <table>
-                    <tr>
-                        <td valign="top" class="font_1">
-                            <%=LocalResources.GetLabel("app_scene_sketch(es)_text")%>:
-                        </td>
-                        <td valign="top">
-                            <asp:Button ID="btnAddSceneSketch" OnClientClick="Showpopup(this.id);" runat="server"
-                                Text="<%$ LabelResourceExpression: app_add_scene_sketch_text%>" CssClass="cursor_hand" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div_padding_135">
-                <asp:GridView ID="gvSceneSketch" GridLines="None" CssClass="grid_table_850" CellPadding="0"
-                    CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name"
-                    runat="server" AutoGenerateColumns="False" OnRowCommand="gvSceneSketch_RowCommand"
-                    OnRowEditing="gvSceneSketch_RowEditing">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="width_740" ItemStyle-HorizontalAlign="Left">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnViewSceneSketchFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnEditSceneSketchFiles" OnClientClick="Showeditpopup('scenesketch');"
-                                    CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnRemoveSceneSketchFiles" OnClientClick="return confirmremove();"
-                                    CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text %>"
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="div_padding_135">
+                    <asp:GridView ID="gvExtenuatingcondition" GridLines="None" CssClass="grid_table_850"
+                        CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name,c_name,c_contact_info"
+                        runat="server" AutoGenerateColumns="False" OnRowCommand="gvExtenuatingcondition_RowCommand"
+                        OnRowEditing="gvExtenuatingcondition_RowEditing">
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="width_230" ItemStyle-HorizontalAlign="Left">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <%=LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
+                                        <%#Eval("c_name") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_300" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <%=LocalResources.GetLabel("app_contact_information_text")%>:&nbsp;&nbsp; &nbsp;
+                                    <b>
+                                        <%#Eval("c_contact_info") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewExtenuatingConditionFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditExtenuatingConditionFiles" OnClientClick="Showeditpopup('extenuatingcondition');"
+                                        CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRemoveExtenuatingConditionFiles" OnClientClick="return confirmremove();"
+                                        CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <div class="div_controls_from_left">
+                    <table>
+                        <tr>
+                            <td valign="top" class="font_1">
+                                <%=LocalResources.GetLabel("app_employee_interview(s)_text")%>
+                                :
+                            </td>
+                            <td valign="top">
+                                <asp:Button ID="btnAddEmployeeInterview" OnClientClick="Showpopup(this.id);" runat="server"
+                                    Text="<%$ LabelResourceExpression: app_add_employee_interview_button_text%>"
                                     CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="div_padding_135">
+                    <asp:GridView ID="gvEmployeeInterview" GridLines="None" CssClass="grid_table_850"
+                        CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name,c_name,c_contact_info"
+                        runat="server" AutoGenerateColumns="False" OnRowCommand="gvEmployeeInterview_RowCommand"
+                        OnRowEditing="gvEmployeeInterview_RowEditing">
+                        <Columns>
+                            <asp:TemplateField ItemStyle-CssClass="width_230" ItemStyle-HorizontalAlign="Left">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <%=LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
+                                        <%#Eval("c_name") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_300" ItemStyle-HorizontalAlign="Left"
+                                ItemStyle-VerticalAlign="Top">
+                                <ItemTemplate>
+                                    <%=LocalResources.GetLabel("app_contact_information_text")%>
+                                    :&nbsp;&nbsp; &nbsp; <b>
+                                        <%#Eval("c_contact_info") %></b>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnViewEmployeeInterviewFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditEmployeeInterviewFiles" OnClientClick="Showeditpopup('employeeinterview');"
+                                        CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRemoveEmployeeInterviewsFiles" OnClientClick="return confirmremove();"
+                                        CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
+                                        runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" CssClass="cursor_hand" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
             </div>
-            <div class="div_controls_from_left">
-                <table>
-                    <tr>
-                        <td valign="top" class="font_1">
-                            <%=LocalResources.GetLabel("app_extenuating_condition(s)_text")%>:
-                        </td>
-                        <td valign="top">
-                            <asp:Button ID="btnAddExtenuatingCondition" OnClientClick="Showpopup(this.id);" runat="server"
-                                Text="<%$ LabelResourceExpression: app_add_extenuating_condition_button_text%>"
-                                CssClass="cursor_hand" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div_padding_135">
-                <asp:GridView ID="gvExtenuatingcondition" GridLines="None" CssClass="grid_table_850"
-                    CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name,c_name,c_contact_info"
-                    runat="server" AutoGenerateColumns="False" OnRowCommand="gvExtenuatingcondition_RowCommand"
-                    OnRowEditing="gvExtenuatingcondition_RowEditing">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="width_230" ItemStyle-HorizontalAlign="Left">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <%=LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
-                                    <%#Eval("c_name") %></b>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_300" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <%=LocalResources.GetLabel("app_contact_information_text")%>:&nbsp;&nbsp; &nbsp;
-                                <b>
-                                    <%#Eval("c_contact_info") %></b>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnViewExtenuatingConditionFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnEditExtenuatingConditionFiles" OnClientClick="Showeditpopup('extenuatingcondition');"
-                                    CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnRemoveExtenuatingConditionFiles" OnClientClick="return confirmremove();"
-                                    CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <div class="div_controls_from_left">
-                <table>
-                    <tr>
-                        <td valign="top" class="font_1">
-                            <%=LocalResources.GetLabel("app_employee_interview(s)_text")%>
-                            :
-                        </td>
-                        <td valign="top">
-                            <asp:Button ID="btnAddEmployeeInterview" OnClientClick="Showpopup(this.id);" runat="server"
-                                Text="<%$ LabelResourceExpression: app_add_employee_interview_button_text%>"
-                                CssClass="cursor_hand" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="div_padding_135">
-                <asp:GridView ID="gvEmployeeInterview" GridLines="None" CssClass="grid_table_850"
-                    CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" DataKeyNames="c_file_guid,c_file_name,c_name,c_contact_info"
-                    runat="server" AutoGenerateColumns="False" OnRowCommand="gvEmployeeInterview_RowCommand"
-                    OnRowEditing="gvEmployeeInterview_RowEditing">
-                    <Columns>
-                        <asp:TemplateField ItemStyle-CssClass="width_230" ItemStyle-HorizontalAlign="Left">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkFileName" CommandName="Download" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text='<%#Eval("c_file_name") %>' CssClass="cursor_hand"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <%=LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
-                                    <%#Eval("c_name") %></b>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_300" ItemStyle-HorizontalAlign="Left"
-                            ItemStyle-VerticalAlign="Top">
-                            <ItemTemplate>
-                                <%=LocalResources.GetLabel("app_contact_information_text")%>
-                                :&nbsp;&nbsp; &nbsp; <b>
-                                    <%#Eval("c_contact_info") %></b>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnViewEmployeeInterviewFiles" CommandName="View" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_view_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnEditEmployeeInterviewFiles" OnClientClick="Showeditpopup('employeeinterview');"
-                                    CommandName="Edit" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:Button ID="btnRemoveEmployeeInterviewsFiles" OnClientClick="return confirmremove();"
-                                    CommandName="Remove" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
-                                    runat="server" Text="<%$ LabelResourceExpression: app_remove_button_text%>" CssClass="cursor_hand" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <br />
-            <br />
-            <div class="div_header_long">
-                <%=LocalResources.GetLabel("app_root_cause_analysis_infornation_text")%>:
-            </div>
-            <br />
-            <div class="div_long_textbox  font_1">
-                <%=LocalResources.GetLabel("app_root_cause_analysis_details_text")%>:
-                <br />
-                <br />
-                <asp:TextBox ID="txtRootCauseAnalysisDetails" Rows="5" cols="125" runat="server"
-                    CssClass="textarea_long_width" TextMode="MultiLine"></asp:TextBox>
-            </div>
-            <br />
-            <div class="div_header_long">
-                <%=LocalResources.GetLabel("app_corrective_action_information_text")%>:
-            </div>
-            <br />
-            <div class="div_long_textbox font_1">
-                <%=LocalResources.GetLabel("app_corrective_action_details_text")%>:
-                <br />
-                <br />
-                <asp:TextBox ID="txtCorrectiveActionDetails" Rows="5" cols="125" runat="server" CssClass="textarea_long_width"
-                    TextMode="MultiLine"></asp:TextBox>
-            </div>
-            <br />
+         
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_custom_fields_text")%>:
+                 <div class="right div_padding_10">
+                    <asp:ImageButton OnClientClick="expandDetailsCustomFilds(this);return false;"
+                        runat="server" ID="imgcustomfilds" ImageUrl="~/Images/addplus-sm.gif" />
+                </div>
             </div>
             <br />
-            <div class="div_controls font_1">
+            <div class="div_controls font_1 msg_display" id="div_custom_filds" runat="server">
                 <table>
                     <tr>
                         <td>
@@ -3205,6 +3239,32 @@
                     </tr>
                 </table>
             </div>
+         
+            <div class="div_header_long">
+                <%=LocalResources.GetLabel("app_root_cause_analysis_infornation_text")%>:
+            </div>
+            <br />
+            <div class="div_long_textbox  font_1">
+                <%=LocalResources.GetLabel("app_root_cause_analysis_details_text")%>:
+                <br />
+                <br />
+                <asp:TextBox ID="txtRootCauseAnalysisDetails" Rows="5" cols="125" runat="server"
+                    CssClass="textarea_long_width" TextMode="MultiLine"></asp:TextBox>
+            </div>
+            <br />
+            <div class="div_header_long">
+                <%=LocalResources.GetLabel("app_corrective_action_information_text")%>:
+            </div>
+            <br />
+            <div class="div_long_textbox font_1">
+                <%=LocalResources.GetLabel("app_corrective_action_details_text")%>:
+                <br />
+                <br />
+                <asp:TextBox ID="txtCorrectiveActionDetails" Rows="5" cols="125" runat="server" CssClass="textarea_long_width"
+                    TextMode="MultiLine"></asp:TextBox>
+            </div>
+            <br />
+       
             <div class="div_header_long">
                 <br />
             </div>
@@ -3281,8 +3341,8 @@
         <asp:HiddenField ID="hdExtenautingcond" runat="server" />
         <asp:HiddenField ID="hdEmployeeInterview" runat="server" />
         <asp:Button ID="btnUploadFile" runat="server" CssClass="cursor_hand" Style="display: none;" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <div class="uploadpopup_header">
@@ -3371,8 +3431,8 @@
         </asp:Panel>
         <asp:Button ID="btnpnlCompleteCase" runat="server" Style="display: none;" />
         <div class="font_normal">
-            <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
-                padding-left: 0px;  padding-right: 0px;">
+            <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+                Style="display: none; padding-left: 0px; padding-right: 0px;">
                 <asp:Panel ID="pnlCompleteCasePageHeading" runat="server" CssClass="drag">
                     <div>
                         <div class="div_header_620">

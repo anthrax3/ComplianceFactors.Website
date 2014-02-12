@@ -175,7 +175,7 @@
     </script>
     <div id="content">
         <div id="divError" runat="server" class="msgarea_error" style="display: none;">
-            Section shold not empty;Please add atleast one course.
+            Section should not empty;Please add atleast one course.
         </div>
         <div class="div_header_870">
             <%=LocalResources.GetLabel("app_curriculum_path_information_text")%>:
