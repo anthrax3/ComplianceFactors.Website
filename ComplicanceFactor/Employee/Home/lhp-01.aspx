@@ -129,7 +129,8 @@
 
             $(".courseviewdetails").click(function () {
                 //Get the Id of the record to delete
-                var record_id = $(this).attr("id");
+                //var record_id = $(this).attr("id");
+                var element = $(this).attr("id").split(",");
                 //Get the GridView Row reference
                 var tr_id = $(this).parents("#.record");
                 $.fancybox({
@@ -149,7 +150,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Employee/Course/lvcd-01.aspx?id=' + record_id,
+                    'href': '/Employee/Course/lvcd-01.aspx?id=' + element[0] + '&eid=' + element[1],
                     'onComplete': function () {
                         $.fancybox.showActivity();
                         $('#fancybox-frame').load(function () {
@@ -357,7 +358,7 @@
                     <ItemTemplate>
                         <%--                        <asp:Button ID="btnViewDetail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                             CommandName="View" runat="server" Text="View Details"/>--%>
-                        <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$LabelResourceExpression: app_view_details_button_text %>" />'
+                        <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>,<%# Eval("e_enroll_system_id_pk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$LabelResourceExpression: app_view_details_button_text %>" />'
                             class="courseviewdetails cursor_hand" />
                     </ItemTemplate>
                 </asp:TemplateField>

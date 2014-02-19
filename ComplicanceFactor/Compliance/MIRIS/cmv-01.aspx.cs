@@ -338,7 +338,16 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 if (!string.IsNullOrEmpty(user.u_social_security_no))
                 {
                     txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
+
                 }
+                else
+                {
+                    txtLastFourDigitOfSSN.Text = "";
+                }
+                ddlHireMonth.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Month.ToString() : "";
+                ddlHireYear.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Year.ToString() : "-1";
+                doh_hire_day.SelectedIndex = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Day : 0;
+                txtEmployeeId.Text = user.Hris_employeid;
                 Session["Case_Employee"] = null;
             }
         }
@@ -1520,6 +1529,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 DateTime birthDate = new DateTime(year, month, day);
                 insertCase.c_employee_dob = birthDate;
 
+                insertCase.c_date_in_title =  Convert.ToDateTime(txtDateInTitle.Text,culture);
 
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
@@ -2210,6 +2220,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
             try
             {
                 miris = ComplianceBLL.GetCaseMV(caseid);
+                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 ddlTimezone.SelectedValue = miris.c_timezoneId;
                 lblCaseDate.Text = Convert.ToDateTime(miris.c_case_date).ToString("MM/dd/yyyy hh:mm tt");
                 lblCaseNumber.Text = miris.c_case_number;
@@ -2826,7 +2837,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
                 insertCase.c_case_status = CaseStatus;
                 insertCase.c_employee_name = txtEmployeeName.Text;
-
+                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
                 int day = Convert.ToInt32(dob_day.Items[dob_day.SelectedIndex].Value);
                 int month = Convert.ToInt16(ddlMonth.SelectedValue);
                 int year = Convert.ToInt32(ddlYear.SelectedValue);

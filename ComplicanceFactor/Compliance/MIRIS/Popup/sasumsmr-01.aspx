@@ -143,6 +143,12 @@
                         <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
                             HeaderStyle-HorizontalAlign="Left" DataField="u_hris_employee_id" HeaderText="Employee Id"
                             SortExpression="Domain" />
+                             <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
+                            HeaderStyle-HorizontalAlign="Left" DataField="u_hris_hire_date" HeaderText="Date of Hire" DataFormatString="{0:MM/dd/yyyy}"
+                              />
+                             <asp:BoundField HeaderStyle-CssClass="gridview_row_width_2" ItemStyle-CssClass="gridview_row_width_2"
+                            HeaderStyle-HorizontalAlign="Left" DataField="u_social_security_no" HeaderText="Last 4 of SS#"
+                              />
                         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                             ItemStyle-HorizontalAlign="Center">
                             <HeaderTemplate>

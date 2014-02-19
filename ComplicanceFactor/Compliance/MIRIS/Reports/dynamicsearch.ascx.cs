@@ -104,7 +104,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                                 s_establishment_id_pk = "",
                                 s_establishment_city = "",
                                 s_establishment_name = "",
-                                s_establishment_status_id_fk = "0"
+                                s_establishment_status_id_fk = "app_ddl_active_text"
                             });
 
                             ddl.DataTextField = "s_establishment_name";

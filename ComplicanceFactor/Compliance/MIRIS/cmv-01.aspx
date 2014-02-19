@@ -1120,14 +1120,17 @@
                         <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                        <asp:RequiredFieldValidator ID="rfvDateInTitle" runat="server" ValidationGroup="cmv"
+                            ControlToValidate="txtDateInTitle" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
-                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                        <%=LocalResources.GetLabel("app_date_in_title")%>:
                     </td>
                     <td class="align_left">
-                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                     <asp:CalendarExtender ID="ceDateInTitle" Format="MM/dd/yyyy" TargetControlID="txtDateInTitle"
+                            runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtDateInTitle" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -1198,11 +1201,15 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_note_text")%>:
+                     <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="cmv"
+                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        *
+                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                 </tr>
                 <tr id="trAddEstablishment" runat="server" visible="false">
@@ -1210,6 +1217,22 @@
                     </td>
                     <td>
                         <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%=LocalResources.GetLabel("app_note_text")%>:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                     <td>
                     </td>
@@ -3130,12 +3153,11 @@
                     </asp:GridView>
                 </div>
             </div>
-         
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_custom_fields_text")%>:
-                 <div class="right div_padding_10">
-                    <asp:ImageButton OnClientClick="expandDetailsCustomFilds(this);return false;"
-                        runat="server" ID="imgcustomfilds" ImageUrl="~/Images/addplus-sm.gif" />
+                <div class="right div_padding_10">
+                    <asp:ImageButton OnClientClick="expandDetailsCustomFilds(this);return false;" runat="server"
+                        ID="imgcustomfilds" ImageUrl="~/Images/addplus-sm.gif" />
                 </div>
             </div>
             <br />
@@ -3239,7 +3261,6 @@
                     </tr>
                 </table>
             </div>
-         
             <div class="div_header_long">
                 <%=LocalResources.GetLabel("app_root_cause_analysis_infornation_text")%>:
             </div>
@@ -3264,7 +3285,6 @@
                     TextMode="MultiLine"></asp:TextBox>
             </div>
             <br />
-       
             <div class="div_header_long">
                 <br />
             </div>

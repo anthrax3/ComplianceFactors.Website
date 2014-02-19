@@ -7,6 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+       <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -23,6 +25,43 @@
 
                 $('#app_nav_compliance').addClass('selected');
                 return false;
+            });
+            $(".addEmployee").click(function () {
+
+                $(".addEmployee").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 733,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'Popup/sasumsm-01.aspx',
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+
+                            })
+                        });
+
+                    }
+
+                });
+
             });
         });
 
@@ -516,6 +555,8 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                           <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="ccemiris" CssClass="addEmployee cursor_hand"
+                            Text="Select Employee" />
                     </td>
                     <td>
                         *
@@ -651,16 +692,20 @@
                     <td class="align_left">
                         <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="ccemiris"
-                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                      <td>
+                        <asp:RequiredFieldValidator ID="rfvDateInTitle" runat="server" ValidationGroup="cmv"
+                            ControlToValidate="txtDateInTitle" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
-                        <%=LocalResources.GetLabel("app_supervisor_text")%>
+                        <%=LocalResources.GetLabel("app_date_in_title")%>:
                     </td>
                     <td class="align_left">
-                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                        <asp:CalendarExtender ID="ceDateInTitle" Format="MM/dd/yyyy" TargetControlID="txtDateInTitle"
+                            runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtDateInTitle" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
+                   
                 </tr>
                 <tr>
                     <td>
@@ -708,13 +753,14 @@
                 <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvEmployeeReportLocation" runat="server" ValidationGroup="ccemiris"
-                            ControlToValidate="txtEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
+                            ControlToValidate="ddlEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
                         <%=LocalResources.GetLabel("app_employee_report_location_text")%>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtEmployeeReportLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                          <asp:DropDownList ID="ddlEmployeeReportLocation" CssClass="ddl_user_advanced_search"
+                        runat="server">  </asp:DropDownList>
                     </td>
                     <td>
                         *
@@ -730,11 +776,48 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
+                   
                     <td>
+                        <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="ccemiris"
+                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        *
+                        <%=LocalResources.GetLabel("app_supervisor_text")%>
+                    </td>
+                     <td class="align_left">
+                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                   
+                </tr>
+                 <tr id="trAddEstablishment" runat="server" visible="false">
+                    <td>
+                    </td>
+                    <td>
+                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                 <td>
                         <%=LocalResources.GetLabel("app_note_text")%>
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    </td>
+                       <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
                     </td>
                 </tr>
                 <tr>

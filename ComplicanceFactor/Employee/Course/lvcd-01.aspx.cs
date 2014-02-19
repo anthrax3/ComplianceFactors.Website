@@ -22,6 +22,7 @@ namespace ComplicanceFactor.Employee.Course
                 if (!IsPostBack)
                 {
                     PopulateCourse(Request.QueryString["id"]);
+                    PopulateEnrollment(Request.QueryString["eid"]);
                 }
             }
             catch (Exception ex)
@@ -73,7 +74,24 @@ namespace ComplicanceFactor.Employee.Course
             //using jquery hide the '-or-' in last row
             Page.ClientScript.RegisterStartupScript(this.GetType(), "RemoveCel", "RemoveLastTableCell();", true);
         }
-
+        private void PopulateEnrollment(string enrollId)
+        {
+            DataTable dtEnroll = EmployeeBLL.GetEnrollmentbyId(enrollId);
+            if (dtEnroll != null)
+            {
+                if (dtEnroll.Rows.Count > 0)
+                {
+                    if (dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"] != null)
+                    {
+                        lblFirstAttepmt.Text = dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"].ToString();
+                    }
+                    if (dtEnroll.Rows[0]["e_enroll_last_attempt_date_time"] != null)
+                    {
+                        lblLastAttempt.Text = dtEnroll.Rows[0]["e_enroll_last_attempt_date_time"].ToString();
+                    }
+                }
+            }
+        }
         protected void gvSession_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

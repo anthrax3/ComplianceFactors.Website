@@ -66,7 +66,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public DateTime? c_osha_300_date_of_death { get; set; }
         public string c_osha_300_type_of_illness { get; set; }
         public string u_time_zone_display { get; set; }
-
+        public DateTime? c_date_in_title { get; set; }
 
         // Case details OI and MVI 
 

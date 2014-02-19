@@ -93,13 +93,16 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="MassEnrollment/samep-01.aspx"><%=LocalResources.GetLabel("app_mass_enrollment_text")%></a>
+                        <a href="MassEnrollment/samep-01.aspx">
+                            <%=LocalResources.GetLabel("app_mass_enrollment_text")%></a>
                     </td>
                     <td>
-                       <a href="Approvals/samamp-01.aspx"><%=LocalResources.GetLabel("app_manage_approvals_queue_text")%></a>
+                        <a href="Approvals/samamp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_approvals_queue_text")%></a>
                     </td>
                     <td>
-                       <a href="Waitlist/samwmp-01.aspx"><%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
+                        <a href="Waitlist/samwmp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_waitlists_text")%></a>
                     </td>
                 </tr>
                 <tr>
@@ -117,9 +120,8 @@
                             <%=LocalResources.GetLabel("app_manage_assignment_rules_text")%></a>
                     </td>
                     <td>
-                       <a href="Audiences/samaudmp-01.aspx">
-                           <%=LocalResources.GetLabel("app_manage_audiences_text")%></a>
-                      
+                        <a href="Audiences/samaudmp-01.aspx">
+                            <%=LocalResources.GetLabel("app_manage_audiences_text")%></a>
                     </td>
                 </tr>
                 <tr>
@@ -134,7 +136,8 @@
                         </a>
                     </td>
                     <td>
-                        <a href="MassCompletions/samcp-01.aspx"><%=LocalResources.GetLabel("app_mass_completions_text")%></a>
+                        <a href="MassCompletions/samcp-01.aspx">
+                            <%=LocalResources.GetLabel("app_mass_completions_text")%></a>
                     </td>
                     <td>
                         <a href="UpdateCurriculumStatuses/saucsp-01.aspx">
@@ -142,7 +145,19 @@
                         </a>
                     </td>
                 </tr>
-               <%-- <tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="MassRemoval/samremp-01.aspx">
+                            Mass Removal
+                        </a>
+                    </td>
+                </tr>
+                <%-- <tr>
                     <td colspan="3">
                         &nbsp;
                     </td>

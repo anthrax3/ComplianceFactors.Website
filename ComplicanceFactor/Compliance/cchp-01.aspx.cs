@@ -24,6 +24,7 @@ namespace ComplicanceFactor.Compliance
         private static string caseNumber;
         protected void Page_Load(object sender, EventArgs e)
         {
+            mrp1.flag = ReportEnum.Compliance;
             if (!IsPostBack)
             {
 

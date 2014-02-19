@@ -17,7 +17,7 @@ namespace ComplicanceFactor.Compliance
       
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            mrp1.flag = ReportEnum.Compliance;
        
           
         }

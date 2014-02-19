@@ -90,6 +90,19 @@
                         &nbsp;
                     </td>
                 </tr>
+                  <tr>
+                    <td>
+                        <%=LocalResources.GetLabel("app_first_attempt_text")%>:
+                        <asp:Label ID="lblFirstAttepmt" runat="server"></asp:Label>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_last_attempt_text")%>:
+                        <asp:Label ID="lblLastAttempt" runat="server"></asp:Label>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="div_header_700">

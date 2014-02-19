@@ -1556,6 +1556,7 @@
     </Compile>
     <Compile Include="Common\BreadCrumb.cs" />
     <Compile Include="Common\ConvertDataTables.cs" />
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\ExcelUtility.cs" />
     <Compile Include="Common\Languages\GlobalResourceExpression.cs" />
     <Compile Include="Common\Languages\LabelResourceExpression.cs" />

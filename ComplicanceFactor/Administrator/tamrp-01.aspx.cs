@@ -9,6 +9,7 @@ namespace ComplicanceFactor.Administrator
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            mrp1.flag = ReportEnum.Administrator;
             SessionWrapper.navigationText = "app_nav_admin";
 
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");

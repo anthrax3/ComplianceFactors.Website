@@ -319,22 +319,31 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.TextBox txtLastFourDigitOfSSN;
         
         /// <summary>
-        /// rfvsupervisor control.
+        /// rfvDateInTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvsupervisor;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDateInTitle;
         
         /// <summary>
-        /// txtSupervisor control.
+        /// ceDateInTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSupervisor;
+        protected global::AjaxControlToolkit.CalendarExtender ceDateInTitle;
+        
+        /// <summary>
+        /// txtDateInTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateInTitle;
         
         /// <summary>
         /// rfvIncidentLocation control.
@@ -454,13 +463,22 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.DropDownList ddlTimezone;
         
         /// <summary>
-        /// txtNote control.
+        /// rfvsupervisor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvsupervisor;
+        
+        /// <summary>
+        /// txtSupervisor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupervisor;
         
         /// <summary>
         /// trAddEstablishment control.
@@ -470,6 +488,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trAddEstablishment;
+        
+        /// <summary>
+        /// txtNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNote;
         
         /// <summary>
         /// ddlEstablishment control.

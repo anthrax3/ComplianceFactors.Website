@@ -322,7 +322,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlSearchCaseCategory" DataValueField="c_category_id" DataTextField="c_category_name"
-                            CssClass="ddl_user_advanced_search" runat="server">
+                         AutoPostBack="true"   CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlSearchCaseCategory_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
                     <td>

@@ -18,6 +18,7 @@ namespace ComplicanceFactor.Administrator
         DataSet dsAdministrator = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
+            mrp1.flag = ReportEnum.Administrator;
             if (!IsPostBack)
             {
 

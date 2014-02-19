@@ -12,8 +12,10 @@ using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.MIRIS.Reports
 {
+    
     public partial class mrp_01 : System.Web.UI.UserControl
     {
+        public ReportEnum flag;
         public ComplicanceFactor.Compliance.MIRIS.Reports.dynamicsearch dynamicsearch1;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +43,10 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 DataTable dtReport = new DataTable();
                 report.s_report_on_off_flag = true;
                 dtReport = MyReportBLL.SearchReport(SessionWrapper.u_userid);
+                DataView dv = dtReport.DefaultView;
+
+                
+                
                 dtReport.Columns.Add("s_report_name_id");
                 dtReport.Columns.Add("s_report_users_when_to_run_text");
                 foreach (DataRow row in dtReport.Rows)
@@ -68,8 +74,28 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                             break;
                     }
                 }
-
-                gvMyReports.DataSource = dtReport;
+                switch (flag)
+                {
+                    case ReportEnum.Administrator:
+                        dv.RowFilter = "s_report_admin_flag = 1";
+                        break;
+                    case ReportEnum.Compliance:
+                        dv.RowFilter = "s_report_compliance_flag = 1";
+                        break;
+                    case ReportEnum.Coordinator:
+                        dv.RowFilter = "s_report_coordinator_flag = 1";
+                        break;
+                    case ReportEnum.Instructor:
+                        dv.RowFilter = "s_report_instructor_flag = 1";
+                        break;
+                    case ReportEnum.Manager:
+                        dv.RowFilter = "s_report_manager_flag = 1";
+                        break;
+                    default:
+                        dv.RowFilter = "1<>1";
+                        break;
+                }
+                gvMyReports.DataSource = dv;
                 gvMyReports.DataBind();
                 gvMyReports.UseAccessibleHeader = true;
                 if (gvMyReports.HeaderRow != null)

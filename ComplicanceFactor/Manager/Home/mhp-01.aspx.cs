@@ -33,7 +33,7 @@ namespace ComplicanceFactor.Manager
         DataSet dsManager = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            mrp1.flag = ReportEnum.Manager;
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(SessionWrapper.u_userid))

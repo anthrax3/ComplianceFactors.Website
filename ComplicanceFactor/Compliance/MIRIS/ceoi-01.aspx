@@ -56,6 +56,43 @@
                 }
 
             });
+            $(".addEmployee").click(function () {
+
+                $(".addEmployee").fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 733,
+                    'height': 200,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'Popup/sasumsm-01.aspx',
+                    'onComplete': function () {
+                        $.fancybox.showActivity();
+                        $('#fancybox-frame').load(function () {
+                            $.fancybox.hideActivity();
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
+
+
+                            })
+                        });
+
+                    }
+
+                });
+
+            });
         });
 
     </script>
@@ -782,6 +819,8 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                         <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
+                            Text="Select Employee" />
                     </td>
                     <td>
                         <%--<asp:RequiredFieldValidator ID="rfvDateofBirth" runat="server" ValidationGroup="ceoi"
@@ -924,16 +963,20 @@
                     <td class="align_left">
                         <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="ceoi"
-                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                     <td>
+                        <asp:RequiredFieldValidator ID="rfvDateInTitle" runat="server" ValidationGroup="cmv"
+                            ControlToValidate="txtDateInTitle" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
-                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                        <%=LocalResources.GetLabel("app_date_in_title")%>:
                     </td>
                     <td class="align_left">
-                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                     <asp:CalendarExtender ID="ceDateInTitle" Format="MM/dd/yyyy" TargetControlID="txtDateInTitle"
+                            runat="server">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtDateInTitle" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
+                   
                 </tr>
                 <tr>
                     <td>
@@ -1003,12 +1046,17 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_note_text")%>:
+                     <td>
+                        <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="ceoi"
+                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        *
+                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
                     </td>
                     <td class="align_left">
-                        <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
+                  
                 </tr>
                 <tr id="trAddEstablishment" runat="server" visible="false">
                     <td>
@@ -1017,6 +1065,22 @@
                         <input type="button" id="btnAddEstablishment" value='Add Establishment' />
                     </td>
                     <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                        <%=LocalResources.GetLabel("app_note_text")%>:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    </td>
+                     <td>
                     </td>
                     <td>
                     </td>

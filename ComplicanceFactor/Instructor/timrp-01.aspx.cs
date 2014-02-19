@@ -13,6 +13,7 @@ namespace ComplicanceFactor.Instructor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            mrp1.flag = ReportEnum.Instructor;
             SessionWrapper.navigationText = "app_nav_instructor";
             Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
             lblBreadCrumb.Text = "<a href=/Instructor/tihp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_instructor") + "</a>" + " >&nbsp;" + "<a href=/Instructor/tihp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetLabel("app_my_reports_text") + "</a>";

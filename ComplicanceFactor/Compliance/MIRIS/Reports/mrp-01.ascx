@@ -1,31 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="mrp-01.ascx.cs" Inherits="ComplicanceFactor.Compliance.MIRIS.Reports.mrp_01" %>
 <script type="text/javascript">
 
-    $(document).ready(function () {
-        $('#app_nav_compliance').addClass('selected');
-        // toggles the slickbox on clicking the noted link  
-        $('.main_menu li a').hover(function () {
-
-            $('.main_menu li a').removeClass('selected');
-            $(this).addClass('active');
-
-            return false;
-        });
-        $('.main_menu li a').mouseleave(function () {
-
-            $('#app_nav_compliance').addClass('selected');
-            return false;
-        });
-        $(function () {
-
-            $('#<%=gvMyReports.ClientID %>')
-			.tablesorter({ headers: { 3: { sorter: false }, 6: { sorter: false}} });
-
-
-        });
-
-
-    });
     function lastview(url) {
 
         var h = '';
@@ -156,7 +131,7 @@
 
   
 </script>
-<asp:GridView ID="gvMyReports" CellPadding="0" CellSpacing="0" CssClass="gridview_long tablesorter"
+<asp:GridView ID="gvMyReports" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
     runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
     DataKeyNames="s_report_id_pk,s_report_users_system_id_pk,s_report_system_id_pk,s_report_name"
     AutoGenerateColumns="False" AllowPaging="true" EmptyDataRowStyle-CssClass="empty_row"
@@ -182,7 +157,7 @@
             HeaderText="Recurrence" DataField='s_report_users_when_to_run_text'
             HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_2"
-            HeaderText="<%$ LabelResourceExpression: app_run_date_text %>" DataField='s_report_users_when_to_run'
+            HeaderText="<%$ LabelResourceExpression: app_run_date_text %>"
             HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
         <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_7" ItemStyle-CssClass="gridview_row_width_3"
             HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">

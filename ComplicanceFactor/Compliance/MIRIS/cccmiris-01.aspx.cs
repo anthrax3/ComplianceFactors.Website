@@ -57,15 +57,26 @@ namespace ComplicanceFactor.Compliance
                     //search category
                     ddlSearchCaseCategory.DataSource = ComplianceBLL.GetMirisAllCaseCategory(SessionWrapper.CultureName, "cccmiris-01");
                     ddlSearchCaseCategory.DataBind();
+                    string searchCaseCategory = GetBracketText(ddlSearchCaseCategory.SelectedItem.Text);
+                    if (searchCaseCategory == "MV")
+                    {
+                        ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
+                        ddlSearchCaseTypes.DataBind();
+                    }
+                    else
+                    {
+                        ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisCaseType(SessionWrapper.CultureName, "cccmiris-01");
+                        ddlSearchCaseTypes.DataBind();
+                        ddlSearchCaseTypes.SelectedValue = "app_ddl_recordable_text";
+                    }
+
                     //ddlSearchCaseCategory.Items.Insert(0, liAll);
                     //Search status
                     ddlSearchCaseStatus.DataSource = ComplianceBLL.GetMirisCaseAllStatus(SessionWrapper.CultureName, "cccmiris-01");
                     ddlSearchCaseStatus.DataBind();
                     //ddlSearchCaseStatus.Items.Insert(0, liAll);
-                    //search type
-                    ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisAllCaseType(SessionWrapper.CultureName, "cccmiris-01");
-                    ddlSearchCaseTypes.DataBind();
-                    //ddlSearchCaseTypes.Items.Insert(0, liAll);
+                    
+                 
                 }
                 catch (Exception ex)
                 {
@@ -799,6 +810,21 @@ namespace ComplicanceFactor.Compliance
                 ddlCaseTypes.DataSource = ComplianceBLL.GetMirisCaseType(SessionWrapper.CultureName, "cccmiris-01");
                 ddlCaseTypes.DataBind();
                 ddlCaseTypes.SelectedValue = "app_ddl_recordable_text";
+            }
+        }
+        protected void ddlSearchCaseCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string caseCategory = GetBracketText(ddlSearchCaseCategory.SelectedItem.Text);
+            if (caseCategory == "MV")
+            {
+                ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
+                ddlSearchCaseTypes.DataBind();
+            }
+            else
+            {
+                ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisCaseType(SessionWrapper.CultureName, "cccmiris-01");
+                ddlSearchCaseTypes.DataBind();
+                ddlSearchCaseTypes.SelectedValue = "app_ddl_recordable_text";
             }
         }
 

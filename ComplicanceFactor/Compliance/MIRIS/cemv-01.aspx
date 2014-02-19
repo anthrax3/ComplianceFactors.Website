@@ -10,7 +10,7 @@
     <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.watermark.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.timepicker.js" type="text/javascript"></script>
-     <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
+    <script src="../../../Scripts/jquery.fancybox.js" type="text/javascript"></script>
     <link href="../../../Scripts/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
 
@@ -923,8 +923,8 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
-                     <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
-                Text="Select Employee" />
+                    <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
+                        Text="Select Employee" />
                 </td>
                 <td>
                     *
@@ -1061,14 +1061,17 @@
                     <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="cemv"
-                        ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                    <asp:RequiredFieldValidator ID="rfvDateInTitle" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtDateInTitle" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
                     </asp:RequiredFieldValidator>
                     *
-                    <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                    <%=LocalResources.GetLabel("app_date_in_title")%>:
                 </td>
                 <td class="align_left">
-                    <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    <asp:CalendarExtender ID="ceDateInTitle" Format="MM/dd/yyyy" TargetControlID="txtDateInTitle"
+                        runat="server">
+                    </asp:CalendarExtender>
+                    <asp:TextBox ID="txtDateInTitle" runat="server" CssClass="textbox_width"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1140,18 +1143,37 @@
                     </asp:UpdatePanel>
                 </td>
                 <td>
+                    <asp:RequiredFieldValidator ID="rfvsupervisor" runat="server" ValidationGroup="cemv"
+                        ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                </td>
+                <td class="align_left">
+                    <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+            </tr>
+            <tr id="trAddEstablishment" runat="server" visible="false">
+                <td>
+                </td>
+                <td>
+                    <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <%=LocalResources.GetLabel("app_note_text")%>:
                 </td>
                 <td class="align_left">
                     <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
-                </td>
-            </tr>
-            <tr id="trAddEstablishment" runat="server"  Visible = "false">
-                <td>
-                  
-                </td>
-                <td>
-                  <input type="button" id="btnAddEstablishment" value='Add Establishment' />
                 </td>
                 <td>
                 </td>

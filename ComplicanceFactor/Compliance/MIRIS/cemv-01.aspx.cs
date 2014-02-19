@@ -274,6 +274,14 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
                 }
+                else
+                {
+                    txtLastFourDigitOfSSN.Text = "";
+                }
+                ddlHireMonth.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Month.ToString() : "";
+                ddlHireYear.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Year.ToString() : "-1";
+                doh_hire_day.SelectedIndex = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Day : 0;
+                txtEmployeeId.Text = user.Hris_employeid;
                 Session["Case_Employee"] = null;
             }
         }
@@ -524,7 +532,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //txtDateOfBirth.Text = Convert.ToDateTime(miris.c_employee_dob, culture).ToString("MM/dd/yyyy");
                 //txtEmployeHireDate.Text = Convert.ToDateTime(miris.c_employee_hire_date, culture).ToString("MM/dd/yyyy");
                 txtEmployeeId.Text = miris.c_employee_id;
-               
+                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 txtSupervisor.Text = miris.c_supervisor;
                 txtIncidentLocation.Text = miris.c_incident_location;
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date, culture).ToString("MM/dd/yyyy");
@@ -2154,7 +2162,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
                 DateTime birthDate = new DateTime(year, month, day);
                 updateCase.c_employee_dob = birthDate;
-
+                updateCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
                 int hireyear = Convert.ToInt32(ddlHireYear.SelectedValue);

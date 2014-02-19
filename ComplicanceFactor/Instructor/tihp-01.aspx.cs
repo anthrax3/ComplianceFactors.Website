@@ -23,6 +23,7 @@ namespace ComplicanceFactor.Instructor
         private static string currentdeliveryId;
         protected void Page_Load(object sender, EventArgs e)
         {
+            mrp1.flag = ReportEnum.Instructor;
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(SessionWrapper.u_userid))

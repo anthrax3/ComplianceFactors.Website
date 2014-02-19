@@ -99,6 +99,18 @@ namespace ComplicanceFactor.Compliance
                     ddlComplianceApprover.DataSource = UserBLL.GetComplianceApproverList();
                     ddlComplianceApprover.DataBind();
 
+                    ddlEmployeeReportLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                    {
+                        s_establishment_id_pk = "",
+                        s_establishment_city = "",
+                        s_establishment_name = "",
+                        s_establishment_status_id_fk = "app_ddl_active_text"
+                    });
+
+                    ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
+                    ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
+                    ddlEmployeeReportLocation.DataBind();
+                    ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                     //case outcome
                     //ddlCaseOutCome.DataSource = ComplianceBLL.GetMirisCaseOutCome();
                     //ddlCaseOutCome.DataBind();
@@ -298,6 +310,7 @@ namespace ComplicanceFactor.Compliance
                         SessionWrapper.session_EmployeeInterview = dtTempEmployeeInterview;
                         this.gvEmployeeInterview.DataSource = (SessionWrapper.session_EmployeeInterview).DefaultView;
                         this.gvEmployeeInterview.DataBind();
+                      
                     }
                     catch (Exception ex)
                     {
@@ -317,7 +330,24 @@ namespace ComplicanceFactor.Compliance
                     }
                 }
             }
-
+            if (Session["Case_Employee"] != null)
+            {
+                User user = (User)Session["Case_Employee"];
+                txtEmployeeName.Text = user.Lastname;
+                if (!string.IsNullOrEmpty(user.u_social_security_no))
+                {
+                    txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
+                }
+                else
+                {
+                    txtLastFourDigitOfSSN.Text = "";
+                }
+                ddlHireMonth.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Month.ToString() : "";
+                ddlHireYear.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Year.ToString() : "-1";
+                doh_hire_day.SelectedIndex = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Day : 0;
+                txtEmployeeId.Text = user.Hris_employeid;
+                Session["Case_Employee"] = null;
+            }
         }
 
         protected void btnSavenewcase_header_Click(object sender, EventArgs e)
@@ -367,7 +397,8 @@ namespace ComplicanceFactor.Compliance
                 insertCase.c_incident_location = txtIncidentLocation.Text;
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
-                insertCase.c_employee_report_location = txtEmployeeReportLocation.Text;
+                insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
+                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
                 insertCase.c_note = txtNote.Text;
                 insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
@@ -564,7 +595,8 @@ namespace ComplicanceFactor.Compliance
                 insertCase.c_incident_location = txtIncidentLocation.Text;
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
-                insertCase.c_employee_report_location = txtEmployeeReportLocation.Text;
+                insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
+                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
                 insertCase.c_note = txtNote.Text;
                 insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
@@ -738,7 +770,19 @@ namespace ComplicanceFactor.Compliance
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date).ToShortDateString();
                 IncidentTime.Date = miris.c_incident_time;
                 IncidentTime.SetTime(miris.incident_HH, miris.incident_MM, IncidentTime.AmPm);
-                txtEmployeeReportLocation.Text = miris.c_employee_report_location;
+                ddlEmployeeReportLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                {
+                    s_establishment_id_pk = "",
+                    s_establishment_city = "",
+                    s_establishment_name = "",
+                    s_establishment_status_id_fk = "app_ddl_active_text"
+                });
+                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
+                ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
+                ddlEmployeeReportLocation.DataBind();
+                ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
+                ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
                 txtNote.Text = miris.c_note;
                 txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
                 txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
@@ -1947,7 +1991,7 @@ namespace ComplicanceFactor.Compliance
                     txtSupervisor.Text = "";
                     txtIncidentLocation.Text = "";
                     txtIncidentDate.Text = "";
-                    txtEmployeeReportLocation.Text = "";
+                  
                     txtNote.Text = "";
                     txtRootCauseAnalysisDetails.Text = "";
                     txtCorrectiveActionDetails.Text = "";

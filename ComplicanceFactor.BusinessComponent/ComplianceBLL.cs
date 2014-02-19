@@ -50,6 +50,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htInsertCase.Add("@c_osha_300_date_of_death", DBNull.Value);
             }
+            if (miris.c_date_in_title != null)
+            {
+                htInsertCase.Add("@c_date_in_title", miris.c_date_in_title);
+            }
+            else
+            {
+                htInsertCase.Add("@c_date_in_title", DBNull.Value);
+            }
 
             htInsertCase.Add("@c_osha_300_type_of_illness", DBNull.Value);
 
@@ -197,6 +205,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateCase.Add("@c_osha_300_date_of_death", DBNull.Value);
             }
+            if (miris.c_date_in_title != null)
+            {
+                htUpdateCase.Add("@c_date_in_title", miris.c_date_in_title);
+            }
+            else
+            {
+                htUpdateCase.Add("@c_date_in_title", DBNull.Value);
+            }
 
             htUpdateCase.Add("@c_osha_300_type_of_illness", DBNull.Value);
 
@@ -274,7 +290,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
-
+                miris.c_date_in_title = Convert.ToDateTime(dtGetCase.Rows[0]["c_date_in_title"], culture);
                 miris.c_case_category_value = dtGetCase.Rows[0]["c_case_category_value"].ToString();
                 miris.c_case_status_value = dtGetCase.Rows[0]["c_case_status_value"].ToString();
                 miris.c_case_type_value = dtGetCase.Rows[0]["c_case_type_value"].ToString();
@@ -2331,7 +2347,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htInsertCase.Add("@c_osha_300_date_of_death", DBNull.Value);
             }
-
+            if (miris.c_date_in_title != null)
+            {
+                htInsertCase.Add("@c_date_in_title", miris.c_date_in_title);
+            }
+            else
+            {
+                htInsertCase.Add("@c_date_in_title", DBNull.Value);
+            }
             htInsertCase.Add("@c_osha_300_type_of_illness", DBNull.Value);
 
 
@@ -2551,7 +2574,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_osha_300_case_outcome_value = dtGetCase.Rows[0]["c_osha_300_case_outcome_value"].ToString();
 
 
-
+                miris.c_date_in_title = Convert.ToDateTime(dtGetCase.Rows[0]["c_date_in_title"], culture);
                 miris.c_employee_dob = Convert.ToDateTime(dtGetCase.Rows[0]["c_employee_dob"], culture);
                 miris.c_employee_hire_date = Convert.ToDateTime(dtGetCase.Rows[0]["c_employee_hire_date"], culture);
                 miris.c_employee_id = dtGetCase.Rows[0]["c_employee_id"].ToString();
@@ -2679,7 +2702,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateCase.Add("@c_osha_300_date_of_death", DBNull.Value);
             }
-
+            if (miris.c_date_in_title != null)
+            {
+                htUpdateCase.Add("@c_date_in_title", miris.c_date_in_title);
+            }
+            else
+            {
+                htUpdateCase.Add("@c_date_in_title", DBNull.Value);
+            }
             htUpdateCase.Add("@c_osha_300_type_of_illness", DBNull.Value);
 
 
@@ -3745,7 +3775,15 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_employee_name", miris.c_employee_name);
             htInsertCase.Add("@c_employee_dob", miris.c_employee_dob);
             htInsertCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
-            htInsertCase.Add("@c_employee_id", miris.c_employee_id);
+            htInsertCase.Add("@c_employee_id", miris.c_employee_id);        
+            if (miris.c_date_in_title != null)
+            {
+                htInsertCase.Add("@c_date_in_title", miris.c_date_in_title);
+            }
+            else
+            {
+                htInsertCase.Add("@c_date_in_title", DBNull.Value);
+            }
             htInsertCase.Add("@c_ssn", miris.c_ssn);
             htInsertCase.Add("@c_supervisor", miris.c_supervisor);
             htInsertCase.Add("@c_incident_location", miris.c_incident_location);
@@ -4138,6 +4176,9 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
+
+
+                miris.c_date_in_title = Convert.ToDateTime(dtGetCase.Rows[0]["c_date_in_title"], culture);
 
                 miris.c_case_category_value = dtGetCase.Rows[0]["c_case_category_value"].ToString();
                 miris.c_case_status_value = dtGetCase.Rows[0]["c_case_status_value"].ToString();
@@ -4825,7 +4866,14 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htUpdateCase.Add("@c_case_detail_expire_date", DBNull.Value);
             }
-
+            if (miris.c_date_in_title != null)
+            {
+                htUpdateCase.Add("@c_date_in_title", miris.c_date_in_title);
+            }
+            else
+            {
+                htUpdateCase.Add("@c_date_in_title", DBNull.Value);
+            }
             //htUpdateCase.Add("@c_case_detail_expire_date", miris.c_case_detail_expire_date);
             htUpdateCase.Add("@c_case_detail_address", miris.c_case_detail_address);
             htUpdateCase.Add("@c_case_detail_city", miris.c_case_detail_city);

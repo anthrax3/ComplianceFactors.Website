@@ -253,6 +253,24 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         }
                     }
                 }
+                if (Session["Case_Employee"] != null)
+                {
+                    User user = (User)Session["Case_Employee"];
+                    txtEmployeeName.Text = user.Lastname;
+                    if (!string.IsNullOrEmpty(user.u_social_security_no))
+                    {
+                        txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
+                    }
+                    else
+                    {
+                        txtLastFourDigitOfSSN.Text = "";
+                    }
+                    ddlHireMonth.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Month.ToString() : "";
+                    ddlHireYear.SelectedValue = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Year.ToString() : "-1";
+                    doh_hire_day.SelectedIndex = (user.Hris_hire_date.HasValue) ? user.Hris_hire_date.Value.Day : 0;
+                    txtEmployeeId.Text = user.Hris_employeid;
+                    Session["Case_Employee"] = null;
+                }
             }
             catch (Exception ex)
             {
@@ -309,11 +327,11 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 txtEmployeeName.Text = miris.c_employee_name;
-
+                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();
-
+                txtIncidentLocation.Text = miris.c_incident_location;
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "dob", "checkdateofbirth();", true);
 
                 doh_hire_day.SelectedIndex = miris.c_employee_hire_date.Day;
@@ -2294,7 +2312,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
                 DateTime birthDate = new DateTime(year, month, day);
                 updateCase.c_employee_dob = birthDate;
-
+                updateCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
                 int hireyear = Convert.ToInt32(ddlHireYear.SelectedValue);
