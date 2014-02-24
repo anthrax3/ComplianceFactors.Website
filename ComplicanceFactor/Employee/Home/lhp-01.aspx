@@ -333,7 +333,7 @@
     <div class="div_padding_10" id="div_course" runat="server">
         <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
             runat="server" EmptyDataText="<%$LabelResourceExpression: app_no_result_found_text %>"
-            GridLines="None" DataKeyNames="e_enroll_course_id_fk" AutoGenerateColumns="False"
+            GridLines="None" DataKeyNames="e_enroll_course_id_fk,e_enroll_system_id_pk" AutoGenerateColumns="False"
             EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" OnRowDataBound="gvCourses_RowDataBound"
             OnRowCommand="gvCourses_RowCommand">
             <Columns>
@@ -371,7 +371,7 @@
                         <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' runat="server"
                             CommandName="Enroll" Text="<%$LabelResourceExpression: app_enroll_button_text %>"
                             Style="display: none;" />
-                        <asp:Button ID="btnLaunch" runat="server" CommandArgument='<%# Eval("scormURL") %>'
+                        <asp:Button ID="btnLaunch" runat="server" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                             CommandName="Launch" Text="<%$LabelResourceExpression: app_launch_button_text %>"
                             Style="display: none;" />
                     </ItemTemplate>

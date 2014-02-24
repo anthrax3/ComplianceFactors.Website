@@ -28,7 +28,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
             else
             {
-                htInsertDataImport.Add("@u_sftp_imp_facility_filename",string.Empty);
+                htInsertDataImport.Add("@u_sftp_imp_facility_filename", string.Empty);
             }
             if (!string.IsNullOrEmpty(dataImport.u_sftp_imp_room_filename))
             {
@@ -178,6 +178,76 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 throw;
             }
-        }        
+        }
+
+        public static DataSet AssignCourseCurriculum(string CourseAssign,string Curriculum, string course_assign_by_id)
+        {
+            Hashtable htCourseCurriculum = new Hashtable();
+            if (!string.IsNullOrEmpty(CourseAssign))
+            {
+                htCourseCurriculum.Add("@CourseAssign", CourseAssign);
+            }
+            else
+            {
+                htCourseCurriculum.Add("@CourseAssign", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(Curriculum))
+            {
+                htCourseCurriculum.Add("@Curriculum", Curriculum);
+            }
+            else
+            {
+                htCourseCurriculum.Add("@Curriculum", DBNull.Value);
+            }
+            htCourseCurriculum.Add("@course_assign_by_id", course_assign_by_id);
+            
+            try
+            {
+                return DataProxy.FetchDataSet("s_sp_course_curriculum_assign_from_data_import", htCourseCurriculum);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static DataTable GetAllCourse_Id()
+        {
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_get_all_course_id");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static int DropCourseCurriculum(string coursexml, string curriculumxml)
+        {
+            Hashtable htdropCourseCurriculum = new Hashtable();
+            if (!string.IsNullOrEmpty(coursexml))
+            {
+                htdropCourseCurriculum.Add("@s_drop_course", coursexml);
+            }
+            else
+            {
+                htdropCourseCurriculum.Add("@s_drop_course", DBNull.Value);
+            }
+            if (!string.IsNullOrEmpty(curriculumxml))
+            {
+                htdropCourseCurriculum.Add("@s_drop_curriculum_details", curriculumxml);
+            }
+            else
+            {
+                htdropCourseCurriculum.Add("@s_drop_curriculum_details", DBNull.Value);
+            }
+            try
+            {
+                return DataProxy.FetchSPOutput("s_sp_drop_course_curriculum_from_data_import", htdropCourseCurriculum);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

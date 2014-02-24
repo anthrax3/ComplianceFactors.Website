@@ -100,20 +100,7 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
-        public static DataTable GetEnrollmentbyId(string e_enroll_system_id_pk)
-        {
-            try
-            {
-                Hashtable htGetAllEnrollment = new Hashtable();
-
-                htGetAllEnrollment.Add("@e_enroll_system_id_pk", e_enroll_system_id_pk);
-                return DataProxy.FetchDataTable("e_sp_get_enrollment", htGetAllEnrollment);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+      
 
     }
 }

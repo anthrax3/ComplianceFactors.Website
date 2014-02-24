@@ -1320,6 +1320,7 @@
     <None Include="SystemHome\Configuration\Data Imports\SampleEnrollment\Enrollment_import_csv_sample.csv" />
     <None Include="SystemHome\Configuration\Data Imports\SampleFacility\Facility_import_csv_sample.csv" />
     <None Include="SystemHome\Configuration\Data Imports\SampleLearningHistory\LearningHistory_import_csv_sample.csv" />
+    <None Include="SystemHome\Configuration\Data Imports\SampleMatrixAssignment\Matrix_Assignment_import_csv_sample.csv" />
     <None Include="SystemHome\Configuration\Data Imports\SampleRoom\Room_import_csv_sample.csv" />
     <None Include="SystemHome\Configuration\Data Imports\Upload\Course_import_csv_file.csv" />
     <None Include="SystemHome\Configuration\Data Imports\Upload\Curriculum_import_csv_file.csv" />

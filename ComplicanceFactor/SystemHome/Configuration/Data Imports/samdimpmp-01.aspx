@@ -41,6 +41,7 @@
                 document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "none";
             }
             else if (clicked_id == "ContentPlaceHolder1_btnSelectCoursesCsvFile") {
                 document.getElementById('<%=btnFacilityUpload.ClientID%>').style.display = "none";
@@ -49,6 +50,7 @@
                 document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "none";
             }
             else if (clicked_id == "ContentPlaceHolder1_btnSelectRoomCsvFile") {
                 document.getElementById('<%=btnFacilityUpload.ClientID%>').style.display = "none";
@@ -57,6 +59,7 @@
                 document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "none";
             }
             else if (clicked_id == "ContentPlaceHolder1_btnSelectBaseCurriculamCsvFile") {
                 document.getElementById('<%=btnFacilityUpload.ClientID%>').style.display = "none";
@@ -65,6 +68,7 @@
                 document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "inline";
                 document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "none";
             }
             else if (clicked_id == "ContentPlaceHolder1_btnSelectEnrollmentsCsvFile") {
                 document.getElementById('<%=btnFacilityUpload.ClientID%>').style.display = "none";
@@ -73,6 +77,7 @@
                 document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "inline";
                 document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "none";
             }
             else if (clicked_id == "ContentPlaceHolder1_btnSelectLearningHistoryCsvFile") {
                 document.getElementById('<%=btnFacilityUpload.ClientID%>').style.display = "none";
@@ -81,6 +86,17 @@
                 document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "none";
                 document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "inline";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "none";
+            }
+            else if (clicked_id == "ContentPlaceHolder1_btnSelectMatrixAssignment") {
+                document.getElementById('<%=btnFacilityUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnRoomUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnCourseUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnCurriculumUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnEnrollmentUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnLearningHistoryUpload.ClientID%>').style.display = "none";
+                document.getElementById('<%=btnMatrixAssignmentUpload.ClientID%>').style.display = "inline";
+                
             }
         }
     </script>
@@ -133,40 +149,40 @@
 
         }
     </script>
-     <script type="text/javascript">
-         $(document).ready(function () {
-             $(".displayImportLog").fancybox({
-                 'type': 'iframe',
-                 'titlePosition': 'over',
-                 'titleShow': true,
-                 'showCloseButton': true,
-                 'scrolling': 'yes',
-                 'autoScale': false,
-                 'autoDimensions': false,
-                 'helpers': { overlay: { closeClick: false} },
-                 'width': 740,
-                 'height': 200,
-                 'margin': 0,
-                 'padding': 0,
-                 'overlayColor': '#000',
-                 'overlayOpacity': 0.7,
-                 'hideOnOverlayClick': false,
-                 'href': 'Popup/p_samddimplo-01.aspx',
-                 'onComplete': function () {
-                     $.fancybox.showActivity();
-                     $('#fancybox-frame').load(function () {
-                         $.fancybox.hideActivity();
-                         $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                         var heightPane = $(this).contents().find('#content').height();
-                         $(this).contents().find('#fancybox-frame').css({
-                             'height': heightPane + 'px'
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".displayImportLog").fancybox({
+                'type': 'iframe',
+                'titlePosition': 'over',
+                'titleShow': true,
+                'showCloseButton': true,
+                'scrolling': 'yes',
+                'autoScale': false,
+                'autoDimensions': false,
+                'helpers': { overlay: { closeClick: false} },
+                'width': 740,
+                'height': 200,
+                'margin': 0,
+                'padding': 0,
+                'overlayColor': '#000',
+                'overlayOpacity': 0.7,
+                'hideOnOverlayClick': false,
+                'href': 'Popup/p_samddimplo-01.aspx',
+                'onComplete': function () {
+                    $.fancybox.showActivity();
+                    $('#fancybox-frame').load(function () {
+                        $.fancybox.hideActivity();
+                        $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                        var heightPane = $(this).contents().find('#content').height();
+                        $(this).contents().find('#fancybox-frame').css({
+                            'height': heightPane + 'px'
 
-                         })
-                     });
+                        })
+                    });
 
-                 }
-             });
-         });
+                }
+            });
+        });
     </script>
     <asp:ValidationSummary class="validation_summary_error" ID="vs_samdimpmp" runat="server"
         ValidationGroup="samdimpmp"></asp:ValidationSummary>
@@ -287,6 +303,22 @@
                         <asp:Button ID="btnSampleLearningHistoryCsvFile" CssClass="cursor_hand" runat="server"
                             Text="<%$ LabelResourceExpression: app_sample_learning_history_csv_file_button_text %>"
                             OnClick="btnSampleLearningHistoryCsvFile_Click" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Upload Matrix Assignment:
+                    </td>
+                    <td class="align_left">
+                        <asp:Button ID="btnSelectMatrixAssignment" CssClass="cursor_hand" runat="server"
+                            Text="Select Matrix Assignment csv file" OnClientClick="Showpopup(this.id);" />
+                    </td>
+                    <td colspan="2">
+                        Sample Matrix Assignment:
+                    </td>
+                    <td class="align_left">
+                        <asp:Button ID="btnSampleMatrixAssignment" CssClass="cursor_hand" runat="server"
+                            Text="Sample Matrix Assignment csv file" OnClick="btnSampleMatrixAssignment_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -423,7 +455,8 @@
                         <asp:CalendarExtender ID="ceDate" Format="MM/dd/yyyy" TargetControlID="txtBegining"
                             runat="server">
                         </asp:CalendarExtender>
-                        &nbsp;&nbsp;<asp:Button ID="btnDisplayImportLogs" runat="server" CssClass="displayImportLog cursor_hand" Text="<%$ LabelResourceExpression: app_display_import_logs_button_text %>" />
+                        &nbsp;&nbsp;<asp:Button ID="btnDisplayImportLogs" runat="server" CssClass="displayImportLog cursor_hand"
+                            Text="<%$ LabelResourceExpression: app_display_import_logs_button_text %>" />
                     </td>
                 </tr>
                 <tr>
@@ -490,9 +523,15 @@
             PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
             OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
         </asp:ModalPopupExtender>
+         <asp:ModalPopupExtender ID="mpeMatrixAssignment" runat="server" TargetControlID="btnSelectMatrixAssignment"
+            PopupControlID="pnlUploadFile" BackgroundCssClass="transparent_class" DropShadow="false"
+            PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
+            OnCancelScript="cleartext();" CancelControlID="btnUploadCancel">
+        </asp:ModalPopupExtender>
+        
         <asp:HiddenField ID="hdAttachments" runat="server" />
-        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
                 <div>
                     <asp:ValidationSummary class="validation_summary_error" ID="vs_samhrismp" runat="server"
@@ -534,6 +573,8 @@
                             OnClick="btnEnrollmentUpload_Click" ValidationGroup="vsFileupload" />
                         <asp:Button ID="btnLearningHistoryUpload" runat="server" Text="Upload File" CssClass="cursor_hand"
                             OnClick="btnLearningHistoryUpload_Click" ValidationGroup="vsFileupload" />
+                        <asp:Button ID="btnMatrixAssignmentUpload" runat="server" Text="Upload File" CssClass="cursor_hand"
+                           OnClick="btnMatrixAssignmentUpload_Click"  ValidationGroup="vsFileupload" />
                     </div>
                     <asp:Button ID="btnUploadCancel" CssClass="cursor_hand" runat="server" Text="Cancel" />
                 </div>

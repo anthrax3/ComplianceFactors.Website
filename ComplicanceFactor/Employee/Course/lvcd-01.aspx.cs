@@ -76,7 +76,7 @@ namespace ComplicanceFactor.Employee.Course
         }
         private void PopulateEnrollment(string enrollId)
         {
-            DataTable dtEnroll = EmployeeBLL.GetEnrollmentbyId(enrollId);
+            DataTable dtEnroll = EnrollmentBLL.GetEnrollmentbyId(enrollId);
             if (dtEnroll != null)
             {
                 if (dtEnroll.Rows.Count > 0)

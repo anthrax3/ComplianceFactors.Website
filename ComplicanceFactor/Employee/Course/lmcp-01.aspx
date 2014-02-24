@@ -31,7 +31,7 @@
             });
             $(".viewdetails").click(function () {
                 //Get the Id of the record to delete
-                var record_id = $(this).attr("id");
+                var element = $(this).attr("id").split(",");
                 //Get the GridView Row reference
                 var tr_id = $(this).parents("#.record");
                 $.fancybox({
@@ -51,7 +51,7 @@
                     'overlayColor': '#000',
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
-                    'href': '/Employee/Course/lvcd-01.aspx?id=' + record_id,
+                    'href': '/Employee/Course/lvcd-01.aspx?id=' + element[0] + '&eid=' + element[1],
                     'onComplete': function () {
                         $.fancybox.showActivity();
                         $('#fancybox-frame').load(function () {
@@ -113,7 +113,7 @@
         <div class="div_padding_10" id="div_course" runat="server">
             <asp:GridView ID="gvCourses" CellPadding="0" CellSpacing="0" CssClass="gridview_long_no_border tablesorter"
                 runat="server" EmptyDataText="<%$ LabelResourceExpression: app_no_result_found_text %>"
-                GridLines="None" DataKeyNames="e_enroll_course_id_fk" AutoGenerateColumns="False"
+                GridLines="None" DataKeyNames="e_enroll_course_id_fk,e_enroll_system_id_pk" AutoGenerateColumns="False"
                 EmptyDataRowStyle-CssClass="empty_row" PagerSettings-Visible="false" OnRowDataBound="gvCourses_RowDataBound"
                 OnRowCommand="gvCourses_RowCommand">
                 <Columns>
@@ -136,7 +136,7 @@
                     <asp:TemplateField HeaderStyle-CssClass="gridview_row_width_1" ItemStyle-CssClass="gridview_row_width_1"
                         HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$ LabelResourceExpression: app_view_details_button_text %>" />'
+                            <input type="button" id='<%# Eval("e_enroll_course_id_fk") %>,<%# Eval("e_enroll_system_id_pk") %>' value='<asp:Literal ID="ltlViewDetails" runat="server" Text="<%$ LabelResourceExpression: app_view_details_button_text %>" />'
                                 class="viewdetails cursor_hand" />
                             <%-- <asp:Button ID="btnViewDetail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                             CommandName="View" runat="server" Text="View Details" />--%>
@@ -150,7 +150,7 @@
                             <asp:Button ID="btnEnroll" CommandArgument='<%#Eval("e_enroll_course_id_fk")%>' runat="server"
                                 CommandName="Enroll" Text="<%$ LabelResourceExpression: app_enroll_button_text %>"
                                 Style="display: none;" />
-                            <asp:Button ID="btnLaunch" runat="server" CommandArgument='<%# Eval("scormURL") %>'
+                            <asp:Button ID="btnLaunch" runat="server" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>'
                                 CommandName="Launch" Text="<%$LabelResourceExpression: app_launch_button_text %>"
                                 Style="display: none;" />
                         </ItemTemplate>

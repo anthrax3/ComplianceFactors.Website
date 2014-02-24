@@ -270,22 +270,37 @@ namespace ComplicanceFactor.Employee.Course
                 Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
 
             }
-            //else if (e.CommandName.Equals("Launch"))
-            //{
-            //    //insert enrollment
-            //    string url = e.CommandArgument.ToString();
-            //    if (!string.IsNullOrEmpty(url))
-            //    {
-            //        if (!url.Contains("http"))
-            //            url = "http://" + url;
-            //        ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
-            //    }
-            //    else
-            //    {
-            //        string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
-            //        Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
-            //    }
-            //}
+            else if (e.CommandName.Equals("Launch"))
+            {
+               
+                int rowIndex = int.Parse(e.CommandArgument.ToString());
+
+                string e_enroll_system_id_pk = gvCourses.DataKeys[rowIndex][1].ToString();
+                DataTable dtEnroll = EnrollmentBLL.GetEnrollmentbyId(e_enroll_system_id_pk);
+                DateTime? first_attempt = null;
+                DateTime? last_attempt = null;
+                if (dtEnroll != null)
+                {
+                    if (dtEnroll.Rows.Count > 0)
+                    {
+                        if (dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"] == null)
+                        {
+                            first_attempt = DateTime.Now;
+                        }
+                        else if (string.IsNullOrEmpty(dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"].ToString()))
+                        {
+                            first_attempt = DateTime.Now;
+                        }
+                        else
+                        {
+                            first_attempt = (DateTime)dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"];
+                            last_attempt = DateTime.Now;
+                        }
+                        EnrollmentBLL.UpdateEnrollmentAttemptDate(e_enroll_system_id_pk, first_attempt, last_attempt);
+                    }
+                }
+
+            }
             else if (e.CommandName.Equals("Details"))
             {
                 //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);

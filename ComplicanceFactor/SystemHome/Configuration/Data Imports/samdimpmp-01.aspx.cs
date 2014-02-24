@@ -9,6 +9,10 @@ using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.Common.Languages;
+using System.Data;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Text.RegularExpressions;
 
 namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
 {
@@ -30,6 +34,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
         private string _curriculumpath = "~/SystemHome/Configuration/Data Imports/SampleCurriculum/";
         private string _enrollmentpath = "~/SystemHome/Configuration/Data Imports/SampleEnrollment/";
         private string _learninghistorypath = "~/SystemHome/Configuration/Data Imports/SampleLearningHistory/";
+        private string _matrixassignmentpath = "~/SystemHome/Configuration/Data Imports/SampleMatrixAssignment/";
 
         private static string facilityFileName;
         private static string roomFileName;
@@ -248,6 +253,48 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 }
             }
         }
+        protected void btnMatrixAssignmentUpload_Click(object sender, EventArgs e)
+        {
+            HttpPostedFile file = default(HttpPostedFile);
+            foreach (string files in Request.Files)
+            {
+                file = Request.Files[files];
+                string s_file_name = null;
+                string s_file_extension = null;
+                string s_file_guid = Guid.NewGuid().ToString();
+                if (file != null && file.ContentLength > 0)
+                {
+                    s_file_name = "Matrix_Assignment_import_csv_file";
+                    s_file_extension = Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
+                    txtLearningHistory.Text = s_file_name + s_file_extension;
+                    DataTable dtMatrixAssignment = new DataTable();
+                    try
+                    {
+                        dtMatrixAssignment = GetCSVData(Server.MapPath(_uploadpath + s_file_name + s_file_extension));
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ConfigurationWrapper.LogErrors == true)
+                        {
+                            if (ex.InnerException != null)
+                            {
+                                Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message, ex.InnerException.Message);
+                            }
+                            else
+                            {
+                                Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message);
+                            }
+                        }
+                    }
+
+                    AssignCourseCurriculum(dtMatrixAssignment);
+                    //txtHrisCsvFileName.Text = s_file_name + s_file_extension;
+                    //InsertIntoUserMaster(dtHRIS);
+                }
+            }
+        }
+
 
         protected void btnSampleFacilitiesFile_Click(object sender, EventArgs e)
         {
@@ -427,7 +474,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
         protected void btnSampleLearningHistoryCsvFile_Click(object sender, EventArgs e)
         {
             string attachmentFileId = "LearningHistory_import_csv_sample.csv";
-            string filePath = Server.MapPath(_learninghistorypath + attachmentFileId);
+            string filePath = Server.MapPath(_uploadpath + attachmentFileId);
             string attachmentFileName = "LearningHistory_import_csv_sample.csv";
 
             if (System.IO.File.Exists(filePath))
@@ -458,6 +505,42 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 }
             }
         }
+
+        protected void btnSampleMatrixAssignment_Click(object sender, EventArgs e)
+        {
+            string attachmentFileId = "Matrix_Assignment_import_csv_sample.csv";
+            string filePath = Server.MapPath(_matrixassignmentpath + attachmentFileId);
+            string attachmentFileName = "Matrix_Assignment_import_csv_sample.csv";
+
+            if (System.IO.File.Exists(filePath))
+            {
+                string strRequest = filePath;
+                if (!string.IsNullOrEmpty(strRequest))
+                {
+                    FileInfo file = new System.IO.FileInfo(strRequest);
+                    if (file.Exists)
+                    {
+                        Response.Clear();
+                        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + attachmentFileName + "\"");
+                        Response.AddHeader("Content-Length", file.Length.ToString());
+                        Response.ContentType = ReturnExtension(file.Extension.ToLower());
+                        Response.WriteFile(file.FullName);
+                        Response.End();
+                        //if file does not exist
+                    }
+                    else
+                    {
+                        Response.Write("This file does not exist.");
+                    }
+                    //nothing in the URL as HTTP GET
+                }
+                else
+                {
+                    Response.Write("Please provide a file to download.");
+                }
+            }
+        }
+
 
         protected void btnSaveDataImportSftpInformation_Click(object sender, EventArgs e)
         {
@@ -618,6 +701,466 @@ namespace ComplicanceFactor.SystemHome.Configuration.Data_Imports
                 default:
                     return "application/octet-stream";
             }
+        }
+
+        #region GetValueFromSpreasSheet
+
+        public static DataTable getExcelData(string FileName, string strSheetName)
+        {
+            DataTable dt = new DataTable();
+
+            using (SpreadsheetDocument spreadSheetDocument = SpreadsheetDocument.Open(FileName, false))
+            {
+                WorkbookPart workbookPart = spreadSheetDocument.WorkbookPart;
+
+                IEnumerable<Sheet> sheets = spreadSheetDocument.WorkbookPart.Workbook.GetFirstChild<Sheets>().Elements<Sheet>().Where(s => s.Name == strSheetName);
+                string relationshipId = sheets.First().Id.Value;
+                WorksheetPart worksheetPart = (WorksheetPart)spreadSheetDocument.WorkbookPart.GetPartById(relationshipId);
+                Worksheet workSheet = worksheetPart.Worksheet;
+                SheetData sheetData = workSheet.GetFirstChild<SheetData>();
+
+                IEnumerable<Row> rows = sheetData.Descendants<Row>();
+
+                foreach (Cell cell in rows.ElementAt(0))
+                {
+                    dt.Columns.Add(GetCellValue(spreadSheetDocument, cell));
+                }
+
+                foreach (Row row in rows) //this will also include your header row...
+                {
+                    DataRow tempRow = dt.NewRow();
+                    int columnIndex = 0;
+                    foreach (Cell cell in row.Descendants<Cell>())
+                    {
+                        // Gets the column index of the cell with data
+                        int cellColumnIndex = (int)GetColumnIndexFromName(GetColumnName(cell.CellReference));
+                        cellColumnIndex--; //zero based index
+                        if (columnIndex < cellColumnIndex)
+                        {
+                            do
+                            {
+                                tempRow[columnIndex] = ""; //Insert blank data here;
+                                columnIndex++;
+                            }
+                            while (columnIndex < cellColumnIndex);
+                        }
+                        tempRow[columnIndex] = GetCellValue(spreadSheetDocument, cell);
+
+                        columnIndex++;
+                    }
+                    dt.Rows.Add(tempRow);
+                    //DataRow tempRow = dt.NewRow();
+
+                    //for (int i = 0; i < row.Descendants<Cell>().Count(); i++)
+                    //{
+                    //    tempRow[i] = GetCellValue(spreadSheetDocument, row.Descendants<Cell>().ElementAt(i));
+                    //}
+
+                    //dt.Rows.Add(tempRow);
+                }
+            }
+            dt.Rows.RemoveAt(0); //...so i'm taking it out here.
+
+            return dt;
+
+        }
+        /// <summary>
+        /// Get the Cell Value of xl
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="cell"></param>
+        /// <returns></returns>
+        public static string GetCellValue(SpreadsheetDocument document, Cell cell)
+        {
+            SharedStringTablePart stringTablePart = document.WorkbookPart.SharedStringTablePart;
+
+            if (cell.CellValue == null)
+            {
+                return "";
+            }
+
+            string value = cell.CellValue.InnerXml;
+
+            if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
+            {
+                return stringTablePart.SharedStringTable.ChildElements[Int32.Parse(value)].InnerText;
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        /// <summary>
+        /// Given a cell name, parses the specified cell to get the column name.
+        /// </summary>
+        /// <param name="cellReference">Address of the cell (ie. B2)</param>
+        /// <returns>Column Name (ie. B)</returns>
+        public static string GetColumnName(string cellReference)
+        {
+            // Create a regular expression to match the column name portion of the cell name.
+            Regex regex = new Regex("[A-Za-z]+");
+            Match match = regex.Match(cellReference);
+            return match.Value;
+        }
+        /// <summary>
+        /// Given just the column name (no row index), it will return the zero based column index.
+        /// Note: This method will only handle columns with a length of up to two (ie. A to Z and AA to ZZ). 
+        /// A length of three can be implemented when needed.
+        /// </summary>
+        /// <param name="columnName">Column Name (ie. A or AB)</param>
+        /// <returns>Zero based index if the conversion was successful; otherwise null</returns>
+        public static int? GetColumnIndexFromName(string columnName)
+        {
+            //return columnIndex;
+            string name = columnName;
+            int number = 0;
+            int pow = 1;
+            for (int i = name.Length - 1; i >= 0; i--)
+            {
+                number += (name[i] - 'A' + 1) * pow;
+                pow *= 26;
+            }
+            return number;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Assign Course and Curriculum and drop course and curriculum
+        /// </summary>
+        /// <param name="dtMatrixAssignment"></param>
+        private void AssignCourseCurriculum(DataTable dtMatrixAssignment)
+        {
+            DataTable dtAssignCourse = AssignCourse();
+            DataTable dtAssignCurriculum = AssignCurriculum();
+            DataTable dtDropCourse = DropCourse();
+            DataTable dtDropCurriculum = DropCurriculum();
+            DataTable dtCourse = new DataTable();
+            try
+            {
+                dtCourse = SystemDataImportBLL.GetAllCourse_Id();
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message);
+                    }
+                }
+            }
+
+            for (int i = 0; i < dtMatrixAssignment.Rows.Count; i++)
+            {
+                for (int j = 1; j < dtMatrixAssignment.Columns.Count; j++)
+                {
+                    if (Convert.ToString(dtMatrixAssignment.Rows[i][j]) == "X")
+                    {
+                        //Assign
+                        string user_id = dtMatrixAssignment.Rows[i][0].ToString();
+                        string course_curriculum_id = dtMatrixAssignment.Columns[j].ColumnName;
+                        string find = "c_course_system_id_pk = '" + course_curriculum_id.ToUpper() + "'";
+                        DataRow[] foundRows = dtCourse.Select(find);
+                        if (foundRows.Length > 0)
+                        {
+                            AddDataForAssignCourse(user_id, course_curriculum_id, dtAssignCourse);
+                        }
+                        else
+                        {
+                            AddDataForAssignCurriculum(user_id, course_curriculum_id, dtAssignCurriculum);
+                        }
+                    }
+                    else
+                    {
+                        //Drop
+                        string user_id = dtMatrixAssignment.Rows[i][0].ToString();
+                        string course_curriculum_id = dtMatrixAssignment.Columns[j].ColumnName;
+                        string find = "c_course_system_id_pk = '" + course_curriculum_id.ToUpper() + "'";
+                        DataRow[] foundRows = dtCourse.Select(find);
+                        if (foundRows.Length > 0)
+                        {
+                            AddDataForDropCourse(user_id, course_curriculum_id, dtDropCourse);
+                        }
+                        else
+                        {
+                            AddDataForDropCurriculum(user_id, course_curriculum_id, dtDropCurriculum);
+                        }
+                    }
+                }
+            }
+            //Do assign and drop functionality of course and curriculum
+            ConvertDataTables convertToXML = new ConvertDataTables();
+            try
+            {
+                //Course assign and curriculum assign
+                string CourseAssign = string.Empty;
+                string curriculum = string.Empty;
+                if (dtAssignCourse.Rows.Count > 0)
+                {
+                    CourseAssign = convertToXML.ConvertDataTableToXml(dtAssignCourse);
+                }
+                if (dtAssignCurriculum.Rows.Count > 0)
+                {
+                    curriculum = convertToXML.ConvertDataTableToXml(dtAssignCurriculum);
+                }
+                DataSet ds = SystemDataImportBLL.AssignCourseCurriculum(CourseAssign, curriculum, SessionWrapper.u_userid);
+
+                //Drop Course and Curriculum
+                string dropCourse = string.Empty;
+                string dropCurriculum = string.Empty;
+                if(dtDropCourse.Rows.Count > 0)
+                {
+                    dropCourse = convertToXML.ConvertDataTableToXml(dtDropCourse);
+                }
+                if(dtDropCurriculum.Rows.Count>0)
+                {
+                    dropCurriculum =  convertToXML.ConvertDataTableToXml(dtDropCurriculum);
+                }
+                int result = SystemDataImportBLL.DropCourseCurriculum(dropCourse, dropCurriculum); 
+
+            }
+            catch (Exception ex)
+            {
+                if (ConfigurationWrapper.LogErrors == true)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message, ex.InnerException.Message);
+                    }
+                    else
+                    {
+                        Logger.WriteToErrorLog("samdimpmp-01.aspx", ex.Message);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Temp datatable for assign course
+        /// </summary>
+        /// <returns></returns>
+        private DataTable AssignCourse()
+        {
+            DataTable dtAssignCourse = new DataTable();
+            DataColumn dtAssignCourseColumn;
+
+            dtAssignCourseColumn = new DataColumn();
+            dtAssignCourseColumn.DataType = Type.GetType("System.String");
+            dtAssignCourseColumn.ColumnName = "employeeID";
+            dtAssignCourse.Columns.Add(dtAssignCourseColumn);
+
+            dtAssignCourseColumn = new DataColumn();
+            dtAssignCourseColumn.DataType = Type.GetType("System.String");
+            dtAssignCourseColumn.ColumnName = "course_id";
+            dtAssignCourse.Columns.Add(dtAssignCourseColumn);
+
+            dtAssignCourseColumn = new DataColumn();
+            dtAssignCourseColumn.DataType = Type.GetType("System.String");
+            dtAssignCourseColumn.ColumnName = "course_assign_by_id";
+            dtAssignCourse.Columns.Add(dtAssignCourseColumn);
+
+            dtAssignCourseColumn = new DataColumn();
+            dtAssignCourseColumn.DataType = Type.GetType("System.Boolean");
+            dtAssignCourseColumn.ColumnName = "required";
+            dtAssignCourse.Columns.Add(dtAssignCourseColumn);
+
+            dtAssignCourseColumn = new DataColumn();
+            dtAssignCourseColumn.DataType = Type.GetType("System.String");
+            dtAssignCourseColumn.ColumnName = "DueDate";
+            dtAssignCourse.Columns.Add(dtAssignCourseColumn);
+
+            return dtAssignCourse;
+        }
+        /// <summary>
+        /// Temp datatable for Drop Course
+        /// </summary>
+        /// <returns></returns>
+        private DataTable DropCourse()
+        {
+            DataTable dtDropCourse = new DataTable();
+            DataColumn dtDropCourseColumn;
+
+            dtDropCourseColumn = new DataColumn();
+            dtDropCourseColumn.DataType = Type.GetType("System.String");
+            dtDropCourseColumn.ColumnName = "user_id";
+            dtDropCourse.Columns.Add(dtDropCourseColumn);
+
+            dtDropCourseColumn = new DataColumn();
+            dtDropCourseColumn.DataType = Type.GetType("System.String");
+            dtDropCourseColumn.ColumnName = "course_id";
+            dtDropCourse.Columns.Add(dtDropCourseColumn);
+
+            return dtDropCourse;
+        }
+
+        /// <summary>
+        /// Temp datatable for drop curriculum
+        /// </summary>
+        /// <returns></returns>
+        private DataTable DropCurriculum()
+        {
+            DataTable dtDropCurriculum = new DataTable();
+            DataColumn dtDropCurriculumColumn;
+
+            dtDropCurriculumColumn = new DataColumn();
+            dtDropCurriculumColumn.DataType = Type.GetType("System.String");
+            dtDropCurriculumColumn.ColumnName = "user_id";
+            dtDropCurriculum.Columns.Add(dtDropCurriculumColumn);
+
+            dtDropCurriculumColumn = new DataColumn();
+            dtDropCurriculumColumn.DataType = Type.GetType("System.String");
+            dtDropCurriculumColumn.ColumnName = "curriculum_id";
+            dtDropCurriculum.Columns.Add(dtDropCurriculumColumn);
+
+            return dtDropCurriculum;
+        }
+
+        /// <summary>
+        /// Temp datatable for Assign Curriculum
+        /// </summary>
+        /// <returns></returns>
+        private DataTable AssignCurriculum()
+        {
+            DataTable dtCurriculumAssign = new DataTable();
+            DataColumn dtAssignCurriculumColumn;
+
+            dtAssignCurriculumColumn = new DataColumn();
+            dtAssignCurriculumColumn.DataType = Type.GetType("System.String");
+            dtAssignCurriculumColumn.ColumnName = "employeeID";
+            dtCurriculumAssign.Columns.Add(dtAssignCurriculumColumn);
+
+            dtAssignCurriculumColumn = new DataColumn();
+            dtAssignCurriculumColumn.DataType = Type.GetType("System.String");
+            dtAssignCurriculumColumn.ColumnName = "curriculum_id";
+            dtCurriculumAssign.Columns.Add(dtAssignCurriculumColumn);
+
+            dtAssignCurriculumColumn = new DataColumn();
+            dtAssignCurriculumColumn.DataType = Type.GetType("System.Boolean");
+            dtAssignCurriculumColumn.ColumnName = "required";
+            dtCurriculumAssign.Columns.Add(dtAssignCurriculumColumn);
+
+            dtAssignCurriculumColumn = new DataColumn();
+            dtAssignCurriculumColumn.DataType = Type.GetType("System.String");
+            dtAssignCurriculumColumn.ColumnName = "DueDate";
+            dtCurriculumAssign.Columns.Add(dtAssignCurriculumColumn);
+
+            return dtCurriculumAssign;
+        }
+        /// <summary>
+        /// Add Data For Assign Course
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="course_id"></param>
+        /// <param name="dtAssignCourse"></param>
+        private void AddDataForAssignCourse(string user_id, string course_id, DataTable dtAssignCourse)
+        {
+            DataRow row;
+
+            row = dtAssignCourse.NewRow();
+            row["employeeID"] = user_id;
+            row["course_id"] = course_id;
+            row["course_assign_by_id"] = SessionWrapper.u_userid;
+            row["required"] = false;
+            row["DueDate"] = string.Empty;
+
+            dtAssignCourse.Rows.Add(row);
+        }
+
+        /// <summary>
+        /// Add Data for curriculum assign
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="curriculum_id"></param>
+        /// <param name="dtAssignCurriculum"></param>
+        private void AddDataForAssignCurriculum(string user_id, string curriculum_id, DataTable dtAssignCurriculum)
+        {
+            DataRow row;
+
+            row = dtAssignCurriculum.NewRow();
+            row["employeeID"] = user_id;
+            row["curriculum_id"] = curriculum_id;
+            row["required"] = false;
+            row["DueDate"] = string.Empty;
+
+            dtAssignCurriculum.Rows.Add(row);
+        }
+
+        /// <summary>
+        /// Add data for drop curriculum
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="course_curriculum_id"></param>
+        /// <param name="dtDropCurriculum"></param>
+        private void AddDataForDropCurriculum(string user_id, string course_curriculum_id, DataTable dtDropCurriculum)
+        {
+            DataRow row;
+            row = dtDropCurriculum.NewRow();
+            row["user_id"] = user_id;
+            row["curriculum_id"] = course_curriculum_id;
+            dtDropCurriculum.Rows.Add(row);
+        }
+
+        /// <summary>
+        /// Add data for drop course
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="course_id"></param>
+        /// <param name="dtDropCourse"></param>
+        private void AddDataForDropCourse(string user_id, string course_id, DataTable dtDropCourse)
+        {
+            DataRow row;
+            row = dtDropCourse.NewRow();
+            row["user_id"] = user_id;
+            row["course_id"] = course_id;
+            dtDropCourse.Rows.Add(row);
+        }
+
+        /// <summary>
+        /// Get Csv Data
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static DataTable GetCSVData(string CSVFilePathName)
+        {
+            string[] Lines = File.ReadAllLines(CSVFilePathName);
+            string[] Fields;
+
+            Fields = Lines[0].TrimEnd(',').Split(new char[] { ',' });
+            int Cols = Fields.GetLength(0);
+
+            DataTable dt = new DataTable();
+
+            for (int i = 0; i < Cols; i++)
+                dt.Columns.Add(Fields[i].ToLower(), typeof(string));
+            DataRow Row;
+
+            using (var sr = File.OpenText(CSVFilePathName))
+            {
+                string line;
+                int i = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Length != 0)
+                    {
+                        Fields = Lines[i].Split(new char[] { ',' });
+                        Row = dt.NewRow();
+
+                        for (int f = 0; f < Cols; f++)
+
+                            Row[f] = Fields[f];
+
+                        dt.Rows.Add(Row);
+                        i = i + 1;
+                    }
+                }
+            }
+            dt.Rows.RemoveAt(0);
+            return dt;
         }
     }
 }

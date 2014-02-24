@@ -884,5 +884,50 @@ namespace ComplicanceFactor.BusinessComponent
                 throw;
             }
         }
+        public static DataTable GetEnrollmentbyId(string e_enroll_system_id_pk)
+        {
+            try
+            {
+                Hashtable htGetAllEnrollment = new Hashtable();
+
+                htGetAllEnrollment.Add("@e_enroll_system_id_pk", e_enroll_system_id_pk);
+                return DataProxy.FetchDataTable("e_sp_get_enrollment", htGetAllEnrollment);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static int UpdateEnrollmentAttemptDate(string e_enroll_system_id_pk, DateTime? frist_attempt, DateTime? last_attempt)
+        {
+            try
+            {
+                Hashtable htUpdateEnrollmentAttemptDate = new Hashtable();
+                htUpdateEnrollmentAttemptDate.Add("@e_enroll_system_id_pk", e_enroll_system_id_pk);
+                if (frist_attempt != null)
+                {
+                    htUpdateEnrollmentAttemptDate.Add("@e_enroll_first_attempt_date_time", frist_attempt);
+                }
+                else
+                {
+                    htUpdateEnrollmentAttemptDate.Add("@e_enroll_first_attempt_date_time", DBNull.Value);
+                }
+                if (last_attempt != null)
+                {
+                    htUpdateEnrollmentAttemptDate.Add("@e_enroll_last_attempt_date_time", last_attempt);
+                }
+                else
+                {
+                    htUpdateEnrollmentAttemptDate.Add("@e_enroll_last_attempt_date_time", DBNull.Value);
+                }
+
+
+                return DataProxy.FetchSPOutput("e_sp_update_enrollment_attempt_time", htUpdateEnrollmentAttemptDate);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }   
 }

@@ -343,43 +343,38 @@ namespace ComplicanceFactor
                 Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
 
             }
-            //else if (e.CommandName.Equals("Launch"))
-            //{
-            //    string url = e.CommandArgument.ToString();
-            //    if (!string.IsNullOrEmpty(url))
-            //    {
-            //        if (!url.Contains("http"))
-            //            url = "http://" + url;
-            //        ClientScript.RegisterStartupScript(GetType(), "Navigate", "window.open( '" + url + "', '_blank' );", true);
-            //    }
-            //    else
-            //    {
-            //        string str = "<script>alert(\"Could not find the ScromURl....\");</script>";
-            //        Page.ClientScript.RegisterStartupScript(this.GetType(), "Script", str, false);
-            //    }
-                
-                
+            else if (e.CommandName.Equals("Launch"))
+            {
+                int rowIndex = int.Parse(e.CommandArgument.ToString());
 
-                
-            //    //DataSet dsEmployee = EmployeeBLL.GetAllEmployee(SessionWrapper.u_userid);
-            //    //DataTable dtGetscormUrl = new DataTable();
-            //    //dtGetscormUrl= dsEmployee.Tables[0];
-            //    //string scormURL = dtGetscormUrl.Rows[0]["scormurl"].ToString();
-            //    //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
-            //    //insert enrollment
-            //    //BusinessComponent.DataAccessObject.Enrollment enrollOLT = new BusinessComponent.DataAccessObject.Enrollment();
-            //    //enrollOLT.e_enroll_user_id_fk = SessionWrapper.u_userid;
-            //   //string ScoromUrl = e.CommandArgument.ToString();
-            //    //enrollOLT.e_enroll_required_flag = true;
-            //    //enrollOLT.e_enroll_approval_required_flag = true;
-            //    //enrollOLT.e_enroll_type_name = "Self-enroll";
-            //    //enrollOLT.e_enroll_approval_status_name = "Pending";
-            //    //enrollOLT.e_enroll_status_name = "Enrolled";
-            //    //EnrollmentBLL.QuickLaunchEnroll(enrollOLT);
-            //    //Response.Redirect("~/Employee/Home/lhp-01.aspx", false);
+                string e_enroll_system_id_pk = gvCourses.DataKeys[rowIndex][1].ToString();
+                DataTable dtEnroll = EnrollmentBLL.GetEnrollmentbyId(e_enroll_system_id_pk);
+                DateTime? first_attempt = null;
+                DateTime? last_attempt = null;
+                if (dtEnroll != null)
+                {
+                    if (dtEnroll.Rows.Count > 0)
+                    {
+                        if (dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"] == null)
+                        {
+                            first_attempt = DateTime.Now;
+                        }
+                        else if (string.IsNullOrEmpty(dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"].ToString()))
+                        {
+                            first_attempt = DateTime.Now;
+                        }
+                        else
+                        {
+                            first_attempt = (DateTime)dtEnroll.Rows[0]["e_enroll_first_attempt_date_time"];
+                            last_attempt = DateTime.Now;
+                        }
+                        EnrollmentBLL.UpdateEnrollmentAttemptDate(e_enroll_system_id_pk, first_attempt, last_attempt);
+                    }
+                }
 
-                
-            //}
+
+
+            }
             else if (e.CommandName.Equals("Details"))
             {
                 //Response.Redirect("~/Employee/Catalog/ctdp-01.aspx?id=" + SecurityCenter.EncryptText(e.CommandArgument.ToString()), false);
