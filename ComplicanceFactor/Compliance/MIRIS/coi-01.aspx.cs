@@ -2288,7 +2288,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 txtEmployeeName.Text = miris.c_employee_name;
-                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();

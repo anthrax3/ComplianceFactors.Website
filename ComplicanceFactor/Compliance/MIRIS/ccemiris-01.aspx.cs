@@ -316,7 +316,7 @@ namespace ComplicanceFactor.Compliance
                 ddlEmployeeReportLocation.DataBind();
                 ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                 ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
-                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 txtNote.Text = miris.c_note;
                 txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
                 txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;

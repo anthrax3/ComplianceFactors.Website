@@ -532,7 +532,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //txtDateOfBirth.Text = Convert.ToDateTime(miris.c_employee_dob, culture).ToString("MM/dd/yyyy");
                 //txtEmployeHireDate.Text = Convert.ToDateTime(miris.c_employee_hire_date, culture).ToString("MM/dd/yyyy");
                 txtEmployeeId.Text = miris.c_employee_id;
-                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 txtSupervisor.Text = miris.c_supervisor;
                 txtIncidentLocation.Text = miris.c_incident_location;
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date, culture).ToString("MM/dd/yyyy");

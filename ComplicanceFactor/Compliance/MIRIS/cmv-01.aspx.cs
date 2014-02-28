@@ -2220,7 +2220,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
             try
             {
                 miris = ComplianceBLL.GetCaseMV(caseid);
-                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 ddlTimezone.SelectedValue = miris.c_timezoneId;
                 lblCaseDate.Text = Convert.ToDateTime(miris.c_case_date).ToString("MM/dd/yyyy hh:mm tt");
                 lblCaseNumber.Text = miris.c_case_number;

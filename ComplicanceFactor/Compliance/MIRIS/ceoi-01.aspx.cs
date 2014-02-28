@@ -327,7 +327,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 txtEmployeeName.Text = miris.c_employee_name;
-                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();
@@ -345,19 +345,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtEmployeeId.Text = miris.c_employee_id;
                 txtLastFourDigitOfSSN.Text = miris.c_ssn;
                 txtSupervisor.Text = miris.c_supervisor;
-                ddlEmployeeReportLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
-                {
-                    s_establishment_id_pk = "",
-                    s_establishment_city = "",
-                    s_establishment_name = "",
-                    s_establishment_status_id_fk = "app_ddl_active_text"
-                });
-
-                ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
-                ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
-                ddlEmployeeReportLocation.DataBind();
-                ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
-                ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
+              
 
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date, culture).ToString("MM/dd/yyyy");
                 IncidentTime.Date = miris.c_incident_time;

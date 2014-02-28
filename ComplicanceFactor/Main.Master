@@ -54,6 +54,7 @@
         <!---header   --->
         <div id="header">
             <div class="content_align ">
+                <div style=" position:absolute; left:20px; color:White; background-color:Red; font-size:16px;">Development</div>
                 <!---logo   --->
                 <div id="logo">
                     <%-- <a href="/Employee/lhp-01.aspx" class="image_link">  AlternateText="Logo" --%>
@@ -64,6 +65,7 @@
                 <!---End logo   --->
                 <!---login   --->
                 <div id="login">
+            
                     <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td align="center" style="width: 260px">
@@ -74,6 +76,7 @@
                                             <asp:Label ID="lblUsername" runat="server"></asp:Label>
                                         </td>
                                     </tr>
+                                  
                                     <tr>
                                         <td style="font-size: 11px;" align="center">
                                             <asp:Label ID="lblDateTime" runat="server"></asp:Label>
@@ -86,6 +89,7 @@
                                     Text="<%$ GlobalResourceExpression: app_logout_button_text%>" OnClick="btnLogout_Click" />
                             </td>
                         </tr>
+                          <tr><td colspan="2">&nbsp;</td></tr>
                         <tr>
                             <td colspan="2">
                                 <div class="left " style="padding: 4px 7px 0 10px; font-weight: bold;">

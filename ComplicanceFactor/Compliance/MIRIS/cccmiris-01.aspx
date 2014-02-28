@@ -94,6 +94,56 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true"
         EnableScriptLocalization="true">
     </asp:ToolkitScriptManager>
+    <div class="div_header_long">
+        <%=LocalResources.GetLabel("app_creative_new_case_text")%>
+    </div>
+    <br />
+    <asp:Panel ID="PnlCreatecase" DefaultButton="btnCreateNewCase" runat="server">
+        <div class="div_controls font_1">
+            <table>
+                <tr>
+                    <td>
+                        *
+                        <%=LocalResources.GetLabel("app_case_category_text")%>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlCaseCategory" DataValueField="c_category_id" DataTextField="c_category_name"
+                            AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        *
+                        <%=LocalResources.GetLabel("app_case_types_text")%>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
+                            runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvcasetitle" runat="server" ValidationGroup="ccasir"
+                            ControlToValidate="txtCaseTitle" ErrorMessage="<%$ TextResourceExpression: app_case_title_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="recasetitle" runat="server" ErrorMessage="<%$ TextResourceExpression: app_size_limit_error_wrong %>"
+                            ControlToValidate="txtCaseTitle" ValidationGroup="ccasir" ValidationExpression=".{0,100}">&nbsp;</asp:RegularExpressionValidator>
+                        *
+                        <%=LocalResources.GetLabel("app_case_title_text")%>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtCaseTitle" CssClass="textbox_width" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="btnsave_new_user_td">
+                        <asp:Button ID="btnCreateNewCase" ValidationGroup="ccasir" CssClass="cursor_hand"
+                            runat="server" Text="<%$ LabelResourceExpression: app_creative_new_case_button_text %>"
+                            OnClick="btnCreateNewCase_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </asp:Panel>
+    <br />
     <div class="content_area_long">
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_miris_search_results_text")%>
@@ -222,62 +272,6 @@
         </div>
     </div>
     <br />
-    <br />
-    <div class="div_header_long">
-        <%=LocalResources.GetLabel("app_creative_new_case_text")%>
-    </div>
-    <br />
-    <asp:Panel ID="PnlCreatecase" DefaultButton="btnCreateNewCase" runat="server">
-        <div class="div_controls font_1">
-            <table>
-                <tr>
-                    <td>
-                        *
-                        <%=LocalResources.GetLabel("app_case_category_text")%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlCaseCategory" DataValueField="c_category_id" DataTextField="c_category_name"
-                            AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        *
-                        <%=LocalResources.GetLabel("app_case_types_text")%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
-                            runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvcasetitle" runat="server" ValidationGroup="ccasir"
-                            ControlToValidate="txtCaseTitle" ErrorMessage="<%$ TextResourceExpression: app_case_title_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="recasetitle" runat="server" ErrorMessage="<%$ TextResourceExpression: app_size_limit_error_wrong %>"
-                            ControlToValidate="txtCaseTitle" ValidationGroup="ccasir" ValidationExpression=".{0,100}">&nbsp;</asp:RegularExpressionValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_case_title_text")%>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtCaseTitle" CssClass="textbox_width" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6">
-                        &nbsp;
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="btnsave_new_user_td">
-                        <asp:Button ID="btnCreateNewCase" ValidationGroup="ccasir" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_creative_new_case_button_text %>"
-                            OnClick="btnCreateNewCase_Click" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </asp:Panel>
-    <br />
     <asp:Panel ID="pnlSearch" DefaultButton="btnGosearch" runat="server">
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_miris_advanced_search_text")%>
@@ -322,7 +316,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlSearchCaseCategory" DataValueField="c_category_id" DataTextField="c_category_name"
-                         AutoPostBack="true"   CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlSearchCaseCategory_SelectedIndexChanged">
+                            AutoPostBack="true" CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlSearchCaseCategory_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
                     <td>
@@ -340,6 +334,65 @@
                         <asp:DropDownList ID="ddlSearchCaseStatus" DataValueField="c_status_id" DataTextField="c_status_name"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%=LocalResources.GetLabel("app_employee_name_text")%>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_incident_location_text")%>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_employee_report_location_text")%>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlEmployeeReportLocation" CssClass="ddl_user_advanced_search"
+                            runat="server">
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                    </td>
+                    <td class="align_left">
+                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                       <%=LocalResources.GetLabel("app_date_from_text")%>:
+                    </td>
+                    <td>
+                        <asp:CalendarExtender ID="CalendarExtender1" Format="MM/dd/yyyy" runat="server" TargetControlID="txtCreationStartDate">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtCreationStartDate" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>  <%=LocalResources.GetLabel("app_date_to_text")%>:
+                    </td>
+                    <td>
+                        <asp:CalendarExtender ID="CalendarExtender2" Format="MM/dd/yyyy" runat="server" TargetControlID="txtCreationEndDate">
+                        </asp:CalendarExtender>
+                        <asp:TextBox ID="txtCreationEndDate" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
                     </td>
                 </tr>
                 <tr>
@@ -369,12 +422,12 @@
     </asp:Panel>
     <asp:Button ID="btnpnlCompleteCase" runat="server" Style="display: none;" />
     <div class="font_normal">
-        <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background" Style="display: none;
-            padding-left: 0px;  padding-right: 0px;">
+        <asp:Panel ID="pnlCompleteCase" runat="server" CssClass="modalPopup_width_620 modal_popup_background"
+            Style="display: none; padding-left: 0px; padding-right: 0px;">
             <asp:Panel ID="pnlCompleteCasePageHeading" runat="server" CssClass="drag">
                 <div>
                     <div class="div_header_620">
-                         <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>
+                        <%=LocalResources.GetLabel("app_select_approver_for_complete_case_text")%>
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="imgCloseCompleteCase" CssClass="cursor_hand" Style="top: -15px;
@@ -388,7 +441,7 @@
                 <table>
                     <tr>
                         <td>
-                            <%=LocalResources.GetLabel("app_select_approver_text")%>: 
+                            <%=LocalResources.GetLabel("app_select_approver_text")%>:
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlComplianceApprover" DataValueField="u_user_id_pk" DataTextField="u_first_name"

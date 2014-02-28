@@ -777,7 +777,7 @@ namespace ComplicanceFactor.Compliance
                     s_establishment_name = "",
                     s_establishment_status_id_fk = "app_ddl_active_text"
                 });
-                txtDateInTitle.Text = miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
                 ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
                 ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
                 ddlEmployeeReportLocation.DataBind();

@@ -75,8 +75,22 @@ namespace ComplicanceFactor.Compliance
                     ddlSearchCaseStatus.DataSource = ComplianceBLL.GetMirisCaseAllStatus(SessionWrapper.CultureName, "cccmiris-01");
                     ddlSearchCaseStatus.DataBind();
                     //ddlSearchCaseStatus.Items.Insert(0, liAll);
-                    
-                 
+                    txtCreationStartDate.Text = DateTime.Now.AddYears(-1).ToString("MM/dd/yyyy");
+                    txtCreationEndDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+
+                    ddlEmployeeReportLocation.DataSource = SystemEstablishmentBLL.SearchEstablishment(new SystemEstablishment()
+                    {
+                        s_establishment_id_pk = "",
+                        s_establishment_city = "",
+                        s_establishment_name = "",
+                        s_establishment_status_id_fk = "app_ddl_active_text"
+                    });
+
+                    ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
+                    ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
+                    ddlEmployeeReportLocation.DataBind();
+                    ddlEmployeeReportLocation.Items.Insert(0, new ListItem("All", ""));
+                   
                 }
                 catch (Exception ex)
                 {
@@ -446,8 +460,8 @@ namespace ComplicanceFactor.Compliance
             lbldownPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
             txtPage.Text = (gvsearchDetails.PageIndex + 1).ToString();
             lblPage.Text = "of " + (gvsearchDetails.PageCount).ToString();
-            ddlresultperpage_header.SelectedIndex = 0;
-            ddlresultperpage_footer.SelectedIndex = 0;
+            //ddlresultperpage_header.SelectedIndex = 0;
+            //ddlresultperpage_footer.SelectedIndex = 0;
         }
 
         protected void btnFirst_Click(object sender, EventArgs e)
@@ -650,8 +664,19 @@ namespace ComplicanceFactor.Compliance
                 {
                     miris.c_case_status = ddlSearchCaseStatus.SelectedValue;
                 }
-
-                dtSearchCase = ComplianceBLL.SearchCase(miris);
+                if (string.IsNullOrEmpty(ddlEmployeeReportLocation.SelectedValue))
+                {
+                    miris.c_employee_report_location = "";
+                }
+                else
+                {
+                    miris.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
+                }
+                miris.c_employee_name = txtEmployeeName.Text;
+                miris.c_incident_location = txtIncidentLocation.Text;
+                miris.c_supervisor = txtSupervisor.Text;
+                
+                dtSearchCase = ComplianceBLL.SearchCase(miris, txtCreationStartDate.Text, txtCreationEndDate.Text);
                 gvsearchDetails.DataSource = dtSearchCase;
                 gvsearchDetails.DataBind();
 
