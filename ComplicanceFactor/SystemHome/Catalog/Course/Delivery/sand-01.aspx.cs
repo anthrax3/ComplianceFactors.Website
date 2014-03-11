@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
+using System.Xml.Linq;
 using ComplicanceFactor.Common;
 using ComplicanceFactor.BusinessComponent;
 using System.Data;
 using System.IO;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using System.Globalization;
+using Ionic.Zip;
 
 namespace ComplicanceFactor.SystemHome.Catalog.Popup
 {
@@ -1312,5 +1316,125 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             
         }
 
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            if (FileUploadControl.HasFile)
+            {
+                try{
+                    if (FileUploadControl.PostedFile.FileName.EndsWith(".zip"))
+                    {
+                        string course_id = Guid.NewGuid().ToString();
+                        // set session variable so that parent pages catch it
+                        SessionWrapper.c_course_system_id_pk = course_id;
+                        
+                        // set default message; will be changed if something goes wrong...
+                        StatusLabel.Text = "Course content uploaded and imported successfully.";
+
+                        string filename = course_id + ".zip";
+                        string zip_full_path = Server.MapPath("~/LMS/Courses/" + filename);
+                        string course_unpack_path = Server.MapPath("~/LMS/Courses/" + course_id);
+                        string ims_manifest_path =  Server.MapPath("~/LMS/Courses/" + course_id + "/imsmanifest.xml");
+
+                        FileUploadControl.SaveAs(zip_full_path);
+
+                        //Unzip course to course_id-named folder
+                        using (ZipFile zip1 = ZipFile.Read(zip_full_path))
+                        {
+                            foreach (ZipEntry ez in zip1)
+                            {
+                                ez.Extract(course_unpack_path, ExtractExistingFileAction.OverwriteSilently);
+                            }
+                        }
+
+                        string scorm_schemaversion = "";
+                        string scorm_coursetitle = "";
+                        string scorm_launch_file = "";
+
+                        string temp_value = "";
+
+                        //Parse the XML manifest file, extracting data as needed
+                        XmlTextReader reader = new XmlTextReader(ims_manifest_path);
+                        while (reader.Read())
+                        {
+                            switch (reader.NodeType)
+                            {
+                                case XmlNodeType.Element: // The node is an element.
+                                    //Response.Write("&lt;" + reader.Name + "&gt;");
+                                    temp_value = reader.Name;
+                                    if (temp_value == "resource" && reader.HasAttributes){
+                                        while (reader.MoveToNextAttribute())
+                                        {
+                                            if (reader.Name == "href" && scorm_launch_file == "")
+                                                scorm_launch_file = HttpUtility.UrlEncode(reader.Value);
+                                        }
+                                    }
+                                    break;
+                                case XmlNodeType.Text: //Display the text in each element.
+                                    //Response.Write(reader.Value + "&lt;br /&gt;");
+                                    if (temp_value == "schemaversion" && scorm_schemaversion == "")
+                                        scorm_schemaversion = reader.Value;
+                                    else if (temp_value == "title" && scorm_coursetitle == "")
+                                        scorm_coursetitle = reader.Value;
+                                    break;
+                                case XmlNodeType.EndElement: //Display the end of the element.
+                                    //Response.Write("&lt;/" + reader.Name + "&gt;");
+                                    break;
+                            }
+                        }
+
+                        SessionWrapper.c_course_title = scorm_coursetitle;
+                        txtDeliveryTitle.Text = scorm_coursetitle;
+                        txtScormUrl.Text = "/LMS/Courses/" + course_id  + "/" + scorm_launch_file;
+
+                        if (scorm_schemaversion != "1.2"){
+                            //abort process and delete uploaded ZIP and unpacked files; do not save anything or post course information
+                            FileUploadControl.Dispose();
+                            File.Delete(zip_full_path);
+                            // TODO: Delete unpacked folder and all subdirectories
+
+                            txtDeliveryTitle.Text = "";
+                            txtScormUrl.Text = "";
+                            SessionWrapper.c_course_system_id_pk = string.Empty;
+                            SessionWrapper.c_course_title = string.Empty;
+                            StatusLabel.Text = "This package is not SCORM 1.2 conformant and cannot be processed. Import canceled.";
+                        }
+                    }
+                    else
+                        StatusLabel.Text = "Upload status: Course package must be a ZIP file.";
+                }
+                catch (Exception ex)
+                {
+                    string error_text = "Upload status: The course package could not be imported. Error: " + ex.Message;
+                    StatusLabel.Text = error_text;
+                    Logger.WriteToErrorLog("sand-01.aspx", error_text);
+                }
+            }
+        }
+
+        private string GetFullyQualifiedDomain(){
+            //Return variable declaration
+            var appPath = string.Empty;
+
+            //Getting the current context of HTTP request
+            var context = HttpContext.Current;
+
+            //Checking the current context content
+            if (context != null)
+            {
+                //Formatting the fully qualified website url/name
+                appPath = string.Format("{0}://{1}{2}{3}",
+                                        context.Request.Url.Scheme,
+                                        context.Request.Url.Host,
+                                        context.Request.Url.Port == 80
+                                            ? string.Empty
+                                            : ":" + context.Request.Url.Port,
+                                        context.Request.ApplicationPath);
+            }
+
+            if (!appPath.EndsWith("/"))
+                appPath += "/";
+
+            return appPath;
+        }
     }
 }

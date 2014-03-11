@@ -3307,6 +3307,29 @@ namespace ComplicanceFactor.Common
                 HttpContext.Current.Session["c_course_system_id_pk"] = value;
             }
         }
+
+        /// <summary>
+        ///c_course_title 
+        /// </summary>
+        public static string c_course_title
+        {
+            get
+            {
+                if (HttpContext.Current.Session["c_course_title"] != null)
+                {
+                    return HttpContext.Current.Session["c_course_title"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["c_course_title"] = value;
+            }
+        }
+
         /// <summary>
         /// Reset_Course_Doamin
         /// </summary>

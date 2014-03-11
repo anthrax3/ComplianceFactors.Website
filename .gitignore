@@ -105,4 +105,8 @@ Generated_Code #added for RIA/Silverlight projects
 # Visual Studio version. Backup files are not needed, because we have git ;-)
 _UpgradeReport_Files/
 Backup*/
+
+# Course Player and Course Files are in another project, but are on
+# the local dev machine for testing
+LMS
 UpgradeLog*.XML
