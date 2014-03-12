@@ -7,7 +7,8 @@ using ComplicanceFactor.Common;
 using System.Data;
 using System.IO;
 using ComplicanceFactor.Common.Languages;
-
+using ComplicanceFactor.DocumentstoCatalog;
+using System.Xml;
 namespace ComplicanceFactor.SystemHome.Catalog.Documents
 {
     public partial class saedin_01 : System.Web.UI.Page
@@ -147,6 +148,56 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
+            string[] fileNames = SessionWrapper.Attachment_file_name.Split(new char[] { '.' });
+            using (var client = new ListsSoapClient())
+            {
+                client.ClientCredentials.Windows.ClientCredential = new System.Net.NetworkCredential("darrick", "A1b2c3d4", "U17216392");
+
+                XmlDocument camlDocument = new XmlDocument();
+                XmlNode queryNode = camlDocument.CreateElement("Query");
+                queryNode.InnerXml = "<Where>"
+                + "<Eq><FieldRef Name='FileLeafRef' /><Value Type='Text'>" + fileNames[0] + "_" + SessionWrapper.Attachment_guid + "</Value></Eq>"
+                + "</Where>";
+
+
+                XmlNode resultNode = client.GetListItems("Documents to Catalog", "",
+                queryNode, null, "1500", null, null);
+
+                XmlTextReader xr = new XmlTextReader(resultNode.OuterXml, XmlNodeType.Element, null);
+                DataTable returnDT = null;
+                using (DataSet ds = new DataSet())
+                {
+                    ds.ReadXml(xr);
+                    if (ds.Tables.Count == 2)
+                    {
+                        returnDT = ds.Tables[1];
+                    }
+                }
+                if (returnDT != null)
+                {
+
+
+                    string strBatch = "<Method ID='1' Cmd='Delete'>" +
+                        "<Field Name='ID'>" + returnDT.Rows[0]["ows_ID"] + "</Field>" +
+                        "<Field Name='FileRef'>" + SharePointBLL.spServicesUrl + fileNames[0] + "_" + SessionWrapper.Attachment_guid + "</Field>" +
+                        "</Method>";
+
+                    XmlDocument xmlDoc = new System.Xml.XmlDocument();
+
+                    System.Xml.XmlElement elBatch = xmlDoc.CreateElement("Batch");
+
+                    elBatch.SetAttribute("OnError", "Continue");
+
+                    elBatch.SetAttribute("PreCalc", "TRUE");
+
+                    //elBatch.SetAttribute("ViewName", System.Guid.NewGuid().ToString());
+
+                    elBatch.InnerXml = strBatch;
+
+                    client.UpdateListItems("Documents to Catalog", elBatch);
+                }
+
+            }
             SessionWrapper.Attachment_file_name = string.Empty;
             SessionWrapper.Attachment_guid = string.Empty;
             lnkFileName.Text = string.Empty;
@@ -395,16 +446,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             foreach (string files in Request.Files)
             {
                 file = Request.Files[files];
-                string m_file_name = null;
-                string m_file_extension = null;
-                string m_file_guid = Guid.NewGuid().ToString();
+                string fileName = null;
+                string fileExtension = null;
+                string file_guid = Guid.NewGuid().ToString();
                 if (file != null && file.ContentLength > 0)
                 {
-                    m_file_name = Path.GetFileName(file.FileName);
-                    m_file_extension = Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath(_filePath + m_file_guid + m_file_extension));
-                    SessionWrapper.Attachment_file_name = m_file_name;
-                    SessionWrapper.Attachment_guid = m_file_guid + m_file_extension;
+                    fileName = Path.GetFileName(file.FileName);
+                    fileExtension = Path.GetExtension(file.FileName);
+                    string phyPath = Server.MapPath(_filePath + file_guid + fileExtension);
+                    file.SaveAs(phyPath);
+
+                    SessionWrapper.Attachment_file_name = fileName;
+                    SessionWrapper.Attachment_guid = file_guid + fileExtension;
+                    SharePointBLL.UploadFileToSharePoint(phyPath, SharePointBLL.spServicesUrl + fileName.Replace(fileExtension, "") + "_" + file_guid + fileExtension);
                 }
             }
             Attachment();

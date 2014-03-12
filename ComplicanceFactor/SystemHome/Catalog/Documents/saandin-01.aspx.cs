@@ -7,8 +7,9 @@ using System.Data;
 using ComplicanceFactor.BusinessComponent.DataAccessObject;
 using ComplicanceFactor.BusinessComponent;
 using ComplicanceFactor.Common.Languages;
-
-
+using ComplicanceFactor.DocumentstoCatalog;
+using System.Xml;
+using System.Net;
 namespace ComplicanceFactor.SystemHome.Catalog.Documents
 {
     public partial class saandin_01 : System.Web.UI.Page
@@ -97,6 +98,14 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
 
         protected void btnUploadDocument_Click(object sender, EventArgs e)
         {
+
+           // ComplicanceFactor.DocumentstoCatalog.ListsSoapClient client = new ListsSoapClient();
+            //list.ClientCredentials.Windows.ClientCredential = new System.Net.NetworkCredential("david", "A1b2c3d4", "U17216392");
+            //client.ClientCredentials.Windows.ClientCredential = new System.Net.NetworkCredential("david", "A1b2c3d4", "U17216392");
+            //client.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.Identification;
+            //client.ClientCredentials.Windows.AllowNtlm = true;
+            //client.GetListCollection(); 
+           
             HttpPostedFile file = default(HttpPostedFile);
             foreach (string files in Request.Files)
             {
@@ -108,13 +117,72 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
                 {
                     fileName = Path.GetFileName(file.FileName);
                     fileExtension = Path.GetExtension(file.FileName);
-
-                    file.SaveAs(Server.MapPath(_filePath + file_guid + fileExtension));
+                    string phyPath = Server.MapPath(_filePath + file_guid + fileExtension);
+                    file.SaveAs(phyPath);
 
                     SessionWrapper.Attachment_file_name = fileName;
                     SessionWrapper.Attachment_guid = file_guid + fileExtension;
+                    SharePointBLL.UploadFileToSharePoint(phyPath, SharePointBLL.spServicesUrl + fileName.Replace(fileExtension, "") + "_" + file_guid + fileExtension);
                 }
             }
+            Attachment();
+        }
+        
+        protected void btnRemove_Click(object sender, EventArgs e)
+        {
+            string[] fileNames = SessionWrapper.Attachment_file_name.Split(new char[] { '.' });
+            using (var client = new ListsSoapClient())
+            {
+                client.ClientCredentials.Windows.ClientCredential = new System.Net.NetworkCredential("darrick", "A1b2c3d4", "U17216392");
+
+                XmlDocument camlDocument = new XmlDocument();
+                XmlNode queryNode = camlDocument.CreateElement("Query");
+                queryNode.InnerXml = "<Where>"
+                + "<Eq><FieldRef Name='FileLeafRef' /><Value Type='Text'>" + fileNames[0] + "_" + SessionWrapper.Attachment_guid + "</Value></Eq>"
+                + "</Where>";
+
+
+                XmlNode resultNode = client.GetListItems("Documents to Catalog", "",
+                queryNode, null, "1500", null, null);
+
+                XmlTextReader xr = new XmlTextReader(resultNode.OuterXml, XmlNodeType.Element, null);
+                DataTable returnDT = null;
+                using (DataSet ds = new DataSet())
+                {
+                    ds.ReadXml(xr);
+                    if (ds.Tables.Count == 2)
+                    {
+                        returnDT = ds.Tables[1];
+                    }
+                }
+                if (returnDT != null)
+                {
+
+
+                    string strBatch = "<Method ID='1' Cmd='Delete'>" +
+                        "<Field Name='ID'>" + returnDT.Rows[0]["ows_ID"] + "</Field>" +
+                        "<Field Name='FileRef'>" + SharePointBLL.spServicesUrl + fileNames[0] + "_" + SessionWrapper.Attachment_guid + "</Field>" +
+                        "</Method>";
+
+                    XmlDocument xmlDoc = new System.Xml.XmlDocument();
+
+                    System.Xml.XmlElement elBatch = xmlDoc.CreateElement("Batch");
+
+                    elBatch.SetAttribute("OnError", "Continue");
+
+                    elBatch.SetAttribute("PreCalc", "TRUE");
+
+                    //elBatch.SetAttribute("ViewName", System.Guid.NewGuid().ToString());
+
+                    elBatch.InnerXml = strBatch;
+
+                    client.UpdateListItems("Documents to Catalog", elBatch);
+                }
+
+            }
+            SessionWrapper.Attachment_file_name = string.Empty;
+            SessionWrapper.Attachment_guid = string.Empty;
+            lnkFileName.Text = string.Empty;
             Attachment();
         }
         private void Attachment()
@@ -154,13 +222,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
             dtTempAttachment.Columns.Add(dtTempAttachmentColumn);
             return dtTempAttachment;
         }
-        protected void btnRemove_Click(object sender, EventArgs e)
-        {
-            SessionWrapper.Attachment_file_name = string.Empty;
-            SessionWrapper.Attachment_guid = string.Empty;
-            lnkFileName.Text = string.Empty;
-            Attachment();
-        }
+      
 
         protected void btnHeaderSave_Click(object sender, EventArgs e)
         {
@@ -371,5 +433,6 @@ namespace ComplicanceFactor.SystemHome.Catalog.Documents
 
 
         }
+       
     }
 }

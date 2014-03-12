@@ -84,6 +84,8 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -773,6 +775,14 @@
     <Content Include="Scripts\querystring-0.9.0-min.js" />
     <Content Include="Scripts\querystring-0.9.0.js" />
     <Content Include="Scripts\spin.min.js" />
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
+    <None Include="Service References\DocumentstoCatalog\Lists.disco" />
+    <None Include="Service References\DocumentstoCatalog\configuration91.svcinfo" />
+    <None Include="Service References\DocumentstoCatalog\configuration.svcinfo" />
+    <None Include="Service References\DocumentstoCatalog\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SystemHome\Catalog\Approvals\saeas-01.aspx" />
     <Content Include="SystemHome\Catalog\Approvals\samamp-01.aspx" />
     <Content Include="SystemHome\Catalog\Approvals\samasrp-01.aspx" />
@@ -1281,6 +1291,7 @@
     <None Include="Compliance\MIRIS\Reports\OSHADataSet.xss">
       <DependentUpon>OSHADataSet.xsd</DependentUpon>
     </None>
+    <None Include="Service References\DocumentstoCatalog\Lists.wsdl" />
     <None Include="SystemHome\Catalog\Documents\Upload\4c5f4dc1-203d-44d5-bb4e-e2220d66ff40.xlsx" />
     <None Include="SystemHome\Catalog\Documents\Upload\590a10de-ff28-4806-a821-b485148b061c.docx" />
     <None Include="SystemHome\Catalog\Documents\Upload\e42944af-19ff-4f92-8c27-85c5fc51152b.docx" />
@@ -2494,6 +2505,11 @@
     </Compile>
     <Compile Include="Resources\rlpsec-01.aspx.designer.cs">
       <DependentUpon>rlpsec-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DocumentstoCatalog\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Services\serp-01.aspx.cs">
       <DependentUpon>serp-01.aspx</DependentUpon>
@@ -5120,6 +5136,12 @@
     <EmbeddedResource Include="SystemHome\Configuration\HRISIntegration\PdfTemplate\ErrorLog.rdlc" />
     <EmbeddedResource Include="Training\PdfTemplate\MyCourse.rdlc" />
     <EmbeddedResource Include="Training\Popup\PdfTemplate\MyDeliveries.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DocumentstoCatalog\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

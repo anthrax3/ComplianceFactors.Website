@@ -1411,6 +1411,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCourseDelivery.Add("@c_nc_olt_launch_url", updateCourseDelivery.c_nc_olt_launch_url);
             htUpdateCourseDelivery.Add("@c_nc_olt_launch_param", updateCourseDelivery.c_nc_olt_launch_param);
             htUpdateCourseDelivery.Add("@c_nc_olt_waitlist_flag", updateCourseDelivery.c_nc_olt_waitlist_flag);
+            htUpdateCourseDelivery.Add("@c_delivery_complete_on_launch", updateCourseDelivery.c_delivery_complete_on_launch);
             if (!string.IsNullOrEmpty(updateCourseDelivery.c_nc_olt_wrapper_id_fk))
             {
                 htUpdateCourseDelivery.Add("@c_nc_olt_wrapper_id_fk", updateCourseDelivery.c_nc_olt_wrapper_id_fk);
@@ -1486,6 +1487,7 @@ namespace ComplicanceFactor.BusinessComponent
                 courseDelivery.c_delivery_active_flag = Convert.ToBoolean(dtGetCourseDelivery.Rows[0]["c_delivery_active_flag"]);
                 courseDelivery.c_delivery_active_type_id_fk = dtGetCourseDelivery.Rows[0]["c_delivery_active_type_id_fk"].ToString();
                 courseDelivery.c_delivery_visible_flag = Convert.ToBoolean(dtGetCourseDelivery.Rows[0]["c_delivery_visible_flag"]);
+                courseDelivery.c_delivery_complete_on_launch = Convert.ToBoolean(dtGetCourseDelivery.Rows[0]["c_delivery_complete_on_launch"]);
                 if (!string.IsNullOrEmpty(dtGetCourseDelivery.Rows[0]["c_delivery_min_enroll"].ToString()))
                 {
                     courseDelivery.c_delivery_min_enroll = Convert.ToInt32(dtGetCourseDelivery.Rows[0]["c_delivery_min_enroll"]);

@@ -271,7 +271,7 @@
                         <asp:Button ID="btnEdit" runat="server" Text="<%$ LabelResourceExpression: app_edit_button_text %>"
                             CssClass="cursor_hand" />
                         <asp:Button ID="btnRemove" runat="server" OnClientClick="return confirmremove();"
-                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" />
+                            Text="<%$ LabelResourceExpression: app_remove_button_text %>" CssClass="cursor_hand" OnClick="btnRemove_Click"/>
                     </td>
                 </tr>
                 <tr>

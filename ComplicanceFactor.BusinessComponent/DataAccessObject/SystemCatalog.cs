@@ -236,7 +236,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         //Audiences
         public string c_course_audience_system_id_pk { get; set; }
         public string c_related_audience_id_fk { get; set; }
-        
+        public bool c_delivery_complete_on_launch { get; set; }
 
     }
 }

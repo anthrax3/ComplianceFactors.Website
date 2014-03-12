@@ -297,6 +297,49 @@ namespace ComplicanceFactor.Employee.Course
                             last_attempt = DateTime.Now;
                         }
                         EnrollmentBLL.UpdateEnrollmentAttemptDate(e_enroll_system_id_pk, first_attempt, last_attempt);
+                        if (dtEnroll.Rows[0]["c_delivery_complete_on_launch"] != null)
+                        {
+                            if (dtEnroll.Rows[0]["c_delivery_complete_on_launch"].ToString() == "True")
+                            {
+                                SystemTranscripts sessiontranscripts = new SystemTranscripts
+                                {
+                                    t_transcript_id_pk = Guid.NewGuid().ToString(),
+                                    t_transcript_user_id_fk = dtEnroll.Rows[0]["e_enroll_user_id_fk"].ToString(),
+                                    t_transcript_course_id_fk = dtEnroll.Rows[0]["e_enroll_course_id_fk"].ToString(),
+                                    t_transcript_delivery_id_fk = dtEnroll.Rows[0]["e_enroll_delivery_id_fk"].ToString(),
+                                    t_transcript_attendance_id_fk = "app_ddl_attended_text",
+                                    t_transcript_passing_status_id_fk = "app_ddl_completed_text",
+                                    t_transcript_completion_date_time = DateTime.Now,
+                                    t_transcript_completion_type_id_fk = "app_ddl_manual_user_mark_completion_text",
+                                    t_transcript_marked_by_user_id_fk = SessionWrapper.u_userid,// all zeroes
+                                    t_transcript_actual_date = DateTime.Now,
+                                    t_transcript_target_due_date = string.IsNullOrEmpty(dtEnroll.Rows[0]["e_enroll_target_due_date"].ToString()) ?
+                                    DateTime.Now : (DateTime)dtEnroll.Rows[0]["e_enroll_target_due_date"],
+                                    t_transcript_score = string.IsNullOrEmpty(dtEnroll.Rows[0]["e_enroll_score"].ToString()) ? 0 : int.Parse(dtEnroll.Rows[0]["e_enroll_score"].ToString()),
+                                    t_transcript_credits = string.IsNullOrEmpty(dtEnroll.Rows[0]["c_delivery_credit_units"].ToString()) ? 0 : int.Parse(dtEnroll.Rows[0]["c_delivery_credit_units"].ToString()),
+
+                                    t_transcript_hours = string.IsNullOrEmpty(dtEnroll.Rows[0]["c_delivery_credit_hours"].ToString()) ? 0 : int.Parse(dtEnroll.Rows[0]["c_delivery_credit_hours"].ToString()),
+
+                                    t_transcript_time_spent = string.IsNullOrEmpty(dtEnroll.Rows[0]["e_enroll_time_spent"].ToString()) ? 0 : int.Parse(dtEnroll.Rows[0]["e_enroll_time_spent"].ToString()),
+
+                                    t_transcript_completion_score = 100,
+                                    //t_transcript_status_id_fk = tx_status_id_fk,
+                                    t_transcript_active_flag = true,
+                                    //t_transcript_grade_id_fk = tx_grade_id_fk
+                                    t_transcript_status_name = "Completed"
+
+                                };
+
+
+                                int result = ManageCompletionBLL.InsertTranscripts(sessiontranscripts);
+
+
+                                ManageCompletionBLL.UpdateEnrollment(dtEnroll.Rows[0]["e_enroll_user_id_fk"].ToString(),
+                                    dtEnroll.Rows[0]["e_enroll_course_id_fk"].ToString(), dtEnroll.Rows[0]["e_enroll_delivery_id_fk"].ToString(),
+                                    sessiontranscripts.t_transcript_id_pk);
+                                Response.Redirect(Request.Url.ToString());
+                            }
+                        }
                     }
                 }
 

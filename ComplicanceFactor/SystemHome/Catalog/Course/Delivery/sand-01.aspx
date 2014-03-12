@@ -865,7 +865,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td align="right">
                             <%=LocalResources.GetLabel("app_launch_parameters_text")%>:
                         </td>
                         <td>
@@ -874,15 +874,16 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            <%=LocalResources.GetLabel("app_non_conformant_text")%>:
+                            <%=LocalResources.GetLabel("app_mark_complete_on_launch_text")%>:
                         </td>
-                        <td>
-                            <asp:CheckBox ID="chkNcWaitList" runat="server" />&nbsp;&nbsp;&nbsp;
+                        <td> <asp:CheckBox ID="chkCompleteOnLaunch" runat="server" />
+                            <asp:CheckBox ID="chkNcWaitList" runat="server" Visible="false" />&nbsp;&nbsp;&nbsp;
                             <asp:DropDownList ID="ddlNcWrapper" CssClass="ddl_user_advanced_search" DataValueField="s_wrapper_system_id_pk"
                                 DataTextField="s_wrapper_name" runat="server">
                             </asp:DropDownList>
                         </td>
                     </tr>
+                  
                 </table>
             </div>
             <br />

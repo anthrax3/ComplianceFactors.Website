@@ -840,6 +840,11 @@ namespace ComplicanceFactor.Common
             dtTempDeliverysColumn.ColumnName = "c_nc_olt_wrapper_id_fk";
             dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
 
+            dtTempDeliverysColumn = new DataColumn();
+            dtTempDeliverysColumn.DataType = Type.GetType("System.Boolean");
+            dtTempDeliverysColumn.ColumnName = "c_delivery_complete_on_launch";
+            dtTempDeliverys.Columns.Add(dtTempDeliverysColumn);
+
             return dtTempDeliverys;
 
         }

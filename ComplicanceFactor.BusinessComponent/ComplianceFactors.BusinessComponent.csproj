@@ -44,6 +44,7 @@
     <Compile Include="AuditlogBLL.cs" />
     <Compile Include="ComplianceBLL.cs" />
     <Compile Include="DataAccessObject\SystemEstablishment.cs" />
+    <Compile Include="SharePointBLL.cs" />
     <Compile Include="SystemEstablishmentBLL.cs" />
     <Compile Include="DataAccessObject\ComplainceVehicle.cs" />
     <Compile Include="DataAccessObject\CurriculumStatus.cs" />

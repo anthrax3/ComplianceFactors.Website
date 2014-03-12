@@ -382,6 +382,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 ddlNcWrapper.SelectedValue = delivery.c_nc_olt_wrapper_id_fk;
             }
             ddlScoringScheme.SelectedValue = delivery.c_survey_scoring_scheme_id_fk;
+            chkCompleteOnLaunch.Checked = delivery.c_delivery_complete_on_launch;
         }
         protected void gvSession_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -754,7 +755,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             updateDelivery.c_delivery_active_flag = false;
             updateDelivery.c_delivery_active_type_id_fk = ddlStatus.SelectedValue;
             updateDelivery.c_delivery_visible_flag = chkVisible.Checked;
-
+            updateDelivery.c_delivery_complete_on_launch = chkCompleteOnLaunch.Checked;
             DateTime? availableFrom = null;
             DateTime tempavailableFrom;
             CultureInfo culturenew = new CultureInfo("en-US");

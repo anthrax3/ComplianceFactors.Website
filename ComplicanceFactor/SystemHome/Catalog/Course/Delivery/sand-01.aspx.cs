@@ -671,7 +671,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                     txtCustom11.Text,
                     txtCustom12.Text,
                     txtCustom13.Text, ddlDeliveryType.SelectedItem.Text, lblDeliveryOwner.Text, lblDeliveryCoordinator.Text,
-                    txtNCUrl.Text,txtNcLaunchParameter.Text,chkNcWaitList.Checked,ddlNcWrapper.SelectedValue,ddlScoringScheme.SelectedValue,
+                    txtNCUrl.Text,txtNcLaunchParameter.Text,chkNcWaitList.Checked,ddlNcWrapper.SelectedValue,ddlScoringScheme.SelectedValue,chkCompleteOnLaunch.Checked,
                     SessionWrapper.Deliveries);
 
 
@@ -837,7 +837,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                                             string c_nc_olt_launch_param,
                                             bool c_nc_olt_waitlist_flag,
                                             string c_nc_olt_wrapper_id_fk,
-                                            string c_survey_scoring_scheme_id_fk,
+                                            string c_survey_scoring_scheme_id_fk, bool c_delivery_complete_on_launch,
                                             DataTable dtTempDeliveries)
         {
 
@@ -945,7 +945,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
                 row["c_nc_olt_wrapper_id_fk"] = DBNull.Value;
             }
             row["c_survey_scoring_scheme_id_fk"] = c_survey_scoring_scheme_id_fk;
-
+            row["c_delivery_complete_on_launch"] = c_delivery_complete_on_launch;
             dtTempDeliveries.Rows.Add(row);
         }
 
