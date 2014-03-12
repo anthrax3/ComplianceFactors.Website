@@ -905,6 +905,14 @@
                             <asp:TextBox ID="txtScromLaunchParameters" CssClass="textarea_long_2" runat="server"></asp:TextBox>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <asp:FileUpload id="FileUploadControl" runat="server" />
+                            &nbsp;
+                            <asp:Button runat="server" id="UploadButton" text="Upload" CssClass="cursor_hand" onclick="UploadButton_Click" /><br /><br />
+                            <asp:Label runat="server" id="StatusLabel" CssClass="cursor_hand" text="Upload status: " />
+                        </td>
+                    </tr>
                 </table>
             </div>
             <br />

@@ -178,6 +178,8 @@ namespace ComplicanceFactor.SystemHome.Catalog
                 }
             }
 
+            if (SessionWrapper.c_course_title != string.Empty)
+                txtTitle.Text = SessionWrapper.c_course_title;
 
 
         }
@@ -660,7 +662,11 @@ namespace ComplicanceFactor.SystemHome.Catalog
             try
             {
                 SystemCatalog CreateCourse = new SystemCatalog();
-                CreateCourse.c_course_system_id_pk = Guid.NewGuid().ToString();
+                if (SessionWrapper.c_course_system_id_pk == string.Empty)
+                    CreateCourse.c_course_system_id_pk = Guid.NewGuid().ToString();
+                else
+                    CreateCourse.c_course_system_id_pk = SessionWrapper.c_course_system_id_pk;
+
                 CreateCourse.c_course_id_pk = txtCourseID.Text;
                 CreateCourse.c_course_title = txtTitle.Text;
                 CreateCourse.c_course_desc = txtDescription.Value;
