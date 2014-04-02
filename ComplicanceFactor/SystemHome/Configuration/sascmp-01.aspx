@@ -169,6 +169,8 @@
                             <%=LocalResources.GetLabel("app_manage_reports_text")%></a>
                     </td>
                     <td>
+                       <a href="RootCauseCategory/samdtmp-01.aspx">Root Cause Category
+                            </a>
                     </td>
                 </tr>
                 <tr>

@@ -2011,24 +2011,6 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.GridView gvEmployeeInterview;
         
         /// <summary>
-        /// txtRootCauseAnalysisDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRootCauseAnalysisDetails;
-        
-        /// <summary>
-        /// txtCorrectiveActionDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorrectiveActionDetails;
-        
-        /// <summary>
         /// txtCustom01 control.
         /// </summary>
         /// <remarks>
@@ -2144,6 +2126,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustom13;
+        
+        /// <summary>
+        /// urc1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ComplicanceFactor.Compliance.MIRIS.Controls.urc_01 urc1;
         
         /// <summary>
         /// btnSaveNewCase_footer control.

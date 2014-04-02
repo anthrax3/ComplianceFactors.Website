@@ -160,6 +160,7 @@
                         <asp:Label ID="lblFooterResultPerPage" runat="server" Text="<%$ LabelResourceExpression: app_results_per_page_text %>"></asp:Label>
                         <asp:DropDownList ID="ddlFooterResultPerPage" runat="server" AutoPostBack="true"
                             OnSelectedIndexChanged="ddlFooterResultPerPage_SelectedIndexChanged">
+                            <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>20</asp:ListItem>
                             <asp:ListItem>30</asp:ListItem>

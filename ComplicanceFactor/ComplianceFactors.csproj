@@ -217,6 +217,7 @@
     <Content Include="Compliance\MIRIS\coi-01.aspx" />
     <Content Include="Compliance\MIRIS\Controls\ucmv-01.ascx" />
     <Content Include="Compliance\MIRIS\Controls\ucoi-01.ascx" />
+    <Content Include="Compliance\MIRIS\Controls\urc-01.ascx" />
     <Content Include="Compliance\MIRIS\cvmv-01.aspx" />
     <Content Include="Compliance\MIRIS\cvoi-01.aspx" />
     <Content Include="Compliance\MIRIS\MirisEmailTemplate\coi.htm" />
@@ -1195,6 +1196,9 @@
     <Content Include="SystemHome\Configuration\BackgroundJobs\sambjmp-01.aspx" />
     <Content Include="SystemHome\Configuration\BackgroundJobs\ViewLogs\p_samddcublo-01.aspx" />
     <Content Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx" />
+    <Content Include="SystemHome\Configuration\RootCauseCategory\saandtn-01.aspx" />
+    <Content Include="SystemHome\Configuration\RootCauseCategory\saedtn-01.aspx" />
+    <Content Include="SystemHome\Configuration\RootCauseCategory\samdtmp-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\saecs-01.aspx" />
     <Content Include="SystemHome\Configuration\CurriculumStatuses\samcsmp-01.aspx" />
@@ -1677,6 +1681,13 @@
     </Compile>
     <Compile Include="Compliance\MIRIS\Controls\ucoi-01.ascx.designer.cs">
       <DependentUpon>ucoi-01.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Controls\urc-01.ascx.cs">
+      <DependentUpon>urc-01.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Controls\urc-01.ascx.designer.cs">
+      <DependentUpon>urc-01.ascx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\cvmv-01.aspx.cs">
       <DependentUpon>cvmv-01.aspx</DependentUpon>
@@ -3880,6 +3891,27 @@
     </Compile>
     <Compile Include="SystemHome\Configuration\CompletionStatuses\samcsmp-01.aspx.designer.cs">
       <DependentUpon>samcsmp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\RootCauseCategory\saandtn-01.aspx.cs">
+      <DependentUpon>saandtn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\RootCauseCategory\saandtn-01.aspx.designer.cs">
+      <DependentUpon>saandtn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\RootCauseCategory\saedtn-01.aspx.cs">
+      <DependentUpon>saedtn-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\RootCauseCategory\saedtn-01.aspx.designer.cs">
+      <DependentUpon>saedtn-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\RootCauseCategory\samdtmp-01.aspx.cs">
+      <DependentUpon>samdtmp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemHome\Configuration\RootCauseCategory\samdtmp-01.aspx.designer.cs">
+      <DependentUpon>samdtmp-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemHome\Configuration\CurriculumStatuses\saancsn-01.aspx.cs">
       <DependentUpon>saancsn-01.aspx</DependentUpon>

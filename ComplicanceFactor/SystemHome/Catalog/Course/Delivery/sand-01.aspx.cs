@@ -937,7 +937,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.Popup
             row["c_delivery_type_text"] = c_delivery_type_text;
             row["c_delivery_owner_name"] = c_delivery_owner_name;
             row["c_delivery_coordinator_name"] = c_delivery_coordinator_name;
-            row["c_nc_olt_launch_url"] = c_nc_olt_launch_url;
+            row["c_nc_olt_launch_url"] = c_nc_olt_launch_url.IndexOf("://") == -1 ? "http://" + txtNCUrl.Text : txtNCUrl.Text; ;
             row["c_nc_olt_launch_param"] = c_nc_olt_launch_param;
             row["c_nc_olt_waitlist_flag"] = c_nc_olt_waitlist_flag;
             if (c_nc_olt_waitlist_flag == true)

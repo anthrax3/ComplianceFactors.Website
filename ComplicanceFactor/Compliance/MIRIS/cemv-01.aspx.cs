@@ -568,8 +568,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlEstablishment.SelectedValue = miris.c_establishment;
 
                 txtNote.Text = miris.c_note;
-                txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
-                txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
+               // txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
+               // txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
                 //txtDaysAwayFromWork.Text = Convert.ToInt32(miris.c_osha_300_days_away_from_work).ToString();
                 //if (!string.IsNullOrEmpty(miris.c_osha_300_date_of_death.ToString()))
@@ -1012,6 +1012,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlPropertyCollisionType.SelectedValue = miris.c_fixed_object_collision_type_fk;
                 txtPropertyDesc.InnerText = miris.c_fixed_object_description;
                 txtPhysicalPropertyDesc.InnerText = miris.c_fixed_object_property_description;
+                urc1.SearchRac(caseid);
 
             }
             catch (Exception ex)
@@ -2181,8 +2182,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 updateCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 updateCase.c_note = txtNote.Text;
-                updateCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                updateCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                updateCase.c_root_cause_analysic_info = "";
+                updateCase.c_corrective_action_info = "";
                 //updateCase.c_osha_300_case_outcome = ddlCaseOutCome.SelectedValue;
                 //int DaysfromWork;
                 //int.TryParse(txtDaysAwayFromWork.Text, out DaysfromWork);

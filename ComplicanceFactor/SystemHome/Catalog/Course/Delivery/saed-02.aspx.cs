@@ -820,7 +820,7 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
             updateDelivery.c_delivery_custom_11 = txtCustom11.Text;
             updateDelivery.c_delivery_custom_12 = txtCustom12.Text;
             updateDelivery.c_delivery_custom_13 = txtCustom13.Text;
-            updateDelivery.c_nc_olt_launch_url = txtNCUrl.Text;
+            updateDelivery.c_nc_olt_launch_url = txtNCUrl.Text.IndexOf("://") == -1 ? "http://" + txtNCUrl.Text : txtNCUrl.Text;
             updateDelivery.c_nc_olt_launch_param = txtNcLaunchParameter.Text;
             updateDelivery.c_nc_olt_waitlist_flag = chkNcWaitList.Checked;
             updateDelivery.c_survey_scoring_scheme_id_fk = ddlScoringScheme.SelectedValue;

@@ -55,6 +55,7 @@ namespace ComplicanceFactor.BusinessComponent
             htReport.Add("@s_report_type_id_fk", report.s_report_type_id_fk);
             htReport.Add("@s_report_on_off_flag", report.s_report_on_off_flag);
             htReport.Add("@s_report_manager_flag", report.s_report_manager_flag);
+            htReport.Add("@s_report_employee_flag", report.s_report_employee_flag);
             htReport.Add("@s_report_compliance_flag", report.s_report_admin_flag);
             htReport.Add("@s_report_instructor_flag", report.s_report_instructor_flag);
             htReport.Add("@s_report_coordinator_flag", report.s_report_coordinator_flag);
@@ -124,6 +125,7 @@ namespace ComplicanceFactor.BusinessComponent
             htReport.Add("@s_report_type_id_fk", report.s_report_type_id_fk);
             htReport.Add("@s_report_on_off_flag", report.s_report_on_off_flag);
             htReport.Add("@s_report_manager_flag", report.s_report_manager_flag);
+            htReport.Add("@s_report_employee_flag", report.s_report_employee_flag);
             htReport.Add("@s_report_compliance_flag", report.s_report_compliance_flag);
             htReport.Add("@s_report_instructor_flag", report.s_report_instructor_flag);
             htReport.Add("@s_report_coordinator_flag", report.s_report_coordinator_flag);
@@ -168,8 +170,15 @@ namespace ComplicanceFactor.BusinessComponent
                    Convert.ToBoolean(dtGetReport.Rows[0]["s_report_instructor_flag"].ToString()),
                     s_report_manager_flag = string.IsNullOrEmpty(dtGetReport.Rows[0]["s_report_manager_flag"].ToString()) ? false :
                     Convert.ToBoolean(dtGetReport.Rows[0]["s_report_manager_flag"].ToString()),
+
                     s_report_on_off_flag = string.IsNullOrEmpty(dtGetReport.Rows[0]["s_report_on_off_flag"].ToString()) ? false :
                    Convert.ToBoolean(dtGetReport.Rows[0]["s_report_on_off_flag"].ToString()),
+
+                    s_report_employee_flag = string.IsNullOrEmpty(dtGetReport.Rows[0]["s_report_employee_flag"].ToString()) ? false :
+                   Convert.ToBoolean(dtGetReport.Rows[0]["s_report_employee_flag"].ToString()),
+
+
+
                     s_report_description = dtGetReport.Rows[0]["s_report_description"].ToString(),
                     s_report_type_id_fk = dtGetReport.Rows[0]["s_report_type_id_fk"].ToString(),
                     s_report_name = dtGetReport.Rows[0]["s_report_name"].ToString(),

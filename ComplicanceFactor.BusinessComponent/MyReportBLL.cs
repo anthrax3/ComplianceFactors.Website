@@ -246,5 +246,34 @@ namespace ComplicanceFactor.BusinessComponent
             }
 
         }
+
+        //New added functions 28 - march - 2014
+
+        public static DataTable GetDeliveryType(string s_delivery_type_id, string s_delivery_type_name_us_english)
+        {
+            Hashtable htGetDeliveryType = new Hashtable();
+            htGetDeliveryType.Add("@s_delivery_type_id", s_delivery_type_id);
+            htGetDeliveryType.Add("@s_delivery_type_name_us_english", s_delivery_type_name_us_english);
+            try
+            {
+                return DataProxy.FetchDataTable("s_sp_search_delivery_type", htGetDeliveryType);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static DataTable GetAllLearningReport()
+        {
+            try
+            {
+                return DataProxy.FetchDataTable("e_sp_get_all_learning_report"); 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

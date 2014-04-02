@@ -7082,6 +7082,166 @@ namespace ComplicanceFactor.Common
             }
         }
 
+        public static string selectedUserId_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedUserId_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedUserId_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedUserId_learningReport"] = value;
+            }
+        }
+
+        public static string selectedUserName_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedUserName_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedUserName_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedUserName_learningReport"] = value;
+            }
+        }
+
+        public static string selectedCourseName_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedCourseName_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedCourseName_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedCourseName_learningReport"] = value;
+            }
+        }
+
+        public static string selectedCourseId_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedCourseId_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedCourseId_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedCourseId_learningReport"] = value;
+            }
+        }
+
+        public static string selectedDeliveryTypeId_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedDeliveryTypeId_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedDeliveryTypeId_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedDeliveryTypeId_learningReport"] = value;
+            }
+        }
+
+        public static string selectedDeliveryTypeName_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedDeliveryTypeName_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedDeliveryTypeName_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedDeliveryTypeName_learningReport"] = value;
+            }
+        }
+
+        public static string selectedStatusName_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedStatusName_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedStatusName_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedStatusName_learningReport"] = value;
+            }
+        }
+
+        public static string selectedStatusNameText_learningReport
+        {
+            get
+            {
+                if (HttpContext.Current.Session["selectedStatusNameText_learningReport"] != null)
+                {
+                    return HttpContext.Current.Session["selectedStatusNameText_learningReport"].ToString();
+
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["selectedStatusNameText_learningReport"] = value;
+            }
+        }
+
         public static void clearsession()
         {
             sessionid = "";

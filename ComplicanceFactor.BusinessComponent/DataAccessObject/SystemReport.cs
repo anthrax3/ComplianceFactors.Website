@@ -14,6 +14,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_report_type_id_fk { get; set; }
         public bool? s_report_on_off_flag { get; set; }
         public bool s_report_manager_flag { get; set; }
+        public bool s_report_employee_flag { get; set; }
         public bool s_report_compliance_flag { get; set; }
         public bool s_report_instructor_flag { get; set; }
         public bool s_report_coordinator_flag { get; set; }

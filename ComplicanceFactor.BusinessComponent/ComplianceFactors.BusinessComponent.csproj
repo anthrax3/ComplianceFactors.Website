@@ -43,7 +43,11 @@
     <Compile Include="AdministratorBLL.cs" />
     <Compile Include="AuditlogBLL.cs" />
     <Compile Include="ComplianceBLL.cs" />
+    <Compile Include="SysemRcCategoryBLL.cs" />
+    <Compile Include="DataAccessObject\RcaCategory.cs" />
+    <Compile Include="DataAccessObject\Rca.cs" />
     <Compile Include="DataAccessObject\SystemEstablishment.cs" />
+    <Compile Include="RcaBLL.cs" />
     <Compile Include="SharePointBLL.cs" />
     <Compile Include="SystemEstablishmentBLL.cs" />
     <Compile Include="DataAccessObject\ComplainceVehicle.cs" />

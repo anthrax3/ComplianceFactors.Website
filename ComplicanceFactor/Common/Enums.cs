@@ -12,6 +12,7 @@ namespace ComplicanceFactor.Common
         Compliance,
         Instructor,
         Coordinator,
-        Administrator
+        Administrator,
+        Employee
     }
 }
