@@ -1005,5 +1005,19 @@ namespace ComplicanceFactor.SystemHome.Catalog.DeliveryPopup
                 gvSession.DataBind();
             }
         }
+
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            if (FileUploadControl.HasFile)
+            {
+                StatusLabel.Text = Scorm.UploadHandler(FileUploadControl);
+
+                if (SessionWrapper.scorm_url != "")
+                {
+                    txtDeliveryTitle.Text = SessionWrapper.c_course_title;
+                    txtScormUrl.Text = SessionWrapper.scorm_url;
+                }
+            }
+        }
     }
 }

@@ -3331,6 +3331,28 @@ namespace ComplicanceFactor.Common
         }
 
         /// <summary>
+        /// scorm_url 
+        /// </summary>
+        public static string scorm_url
+        {
+            get
+            {
+                if (HttpContext.Current.Session["scorm_url"] != null)
+                {
+                    return HttpContext.Current.Session["scorm_url"].ToString();
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["scorm_url"] = value;
+            }
+        }
+
+        /// <summary>
         /// Reset_Course_Doamin
         /// </summary>
         public static DataTable Reset_Course_Domain

@@ -1588,6 +1588,7 @@
     <Compile Include="Common\HashEncryption.cs" />
     <Compile Include="Common\LanguageManager.cs" />
     <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\Scorm.cs" />
     <Compile Include="Common\SecurityCenter.cs" />
     <Compile Include="Common\SessionWrapper.cs" />
     <Compile Include="Common\TempDataTables.cs" />
