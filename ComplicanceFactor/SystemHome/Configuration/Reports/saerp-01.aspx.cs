@@ -178,6 +178,8 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
                 chkCoordinator.Checked = report.s_report_coordinator_flag;
                 chkAdminstrator.Checked = report.s_report_admin_flag;
 
+                chkEmployee.Checked = report.s_report_employee_flag;
+
                 lblType.Text = report.s_report_type_id_fk;
                 chkManager.Checked = report.s_report_manager_flag;
                 chkCompliance.Checked = report.s_report_compliance_flag;
@@ -219,6 +221,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
                         s_report_coordinator_flag = chkCoordinator.Checked,
                         s_report_admin_flag = chkAdminstrator.Checked,
                         s_report_manager_flag = chkManager.Checked,
+                        s_report_employee_flag = chkEmployee.Checked,
                         s_report_compliance_flag = chkCompliance.Checked,
                         s_report_type_id_fk = lblType.Text,
                         s_report_source_file_name = ReportSourceFile,
@@ -249,6 +252,7 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
                     report.s_report_coordinator_flag = chkCoordinator.Checked;
                     report.s_report_admin_flag = chkAdminstrator.Checked;
                     report.s_report_manager_flag = chkManager.Checked;
+                    report.s_report_employee_flag = chkEmployee.Checked;
                     report.s_report_compliance_flag = chkCompliance.Checked;
                     report.s_report_source_file_name = ReportSourceFile;
                     int result = SystemReportBLL.UpdateReport(report);

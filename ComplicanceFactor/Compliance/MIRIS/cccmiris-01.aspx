@@ -343,24 +343,22 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLabel("app_employee_name_text")%>
+                        First Name
                     </td>
                     <td>
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    </td>
+                    <td>
+                        Last Name
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtLastName" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
                         <%=LocalResources.GetLabel("app_incident_location_text")%>
                     </td>
                     <td>
                         <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_employee_report_location_text")%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlEmployeeReportLocation" CssClass="ddl_user_advanced_search"
-                            runat="server">
-                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -370,29 +368,41 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                        <%=LocalResources.GetLabel("app_employee_report_location_text")%>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlEmployeeReportLocation" CssClass="ddl_user_advanced_search"
+                            runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <%=LocalResources.GetLabel("app_supervisor_text")%>
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
-                       <%=LocalResources.GetLabel("app_date_from_text")%>:
+                        <%=LocalResources.GetLabel("app_date_from_text")%>
                     </td>
                     <td>
                         <asp:CalendarExtender ID="CalendarExtender1" Format="MM/dd/yyyy" runat="server" TargetControlID="txtCreationStartDate">
                         </asp:CalendarExtender>
                         <asp:TextBox ID="txtCreationStartDate" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                    <td>  <%=LocalResources.GetLabel("app_date_to_text")%>:
+                </tr>
+                 <tr>
+                    <td colspan="6">
+                        &nbsp;
                     </td>
+                </tr>
+                <tr>
                     <td>
+                        <%=LocalResources.GetLabel("app_date_to_text")%>
+                    </td>
+                    <td colspan="5" style="text-align: left;">
                         <asp:CalendarExtender ID="CalendarExtender2" Format="MM/dd/yyyy" runat="server" TargetControlID="txtCreationEndDate">
                         </asp:CalendarExtender>
                         <asp:TextBox ID="txtCreationEndDate" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
                     </td>
                 </tr>
                 <tr>

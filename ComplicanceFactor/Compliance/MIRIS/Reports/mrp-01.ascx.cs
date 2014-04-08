@@ -12,7 +12,7 @@ using ComplicanceFactor.Common.Languages;
 
 namespace ComplicanceFactor.Compliance.MIRIS.Reports
 {
-    
+
     public partial class mrp_01 : System.Web.UI.UserControl
     {
         public ReportEnum flag;
@@ -23,12 +23,12 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
             if (!IsPostBack)
             {
                 SessionWrapper.navigationText = "app_nav_compliance";
-               // Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
-              //  lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>" + " > " + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_my_reports_text") + "</a>";
+                // Label lblBreadCrumb = (Label)Master.FindControl("lblBreadCrumb");
+                //  lblBreadCrumb.Text = "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_nav_compliance") + "</a>" + " > " + "<a href=/Compliance/cchp-01.aspx>" + LocalResources.GetGlobalLabel("app_home_text") + "</a>&nbsp;" + " >&nbsp;" + "<a class=bread_text>" + LocalResources.GetGlobalLabel("app_my_reports_text") + "</a>";
 
                 BindGrid();
             }
-           
+
 
         }
         private void BindGrid()
@@ -45,16 +45,16 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 dtReport = MyReportBLL.SearchReport(SessionWrapper.u_userid);
                 DataView dv = dtReport.DefaultView;
 
-                
-                
+
+
                 dtReport.Columns.Add("s_report_name_id");
                 dtReport.Columns.Add("s_report_users_when_to_run_text");
                 foreach (DataRow row in dtReport.Rows)
                 {
-                  
+
                     row["s_report_name_id"] = row["s_report_name"] + " (" + row["s_report_id_pk"] + ")";
                     switch (row["s_report_users_when_to_run"].ToString())
-                    { 
+                    {
                         case "-1":
                             row["s_report_users_when_to_run_text"] = "";
                             break;
@@ -90,6 +90,9 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                         break;
                     case ReportEnum.Manager:
                         dv.RowFilter = "s_report_manager_flag = 1";
+                        break;
+                    case ReportEnum.Employee:
+                        dv.RowFilter = "s_report_employee_flag = 1";
                         break;
                     default:
                         dv.RowFilter = "1<>1";
@@ -152,6 +155,10 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
                   "javascript:lastview('/Compliance/MIRIS/Reports/CompletionofCourses.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
                         break;
+                    case "CF-STD-COURSE-ASSIGN/ENROLL-COMP":
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
+                  "javascript:lastview('/Compliance/MIRIS/Reports/LearningReport.aspx?id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
+                        break;
                     default:
                         break;
                 }
@@ -181,6 +188,10 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     case "CF-STD-COURSE-COMP":
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
                   "javascript:generate('/Compliance/MIRIS/Reports/osha300_condition.aspx?page=completionCourse&id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
+                        break;
+                    case "CF-STD-COURSE-ASSIGN/ENROLL-COMP":
+                         Page.ClientScript.RegisterStartupScript(this.GetType(), "fancyboxclose",
+                  "javascript:generate('/Compliance/MIRIS/Reports/osha300_condition.aspx?page=LearningReport&id=" + reportSystemId + "&suid=" + reportUserId + "');", true);
                         break;
                     default:
                         break;
@@ -235,10 +246,10 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     viewbutton.Style.Add("display", "inline");
                 }
 
-             
+
             }
         }
-        
+
 
     }
 }

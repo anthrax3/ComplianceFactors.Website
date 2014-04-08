@@ -45,9 +45,17 @@
             if ($("#<%=ddlTable.ClientID %>").val() == "c_tb_miris_master") {
                 $("#<%=ddlField.ClientID %>").show();
                 $("#<%=ddlCourseField.ClientID %>").hide();
-            } else {
+                $("#<%=ddlAssignEnroll.ClientID %>").hide();
+            }
+            else if ($("#<%=ddlTable.ClientID %>").val() == "e_tb_enrollments") {
+                $("#<%=ddlCourseField.ClientID %>").hide();
+                $("#<%=ddlField.ClientID %>").hide();
+                $("#<%=ddlAssignEnroll.ClientID %>").show();
+            }
+            else {
                 $("#<%=ddlField.ClientID %>").hide();
                 $("#<%=ddlCourseField.ClientID %>").show();
+                $("#<%=ddlAssignEnroll.ClientID %>").hide();
             }
         }
     </script>
@@ -100,6 +108,8 @@
                                 <asp:ListItem Text="Int" Value="Int"></asp:ListItem>
                                 <asp:ListItem Text="System Drop-down" Value="System Drop-down"></asp:ListItem>
                                 <asp:ListItem Text="System Table" Value="System Table"></asp:ListItem>
+                                <asp:ListItem Text="Button" Value="Button"></asp:ListItem>
+                                <asp:ListItem Text="Radio Button list" Value="Radio Button list"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -116,9 +126,11 @@
                             Table:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlTable" CssClass="ddl_user_advanced_search" runat="server"  onchange="changeTable()">
+                            <asp:DropDownList ID="ddlTable" CssClass="ddl_user_advanced_search" runat="server"
+                                onchange="changeTable()">
                                 <asp:ListItem Text="c_tb_miris_master" Value="c_tb_miris_master" Selected="True"></asp:ListItem>
                                 <asp:ListItem Text="e_sp_get_all_completion_courses" Value="e_sp_get_all_completion_courses"></asp:ListItem>
+                                <asp:ListItem Text="e_tb_enrollments" Value="e_tb_enrollments"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -131,12 +143,23 @@
                                 Style="display: none;">
                                 <asp:ListItem Text="u_first_name" Value="u_first_name" Selected="True"></asp:ListItem>
                                 <asp:ListItem Text="u_last_name" Value="u_last_name"></asp:ListItem>
-                                <asp:ListItem Text="title" Value="title"  ></asp:ListItem>
+                                <asp:ListItem Text="title" Value="title"></asp:ListItem>
                                 <asp:ListItem Text="completeddate" Value="completeddate"></asp:ListItem>
-                                <asp:ListItem Text="score" Value="score" ></asp:ListItem>                                
-                                  <asp:ListItem Text="status" Value="status"></asp:ListItem>
-                                   <asp:ListItem Text="deliveryType" Value="deliveryType"></asp:ListItem>
+                                <asp:ListItem Text="score" Value="score"></asp:ListItem>
+                                <asp:ListItem Text="status" Value="status"></asp:ListItem>
+                                <asp:ListItem Text="deliveryType" Value="deliveryType"></asp:ListItem>
                                 <asp:ListItem Text="t_transcript_time_spent" Value="t_transcript_time_spent"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:DropDownList ID="ddlAssignEnroll" CssClass="ddl_user_advanced_search" runat="server"
+                                Style="display: none;">
+                                <asp:ListItem Text="CourseId" Value="CourseId" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="DeliveryId" Value="DeliveryId"></asp:ListItem>
+                                <asp:ListItem Text="u_user_id_pk" Value="u_user_id_pk"></asp:ListItem>
+                                <asp:ListItem Text="EnrollAssignDate" Value="EnrollAssignDate"></asp:ListItem>
+                                <asp:ListItem Text="required" Value="required"></asp:ListItem>
+                                <asp:ListItem Text="duedate" Value="duedate"></asp:ListItem>
+                                <asp:ListItem Text="CompletionDate" Value="CompletionDate"></asp:ListItem>
+                                <asp:ListItem Text="Completionstatus" Value="Completionstatus"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>

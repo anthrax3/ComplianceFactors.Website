@@ -32,24 +32,24 @@ namespace ComplicanceFactor.Compliance.MIRIS.Controls
             rca.c_rca_corrective_action_solutions =ddlRcaCorrectiveAction.SelectedValue;
             rca.c_rca_activators = ddlRcaActivators.SelectedValue;
             rca.c_rca_consequences =ddlRcaConsequences.SelectedValue;
-            RcaBLL.UpdateRca(rca);
+           // RcaBLL.UpdateRca(rca);
         }
         public void SearchRac(string c_case_id_pk)
         {
             if (!string.IsNullOrEmpty(c_case_id_pk))
             {
-                Rca rca = RcaBLL.SearchRca(c_case_id_pk);
-                rca.c_case_id_pk = c_case_id_pk;
-                txtIncidentInvestigationSummary.Text = rca.c_rca_summary;
-                rbtnRcaSufficientInformation.SelectedValue = rca.c_rca_have_sufficient_information == true ? "1" : "0";
-                ddlRcaCategoryPeople.SelectedValue = rca.c_rca_category_people;
-                ddlRcaCategoryProcedure.SelectedValue = rca.c_rca_category_procedure;
-                ddlRcaCategoryHardware.SelectedValue = rca.c_rca_category_hardware;
-                ddlRcaCategoryEnvironment.SelectedValue = rca.c_rca_category_environment;
-                ddlRcaCategoryEternal.SelectedValue = rca.c_rca_eternal;
-                ddlRcaCorrectiveAction.SelectedValue = rca.c_rca_corrective_action_solutions;
-                ddlRcaActivators.SelectedValue = rca.c_rca_activators;
-                ddlRcaConsequences.SelectedValue = rca.c_rca_consequences;
+                //Rca rca = RcaBLL.SearchRca(c_case_id_pk);
+                //rca.c_case_id_pk = c_case_id_pk;
+                //txtIncidentInvestigationSummary.Text = rca.c_rca_summary;
+                //rbtnRcaSufficientInformation.SelectedValue = rca.c_rca_have_sufficient_information == true ? "1" : "0";
+                //ddlRcaCategoryPeople.SelectedValue = rca.c_rca_category_people;
+                //ddlRcaCategoryProcedure.SelectedValue = rca.c_rca_category_procedure;
+                //ddlRcaCategoryHardware.SelectedValue = rca.c_rca_category_hardware;
+                //ddlRcaCategoryEnvironment.SelectedValue = rca.c_rca_category_environment;
+                //ddlRcaCategoryEternal.SelectedValue = rca.c_rca_eternal;
+                //ddlRcaCorrectiveAction.SelectedValue = rca.c_rca_corrective_action_solutions;
+                //ddlRcaActivators.SelectedValue = rca.c_rca_activators;
+                //ddlRcaConsequences.SelectedValue = rca.c_rca_consequences;
             }
 
         }

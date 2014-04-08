@@ -31,6 +31,9 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 case "completionCourse":
                     Response.Redirect("~/Compliance/MIRIS/Reports/CompletionofCourses.aspx?id=" + Request.Params["id"].ToString() + "&suid=" + Request.Params["suid"].ToString());
                     break;
+                case "LearningReport":
+                    Response.Redirect("~/Compliance/MIRIS/Reports/LearningReport.aspx?id=" + Request.Params["id"].ToString() + "&suid=" + Request.Params["suid"].ToString());
+                    break;
                 default:
                     break;
             }

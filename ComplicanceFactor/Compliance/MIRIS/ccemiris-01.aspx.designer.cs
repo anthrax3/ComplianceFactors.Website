@@ -301,31 +301,31 @@ namespace ComplicanceFactor.Compliance {
         protected global::System.Web.UI.WebControls.TextBox txtLastFourDigitOfSSN;
         
         /// <summary>
-        /// rfvDateInTitle control.
+        /// ddlDateInTitleMonth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDateInTitle;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDateInTitleMonth;
         
         /// <summary>
-        /// ceDateInTitle control.
+        /// doh_date_in_time_day control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ceDateInTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect doh_date_in_time_day;
         
         /// <summary>
-        /// txtDateInTitle control.
+        /// ddlDateInTitleYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateInTitle;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDateInTitleYear;
         
         /// <summary>
         /// rfvIncidentLocation control.

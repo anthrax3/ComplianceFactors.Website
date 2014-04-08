@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="saerp-01.aspx.cs" Inherits="ComplicanceFactor.SystemHome.Configuration.Reports.saerp_01" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="saerp-01.aspx.cs"
+    Inherits="ComplicanceFactor.SystemHome.Configuration.Reports.saerp_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -39,7 +40,7 @@
                 'scrolling': 'yes',
                 'autoScale': false,
                 'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false } },
+                'helpers': { overlay: { closeClick: false} },
                 'width': 783,
                 'height': 250,
                 'margin': 0,
@@ -47,13 +48,13 @@
                 'overlayColor': '#000',
                 'overlayOpacity': 0.7,
                 'hideOnOverlayClick': false,
-                'href': 'sarpp-01.aspx?id=<%= webReportId%>&mode='+message,
+                'href': 'sarpp-01.aspx?id=<%= webReportId%>&mode=' + message,
                 'onComplete': function () {
                     $.fancybox.showActivity();
                     $('#fancybox-frame').load(function () {
                         $.fancybox.hideActivity();
                         $('#fancybox-content').height($(this).contents().find('body').height() + 120);
-                        var heightPane = $(this).contents().find('#content').height()+100;
+                        var heightPane = $(this).contents().find('#content').height() + 100;
                         $(this).contents().find('#fancybox-frame').css({
                             'height': heightPane + 'px'
 
@@ -108,7 +109,7 @@
                 'scrolling': 'yes',
                 'autoScale': false,
                 'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false } },
+                'helpers': { overlay: { closeClick: false} },
                 'width': 783,
                 'height': 250,
                 'margin': 0,
@@ -170,7 +171,7 @@
             });
             $("#btnCreateNewLocale").click(function (e) {
 
-              
+
 
                 var localeid = $("#<%=ddlLocale.ClientID %>").val();
                 var localeText = $("#<%=ddlLocale.ClientID %> option:selected").text();
@@ -183,7 +184,7 @@
                     'scrolling': 'yes',
                     'autoScale': false,
                     'autoDimensions': false,
-                    'helpers': { overlay: { closeClick: false } },
+                    'helpers': { overlay: { closeClick: false} },
                     'width': 820,
                     'height': 750,
                     'margin': 0,
@@ -192,7 +193,7 @@
                     'overlayOpacity': 0.7,
                     'hideOnOverlayClick': false,
                     //'href': 'webform1.aspx',
-                    'href': 'sarpl-01.aspx?mode=' + message + "&Id=<%= webReportId%>&editLocaleId=" + localeid + "&editLocaleText=" + localeText+"&localeMode=create",
+                    'href': 'sarpl-01.aspx?mode=' + message + "&Id=<%= webReportId%>&editLocaleId=" + localeid + "&editLocaleText=" + localeText + "&localeMode=create",
                     'onComplete': function () {
                         $('#fancybox-frame').load(function () {
                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
@@ -209,50 +210,50 @@
             });
             $(".editlocale").click(function (e) {
 
-                
+
                 var localeText = $("#<%=ddlLocale.ClientID %> option:selected").text();
 
-                 var record_id = $(this).attr("id");
+                var record_id = $(this).attr("id");
 
-                 $.fancybox({
-                     'type': 'iframe',
-                     'titlePosition': 'over',
-                     'titleShow': true,
-                     'showCloseButton': true,
-                     'scrolling': 'yes',
-                     'autoScale': false,
-                     'autoDimensions': false,
-                     'helpers': { overlay: { closeClick: false } },
-                     'width': 820,
-                     'height': 550,
-                     'margin': 0,
-                     'padding': 0,
-                     'overlayColor': '#000',
-                     'overlayOpacity': 0.7,
-                     'hideOnOverlayClick': false,
-                     'href': 'sarpl-01.aspx?mode=' + message + "&Id=<%= webReportId%>&editLocaleId=" + record_id + "&editLocaleText=" + localeText + "&localeMode=edit",
-                     'onComplete': function () {
-                         $('#fancybox-frame').load(function () {
-                             $('#fancybox-content').height($(this).contents().find('body').height() + 20);
-                             var heightPane = $(this).contents().find('#content').height();
-                             $(this).contents().find('#fancybox-frame').css({
-                                 'height': heightPane + 'px'
+                $.fancybox({
+                    'type': 'iframe',
+                    'titlePosition': 'over',
+                    'titleShow': true,
+                    'showCloseButton': true,
+                    'scrolling': 'yes',
+                    'autoScale': false,
+                    'autoDimensions': false,
+                    'helpers': { overlay: { closeClick: false} },
+                    'width': 820,
+                    'height': 550,
+                    'margin': 0,
+                    'padding': 0,
+                    'overlayColor': '#000',
+                    'overlayOpacity': 0.7,
+                    'hideOnOverlayClick': false,
+                    'href': 'sarpl-01.aspx?mode=' + message + "&Id=<%= webReportId%>&editLocaleId=" + record_id + "&editLocaleText=" + localeText + "&localeMode=edit",
+                    'onComplete': function () {
+                        $('#fancybox-frame').load(function () {
+                            $('#fancybox-content').height($(this).contents().find('body').height() + 20);
+                            var heightPane = $(this).contents().find('#content').height();
+                            $(this).contents().find('#fancybox-frame').css({
+                                'height': heightPane + 'px'
 
-                             })
-                         });
+                            })
+                        });
 
-                     }
+                    }
 
-                 });
+                });
             });
-           
+
             var localeHref = "";
             if (message == "create") {
                 localeHref = 'Locale/savloc-01.aspx?mode=create';
             } else if (message == "edit") {
                 localeHref = 'Locale/savloc-01.aspx?mode=edit&id=<%= ReportId%>';
             }
-           
+
             $("#btnManageLocale").fancybox({
                 'type': 'iframe',
                 'titlePosition': 'over',
@@ -261,7 +262,7 @@
                 'scrolling': 'no',
                 'autoScale': false,
                 'autoDimensions': false,
-                'helpers': { overlay: { closeClick: false } },
+                'helpers': { overlay: { closeClick: false} },
                 'width': 783,
                 'height': 250,
                 'margin': 0,
@@ -386,11 +387,11 @@
         }
 
     </script>
-      <script type="text/javascript">
-          function RemoveLocale(value) {
+    <script type="text/javascript">
+        function RemoveLocale(value) {
 
-              var exists = false;
-              $('#<%=ddlLocale.ClientID %>  option').each(function () {
+            var exists = false;
+            $('#<%=ddlLocale.ClientID %>  option').each(function () {
                 if (this.value == value) {
                     exists = true;
                     $('#<%=ddlLocale.ClientID %> option[value=' + value + ']').remove();
@@ -415,15 +416,16 @@
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnHeaderSaveNotification" ValidationGroup="saent" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_report_button_text %>"  OnClick="btnSaveReport_Click" />
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_report_button_text %>"
+                            OnClick="btnSaveReport_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnHeaderReset" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" CssClass="cursor_hand"
-                            />
+                        <asp:Button ID="btnHeaderReset" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            CssClass="cursor_hand" />
                     </td>
                     <td align="right">
                         <asp:Button CssClass="cursor_hand" ID="btnHeaderCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
-                          OnClick="btnCancel_Click"  />
+                            OnClick="btnCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -437,10 +439,11 @@
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                         <asp:RequiredFieldValidator ID="rfvReportnId" runat="server" ValidationGroup="saent"
+                        <asp:RequiredFieldValidator ID="rfvReportnId" runat="server" ValidationGroup="saent"
                             ControlToValidate="txtReportId" ErrorMessage="<%$ TextResourceExpression: app_id_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_report_id_text")%>:
+                        *
+                        <%=LocalResources.GetLabel("app_report_id_text")%>:
                     </td>
                     <td class="align_left">
                         <asp:Label ID="lblReportId" runat="server" Text=""></asp:Label>
@@ -456,7 +459,8 @@
                         <asp:RequiredFieldValidator ID="rfvReportName" runat="server" ValidationGroup="saent"
                             ControlToValidate="txtReportName" ErrorMessage="<%$ TextResourceExpression: app_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        * <%=LocalResources.GetLabel("app_report_name_text")%>: 
+                        *
+                        <%=LocalResources.GetLabel("app_report_name_text")%>:
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtReportName" CssClass="textarea_long_2" runat="server"></asp:TextBox>
@@ -472,8 +476,7 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                         <%=LocalResources.GetLabel("app_description_text")%>: 
-                      
+                        <%=LocalResources.GetLabel("app_description_text")%>:
                     </td>
                     <td class="align_left" colspan="7">
                         <textarea id="txtDescription" runat="server" class="txtInput_long" rows="3" cols="100"></textarea>
@@ -481,7 +484,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <%=LocalResources.GetLabel("app_manager_text")%>: 
+                        <%=LocalResources.GetLabel("app_manager_text")%>:
                     </td>
                     <td class="align_left" colspan="7">
                         <table>
@@ -489,20 +492,26 @@
                                 <td class="width_180 align_left">
                                     <asp:CheckBox ID="chkManager" runat="server" />
                                 </td>
-                                  <td class="width_180">
-                                   <%=LocalResources.GetLabel("app_report_compliance_text")%>: 
+                                <td class="width_180">
+                                    Employee:
+                                </td>
+                                <td class="width_180 align_left">
+                                    <asp:CheckBox ID="chkEmployee" runat="server" />
+                                </td>
+                                <td class="width_180">
+                                    <%=LocalResources.GetLabel("app_report_compliance_text")%>:
                                 </td>
                                 <td class="width_180 align_left">
                                     <asp:CheckBox ID="chkCompliance" runat="server" />
                                 </td>
                                 <td class="width_180">
-                                   <%=LocalResources.GetLabel("app_report_instructor_text")%>: 
+                                    <%=LocalResources.GetLabel("app_report_instructor_text")%>:
                                 </td>
                                 <td class="width_180 align_left">
                                     <asp:CheckBox ID="chkInstructor" runat="server" />
                                 </td>
                                 <td class="width_180">
-                                    <%=LocalResources.GetLabel("app_report_coordinator_text")%>: 
+                                    <%=LocalResources.GetLabel("app_report_coordinator_text")%>:
                                 </td>
                                 <td class="width_180 align_left">
                                     <asp:CheckBox ID="chkCoordinator" runat="server" />
@@ -517,31 +526,27 @@
                         </table>
                     </td>
                 </tr>
-               
                 <tr>
-                   
                     <td class="align_left" colspan="7">
                         <asp:Button ID="btnAttachment" runat="server" CssClass="cursor_hand" Text="Upload Report Source File" />
                         <asp:LinkButton ID="lnkFileName" runat="server" CssClass="cursor_hand" OnClick="lnkFileName_Click"></asp:LinkButton>
                         <asp:Button ID="btnView" runat="server" Text="View" CssClass="cursor_hand" OnClick="btnView_Click" />
                         <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="cursor_hand" />
                         <asp:Button ID="btnRemove" OnClientClick="return confirmremove();" runat="server"
-                            Text="Remove"  CssClass="cursor_hand" OnClick="btnRemove_Click" />
+                            Text="Remove" CssClass="cursor_hand" OnClick="btnRemove_Click" />
                     </td>
-                    <td class="align_right" style="text-align:right;">
+                    <td class="align_right" style="text-align: right;">
                         <input type="button" id="btnManageLocale" value='<asp:Literal ID="Literal1" runat="server" Text="<%$ LabelResourceExpression: app_manage_locales_button_text%>" />' />
-
                     </td>
                 </tr>
-               
             </table>
         </div>
         <br />
         <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_report_parameter_title")%>: 
+            <%=LocalResources.GetLabel("app_report_parameter_title")%>:
         </div>
         <br />
-         <div class="div_controls_from_left">
+        <div class="div_controls_from_left">
             <asp:GridView ID="gvParameters" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
@@ -554,20 +559,20 @@
                                     <td>
                                         <%#Eval("s_report_param_name")%>
                                     </td>
-                                     <td>
+                                    <td>
                                         <%#Eval("s_report_param_label_name")%>
                                     </td>
                                     <td>
                                         <%#Eval("s_report_param_table_id_pk")%>
                                     </td>
-                                     <td>
+                                    <td>
                                         <%#Eval("s_report_param_field_id_pk")%>
                                     </td>
                                     <td>
-                                        Visible: <asp:CheckBox ID="chkVisible" runat="server"  Checked='<%# Eval("s_report_param_visible_flag")%>'/>
+                                        Visible:
+                                        <asp:CheckBox ID="chkVisible" runat="server" Checked='<%# Eval("s_report_param_visible_flag")%>' />
                                     </td>
                                 </tr>
-                               
                             </table>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -581,14 +586,15 @@
             </asp:GridView>
         </div>
         <div class="div_controls font_1">
-            <asp:Button ID="btnAddParameter" runat="server" CssClass="cursor_hand" Text="Add New Parameter"  CausesValidation="false"/>
-        </div>
-        <br/>
-         <div class="div_header_long">
-           <%=LocalResources.GetLabel("app_report_column_title")%>: 
+            <asp:Button ID="btnAddParameter" runat="server" CssClass="cursor_hand" Text="Add New Parameter"
+                CausesValidation="false" />
         </div>
         <br />
-         <div class="div_controls_from_left">
+        <div class="div_header_long">
+            <%=LocalResources.GetLabel("app_report_column_title")%>:
+        </div>
+        <br />
+        <div class="div_controls_from_left">
             <asp:GridView ID="gvColumns" RowStyle-CssClass="record" GridLines="None" CssClass="gridview_normal_800"
                 CellPadding="0" CellSpacing="0" ShowHeader="false" ShowFooter="false" runat="server"
                 AutoGenerateColumns="False">
@@ -601,14 +607,14 @@
                                     <td>
                                         <%#Eval("s_report_column_name")%>
                                     </td>
-                                      <td>
+                                    <td>
                                         <%#Eval("s_report_column_label_name")%>
                                     </td>
                                     <td>
-                                        Visible: <asp:CheckBox ID="chkVisible" runat="server"  Checked='<%#Eval("s_report_column_visible_flag")%>'/>
+                                        Visible:
+                                        <asp:CheckBox ID="chkVisible" runat="server" Checked='<%#Eval("s_report_column_visible_flag")%>' />
                                     </td>
                                 </tr>
-                               
                             </table>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -624,15 +630,13 @@
         <div class="div_controls font_1">
             <asp:Button ID="btnAddColumn" runat="server" CssClass="cursor_hand" Text="Add New Column" />
         </div>
-       
         <br />
-          <div class="div_header_long">
-          <%=LocalResources.GetLabel("app_report_all_locales")%>: 
+        <div class="div_header_long">
+            <%=LocalResources.GetLabel("app_report_all_locales")%>:
         </div>
         <br />
         <div class="div_padding_40 div_controls_from_left">
-            <asp:Button ID="btnImportCsvFile" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_report_upload_labels %>"
-                             />
+            <asp:Button ID="btnImportCsvFile" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_report_upload_labels %>" />
             <asp:GridView ID="gvReportLocales" RowStyle-CssClass="record" CssClass="grid_700"
                 runat="server" GridLines="None" AutoGenerateColumns="false" ShowHeader="false">
                 <Columns>
@@ -649,8 +653,8 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="width_35" ItemStyle-HorizontalAlign="Right">
                         <ItemTemplate>
-                            <input type="button" id='<%# Eval("s_locale_id_pk")%>'
-                                value='<asp:Literal ID="Literal6" runat="server" Text="Remove" />' class="deletelocale cursor_hand" />
+                            <input type="button" id='<%# Eval("s_locale_id_pk")%>' value='<asp:Literal ID="Literal6" runat="server" Text="Remove" />'
+                                class="deletelocale cursor_hand" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -671,21 +675,21 @@
                 </tr>
             </table>
         </div>
-       <br/>
+        <br />
         <div>
             <table cellpadding="0" cellspacing="0" class="paging">
                 <tr>
                     <td align="left">
                         <asp:Button ID="btnFooterSaveNotification" ValidationGroup="saent" CssClass="cursor_hand"
-                            runat="server" Text="<%$ LabelResourceExpression: app_save_report_button_text %>"  OnClick="btnSaveReport_Click"/>
+                            runat="server" Text="<%$ LabelResourceExpression: app_save_report_button_text %>"
+                            OnClick="btnSaveReport_Click" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
-                            />
+                        <asp:Button ID="btnFooterReset" runat="server" CssClass="cursor_hand" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
                     </td>
                     <td align="right">
                         <asp:Button CssClass="cursor_hand" ID="btnFooterCancel" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
-                             OnClick="btnCancel_Click"  />
+                            OnClick="btnCancel_Click" />
                     </td>
                 </tr>
             </table>
@@ -693,19 +697,18 @@
     </div>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-
-     <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnImportCsvFile"
+    <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="btnImportCsvFile"
         PopupControlID="pnlImportCsv" BackgroundCssClass="transparent_class" DropShadow="false"
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
     </asp:ModalPopupExtender>
-     <asp:Panel ID="pnlImportCsv" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-        padding-left: 0px;  padding-right: 0px;">
+    <asp:Panel ID="pnlImportCsv" runat="server" CssClass="modalPopup_upload modal_popup_background"
+        Style="display: none; padding-left: 0px; padding-right: 0px;">
         <asp:Panel ID="pnlImportCsv2" runat="server" CssClass="drag_uploadpopup">
             <div>
                 <div class="uploadpopup_header">
                     <div class="left">
-                         Upload Report Labels / Texts CSV File:
+                        Upload Report Labels / Texts CSV File:
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="ImageButton1" CssClass="cursor_hand" Style="top: -15px; right: -15px;
@@ -720,8 +723,8 @@
         <div>
             <br />
             <div class="uploadpanel font_normal">
-                <asp:ValidationSummary class="validation_summary_error_popup" ID="ValidationSummary1" runat="server"
-                    ValidationGroup="digitalmediaupload" />
+                <asp:ValidationSummary class="validation_summary_error_popup" ID="ValidationSummary1"
+                    runat="server" ValidationGroup="digitalmediaupload" />
                 <asp:CustomValidator ValidationGroup="digitalmediaupload" ID="CustomValidator1" runat="server"
                     EnableClientScript="true" ErrorMessage="No file chosen" ClientValidationFunction="ValidateFileUpload">&nbsp;</asp:CustomValidator>
                 <div class="div_controls">
@@ -740,18 +743,15 @@
                 <br />
                 <br />
                 <div class="multiple_button">
-                    <asp:Button ID="btnUploadCsv"  runat="server"
-                        Text="Upload" CssClass="cursor_hand"  OnClick="btnUploadCsv_Click"/>
+                    <asp:Button ID="btnUploadCsv" runat="server" Text="Upload" CssClass="cursor_hand"
+                        OnClick="btnUploadCsv_Click" />
                 </div>
                 <asp:Button ID="Button2" CssClass="cursor_hand" runat="server" Text="Cancel" />
             </div>
             <br />
         </div>
     </asp:Panel>
-
-
-
-     <asp:ModalPopupExtender ID="mpeAddAttachment" runat="server" TargetControlID="btnAttachment"
+    <asp:ModalPopupExtender ID="mpeAddAttachment" runat="server" TargetControlID="btnAttachment"
         PopupControlID="pnlUploadFile" BackgroundCssClass="transparent_class" DropShadow="false"
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
@@ -761,13 +761,13 @@
         PopupDragHandleControlID="pnlUploadFileHeading" OkControlID="imgClose" OnOkScript="cleartext();"
         OnCancelScript="cleartext();" CancelControlID="btnCancel">
     </asp:ModalPopupExtender>
-    <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-        padding-left: 0px;  padding-right: 0px;">
+    <asp:Panel ID="pnlUploadFile" runat="server" CssClass="modalPopup_upload modal_popup_background"
+        Style="display: none; padding-left: 0px; padding-right: 0px;">
         <asp:Panel ID="pnlUploadFileHeading" runat="server" CssClass="drag_uploadpopup">
             <div>
                 <div class="uploadpopup_header">
                     <div class="left">
-                         Add Report Source File:
+                        Add Report Source File:
                     </div>
                     <div class="right">
                         <asp:ImageButton ID="imgClose" CssClass="cursor_hand" Style="top: -15px; right: -15px;

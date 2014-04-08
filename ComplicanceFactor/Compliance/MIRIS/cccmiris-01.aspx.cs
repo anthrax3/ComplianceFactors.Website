@@ -673,6 +673,7 @@ namespace ComplicanceFactor.Compliance
                     miris.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 }
                 miris.c_employee_name = txtEmployeeName.Text;
+                miris.c_employee_last_name = txtLastName.Text;
                 miris.c_incident_location = txtIncidentLocation.Text;
                 miris.c_supervisor = txtSupervisor.Text;
                 

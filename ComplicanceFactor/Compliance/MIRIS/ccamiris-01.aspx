@@ -361,6 +361,34 @@
                 }
             }
         }
+        function checkdateintitle() {
+            var year = $('#' + '<% =ddlDateInTitleYear.ClientID %>').val();
+            var month = $('#' + '<% =ddlDateInTitleMonth.ClientID %>').val();
+            if ((year != 0) && (month != 0)) {
+                var lastday = 32 - new Date(year, month - 1, 32).getDate();
+                var selected_day = $('#' + '<% =doh_date_in_time_day.ClientID %>').val();
+
+                // Change selected day if it is greater than the number of days in current month
+                if (selected_day > lastday) {
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + selected_day + ']').attr('selected', false);
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + lastday + ']').attr('selected', true);
+                }
+
+                // Remove possibly offending days
+                for (var i = lastday + 1; i < 32; i++) {
+                    //$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').remove();
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'none');
+                }
+
+                // Add possibly missing days
+                for (var i = 29; i < lastday + 1; i++) {
+                    //if (!$('#' + '<% =dob_day.ClientID %>' + ' > option[value=' + i + ']').length) {
+                    //$('#' + '<% =dob_day.ClientID %>').append($("<option></option>").attr("value", i).text(i));
+                    $('#' + '<% =doh_hire_day.ClientID %>' + ' > option[value=' + i + ']').css('display', 'block');
+                    //}
+                }
+            }
+        }
     </script>
     <script type="text/javascript">
 
@@ -673,17 +701,61 @@
                         <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:RequiredFieldValidator ID="rfvDateInTitle" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtDateInTitle" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
+                     
                         *
                         <%=LocalResources.GetLabel("app_date_in_title")%>:
                     </td>
                     <td class="align_left">
-                        <asp:CalendarExtender ID="ceDateInTitle" Format="MM/dd/yyyy" TargetControlID="txtDateInTitle"
-                            runat="server">
-                        </asp:CalendarExtender>
-                        <asp:TextBox ID="txtDateInTitle" runat="server" CssClass="textbox_width"></asp:TextBox>
+                       <asp:DropDownList ID="ddlDateInTitleMonth" onchange="checkdateintitle();" runat="server">
+                            <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                            <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
+                            <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
+                            <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
+                            <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
+                            <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
+                            <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
+                        </asp:DropDownList>
+                        <select name="dob_day" id="doh_date_in_time_day" runat="server" class="input_pulldown">
+                            <option value="-1" selected="selected">Day:</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                        <asp:DropDownList ID="ddlDateInTitleYear" onchange="checkdateintitle();" runat="server">
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>

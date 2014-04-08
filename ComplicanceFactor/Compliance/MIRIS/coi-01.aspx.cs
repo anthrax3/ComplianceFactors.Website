@@ -2112,7 +2112,10 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
                 DateTime birthDate = new DateTime(year, month, day);
                 insertCase.c_employee_dob = birthDate;
-                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
+                int day1 = Convert.ToInt32(doh_date_in_time_day.Items[doh_date_in_time_day.SelectedIndex].Value);
+                int month1 = Convert.ToInt16(ddlDateInTitleMonth.SelectedValue);
+                int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
+                insertCase.c_date_in_title = new DateTime(year1, month1, day1);
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
                 int hireyear = Convert.ToInt32(ddlHireYear.SelectedValue);
@@ -2179,15 +2182,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     insertCase.c_privacy_case = false;
                 }
-                if (rblCompanyOwned.SelectedValue == "Yes")
-                {
-                    insertCase.c_company_owned = true;
-
-                }
-                else
-                {
-                    insertCase.c_company_owned = false;
-                }
+             
                 if (rblLongTerm.SelectedValue == "Yes")
                 { 
                 
@@ -2288,7 +2283,12 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 txtEmployeeName.Text = miris.c_employee_name;
-                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                if (miris.c_date_in_title.HasValue)
+                {
+                    doh_date_in_time_day.SelectedIndex = miris.c_date_in_title.Value.Day;
+                    ddlDateInTitleMonth.SelectedValue = miris.c_date_in_title.Value.Month.ToString();
+                    ddlDateInTitleYear.SelectedValue = miris.c_date_in_title.Value.Year.ToString();
+                }
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();
@@ -2389,14 +2389,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     rblPrivacyCase.SelectedValue = "No";
                 }
-                if (miris.c_company_owned == true)
-                {
-                    rblCompanyOwned.SelectedValue = "Yes";
-                }
-                else
-                {
-                    rblCompanyOwned.SelectedValue = "No";
-                }
+              
                 txtLocationDescription.InnerText = miris.c_location_description;
                 txtIncidentDescription.InnerText = miris.c_incident_description;
                 txtInjuryCompliant.Text = miris.c_injury_complaint;
@@ -2499,7 +2492,10 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
                 DateTime birthDate = new DateTime(year, month, day);
                 insertCase.c_employee_dob = birthDate;
-                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
+                int day1 = Convert.ToInt32(doh_date_in_time_day.Items[doh_date_in_time_day.SelectedIndex].Value);
+                int month1 = Convert.ToInt16(ddlDateInTitleMonth.SelectedValue);
+                int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
+                insertCase.c_date_in_title = new DateTime(year1, month1, day1);
 
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
@@ -2592,14 +2588,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     insertCase.c_privacy_case = false;
                 }
-                if (rblCompanyOwned.SelectedValue == "Yes")
-                {
-                    insertCase.c_company_owned = true;
-                }
-                else
-                {
-                    insertCase.c_company_owned = false;
-                }               
+                            
                 insertCase.c_location_description = txtLocationDescription.InnerText;
                 insertCase.c_incident_description = txtIncidentDescription.InnerText;
                 insertCase.c_injury_complaint = txtInjuryCompliant.Text;
@@ -2755,15 +2744,17 @@ namespace ComplicanceFactor.Compliance.MIRIS
             int endYear = DateTime.Now.Year;
             ddlYear.Items.Clear();
             ddlHireYear.Items.Clear();
+            ddlDateInTitleYear.Items.Clear();
             ListItem li = new ListItem("Year:", "-1");
             li.Selected = true;
             ddlYear.Items.Add(li);
             ddlHireYear.Items.Add(li);
-
+            ddlDateInTitleYear.Items.Add(li);
             for (int i = endYear; i >= startYear; i--)
             {
                 ddlYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 ddlHireYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                ddlDateInTitleYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
         }
 

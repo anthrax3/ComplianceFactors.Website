@@ -66,7 +66,11 @@ namespace ComplicanceFactor.SystemHome.Configuration.Reports
             {
                 param.s_report_param_field_id_pk = ddlField.SelectedValue;
             }
-            else
+            else if (ddlTable.SelectedValue == "e_tb_enrollments")
+            {
+                param.s_report_param_field_id_pk = ddlAssignEnroll.SelectedValue;
+            }
+            else  
             {
                 param.s_report_param_field_id_pk = ddlCourseField.SelectedValue;
             }

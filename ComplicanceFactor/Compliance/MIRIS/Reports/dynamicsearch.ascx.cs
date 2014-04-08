@@ -17,8 +17,30 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
         public DataTable dtResult;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session["ReportConditions"] = null;
             LoadConditions();
+            SelectDetails.InnerHtml = string.Empty;
+
+            //Its for Shows the selected users and Course and Delivery
+            if (!string.IsNullOrEmpty(SessionWrapper.selectedUserId_learningReport))
+            {
+                SelectDetails.Style.Add("display", "Block");
+                SelectDetails.InnerHtml = "<b>Selected Users: </b>" + SessionWrapper.selectedUserName_learningReport + "<br /><br />";
+            }
+            if (!string.IsNullOrEmpty(SessionWrapper.selectedCourseId_learningReport))
+            {
+                SelectDetails.Style.Add("display", "Block");
+                SelectDetails.InnerHtml = SelectDetails.InnerHtml + "<b>Selected Courses: </b>" + SessionWrapper.selectedCourseName_learningReport + "<br /><br />";
+            }
+            if (!string.IsNullOrEmpty(SessionWrapper.selectedDeliveryTypeId_learningReport))
+            {
+                SelectDetails.Style.Add("display", "Block");
+                SelectDetails.InnerHtml = SelectDetails.InnerHtml + "<b>Selected Delivery Type:</b> " + SessionWrapper.selectedDeliveryTypeName_learningReport + "<br /><br />";
+            }
+            if (!string.IsNullOrEmpty(SessionWrapper.selectedStatusNameText_learningReport))
+            {
+                SelectDetails.Style.Add("display", "Block");
+                SelectDetails.InnerHtml = SelectDetails.InnerHtml + "<b>Selected Completion Status:</b> " + SessionWrapper.selectedStatusNameText_learningReport + "<br /><br />";
+            }
         }
         private string GetValues(string id)
         {
@@ -51,7 +73,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
             {
                 if (row["s_report_param_type_id_fk"].ToString() != "Date")
                 {
-                    if (row["s_report_param_type_id_fk"].ToString() != "System Drop-down")
+                    if (row["s_report_param_type_id_fk"].ToString() != "System Drop-down" && row["s_report_param_type_id_fk"].ToString() != "Button" && row["s_report_param_type_id_fk"].ToString() != "Radio Button list")
                     {
                         Label lbl = new Label();
                         lbl.Text = row["s_report_param_name"].ToString() + ":";
@@ -82,6 +104,96 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                                 phConditions.Controls.Add(r);
                             }
                         }
+                    }
+                    else if (row["s_report_param_type_id_fk"].ToString() == "Button")
+                    {
+                        Label lbl = new Label();
+                        lbl.Text = row["s_report_param_name"].ToString() + ":";
+
+                        HtmlTableCell cell1 = new HtmlTableCell();
+
+                        cell1.Controls.Add(lbl);
+                        r.Cells.Add(cell1);
+
+                        Button btn = new Button();
+                        btn.ID = row["s_report_param_system_id_pk"].ToString();
+                        if (row["s_report_param_field_id_pk"].ToString() == "u_user_id_pk")
+                        {
+                            btn.CssClass = "cursor_hand selectusers";
+                            btn.OnClientClick = "SelectUsers(); return false;";
+                        }
+                        else if (row["s_report_param_field_id_pk"].ToString() == "CourseId")
+                        {
+                            btn.CssClass = "cursor_hand selectcourse";
+                            btn.OnClientClick = "SelectCourse(); return false;";
+                        }
+                        else if (row["s_report_param_field_id_pk"].ToString() == "DeliveryId")
+                        {
+                            btn.CssClass = "cursor_hand selectdelivery";
+                            btn.OnClientClick = "SelectDelivery(); return false;";
+                        }
+                        else if (row["s_report_param_field_id_pk"].ToString() == "Completionstatus")
+                        {
+                            btn.CssClass = "cursor_hand selectcompletion";
+                            btn.OnClientClick = "SelectCompletionStatus(); return false;";
+                        }
+
+                        btn.Text = row["s_report_param_name"].ToString();
+                        //
+                        HtmlTableCell cell2 = new HtmlTableCell();
+                        cell2.Controls.Add(btn);
+                        r.Cells.Add(cell2);
+
+                        if (i % 2 != 0)
+                        {
+                            phConditions.Controls.Add(r);
+                            r = new HtmlTableRow();
+                        }
+                        else
+                        {
+                            if (i + 1 == dtParams.Select("s_report_param_type_id_fk <>'Date'").Count())
+                            {
+                                phConditions.Controls.Add(r);
+                            }
+                        }
+                    }
+                    else if (row["s_report_param_type_id_fk"].ToString() == "Radio Button list")
+                    {
+                        Label lbl = new Label();
+                        lbl.Text = row["s_report_param_name"].ToString() + ":";
+
+                        HtmlTableCell cell1 = new HtmlTableCell();
+
+                        cell1.Controls.Add(lbl);
+                        r.Cells.Add(cell1);
+
+                        RadioButtonList radioRequired = new RadioButtonList();
+                        radioRequired.ID = row["s_report_param_system_id_pk"].ToString();
+
+                        radioRequired.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+                        //radioRequired.RepeatLayout = RepeatLayout.Table;
+                        radioRequired.Items.Add(new ListItem("Required", "Required"));
+                        radioRequired.Items.Add(new ListItem("Optional", "Optional"));
+                        radioRequired.Items.Add(new ListItem("Both", "Both"));
+
+
+                        HtmlTableCell cell2 = new HtmlTableCell();
+                        cell2.Controls.Add(radioRequired);
+                        r.Cells.Add(cell2);
+
+                        if (i % 2 != 0)
+                        {
+                            phConditions.Controls.Add(r);
+                            r = new HtmlTableRow();
+                        }
+                        else
+                        {
+                            if (i + 1 == dtParams.Select("s_report_param_type_id_fk <>'Date'").Count())
+                            {
+                                phConditions.Controls.Add(r);
+                            }
+                        }
+
                     }
                     else
                     {
@@ -144,7 +256,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
 
                     i++;
                 }
-               
+
             }
             i = 0;
             r = new HtmlTableRow();
@@ -159,7 +271,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     cell1.Controls.Add(lbl);
                     r.Cells.Add(cell1);
 
-                   
+
                     TextBox txt = new TextBox();
                     txt.CssClass = "textbox_long";
                     txt.ID = row["s_report_param_system_id_pk"].ToString();
@@ -219,18 +331,19 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                             row["s_report_param_value"] = ((DropDownList)phConditions.FindControl(row["s_report_param_system_id_pk"].ToString())).Text;
                         }
                         break;
+                    case "Radio Button list":
+                        row["s_report_param_value"] = ((RadioButtonList)phConditions.FindControl(row["s_report_param_system_id_pk"].ToString())).SelectedValue;
+                        break;
                     default:
                         break;
                 }
-                
-               
             }
-         
+
             Session["ReportConditions"] = dtParams;
         }
         public string GetCondition(DataTable dtParams)
         {
-           
+
             string strCondition = "";
             foreach (DataRow row in dtParams.Rows)
             {
@@ -239,8 +352,8 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     case "Varchar":
                         if (string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
                         {
-                            strCondition += "("+row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' or "                            
-                            +row["s_report_param_field_id_pk"].ToString() + " is null) and ";
+                            strCondition += "(" + row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' or "
+                            + row["s_report_param_field_id_pk"].ToString() + " is null) and ";
                         }
                         else
                         {
@@ -251,11 +364,17 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                         if (row["s_report_param_name"].ToString().ToLower().IndexOf("start") != -1 ||
                             row["s_report_param_name"].ToString().ToLower().IndexOf("from") != -1)
                         {
-                            strCondition += row["s_report_param_field_id_pk"].ToString() + " >=#" + row["s_report_param_value"] + "# and ";
+                            if (!string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
+                            {
+                                strCondition += row["s_report_param_field_id_pk"].ToString() + " >=#" + row["s_report_param_value"] + "# and ";
+                            }
                         }
                         else
                         {
-                            strCondition += row["s_report_param_field_id_pk"].ToString() + " <=#" + row["s_report_param_value"] + "# and ";
+                            if (!string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
+                            {
+                                strCondition += row["s_report_param_field_id_pk"].ToString() + " <=#" + row["s_report_param_value"] + "# and ";
+                            }
                         }
                         break;
                     case "System Drop-down":
@@ -269,14 +388,26 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                             strCondition += row["s_report_param_field_id_pk"].ToString() + " like '%" + row["s_report_param_value"] + "%' and ";
                         }
                         break;
+                    case "Radio Button list":
+                        if (!string.IsNullOrEmpty(row["s_report_param_value"].ToString()))
+                        {
+                            if (row["s_report_param_value"].ToString() != "Both")
+                            {
+                                strCondition += row["s_report_param_field_id_pk"].ToString() + " = '" + row["s_report_param_value"] + "' and ";
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }
             }
-            strCondition = strCondition.Substring(0, strCondition.Length-4);
+            if (!string.IsNullOrEmpty(strCondition))
+            {
+                strCondition = strCondition.Substring(0, strCondition.Length - 4);
+            }
             return strCondition;
         }
-        public void RecordLastGenerate(DataTable dtParams,string commonid,string s_report_system_id_fk, string s_reports_users_system_id)
+        public void RecordLastGenerate(DataTable dtParams, string commonid, string s_report_system_id_fk, string s_reports_users_system_id)
         {
             if (!string.IsNullOrEmpty(commonid))
             {
@@ -286,7 +417,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 }
 
             }
-            MyReportBLL.ManageLastGenerate(s_reports_users_system_id,s_report_system_id_fk, ConvertDataTableToXml(dtParams));
+            MyReportBLL.ManageLastGenerate(s_reports_users_system_id, s_report_system_id_fk, ConvertDataTableToXml(dtParams));
 
         }
         ///<summary>
@@ -307,6 +438,6 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
             }
             return dsBuildSql.GetXml().ToString();
         }
-        
+
     }
 }

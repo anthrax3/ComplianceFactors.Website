@@ -532,7 +532,12 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //txtDateOfBirth.Text = Convert.ToDateTime(miris.c_employee_dob, culture).ToString("MM/dd/yyyy");
                 //txtEmployeHireDate.Text = Convert.ToDateTime(miris.c_employee_hire_date, culture).ToString("MM/dd/yyyy");
                 txtEmployeeId.Text = miris.c_employee_id;
-                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                if (miris.c_date_in_title.HasValue)
+                {
+                    doh_date_in_time_day.SelectedIndex = miris.c_date_in_title.Value.Day;
+                    ddlDateInTitleMonth.SelectedValue = miris.c_date_in_title.Value.Month.ToString();
+                    ddlDateInTitleYear.SelectedValue = miris.c_date_in_title.Value.Year.ToString();
+                }
                 txtSupervisor.Text = miris.c_supervisor;
                 txtIncidentLocation.Text = miris.c_incident_location;
                 txtIncidentDate.Text = Convert.ToDateTime(miris.c_incident_date, culture).ToString("MM/dd/yyyy");
@@ -2163,7 +2168,11 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
                 DateTime birthDate = new DateTime(year, month, day);
                 updateCase.c_employee_dob = birthDate;
-                updateCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
+                int day1 = Convert.ToInt32(doh_date_in_time_day.Items[doh_date_in_time_day.SelectedIndex].Value);
+                int month1 = Convert.ToInt16(ddlDateInTitleMonth.SelectedValue);
+                int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
+                updateCase.c_date_in_title = new DateTime(year1, month1, day1);
+               
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
                 int hireyear = Convert.ToInt32(ddlHireYear.SelectedValue);
@@ -2995,15 +3004,17 @@ namespace ComplicanceFactor.Compliance.MIRIS
             int endYear = DateTime.Now.Year;
             ddlYear.Items.Clear();
             ddlHireYear.Items.Clear();
+            ddlDateInTitleYear.Items.Clear();
             ListItem li = new ListItem("Year:", "-1");
             li.Selected = true;
             ddlYear.Items.Add(li);
             ddlHireYear.Items.Add(li);
-
+            ddlDateInTitleYear.Items.Add(li);
             for (int i = endYear; i >= startYear; i--)
             {
                 ddlYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 ddlHireYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                ddlDateInTitleYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
         }
 

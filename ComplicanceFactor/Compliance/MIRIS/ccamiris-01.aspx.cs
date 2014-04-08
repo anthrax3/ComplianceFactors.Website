@@ -398,7 +398,10 @@ namespace ComplicanceFactor.Compliance
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
-                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
+                int day1 = Convert.ToInt32(doh_date_in_time_day.Items[doh_date_in_time_day.SelectedIndex].Value);
+                int month1 = Convert.ToInt16(ddlDateInTitleMonth.SelectedValue);
+                int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
+                insertCase.c_date_in_title = new DateTime(year1, month1, day1);
                 insertCase.c_note = txtNote.Text;
                 insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
@@ -596,7 +599,10 @@ namespace ComplicanceFactor.Compliance
                 insertCase.c_incident_date = Convert.ToDateTime(txtIncidentDate.Text, culture);
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
-                insertCase.c_date_in_title = Convert.ToDateTime(txtDateInTitle.Text, culture);
+                int day1 = Convert.ToInt32(doh_date_in_time_day.Items[doh_date_in_time_day.SelectedIndex].Value);
+                int month1 = Convert.ToInt16(ddlDateInTitleMonth.SelectedValue);
+                int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
+                insertCase.c_date_in_title = new DateTime(year1, month1, day1);
                 insertCase.c_note = txtNote.Text;
                 insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
@@ -777,7 +783,12 @@ namespace ComplicanceFactor.Compliance
                     s_establishment_name = "",
                     s_establishment_status_id_fk = "app_ddl_active_text"
                 });
-                txtDateInTitle.Text = miris.c_date_in_title == null ? "" : miris.c_date_in_title.Value.ToString("MM/dd/yyyy");
+                if (miris.c_date_in_title.HasValue)
+                {
+                    doh_date_in_time_day.SelectedIndex = miris.c_date_in_title.Value.Day;
+                    ddlDateInTitleMonth.SelectedValue = miris.c_date_in_title.Value.Month.ToString();
+                    ddlDateInTitleYear.SelectedValue = miris.c_date_in_title.Value.Year.ToString();
+                }
                 ddlEmployeeReportLocation.DataTextField = "s_establishment_name";
                 ddlEmployeeReportLocation.DataValueField = "s_establishment_system_id_pk";
                 ddlEmployeeReportLocation.DataBind();
@@ -2155,15 +2166,17 @@ namespace ComplicanceFactor.Compliance
             int endYear = DateTime.Now.Year;
             ddlYear.Items.Clear();
             ddlHireYear.Items.Clear();
+            ddlDateInTitleYear.Items.Clear();
             ListItem li = new ListItem("Year:", "-1");
             li.Selected = true;
             ddlYear.Items.Add(li);
             ddlHireYear.Items.Add(li);
-
+            ddlDateInTitleYear.Items.Add(li);
             for (int i = endYear; i >= startYear; i--)
             {
                 ddlYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 ddlHireYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                ddlDateInTitleYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
         }
 

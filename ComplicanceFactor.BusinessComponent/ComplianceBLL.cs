@@ -482,6 +482,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htSearchCase.Add("@c_creation_end_date", c_creation_end_date);
             }
             htSearchCase.Add("@c_employee_name", miris.c_employee_name);
+            htSearchCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htSearchCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htSearchCase.Add("@c_incident_location", miris.c_incident_location);
             htSearchCase.Add("@c_supervisor", miris.c_supervisor);

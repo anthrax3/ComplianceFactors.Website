@@ -16,6 +16,7 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string c_case_type_fk { get; set; }
         public string c_case_status { get; set; }
         public string c_employee_name { get; set; }
+        public string c_employee_last_name { get; set; }
         public DateTime c_employee_dob { get; set; }
         public DateTime c_employee_hire_date { get; set; }
         public string c_employee_id { get; set; }

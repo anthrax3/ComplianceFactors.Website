@@ -45,8 +45,7 @@
 
         });
     }
-    function generate(url) {
-
+    function generate(url) {         
         var h = url;
         var width = 1000;
         var height = 600;

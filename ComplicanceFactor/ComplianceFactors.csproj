@@ -226,6 +226,7 @@
     <Content Include="Compliance\MIRIS\Popup\sasumsmr-01.aspx" />
     <Content Include="Compliance\MIRIS\Reports\CompletionofCourses.aspx" />
     <Content Include="Compliance\MIRIS\Reports\dynamicsearch.ascx" />
+    <Content Include="Compliance\MIRIS\Reports\LearningReport.aspx" />
     <Content Include="Compliance\MIRIS\Reports\mrp-01.ascx" />
     <Content Include="Compliance\MIRIS\Reports\osha300a.aspx" />
     <Content Include="Compliance\MIRIS\Reports\osha300_condition.aspx" />
@@ -233,6 +234,14 @@
     <Content Include="Compliance\MIRIS\Reports\osha300.aspx" />
     <Content Include="Compliance\MIRIS\Reports\p-sces-01.aspx" />
     <Content Include="Compliance\MIRIS\Reports\p-scesr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sasstcp-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sasstcsp-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sasstdp-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sastcrr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sastcspr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sastdrr-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sasumsm-01.aspx" />
+    <Content Include="Compliance\MIRIS\Reports\popup\sasumsmr-01.aspx" />
     <Content Include="Compliance\MIRIS\Reports\reemp-01.aspx" />
     <Content Include="Compliance\MIRIS\Reports\resch-01.aspx" />
     <Content Include="Compliance\MIRIS\Reports\saressr-01.aspx" />
@@ -689,6 +698,7 @@
     <Content Include="Employee\Enroll\ecolt-01.aspx" />
     <Content Include="Employee\LearningHistory\lmhp-01.aspx" />
     <Content Include="Employee\lmlp-01.aspx" />
+    <Content Include="Employee\lmrp-01.aspx" />
     <Content Include="Employee\lmtd-01.aspx" />
     <Content Include="Employee\Profile\lppp-01.aspx" />
     <Content Include="Global.asax" />
@@ -776,6 +786,13 @@
     <Content Include="Scripts\querystring-0.9.0-min.js" />
     <Content Include="Scripts\querystring-0.9.0.js" />
     <Content Include="Scripts\spin.min.js" />
+    <None Include="Compliance\MIRIS\Reports\DatasetLearningReport.xsc">
+      <DependentUpon>DatasetLearningReport.xsd</DependentUpon>
+    </None>
+    <None Include="Compliance\MIRIS\Reports\DatasetLearningReport.xsd" />
+    <None Include="Compliance\MIRIS\Reports\DatasetLearningReport.xss">
+      <DependentUpon>DatasetLearningReport.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
     <None Include="Service References\DocumentstoCatalog\Lists.disco" />
     <None Include="Service References\DocumentstoCatalog\configuration91.svcinfo" />
@@ -1732,12 +1749,20 @@
       <DependentUpon>CompletionofCourses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\Reports\CompletionofCoursesDataSet.Designer.cs" />
+    <Compile Include="Compliance\MIRIS\Reports\DatasetLearningReport.Designer.cs" />
     <Compile Include="Compliance\MIRIS\Reports\dynamicsearch.ascx.cs">
       <DependentUpon>dynamicsearch.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Compliance\MIRIS\Reports\dynamicsearch.ascx.designer.cs">
       <DependentUpon>dynamicsearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\LearningReport.aspx.cs">
+      <DependentUpon>LearningReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\LearningReport.aspx.designer.cs">
+      <DependentUpon>LearningReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\Reports\mrp-01.ascx.cs">
       <DependentUpon>mrp-01.ascx</DependentUpon>
@@ -1796,6 +1821,62 @@
     </Compile>
     <Compile Include="Compliance\MIRIS\Reports\p-scesr-01.aspx.designer.cs">
       <DependentUpon>p-scesr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasstcp-01.aspx.cs">
+      <DependentUpon>sasstcp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasstcp-01.aspx.designer.cs">
+      <DependentUpon>sasstcp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasstcsp-01.aspx.cs">
+      <DependentUpon>sasstcsp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasstcsp-01.aspx.designer.cs">
+      <DependentUpon>sasstcsp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasstdp-01.aspx.cs">
+      <DependentUpon>sasstdp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasstdp-01.aspx.designer.cs">
+      <DependentUpon>sasstdp-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sastcrr-01.aspx.cs">
+      <DependentUpon>sastcrr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sastcrr-01.aspx.designer.cs">
+      <DependentUpon>sastcrr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sastcspr-01.aspx.cs">
+      <DependentUpon>sastcspr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sastcspr-01.aspx.designer.cs">
+      <DependentUpon>sastcspr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sastdrr-01.aspx.cs">
+      <DependentUpon>sastdrr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sastdrr-01.aspx.designer.cs">
+      <DependentUpon>sastdrr-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasumsm-01.aspx.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasumsm-01.aspx.designer.cs">
+      <DependentUpon>sasumsm-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasumsmr-01.aspx.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Reports\popup\sasumsmr-01.aspx.designer.cs">
+      <DependentUpon>sasumsmr-01.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\Reports\reemp-01.aspx.cs">
       <DependentUpon>reemp-01.aspx</DependentUpon>
@@ -2113,6 +2194,13 @@
     </Compile>
     <Compile Include="Employee\LearningHistory\PdfTemplate\dsMyLearningHistory.Designer.cs" />
     <Compile Include="Employee\LearningHistory\PdfTemplate\MyCertificate.Designer.cs" />
+    <Compile Include="Employee\lmrp-01.aspx.cs">
+      <DependentUpon>lmrp-01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\lmrp-01.aspx.designer.cs">
+      <DependentUpon>lmrp-01.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Employee\Profile\lppp-01.aspx.cs">
       <DependentUpon>lppp-01.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5152,6 +5240,7 @@
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISOIReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\MirisPdfTemplate\MIRISReport.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\CompletionofCourses.rdlc" />
+    <EmbeddedResource Include="Compliance\MIRIS\Reports\LearningReportDetails.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA300.rdlc" />
     <EmbeddedResource Include="Compliance\MIRIS\Reports\OSHA300A.rdlc" />
