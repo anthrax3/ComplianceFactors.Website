@@ -1007,12 +1007,23 @@
                             ControlToValidate="txtEmployeeName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
                         *
-                        <%=LocalResources.GetLabel("app_employee_name_text")%>:
+                        First Name:
                     </td>
-                    <td>
+                    <td class="align_left">
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
                         <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
                             Text="Select Employee" />
+                    </td>
+                     <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="cmv"
+                            ControlToValidate="txtLastName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        *
+                        Last Name:
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtLastName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                     
                     </td>
                     <td>
                         *
@@ -1070,7 +1081,10 @@
                         <asp:DropDownList ID="ddlYear" onchange="checkdateofbirth();" runat="server">
                         </asp:DropDownList>
                     </td>
-                    <td>
+                   
+                </tr>
+                <tr>
+                     <td>
                         *
                         <%=LocalResources.GetLabel("app_employee_hire_date_text")%>:
                     </td>
@@ -1126,8 +1140,6 @@
                         <asp:DropDownList ID="ddlHireYear" onchange="checkhiredate();" runat="server">
                         </asp:DropDownList>
                     </td>
-                </tr>
-                <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvEmployeeId" runat="server" ValidationGroup="cmv"
                             ControlToValidate="txtEmployeeId" ErrorMessage="<%$ TextResourceExpression: app_emp_id_error_empty %>">&nbsp;
@@ -1148,6 +1160,9 @@
                     <td class="align_left">
                         <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
+                    
+                </tr>
+                <tr>
                     <td>
                       
                         *
@@ -1205,8 +1220,6 @@
                         <asp:DropDownList ID="ddlDateInTitleYear" onchange="checkdateintitle();" runat="server">
                         </asp:DropDownList>
                     </td>
-                </tr>
-                <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="cmv"
                             ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
@@ -1236,7 +1249,10 @@
                         </asp:CalendarExtender>
                         <asp:TextBox ID="txtIncidentDate" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                    <td>
+                   
+                </tr>
+                <tr>
+                     <td>
                         <asp:RequiredFieldValidator ID="rfvIncidentTime" runat="server" ControlToValidate="IncidentTime"
                             ErrorMessage="<%$ TextResourceExpression: app_incident_time_error_empty %>" ValidationGroup="cmv">&nbsp;</asp:RequiredFieldValidator>
                         *
@@ -1247,8 +1263,6 @@
                             runat="server" Date="">
                         </MKB:TimeSelector>
                     </td>
-                </tr>
-                <tr>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvEmployeeReportLocation" runat="server" ValidationGroup="cmv"
                             ControlToValidate="ddlEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
@@ -1274,6 +1288,25 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
+                    
+                </tr>
+                <tr id="trAddEstablishment" runat="server" visible="false">
+                    <td>
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
                      <td>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="cmv"
                             ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
@@ -1284,23 +1317,6 @@
                     <td class="align_left">
                         <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                </tr>
-                <tr id="trAddEstablishment" runat="server" visible="false">
-                    <td>
-                    </td>
-                    <td>
-                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
                     <td>
                         <%=LocalResources.GetLabel("app_note_text")%>:
                     </td>
@@ -1311,10 +1327,7 @@
                     </td>
                     <td>
                     </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
+                   
                 </tr>
                 <tr>
                     <td colspan="6">

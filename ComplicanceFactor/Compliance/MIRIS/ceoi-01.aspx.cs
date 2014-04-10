@@ -256,7 +256,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 if (Session["Case_Employee"] != null)
                 {
                     User user = (User)Session["Case_Employee"];
-                    txtEmployeeName.Text = user.Lastname;
+                    txtEmployeeName.Text = user.Firstname;
+                    txtLastName.Text = user.Lastname;
                     if (!string.IsNullOrEmpty(user.u_social_security_no))
                     {
                         txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
@@ -327,6 +328,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 txtEmployeeName.Text = miris.c_employee_name;
+                txtLastName.Text = miris.c_employee_last_name;
                 if (miris.c_date_in_title.HasValue)
                 {
                     doh_date_in_time_day.SelectedIndex = miris.c_date_in_title.Value.Day;
@@ -2292,7 +2294,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
                 updateCase.c_case_status = c_case_status;
                 updateCase.c_employee_name = txtEmployeeName.Text;
-
+                updateCase.c_employee_last_name = txtLastName.Text;
                 int day = Convert.ToInt32(dob_day.Items[dob_day.SelectedIndex].Value);
                 int month = Convert.ToInt16(ddlMonth.SelectedValue);
                 int year = Convert.ToInt32(ddlYear.SelectedValue);

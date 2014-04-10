@@ -165,6 +165,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
             }
             if (e.CommandName == "generate")
             {
+                SessionWrapper.selectedUserId_learningReport = string.Empty;
+                SessionWrapper.selectedUserName_learningReport = string.Empty;
+                SessionWrapper.selectedCourseId_learningReport = string.Empty;
+                SessionWrapper.selectedCourseName_learningReport = string.Empty;
+                SessionWrapper.selectedDeliveryTypeId_learningReport = string.Empty;
+                SessionWrapper.selectedDeliveryTypeName_learningReport = string.Empty;
+                SessionWrapper.selectedStatusName_learningReport = string.Empty;
+                SessionWrapper.selectedStatusNameText_learningReport = string.Empty;
+
                 int rowIndex = int.Parse(e.CommandArgument.ToString());
 
                 string reportUserId = gvMyReports.DataKeys[rowIndex][1].ToString();

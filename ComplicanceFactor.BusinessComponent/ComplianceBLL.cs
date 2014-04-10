@@ -26,6 +26,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_case_type_fk", miris.c_case_type_fk);
             htInsertCase.Add("@c_case_status", miris.c_case_status);
             htInsertCase.Add("@c_employee_name", miris.c_employee_name);
+            htInsertCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htInsertCase.Add("@c_employee_dob", miris.c_employee_dob);
             htInsertCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
             htInsertCase.Add("@c_employee_id", miris.c_employee_id);
@@ -181,6 +182,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_case_type_fk", miris.c_case_type_fk);
             htUpdateCase.Add("@c_case_status", miris.c_case_status);
             htUpdateCase.Add("@c_employee_name", miris.c_employee_name);
+            htUpdateCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htUpdateCase.Add("@c_employee_dob", miris.c_employee_dob);
             htUpdateCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
             htUpdateCase.Add("@c_employee_id", miris.c_employee_id);
@@ -290,6 +292,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
+                miris.c_employee_last_name = dtGetCase.Rows[0]["c_employee_last_name"].ToString();
                 if (dtGetCase.Rows[0]["c_date_in_title"] == null || string.IsNullOrEmpty(dtGetCase.Rows[0]["c_date_in_title"].ToString()))
                 {
                     miris.c_date_in_title = null;
@@ -2391,6 +2394,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_case_type_fk", miris.c_case_type_fk);
             htInsertCase.Add("@c_case_status", miris.c_case_status);
             htInsertCase.Add("@c_employee_name", miris.c_employee_name);
+            htInsertCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htInsertCase.Add("@c_employee_dob", miris.c_employee_dob);
             htInsertCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
             htInsertCase.Add("@c_employee_id", miris.c_employee_id);
@@ -2634,7 +2638,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
-
+                miris.c_employee_last_name = dtGetCase.Rows[0]["c_employee_last_name"].ToString();
                 miris.c_case_category_value = dtGetCase.Rows[0]["c_case_category_value"].ToString();
                 miris.c_case_status_value = dtGetCase.Rows[0]["c_case_status_value"].ToString();
                 miris.c_case_type_value = dtGetCase.Rows[0]["c_case_type_value"].ToString();
@@ -2753,6 +2757,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_case_type_fk", miris.c_case_type_fk);
             htUpdateCase.Add("@c_case_status", miris.c_case_status);
             htUpdateCase.Add("@c_employee_name", miris.c_employee_name);
+            htUpdateCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htUpdateCase.Add("@c_employee_dob", miris.c_employee_dob);
             htUpdateCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
             htUpdateCase.Add("@c_employee_id", miris.c_employee_id);
@@ -3848,6 +3853,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_case_type_fk", miris.c_case_type_fk);
             htInsertCase.Add("@c_case_status", miris.c_case_status);
             htInsertCase.Add("@c_employee_name", miris.c_employee_name);
+            htInsertCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htInsertCase.Add("@c_employee_dob", miris.c_employee_dob);
             htInsertCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
             htInsertCase.Add("@c_employee_id", miris.c_employee_id);        
@@ -4251,7 +4257,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
-
+                miris.c_employee_last_name = dtGetCase.Rows[0]["c_employee_last_name"].ToString();
                 if (dtGetCase.Rows[0]["c_date_in_title"] == null || string.IsNullOrEmpty(dtGetCase.Rows[0]["c_date_in_title"].ToString()))
                 {
                     miris.c_date_in_title = null;
@@ -4756,6 +4762,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_case_type_fk", miris.c_case_type_fk);
             htUpdateCase.Add("@c_case_status", miris.c_case_status);
             htUpdateCase.Add("@c_employee_name", miris.c_employee_name);
+            htUpdateCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htUpdateCase.Add("@c_employee_dob", miris.c_employee_dob);
             htUpdateCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
             htUpdateCase.Add("@c_employee_id", miris.c_employee_id);

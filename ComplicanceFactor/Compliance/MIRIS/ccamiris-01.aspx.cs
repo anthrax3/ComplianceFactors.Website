@@ -333,7 +333,8 @@ namespace ComplicanceFactor.Compliance
             if (Session["Case_Employee"] != null)
             {
                 User user = (User)Session["Case_Employee"];
-                txtEmployeeName.Text = user.Lastname;
+                txtEmployeeName.Text = user.Firstname;
+                txtLastName.Text = user.Lastname;
                 if (!string.IsNullOrEmpty(user.u_social_security_no))
                 {
                     txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
@@ -375,7 +376,7 @@ namespace ComplicanceFactor.Compliance
                 insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
                 insertCase.c_case_status =ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
-
+                insertCase.c_employee_last_name = txtLastName.Text;
                 int day = Convert.ToInt32(dob_day.Items[dob_day.SelectedIndex].Value);
                 int month = Convert.ToInt16(ddlMonth.SelectedValue);
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
@@ -577,7 +578,7 @@ namespace ComplicanceFactor.Compliance
                 insertCase.c_case_status = CaseStatus;
                 //ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
-
+                insertCase.c_employee_last_name = txtLastName.Text;
                 int day = Convert.ToInt32(dob_day.Items[dob_day.SelectedIndex].Value);
                 int month = Convert.ToInt16(ddlMonth.SelectedValue);
                 int year = Convert.ToInt32(ddlYear.SelectedValue);
@@ -754,7 +755,7 @@ namespace ComplicanceFactor.Compliance
                 ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 txtEmployeeName.Text = miris.c_employee_name;
-
+                txtLastName.Text = miris.c_employee_last_name;
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();
@@ -1995,6 +1996,7 @@ namespace ComplicanceFactor.Compliance
                     this.gvEmployeeInterview.DataBind();
 
                     txtEmployeeName.Text = "";
+                    txtLastName.Text = "";
                     //txtDateOfBirth.Text = "";
                     //txtEmployeHireDate.Text = "";
                     txtEmployeeId.Text = "";

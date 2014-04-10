@@ -23,7 +23,15 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                 rvLearningReport.LocalReport.ReportEmbeddedResource = "ComplicanceFactor.Compliance.MIRIS.Reports.LearningReportDetails.rdlc";
 
                 rvLearningReport.LocalReport.DataSources.Add(new ReportDataSource("LearningReport", searchResult()));
-                 
+
+                SessionWrapper.selectedUserId_learningReport = string.Empty;
+                SessionWrapper.selectedUserName_learningReport = string.Empty;
+                SessionWrapper.selectedCourseId_learningReport = string.Empty;
+                SessionWrapper.selectedCourseName_learningReport = string.Empty;
+                SessionWrapper.selectedDeliveryTypeId_learningReport = string.Empty;
+                SessionWrapper.selectedDeliveryTypeName_learningReport = string.Empty;
+                SessionWrapper.selectedStatusName_learningReport = string.Empty;
+                SessionWrapper.selectedStatusNameText_learningReport = string.Empty;                 
             }
         }
 
@@ -102,7 +110,7 @@ namespace ComplicanceFactor.Compliance.MIRIS.Reports
                     }
                 }
                 return null;
-            }
+            }          
 
         }
     }

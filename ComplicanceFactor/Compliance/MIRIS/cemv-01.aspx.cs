@@ -269,7 +269,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
             if (Session["Case_Employee"] != null)
             {
                 User user = (User)Session["Case_Employee"];
-                txtEmployeeName.Text = user.Lastname;
+                txtEmployeeName.Text = user.Firstname;
+                txtLastName.Text = user.Firstname;
                 if (!string.IsNullOrEmpty(user.u_social_security_no))
                 {
                     txtLastFourDigitOfSSN.Text = user.u_social_security_no.Substring(user.u_social_security_no.Length - 4, 4);
@@ -513,6 +514,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 
               
                     txtEmployeeName.Text = miris.c_employee_name;
+                txtLastName.Text = miris.c_employee_last_name;
                     txtLastFourDigitOfSSN.Text = miris.c_ssn;
                
                 
@@ -2162,6 +2164,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
                 updateCase.c_case_status = c_case_status;
                 updateCase.c_employee_name = txtEmployeeName.Text;
+                updateCase.c_employee_last_name = txtLastName.Text;
                 //updateCase.c_establishment 
                 int day = Convert.ToInt32(dob_day.Items[dob_day.SelectedIndex].Value);
                 int month = Convert.ToInt16(ddlMonth.SelectedValue);
