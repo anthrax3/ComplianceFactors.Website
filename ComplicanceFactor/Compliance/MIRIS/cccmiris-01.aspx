@@ -2,6 +2,7 @@
     CodeBehind="cccmiris-01.aspx.cs" Inherits="ComplicanceFactor.Compliance.cccmiris_01" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Src="~/Compliance/MIRIS/Controls/uccb-01.ascx" TagPrefix="uc1" TagName="uccb1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -111,15 +112,7 @@
                             AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
-                    <td>
-                        *
-                        <%=LocalResources.GetLabel("app_case_types_text")%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
-                            runat="server">
-                        </asp:DropDownList>
-                    </td>
+                   
                     <td>
                         <asp:RequiredFieldValidator ID="rfvcasetitle" runat="server" ValidationGroup="ccasir"
                             ControlToValidate="txtCaseTitle" ErrorMessage="<%$ TextResourceExpression: app_case_title_error_empty %>">&nbsp;
@@ -132,7 +125,17 @@
                     <td>
                         <asp:TextBox ID="txtCaseTitle" CssClass="textbox_width" runat="server"></asp:TextBox>
                     </td>
+                     <td style="display: none;">
+                        *
+                        <%=LocalResources.GetLabel("app_case_types_text")%>
+                    </td>
+                    <td style="display: none;">
+                        <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
+                            runat="server">
+                        </asp:DropDownList>
+                    </td>
                 </tr>
+                <tr><uc1:uccb1 runat="server" id="uccb1" /></tr>
                 <tr>
                     <td colspan="2" class="btnsave_new_user_td">
                         <asp:Button ID="btnCreateNewCase" ValidationGroup="ccasir" CssClass="cursor_hand"

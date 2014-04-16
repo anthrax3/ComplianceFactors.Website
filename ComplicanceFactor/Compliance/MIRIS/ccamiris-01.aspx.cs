@@ -259,7 +259,8 @@ namespace ComplicanceFactor.Compliance
                     {
                         ddlTimezone.SelectedValue = SessionWrapper.u_timezone;
                         ddlCaseCategory.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["cid"]);
-                        ddlCaseTypes.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["type"]);
+                        //ddlCaseTypes.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["type"]);
+                        uccb1.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
                         txtCaseTitle.Text = SecurityCenter.DecryptText(Request.QueryString["title"]);
 
                         ComplianceDAO miris = new ComplianceDAO();
@@ -373,7 +374,8 @@ namespace ComplicanceFactor.Compliance
                 //insertCase.c_case_number = lblCaseNumber.Text;
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-                insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                //insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status =ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
                 insertCase.c_employee_last_name = txtLastName.Text;
@@ -574,7 +576,8 @@ namespace ComplicanceFactor.Compliance
                 //insertCase.c_case_number = lblCaseNumber.Text;
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-                insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+               // insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status = CaseStatus;
                 //ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;

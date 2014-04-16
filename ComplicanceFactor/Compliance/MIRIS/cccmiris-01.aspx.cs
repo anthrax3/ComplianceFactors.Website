@@ -128,6 +128,7 @@ namespace ComplicanceFactor.Compliance
                     gvsearchDetails.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
             }
+            uccb1.show("");
         }
 
         protected void gvsearchDetails_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -775,15 +776,15 @@ namespace ComplicanceFactor.Compliance
                 miris = ComplianceBLL.GetCaseId(caseCategory, string.Empty);
                 if (caseCategory == "MV")
                 {
-                    Response.Redirect("~/Compliance/MIRIS/cmv-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
+                    Response.Redirect("~/Compliance/MIRIS/cmv-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(uccb1.uc_values) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
                 }
                 else if (caseCategory == "OI")
                 {
-                    Response.Redirect("~/Compliance/MIRIS/coi-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
+                    Response.Redirect("~/Compliance/MIRIS/coi-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(uccb1.uc_values) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
                 }
                 else
                 {
-                    Response.Redirect("~/Compliance/MIRIS/ccamiris-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
+                    Response.Redirect("~/Compliance/MIRIS/ccamiris-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(uccb1.uc_values) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
                 }
                 //Response.Redirect("~/Compliance/MIRIS/ccamiris-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
             }

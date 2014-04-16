@@ -67,15 +67,6 @@ namespace ComplicanceFactor.Compliance {
         protected global::System.Web.UI.WebControls.DropDownList ddlCaseCategory;
         
         /// <summary>
-        /// ddlCaseTypes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCaseTypes;
-        
-        /// <summary>
         /// rfvcasetitle control.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,24 @@ namespace ComplicanceFactor.Compliance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCaseTitle;
+        
+        /// <summary>
+        /// ddlCaseTypes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCaseTypes;
+        
+        /// <summary>
+        /// uccb1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ComplicanceFactor.Compliance.MIRIS.Controls.uccb_01 uccb1;
         
         /// <summary>
         /// btnCreateNewCase control.

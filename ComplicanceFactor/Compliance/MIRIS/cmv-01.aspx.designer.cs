@@ -166,6 +166,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.DropDownList ddlCaseCategory;
         
         /// <summary>
+        /// ddlCaseStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCaseStatus;
+        
+        /// <summary>
         /// ddlCaseTypes control.
         /// </summary>
         /// <remarks>
@@ -175,13 +184,13 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.DropDownList ddlCaseTypes;
         
         /// <summary>
-        /// ddlCaseStatus control.
+        /// uccb1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCaseStatus;
+        protected global::ComplicanceFactor.Compliance.MIRIS.Controls.uccb_01 uccb1;
         
         /// <summary>
         /// hdnScrollPos control.

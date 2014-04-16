@@ -3,6 +3,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="TimePicker" Namespace="MKB.TimePicker" TagPrefix="MKB" %>
+<%@ Register Src="~/Compliance/MIRIS/Controls/uccb-01.ascx" TagPrefix="uc1" TagName="uccb1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -805,15 +806,7 @@
                             AutoPostBack="true" CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged1">
                         </asp:DropDownList>
                     </td>
-                    <td>
-                        *
-                        <%=LocalResources.GetLabel("app_case_types_text")%>:
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                        </asp:DropDownList>
-                    </td>
+                   
                     <td>
                         *
                         <%=LocalResources.GetLabel("app_case_status_text")%>:
@@ -823,7 +816,17 @@
                             DataTextField="c_status_name" runat="server">
                         </asp:DropDownList>
                     </td>
+                     <td style="display: none;">
+                        *
+                        <%=LocalResources.GetLabel("app_case_types_text")%>:
+                    </td>
+                      <td style="display: none;">
+                        <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
+                            CssClass="ddl_user_advanced_search" runat="server">
+                        </asp:DropDownList>
+                    </td>
                 </tr>
+                   <tr><uc1:uccb1 runat="server" id="uccb1" /></tr>
                 <tr>
                     <td colspan="6">
                         &nbsp;

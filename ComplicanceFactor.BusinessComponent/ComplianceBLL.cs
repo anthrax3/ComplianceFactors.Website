@@ -162,6 +162,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
             try
             {
+                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
                 return DataProxy.FetchSPOutput("c_miris_sp_insert_case", htInsertCase);
 
             }
@@ -265,6 +266,7 @@ namespace ComplicanceFactor.BusinessComponent
 
             try
             {
+                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
                 return DataProxy.FetchSPOutput("c_miris_sp_update_case", htUpdateCase);
 
             }
@@ -289,7 +291,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_number = dtGetCase.Rows[0]["c_case_number"].ToString();
                 miris.c_case_title = dtGetCase.Rows[0]["c_case_title"].ToString();
                 miris.c_case_category_fk = dtGetCase.Rows[0]["c_case_category_fk"].ToString();
-                miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
+                miris.c_case_type_fk = GetCaseTypes(caseId);// dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
                 miris.c_employee_last_name = dtGetCase.Rows[0]["c_employee_last_name"].ToString();
@@ -2611,6 +2613,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
             try
             {
+                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
                 return DataProxy.FetchSPOutput("c_miris_sp_insert_case_oi", htInsertCase);
 
             }
@@ -2635,7 +2638,7 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_number = dtGetCase.Rows[0]["c_case_number"].ToString();
                 miris.c_case_title = dtGetCase.Rows[0]["c_case_title"].ToString();
                 miris.c_case_category_fk = dtGetCase.Rows[0]["c_case_category_fk"].ToString();
-                miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
+                miris.c_case_type_fk = GetCaseTypes(caseId);//dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
                 miris.c_employee_last_name = dtGetCase.Rows[0]["c_employee_last_name"].ToString();
@@ -2876,6 +2879,7 @@ namespace ComplicanceFactor.BusinessComponent
 
             try
             {
+                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
                 return DataProxy.FetchSPOutput("c_miris_sp_update_case_oi", htUpdateCase);
 
             }
@@ -3841,9 +3845,60 @@ namespace ComplicanceFactor.BusinessComponent
         }
 
         //MV
+        private static int UpdateCaseType(string c_case_id_pk,string c_case_type)
+        {
+            var dtBuildSql = new DataTable();
+            dtBuildSql.Columns.Add("c_case_id_pk");
+            dtBuildSql.Columns.Add("c_case_type");
+            string[] caseTypes = c_case_type.Split(new char[]{','});
+            foreach (var caseType in caseTypes)
+            {
+                DataRow row = dtBuildSql.NewRow();
+                row["c_case_id_pk"] = c_case_id_pk;
+                row["c_case_type"] = caseType;
+                dtBuildSql.Rows.Add(row);
+            }
+            var dsBuildSql = new DataSet("DataSet");
+
+            dsBuildSql.Tables.Add(dtBuildSql.Copy());
+            dsBuildSql.Tables[0].TableName = "Table";
+
+            foreach (DataColumn col in dsBuildSql.Tables[0].Columns)
+            {
+                col.ColumnMapping = MappingType.Attribute;
+            }
+            Hashtable htUpdateCaseType = new Hashtable();
+
+            htUpdateCaseType.Add("@c_case_id_pk", c_case_id_pk);
+            htUpdateCaseType.Add("@c_case_type", dsBuildSql.GetXml().ToString());
+            return DataProxy.FetchSPOutput("s_sp_update_miris_case_type", htUpdateCaseType);
+        }
+
+        private static string GetCaseTypes(string c_case_id_pk)
+        {
+
+            Hashtable htSearchCase = new Hashtable();
+            htSearchCase.Add("@c_case_id_pk", c_case_id_pk);
+         
+            try
+            {
+                string returnValue = "";
+                DataTable dtCaseType= DataProxy.FetchDataTable("s_sp_get_miris_case_type", htSearchCase);
+                foreach (DataRow caseType in dtCaseType.Rows)
+                {
+                    returnValue += caseType["c_case_type"].ToString() + ",";
+                }
+                return returnValue.Substring(0, returnValue.Length-1);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public static int InsertCaseMV(ComplianceDAO miris)
         {
+            
             Hashtable htInsertCase = new Hashtable();
             htInsertCase.Add("@c_case_id_pk", miris.c_case_id_pk);
             htInsertCase.Add("@u_user_id_fk", miris.u_user_id_fk);
@@ -4230,6 +4285,7 @@ namespace ComplicanceFactor.BusinessComponent
             }
             try
             {
+                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
                 return DataProxy.FetchSPOutput("c_miris_sp_insert_case_mv", htInsertCase);
 
             }
@@ -4251,10 +4307,11 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetCase.Add("@c_case_id_pk", caseId);
                 miris = new ComplianceDAO();
                 DataTable dtGetCase = DataProxy.FetchDataTable("c_miris_get_case_mv", htGetCase);
+                
                 miris.c_case_number = dtGetCase.Rows[0]["c_case_number"].ToString();
                 miris.c_case_title = dtGetCase.Rows[0]["c_case_title"].ToString();
                 miris.c_case_category_fk = dtGetCase.Rows[0]["c_case_category_fk"].ToString();
-                miris.c_case_type_fk = dtGetCase.Rows[0]["c_case_type_fk"].ToString();
+                miris.c_case_type_fk = GetCaseTypes(caseId); //dtGetCase.Rows[0]["c_case_type_fk"].ToString();
                 miris.c_case_status = dtGetCase.Rows[0]["c_case_status"].ToString();
                 miris.c_employee_name = dtGetCase.Rows[0]["c_employee_name"].ToString();
                 miris.c_employee_last_name = dtGetCase.Rows[0]["c_employee_last_name"].ToString();
@@ -5088,6 +5145,7 @@ namespace ComplicanceFactor.BusinessComponent
 
             try
             {
+                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
                 return DataProxy.FetchSPOutput("c_miris_sp_update_case_mv", htUpdateCase);
             }
 

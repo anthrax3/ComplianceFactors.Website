@@ -215,6 +215,7 @@
     <Content Include="Compliance\MIRIS\ceoi-01.aspx" />
     <Content Include="Compliance\MIRIS\cmv-01.aspx" />
     <Content Include="Compliance\MIRIS\coi-01.aspx" />
+    <Content Include="Compliance\MIRIS\Controls\uccb-01.ascx" />
     <Content Include="Compliance\MIRIS\Controls\ucmv-01.ascx" />
     <Content Include="Compliance\MIRIS\Controls\ucoi-01.ascx" />
     <Content Include="Compliance\MIRIS\Controls\urc-01.ascx" />
@@ -1685,6 +1686,13 @@
     </Compile>
     <Compile Include="Compliance\MIRIS\coi-01.aspx.designer.cs">
       <DependentUpon>coi-01.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Controls\uccb-01.ascx.cs">
+      <DependentUpon>uccb-01.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compliance\MIRIS\Controls\uccb-01.ascx.designer.cs">
+      <DependentUpon>uccb-01.ascx</DependentUpon>
     </Compile>
     <Compile Include="Compliance\MIRIS\Controls\ucmv-01.ascx.cs">
       <DependentUpon>ucmv-01.ascx</DependentUpon>

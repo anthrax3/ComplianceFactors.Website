@@ -503,15 +503,16 @@ namespace ComplicanceFactor.Compliance.MIRIS
             try
             {
                 miris = ComplianceBLL.GetCaseMV(edit);
+                
                 ddlTimezone.SelectedValue = miris.c_timezoneId;
                 lblCaseDate.Text = Convert.ToDateTime(miris.c_case_date).ToString("MM/dd/yyyy hh:mm tt");
                 lblCaseNumber.Text = miris.c_case_number;
                 txtCaseTitle.Text = miris.c_case_title;
                 ddlCaseCategory.SelectedValue = miris.c_case_category_value;
                 //ViewState["CaseCategory"] = ddlCaseCategory.SelectedValue;
-                ddlCaseTypes.SelectedValue = miris.c_case_type_value;
+                //ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
-                
+                uccb1.show(miris.c_case_type_fk);
               
                     txtEmployeeName.Text = miris.c_employee_name;
                 txtLastName.Text = miris.c_employee_last_name;
@@ -2161,7 +2162,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.u_user_id_fk = SessionWrapper.u_userid;
                 updateCase.c_case_title = txtCaseTitle.Text;
                 updateCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-                updateCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                //updateCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                updateCase.c_case_type_fk = uccb1.uc_values;
                 updateCase.c_case_status = c_case_status;
                 updateCase.c_employee_name = txtEmployeeName.Text;
                 updateCase.c_employee_last_name = txtLastName.Text;
@@ -2850,6 +2852,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     {
                         Response.Redirect("~/Compliance/MIRIS/cccmiris-01.aspx", false);
                     }
+                    uccb1.show(updateCase.c_case_type_fk);
                 }
                 else
                 {

@@ -316,7 +316,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         ComplianceDAO miris = new ComplianceDAO();
                         DataTable dtCaseId = new DataTable();
                         miris = ComplianceBLL.GetCaseId(GetBracketText(ddlCaseCategory.SelectedItem.Text), string.Empty);
-
+                        uccb1.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
                         lblCaseNumber.Text = miris.c_case_number;
 
                         //witenss
@@ -2104,7 +2104,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //insertCase.c_case_number = lblCaseNumber.Text;
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-                insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                //insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status = ddlCaseStatus.SelectedValue;
 
                 insertCase.c_employee_name = txtEmployeeName.Text;
@@ -2485,7 +2486,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //insertCase.c_case_number = lblCaseNumber.Text;
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-                insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                //insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status = CaseStatus;
                 //ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
