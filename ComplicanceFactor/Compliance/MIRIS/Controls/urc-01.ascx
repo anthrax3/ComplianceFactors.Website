@@ -24,6 +24,180 @@
     Primary Effect
     <br />
     <br />
+    <table style="width: 80%;">
+        <tr>
+            <td style="width: 40px;">
+               Question 1:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion1" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 1:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer1" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 2:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion2" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 2:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer2" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 3:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion3" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 3:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer3" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 4:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion4" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 4:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer4" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 5:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion5" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 5:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer5" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 6:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion6" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 6:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer6" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 7:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion7" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 7:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer7" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 8:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion8" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 8:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer8" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 9:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion9" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 9:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer9" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr><td colspan="2"><hr/></td></tr>
+        <tr>
+            <td style="width: 30px;">
+               Question 10:
+            </td>
+           <td style="width: 100%;">
+                 <asp:TextBox ID="txtQuestion10" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        <tr>
+            <td>
+               Answer 10:
+            </td>
+           <td>
+                 <asp:TextBox ID="txtAnswer10" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
+           </td>
+        </tr>
+        
+    </table>
+    <br />
+    <br />
     Root Cause Catagories
     <br />
     <br />
@@ -170,12 +344,14 @@
     </table>
     <br />
     <br />
-    Preventative Actions: <span style="color:Green">Low--------------------</span><span style="color:Yellow">----------------------</span><span style="color:red">---------------------HIGH</span>
+    Preventative Actions: <span style="color: Green">Low--------------------</span><span
+        style="color: Yellow">----------------------</span><span style="color: red">---------------------HIGH</span>
     <br />
     <br />
     <br />
     <br />
-    Corrective Actions: <span style="color:Green">Low--------------------</span><span style="color:Yellow">----------------------</span><span style="color:red">---------------------HIGH</span>
+    Corrective Actions: <span style="color: Green">Low--------------------</span><span
+        style="color: Yellow">----------------------</span><span style="color: red">---------------------HIGH</span>
     <br />
     <br />
     Verification of Completed Action:
@@ -216,11 +392,11 @@
     VALIDATION OF EFFECTIVENESS
     <br />
     <br />
-     How will Validation of Corrective Action Take Place?
+    How will Validation of Corrective Action Take Place?
     <br />
     <br />
-    <asp:TextBox ID="TextBox6" Rows="3" cols="100" runat="server"
-        CssClass="textarea_long_width" TextMode="MultiLine"></asp:TextBox>
+    <asp:TextBox ID="TextBox6" Rows="3" cols="100" runat="server" CssClass="textarea_long_width"
+        TextMode="MultiLine"></asp:TextBox>
     <br />
     <br />
     Will Validation be based upon the individual or a group?

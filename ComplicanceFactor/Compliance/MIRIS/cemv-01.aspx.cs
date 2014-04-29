@@ -2843,6 +2843,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
 
 
                 int error = ComplianceBLL.UpdateCaseMV(updateCase);
+                urc1.UpdateRac(updateCase.c_case_id_pk);
                 if (error != -1)
                 {
                     error_msg.Style.Add("display", "none");

@@ -25,6 +25,30 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateRca.Add("@c_rca_corrective_action_solutions", rca.c_rca_corrective_action_solutions);
             htUpdateRca.Add("@c_rca_activators", rca.c_rca_activators);
             htUpdateRca.Add("@c_rca_consequences", rca.c_rca_consequences);
+
+            htUpdateRca.Add("@c_rca_question1", rca.c_rca_question1);
+            htUpdateRca.Add("@c_rca_answer1", rca.c_rca_answer1);
+            htUpdateRca.Add("@c_rca_question2", rca.c_rca_question2);
+            htUpdateRca.Add("@c_rca_answer2", rca.c_rca_answer2);
+            htUpdateRca.Add("@c_rca_question3", rca.c_rca_question3);
+            htUpdateRca.Add("@c_rca_answer3", rca.c_rca_answer3);
+            htUpdateRca.Add("@c_rca_question4", rca.c_rca_question4);
+            htUpdateRca.Add("@c_rca_answer4", rca.c_rca_answer4);
+            htUpdateRca.Add("@c_rca_question5", rca.c_rca_question5);
+            htUpdateRca.Add("@c_rca_answer5", rca.c_rca_answer5);
+            htUpdateRca.Add("@c_rca_question6", rca.c_rca_question6);
+            htUpdateRca.Add("@c_rca_answer6", rca.c_rca_answer6);
+            htUpdateRca.Add("@c_rca_question7", rca.c_rca_question7);
+            htUpdateRca.Add("@c_rca_answer7", rca.c_rca_answer7);
+            htUpdateRca.Add("@c_rca_question8", rca.c_rca_question8);
+            htUpdateRca.Add("@c_rca_answer8", rca.c_rca_answer8);
+            htUpdateRca.Add("@c_rca_question9", rca.c_rca_question9);
+            htUpdateRca.Add("@c_rca_answer9", rca.c_rca_answer9);
+            htUpdateRca.Add("@c_rca_question10", rca.c_rca_question10);
+            htUpdateRca.Add("@c_rca_answer10", rca.c_rca_answer10);
+          
+           
+
             try
             {
                 return DataProxy.FetchSPOutput("c_miris_sp_update_rca", htUpdateRca);
@@ -56,6 +80,26 @@ namespace ComplicanceFactor.BusinessComponent
                 rca.c_rca_corrective_action_solutions = dt.Rows[0]["c_rca_corrective_action_solutions"].ToString();
                 rca.c_rca_activators = dt.Rows[0]["c_rca_activators"].ToString();
                 rca.c_rca_consequences = dt.Rows[0]["c_rca_consequences"].ToString();
+                rca.c_rca_question1 = dt.Rows[0]["c_rca_question1"].ToString();
+                rca.c_rca_answer1 = dt.Rows[0]["c_rca_answer1"].ToString();
+                rca.c_rca_question2 = dt.Rows[0]["c_rca_question2"].ToString();
+                rca.c_rca_answer2 = dt.Rows[0]["c_rca_answer2"].ToString();
+                rca.c_rca_question3 = dt.Rows[0]["c_rca_question3"].ToString();
+                rca.c_rca_answer3 = dt.Rows[0]["c_rca_answer3"].ToString();
+                rca.c_rca_question4 = dt.Rows[0]["c_rca_question4"].ToString();
+                rca.c_rca_answer4 = dt.Rows[0]["c_rca_answer4"].ToString();
+                rca.c_rca_question5 = dt.Rows[0]["c_rca_question5"].ToString();
+                rca.c_rca_answer5 = dt.Rows[0]["c_rca_answer5"].ToString();
+                rca.c_rca_question6 = dt.Rows[0]["c_rca_question6"].ToString();
+                rca.c_rca_answer6 = dt.Rows[0]["c_rca_answer6"].ToString();
+                rca.c_rca_question7 = dt.Rows[0]["c_rca_question7"].ToString();
+                rca.c_rca_answer7 = dt.Rows[0]["c_rca_answer7"].ToString();
+                rca.c_rca_question8 = dt.Rows[0]["c_rca_question8"].ToString();
+                rca.c_rca_answer8 = dt.Rows[0]["c_rca_answer8"].ToString();
+                rca.c_rca_question9 = dt.Rows[0]["c_rca_question9"].ToString();
+                rca.c_rca_answer9 = dt.Rows[0]["c_rca_answer9"].ToString();
+                rca.c_rca_question10 = dt.Rows[0]["c_rca_question10"].ToString();
+                rca.c_rca_answer10 = dt.Rows[0]["c_rca_answer10"].ToString();
                 return rca;
             }
             catch (Exception)
