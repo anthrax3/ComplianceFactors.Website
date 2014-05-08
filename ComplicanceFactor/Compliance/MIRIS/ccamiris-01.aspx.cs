@@ -406,8 +406,8 @@ namespace ComplicanceFactor.Compliance
                 int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
                 insertCase.c_date_in_title = new DateTime(year1, month1, day1);
                 insertCase.c_note = txtNote.Text;
-                insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                //insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
+                //insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
                 // insertCase.c_osha_300_case_outcome = string.Empty;
                 //int DaysfromWork;
                 //int.TryParse(txtDaysAwayFromWork.Text, out DaysfromWork);
@@ -492,6 +492,7 @@ namespace ComplicanceFactor.Compliance
                 }
 
                 int error = ComplianceBLL.InsertCase(insertCase);
+                urc1.UpdateRac(insertCase.c_case_id_pk);
                 if (error != -1)
                 {
                     ////WITENSS
@@ -608,8 +609,8 @@ namespace ComplicanceFactor.Compliance
                 int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
                 insertCase.c_date_in_title = new DateTime(year1, month1, day1);
                 insertCase.c_note = txtNote.Text;
-                insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                //insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
+                //insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
                 // insertCase.c_osha_300_case_outcome = string.Empty;
                 //int DaysfromWork;
                 //int.TryParse(txtDaysAwayFromWork.Text, out DaysfromWork);
@@ -799,8 +800,8 @@ namespace ComplicanceFactor.Compliance
                 ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                 ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
                 txtNote.Text = miris.c_note;
-                txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
-                txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
+                //txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
+                //txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
                 // txtDaysAwayFromWork.Text = Convert.ToInt32(miris.c_osha_300_days_away_from_work).ToString();
                 //if (!string.IsNullOrEmpty(miris.c_osha_300_date_of_death.ToString()))
@@ -2009,8 +2010,8 @@ namespace ComplicanceFactor.Compliance
                     txtIncidentDate.Text = "";
                   
                     txtNote.Text = "";
-                    txtRootCauseAnalysisDetails.Text = "";
-                    txtCorrectiveActionDetails.Text = "";
+                    //txtRootCauseAnalysisDetails.Text = "";
+                    //txtCorrectiveActionDetails.Text = "";
                     //ddlCaseOutCome.SelectedIndex = 0;
                     // txtDaysAwayFromWork.Text = "";
                     //txtDateOfDeath.Text = "";

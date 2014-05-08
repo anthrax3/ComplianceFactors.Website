@@ -2133,8 +2133,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 insertCase.c_note = txtNote.Text;
-                insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                insertCase.c_root_cause_analysic_info = "";
+                insertCase.c_corrective_action_info ="";
 
                 insertCase.c_custom_01 = txtCustom01.Text;
                 insertCase.c_custom_02 = txtCustom02.Text;
@@ -2240,7 +2240,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 }
 
                 int error = ComplianceBLL.InsertCaseOI(insertCase);
-               
+                urc1.UpdateRac(insertCase.c_case_id_pk);
                 if (error != -1)
                 {                    
                     Response.Redirect("~/Compliance/MIRIS/ceoi-01.aspx?Edit=" + SecurityCenter.EncryptText(insertCase.c_case_id_pk) + "&Succ=" + SecurityCenter.EncryptText("insert"), false);
@@ -2328,8 +2328,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                 ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
                 txtNote.Text = miris.c_note;
-                txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
-                txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
+                //txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
+                //txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
                 //txtDaysAwayFromWork.Text = Convert.ToInt32(miris.c_osha_300_days_away_from_work).ToString();
                 //if (!string.IsNullOrEmpty(miris.c_osha_300_date_of_death.ToString()))
@@ -2516,8 +2516,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 insertCase.c_note = txtNote.Text;
-                insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                insertCase.c_root_cause_analysic_info = "";
+                insertCase.c_corrective_action_info = "";
                 // insertCase.c_osha_300_case_outcome = string.Empty;
                 //int DaysfromWork;
                 //int.TryParse(txtDaysAwayFromWork.Text, out DaysfromWork);

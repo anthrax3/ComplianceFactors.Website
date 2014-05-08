@@ -325,8 +325,8 @@ namespace ComplicanceFactor.Compliance
                     ddlDateInTitleYear.SelectedValue = miris.c_date_in_title.Value.Year.ToString();
                 }
                 txtNote.Text = miris.c_note;
-                txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
-                txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
+                //txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
+                //txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
                 //txtDaysAwayFromWork.Text = Convert.ToInt32(miris.c_osha_300_days_away_from_work).ToString();
                 //if (!string.IsNullOrEmpty(miris.c_osha_300_date_of_death.ToString()))
@@ -370,7 +370,7 @@ namespace ComplicanceFactor.Compliance
                 txtCustom11.Text = miris.c_custom_11;
                 txtCustom12.Text = miris.c_custom_12;
                 txtCustom13.Text = miris.c_custom_13;
-
+                urc1.SearchRac(caseid);
             }
             catch (Exception ex)
             {
@@ -1543,8 +1543,8 @@ namespace ComplicanceFactor.Compliance
                 updateCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 updateCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 updateCase.c_note = txtNote.Text;
-                updateCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                updateCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                //updateCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
+                //updateCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
                 //updateCase.c_osha_300_case_outcome = ddlCaseOutCome.SelectedValue;
                 //int DaysfromWork;
                 //int.TryParse(txtDaysAwayFromWork.Text, out DaysfromWork);
@@ -1612,6 +1612,7 @@ namespace ComplicanceFactor.Compliance
 
 
                 int error = ComplianceBLL.UpdateCase(updateCase);
+                urc1.UpdateRac(updateCase.c_case_id_pk);
                 if (error != -1)
                 {
                     error_msg.Style.Add("display", "none");

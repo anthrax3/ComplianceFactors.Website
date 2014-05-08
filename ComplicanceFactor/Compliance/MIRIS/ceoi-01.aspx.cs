@@ -372,8 +372,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                 ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
                 txtNote.Text = miris.c_note;
-                txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
-                txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
+                //txtRootCauseAnalysisDetails.Text = "";
+                //txtCorrectiveActionDetails.Text = "";
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
                 //txtDaysAwayFromWork.Text = Convert.ToInt32(miris.c_osha_300_days_away_from_work).ToString();
                 //if (!string.IsNullOrEmpty(miris.c_osha_300_date_of_death.ToString()))
@@ -457,7 +457,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtFirstdayRestrictedorTransferred.Text = miris.c_firstday_of_days_restricted_or_transferred;
                 txtLastDatDaysAway.Text = miris.c_lastday_days_away;
                 txtLastDayRestrictedorTransferred.Text = miris.c_lastday_days_restricted_or_transferred;
-
+                urc1.SearchRac(caseid);
 
             }
             catch (Exception ex)
@@ -2320,8 +2320,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 updateCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 updateCase.c_note = txtNote.Text;
-                updateCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
-                updateCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
+                updateCase.c_root_cause_analysic_info ="";
+                updateCase.c_corrective_action_info = "";
                 //updateCase.c_osha_300_case_outcome = ddlCaseOutCome.SelectedValue;
                 //int DaysfromWork;
                 //int.TryParse(txtDaysAwayFromWork.Text, out DaysfromWork);
@@ -2434,6 +2434,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
 
 
                 int error = ComplianceBLL.UpdateCaseOI(updateCase);
+                urc1.UpdateRac(updateCase.c_case_id_pk);
                 if (error != -1)
                 {
                     error_msg.Style.Add("display", "none");

@@ -37,8 +37,8 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_incident_time", miris.c_incident_time);
             htInsertCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htInsertCase.Add("@c_note", miris.c_note);
-            htInsertCase.Add("@c_root_cause_analysic_info", miris.c_root_cause_analysic_info);
-            htInsertCase.Add("@c_corrective_action_info", miris.c_corrective_action_info);
+            htInsertCase.Add("@c_root_cause_analysic_info", "");
+            htInsertCase.Add("@c_corrective_action_info", "");
             htInsertCase.Add("@c_osha_300_case_outcome", DBNull.Value);
             htInsertCase.Add("@c_osha_300_days_away_from_work", DBNull.Value);
             htInsertCase.Add("@c_osha_300_days_of_restriction", DBNull.Value);
@@ -194,8 +194,8 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_incident_time", miris.c_incident_time);
             htUpdateCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htUpdateCase.Add("@c_note", miris.c_note);
-            htUpdateCase.Add("@c_root_cause_analysic_info", miris.c_root_cause_analysic_info);
-            htUpdateCase.Add("@c_corrective_action_info", miris.c_corrective_action_info);
+            htUpdateCase.Add("@c_root_cause_analysic_info", "");
+            htUpdateCase.Add("@c_corrective_action_info","");
             htUpdateCase.Add("@c_osha_300_case_outcome", DBNull.Value);
             htUpdateCase.Add("@c_osha_300_days_away_from_work", DBNull.Value);
             htUpdateCase.Add("@c_osha_300_days_of_restriction", DBNull.Value);

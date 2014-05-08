@@ -24,10 +24,10 @@
     Primary Effect
     <br />
     <br />
-    <table style="width: 80%;">
+    <table style="width: 80%;" id="tbQuestions">
         <tr>
             <td style="width: 40px;">
-               Question 1:
+               Question 1:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion1" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
@@ -44,7 +44,7 @@
         <tr><td colspan="2"><hr/></td></tr>
         <tr>
             <td style="width: 30px;">
-               Question 2:
+               Question 2:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion2" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
@@ -61,7 +61,7 @@
         <tr><td colspan="2"><hr/></td></tr>
         <tr>
             <td style="width: 30px;">
-               Question 3:
+               Question 3:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion3" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
@@ -78,7 +78,7 @@
         <tr><td colspan="2"><hr/></td></tr>
         <tr>
             <td style="width: 30px;">
-               Question 4:
+               Question 4:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion4" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
@@ -93,15 +93,15 @@
            </td>
         </tr>
         <tr><td colspan="2"><hr/></td></tr>
-        <tr>
+        <tr style="display: none;">
             <td style="width: 30px;">
-               Question 5:
+               Question 5:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion5" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr>
+        <tr style="display: none;">
             <td>
                Answer 5:
             </td>
@@ -109,16 +109,16 @@
                  <asp:TextBox ID="txtAnswer5" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr><td colspan="2"><hr/></td></tr>
-        <tr>
+         <tr style="display: none;"><td colspan="2"><hr/></td></tr>
+        <tr style="display: none;">
             <td style="width: 30px;">
-               Question 6:
+               Question 6:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion6" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr>
+         <tr style="display: none;">
             <td>
                Answer 6:
             </td>
@@ -126,16 +126,16 @@
                  <asp:TextBox ID="txtAnswer6" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr><td colspan="2"><hr/></td></tr>
-        <tr>
+         <tr style="display: none;"><td colspan="2"><hr/></td></tr>
+         <tr style="display: none;">
             <td style="width: 30px;">
-               Question 7:
+               Question 7:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion7" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr>
+        <tr style="display: none;">
             <td>
                Answer 7:
             </td>
@@ -143,16 +143,16 @@
                  <asp:TextBox ID="txtAnswer7" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr><td colspan="2"><hr/></td></tr>
-        <tr>
+         <tr style="display: none;"><td colspan="2"><hr/></td></tr>
+        <tr style="display: none;">
             <td style="width: 30px;">
-               Question 8:
+               Question 8:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion8" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr>
+         <tr style="display: none;">
             <td>
                Answer 8:
             </td>
@@ -160,16 +160,16 @@
                  <asp:TextBox ID="txtAnswer8" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr><td colspan="2"><hr/></td></tr>
-        <tr>
+         <tr style="display: none;"><td colspan="2"><hr/></td></tr>
+        <tr style="display: none;">
             <td style="width: 30px;">
-               Question 9:
+               Question 9:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion9" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr>
+         <tr style="display: none;">
             <td>
                Answer 9:
             </td>
@@ -177,16 +177,16 @@
                  <asp:TextBox ID="txtAnswer9" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr><td colspan="2"><hr/></td></tr>
-        <tr>
+         <tr style="display: none;"><td colspan="2"><hr/></td></tr>
+        <tr style="display: none;">
             <td style="width: 30px;">
-               Question 10:
+               Question 10:(WHY?)
             </td>
            <td style="width: 100%;">
                  <asp:TextBox ID="txtQuestion10" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        <tr>
+         <tr style="display: none;">
             <td>
                Answer 10:
             </td>
@@ -194,7 +194,10 @@
                  <asp:TextBox ID="txtAnswer10" runat="server" Rows="3"  Width="100%" TextMode="MultiLine"></asp:TextBox>  
            </td>
         </tr>
-        
+        <tr><td>
+                <input type="button" value="Add Question" onclick="addQuestion()"/>
+
+            </td></tr>
     </table>
     <br />
     <br />
@@ -407,3 +410,41 @@
         <asp:ListItem Value="0">No</asp:ListItem>
     </asp:RadioButtonList>
 </div>
+<script type="text/javascript">
+    var count = 4;
+
+    function addQuestion() {
+        if (count < 10) {
+
+            $("#tbQuestions tr").eq(count * 3).show();
+            $("#tbQuestions tr").eq(count * 3 + 1).show();
+            $("#tbQuestions tr").eq(count * 3 + 2).show();
+            count ++;
+        }
+
+    }
+
+    $(document).ready(function () {
+       
+        var i = 8;
+        $("#tbQuestions tr").each(function () {
+            if (i > 3) {
+                if ($("#tbQuestions tr").eq(i * 3).find("textarea").val() == "") {
+
+                    $("#tbQuestions tr").eq(i * 3).hide();
+                    $("#tbQuestions tr").eq(i * 3 + 1).hide();
+                    $("#tbQuestions tr").eq(i * 3 + 2).hide();
+                } else {
+                    $("#tbQuestions tr").eq(i * 3).show();
+                    $("#tbQuestions tr").eq(i * 3 + 1).show();
+                    $("#tbQuestions tr").eq(i * 3 + 2).show();
+                }
+            }
+            i--;
+        });
+
+
+
+
+    });
+</script>

@@ -4,6 +4,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="TimePicker" Namespace="MKB.TimePicker" TagPrefix="MKB" %>
 <%@ Register Src="~/Compliance/MIRIS/Controls/uccb-01.ascx" TagPrefix="uc1" TagName="uccb1" %>
+<%@ Register src="Controls/urc-01.ascx" tagname="urc" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -1256,31 +1257,7 @@
             </asp:GridView>
         </div>
         <br />
-        <br />
-        <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_root_cause_analysis_infornation_text")%>
-        </div>
-        <br />
-        <div class="div_long_textbox font_1">
-            <%=LocalResources.GetLabel("app_root_cause_analysis_details_text")%>
-            <br />
-            <br />
-            <asp:TextBox ID="txtRootCauseAnalysisDetails" Rows="5" cols="125" runat="server"
-                CssClass="textarea_long_width" TextMode="MultiLine"></asp:TextBox>
-        </div>
-        <br />
-        <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_corrective_action_information_text")%>
-        </div>
-        <br />
-        <div class="div_long_textbox font_1">
-            <%=LocalResources.GetLabel("app_corrective_action_details_text")%>
-            <br />
-            <br />
-            <asp:TextBox ID="txtCorrectiveActionDetails" Rows="5" cols="125" runat="server" CssClass="textarea_long_width"
-                TextMode="MultiLine"></asp:TextBox>
-        </div>
-        <br />
+       
         <%-- <div class="div_header_long">
             <%=LocalResources.GetLabel("app_osha_300_information_text")%>
         </div>
@@ -1594,6 +1571,8 @@
                 </tr>
             </table>
         </div>
+            <uc1:urc ID="urc1" runat="server" />
+            <br />
         <div class="div_header_long">
             <br />
         </div>
