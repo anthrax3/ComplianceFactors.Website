@@ -3,9 +3,8 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="TimePicker" Namespace="MKB.TimePicker" TagPrefix="MKB" %>
-<%@ Register src="Controls/urc-01.ascx" tagname="urc" tagprefix="uc1" %>
+<%@ Register Src="Controls/urc-01.ascx" TagName="urc" TagPrefix="uc1" %>
 <%@ Register Src="~/Compliance/MIRIS/Controls/uccb-01.ascx" TagPrefix="uc1" TagName="uccb1" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -967,7 +966,6 @@
                             AutoPostBack="true" CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
-                   
                     <td>
                         *
                         <%=LocalResources.GetLabel("app_case_status_text")%>:
@@ -977,17 +975,19 @@
                             DataTextField="c_status_name" runat="server">
                         </asp:DropDownList>
                     </td>
-                     <td style="display: none;">
+                    <td style="display: none;">
                         *
                         <%=LocalResources.GetLabel("app_case_types_text")%>:
                     </td>
-                     <td style="display: none;">
+                    <td style="display: none;">
                         <asp:DropDownList ID="ddlCaseTypes" CssClass="ddl_user_advanced_search" DataValueField="c_type_id"
                             DataTextField="c_type_name" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
-                <tr><uc1:uccb1 runat="server" id="uccb1" /></tr>
+                <tr>
+                    <uc1:uccb1 runat="server" ID="uccb1" />
+                </tr>
             </table>
         </div>
         <input type="hidden" id="scrollLeft" />
@@ -1005,24 +1005,21 @@
                         <asp:RequiredFieldValidator ID="rfvEmployeeName" runat="server" ValidationGroup="cmv"
                             ControlToValidate="txtEmployeeName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        *
-                        First Name:
+                        * First Name:
                     </td>
                     <td class="align_left">
                         <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
                         <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
                             Text="Select Employee" />
                     </td>
-                     <td>
+                    <td>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="cmv"
                             ControlToValidate="txtLastName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
-                        *
-                        Last Name:
+                        * Last Name:
                     </td>
                     <td>
                         <asp:TextBox ID="txtLastName" runat="server" CssClass="textbox_width"></asp:TextBox>
-                     
                     </td>
                     <td>
                         *
@@ -1080,10 +1077,9 @@
                         <asp:DropDownList ID="ddlYear" onchange="checkdateofbirth();" runat="server">
                         </asp:DropDownList>
                     </td>
-                   
                 </tr>
                 <tr>
-                     <td>
+                    <td>
                         *
                         <%=LocalResources.GetLabel("app_employee_hire_date_text")%>:
                     </td>
@@ -1159,16 +1155,14 @@
                     <td class="align_left">
                         <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                    
                 </tr>
                 <tr>
                     <td>
-                      
                         *
                         <%=LocalResources.GetLabel("app_date_in_title")%>:
                     </td>
                     <td class="align_left">
-                       <asp:DropDownList ID="ddlDateInTitleMonth" onchange="checkdateintitle();" runat="server">
+                        <asp:DropDownList ID="ddlDateInTitleMonth" onchange="checkdateintitle();" runat="server">
                             <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
                             <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
@@ -1248,10 +1242,9 @@
                         </asp:CalendarExtender>
                         <asp:TextBox ID="txtIncidentDate" runat="server" CssClass="textbox_width"></asp:TextBox>
                     </td>
-                   
                 </tr>
                 <tr>
-                     <td>
+                    <td>
                         <asp:RequiredFieldValidator ID="rfvIncidentTime" runat="server" ControlToValidate="IncidentTime"
                             ErrorMessage="<%$ TextResourceExpression: app_incident_time_error_empty %>" ValidationGroup="cmv">&nbsp;</asp:RequiredFieldValidator>
                         *
@@ -1287,13 +1280,11 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
-                    
                 </tr>
                 <tr id="trAddEstablishment" runat="server" visible="false">
                     <td>
                     </td>
                     <td>
-                        
                     </td>
                     <td>
                     </td>
@@ -1306,7 +1297,7 @@
                     </td>
                 </tr>
                 <tr>
-                     <td>
+                    <td>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="cmv"
                             ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
                         </asp:RequiredFieldValidator>
@@ -1326,7 +1317,23 @@
                     </td>
                     <td>
                     </td>
-                   
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 0px;">
+                            <tr>
+                                <td class="align_right">
+                                    <%=LocalResources.GetLabel("app_company_owned_text")%>:
+                                </td>
+                                <td>
+                                    <asp:RadioButtonList ID="rblCompanyOwned" RepeatDirection="Horizontal" runat="server">
+                                        <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="6">
@@ -1542,7 +1549,7 @@
                         <td>
                             <asp:DropDownList ID="ddlCompanyVehicleStruckBy" CssClass="ddl_user_advanced_search"
                                 runat="server">
-                                  <asp:ListItem Text="" Value=""></asp:ListItem>
+                                <asp:ListItem Text="" Value=""></asp:ListItem>
                                 <asp:ListItem Text="Other Vehicle" Value="Other Vehicle"></asp:ListItem>
                                 <asp:ListItem Text="Pedestrian" Value="Pedestrian"></asp:ListItem>
                                 <asp:ListItem Text="Bicycle" Value="Bicycle"></asp:ListItem>
@@ -1600,7 +1607,7 @@
                                 ControlToValidate="txtExpireDate" ErrorMessage="<%$ TextResourceExpression: app_expiry_date_error_wrong%>"
                                 ValidationExpression="^(((0?[1-9]|1[012])/(0?[1-9]|1\d|2[0-8])|(0?[13456789]|1[012])/(29|30)|(0?[13578]|1[02])/31)/(19|[2-9]\d)\d{2}|0?2/29/((19|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$">
                             &nbsp;</asp:RegularExpressionValidator>
-                          Expiration Date 
+                            Expiration Date
                         </td>
                         <td>
                             <asp:CalendarExtender ID="ceExpireDate" Format="MM/dd/yyyy" TargetControlID="txtExpireDate"
@@ -1882,7 +1889,7 @@
                             <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 0px;">
                                 <tr>
                                     <td class="align_right">
-                                       Citation Issued:
+                                        Citation Issued:
                                     </td>
                                     <td class="align_left">
                                         <asp:RadioButtonList ID="rblCituationIssued" RepeatDirection="Horizontal" runat="server">
@@ -3348,7 +3355,7 @@
                     </tr>
                 </table>
             </div>
-               <uc1:urc ID="urc1" runat="server" />
+            <uc1:urc ID="urc1" runat="server" />
             <br />
             <div class="div_header_long">
                 <br />
@@ -3358,7 +3365,6 @@
                 *
                 <%=LocalResources.GetLabel("app_required_fields_text")%>
             </div>
-       
             <br />
         </div>
     </div>

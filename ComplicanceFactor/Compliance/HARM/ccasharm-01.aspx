@@ -91,6 +91,49 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" >
     </asp:ToolkitScriptManager>
     <div class="content_area_long">
+      <div class="div_header_long">
+            <%=LocalResources.GetLabel("app_create_new_analysis_text")%>
+        </div>
+        <br />
+        <div class="div_controls font_1">
+            <table>
+                <tr>
+                    <td>
+                        *<%=LocalResources.GetLabel("app_category_text")%>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlCategeory" DataValueField="h_category_id" DataTextField="h_category_name"
+                            CssClass="ddl_user_advanced_search" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvtitle" runat="server" ValidationGroup="ccasharm"
+                            ControlToValidate="txtTitle" ErrorMessage="<%$ TextResourceExpression: app_case_title_error_empty%>">&nbsp;
+                        </asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="retitle" runat="server" ErrorMessage="<%$ TextResourceExpression: app_size_limit_error_wrong%>"
+                            ControlToValidate="txtTitle" ValidationGroup="ccasharm" ValidationExpression=".{0,20}">&nbsp;</asp:RegularExpressionValidator>
+                        *
+                        <%=LocalResources.GetLabel("app_analysis_title_text")%>:
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtTitle" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="btnsave_new_user_td">
+                        <asp:Button ID="btnCreate" CssClass="cursor_hand" ValidationGroup="ccasharm" runat="server"
+                            Text="<%$ LabelResourceExpression: app_create_new_button_text %>" OnClick="btnCreate_Click" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_harm_results_text")%>
         </div>
@@ -216,47 +259,7 @@
         </div>
         <br />
         <br />
-        <div class="div_header_long">
-            <%=LocalResources.GetLabel("app_create_new_analysis_text")%>
-        </div>
-        <br />
-        <div class="div_controls font_1">
-            <table>
-                <tr>
-                    <td>
-                        *<%=LocalResources.GetLabel("app_category_text")%>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlCategeory" DataValueField="h_category_id" DataTextField="h_category_name"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvtitle" runat="server" ValidationGroup="ccasharm"
-                            ControlToValidate="txtTitle" ErrorMessage="<%$ TextResourceExpression: app_case_title_error_empty%>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="retitle" runat="server" ErrorMessage="<%$ TextResourceExpression: app_size_limit_error_wrong%>"
-                            ControlToValidate="txtTitle" ValidationGroup="ccasharm" ValidationExpression=".{0,20}">&nbsp;</asp:RegularExpressionValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_analysis_title_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtTitle" CssClass="textbox_manage_user" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6">
-                        <br />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="btnsave_new_user_td">
-                        <asp:Button ID="btnCreate" CssClass="cursor_hand" ValidationGroup="ccasharm" runat="server"
-                            Text="<%$ LabelResourceExpression: app_create_new_button_text %>" OnClick="btnCreate_Click" />
-                    </td>
-                </tr>
-            </table>
-        </div>
+      
         <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_harm_advanced_search_text")%>

@@ -214,7 +214,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         DataTable dtVehicleCount = new DataTable();
                         dtVehicleCount = ComplianceBLL.GetVehicleValues(edit);
 
-                        ltlVehicleCount.Text =Convert.ToString(dtVehicleCount.Rows.Count); 
+                        ltlVehicleCount.Text = Convert.ToString(dtVehicleCount.Rows.Count);
 
                         DataTable dtVehicle = new DataTable();
                         dtVehicle = ComplianceBLL.GetVehicleValuesForReset(edit);
@@ -323,9 +323,9 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     {
                         ControlID += 1;
                     }
-                    vehicleUserControl.ID = "ucVehicleUserControl" + ControlID;                   
-                    vehicleUserControl.RemoveVehicleUserControl += new EventHandler(HandleRemoveUserControl);                    
-                    VehiclePanel.Controls.Add(vehicleUserControl);                   
+                    vehicleUserControl.ID = "ucVehicleUserControl" + ControlID;
+                    vehicleUserControl.RemoveVehicleUserControl += new EventHandler(HandleRemoveUserControl);
+                    VehiclePanel.Controls.Add(vehicleUserControl);
                     ControlID += 1;
                 }
                 success_msg.Style.Add("display", "none");
@@ -388,7 +388,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         vehicleUserControl.Year = compliance[0].vehicle_year.ToString();
                         vehicleUserControl.State = compliance[0].vehicle_state.ToString();
                         vehicleUserControl.LicenseNumber = compliance[0].vehicle_licence.ToString();
-                        
+
                         while (InDeletedVechicleControl("ucVehicleUserControl" + ControlID) == true)
                         {
                             ControlID += 1;
@@ -403,9 +403,9 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         //Finally, add the user control to the panel
                         VehiclePanel.Controls.Add(vehicleUserControl);
                         //Increment the control id for the next round through the loop
-                        ControlID += 1;                       
+                        ControlID += 1;
                     }
-                    
+
                 }
             }
         }
@@ -432,26 +432,26 @@ namespace ComplicanceFactor.Compliance.MIRIS
             VehiclePanel.Controls.Remove(DynamicUserControl);
 
             string lblValue = DynamicUserControl.lblVechicle;
-            string countvalue = lblValue.Substring(lblValue.Length-2,2);
+            string countvalue = lblValue.Substring(lblValue.Length - 2, 2);
 
             //lblValue = lblValue.Replace("Vehicle", "");
             lblValue = lblValue.Replace(countvalue, "");
             int count = Convert.ToInt16(countvalue) - 3;
-             
+
             if (count == 0)
             {
                 count = 1;
             }
-            for (int i = count; i < VehiclePanel.Controls.Count; i++)  
+            for (int i = count; i < VehiclePanel.Controls.Count; i++)
             {
                 ucmv_01 ucvehicle = (ucmv_01)VehiclePanel.Controls[i];
                 if (i == 8)
                 {
-                    ucvehicle.lblVechicle = lblValue +"10";
+                    ucvehicle.lblVechicle = lblValue + "10";
                 }
                 else
                 {
-                    ucvehicle.lblVechicle = lblValue +"0" + Convert.ToInt16(i + 2);
+                    ucvehicle.lblVechicle = lblValue + "0" + Convert.ToInt16(i + 2);
                 }
             }
             UpdateCase(ddlCaseStatus.SelectedValue);
@@ -503,7 +503,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
             try
             {
                 miris = ComplianceBLL.GetCaseMV(edit);
-                
+
                 ddlTimezone.SelectedValue = miris.c_timezoneId;
                 lblCaseDate.Text = Convert.ToDateTime(miris.c_case_date).ToString("MM/dd/yyyy hh:mm tt");
                 lblCaseNumber.Text = miris.c_case_number;
@@ -513,12 +513,12 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
                 uccb1.show(miris.c_case_type_fk);
-              
-                    txtEmployeeName.Text = miris.c_employee_name;
+
+                txtEmployeeName.Text = miris.c_employee_name;
                 txtLastName.Text = miris.c_employee_last_name;
-                    txtLastFourDigitOfSSN.Text = miris.c_ssn;
-               
-                
+                txtLastFourDigitOfSSN.Text = miris.c_ssn;
+
+
 
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
@@ -576,8 +576,18 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlEstablishment.SelectedValue = miris.c_establishment;
 
                 txtNote.Text = miris.c_note;
-               // txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
-               // txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
+
+                if (miris.c_company_owned == true)
+                {
+
+                    rblCompanyOwned.SelectedValue = "Yes";
+                }
+                else
+                {
+                    rblCompanyOwned.SelectedValue = "No";
+                }
+                // txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
+                // txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
                 //txtDaysAwayFromWork.Text = Convert.ToInt32(miris.c_osha_300_days_away_from_work).ToString();
                 //if (!string.IsNullOrEmpty(miris.c_osha_300_date_of_death.ToString()))
@@ -659,7 +669,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //{
                 //    ltlVehicleCount.Text = "3";
                 //}
-                
+
                 //if (!string.IsNullOrEmpty(miris.c_case_desc_vehicle_06_fk) && !string.IsNullOrEmpty(miris.c_case_desc_vehicle_06_id) && !string.IsNullOrEmpty(miris.c_case_desc_vehicle_06_type_fk))
                 //{
                 //    ltlVehicleCount.Text = "4";
@@ -736,7 +746,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtNumberofVehicleInvolved.Text = miris.c_case_detail_number_of_vehicle_involved;
                 txtNumberofVehicletowed.Text = miris.c_case_detail_number_of_vehicle_towed;
                 txtNoofPeopleInjured.Text = miris.c_case_detail_number_of_people_injured;
-                
+
                 if (miris.c_case_detail_cituation_issued == true)
                 {
                     rblCituationIssued.SelectedValue = "Yes";
@@ -856,8 +866,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtHeavyDamage.InnerText = miris.c_case_detail_damage_heavy;
                 txtModerateDamage.InnerText = miris.c_case_detail_damage_moderate;
                 txtLightDamage.InnerText = miris.c_case_detail_damage_light;
-                
-                if (miris.c_case_desc_was_fatality == true)    
+
+                if (miris.c_case_desc_was_fatality == true)
                 {
                     rblFatality.SelectedValue = "Yes";
                     lblNumberofFatilities.Attributes.Add("style", "display:block");
@@ -2057,12 +2067,12 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 if (result == 0)
                 {
                     DataTable dtVehicleCount = new DataTable();
-                    dtVehicleCount = ComplianceBLL.GetVehicleValues(edit);                    
+                    dtVehicleCount = ComplianceBLL.GetVehicleValues(edit);
                     ltlVehicleCount.Text = Convert.ToString(dtVehicleCount.Rows.Count);
                     vCount = 0;
-                    VehiclePanel.Controls.Clear();                    
+                    VehiclePanel.Controls.Clear();
 
-                    AddAndRemoveVehicle();                     
+                    AddAndRemoveVehicle();
                 }
                 //SessionWrapper.session_vehicle_values
 
@@ -2177,7 +2187,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 int month1 = Convert.ToInt16(ddlDateInTitleMonth.SelectedValue);
                 int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
                 updateCase.c_date_in_title = new DateTime(year1, month1, day1);
-               
+
                 int hireday = Convert.ToInt32(doh_hire_day.Items[doh_hire_day.SelectedIndex].Value);
                 int hiremonth = Convert.ToInt16(ddlHireMonth.SelectedValue);
                 int hireyear = Convert.ToInt32(ddlHireYear.SelectedValue);
@@ -2250,6 +2260,15 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_custom_12 = txtCustom12.Text;
                 updateCase.c_custom_13 = txtCustom13.Text;
                 updateCase.c_timezoneId = ddlTimezone.SelectedValue;
+
+                if (rblCompanyOwned.SelectedValue == "Yes")
+                {
+                    updateCase.c_company_owned = true;
+                }
+                else
+                {
+                    updateCase.c_company_owned = false;
+                }            
 
 
                 //newly added
@@ -3048,7 +3067,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 sbCompleteCase.Append("Hello " + approverInfo.Username + ",");
                 sbCompleteCase.Append("<br>");
                 sbCompleteCase.Append("This email is to change the case as completed case.");
-                sbCompleteCase.Append("<br>");                
+                sbCompleteCase.Append("<br>");
                 sbCompleteCase.Append("I sent the request to you for change this " + lblCaseNumber.Text + " to Complete Case.");
                 sbCompleteCase.Append("<br><br>");
                 sbCompleteCase.Append("by");
@@ -3076,7 +3095,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
             }
         }
 
-        
+
 
     }
 }

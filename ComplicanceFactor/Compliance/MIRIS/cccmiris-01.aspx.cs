@@ -38,13 +38,14 @@ namespace ComplicanceFactor.Compliance
                     if (caseCategory == "MV")
                     {
                         ddlCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
-                        ddlCaseTypes.DataBind();
+                        ddlCaseTypes.DataBind();                        
+
                     }
                     else
                     {
                         ddlCaseTypes.DataSource = ComplianceBLL.GetMirisCaseType(SessionWrapper.CultureName, "cccmiris-01");
                         ddlCaseTypes.DataBind();
-                        ddlCaseTypes.SelectedValue = "app_ddl_recordable_text";
+                        ddlCaseTypes.SelectedValue = "app_ddl_recordable_text";                        
                     }
 
                     //Compliance Approver
@@ -57,11 +58,13 @@ namespace ComplicanceFactor.Compliance
                     //search category
                     ddlSearchCaseCategory.DataSource = ComplianceBLL.GetMirisAllCaseCategory(SessionWrapper.CultureName, "cccmiris-01");
                     ddlSearchCaseCategory.DataBind();
+                    ddlSearchCaseCategory.SelectedValue = "app_ddl_motor_vehicle_incident_text";
                     string searchCaseCategory = GetBracketText(ddlSearchCaseCategory.SelectedItem.Text);
                     if (searchCaseCategory == "MV")
                     {
                         ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
                         ddlSearchCaseTypes.DataBind();
+                        ddlSearchCaseTypes.Items.Insert(0, new ListItem("All", "app_ddl_all_text"));
                     }
                     else
                     {
@@ -656,7 +659,7 @@ namespace ComplicanceFactor.Compliance
                 else
                 {
                     miris.c_case_type_fk = ddlSearchCaseTypes.SelectedValue;
-                }
+                }               
                 if (ddlSearchCaseStatus.SelectedValue == "app_ddl_all_text")
                 {
                     miris.c_case_status = "0";

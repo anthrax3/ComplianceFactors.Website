@@ -83,7 +83,7 @@ namespace ComplicanceFactor.Compliance
                 try
                 {
                     //case category
-                    ddlCaseCategory.DataSource = ComplianceBLL.GetMirisCaseCategory(SessionWrapper.CultureName, "ccamiris-01");
+                    ddlCaseCategory.DataSource = ComplianceBLL.GetMirisCaseCategory(SessionWrapper.CultureName, "cccmiris-01");
                     ddlCaseCategory.DataBind();
 
                     //case type

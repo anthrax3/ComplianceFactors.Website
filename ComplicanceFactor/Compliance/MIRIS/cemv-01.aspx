@@ -4,7 +4,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="TimePicker" Namespace="MKB.TimePicker" TagPrefix="MKB" %>
-<%@ Register src="Controls/urc-01.ascx" tagname="urc" tagprefix="uc1" %>
+<%@ Register Src="Controls/urc-01.ascx" TagName="urc" TagPrefix="uc1" %>
 <%@ Register Src="~/Compliance/MIRIS/Controls/uccb-01.ascx" TagPrefix="uc1" TagName="uccb1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -911,7 +911,6 @@
                         AutoPostBack="true" CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged1">
                     </asp:DropDownList>
                 </td>
-               
                 <td>
                     *
                     <%=LocalResources.GetLabel("app_case_status_text")%>:
@@ -921,17 +920,19 @@
                         DataTextField="c_status_name" runat="server">
                     </asp:DropDownList>
                 </td>
-                 <td style="display:none;">
+                <td style="display: none;">
                     *
                     <%=LocalResources.GetLabel("app_case_types_text")%>:
                 </td>
-                  <td style="display:none;">
+                <td style="display: none;">
                     <asp:DropDownList ID="ddlCaseTypes" CssClass="ddl_user_advanced_search" DataValueField="c_type_id"
                         DataTextField="c_type_name" runat="server">
                     </asp:DropDownList>
                 </td>
             </tr>
-              <tr><uc1:uccb1 runat="server" id="uccb1" /></tr>
+            <tr>
+                <uc1:uccb1 runat="server" ID="uccb1" />
+            </tr>
             <tr>
                 <td colspan="6">
                     &nbsp;
@@ -946,333 +947,323 @@
     <div class="div_controls font_1">
         <table>
             <tr>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvEmployeeName" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtEmployeeName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        First Name:
-                    </td>
-                    <td class="align_left">
-                        <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
-                        <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
-                            Text="Select Employee" />
-                    </td>
-                     <td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtLastName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        Last Name:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtLastName" runat="server" CssClass="textbox_width"></asp:TextBox>
-                     
-                    </td>
-                    <td>
-                        *
-                        <%=LocalResources.GetLabel("app_date_of_birth_text")%>:
-                    </td>
-                    <td class="width_200 align_left">
-                        <asp:DropDownList ID="ddlMonth" onchange="checkdateofbirth();" runat="server">
-                            <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
-                            <asp:ListItem Text="May" Value="5"></asp:ListItem>
-                            <asp:ListItem Text="June" Value="6"></asp:ListItem>
-                            <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
-                            <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
-                            <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
-                            <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
-                            <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
-                            <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
-                        </asp:DropDownList>
-                        <select name="dob_day" id="dob_day" runat="server" class="input_pulldown">
-                            <option value="-1" selected="selected">Day:</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
-                        <asp:DropDownList ID="ddlYear" onchange="checkdateofbirth();" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                   
-                </tr>
-                <tr>
-                     <td>
-                        *
-                        <%=LocalResources.GetLabel("app_employee_hire_date_text")%>:
-                    </td>
-                    <td class="width_200 align_left">
-                        <asp:DropDownList ID="ddlHireMonth" onchange="checkhiredate();" runat="server">
-                            <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
-                            <asp:ListItem Text="May" Value="5"></asp:ListItem>
-                            <asp:ListItem Text="June" Value="6"></asp:ListItem>
-                            <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
-                            <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
-                            <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
-                            <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
-                            <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
-                            <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
-                        </asp:DropDownList>
-                        <select name="dob_day" id="doh_hire_day" runat="server" class="input_pulldown">
-                            <option value="-1" selected="selected">Day:</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
-                        <asp:DropDownList ID="ddlHireYear" onchange="checkhiredate();" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvEmployeeId" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtEmployeeId" ErrorMessage="<%$ TextResourceExpression: app_emp_id_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_employee_id_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtEmployeeId" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvLastDigitofSSN" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtLastFourDigitOfSSN" ErrorMessage="<%$ TextResourceExpression: app_last_four_digit_ssn_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_last_digit_of_ssn#_text")%>:
-                    </td>
-                    <td class="align_left">
-                        <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td>
-                      
-                        *
-                        <%=LocalResources.GetLabel("app_date_in_title")%>:
-                    </td>
-                    <td class="align_left">
-                       <asp:DropDownList ID="ddlDateInTitleMonth" onchange="checkdateintitle();" runat="server">
-                            <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
-                            <asp:ListItem Text="May" Value="5"></asp:ListItem>
-                            <asp:ListItem Text="June" Value="6"></asp:ListItem>
-                            <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
-                            <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
-                            <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
-                            <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
-                            <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
-                            <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
-                        </asp:DropDownList>
-                        <select name="dob_day" id="doh_date_in_time_day" runat="server" class="input_pulldown">
-                            <option value="-1" selected="selected">Day:</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
-                        <asp:DropDownList ID="ddlDateInTitleYear" onchange="checkdateintitle();" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_incident_location_text")%>:
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtIncidentDate" ErrorMessage="<%$ TextResourceExpression: app_incident_date_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="revIncidentDate" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtIncidentDate" ErrorMessage="<%$ TextResourceExpression: app_incident_date_format_error_empty %>"
-                            ValidationExpression="^(((0?[1-9]|1[012])/(0?[1-9]|1\d|2[0-8])|(0?[13456789]|1[012])/(29|30)|(0?[13578]|1[02])/31)/(19|[2-9]\d)\d{2}|0?2/29/((19|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$">
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvEmployeeName" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtEmployeeName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    * First Name:
+                </td>
+                <td class="align_left">
+                    <asp:TextBox ID="txtEmployeeName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                    <asp:Button ID="btnAddEmployee" runat="server" ValidationGroup="samcp_employee" CssClass="addEmployee cursor_hand"
+                        Text="Select Employee" />
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtLastName" ErrorMessage="<%$ TextResourceExpression: app_emp_name_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    * Last Name:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtLastName" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+                <td>
+                    *
+                    <%=LocalResources.GetLabel("app_date_of_birth_text")%>:
+                </td>
+                <td class="width_200 align_left">
+                    <asp:DropDownList ID="ddlMonth" onchange="checkdateofbirth();" runat="server">
+                        <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                        <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
+                        <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
+                        <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
+                        <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
+                        <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
+                        <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
+                    </asp:DropDownList>
+                    <select name="dob_day" id="dob_day" runat="server" class="input_pulldown">
+                        <option value="-1" selected="selected">Day:</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <asp:DropDownList ID="ddlYear" onchange="checkdateofbirth();" runat="server">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    *
+                    <%=LocalResources.GetLabel("app_employee_hire_date_text")%>:
+                </td>
+                <td class="width_200 align_left">
+                    <asp:DropDownList ID="ddlHireMonth" onchange="checkhiredate();" runat="server">
+                        <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                        <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
+                        <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
+                        <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
+                        <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
+                        <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
+                        <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
+                    </asp:DropDownList>
+                    <select name="dob_day" id="doh_hire_day" runat="server" class="input_pulldown">
+                        <option value="-1" selected="selected">Day:</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <asp:DropDownList ID="ddlHireYear" onchange="checkhiredate();" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvEmployeeId" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtEmployeeId" ErrorMessage="<%$ TextResourceExpression: app_emp_id_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_employee_id_text")%>:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtEmployeeId" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvLastDigitofSSN" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtLastFourDigitOfSSN" ErrorMessage="<%$ TextResourceExpression: app_last_four_digit_ssn_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_last_digit_of_ssn#_text")%>:
+                </td>
+                <td class="align_left">
+                    <asp:TextBox ID="txtLastFourDigitOfSSN" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    *
+                    <%=LocalResources.GetLabel("app_date_in_title")%>:
+                </td>
+                <td class="align_left">
+                    <asp:DropDownList ID="ddlDateInTitleMonth" onchange="checkdateintitle();" runat="server">
+                        <asp:ListItem Text="Jan" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Feb" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Mar" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Apr" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                        <asp:ListItem Text="Jul" Value="7"></asp:ListItem>
+                        <asp:ListItem Text="Aug" Value="8"></asp:ListItem>
+                        <asp:ListItem Text="Sep" Value="9"></asp:ListItem>
+                        <asp:ListItem Text="Oct" Value="10"></asp:ListItem>
+                        <asp:ListItem Text="Nov" Value="11"></asp:ListItem>
+                        <asp:ListItem Text="Dec" Value="12"></asp:ListItem>
+                    </asp:DropDownList>
+                    <select name="dob_day" id="doh_date_in_time_day" runat="server" class="input_pulldown">
+                        <option value="-1" selected="selected">Day:</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <asp:DropDownList ID="ddlDateInTitleYear" onchange="checkdateintitle();" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvIncidentLocation" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtIncidentLocation" ErrorMessage="<%$ TextResourceExpression: app_incident_location_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_incident_location_text")%>:
+                </td>
+                <td>
+                    <asp:TextBox ID="txtIncidentLocation" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvUserIncidentDate" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtIncidentDate" ErrorMessage="<%$ TextResourceExpression: app_incident_date_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revIncidentDate" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtIncidentDate" ErrorMessage="<%$ TextResourceExpression: app_incident_date_format_error_empty %>"
+                        ValidationExpression="^(((0?[1-9]|1[012])/(0?[1-9]|1\d|2[0-8])|(0?[13456789]|1[012])/(29|30)|(0?[13578]|1[02])/31)/(19|[2-9]\d)\d{2}|0?2/29/((19|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$">
                             &nbsp;</asp:RegularExpressionValidator>
-                        <asp:CustomValidator ValidationGroup="cmv" ID="cvIncidentDate" runat="server" ErrorMessage="<%$ TextResourceExpression: app_fultue_date_error_wrong %>"
-                            ControlToValidate="txtIncidentDate" EnableClientScript="true" ClientValidationFunction="checkIncidentDate">&nbsp;</asp:CustomValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_incident_date_text")%>:
-                    </td>
-                    <td class="align_left">
-                        <asp:CalendarExtender ID="ceIncidentTime" Format="MM/dd/yyyy" TargetControlID="txtIncidentDate"
-                            runat="server">
-                        </asp:CalendarExtender>
-                        <asp:TextBox ID="txtIncidentDate" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                   
-                </tr>
-                <tr>
-                     <td>
-                        <asp:RequiredFieldValidator ID="rfvIncidentTime" runat="server" ControlToValidate="IncidentTime"
-                            ErrorMessage="<%$ TextResourceExpression: app_incident_time_error_empty %>" ValidationGroup="cmv">&nbsp;</asp:RequiredFieldValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_incident_time_text")%>:
-                    </td>
-                    <td class="timer">
-                        <MKB:TimeSelector ID="IncidentTime" MinuteIncrement="1" CssClass="timer" DisplaySeconds="false"
-                            runat="server" Date="">
-                        </MKB:TimeSelector>
-                    </td>
-                    <td>
-                        <asp:RequiredFieldValidator ID="rfvEmployeeReportLocation" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="ddlEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
-                            CssClass="ddl_user_advanced_search" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td>
-                        *
-                        <%=LocalResources.GetLabel("app_timezone_text")%>:
-                    </td>
-                    <td class="align_left">
-                        <asp:UpdatePanel ID="upnlTimeZone" runat="server">
-                            <ContentTemplate>
-                                <asp:DropDownList ID="ddlTimezone" AutoPostBack="true" DataValueField="u_time_zone_id_pk"
-                                    DataTextField="u_time_zone_location" runat="server" CssClass="ddl_user_advanced_search">
-                                </asp:DropDownList>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </td>
-                    
-                </tr>
-                <tr id="trAddEstablishment" runat="server" visible="false">
-                    <td>
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <input type="button" id="btnAddEstablishment" value='Add Establishment' />
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
-                     <td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="cmv"
-                            ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
-                        </asp:RequiredFieldValidator>
-                        *
-                        <%=LocalResources.GetLabel("app_supervisor_text")%>:
-                    </td>
-                    <td class="align_left">
-                        <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
-                    </td>
-                    <td>
-                        <%=LocalResources.GetLabel("app_note_text")%>:
-                    </td>
-                    <td class="align_left">
-                        <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                   
-                </tr>
+                    <asp:CustomValidator ValidationGroup="cmv" ID="cvIncidentDate" runat="server" ErrorMessage="<%$ TextResourceExpression: app_fultue_date_error_wrong %>"
+                        ControlToValidate="txtIncidentDate" EnableClientScript="true" ClientValidationFunction="checkIncidentDate">&nbsp;</asp:CustomValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_incident_date_text")%>:
+                </td>
+                <td class="align_left">
+                    <asp:CalendarExtender ID="ceIncidentTime" Format="MM/dd/yyyy" TargetControlID="txtIncidentDate"
+                        runat="server">
+                    </asp:CalendarExtender>
+                    <asp:TextBox ID="txtIncidentDate" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvIncidentTime" runat="server" ControlToValidate="IncidentTime"
+                        ErrorMessage="<%$ TextResourceExpression: app_incident_time_error_empty %>" ValidationGroup="cmv">&nbsp;</asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_incident_time_text")%>:
+                </td>
+                <td class="timer">
+                    <MKB:TimeSelector ID="IncidentTime" MinuteIncrement="1" CssClass="timer" DisplaySeconds="false"
+                        runat="server" Date="">
+                    </MKB:TimeSelector>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="rfvEmployeeReportLocation" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="ddlEmployeeReportLocation" ErrorMessage="<%$ TextResourceExpression: app_emp_report_location_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlEmployeeReportLocation" DataValueField="c_type_id" DataTextField="c_type_name"
+                        CssClass="ddl_user_advanced_search" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    *
+                    <%=LocalResources.GetLabel("app_timezone_text")%>:
+                </td>
+                <td class="align_left">
+                    <asp:UpdatePanel ID="upnlTimeZone" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="ddlTimezone" AutoPostBack="true" DataValueField="u_time_zone_id_pk"
+                                DataTextField="u_time_zone_location" runat="server" CssClass="ddl_user_advanced_search">
+                            </asp:DropDownList>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr id="trAddEstablishment" runat="server" visible="false">
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <input type="button" id="btnAddEstablishment" value='Add Establishment' />
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="cmv"
+                        ControlToValidate="txtSupervisor" ErrorMessage="<%$ TextResourceExpression: app_supervisor_error_empty %>">&nbsp;
+                    </asp:RequiredFieldValidator>
+                    *
+                    <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                </td>
+                <td class="align_left">
+                    <asp:TextBox ID="txtSupervisor" runat="server" CssClass="textbox_width"></asp:TextBox>
+                </td>
+                <td>
+                    <%=LocalResources.GetLabel("app_note_text")%>:
+                </td>
+                <td class="align_left">
+                    <asp:TextBox ID="txtNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
             <tr style="display: none;">
                 <td>
                     Establishment
@@ -1293,6 +1284,23 @@
             <tr>
                 <td colspan="6">
                     &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 0px;">
+                        <tr>
+                            <td class="align_right">
+                                <%=LocalResources.GetLabel("app_company_owned_text")%>:
+                            </td>
+                            <td>
+                                <asp:RadioButtonList ID="rblCompanyOwned" RepeatDirection="Horizontal" runat="server">
+                                    <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
             <tr>
@@ -1489,7 +1497,7 @@
                     <td>
                         <asp:DropDownList ID="ddlCompanyVehicleStruck" CssClass="ddl_user_advanced_search"
                             runat="server">
-                              <asp:ListItem Text="" Value=""></asp:ListItem>
+                            <asp:ListItem Text="" Value=""></asp:ListItem>
                             <asp:ListItem Text="Other Vehicle" Value="Other Vehicle"></asp:ListItem>
                             <asp:ListItem Text="Pedestrian" Value="Pedestrian"></asp:ListItem>
                             <asp:ListItem Text="Bicycle" Value="Bicycle"></asp:ListItem>
@@ -1503,7 +1511,7 @@
                     <td>
                         <asp:DropDownList ID="ddlCompanyVehicleStruckBy" CssClass="ddl_user_advanced_search"
                             runat="server">
-                              <asp:ListItem Text="" Value=""></asp:ListItem>
+                            <asp:ListItem Text="" Value=""></asp:ListItem>
                             <asp:ListItem Text="Other Vehicle" Value="Other Vehicle"></asp:ListItem>
                             <asp:ListItem Text="Pedestrian" Value="Pedestrian"></asp:ListItem>
                             <asp:ListItem Text="Bicycle" Value="Bicycle"></asp:ListItem>
@@ -1563,7 +1571,7 @@
                         ControlToValidate="txtExpireDate" ErrorMessage="<%$ TextResourceExpression: app_expiry_date_error_wrong%>"
                         ValidationExpression="^(((0?[1-9]|1[012])/(0?[1-9]|1\d|2[0-8])|(0?[13456789]|1[012])/(29|30)|(0?[13578]|1[02])/31)/(19|[2-9]\d)\d{2}|0?2/29/((19|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$">
                             &nbsp;</asp:RegularExpressionValidator>
-                  Expiration Date:
+                    Expiration Date:
                 </td>
                 <td>
                     <asp:CalendarExtender ID="ceExpireDate" Format="MM/dd/yyyy" TargetControlID="txtExpireDate"
@@ -3208,8 +3216,6 @@
         :
     </div>
     <br />
-      
-   
     <div class="div_header_long">
         <%=LocalResources.GetLabel("app_corrective_action_details_text")%>:
     </div>
@@ -3314,8 +3320,8 @@
             </tr>
         </table>
     </div>
-       <uc1:urc ID="urc1" runat="server" />
-       <br />
+    <uc1:urc ID="urc1" runat="server" />
+    <br />
     <div class="div_header_long">
         <br />
     </div>

@@ -195,7 +195,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htUpdateCase.Add("@c_note", miris.c_note);
             htUpdateCase.Add("@c_root_cause_analysic_info", "");
-            htUpdateCase.Add("@c_corrective_action_info","");
+            htUpdateCase.Add("@c_corrective_action_info", "");
             htUpdateCase.Add("@c_osha_300_case_outcome", DBNull.Value);
             htUpdateCase.Add("@c_osha_300_days_away_from_work", DBNull.Value);
             htUpdateCase.Add("@c_osha_300_days_of_restriction", DBNull.Value);
@@ -471,7 +471,7 @@ namespace ComplicanceFactor.BusinessComponent
             if (string.IsNullOrEmpty(c_creation_start_date))
             {
                 htSearchCase.Add("@c_creation_start_date", DBNull.Value);
-                
+
             }
             else
             {
@@ -543,7 +543,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 condition = " 1=1 ";
             }
-            htSearchCase.Add("@condition", condition.Replace("#","'"));
+            htSearchCase.Add("@condition", condition.Replace("#", "'"));
             try
             {
                 return DataProxy.FetchDataTable("c_miris_osha_300a_sp_search_case", htSearchCase);
@@ -2622,7 +2622,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 throw;
             }
-        }         
+        }
 
         public static ComplianceDAO GetCaseOI(string caseId)
         {
@@ -3845,12 +3845,12 @@ namespace ComplicanceFactor.BusinessComponent
         }
 
         //MV
-        private static int UpdateCaseType(string c_case_id_pk,string c_case_type)
+        private static int UpdateCaseType(string c_case_id_pk, string c_case_type)
         {
             var dtBuildSql = new DataTable();
             dtBuildSql.Columns.Add("c_case_id_pk");
             dtBuildSql.Columns.Add("c_case_type");
-            string[] caseTypes = c_case_type.Split(new char[]{','});
+            string[] caseTypes = c_case_type.Split(new char[] { ',' });
             foreach (var caseType in caseTypes)
             {
                 DataRow row = dtBuildSql.NewRow();
@@ -3879,16 +3879,16 @@ namespace ComplicanceFactor.BusinessComponent
 
             Hashtable htSearchCase = new Hashtable();
             htSearchCase.Add("@c_case_id_pk", c_case_id_pk);
-         
+
             try
             {
                 string returnValue = "";
-                DataTable dtCaseType= DataProxy.FetchDataTable("s_sp_get_miris_case_type", htSearchCase);
+                DataTable dtCaseType = DataProxy.FetchDataTable("s_sp_get_miris_case_type", htSearchCase);
                 foreach (DataRow caseType in dtCaseType.Rows)
                 {
                     returnValue += caseType["c_case_type"].ToString() + ",";
                 }
-                return returnValue.Substring(0, returnValue.Length-1);
+                return returnValue.Substring(0, returnValue.Length - 1);
             }
             catch (Exception)
             {
@@ -3898,7 +3898,7 @@ namespace ComplicanceFactor.BusinessComponent
 
         public static int InsertCaseMV(ComplianceDAO miris)
         {
-            
+
             Hashtable htInsertCase = new Hashtable();
             htInsertCase.Add("@c_case_id_pk", miris.c_case_id_pk);
             htInsertCase.Add("@u_user_id_fk", miris.u_user_id_fk);
@@ -3911,7 +3911,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_employee_last_name", miris.c_employee_last_name);
             htInsertCase.Add("@c_employee_dob", miris.c_employee_dob);
             htInsertCase.Add("@c_employee_hire_date", miris.c_employee_hire_date);
-            htInsertCase.Add("@c_employee_id", miris.c_employee_id);        
+            htInsertCase.Add("@c_employee_id", miris.c_employee_id);
             if (miris.c_date_in_title != null)
             {
                 htInsertCase.Add("@c_date_in_title", miris.c_date_in_title);
@@ -3928,7 +3928,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htInsertCase.Add("@c_note", miris.c_note);
             htInsertCase.Add("@c_root_cause_analysic_info", "");
-            htInsertCase.Add("@c_corrective_action_info","");
+            htInsertCase.Add("@c_corrective_action_info", "");
             htInsertCase.Add("@c_osha_300_case_outcome", DBNull.Value);
             htInsertCase.Add("@c_osha_300_days_away_from_work", DBNull.Value);
             htInsertCase.Add("@c_osha_300_days_of_restriction", DBNull.Value);
@@ -3989,6 +3989,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_case_date", miris.c_case_date);
             htInsertCase.Add("@c_timezone_id_fk", miris.c_timezoneId);
 
+            htInsertCase.Add("@c_company_owned", miris.c_company_owned);
 
             htInsertCase.Add("@c_case_desc_vehicle_01_fk", miris.c_case_desc_vehicle_01_fk);
             htInsertCase.Add("@c_case_desc_vehicle_02_fk", miris.c_case_desc_vehicle_02_fk);
@@ -4285,9 +4286,8 @@ namespace ComplicanceFactor.BusinessComponent
             }
             try
             {
-                UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
-                return DataProxy.FetchSPOutput("c_miris_sp_insert_case_mv", htInsertCase);
-
+                DataProxy.FetchSPOutput("c_miris_sp_insert_case_mv", htInsertCase);
+                return UpdateCaseType(miris.c_case_id_pk, miris.c_case_type_fk);
             }
 
             catch (Exception)
@@ -4307,7 +4307,7 @@ namespace ComplicanceFactor.BusinessComponent
                 htGetCase.Add("@c_case_id_pk", caseId);
                 miris = new ComplianceDAO();
                 DataTable dtGetCase = DataProxy.FetchDataTable("c_miris_get_case_mv", htGetCase);
-                
+
                 miris.c_case_number = dtGetCase.Rows[0]["c_case_number"].ToString();
                 miris.c_case_title = dtGetCase.Rows[0]["c_case_title"].ToString();
                 miris.c_case_category_fk = dtGetCase.Rows[0]["c_case_category_fk"].ToString();
@@ -4362,6 +4362,12 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_case_date = Convert.ToDateTime(dtGetCase.Rows[0]["c_case_date"], culture);
 
                 miris.c_case_type_text = dtGetCase.Rows[0]["c_case_type_text"].ToString();
+
+                if (!string.IsNullOrEmpty(Convert.ToString(dtGetCase.Rows[0]["c_company_owned"])))
+                {
+                    miris.c_company_owned = Convert.ToBoolean(dtGetCase.Rows[0]["c_company_owned"]);
+                }
+
                 miris.c_status_text = dtGetCase.Rows[0]["c_status_text"].ToString();
 
                 miris.c_timezoneId = dtGetCase.Rows[0]["c_timezone_id_fk"].ToString();
@@ -4892,6 +4898,8 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_custom_13", miris.c_custom_13);
             htUpdateCase.Add("@c_timezone_id_fk", miris.c_timezoneId);
 
+            htUpdateCase.Add("@c_company_owned", miris.c_company_owned);
+
 
             htUpdateCase.Add("@c_case_desc_vehicle_01_fk", miris.c_case_desc_vehicle_01_fk);
             htUpdateCase.Add("@c_case_desc_vehicle_02_fk", miris.c_case_desc_vehicle_02_fk);
@@ -5157,7 +5165,7 @@ namespace ComplicanceFactor.BusinessComponent
 
         //OI Newly Added Attachment
 
-        public static DataTable GetEmployeeStatement(ComplianceDAO miris )
+        public static DataTable GetEmployeeStatement(ComplianceDAO miris)
         {
             Hashtable htGetEmployeeStatement = new Hashtable();
             htGetEmployeeStatement.Add("@c_case_id_fk", miris.c_case_id_pk);
@@ -5502,7 +5510,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateUserInfo.Add("@u_profile_my_comp_todos_collapse_pref", user.u_profile_my_comp_todos_collapse_pref);
             htUpdateUserInfo.Add("@u_profile_my_comp_harm_collapse_pref", user.u_profile_my_comp_harm_collapse_pref);
             htUpdateUserInfo.Add("@u_profile_my_comp_giris_collapse_pref", user.u_profile_my_comp_giris_collapse_pref);
-            htUpdateUserInfo.Add("@u_profile_my_comp_reports_collapse_pref", user.u_profile_my_comp_reports_collapse_pref);      
+            htUpdateUserInfo.Add("@u_profile_my_comp_reports_collapse_pref", user.u_profile_my_comp_reports_collapse_pref);
 
             if (user.u_profile_my_comp_todos_display_pref == 0)
             {
@@ -5579,7 +5587,7 @@ namespace ComplicanceFactor.BusinessComponent
         public static DataTable SearchCompletionofCourses(string e_user_id_fk)
         {
             Hashtable htSearchCase = new Hashtable();
-           
+
             if (!string.IsNullOrEmpty(e_user_id_fk))
             {
                 htSearchCase.Add("@e_user_id_fk", e_user_id_fk);
@@ -5588,7 +5596,7 @@ namespace ComplicanceFactor.BusinessComponent
             {
                 htSearchCase.Add("@e_user_id_fk", DBNull.Value);
             }
-            
+
             try
             {
                 return DataProxy.FetchDataTable("e_sp_get_all_completion_courses", htSearchCase);

@@ -906,6 +906,23 @@
                    
                 </tr>
                 <tr>
+                    <td colspan="2">
+                        <table cellpadding="0" cellspacing="0" style="margin: 0 0 0 0px;">
+                            <tr>
+                                <td class="align_right">
+                                    <%=LocalResources.GetLabel("app_company_owned_text")%>:
+                                </td>
+                                <td>
+                                    <asp:RadioButtonList ID="rblCompanyOwned" RepeatDirection="Horizontal" runat="server">
+                                        <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                                        <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="6">
                         &nbsp;
                     </td>

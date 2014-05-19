@@ -79,7 +79,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 try
                 {
                     //case category
-                    ddlCaseCategory.DataSource = ComplianceBLL.GetMirisCaseCategory(SessionWrapper.CultureName, "ccamiris-01");
+                    ddlCaseCategory.DataSource = ComplianceBLL.GetMirisCaseCategory(SessionWrapper.CultureName, "cccmiris-01");
                     ddlCaseCategory.DataBind();
 
                     //case Type
@@ -1573,6 +1573,15 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_custom_12 = txtCustom12.Text;
                 insertCase.c_custom_13 = txtCustom13.Text;
                 insertCase.c_timezoneId = ddlTimezone.SelectedValue;
+                if (rblCompanyOwned.SelectedValue == "Yes")
+                {
+                    insertCase.c_company_owned = true;
+                }
+                else
+                {
+                    insertCase.c_company_owned = false;
+                }                
+
                 insertCase.c_case_date = (DateTime)SessionWrapper.casedate;
                 insertCase.c_miris_witness = ConvertDataTableToXml(SessionWrapper.session_witness);
                 insertCase.c_miris_photo = ConvertDataTableToXml(SessionWrapper.session_Photo);
