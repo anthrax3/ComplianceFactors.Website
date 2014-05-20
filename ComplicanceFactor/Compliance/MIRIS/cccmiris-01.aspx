@@ -125,11 +125,11 @@
                     <td>
                         <asp:TextBox ID="txtCaseTitle" CssClass="textbox_width" runat="server"></asp:TextBox>
                     </td>
-                     <td style="display: none;">
+                     <td id="casetypeText" runat="server">
                         *
                         <%=LocalResources.GetLabel("app_case_types_text")%>
                     </td>
-                    <td style="display: none;">
+                    <td id="casetype" runat="server" >
                         <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
                             runat="server">
                         </asp:DropDownList>

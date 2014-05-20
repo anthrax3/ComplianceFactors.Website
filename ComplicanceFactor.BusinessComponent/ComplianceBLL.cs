@@ -37,6 +37,7 @@ namespace ComplicanceFactor.BusinessComponent
             htInsertCase.Add("@c_incident_time", miris.c_incident_time);
             htInsertCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htInsertCase.Add("@c_note", miris.c_note);
+            htInsertCase.Add("@c_company_owned", miris.c_company_owned);
             htInsertCase.Add("@c_root_cause_analysic_info", "");
             htInsertCase.Add("@c_corrective_action_info", "");
             htInsertCase.Add("@c_osha_300_case_outcome", DBNull.Value);
@@ -194,6 +195,7 @@ namespace ComplicanceFactor.BusinessComponent
             htUpdateCase.Add("@c_incident_time", miris.c_incident_time);
             htUpdateCase.Add("@c_employee_report_location", miris.c_employee_report_location);
             htUpdateCase.Add("@c_note", miris.c_note);
+            htUpdateCase.Add("@c_company_owned", miris.c_company_owned);
             htUpdateCase.Add("@c_root_cause_analysic_info", "");
             htUpdateCase.Add("@c_corrective_action_info", "");
             htUpdateCase.Add("@c_osha_300_case_outcome", DBNull.Value);
@@ -379,6 +381,11 @@ namespace ComplicanceFactor.BusinessComponent
                 miris.c_custom_11 = dtGetCase.Rows[0]["c_custom_11"].ToString();
                 miris.c_custom_12 = dtGetCase.Rows[0]["c_custom_12"].ToString();
                 miris.c_custom_13 = dtGetCase.Rows[0]["c_custom_13"].ToString();
+
+                if (!string.IsNullOrEmpty(Convert.ToString(dtGetCase.Rows[0]["c_company_owned"])))
+                {
+                    miris.c_company_owned = Convert.ToBoolean(dtGetCase.Rows[0]["c_company_owned"]);
+                }
 
                 miris.c_case_date = Convert.ToDateTime(dtGetCase.Rows[0]["c_case_date"], culture);
 

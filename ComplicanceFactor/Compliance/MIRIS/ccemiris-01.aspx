@@ -553,17 +553,17 @@
                             DataTextField="c_status_name" runat="server">
                         </asp:DropDownList>
                     </td>
-                      <td style="display: none;">
+                      <td>
                         *
                         <%=LocalResources.GetLabel("app_case_types_text")%>
                     </td>
-                    <td style="display: none;">
+                    <td>
                         <asp:DropDownList ID="ddlCaseTypes" CssClass="ddl_user_advanced_search" DataValueField="c_type_id"
                             DataTextField="c_type_name" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
-                  <tr><uc1:uccb1 runat="server" id="uccb1" /></tr>
+                 <%-- <tr><uc1:uccb1 runat="server" id="uccb1" /></tr>--%>
                 <tr>
                     <td colspan="6">
                         &nbsp;

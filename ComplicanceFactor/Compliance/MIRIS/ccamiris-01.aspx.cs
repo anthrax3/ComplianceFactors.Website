@@ -259,8 +259,8 @@ namespace ComplicanceFactor.Compliance
                     {
                         ddlTimezone.SelectedValue = SessionWrapper.u_timezone;
                         ddlCaseCategory.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["cid"]);
-                        //ddlCaseTypes.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["type"]);
-                        uccb1.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
+                        ddlCaseTypes.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["type"]);
+                        //uccb1.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
                         txtCaseTitle.Text = SecurityCenter.DecryptText(Request.QueryString["title"]);
 
                         ComplianceDAO miris = new ComplianceDAO();
@@ -374,8 +374,8 @@ namespace ComplicanceFactor.Compliance
                 //insertCase.c_case_number = lblCaseNumber.Text;
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-                //insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
-                insertCase.c_case_type_fk = uccb1.uc_values;
+                insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                //insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status =ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
                 insertCase.c_employee_last_name = txtLastName.Text;
@@ -406,6 +406,16 @@ namespace ComplicanceFactor.Compliance
                 int year1 = Convert.ToInt32(ddlDateInTitleYear.SelectedValue);
                 insertCase.c_date_in_title = new DateTime(year1, month1, day1);
                 insertCase.c_note = txtNote.Text;
+
+                if (rblCompanyOwned.SelectedValue == "Yes")
+                {
+                    insertCase.c_company_owned = true;
+                }
+                else
+                {
+                    insertCase.c_company_owned = false;
+                }      
+
                 //insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 //insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
                 // insertCase.c_osha_300_case_outcome = string.Empty;
@@ -577,8 +587,8 @@ namespace ComplicanceFactor.Compliance
                 //insertCase.c_case_number = lblCaseNumber.Text;
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
-               // insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
-                insertCase.c_case_type_fk = uccb1.uc_values;
+                insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
+                //insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status = CaseStatus;
                 //ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
@@ -763,6 +773,8 @@ namespace ComplicanceFactor.Compliance
                 dob_day.SelectedIndex = miris.c_employee_dob.Day;
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();
+
+                //uccb1.show(miris.c_case_type_fk);
 
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "dob", "checkdateofbirth();", true); 
 

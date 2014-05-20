@@ -33,6 +33,8 @@ namespace ComplicanceFactor.Compliance
                     ddlCaseCategory.DataSource = ComplianceBLL.GetMirisCaseCategory(SessionWrapper.CultureName, "cccmiris-01");
                     ddlCaseCategory.DataBind();
                     //case type
+                    casetypeText.Visible = false;
+                    casetype.Visible = false;
 
                     string caseCategory = GetBracketText(ddlCaseCategory.SelectedItem.Text);
                     if (caseCategory == "MV")
@@ -783,11 +785,11 @@ namespace ComplicanceFactor.Compliance
                 }
                 else if (caseCategory == "OI")
                 {
-                    Response.Redirect("~/Compliance/MIRIS/coi-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(uccb1.uc_values) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
+                    Response.Redirect("~/Compliance/MIRIS/coi-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
                 }
                 else
                 {
-                    Response.Redirect("~/Compliance/MIRIS/ccamiris-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(uccb1.uc_values) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
+                    Response.Redirect("~/Compliance/MIRIS/ccamiris-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
                 }
                 //Response.Redirect("~/Compliance/MIRIS/ccamiris-01.aspx?cid=" + SecurityCenter.EncryptText(ddlCaseCategory.SelectedValue) + "&id=" + SecurityCenter.EncryptText(miris.c_case_number) + "&type=" + SecurityCenter.EncryptText(ddlCaseTypes.SelectedValue) + "&title=" + SecurityCenter.EncryptText(txtCaseTitle.Text), false);
             }
@@ -832,11 +834,16 @@ namespace ComplicanceFactor.Compliance
             string caseCategory = GetBracketText(ddlCaseCategory.SelectedItem.Text);
             if (caseCategory == "MV")
             {
+                casetypeText.Visible = false;
+                casetype.Visible = false;
                 ddlCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
                 ddlCaseTypes.DataBind();
             }
             else
             {
+                uccb1.Visible = false;
+                casetypeText.Visible = true;
+                casetype.Visible = true;
                 ddlCaseTypes.DataSource = ComplianceBLL.GetMirisCaseType(SessionWrapper.CultureName, "cccmiris-01");
                 ddlCaseTypes.DataBind();
                 ddlCaseTypes.SelectedValue = "app_ddl_recordable_text";
@@ -847,11 +854,13 @@ namespace ComplicanceFactor.Compliance
             string caseCategory = GetBracketText(ddlSearchCaseCategory.SelectedItem.Text);
             if (caseCategory == "MV")
             {
+               
                 ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
                 ddlSearchCaseTypes.DataBind();
             }
             else
             {
+               
                 ddlSearchCaseTypes.DataSource = ComplianceBLL.GetMirisCaseType(SessionWrapper.CultureName, "cccmiris-01");
                 ddlSearchCaseTypes.DataBind();
                 ddlSearchCaseTypes.SelectedValue = "app_ddl_recordable_text";

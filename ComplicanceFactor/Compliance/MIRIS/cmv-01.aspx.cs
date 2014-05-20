@@ -268,7 +268,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         miris = ComplianceBLL.GetCaseId(GetBracketText(ddlCaseCategory.SelectedItem.Text), string.Empty);
 
                         //ddlCaseTypes.SelectedValue = SecurityCenter.DecryptText(Request.QueryString["type"]);
-                        uccb1.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
+
+                        //uccb1.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
                         lblCaseNumber.Text = miris.c_case_number;
 
                         //witenss
@@ -332,6 +333,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     }
                 }
             }
+            AddCaseType();            
             AddAndRemoveVehicle();
             if (Session["Case_Employee"] != null)
             {
@@ -354,6 +356,23 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 Session["Case_Employee"] = null;
             }
         }
+        private void AddCaseType()
+        {
+            ComplianceDAO mirisCasteType = new ComplianceDAO();
+            uccb_01 CaseControl = (uccb_01)LoadControl("../MIRIS/Controls/uccb-01.ascx");
+            CaseControl.ID = "ucCaseControl";
+            CaseTypePanel.Controls.Add(CaseControl);
+            if (!string.IsNullOrEmpty(copyCaseId))
+            {
+                mirisCasteType = ComplianceBLL.GetCaseMV(copyCaseId);
+                CaseControl.show(mirisCasteType.c_case_type_fk);
+            }
+            else
+            {
+                CaseControl.show(SecurityCenter.DecryptText(Request.QueryString["type"]));
+            }
+        }
+
         /// <summary>
         /// Add or remove the vehicle user control
         /// </summary>
@@ -1523,7 +1542,9 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
                 //insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
-                insertCase.c_case_type_fk = uccb1.uc_values;
+                uccb_01 casetypepanel = (uccb_01)CaseTypePanel.Controls[1];
+                insertCase.c_case_type_fk = casetypepanel.uc_values;// uccb1.uc_values;
+                //insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status = ddlCaseStatus.SelectedValue;
                 insertCase.c_employee_name = txtEmployeeName.Text;
                 insertCase.c_employee_last_name = txtLastName.Text;
@@ -2261,6 +2282,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlMonth.SelectedValue = miris.c_employee_dob.Month.ToString();
                 ddlYear.SelectedValue = miris.c_employee_dob.Year.ToString();
 
+                //uccb1.show(miris.c_case_type_fk);
+
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "dob", "checkdateofbirth();", true);
 
                 doh_hire_day.SelectedIndex = miris.c_employee_hire_date.Day;
@@ -2292,6 +2315,17 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 ddlEmployeeReportLocation.Items.Insert(0, new ListItem("", ""));
                 ddlEmployeeReportLocation.SelectedValue = miris.c_employee_report_location;
                 txtNote.Text = miris.c_note;
+
+                if (miris.c_company_owned == true)
+                {
+
+                    rblCompanyOwned.SelectedValue = "Yes";
+                }
+                else
+                {
+                    rblCompanyOwned.SelectedValue = "No";
+                }
+
                 //txtRootCauseAnalysisDetails.Text = miris.c_root_cause_analysic_info;
                 //txtCorrectiveActionDetails.Text = miris.c_corrective_action_info;
                 //ddlCaseOutCome.SelectedValue = miris.c_osha_300_case_outcome_value;
@@ -2861,7 +2895,9 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_case_title = txtCaseTitle.Text;
                 insertCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
                 //insertCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
-                insertCase.c_case_type_fk = uccb1.uc_values;
+                uccb_01 casetypepanel = (uccb_01)CaseTypePanel.Controls[1];
+                insertCase.c_case_type_fk = casetypepanel.uc_values;// uccb1.uc_values;
+                //insertCase.c_case_type_fk = uccb1.uc_values;
                 insertCase.c_case_status = CaseStatus;
                 insertCase.c_employee_name = txtEmployeeName.Text;
                 insertCase.c_employee_last_name = txtLastName.Text;
@@ -2892,6 +2928,15 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 insertCase.c_incident_time = Convert.ToDateTime(IncidentTime.Date, culture);
                 insertCase.c_employee_report_location = ddlEmployeeReportLocation.SelectedValue;
                 insertCase.c_note = txtNote.Text;
+
+                if (rblCompanyOwned.SelectedValue == "Yes")
+                {
+                    insertCase.c_company_owned = true;
+                }
+                else
+                {
+                    insertCase.c_company_owned = false;
+                }    
                 //insertCase.c_root_cause_analysic_info = txtRootCauseAnalysisDetails.Text;
                 //insertCase.c_corrective_action_info = txtCorrectiveActionDetails.Text;
 

@@ -931,7 +931,9 @@
                 </td>
             </tr>
             <tr>
-                <uc1:uccb1 runat="server" ID="uccb1" />
+             <asp:Panel ID="CaseTypePanel" runat="server">
+        </asp:Panel>
+                
             </tr>
             <tr>
                 <td colspan="6">

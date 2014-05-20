@@ -247,7 +247,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                         }
                     }
                 }
-
+                AddCaseTypeControl();
                 AddAndRemoveVehicle();
             }
             catch (Exception ex)
@@ -285,6 +285,16 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 txtEmployeeId.Text = user.Hris_employeid;
                 Session["Case_Employee"] = null;
             }
+        }
+
+        private void AddCaseTypeControl()
+        {
+            ComplianceDAO mirisCasteType = new ComplianceDAO();
+            uccb_01 CaseControl = (uccb_01)LoadControl("../MIRIS/Controls/uccb-01.ascx");
+            CaseControl.ID = "ucCaseControl1";
+            CaseTypePanel.Controls.Add(CaseControl);
+            mirisCasteType = ComplianceBLL.GetCaseMV(edit);
+            CaseControl.show(mirisCasteType.c_case_type_fk);
         }
 
         private void AddAndRemoveVehicle()
@@ -512,7 +522,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 //ViewState["CaseCategory"] = ddlCaseCategory.SelectedValue;
                 //ddlCaseTypes.SelectedValue = miris.c_case_type_value;
                 ddlCaseStatus.SelectedValue = miris.c_case_status_value;
-                uccb1.show(miris.c_case_type_fk);
+                //uccb1.show(miris.c_case_type_fk);
 
                 txtEmployeeName.Text = miris.c_employee_name;
                 txtLastName.Text = miris.c_employee_last_name;
@@ -2173,7 +2183,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 updateCase.c_case_title = txtCaseTitle.Text;
                 updateCase.c_case_category_fk = ddlCaseCategory.SelectedValue;
                 //updateCase.c_case_type_fk = ddlCaseTypes.SelectedValue;
-                updateCase.c_case_type_fk = uccb1.uc_values;
+                uccb_01 casetypepanel = (uccb_01)CaseTypePanel.Controls[1];
+                updateCase.c_case_type_fk = casetypepanel.uc_values;// uccb1.uc_values;
                 updateCase.c_case_status = c_case_status;
                 updateCase.c_employee_name = txtEmployeeName.Text;
                 updateCase.c_employee_last_name = txtLastName.Text;
@@ -2872,7 +2883,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                     {
                         Response.Redirect("~/Compliance/MIRIS/cccmiris-01.aspx", false);
                     }
-                    uccb1.show(updateCase.c_case_type_fk);
+                    //uccb1.show(updateCase.c_case_type_fk);
                 }
                 else
                 {
