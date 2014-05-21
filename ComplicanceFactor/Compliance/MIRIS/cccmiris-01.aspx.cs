@@ -836,6 +836,7 @@ namespace ComplicanceFactor.Compliance
             {
                 casetypeText.Visible = false;
                 casetype.Visible = false;
+                uccb1.Visible = true;
                 ddlCaseTypes.DataSource = ComplianceBLL.GetMirisMVCaseType(SessionWrapper.CultureName, "cmv-01");
                 ddlCaseTypes.DataBind();
             }
