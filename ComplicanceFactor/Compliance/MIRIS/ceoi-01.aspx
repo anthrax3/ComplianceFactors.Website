@@ -4,7 +4,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="TimePicker" Namespace="MKB.TimePicker" TagPrefix="MKB" %>
 <%@ Register Src="~/Compliance/MIRIS/Controls/uccb-01.ascx" TagPrefix="uc1" TagName="uccb1" %>
-<%@ Register src="Controls/urc-01.ascx" tagname="urc" tagprefix="uc1" %>
+<%@ Register Src="Controls/urc-01.ascx" TagName="urc" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -490,6 +490,22 @@
                 return false;
             }
         }
+        function ConfirmReset() {
+            if (confirm('Are you sure you want to reset.?') == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function ConfirmCancel() {
+            if (confirm('Are you sure you want to cancel.?') == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }      
     </script>
     <script type="text/javascript">
         function ValidateFileUpload(source, args) {
@@ -752,11 +768,12 @@
                         <asp:Button ID="btnViewCaseDesc_header" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_view_case_description_button_text %>" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnReset_Header" CssClass="cursor_hand" OnClick="btnResetFooter_Click"
-                            runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
+                        <asp:Button ID="btnReset_Header" CssClass="cursor_hand" OnClientClick="return ConfirmReset();"
+                            OnClick="btnResetFooter_Click" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>" />
                     </td>
                     <td align="right">
-                        <asp:Button ID="btnCancel_header" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                        <asp:Button ID="btnCancel_header" CssClass="cursor_hand" OnClientClick="return ConfirmCancel();"
+                            runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnCancel_header_Click" />
                     </td>
                 </tr>
@@ -807,7 +824,6 @@
                             AutoPostBack="true" CssClass="ddl_user_advanced_search" runat="server" OnSelectedIndexChanged="ddlCaseCategory_SelectedIndexChanged1">
                         </asp:DropDownList>
                     </td>
-                   
                     <td>
                         *
                         <%=LocalResources.GetLabel("app_case_status_text")%>:
@@ -817,17 +833,17 @@
                             DataTextField="c_status_name" runat="server">
                         </asp:DropDownList>
                     </td>
-                     <td>
+                    <td>
                         *
                         <%=LocalResources.GetLabel("app_case_types_text")%>:
                     </td>
-                      <td>
+                    <td>
                         <asp:DropDownList ID="ddlCaseTypes" DataValueField="c_type_id" DataTextField="c_type_name"
                             CssClass="ddl_user_advanced_search" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
-                   <%--<tr><uc1:uccb1 runat="server" id="uccb1" /></tr>--%>
+                <%--<tr><uc1:uccb1 runat="server" id="uccb1" /></tr>--%>
                 <tr>
                     <td colspan="6">
                         &nbsp;
@@ -2200,7 +2216,6 @@
                 </Columns>
             </asp:GridView>
         </div>
-       
         <br />
         <div class="div_header_long">
             <%=LocalResources.GetLabel("app_custom_fields_text")%>:
@@ -2306,7 +2321,7 @@
                 </tr>
             </table>
         </div>
-           <uc1:urc ID="urc1" runat="server" />
+        <uc1:urc ID="urc1" runat="server" />
         <div class="div_header_long">
             <br />
         </div>

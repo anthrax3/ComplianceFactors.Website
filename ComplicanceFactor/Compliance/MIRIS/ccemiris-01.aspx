@@ -270,6 +270,23 @@
                 return false;
             }
         }
+        function ConfirmReset() {
+            clearerror();
+            if (confirm('Are you sure you want to reset.?') == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function ConfirmCancel() {
+            if (confirm('Are you sure you want to cancel.?') == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }      
     </script>
     <script type="text/javascript">
         function CheckSize(source, args) {
@@ -488,11 +505,11 @@
                         <asp:Button ID="btnViewCaseDesc_header" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_view_case_description_button_text %>" />
                     </td>
                     <td align="left">
-                        <asp:Button ID="btnResetHeader" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
-                            OnClick="btnResetHeader_Click" CssClass="cursor_hand" OnClientClick="clearerror();" />
+                        <asp:Button ID="btnResetHeader" runat="server" OnClientClick="return ConfirmReset();" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                            OnClick="btnResetHeader_Click" CssClass="cursor_hand"  />
                     </td>
                     <td align="right">
-                        <asp:Button ID="btnCancel_header" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                        <asp:Button ID="btnCancel_header" CssClass="cursor_hand" OnClientClick="return ConfirmCancel();" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                             OnClick="btnCancel_header_Click" />
                     </td>
                 </tr>

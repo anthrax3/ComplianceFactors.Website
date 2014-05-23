@@ -551,6 +551,22 @@
                 return false;
             }
         }
+        function ConfirmReset() {
+            if (confirm('Are you sure you want to reset.?') == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function ConfirmCancel() {
+            if (confirm('Are you sure you want to cancel.?') == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }      
     </script>
     <script type="text/javascript">
         function ValidateFileUpload(source, args) {
@@ -910,11 +926,11 @@
                         ValidationGroup="cmv" CssClass="cursor_hand" OnClick="btnHeaderCompleteCase_Click" />
                 </td>
                 <td align="left">
-                    <asp:Button ID="btnReset_Header" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
+                    <asp:Button ID="btnReset_Header" CssClass="cursor_hand" runat="server" OnClientClick="return ConfirmReset();" Text="<%$ LabelResourceExpression: app_reset_button_text %>"
                         OnClick="btnReset_Header_Click" />
                 </td>
                 <td align="right">
-                    <asp:Button ID="btnCancel_header" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
+                    <asp:Button ID="btnCancel_header" CssClass="cursor_hand" runat="server" OnClientClick="return ConfirmCancel();"  Text="<%$ LabelResourceExpression: app_cancel_button_text %>"
                         OnClick="btnCancel_header_Click" />
                 </td>
             </tr>
