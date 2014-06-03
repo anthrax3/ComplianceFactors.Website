@@ -104,7 +104,7 @@
                             <tr>
                                 <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
                                     padding: 5px 5px 5px 0;">
-                                    @app_employee_name_text
+                                    @app_employee_first_name_text
                                     <!-- <%=LocalResources.GetLocaleResourceString("app_employee_name_text")%>-->
                                 </td>
                                 <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
@@ -113,19 +113,20 @@
                                 </td>
                                 <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
                                     padding: 5px 5px 5px 0;">
+                                    @app_employee_last_name_text
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_employee_name_text")%>-->
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    <!-- <asp:label id="lblEmployeeName" runat="server"></asp:label>-->
+                                    @lblEmployeeLastName
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
                                     @app_date_of_birth_text
                                     <!-- <%=LocalResources.GetLocaleResourceString("app_date_of_birth_text")%>-->
                                 </td>
                                 <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
                                     @lblDateOfBirth
-                                </td>
-                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
-                                    padding: 5px 5px 5px 0;">
-                                    @app_employee_hire_date_text
-                                    <!-- <%=LocalResources.GetLocaleResourceString("app_employee_hire_date_text")%>-->
-                                </td>
-                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
-                                    @lblEmployeeHireDate
                                 </td>
                             </tr>
                             <tr>
@@ -147,11 +148,11 @@
                                 </td>
                                 <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
                                     padding: 5px 5px 5px 0;">
-                                    @app_supervisor_text
-                                    <!--  <%=LocalResources.GetLocaleResourceString("app_supervisor_text")%>-->
+                                    @app_employee_hire_date_text
+                                    <!-- <%=LocalResources.GetLocaleResourceString("app_employee_hire_date_text")%>-->
                                 </td>
                                 <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
-                                    @lblSupervisor
+                                    @lblEmployeeHireDate
                                 </td>
                             </tr>
                             <tr>
@@ -203,6 +204,24 @@
                                 </td>
                                 <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
                                     @lblNote
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    @app_company_owned_text
+                                    <!--  <%=LocalResources.GetLocaleResourceString("app_supervisor_text")%>-->
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblCompanyOwned
+                                </td>
+                                <td style="font-weight: normal; width: 110px; text-align: right; border-collapse: collapse;
+                                    padding: 5px 5px 5px 0;">
+                                    @app_supervisor_text
+                                    <!--  <%=LocalResources.GetLocaleResourceString("app_supervisor_text")%>-->
+                                </td>
+                                <td style="width: 190px; text-align: left; padding: 0 0 0 8px;">
+                                    @lblSupervisor
                                 </td>
                             </tr>
                             <tr>

@@ -4368,7 +4368,7 @@ namespace ComplicanceFactor.BusinessComponent
 
                 miris.c_case_date = Convert.ToDateTime(dtGetCase.Rows[0]["c_case_date"], culture);
 
-                miris.c_case_type_text = dtGetCase.Rows[0]["c_case_type_text"].ToString();
+                miris.c_case_type_text = dtGetCase.Rows[0]["c_case_type_text_value"].ToString();
 
                 if (!string.IsNullOrEmpty(Convert.ToString(dtGetCase.Rows[0]["c_company_owned"])))
                 {

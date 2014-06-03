@@ -452,5 +452,6 @@ namespace ComplicanceFactor.BusinessComponent.DataAccessObject
         public string s_locale_culture { get; set; }
 
 
+        //public string c_case_type_text { get; set; }
     }
 }

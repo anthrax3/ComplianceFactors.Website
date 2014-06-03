@@ -121,6 +121,15 @@ namespace ComplicanceFactor.Compliance {
         protected global::System.Web.UI.WebControls.Label lblEmployeeName;
         
         /// <summary>
+        /// lblLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLastName;
+        
+        /// <summary>
         /// lblDateOfBirth control.
         /// </summary>
         /// <remarks>
@@ -128,15 +137,6 @@ namespace ComplicanceFactor.Compliance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDateOfBirth;
-        
-        /// <summary>
-        /// lblEmployeeHireDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmployeeHireDate;
         
         /// <summary>
         /// lblEmployeeId control.
@@ -157,13 +157,13 @@ namespace ComplicanceFactor.Compliance {
         protected global::System.Web.UI.WebControls.Label lblLastFourDigitOfSSN;
         
         /// <summary>
-        /// lblSupervisor control.
+        /// lblEmployeeHireDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSupervisor;
+        protected global::System.Web.UI.WebControls.Label lblEmployeeHireDate;
         
         /// <summary>
         /// lblIncidentLocation control.
@@ -184,6 +184,15 @@ namespace ComplicanceFactor.Compliance {
         protected global::System.Web.UI.WebControls.Label lblIncidentDate;
         
         /// <summary>
+        /// lblDateInTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateInTitle;
+        
+        /// <summary>
         /// lblIncidentTime control.
         /// </summary>
         /// <remarks>
@@ -202,6 +211,15 @@ namespace ComplicanceFactor.Compliance {
         protected global::System.Web.UI.WebControls.Label lblEmployeeReportLocation;
         
         /// <summary>
+        /// lblSupervisor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSupervisor;
+        
+        /// <summary>
         /// lblTimeZone control.
         /// </summary>
         /// <remarks>
@@ -218,6 +236,15 @@ namespace ComplicanceFactor.Compliance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNote;
+        
+        /// <summary>
+        /// lblCompanyOwned control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCompanyOwned;
         
         /// <summary>
         /// gvAddWitness control.
@@ -461,6 +488,15 @@ namespace ComplicanceFactor.Compliance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCustom13;
+        
+        /// <summary>
+        /// urc1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ComplicanceFactor.Compliance.MIRIS.Controls.cvurc_01 urc1;
         
         /// <summary>
         /// btnSendtoMyMobile_footer control.

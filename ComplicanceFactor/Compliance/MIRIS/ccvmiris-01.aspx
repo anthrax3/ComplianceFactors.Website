@@ -3,8 +3,8 @@
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Src="Controls/cvurc-01.ascx" TagName="urc" TagPrefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -71,8 +71,7 @@
                         <%--  <img alt="Logo" src="../Images/ComplianceFactorsLogo.jpg" />--%>
                         <%--<asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/ComplianceFactorsLogo.jpg"
                             AlternateText="Logo" ImageAlign="Left" CssClass="logo_image" />--%>
-                            <asp:Image ID="imgLogo" runat="server" AlternateText=""
-                         ImageAlign="Left" CssClass="logo_image" />
+                        <asp:Image ID="imgLogo" runat="server" AlternateText="" ImageAlign="Left" CssClass="logo_image" />
                     </div>
                 </div>
             </div>
@@ -146,25 +145,30 @@
                     <table>
                         <tr>
                             <td class="text_font_normal">
+                                First Name:
+                            </td>
+                            <td class="lable_td_width_1">
+                                <asp:Label ID="lblEmployeeName" runat="server"></asp:Label>
+                            </td>
+                            <td class="text_font_normal">
+                                Last Name
+                            </td>
+                            <td class="lable_td_width_1">
+                                <asp:Label ID="lblLastName" runat="server"></asp:Label>
+                            </td>
+                            <%--<td class="text_font_normal">
                                 *
                                 <%=LocalResources.GetLabel("app_employee_name_text")%>:
                             </td>
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblEmployeeName" runat="server"></asp:Label>
-                            </td>
+                            </td>--%>
                             <td class="text_font_normal">
                                 *
                                 <%=LocalResources.GetLabel("app_date_of_birth_text")%>:
                             </td>
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblDateOfBirth" runat="server"></asp:Label>
-                            </td>
-                            <td class="text_font_normal">
-                                *
-                                <%=LocalResources.GetLabel("app_employee_hire_date_text")%>:
-                            </td>
-                            <td class="lable_td_width_1">
-                                <asp:Label ID="lblEmployeeHireDate" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -182,15 +186,15 @@
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblLastFourDigitOfSSN" runat="server"></asp:Label>
                             </td>
-                            <td class="text_font_normal">
-                                *
-                                <%=LocalResources.GetLabel("app_supervisor_text")%>:
-                            </td>
-                            <td class="lable_td_width_1">
-                                <asp:Label ID="lblSupervisor" runat="server"></asp:Label>
-                            </td>
                         </tr>
                         <tr>
+                            <td class="text_font_normal">
+                                *
+                                <%=LocalResources.GetLabel("app_employee_hire_date_text")%>:
+                            </td>
+                            <td class="lable_td_width_1">
+                                <asp:Label ID="lblEmployeeHireDate" runat="server"></asp:Label>
+                            </td>
                             <td class="text_font_normal">
                                 *
                                 <%=LocalResources.GetLabel("app_incident_location_text")%>:
@@ -205,6 +209,14 @@
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblIncidentDate" runat="server"></asp:Label>
                             </td>
+                        </tr>
+                        <tr>
+                            <td class="text_font_normal">
+                                Date in Title
+                            </td>
+                            <td class="lable_td_width_1">
+                                <asp:Label ID="lblDateInTitle" runat="server"></asp:Label>
+                            </td>
                             <td class="text_font_normal">
                                 *
                                 <%=LocalResources.GetLabel("app_incident_time_text")%>:
@@ -212,14 +224,21 @@
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblIncidentTime" runat="server"></asp:Label>
                             </td>
-                        </tr>
-                        <tr>
                             <td class="text_font_normal">
                                 *
                                 <%=LocalResources.GetLabel("app_employee_report_location_text")%>:
                             </td>
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblEmployeeReportLocation" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text_font_normal">
+                                *
+                                <%=LocalResources.GetLabel("app_supervisor_text")%>:
+                            </td>
+                            <td class="lable_td_width_1">
+                                <asp:Label ID="lblSupervisor" runat="server"></asp:Label>
                             </td>
                             <td class="text_font_normal">
                                 *
@@ -233,6 +252,14 @@
                             </td>
                             <td class="lable_td_width_1">
                                 <asp:Label ID="lblNote" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td class="text_font_normal">
+                                Company Owned:
+                            </td>
+                            <td class="lable_td_width_1">
+                                <asp:Label ID="lblCompanyOwned" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -267,8 +294,7 @@
                                         <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
                                             ItemStyle-VerticalAlign="Top">
                                             <ItemTemplate>
-                                                <%= LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp;
-                                                &nbsp; <b>
+                                                <%= LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
                                                     <%#Eval("c_name") %></b>
                                             </ItemTemplate>
                                         </asp:TemplateField>
@@ -360,8 +386,7 @@
                                         <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
                                             ItemStyle-VerticalAlign="Top">
                                             <ItemTemplate>
-                                                <%= LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp;
-                                                &nbsp; <b>
+                                                <%= LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
                                                     <%#Eval("c_name") %></b>
                                             </ItemTemplate>
                                         </asp:TemplateField>
@@ -396,8 +421,7 @@
                                         <asp:TemplateField ItemStyle-CssClass="width_210" ItemStyle-HorizontalAlign="Left"
                                             ItemStyle-VerticalAlign="Top">
                                             <ItemTemplate>
-                                                <%= LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp;
-                                                &nbsp; <b>
+                                                <%= LocalResources.GetLabel("app_name_text")%>:&nbsp;&nbsp; &nbsp; <b>
                                                     <%#Eval("c_name") %></b>
                                             </ItemTemplate>
                                         </asp:TemplateField>
@@ -446,8 +470,7 @@
                             </td>
                             <td>
                                 <asp:Button ID="btnSendtoOtherEmail_header" OnClientClick="Showpopup(this.id);" runat="server"
-                                    Text="<%$ LabelResourceExpression: app_send_to_other_email_button_text %>"
-                                    CssClass="cursor_hand" />
+                                    Text="<%$ LabelResourceExpression: app_send_to_other_email_button_text %>" CssClass="cursor_hand" />
                             </td>
                         </tr>
                     </table>
@@ -781,6 +804,7 @@
                 <div class="div_header_long">
                     <br />
                 </div>
+                <uc1:urc ID="urc1" runat="server" />
                 <br />
                 <div class="label_required_field">
                     *
@@ -825,15 +849,14 @@
                     <%=LocalResources.GetText("wp_app_release_number")%>
                 </div>
                 <div class="right ">
-                <%=LocalResources.GetText("wp_powered_by_content")%>
-                    
+                    <%=LocalResources.GetText("wp_powered_by_content")%>
                 </div>
                 <br />
                 <br />
             </div>
             <asp:Button ID="btnUploadFile" CssClass="cursor_hand" runat="server" Style="display: none;" />
-            <asp:Panel ID="pnlMultiple" runat="server" CssClass="modalPopup_upload modal_popup_background" Style="display: none;
-                padding-left: 0px;  padding-right: 0px;" DefaultButton="btnSendMutiple">
+            <asp:Panel ID="pnlMultiple" runat="server" CssClass="modalPopup_upload modal_popup_background"
+                Style="display: none; padding-left: 0px; padding-right: 0px;" DefaultButton="btnSendMutiple">
                 <asp:Panel ID="pnlMutipleHeading" runat="server" CssClass="drag_uploadpopup">
                     <div>
                         <div class="uploadpopup_header">
@@ -873,11 +896,11 @@
                         <br />
                         <div class="popup_send_button">
                             <asp:Button ID="btnSendMutiple" OnClientClick="ResetScroll();" ValidationGroup="email"
-                                Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSendMutiple_Click"
-                                CssClass="cursor_hand" />
+                                Style="display: none;" runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>"
+                                OnClick="btnSendMutiple_Click" CssClass="cursor_hand" />
                             <asp:Button ID="btnSendMultipleMobile" OnClientClick="ResetScroll();" Style="display: none;"
-                                runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSendMultipleMobile_Click" ValidationGroup="mobile"
-                                CssClass="cursor_hand" />
+                                runat="server" Text="<%$ LabelResourceExpression: app_send_button_text %>" OnClick="btnSendMultipleMobile_Click"
+                                ValidationGroup="mobile" CssClass="cursor_hand" />
                         </div>
                         <asp:Button ID="btnCancel" CssClass="cursor_hand" runat="server" Text="<%$ LabelResourceExpression: app_cancel_button_text %>" />
                     </div>

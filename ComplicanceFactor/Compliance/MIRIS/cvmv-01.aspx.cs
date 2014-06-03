@@ -68,6 +68,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 lblCaseTypes.Text = miris.c_case_type_text;
                 lblCaseStatus.Text = miris.c_status_text;
                 lblEmployeeName.Text = miris.c_employee_name;
+                lblLastName.Text = miris.c_employee_last_name;
+                lblDateInTitle.Text = Convert.ToDateTime(miris.c_date_in_title).ToString("MM/dd/yyyy");
                 lblDateOfBirth.Text = Convert.ToDateTime(miris.c_employee_dob).ToShortDateString();
                 lblEmployeeHireDate.Text = Convert.ToDateTime(miris.c_employee_hire_date).ToShortDateString();
                 lblEmployeeId.Text = miris.c_employee_id;
@@ -153,6 +155,16 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     lblNonCollision.Text = "No";
                 }
+                 if (miris.c_company_owned == true)
+                {
+                    lblCompanyOwned.Text = "Yes";
+                }
+                else
+                {
+                    lblCompanyOwned.Text = "No";
+                }
+
+                
                 lblNonCollisionText.Text = miris.c_case_desc_non_collision_text;
 
                 lblDriversLic.Text = miris.c_case_detail_drivers_lic;
@@ -516,6 +528,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 this.gvEmployeeInterview.DataBind();
 
                 lblTimeZone.Text = miris.u_time_zone_location;
+
+                urc1.SearchRac(caseid);
             }
             catch (Exception ex)
             {

@@ -74,6 +74,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 lblCaseTypes.Text = miris.c_case_type_text;
                 lblCaseStatus.Text = miris.c_status_text;
                 lblEmployeeName.Text = miris.c_employee_name;
+                lblLastName.Text = miris.c_employee_last_name;
+                lblDateInTitle.Text = Convert.ToDateTime(miris.c_date_in_title).ToString("MM/dd/yyyy");
                 lblDateOfBirth.Text = Convert.ToDateTime(miris.c_employee_dob).ToShortDateString();
                 lblEmployeeHireDate.Text = Convert.ToDateTime(miris.c_employee_hire_date).ToShortDateString();
                 lblEmployeeId.Text = miris.c_employee_id;
@@ -142,14 +144,14 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 {
                     lblPrivacyCase.Text = "No";
                 }
-                if (miris.c_company_owned == true)
-                {
-                    lblCompanyOwned.Text = "Yes";
-                }
-                else
-                {
-                    lblCompanyOwned.Text = "No";
-                }
+                //if (miris.c_company_owned == true)
+                //{
+                //    lblCompanyOwned.Text = "Yes";
+                //}
+                //else
+                //{
+                //    lblCompanyOwned.Text = "No";
+                //}
                 lblLocationDescription.Text = miris.c_location_description;
                 lblIncidentDescription.Text = miris.c_incident_description;
                 lblInjuryComplaint.Text = miris.c_injury_complaint;
@@ -231,6 +233,8 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 this.gvIncidentHistory.DataBind();
 
                 lblTimeZone.Text = miris.u_time_zone_location;
+
+                urc1.SearchRac(caseid);
             }
             catch (Exception ex)
             {
@@ -971,7 +975,7 @@ namespace ComplicanceFactor.Compliance.MIRIS
                 sbCaseDetails.Replace("@app_privacy_case", LocalResources.GetLabel("app_privacy_case_text"));
                 sbCaseDetails.Replace("@lblPrivacyCase", lblPrivacyCase.Text);
                 sbCaseDetails.Replace("@app_company_owned", LocalResources.GetLabel("app_company_owned_text"));
-                sbCaseDetails.Replace("@lblCompanyOwned", lblCompanyOwned.Text);
+                //sbCaseDetails.Replace("@lblCompanyOwned", lblCompanyOwned.Text);
                 sbCaseDetails.Replace("@app_location_description", LocalResources.GetLabel("app_location_description_text"));
                 sbCaseDetails.Replace("@lblLocationDescription", lblLocationDescription.Text);
                 sbCaseDetails.Replace("@app_incident_description", LocalResources.GetLabel("app_incident_description_text"));

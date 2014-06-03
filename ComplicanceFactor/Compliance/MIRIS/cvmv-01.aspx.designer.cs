@@ -175,6 +175,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.Label lblEmployeeName;
         
         /// <summary>
+        /// lblLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLastName;
+        
+        /// <summary>
         /// lblDateOfBirth control.
         /// </summary>
         /// <remarks>
@@ -211,13 +220,13 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         protected global::System.Web.UI.WebControls.Label lblLastFourDigitOfSSN;
         
         /// <summary>
-        /// lblSupervisor control.
+        /// lblDateInTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSupervisor;
+        protected global::System.Web.UI.WebControls.Label lblDateInTitle;
         
         /// <summary>
         /// lblIncidentLocation control.
@@ -236,15 +245,6 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIncidentDate;
-        
-        /// <summary>
-        /// lblIncidentTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIncidentTime;
         
         /// <summary>
         /// lblEmployeeReportLocation control.
@@ -272,6 +272,33 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNote;
+        
+        /// <summary>
+        /// lblIncidentTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIncidentTime;
+        
+        /// <summary>
+        /// lblSupervisor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSupervisor;
+        
+        /// <summary>
+        /// lblCompanyOwned control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCompanyOwned;
         
         /// <summary>
         /// lblVehicle01 control.
@@ -1595,6 +1622,15 @@ namespace ComplicanceFactor.Compliance.MIRIS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCustom13;
+        
+        /// <summary>
+        /// urc1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ComplicanceFactor.Compliance.MIRIS.Controls.cvurc_01 urc1;
         
         /// <summary>
         /// btnSendtoMyMobile_footer control.
